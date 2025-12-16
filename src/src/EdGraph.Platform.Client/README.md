@@ -174,7 +174,7 @@ Authentication schemes defined for the API:
 - packageCompany: EdWire
 - packageCopyright: No Copyright
 - packageDescription: EdGraph Platform Client SDK
-- packageGuid: {D0C65E89-95D7-4C9A-A954-48D25A0949C5}
+- packageGuid: {043559F6-8559-4C22-B8B8-23A2296EF89C}
 - packageName: EdGraph.Platform.Client
 - packageTags: 
 - packageTitle: OpenAPI Library
