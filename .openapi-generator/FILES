@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 EdGraph.Platform.Client.sln
 README.md
 api/openapi.yaml
