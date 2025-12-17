@@ -1,0 +1,10 @@
+# EdGraph.Platform.Client.Model.ValidationsApiContainersV1CategoriesWithDataUsersResponse
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**Data** | [**List&lt;ValidationsApiContainersV1DataUserResponse&gt;**](ValidationsApiContainersV1DataUserResponse.md) |  | [optional] [readonly] 
+
+[[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
+
