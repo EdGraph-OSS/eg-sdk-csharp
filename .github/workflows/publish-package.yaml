@@ -29,5 +29,5 @@ jobs:
         
       - name: 🌐 Publish Package 
         run: |
-          dotnet nuget push "./src/nupkg/*.nupkg" -- api-key ${{ secrets.GITHUB_TOKEN }} -- source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json"
+          dotnet nuget push "./src/nupkg/*.nupkg" --api-key ${{ secrets.GITHUB_TOKEN }} --source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json"
 
