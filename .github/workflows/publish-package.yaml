@@ -1,0 +1,35 @@
+name: Publish Package
+
+on:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write
+
+jobs: 
+  publish-package: 
+    runs-on: ubuntu-latest
+
+    steps: 
+      - name: ⚙️ Checkout Repository
+        uses: actions/checkout@v4
+        with: 
+          fetch-depth: 0
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with: 
+          dotnet-version: '8.0.x'
+
+      - name: Pack Nuget Package
+        run: |
+          cd ./src
+          dotnet pack -c Release -o ./nupkg
+        
+      - name: 🌐 Publish Package 
+        run: |
+          dotnet nuget push ./src/nupkg/*.nupkg \
+            -- api-key ${{ secrets.GITHUB_TOKEN }} \
+            -- source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json"
+
