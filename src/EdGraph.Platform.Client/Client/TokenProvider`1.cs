@@ -27,7 +27,7 @@ namespace EdGraph.Platform.Client
         /// </summary>
         protected TTokenBase[] _tokens;
 
-        internal abstract System.Threading.Tasks.ValueTask<TTokenBase> GetAsync(string header = "", System.Threading.CancellationToken cancellation = default);
+        public abstract System.Threading.Tasks.ValueTask<TTokenBase> GetAsync(string header = "", System.Threading.CancellationToken cancellation = default);
 
         /// <summary>
         /// Instantiates a TokenProvider.
