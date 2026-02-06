@@ -51,8 +51,11 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="platformRole">platformRole</param>
         /// <param name="tenantStatus">tenantStatus</param>
         /// <param name="tenantAdmin">tenantAdmin</param>
+        /// <param name="isDeleted">isDeleted</param>
+        /// <param name="deletedDateTime">deletedDateTime</param>
+        /// <param name="deletedBy">deletedBy</param>
         [JsonConstructor]
-        public IdentityApiUserV2UserProfileResponse(Option<string?> userId = default, Option<string?> userName = default, Option<string?> email = default, Option<string?> firstName = default, Option<string?> lastName = default, Option<string?> phoneNumber = default, Option<bool?> lockoutEnabled = default, Option<int?> tenantCount = default, Option<string?> createdDateTime = default, Option<string?> lastModifiedDateTime = default, Option<List<IdentityApiUserV2UserExtension>?> extensions = default, Option<List<IdentityApiUserV2UserLogin>?> logins = default, Option<string?> source = default, Option<string?> lastLoginDateTime = default, Option<bool?> mfaCompleted = default, Option<string?> platformRole = default, Option<string?> tenantStatus = default, Option<bool?> tenantAdmin = default)
+        public IdentityApiUserV2UserProfileResponse(Option<string?> userId = default, Option<string?> userName = default, Option<string?> email = default, Option<string?> firstName = default, Option<string?> lastName = default, Option<string?> phoneNumber = default, Option<bool?> lockoutEnabled = default, Option<int?> tenantCount = default, Option<string?> createdDateTime = default, Option<string?> lastModifiedDateTime = default, Option<List<IdentityApiUserV2UserExtension>?> extensions = default, Option<List<IdentityApiUserV2UserLogin>?> logins = default, Option<string?> source = default, Option<string?> lastLoginDateTime = default, Option<bool?> mfaCompleted = default, Option<string?> platformRole = default, Option<string?> tenantStatus = default, Option<bool?> tenantAdmin = default, Option<bool?> isDeleted = default, Option<string?> deletedDateTime = default, Option<string?> deletedBy = default)
         {
             UserIdOption = userId;
             UserNameOption = userName;
@@ -72,6 +75,9 @@ namespace EdGraph.Platform.Client.Model
             PlatformRoleOption = platformRole;
             TenantStatusOption = tenantStatus;
             TenantAdminOption = tenantAdmin;
+            IsDeletedOption = isDeleted;
+            DeletedDateTimeOption = deletedDateTime;
+            DeletedByOption = deletedBy;
             OnCreated();
         }
 
@@ -312,6 +318,45 @@ namespace EdGraph.Platform.Client.Model
         public bool? TenantAdmin { get { return this.TenantAdminOption; } set { this.TenantAdminOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of IsDeleted
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<bool?> IsDeletedOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets IsDeleted
+        /// </summary>
+        [JsonPropertyName("isDeleted")]
+        public bool? IsDeleted { get { return this.IsDeletedOption; } set { this.IsDeletedOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of DeletedDateTime
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> DeletedDateTimeOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets DeletedDateTime
+        /// </summary>
+        [JsonPropertyName("deletedDateTime")]
+        public string? DeletedDateTime { get { return this.DeletedDateTimeOption; } set { this.DeletedDateTimeOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of DeletedBy
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> DeletedByOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets DeletedBy
+        /// </summary>
+        [JsonPropertyName("deletedBy")]
+        public string? DeletedBy { get { return this.DeletedByOption; } set { this.DeletedByOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -337,6 +382,9 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  PlatformRole: ").Append(PlatformRole).Append("\n");
             sb.Append("  TenantStatus: ").Append(TenantStatus).Append("\n");
             sb.Append("  TenantAdmin: ").Append(TenantAdmin).Append("\n");
+            sb.Append("  IsDeleted: ").Append(IsDeleted).Append("\n");
+            sb.Append("  DeletedDateTime: ").Append(DeletedDateTime).Append("\n");
+            sb.Append("  DeletedBy: ").Append(DeletedBy).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -392,6 +440,9 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> platformRole = default;
             Option<string?> tenantStatus = default;
             Option<bool?> tenantAdmin = default;
+            Option<bool?> isDeleted = default;
+            Option<string?> deletedDateTime = default;
+            Option<string?> deletedBy = default;
 
             while (utf8JsonReader.Read())
             {
@@ -468,6 +519,16 @@ namespace EdGraph.Platform.Client.Model
                             if (utf8JsonReader.TokenType != JsonTokenType.Null)
                                 tenantAdmin = new Option<bool?>(utf8JsonReader.GetBoolean());
                             break;
+                        case "isDeleted":
+                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
+                                isDeleted = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            break;
+                        case "deletedDateTime":
+                            deletedDateTime = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "deletedBy":
+                            deletedBy = new Option<string?>(utf8JsonReader.GetString());
+                            break;
                         default:
                             break;
                     }
@@ -480,7 +541,10 @@ namespace EdGraph.Platform.Client.Model
             if (mfaCompleted.IsSet && mfaCompleted.Value == null)
                 throw new ArgumentNullException(nameof(mfaCompleted), "Property is not nullable for class IdentityApiUserV2UserProfileResponse.");
 
-            return new IdentityApiUserV2UserProfileResponse(userId, userName, email, firstName, lastName, phoneNumber, lockoutEnabled, tenantCount, createdDateTime, lastModifiedDateTime, extensions, logins, source, lastLoginDateTime, mfaCompleted, platformRole, tenantStatus, tenantAdmin);
+            if (isDeleted.IsSet && isDeleted.Value == null)
+                throw new ArgumentNullException(nameof(isDeleted), "Property is not nullable for class IdentityApiUserV2UserProfileResponse.");
+
+            return new IdentityApiUserV2UserProfileResponse(userId, userName, email, firstName, lastName, phoneNumber, lockoutEnabled, tenantCount, createdDateTime, lastModifiedDateTime, extensions, logins, source, lastLoginDateTime, mfaCompleted, platformRole, tenantStatus, tenantAdmin, isDeleted, deletedDateTime, deletedBy);
         }
 
         /// <summary>
@@ -612,6 +676,21 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteBoolean("tenantAdmin", identityApiUserV2UserProfileResponse.TenantAdminOption.Value!.Value);
                 else
                     writer.WriteNull("tenantAdmin");
+
+            if (identityApiUserV2UserProfileResponse.IsDeletedOption.IsSet)
+                writer.WriteBoolean("isDeleted", identityApiUserV2UserProfileResponse.IsDeletedOption.Value!.Value);
+
+            if (identityApiUserV2UserProfileResponse.DeletedDateTimeOption.IsSet)
+                if (identityApiUserV2UserProfileResponse.DeletedDateTimeOption.Value != null)
+                    writer.WriteString("deletedDateTime", identityApiUserV2UserProfileResponse.DeletedDateTime);
+                else
+                    writer.WriteNull("deletedDateTime");
+
+            if (identityApiUserV2UserProfileResponse.DeletedByOption.IsSet)
+                if (identityApiUserV2UserProfileResponse.DeletedByOption.Value != null)
+                    writer.WriteString("deletedBy", identityApiUserV2UserProfileResponse.DeletedBy);
+                else
+                    writer.WriteNull("deletedBy");
         }
     }
 }

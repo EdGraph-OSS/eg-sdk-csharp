@@ -150,6 +150,10 @@ namespace EdGraph.Platform.Client.Client
                 return EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviderIdValueConverter.ToJsonValue(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviderId);
             if (obj is EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviderStatus edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviderStatus)
                 return EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviderStatusValueConverter.ToJsonValue(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviderStatus);
+            if (obj is EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsAppraiserSearchStatus edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsAppraiserSearchStatus)
+                return EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsAppraiserSearchStatusValueConverter.ToJsonValue(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsAppraiserSearchStatus);
+            if (obj is EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchStatus edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchStatus)
+                return EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchStatusValueConverter.ToJsonValue(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchStatus);
             if (obj is EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesTenantStatus edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesTenantStatus)
                 return EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesTenantStatusValueConverter.ToJsonValue(edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesTenantStatus);
             if (obj is EdGraphServicesStateReportingV1ReportingPeriodStepStatus edGraphServicesStateReportingV1ReportingPeriodStepStatus)
@@ -162,6 +166,14 @@ namespace EdGraph.Platform.Client.Client
                 return EdfiAdminApiEdfiAdminV1InstanceTypeValueConverter.ToJsonValue(edfiAdminApiEdfiAdminV1InstanceType);
             if (obj is EdfiAdminApiEdfiAdminV1SecretValueType edfiAdminApiEdfiAdminV1SecretValueType)
                 return EdfiAdminApiEdfiAdminV1SecretValueTypeValueConverter.ToJsonValue(edfiAdminApiEdfiAdminV1SecretValueType);
+            if (obj is EvaluationApiEvaluationSettingsV1ScheduleType evaluationApiEvaluationSettingsV1ScheduleType)
+                return EvaluationApiEvaluationSettingsV1ScheduleTypeValueConverter.ToJsonValue(evaluationApiEvaluationSettingsV1ScheduleType);
+            if (obj is EvaluationApiEvaluationsV1EvaluationStatus evaluationApiEvaluationsV1EvaluationStatus)
+                return EvaluationApiEvaluationsV1EvaluationStatusValueConverter.ToJsonValue(evaluationApiEvaluationsV1EvaluationStatus);
+            if (obj is EvaluationApiEvaluationsV1OrganizationDiscriminator evaluationApiEvaluationsV1OrganizationDiscriminator)
+                return EvaluationApiEvaluationsV1OrganizationDiscriminatorValueConverter.ToJsonValue(evaluationApiEvaluationsV1OrganizationDiscriminator);
+            if (obj is EvaluationApiEvaluationsV1OrganizationIdentifierType evaluationApiEvaluationsV1OrganizationIdentifierType)
+                return EvaluationApiEvaluationsV1OrganizationIdentifierTypeValueConverter.ToJsonValue(evaluationApiEvaluationsV1OrganizationIdentifierType);
             if (obj is FormApiFormComponentsV1FormComponentType formApiFormComponentsV1FormComponentType)
                 return FormApiFormComponentsV1FormComponentTypeValueConverter.ToJsonValue(formApiFormComponentsV1FormComponentType);
             if (obj is FormApiFormsV1AudienceType formApiFormsV1AudienceType)
@@ -226,6 +238,8 @@ namespace EdGraph.Platform.Client.Client
                 return TenantApiTenantV1TenantStatusValueConverter.ToJsonValue(tenantApiTenantV1TenantStatus);
             if (obj is TenantApiTenantV1TenantType tenantApiTenantV1TenantType)
                 return TenantApiTenantV1TenantTypeValueConverter.ToJsonValue(tenantApiTenantV1TenantType);
+            if (obj is TenantApiWebhookV1WebhookSchema tenantApiWebhookV1WebhookSchema)
+                return TenantApiWebhookV1WebhookSchemaValueConverter.ToJsonValue(tenantApiWebhookV1WebhookSchema);
             if (obj is ValidationsApiCoreV1InstanceType validationsApiCoreV1InstanceType)
                 return ValidationsApiCoreV1InstanceTypeValueConverter.ToJsonValue(validationsApiCoreV1InstanceType);
             if (obj is ValidationsApiCoreV1Provider validationsApiCoreV1Provider)

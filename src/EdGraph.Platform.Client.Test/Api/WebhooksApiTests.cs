@@ -83,9 +83,13 @@ namespace EdGraph.Platform.Client.Test.Api
         public async Task GetAllWebhookSubscriptionsAsyncAsyncTest()
         {
             string tenantId = default!;
-            var response = await _instance.GetAllWebhookSubscriptionsAsyncAsync(tenantId);
+            Client.Option<int> pageSize = default!;
+            Client.Option<int> pageIndex = default!;
+            Client.Option<string> orderBy = default!;
+            Client.Option<string> filter = default!;
+            var response = await _instance.GetAllWebhookSubscriptionsAsyncAsync(tenantId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiWebhookV1WebhookEventsResponse>(model);
+            Assert.IsType<TenantApiWebhookV1PaginatedWebhookEventItemsResponse>(model);
         }
 
         /// <summary>

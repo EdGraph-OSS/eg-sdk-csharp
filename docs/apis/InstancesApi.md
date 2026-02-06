@@ -2912,7 +2912,7 @@ catch (ApiException e)
 
 <a id="testinstanceconnection"></a>
 # **TestInstanceConnection**
-> EdfiAdminApiEdfiAdminV1TestInstanceConnectionResponse TestInstanceConnection (string tenantId, string instanceId)
+> EdfiAdminApiEdfiAdminV1TestInstanceConnectionResponse TestInstanceConnection (string tenantId, string instanceId, EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest = null)
 
 Tests the connection of the Instance.
 
@@ -2938,11 +2938,12 @@ namespace Example
             var apiInstance = new InstancesApi(config);
             var tenantId = "tenantId_example";  // string | 
             var instanceId = "instanceId_example";  // string | 
+            var edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest = new EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest(); // EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest |  (optional) 
 
             try
             {
                 // Tests the connection of the Instance.
-                EdfiAdminApiEdfiAdminV1TestInstanceConnectionResponse result = apiInstance.TestInstanceConnection(tenantId, instanceId);
+                EdfiAdminApiEdfiAdminV1TestInstanceConnectionResponse result = apiInstance.TestInstanceConnection(tenantId, instanceId, edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2963,7 +2964,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Tests the connection of the Instance.
-    ApiResponse<EdfiAdminApiEdfiAdminV1TestInstanceConnectionResponse> response = apiInstance.TestInstanceConnectionWithHttpInfo(tenantId, instanceId);
+    ApiResponse<EdfiAdminApiEdfiAdminV1TestInstanceConnectionResponse> response = apiInstance.TestInstanceConnectionWithHttpInfo(tenantId, instanceId, edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -2982,6 +2983,7 @@ catch (ApiException e)
 |------|------|-------------|-------|
 | **tenantId** | **string** |  |  |
 | **instanceId** | **string** |  |  |
+| **edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest** | [**EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest**](EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest.md) |  | [optional]  |
 
 ### Return type
 
@@ -2993,7 +2995,7 @@ catch (ApiException e)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
  - **Accept**: application/json
 
 
@@ -3011,7 +3013,7 @@ catch (ApiException e)
 
 <a id="testinstanceyearconnection"></a>
 # **TestInstanceYearConnection**
-> EdfiAdminApiEdfiAdminV1TestInstanceConnectionResponse TestInstanceYearConnection (string tenantId, string instanceId, int year)
+> EdfiAdminApiEdfiAdminV1TestInstanceConnectionResponse TestInstanceYearConnection (string tenantId, string instanceId, int year, EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest = null)
 
 Tests the connection of the Instance.
 
@@ -3038,11 +3040,12 @@ namespace Example
             var tenantId = "tenantId_example";  // string | 
             var instanceId = "instanceId_example";  // string | 
             var year = 56;  // int | 
+            var edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest = new EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest(); // EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest |  (optional) 
 
             try
             {
                 // Tests the connection of the Instance.
-                EdfiAdminApiEdfiAdminV1TestInstanceConnectionResponse result = apiInstance.TestInstanceYearConnection(tenantId, instanceId, year);
+                EdfiAdminApiEdfiAdminV1TestInstanceConnectionResponse result = apiInstance.TestInstanceYearConnection(tenantId, instanceId, year, edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -3063,7 +3066,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Tests the connection of the Instance.
-    ApiResponse<EdfiAdminApiEdfiAdminV1TestInstanceConnectionResponse> response = apiInstance.TestInstanceYearConnectionWithHttpInfo(tenantId, instanceId, year);
+    ApiResponse<EdfiAdminApiEdfiAdminV1TestInstanceConnectionResponse> response = apiInstance.TestInstanceYearConnectionWithHttpInfo(tenantId, instanceId, year, edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -3083,6 +3086,7 @@ catch (ApiException e)
 | **tenantId** | **string** |  |  |
 | **instanceId** | **string** |  |  |
 | **year** | **int** |  |  |
+| **edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest** | [**EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest**](EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest.md) |  | [optional]  |
 
 ### Return type
 
@@ -3094,7 +3098,7 @@ catch (ApiException e)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
  - **Accept**: application/json
 
 

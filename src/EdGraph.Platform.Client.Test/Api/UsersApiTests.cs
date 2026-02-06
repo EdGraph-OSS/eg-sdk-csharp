@@ -103,6 +103,22 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
+        /// Test GetAllFormUsers
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetAllFormUsersAsyncTest()
+        {
+            Guid tenantId = default!;
+            Client.Option<int> pageSize = default!;
+            Client.Option<int> pageIndex = default!;
+            Client.Option<string> orderBy = default!;
+            Client.Option<string> filter = default!;
+            var response = await _instance.GetAllFormUsersAsync(tenantId, pageSize, pageIndex, orderBy, filter);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserBasicListResponsePaginatedItemsViewModel>(model);
+        }
+
+        /// <summary>
         /// Test GetAllTenantUsersAsync
         /// </summary>
         [Fact (Skip = "not implemented")]

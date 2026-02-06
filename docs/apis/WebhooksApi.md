@@ -209,7 +209,7 @@ catch (ApiException e)
 
 <a id="getallwebhooksubscriptionsasync"></a>
 # **GetAllWebhookSubscriptionsAsync**
-> TenantApiWebhookV1WebhookEventsResponse GetAllWebhookSubscriptionsAsync (string tenantId)
+> TenantApiWebhookV1PaginatedWebhookEventItemsResponse GetAllWebhookSubscriptionsAsync (string tenantId, int pageSize = null, int pageIndex = null, string orderBy = null, string filter = null)
 
 
 
@@ -234,10 +234,14 @@ namespace Example
 
             var apiInstance = new WebhooksApi(config);
             var tenantId = "tenantId_example";  // string | 
+            var pageSize = 10;  // int |  (optional)  (default to 10)
+            var pageIndex = 0;  // int |  (optional)  (default to 0)
+            var orderBy = "\"\"";  // string |  (optional)  (default to "")
+            var filter = "\"\"";  // string |  (optional)  (default to "")
 
             try
             {
-                TenantApiWebhookV1WebhookEventsResponse result = apiInstance.GetAllWebhookSubscriptionsAsync(tenantId);
+                TenantApiWebhookV1PaginatedWebhookEventItemsResponse result = apiInstance.GetAllWebhookSubscriptionsAsync(tenantId, pageSize, pageIndex, orderBy, filter);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -257,7 +261,7 @@ This returns an ApiResponse object which contains the response data, status code
 ```csharp
 try
 {
-    ApiResponse<TenantApiWebhookV1WebhookEventsResponse> response = apiInstance.GetAllWebhookSubscriptionsAsyncWithHttpInfo(tenantId);
+    ApiResponse<TenantApiWebhookV1PaginatedWebhookEventItemsResponse> response = apiInstance.GetAllWebhookSubscriptionsAsyncWithHttpInfo(tenantId, pageSize, pageIndex, orderBy, filter);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -275,10 +279,14 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **tenantId** | **string** |  |  |
+| **pageSize** | **int** |  | [optional] [default to 10] |
+| **pageIndex** | **int** |  | [optional] [default to 0] |
+| **orderBy** | **string** |  | [optional] [default to &quot;&quot;] |
+| **filter** | **string** |  | [optional] [default to &quot;&quot;] |
 
 ### Return type
 
-[**TenantApiWebhookV1WebhookEventsResponse**](TenantApiWebhookV1WebhookEventsResponse.md)
+[**TenantApiWebhookV1PaginatedWebhookEventItemsResponse**](TenantApiWebhookV1PaginatedWebhookEventItemsResponse.md)
 
 ### Authorization
 

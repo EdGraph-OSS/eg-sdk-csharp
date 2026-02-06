@@ -178,7 +178,8 @@ namespace EdGraph.Platform.Client.Test.Api
             string instanceId = default!;
             int applicationId = default!;
             Client.Option<int> year = default!;
-            var response = await _instance.GetApplicationByIdAsyncAsync(tenantId, instanceId, applicationId, year);
+            Client.Option<bool> loadEducationOrganizations = default!;
+            var response = await _instance.GetApplicationByIdAsyncAsync(tenantId, instanceId, applicationId, year, loadEducationOrganizations);
             var model = response.Unauthorized();
             Assert.IsType<EdfiAdminApiEdfiAdminV1EdFiApplicationProfileResponse>(model);
         }

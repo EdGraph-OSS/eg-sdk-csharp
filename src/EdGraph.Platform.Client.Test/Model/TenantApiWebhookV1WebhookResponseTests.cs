@@ -178,5 +178,23 @@ namespace EdGraph.Platform.Client.Test.Model
         {
             // TODO unit test for the property 'EventSubscriptions'
         }
+
+        /// <summary>
+        /// Test the property 'Subscriptions'
+        /// </summary>
+        [Fact]
+        public void SubscriptionsTest()
+        {
+            // TODO unit test for the property 'Subscriptions'
+        }
+
+        /// <summary>
+        /// Test the property 'WebhookSchema'
+        /// </summary>
+        [Fact]
+        public void WebhookSchemaTest()
+        {
+            // TODO unit test for the property 'WebhookSchema'
+        }
     }
 }

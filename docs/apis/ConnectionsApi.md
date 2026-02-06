@@ -14,6 +14,7 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 | [**GetEdFiConnectionById**](ConnectionsApi.md#getedficonnectionbyid) | **GET** /tenants/{tenantId}/edfiadmin/connections/{connectionId} | Retrieves an Ed-Fi Connection by ID. |
 | [**GetEdFiConnectionsAsync**](ConnectionsApi.md#getedficonnectionsasync) | **GET** /tenants/{tenantId}/edfiadmin/connections | Retrieves a list of Ed-Fi Connections. |
 | [**GetEdFiOdsBackupCodesDescriptorsAsync**](ConnectionsApi.md#getedfiodsbackupcodesdescriptorsasync) | **GET** /tenants/{tenantId}/edfiadmin/connections/odsbackupcodes | Retrieves a list of Ed-Fi ODS backup codes. |
+| [**GetEdFiResourcesByInstanceYear**](ConnectionsApi.md#getedfiresourcesbyinstanceyear) | **GET** /tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/resources | Retrieves an Ed-Fi Resources by Instance Id and Year. |
 | [**GetPagedConnections**](ConnectionsApi.md#getpagedconnections) | **GET** /tenants/{tenantId}/oneroster/connections | Retrieves a list of Connections. |
 | [**GetTenantDataSyncConnectionProfileById**](ConnectionsApi.md#gettenantdatasyncconnectionprofilebyid) | **GET** /tenants/{tenantId}/datasync/connections/{connectionId} | Retrieves a specific DataSync connection using its primary key |
 | [**TestConnectionDetailsAsync**](ConnectionsApi.md#testconnectiondetailsasync) | **POST** /tenants/{tenantId}/oneroster/connections/test | Tests the connection by sending the connection details in the request payload |
@@ -1016,6 +1017,115 @@ catch (ApiException e)
 | **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
 | **200** | The requested resource was successfully retrieved. |  -  |
 | **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+<a id="getedfiresourcesbyinstanceyear"></a>
+# **GetEdFiResourcesByInstanceYear**
+> EdfiAdminApiEdfiAdminV1ResourcesByInstanceYearPaginatedItemsResponse GetEdFiResourcesByInstanceYear (Guid tenantId, Guid instanceId, int year, int pageIndex = null, int pageSize = null, string orderBy = null, string filter = null)
+
+Retrieves an Ed-Fi Resources by Instance Id and Year.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using EdGraph.Platform.Client.Api;
+using EdGraph.Platform.Client.Client;
+using EdGraph.Platform.Client.Model;
+
+namespace Example
+{
+    public class GetEdFiResourcesByInstanceYearExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.dev.edgraph.com/tenant";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ConnectionsApi(config);
+            var tenantId = "tenantId_example";  // Guid | 
+            var instanceId = "instanceId_example";  // Guid | 
+            var year = 56;  // int | 
+            var pageIndex = 0;  // int |  (optional)  (default to 0)
+            var pageSize = 10;  // int |  (optional)  (default to 10)
+            var orderBy = "\"\"";  // string |  (optional)  (default to "")
+            var filter = "\"\"";  // string |  (optional)  (default to "")
+
+            try
+            {
+                // Retrieves an Ed-Fi Resources by Instance Id and Year.
+                EdfiAdminApiEdfiAdminV1ResourcesByInstanceYearPaginatedItemsResponse result = apiInstance.GetEdFiResourcesByInstanceYear(tenantId, instanceId, year, pageIndex, pageSize, orderBy, filter);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ConnectionsApi.GetEdFiResourcesByInstanceYear: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetEdFiResourcesByInstanceYearWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Retrieves an Ed-Fi Resources by Instance Id and Year.
+    ApiResponse<EdfiAdminApiEdfiAdminV1ResourcesByInstanceYearPaginatedItemsResponse> response = apiInstance.GetEdFiResourcesByInstanceYearWithHttpInfo(tenantId, instanceId, year, pageIndex, pageSize, orderBy, filter);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ConnectionsApi.GetEdFiResourcesByInstanceYearWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **Guid** |  |  |
+| **instanceId** | **Guid** |  |  |
+| **year** | **int** |  |  |
+| **pageIndex** | **int** |  | [optional] [default to 0] |
+| **pageSize** | **int** |  | [optional] [default to 10] |
+| **orderBy** | **string** |  | [optional] [default to &quot;&quot;] |
+| **filter** | **string** |  | [optional] [default to &quot;&quot;] |
+
+### Return type
+
+[**EdfiAdminApiEdfiAdminV1ResourcesByInstanceYearPaginatedItemsResponse**](EdfiAdminApiEdfiAdminV1ResourcesByInstanceYearPaginatedItemsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | The requested resource was successfully retrieved. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+| **404** | The resource could not be found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

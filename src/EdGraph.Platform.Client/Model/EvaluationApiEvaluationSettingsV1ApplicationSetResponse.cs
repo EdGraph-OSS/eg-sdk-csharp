@@ -26,35 +26,35 @@ using EdGraph.Platform.Client.Client;
 namespace EdGraph.Platform.Client.Model
 {
     /// <summary>
-    /// TenantApiWebhookV1WebhookEventsResponse
+    /// EvaluationApiEvaluationSettingsV1ApplicationSetResponse
     /// </summary>
-    public partial class TenantApiWebhookV1WebhookEventsResponse : IValidatableObject
+    public partial class EvaluationApiEvaluationSettingsV1ApplicationSetResponse : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="TenantApiWebhookV1WebhookEventsResponse" /> class.
+        /// Initializes a new instance of the <see cref="EvaluationApiEvaluationSettingsV1ApplicationSetResponse" /> class.
         /// </summary>
-        /// <param name="eventSubscriptions">eventSubscriptions</param>
+        /// <param name="tenantId">tenantId</param>
         [JsonConstructor]
-        internal TenantApiWebhookV1WebhookEventsResponse(Option<List<TenantApiWebhookV1WebhookSubscriberResponse>?> eventSubscriptions = default)
+        public EvaluationApiEvaluationSettingsV1ApplicationSetResponse(Option<string?> tenantId = default)
         {
-            EventSubscriptionsOption = eventSubscriptions;
+            TenantIdOption = tenantId;
             OnCreated();
         }
 
         partial void OnCreated();
 
         /// <summary>
-        /// Used to track the state of EventSubscriptions
+        /// Used to track the state of TenantId
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<List<TenantApiWebhookV1WebhookSubscriberResponse>?> EventSubscriptionsOption { get; }
+        public Option<string?> TenantIdOption { get; private set; }
 
         /// <summary>
-        /// Gets or Sets EventSubscriptions
+        /// Gets or Sets TenantId
         /// </summary>
-        [JsonPropertyName("eventSubscriptions")]
-        public List<TenantApiWebhookV1WebhookSubscriberResponse>? EventSubscriptions { get { return this.EventSubscriptionsOption; } }
+        [JsonPropertyName("tenantId")]
+        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -63,8 +63,8 @@ namespace EdGraph.Platform.Client.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class TenantApiWebhookV1WebhookEventsResponse {\n");
-            sb.Append("  EventSubscriptions: ").Append(EventSubscriptions).Append("\n");
+            sb.Append("class EvaluationApiEvaluationSettingsV1ApplicationSetResponse {\n");
+            sb.Append("  TenantId: ").Append(TenantId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -81,19 +81,19 @@ namespace EdGraph.Platform.Client.Model
     }
 
     /// <summary>
-    /// A Json converter for type <see cref="TenantApiWebhookV1WebhookEventsResponse" />
+    /// A Json converter for type <see cref="EvaluationApiEvaluationSettingsV1ApplicationSetResponse" />
     /// </summary>
-    public class TenantApiWebhookV1WebhookEventsResponseJsonConverter : JsonConverter<TenantApiWebhookV1WebhookEventsResponse>
+    public class EvaluationApiEvaluationSettingsV1ApplicationSetResponseJsonConverter : JsonConverter<EvaluationApiEvaluationSettingsV1ApplicationSetResponse>
     {
         /// <summary>
-        /// Deserializes json to <see cref="TenantApiWebhookV1WebhookEventsResponse" />
+        /// Deserializes json to <see cref="EvaluationApiEvaluationSettingsV1ApplicationSetResponse" />
         /// </summary>
         /// <param name="utf8JsonReader"></param>
         /// <param name="typeToConvert"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <returns></returns>
         /// <exception cref="JsonException"></exception>
-        public override TenantApiWebhookV1WebhookEventsResponse Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
+        public override EvaluationApiEvaluationSettingsV1ApplicationSetResponse Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
         {
             int currentDepth = utf8JsonReader.CurrentDepth;
 
@@ -102,7 +102,7 @@ namespace EdGraph.Platform.Client.Model
 
             JsonTokenType startingTokenType = utf8JsonReader.TokenType;
 
-            Option<List<TenantApiWebhookV1WebhookSubscriberResponse>?> eventSubscriptions = default;
+            Option<string?> tenantId = default;
 
             while (utf8JsonReader.Read())
             {
@@ -119,9 +119,8 @@ namespace EdGraph.Platform.Client.Model
 
                     switch (localVarJsonPropertyName)
                     {
-                        case "eventSubscriptions":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                eventSubscriptions = new Option<List<TenantApiWebhookV1WebhookSubscriberResponse>?>(JsonSerializer.Deserialize<List<TenantApiWebhookV1WebhookSubscriberResponse>>(ref utf8JsonReader, jsonSerializerOptions));
+                        case "tenantId":
+                            tenantId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         default:
                             break;
@@ -129,41 +128,38 @@ namespace EdGraph.Platform.Client.Model
                 }
             }
 
-            return new TenantApiWebhookV1WebhookEventsResponse(eventSubscriptions);
+            return new EvaluationApiEvaluationSettingsV1ApplicationSetResponse(tenantId);
         }
 
         /// <summary>
-        /// Serializes a <see cref="TenantApiWebhookV1WebhookEventsResponse" />
+        /// Serializes a <see cref="EvaluationApiEvaluationSettingsV1ApplicationSetResponse" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="tenantApiWebhookV1WebhookEventsResponse"></param>
+        /// <param name="evaluationApiEvaluationSettingsV1ApplicationSetResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public override void Write(Utf8JsonWriter writer, TenantApiWebhookV1WebhookEventsResponse tenantApiWebhookV1WebhookEventsResponse, JsonSerializerOptions jsonSerializerOptions)
+        public override void Write(Utf8JsonWriter writer, EvaluationApiEvaluationSettingsV1ApplicationSetResponse evaluationApiEvaluationSettingsV1ApplicationSetResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
 
-            WriteProperties(writer, tenantApiWebhookV1WebhookEventsResponse, jsonSerializerOptions);
+            WriteProperties(writer, evaluationApiEvaluationSettingsV1ApplicationSetResponse, jsonSerializerOptions);
             writer.WriteEndObject();
         }
 
         /// <summary>
-        /// Serializes the properties of <see cref="TenantApiWebhookV1WebhookEventsResponse" />
+        /// Serializes the properties of <see cref="EvaluationApiEvaluationSettingsV1ApplicationSetResponse" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="tenantApiWebhookV1WebhookEventsResponse"></param>
+        /// <param name="evaluationApiEvaluationSettingsV1ApplicationSetResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public void WriteProperties(Utf8JsonWriter writer, TenantApiWebhookV1WebhookEventsResponse tenantApiWebhookV1WebhookEventsResponse, JsonSerializerOptions jsonSerializerOptions)
+        public void WriteProperties(Utf8JsonWriter writer, EvaluationApiEvaluationSettingsV1ApplicationSetResponse evaluationApiEvaluationSettingsV1ApplicationSetResponse, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (tenantApiWebhookV1WebhookEventsResponse.EventSubscriptionsOption.IsSet)
-                if (tenantApiWebhookV1WebhookEventsResponse.EventSubscriptionsOption.Value != null)
-                {
-                    writer.WritePropertyName("eventSubscriptions");
-                    JsonSerializer.Serialize(writer, tenantApiWebhookV1WebhookEventsResponse.EventSubscriptions, jsonSerializerOptions);
-                }
+            if (evaluationApiEvaluationSettingsV1ApplicationSetResponse.TenantIdOption.IsSet)
+                if (evaluationApiEvaluationSettingsV1ApplicationSetResponse.TenantIdOption.Value != null)
+                    writer.WriteString("tenantId", evaluationApiEvaluationSettingsV1ApplicationSetResponse.TenantId);
                 else
-                    writer.WriteNull("eventSubscriptions");
+                    writer.WriteNull("tenantId");
         }
     }
 }

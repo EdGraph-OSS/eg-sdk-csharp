@@ -93,9 +93,13 @@ namespace EdGraph.Platform.Client.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
+        /// <param name="pageSize"> (optional, default to 10)</param>
+        /// <param name="pageIndex"> (optional, default to 0)</param>
+        /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
+        /// <param name="filter"> (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetAllWebhookSubscriptionsAsyncApiResponse"/>&gt;</returns>
-        Task<IGetAllWebhookSubscriptionsAsyncApiResponse> GetAllWebhookSubscriptionsAsyncAsync(string tenantId, System.Threading.CancellationToken cancellationToken = default);
+        Task<IGetAllWebhookSubscriptionsAsyncApiResponse> GetAllWebhookSubscriptionsAsyncAsync(string tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// 
@@ -104,9 +108,13 @@ namespace EdGraph.Platform.Client.Api
         /// 
         /// </remarks>
         /// <param name="tenantId"></param>
+        /// <param name="pageSize"> (optional, default to 10)</param>
+        /// <param name="pageIndex"> (optional, default to 0)</param>
+        /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
+        /// <param name="filter"> (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetAllWebhookSubscriptionsAsyncApiResponse"/>?&gt;</returns>
-        Task<IGetAllWebhookSubscriptionsAsyncApiResponse?> GetAllWebhookSubscriptionsAsyncOrDefaultAsync(string tenantId, System.Threading.CancellationToken cancellationToken = default);
+        Task<IGetAllWebhookSubscriptionsAsyncApiResponse?> GetAllWebhookSubscriptionsAsyncOrDefaultAsync(string tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a list of webhooks.
@@ -267,7 +275,7 @@ namespace EdGraph.Platform.Client.Api
     /// <summary>
     /// The <see cref="IGetAllWebhookSubscriptionsAsyncApiResponse"/>
     /// </summary>
-    public interface IGetAllWebhookSubscriptionsAsyncApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.TenantApiWebhookV1WebhookEventsResponse?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>
+    public interface IGetAllWebhookSubscriptionsAsyncApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.TenantApiWebhookV1PaginatedWebhookEventItemsResponse?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>
     {
         /// <summary>
         /// Returns true if the response is 401 Unauthorized
@@ -1381,17 +1389,25 @@ namespace EdGraph.Platform.Client.Api
             partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
         }
 
-        partial void FormatGetAllWebhookSubscriptionsAsync(ref string tenantId);
+        partial void FormatGetAllWebhookSubscriptionsAsync(ref string tenantId, ref Option<int> pageSize, ref Option<int> pageIndex, ref Option<string> orderBy, ref Option<string> filter);
 
         /// <summary>
         /// Validates the request parameters
         /// </summary>
         /// <param name="tenantId"></param>
+        /// <param name="orderBy"></param>
+        /// <param name="filter"></param>
         /// <returns></returns>
-        private void ValidateGetAllWebhookSubscriptionsAsync(string tenantId)
+        private void ValidateGetAllWebhookSubscriptionsAsync(string tenantId, Option<string> orderBy, Option<string> filter)
         {
             if (tenantId == null)
                 throw new ArgumentNullException(nameof(tenantId));
+
+            if (orderBy.IsSet && orderBy.Value == null)
+                throw new ArgumentNullException(nameof(orderBy));
+
+            if (filter.IsSet && filter.Value == null)
+                throw new ArgumentNullException(nameof(filter));
         }
 
         /// <summary>
@@ -1399,10 +1415,14 @@ namespace EdGraph.Platform.Client.Api
         /// </summary>
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
-        private void AfterGetAllWebhookSubscriptionsAsyncDefaultImplementation(IGetAllWebhookSubscriptionsAsyncApiResponse apiResponseLocalVar, string tenantId)
+        /// <param name="pageSize"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="orderBy"></param>
+        /// <param name="filter"></param>
+        private void AfterGetAllWebhookSubscriptionsAsyncDefaultImplementation(IGetAllWebhookSubscriptionsAsyncApiResponse apiResponseLocalVar, string tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter)
         {
             bool suppressDefaultLog = false;
-            AfterGetAllWebhookSubscriptionsAsync(ref suppressDefaultLog, apiResponseLocalVar, tenantId);
+            AfterGetAllWebhookSubscriptionsAsync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, pageSize, pageIndex, orderBy, filter);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -1413,7 +1433,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="suppressDefaultLog"></param>
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
-        partial void AfterGetAllWebhookSubscriptionsAsync(ref bool suppressDefaultLog, IGetAllWebhookSubscriptionsAsyncApiResponse apiResponseLocalVar, string tenantId);
+        /// <param name="pageSize"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="orderBy"></param>
+        /// <param name="filter"></param>
+        partial void AfterGetAllWebhookSubscriptionsAsync(ref bool suppressDefaultLog, IGetAllWebhookSubscriptionsAsyncApiResponse apiResponseLocalVar, string tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -1422,10 +1446,14 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pathFormat"></param>
         /// <param name="path"></param>
         /// <param name="tenantId"></param>
-        private void OnErrorGetAllWebhookSubscriptionsAsyncDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId)
+        /// <param name="pageSize"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="orderBy"></param>
+        /// <param name="filter"></param>
+        private void OnErrorGetAllWebhookSubscriptionsAsyncDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter)
         {
             bool suppressDefaultLog = false;
-            OnErrorGetAllWebhookSubscriptionsAsync(ref suppressDefaultLog, exception, pathFormat, path, tenantId);
+            OnErrorGetAllWebhookSubscriptionsAsync(ref suppressDefaultLog, exception, pathFormat, path, tenantId, pageSize, pageIndex, orderBy, filter);
             if (!suppressDefaultLog)
                 Logger.LogError(exception, "An error occurred while sending the request to the server.");
         }
@@ -1438,19 +1466,27 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pathFormat"></param>
         /// <param name="path"></param>
         /// <param name="tenantId"></param>
-        partial void OnErrorGetAllWebhookSubscriptionsAsync(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId);
+        /// <param name="pageSize"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="orderBy"></param>
+        /// <param name="filter"></param>
+        partial void OnErrorGetAllWebhookSubscriptionsAsync(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter);
 
         /// <summary>
         ///  
         /// </summary>
         /// <param name="tenantId"></param>
+        /// <param name="pageSize"> (optional, default to 10)</param>
+        /// <param name="pageIndex"> (optional, default to 0)</param>
+        /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
+        /// <param name="filter"> (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetAllWebhookSubscriptionsAsyncApiResponse"/>&gt;</returns>
-        public async Task<IGetAllWebhookSubscriptionsAsyncApiResponse?> GetAllWebhookSubscriptionsAsyncOrDefaultAsync(string tenantId, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IGetAllWebhookSubscriptionsAsyncApiResponse?> GetAllWebhookSubscriptionsAsyncOrDefaultAsync(string tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await GetAllWebhookSubscriptionsAsyncAsync(tenantId, cancellationToken).ConfigureAwait(false);
+                return await GetAllWebhookSubscriptionsAsyncAsync(tenantId, pageSize, pageIndex, orderBy, filter, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -1463,17 +1499,21 @@ namespace EdGraph.Platform.Client.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
+        /// <param name="pageSize"> (optional, default to 10)</param>
+        /// <param name="pageIndex"> (optional, default to 0)</param>
+        /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
+        /// <param name="filter"> (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetAllWebhookSubscriptionsAsyncApiResponse"/>&gt;</returns>
-        public async Task<IGetAllWebhookSubscriptionsAsyncApiResponse> GetAllWebhookSubscriptionsAsyncAsync(string tenantId, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IGetAllWebhookSubscriptionsAsyncApiResponse> GetAllWebhookSubscriptionsAsyncAsync(string tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
             try
             {
-                ValidateGetAllWebhookSubscriptionsAsync(tenantId);
+                ValidateGetAllWebhookSubscriptionsAsync(tenantId, orderBy, filter);
 
-                FormatGetAllWebhookSubscriptionsAsync(ref tenantId);
+                FormatGetAllWebhookSubscriptionsAsync(ref tenantId, ref pageSize, ref pageIndex, ref orderBy, ref filter);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -1482,6 +1522,22 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
                     uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/webhooks/events";
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
+
+                    System.Collections.Specialized.NameValueCollection parseQueryStringLocalVar = System.Web.HttpUtility.ParseQueryString(string.Empty);
+
+                    if (pageSize.IsSet)
+                        parseQueryStringLocalVar["pageSize"] = ClientUtils.ParameterToString(pageSize.Value);
+
+                    if (pageIndex.IsSet)
+                        parseQueryStringLocalVar["pageIndex"] = ClientUtils.ParameterToString(pageIndex.Value);
+
+                    if (orderBy.IsSet)
+                        parseQueryStringLocalVar["orderBy"] = ClientUtils.ParameterToString(orderBy.Value);
+
+                    if (filter.IsSet)
+                        parseQueryStringLocalVar["filter"] = ClientUtils.ParameterToString(filter.Value);
+
+                    uriBuilderLocalVar.Query = parseQueryStringLocalVar.ToString();
 
                     List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
                     httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
@@ -1513,7 +1569,7 @@ namespace EdGraph.Platform.Client.Api
 
                         GetAllWebhookSubscriptionsAsyncApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/webhooks/events", requestedAtLocalVar, _jsonSerializerOptions);
 
-                        AfterGetAllWebhookSubscriptionsAsyncDefaultImplementation(apiResponseLocalVar, tenantId);
+                        AfterGetAllWebhookSubscriptionsAsyncDefaultImplementation(apiResponseLocalVar, tenantId, pageSize, pageIndex, orderBy, filter);
 
                         Events.ExecuteOnGetAllWebhookSubscriptionsAsync(apiResponseLocalVar);
 
@@ -1527,7 +1583,7 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorGetAllWebhookSubscriptionsAsyncDefaultImplementation(e, "/tenants/{tenantId}/webhooks/events", uriBuilderLocalVar.Path, tenantId);
+                OnErrorGetAllWebhookSubscriptionsAsyncDefaultImplementation(e, "/tenants/{tenantId}/webhooks/events", uriBuilderLocalVar.Path, tenantId, pageSize, pageIndex, orderBy, filter);
                 Events.ExecuteOnErrorGetAllWebhookSubscriptionsAsync(e);
                 throw;
             }
@@ -1685,11 +1741,11 @@ namespace EdGraph.Platform.Client.Api
             /// Deserializes the response if the response is 200 Ok
             /// </summary>
             /// <returns></returns>
-            public EdGraph.Platform.Client.Model.TenantApiWebhookV1WebhookEventsResponse? Ok()
+            public EdGraph.Platform.Client.Model.TenantApiWebhookV1PaginatedWebhookEventItemsResponse? Ok()
             {
                 // This logic may be modified with the AsModel.mustache template
                 return IsOk
-                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.TenantApiWebhookV1WebhookEventsResponse>(RawContent, _jsonSerializerOptions)
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.TenantApiWebhookV1PaginatedWebhookEventItemsResponse>(RawContent, _jsonSerializerOptions)
                     : null;
             }
 
@@ -1698,7 +1754,7 @@ namespace EdGraph.Platform.Client.Api
             /// </summary>
             /// <param name="result"></param>
             /// <returns></returns>
-            public bool TryOk([NotNullWhen(true)]out EdGraph.Platform.Client.Model.TenantApiWebhookV1WebhookEventsResponse? result)
+            public bool TryOk([NotNullWhen(true)]out EdGraph.Platform.Client.Model.TenantApiWebhookV1PaginatedWebhookEventItemsResponse? result)
             {
                 result = null;
 

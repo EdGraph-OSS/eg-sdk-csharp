@@ -40,8 +40,10 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="secretValue">secretValue</param>
         /// <param name="contentType">contentType</param>
         /// <param name="eventSubscriptions">eventSubscriptions</param>
+        /// <param name="subscriptions">subscriptions</param>
+        /// <param name="webhookSchema">webhookSchema</param>
         [JsonConstructor]
-        public TenantApiWebhookV1CreateWebhookRequest(Option<string?> tenantId = default, Option<string?> name = default, Option<string?> url = default, Option<string?> secretHeader = default, Option<string?> secretValue = default, Option<string?> contentType = default, Option<List<TenantApiWebhookV1WebhookSubscriberResponse>?> eventSubscriptions = default)
+        public TenantApiWebhookV1CreateWebhookRequest(Option<string?> tenantId = default, Option<string?> name = default, Option<string?> url = default, Option<string?> secretHeader = default, Option<string?> secretValue = default, Option<string?> contentType = default, Option<List<TenantApiWebhookV1WebhookSubscriberResponse>?> eventSubscriptions = default, Option<List<string>?> subscriptions = default, Option<TenantApiWebhookV1WebhookSchema?> webhookSchema = default)
         {
             TenantIdOption = tenantId;
             NameOption = name;
@@ -50,10 +52,25 @@ namespace EdGraph.Platform.Client.Model
             SecretValueOption = secretValue;
             ContentTypeOption = contentType;
             EventSubscriptionsOption = eventSubscriptions;
+            SubscriptionsOption = subscriptions;
+            WebhookSchemaOption = webhookSchema;
             OnCreated();
         }
 
         partial void OnCreated();
+
+        /// <summary>
+        /// Used to track the state of WebhookSchema
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<TenantApiWebhookV1WebhookSchema?> WebhookSchemaOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets WebhookSchema
+        /// </summary>
+        [JsonPropertyName("webhookSchema")]
+        public TenantApiWebhookV1WebhookSchema? WebhookSchema { get { return this.WebhookSchemaOption; } set { this.WebhookSchemaOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -147,6 +164,19 @@ namespace EdGraph.Platform.Client.Model
         public List<TenantApiWebhookV1WebhookSubscriberResponse>? EventSubscriptions { get { return this.EventSubscriptionsOption; } }
 
         /// <summary>
+        /// Used to track the state of Subscriptions
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<List<string>?> SubscriptionsOption { get; }
+
+        /// <summary>
+        /// Gets or Sets Subscriptions
+        /// </summary>
+        [JsonPropertyName("subscriptions")]
+        public List<string>? Subscriptions { get { return this.SubscriptionsOption; } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -161,6 +191,8 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  SecretValue: ").Append(SecretValue).Append("\n");
             sb.Append("  ContentType: ").Append(ContentType).Append("\n");
             sb.Append("  EventSubscriptions: ").Append(EventSubscriptions).Append("\n");
+            sb.Append("  Subscriptions: ").Append(Subscriptions).Append("\n");
+            sb.Append("  WebhookSchema: ").Append(WebhookSchema).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -205,6 +237,8 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> secretValue = default;
             Option<string?> contentType = default;
             Option<List<TenantApiWebhookV1WebhookSubscriberResponse>?> eventSubscriptions = default;
+            Option<List<string>?> subscriptions = default;
+            Option<TenantApiWebhookV1WebhookSchema?> webhookSchema = default;
 
             while (utf8JsonReader.Read())
             {
@@ -243,13 +277,25 @@ namespace EdGraph.Platform.Client.Model
                             if (utf8JsonReader.TokenType != JsonTokenType.Null)
                                 eventSubscriptions = new Option<List<TenantApiWebhookV1WebhookSubscriberResponse>?>(JsonSerializer.Deserialize<List<TenantApiWebhookV1WebhookSubscriberResponse>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
+                        case "subscriptions":
+                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
+                                subscriptions = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            break;
+                        case "webhookSchema":
+                            string? webhookSchemaRawValue = utf8JsonReader.GetString();
+                            if (webhookSchemaRawValue != null)
+                                webhookSchema = new Option<TenantApiWebhookV1WebhookSchema?>(TenantApiWebhookV1WebhookSchemaValueConverter.FromStringOrDefault(webhookSchemaRawValue));
+                            break;
                         default:
                             break;
                     }
                 }
             }
 
-            return new TenantApiWebhookV1CreateWebhookRequest(tenantId, name, url, secretHeader, secretValue, contentType, eventSubscriptions);
+            if (webhookSchema.IsSet && webhookSchema.Value == null)
+                throw new ArgumentNullException(nameof(webhookSchema), "Property is not nullable for class TenantApiWebhookV1CreateWebhookRequest.");
+
+            return new TenantApiWebhookV1CreateWebhookRequest(tenantId, name, url, secretHeader, secretValue, contentType, eventSubscriptions, subscriptions, webhookSchema);
         }
 
         /// <summary>
@@ -320,6 +366,19 @@ namespace EdGraph.Platform.Client.Model
                 }
                 else
                     writer.WriteNull("eventSubscriptions");
+            if (tenantApiWebhookV1CreateWebhookRequest.SubscriptionsOption.IsSet)
+                if (tenantApiWebhookV1CreateWebhookRequest.SubscriptionsOption.Value != null)
+                {
+                    writer.WritePropertyName("subscriptions");
+                    JsonSerializer.Serialize(writer, tenantApiWebhookV1CreateWebhookRequest.Subscriptions, jsonSerializerOptions);
+                }
+                else
+                    writer.WriteNull("subscriptions");
+            if (tenantApiWebhookV1CreateWebhookRequest.WebhookSchemaOption.IsSet)
+            {
+                var webhookSchemaRawValue = TenantApiWebhookV1WebhookSchemaValueConverter.ToJsonValue(tenantApiWebhookV1CreateWebhookRequest.WebhookSchema!.Value);
+                writer.WriteString("webhookSchema", webhookSchemaRawValue);
+            }
         }
     }
 }

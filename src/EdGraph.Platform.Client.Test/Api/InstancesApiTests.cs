@@ -438,7 +438,8 @@ namespace EdGraph.Platform.Client.Test.Api
         {
             string tenantId = default!;
             string instanceId = default!;
-            var response = await _instance.TestInstanceConnectionAsync(tenantId, instanceId);
+            Client.Option<EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest> edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest = default!;
+            var response = await _instance.TestInstanceConnectionAsync(tenantId, instanceId, edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest);
             var model = response.Unauthorized();
             Assert.IsType<EdfiAdminApiEdfiAdminV1TestInstanceConnectionResponse>(model);
         }
@@ -452,7 +453,8 @@ namespace EdGraph.Platform.Client.Test.Api
             string tenantId = default!;
             string instanceId = default!;
             int year = default!;
-            var response = await _instance.TestInstanceYearConnectionAsync(tenantId, instanceId, year);
+            Client.Option<EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest> edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest = default!;
+            var response = await _instance.TestInstanceYearConnectionAsync(tenantId, instanceId, year, edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest);
             var model = response.Unauthorized();
             Assert.IsType<EdfiAdminApiEdfiAdminV1TestInstanceConnectionResponse>(model);
         }

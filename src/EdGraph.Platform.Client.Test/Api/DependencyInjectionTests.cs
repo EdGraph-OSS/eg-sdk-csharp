@@ -148,6 +148,12 @@ namespace EdGraph.Platform.Client.Test.Api
             var environmentsReportingPeriodsSubmissionsApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IEnvironmentsReportingPeriodsSubmissionsApi>();
             Assert.True(environmentsReportingPeriodsSubmissionsApi.HttpClient.BaseAddress != null);
 
+            var evaluationSettingsApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IEvaluationSettingsApi>();
+            Assert.True(evaluationSettingsApi.HttpClient.BaseAddress != null);
+
+            var evaluationsApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IEvaluationsApi>();
+            Assert.True(evaluationsApi.HttpClient.BaseAddress != null);
+
             var formComponentsApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IFormComponentsApi>();
             Assert.True(formComponentsApi.HttpClient.BaseAddress != null);
 
@@ -418,6 +424,12 @@ namespace EdGraph.Platform.Client.Test.Api
 
             var environmentsReportingPeriodsSubmissionsApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IEnvironmentsReportingPeriodsSubmissionsApi>();
             Assert.True(environmentsReportingPeriodsSubmissionsApi.HttpClient.BaseAddress != null);
+
+            var evaluationSettingsApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IEvaluationSettingsApi>();
+            Assert.True(evaluationSettingsApi.HttpClient.BaseAddress != null);
+
+            var evaluationsApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IEvaluationsApi>();
+            Assert.True(evaluationsApi.HttpClient.BaseAddress != null);
 
             var formComponentsApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IFormComponentsApi>();
             Assert.True(formComponentsApi.HttpClient.BaseAddress != null);
@@ -690,6 +702,12 @@ namespace EdGraph.Platform.Client.Test.Api
             var environmentsReportingPeriodsSubmissionsApi = _hostUsingAddWithAClient.Services.GetRequiredService<IEnvironmentsReportingPeriodsSubmissionsApi>();
             Assert.True(environmentsReportingPeriodsSubmissionsApi.HttpClient.BaseAddress != null);
             
+            var evaluationSettingsApi = _hostUsingAddWithAClient.Services.GetRequiredService<IEvaluationSettingsApi>();
+            Assert.True(evaluationSettingsApi.HttpClient.BaseAddress != null);
+            
+            var evaluationsApi = _hostUsingAddWithAClient.Services.GetRequiredService<IEvaluationsApi>();
+            Assert.True(evaluationsApi.HttpClient.BaseAddress != null);
+            
             var formComponentsApi = _hostUsingAddWithAClient.Services.GetRequiredService<IFormComponentsApi>();
             Assert.True(formComponentsApi.HttpClient.BaseAddress != null);
             
@@ -960,6 +978,12 @@ namespace EdGraph.Platform.Client.Test.Api
 
             var environmentsReportingPeriodsSubmissionsApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IEnvironmentsReportingPeriodsSubmissionsApi>();
             Assert.True(environmentsReportingPeriodsSubmissionsApi.HttpClient.BaseAddress != null);
+
+            var evaluationSettingsApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IEvaluationSettingsApi>();
+            Assert.True(evaluationSettingsApi.HttpClient.BaseAddress != null);
+
+            var evaluationsApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IEvaluationsApi>();
+            Assert.True(evaluationsApi.HttpClient.BaseAddress != null);
 
             var formComponentsApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IFormComponentsApi>();
             Assert.True(formComponentsApi.HttpClient.BaseAddress != null);

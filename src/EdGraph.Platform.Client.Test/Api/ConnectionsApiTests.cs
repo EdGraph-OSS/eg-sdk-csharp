@@ -188,6 +188,24 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
+        /// Test GetEdFiResourcesByInstanceYear
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetEdFiResourcesByInstanceYearAsyncTest()
+        {
+            Guid tenantId = default!;
+            Guid instanceId = default!;
+            int year = default!;
+            Client.Option<int> pageIndex = default!;
+            Client.Option<int> pageSize = default!;
+            Client.Option<string> orderBy = default!;
+            Client.Option<string> filter = default!;
+            var response = await _instance.GetEdFiResourcesByInstanceYearAsync(tenantId, instanceId, year, pageIndex, pageSize, orderBy, filter);
+            var model = response.Unauthorized();
+            Assert.IsType<EdfiAdminApiEdfiAdminV1ResourcesByInstanceYearPaginatedItemsResponse>(model);
+        }
+
+        /// <summary>
         /// Test GetPagedConnections
         /// </summary>
         [Fact (Skip = "not implemented")]

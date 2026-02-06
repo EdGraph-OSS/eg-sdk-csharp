@@ -840,7 +840,7 @@ catch (ApiException e)
 
 <a id="getapplicationbyidasync"></a>
 # **GetApplicationByIdAsync**
-> EdfiAdminApiEdfiAdminV1EdFiApplicationProfileResponse GetApplicationByIdAsync (string tenantId, string instanceId, int applicationId, int year = null)
+> EdfiAdminApiEdfiAdminV1EdFiApplicationProfileResponse GetApplicationByIdAsync (string tenantId, string instanceId, int applicationId, int year = null, bool loadEducationOrganizations = null)
 
 Retrieves an Application by ID.
 
@@ -868,11 +868,12 @@ namespace Example
             var instanceId = "instanceId_example";  // string | 
             var applicationId = 56;  // int | 
             var year = 56;  // int |  (optional) 
+            var loadEducationOrganizations = true;  // bool |  (optional) 
 
             try
             {
                 // Retrieves an Application by ID.
-                EdfiAdminApiEdfiAdminV1EdFiApplicationProfileResponse result = apiInstance.GetApplicationByIdAsync(tenantId, instanceId, applicationId, year);
+                EdfiAdminApiEdfiAdminV1EdFiApplicationProfileResponse result = apiInstance.GetApplicationByIdAsync(tenantId, instanceId, applicationId, year, loadEducationOrganizations);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -893,7 +894,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Retrieves an Application by ID.
-    ApiResponse<EdfiAdminApiEdfiAdminV1EdFiApplicationProfileResponse> response = apiInstance.GetApplicationByIdAsyncWithHttpInfo(tenantId, instanceId, applicationId, year);
+    ApiResponse<EdfiAdminApiEdfiAdminV1EdFiApplicationProfileResponse> response = apiInstance.GetApplicationByIdAsyncWithHttpInfo(tenantId, instanceId, applicationId, year, loadEducationOrganizations);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -914,6 +915,7 @@ catch (ApiException e)
 | **instanceId** | **string** |  |  |
 | **applicationId** | **int** |  |  |
 | **year** | **int** |  | [optional]  |
+| **loadEducationOrganizations** | **bool** |  | [optional]  |
 
 ### Return type
 

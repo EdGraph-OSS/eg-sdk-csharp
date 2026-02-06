@@ -815,9 +815,10 @@ namespace EdGraph.Platform.Client.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
+        /// <param name="edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ITestInstanceConnectionApiResponse"/>&gt;</returns>
-        Task<ITestInstanceConnectionApiResponse> TestInstanceConnectionAsync(string tenantId, string instanceId, System.Threading.CancellationToken cancellationToken = default);
+        Task<ITestInstanceConnectionApiResponse> TestInstanceConnectionAsync(string tenantId, string instanceId, Option<EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest> edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Tests the connection of the Instance.
@@ -827,9 +828,10 @@ namespace EdGraph.Platform.Client.Api
         /// </remarks>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
+        /// <param name="edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ITestInstanceConnectionApiResponse"/>?&gt;</returns>
-        Task<ITestInstanceConnectionApiResponse?> TestInstanceConnectionOrDefaultAsync(string tenantId, string instanceId, System.Threading.CancellationToken cancellationToken = default);
+        Task<ITestInstanceConnectionApiResponse?> TestInstanceConnectionOrDefaultAsync(string tenantId, string instanceId, Option<EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest> edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Tests the connection of the Instance.
@@ -841,9 +843,10 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="year"></param>
+        /// <param name="edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ITestInstanceYearConnectionApiResponse"/>&gt;</returns>
-        Task<ITestInstanceYearConnectionApiResponse> TestInstanceYearConnectionAsync(string tenantId, string instanceId, int year, System.Threading.CancellationToken cancellationToken = default);
+        Task<ITestInstanceYearConnectionApiResponse> TestInstanceYearConnectionAsync(string tenantId, string instanceId, int year, Option<EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest> edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Tests the connection of the Instance.
@@ -854,9 +857,10 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="year"></param>
+        /// <param name="edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ITestInstanceYearConnectionApiResponse"/>?&gt;</returns>
-        Task<ITestInstanceYearConnectionApiResponse?> TestInstanceYearConnectionOrDefaultAsync(string tenantId, string instanceId, int year, System.Threading.CancellationToken cancellationToken = default);
+        Task<ITestInstanceYearConnectionApiResponse?> TestInstanceYearConnectionOrDefaultAsync(string tenantId, string instanceId, int year, Option<EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest> edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Truncates the Instance&#39;s database
@@ -15361,21 +15365,25 @@ namespace EdGraph.Platform.Client.Api
             partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
         }
 
-        partial void FormatTestInstanceConnection(ref string tenantId, ref string instanceId);
+        partial void FormatTestInstanceConnection(ref string tenantId, ref string instanceId, Option<EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest> edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest);
 
         /// <summary>
         /// Validates the request parameters
         /// </summary>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
+        /// <param name="edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest"></param>
         /// <returns></returns>
-        private void ValidateTestInstanceConnection(string tenantId, string instanceId)
+        private void ValidateTestInstanceConnection(string tenantId, string instanceId, Option<EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest> edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest)
         {
             if (tenantId == null)
                 throw new ArgumentNullException(nameof(tenantId));
 
             if (instanceId == null)
                 throw new ArgumentNullException(nameof(instanceId));
+
+            if (edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest.IsSet && edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest.Value == null)
+                throw new ArgumentNullException(nameof(edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest));
         }
 
         /// <summary>
@@ -15384,10 +15392,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
-        private void AfterTestInstanceConnectionDefaultImplementation(ITestInstanceConnectionApiResponse apiResponseLocalVar, string tenantId, string instanceId)
+        /// <param name="edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest"></param>
+        private void AfterTestInstanceConnectionDefaultImplementation(ITestInstanceConnectionApiResponse apiResponseLocalVar, string tenantId, string instanceId, Option<EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest> edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest)
         {
             bool suppressDefaultLog = false;
-            AfterTestInstanceConnection(ref suppressDefaultLog, apiResponseLocalVar, tenantId, instanceId);
+            AfterTestInstanceConnection(ref suppressDefaultLog, apiResponseLocalVar, tenantId, instanceId, edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -15399,7 +15408,8 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
-        partial void AfterTestInstanceConnection(ref bool suppressDefaultLog, ITestInstanceConnectionApiResponse apiResponseLocalVar, string tenantId, string instanceId);
+        /// <param name="edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest"></param>
+        partial void AfterTestInstanceConnection(ref bool suppressDefaultLog, ITestInstanceConnectionApiResponse apiResponseLocalVar, string tenantId, string instanceId, Option<EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest> edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -15409,10 +15419,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="path"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
-        private void OnErrorTestInstanceConnectionDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, string instanceId)
+        /// <param name="edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest"></param>
+        private void OnErrorTestInstanceConnectionDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, string instanceId, Option<EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest> edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest)
         {
             bool suppressDefaultLog = false;
-            OnErrorTestInstanceConnection(ref suppressDefaultLog, exception, pathFormat, path, tenantId, instanceId);
+            OnErrorTestInstanceConnection(ref suppressDefaultLog, exception, pathFormat, path, tenantId, instanceId, edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest);
             if (!suppressDefaultLog)
                 Logger.LogError(exception, "An error occurred while sending the request to the server.");
         }
@@ -15426,20 +15437,22 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="path"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
-        partial void OnErrorTestInstanceConnection(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, string instanceId);
+        /// <param name="edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest"></param>
+        partial void OnErrorTestInstanceConnection(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, string instanceId, Option<EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest> edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest);
 
         /// <summary>
         /// Tests the connection of the Instance. 
         /// </summary>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
+        /// <param name="edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ITestInstanceConnectionApiResponse"/>&gt;</returns>
-        public async Task<ITestInstanceConnectionApiResponse?> TestInstanceConnectionOrDefaultAsync(string tenantId, string instanceId, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<ITestInstanceConnectionApiResponse?> TestInstanceConnectionOrDefaultAsync(string tenantId, string instanceId, Option<EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest> edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest = default, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await TestInstanceConnectionAsync(tenantId, instanceId, cancellationToken).ConfigureAwait(false);
+                return await TestInstanceConnectionAsync(tenantId, instanceId, edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -15453,17 +15466,18 @@ namespace EdGraph.Platform.Client.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
+        /// <param name="edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ITestInstanceConnectionApiResponse"/>&gt;</returns>
-        public async Task<ITestInstanceConnectionApiResponse> TestInstanceConnectionAsync(string tenantId, string instanceId, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<ITestInstanceConnectionApiResponse> TestInstanceConnectionAsync(string tenantId, string instanceId, Option<EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest> edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest = default, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
             try
             {
-                ValidateTestInstanceConnection(tenantId, instanceId);
+                ValidateTestInstanceConnection(tenantId, instanceId, edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest);
 
-                FormatTestInstanceConnection(ref tenantId, ref instanceId);
+                FormatTestInstanceConnection(ref tenantId, ref instanceId, edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -15474,6 +15488,11 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BinstanceId%7D", Uri.EscapeDataString(instanceId.ToString()));
 
+                    if (edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest.IsSet)
+                        httpRequestMessageLocalVar.Content = (edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest.Value as object) is System.IO.Stream stream
+                            ? httpRequestMessageLocalVar.Content = new StreamContent(stream)
+                            : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest.Value, _jsonSerializerOptions));
+
                     List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
                     httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
 
@@ -15482,6 +15501,18 @@ namespace EdGraph.Platform.Client.Api
                     tokenBaseLocalVars.Add(oauthTokenLocalVar1);
 
                     oauthTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar, "");
+
+                    string[] contentTypes = new string[] {
+                        "application/json-patch+json",
+                        "application/json",
+                        "text/json",
+                        "application/*+json"
+                    };
+
+                    string? contentTypeLocalVar = ClientUtils.SelectHeaderContentType(contentTypes);
+
+                    if (contentTypeLocalVar != null && httpRequestMessageLocalVar.Content != null)
+                        httpRequestMessageLocalVar.Content.Headers.ContentType = new MediaTypeHeaderValue(contentTypeLocalVar);
 
                     string[] acceptLocalVars = new string[] {
                         "application/json"
@@ -15504,7 +15535,7 @@ namespace EdGraph.Platform.Client.Api
 
                         TestInstanceConnectionApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/testconnection", requestedAtLocalVar, _jsonSerializerOptions);
 
-                        AfterTestInstanceConnectionDefaultImplementation(apiResponseLocalVar, tenantId, instanceId);
+                        AfterTestInstanceConnectionDefaultImplementation(apiResponseLocalVar, tenantId, instanceId, edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest);
 
                         Events.ExecuteOnTestInstanceConnection(apiResponseLocalVar);
 
@@ -15518,7 +15549,7 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorTestInstanceConnectionDefaultImplementation(e, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/testconnection", uriBuilderLocalVar.Path, tenantId, instanceId);
+                OnErrorTestInstanceConnectionDefaultImplementation(e, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/testconnection", uriBuilderLocalVar.Path, tenantId, instanceId, edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest);
                 Events.ExecuteOnErrorTestInstanceConnection(e);
                 throw;
             }
@@ -15791,21 +15822,25 @@ namespace EdGraph.Platform.Client.Api
             partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
         }
 
-        partial void FormatTestInstanceYearConnection(ref string tenantId, ref string instanceId, ref int year);
+        partial void FormatTestInstanceYearConnection(ref string tenantId, ref string instanceId, ref int year, Option<EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest> edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest);
 
         /// <summary>
         /// Validates the request parameters
         /// </summary>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
+        /// <param name="edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest"></param>
         /// <returns></returns>
-        private void ValidateTestInstanceYearConnection(string tenantId, string instanceId)
+        private void ValidateTestInstanceYearConnection(string tenantId, string instanceId, Option<EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest> edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest)
         {
             if (tenantId == null)
                 throw new ArgumentNullException(nameof(tenantId));
 
             if (instanceId == null)
                 throw new ArgumentNullException(nameof(instanceId));
+
+            if (edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest.IsSet && edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest.Value == null)
+                throw new ArgumentNullException(nameof(edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest));
         }
 
         /// <summary>
@@ -15815,10 +15850,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="year"></param>
-        private void AfterTestInstanceYearConnectionDefaultImplementation(ITestInstanceYearConnectionApiResponse apiResponseLocalVar, string tenantId, string instanceId, int year)
+        /// <param name="edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest"></param>
+        private void AfterTestInstanceYearConnectionDefaultImplementation(ITestInstanceYearConnectionApiResponse apiResponseLocalVar, string tenantId, string instanceId, int year, Option<EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest> edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest)
         {
             bool suppressDefaultLog = false;
-            AfterTestInstanceYearConnection(ref suppressDefaultLog, apiResponseLocalVar, tenantId, instanceId, year);
+            AfterTestInstanceYearConnection(ref suppressDefaultLog, apiResponseLocalVar, tenantId, instanceId, year, edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -15831,7 +15867,8 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="year"></param>
-        partial void AfterTestInstanceYearConnection(ref bool suppressDefaultLog, ITestInstanceYearConnectionApiResponse apiResponseLocalVar, string tenantId, string instanceId, int year);
+        /// <param name="edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest"></param>
+        partial void AfterTestInstanceYearConnection(ref bool suppressDefaultLog, ITestInstanceYearConnectionApiResponse apiResponseLocalVar, string tenantId, string instanceId, int year, Option<EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest> edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -15842,10 +15879,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="year"></param>
-        private void OnErrorTestInstanceYearConnectionDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, string instanceId, int year)
+        /// <param name="edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest"></param>
+        private void OnErrorTestInstanceYearConnectionDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, string instanceId, int year, Option<EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest> edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest)
         {
             bool suppressDefaultLog = false;
-            OnErrorTestInstanceYearConnection(ref suppressDefaultLog, exception, pathFormat, path, tenantId, instanceId, year);
+            OnErrorTestInstanceYearConnection(ref suppressDefaultLog, exception, pathFormat, path, tenantId, instanceId, year, edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest);
             if (!suppressDefaultLog)
                 Logger.LogError(exception, "An error occurred while sending the request to the server.");
         }
@@ -15860,7 +15898,8 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="year"></param>
-        partial void OnErrorTestInstanceYearConnection(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, string instanceId, int year);
+        /// <param name="edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest"></param>
+        partial void OnErrorTestInstanceYearConnection(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, string instanceId, int year, Option<EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest> edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest);
 
         /// <summary>
         /// Tests the connection of the Instance. 
@@ -15868,13 +15907,14 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="year"></param>
+        /// <param name="edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ITestInstanceYearConnectionApiResponse"/>&gt;</returns>
-        public async Task<ITestInstanceYearConnectionApiResponse?> TestInstanceYearConnectionOrDefaultAsync(string tenantId, string instanceId, int year, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<ITestInstanceYearConnectionApiResponse?> TestInstanceYearConnectionOrDefaultAsync(string tenantId, string instanceId, int year, Option<EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest> edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest = default, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await TestInstanceYearConnectionAsync(tenantId, instanceId, year, cancellationToken).ConfigureAwait(false);
+                return await TestInstanceYearConnectionAsync(tenantId, instanceId, year, edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -15889,17 +15929,18 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="year"></param>
+        /// <param name="edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ITestInstanceYearConnectionApiResponse"/>&gt;</returns>
-        public async Task<ITestInstanceYearConnectionApiResponse> TestInstanceYearConnectionAsync(string tenantId, string instanceId, int year, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<ITestInstanceYearConnectionApiResponse> TestInstanceYearConnectionAsync(string tenantId, string instanceId, int year, Option<EdfiAdminApiEdfiAdminV1TestInstanceConnectionRequest> edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest = default, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
             try
             {
-                ValidateTestInstanceYearConnection(tenantId, instanceId);
+                ValidateTestInstanceYearConnection(tenantId, instanceId, edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest);
 
-                FormatTestInstanceYearConnection(ref tenantId, ref instanceId, ref year);
+                FormatTestInstanceYearConnection(ref tenantId, ref instanceId, ref year, edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -15911,6 +15952,11 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BinstanceId%7D", Uri.EscapeDataString(instanceId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Byear%7D", Uri.EscapeDataString(year.ToString()));
 
+                    if (edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest.IsSet)
+                        httpRequestMessageLocalVar.Content = (edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest.Value as object) is System.IO.Stream stream
+                            ? httpRequestMessageLocalVar.Content = new StreamContent(stream)
+                            : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest.Value, _jsonSerializerOptions));
+
                     List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
                     httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
 
@@ -15919,6 +15965,18 @@ namespace EdGraph.Platform.Client.Api
                     tokenBaseLocalVars.Add(oauthTokenLocalVar1);
 
                     oauthTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar, "");
+
+                    string[] contentTypes = new string[] {
+                        "application/json-patch+json",
+                        "application/json",
+                        "text/json",
+                        "application/*+json"
+                    };
+
+                    string? contentTypeLocalVar = ClientUtils.SelectHeaderContentType(contentTypes);
+
+                    if (contentTypeLocalVar != null && httpRequestMessageLocalVar.Content != null)
+                        httpRequestMessageLocalVar.Content.Headers.ContentType = new MediaTypeHeaderValue(contentTypeLocalVar);
 
                     string[] acceptLocalVars = new string[] {
                         "application/json"
@@ -15941,7 +15999,7 @@ namespace EdGraph.Platform.Client.Api
 
                         TestInstanceYearConnectionApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/testconnection", requestedAtLocalVar, _jsonSerializerOptions);
 
-                        AfterTestInstanceYearConnectionDefaultImplementation(apiResponseLocalVar, tenantId, instanceId, year);
+                        AfterTestInstanceYearConnectionDefaultImplementation(apiResponseLocalVar, tenantId, instanceId, year, edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest);
 
                         Events.ExecuteOnTestInstanceYearConnection(apiResponseLocalVar);
 
@@ -15955,7 +16013,7 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorTestInstanceYearConnectionDefaultImplementation(e, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/testconnection", uriBuilderLocalVar.Path, tenantId, instanceId, year);
+                OnErrorTestInstanceYearConnectionDefaultImplementation(e, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/testconnection", uriBuilderLocalVar.Path, tenantId, instanceId, year, edfiAdminApiEdfiAdminV1TestInstanceConnectionRequest);
                 Events.ExecuteOnErrorTestInstanceYearConnection(e);
                 throw;
             }
