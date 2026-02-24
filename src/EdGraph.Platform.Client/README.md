@@ -10,7 +10,7 @@ $properties = @(
     'validatable=true',
     'nullableReferenceTypes=true',
     'hideGenerationTimestamp=true',
-    'packageVersion=0.0.10',
+    'packageVersion=0.0.11',
     'packageAuthors=EdGraph',
     'packageCompany=EdWire',
     'packageCopyright=No Copyright',
@@ -130,7 +130,7 @@ Authentication schemes defined for the API:
 
 
 ## Build
-- SDK version: 0.0.10
+- SDK version: 0.0.11
 - Generator version: 7.8.0
 - Build package: org.openapitools.codegen.languages.CSharpClientCodegen
 
@@ -174,11 +174,11 @@ Authentication schemes defined for the API:
 - packageCompany: EdWire
 - packageCopyright: No Copyright
 - packageDescription: EdGraph Platform Client SDK
-- packageGuid: {8E626FC8-ABED-4F05-981B-927D36C38E82}
+- packageGuid: {20D7881B-5BF7-4467-9C6A-8D8B0BBC4B92}
 - packageName: EdGraph.Platform.Client
 - packageTags: 
 - packageTitle: EdGraph Platform Client
-- packageVersion: 0.0.10
+- packageVersion: 0.0.11
 - releaseNote: Minor update
 - returnICollection: false
 - sortParamsByRequiredFlag: 
