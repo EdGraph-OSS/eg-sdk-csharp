@@ -5,6 +5,7 @@ api/openapi.yaml
 appveyor.yml
 docs/apis/APIClientsApi.md
 docs/apis/AnalyticsConnectorsApi.md
+docs/apis/AnalyticsDataLakeApi.md
 docs/apis/AnalyticsUserAuthorizationsApi.md
 docs/apis/ApplicationsApi.md
 docs/apis/ApplicationsSettingsApi.md
@@ -12,6 +13,7 @@ docs/apis/ApplicationsTilesApi.md
 docs/apis/CacheApi.md
 docs/apis/CapacitiesApi.md
 docs/apis/CategoriesApi.md
+docs/apis/ChangesLogsApi.md
 docs/apis/ClientsSecretsApi.md
 docs/apis/CollectionsApi.md
 docs/apis/ConfigurationsApi.md
@@ -62,6 +64,8 @@ docs/apis/MyExtensionsApi.md
 docs/apis/MyPreferencesApi.md
 docs/apis/MyProfileApi.md
 docs/apis/MyTenantsApi.md
+docs/apis/ObservationConfigurationApi.md
+docs/apis/ObservationsApi.md
 docs/apis/OnboardingStepsApi.md
 docs/apis/OnboardingStepsConnectionsApi.md
 docs/apis/OrganizationsApi.md
@@ -75,6 +79,7 @@ docs/apis/ReportsApi.md
 docs/apis/RulesApi.md
 docs/apis/SectionsApi.md
 docs/apis/SettingsApi.md
+docs/apis/SpecificationsApi.md
 docs/apis/StaffClassificationsApi.md
 docs/apis/StateReportingStepsApi.md
 docs/apis/SubmissionsApi.md
@@ -117,6 +122,8 @@ docs/models/AnalyticsApiGroupsV1CreateGroupRequest.md
 docs/models/AnalyticsApiGroupsV1GroupResponse.md
 docs/models/AnalyticsApiGroupsV1GroupUsersResponse.md
 docs/models/AnalyticsApiGroupsV1GroupsResponse.md
+docs/models/AnalyticsApiLakehousesV1LakehouseRecord.md
+docs/models/AnalyticsApiLakehousesV1PaginatedLakehouseRecordsResponse.md
 docs/models/AnalyticsApiReportsV1AnalyticsEmbedToken.md
 docs/models/AnalyticsApiReportsV1AnalyticsReport.md
 docs/models/AnalyticsApiReportsV1AnalyticsReportDataset.md
@@ -139,6 +146,8 @@ docs/models/ApplicationApiApplicationV1ApplicationType.md
 docs/models/ApplicationApiApplicationV1PaginatedItemsResponse.md
 docs/models/ApplicationApiApplicationV1Role.md
 docs/models/ApplicationApiApplicationV1UrlType.md
+docs/models/ChangeLogChangeV1ChangeLogResponse.md
+docs/models/ChangeLogChangeV1ChangeLogResponsePaginatedItemsViewModel.md
 docs/models/DataSyncApiConnectionV1ConnectionListResponse.md
 docs/models/DataSyncApiConnectionV1ConnectionListResponsePaginatedItemsViewModel.md
 docs/models/DataSyncApiConnectionV1ConnectionMetadata.md
@@ -401,6 +410,7 @@ docs/models/EdfiAdminApiEdfiAdminV1CreateInstanceRequest.md
 docs/models/EdfiAdminApiEdfiAdminV1CreateInstanceRequestSchoolYear.md
 docs/models/EdfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequest.md
 docs/models/EdfiAdminApiEdfiAdminV1CreateOnboardingStepRequest.md
+docs/models/EdfiAdminApiEdfiAdminV1CreateSpecificationRequest.md
 docs/models/EdfiAdminApiEdfiAdminV1CreateStateEducationAgencyRequest.md
 docs/models/EdfiAdminApiEdfiAdminV1CreateVendorRequest.md
 docs/models/EdfiAdminApiEdfiAdminV1DatabaseTier.md
@@ -435,6 +445,9 @@ docs/models/EdfiAdminApiEdfiAdminV1EducationOrganizationAddress.md
 docs/models/EdfiAdminApiEdfiAdminV1EducationOrganizationCategoryDescriptor.md
 docs/models/EdfiAdminApiEdfiAdminV1EducationServiceCenter.md
 docs/models/EdfiAdminApiEdfiAdminV1EducationServiceCenterCreatedResponse.md
+docs/models/EdfiAdminApiEdfiAdminV1ExportSpecificationsRequest.md
+docs/models/EdfiAdminApiEdfiAdminV1ExportStatus.md
+docs/models/EdfiAdminApiEdfiAdminV1ExportType.md
 docs/models/EdfiAdminApiEdfiAdminV1GenderRepresentation.md
 docs/models/EdfiAdminApiEdfiAdminV1GenerateReportsResponse.md
 docs/models/EdfiAdminApiEdfiAdminV1GetLocalEducationAgencyProfileResponse.md
@@ -481,9 +494,17 @@ docs/models/EdfiAdminApiEdfiAdminV1SaveClaimSetRequest.md
 docs/models/EdfiAdminApiEdfiAdminV1SaveClaimSetResponse.md
 docs/models/EdfiAdminApiEdfiAdminV1SchoolCountRepresentation.md
 docs/models/EdfiAdminApiEdfiAdminV1SchoolsByTypeReportResponse.md
+docs/models/EdfiAdminApiEdfiAdminV1SearchSpecificationsRequest.md
 docs/models/EdfiAdminApiEdfiAdminV1SecretEncryptionMetadata.md
 docs/models/EdfiAdminApiEdfiAdminV1SecretValueType.md
 docs/models/EdfiAdminApiEdfiAdminV1SetInstanceIsDefaultRequest.md
+docs/models/EdfiAdminApiEdfiAdminV1SpecificationDeletedResponse.md
+docs/models/EdfiAdminApiEdfiAdminV1SpecificationPurgedResponse.md
+docs/models/EdfiAdminApiEdfiAdminV1SpecificationRecoveredResponse.md
+docs/models/EdfiAdminApiEdfiAdminV1SpecificationResponse.md
+docs/models/EdfiAdminApiEdfiAdminV1SpecificationUpdatedResponse.md
+docs/models/EdfiAdminApiEdfiAdminV1SpecificationsExportedResponse.md
+docs/models/EdfiAdminApiEdfiAdminV1SpecificationsSearchResponse.md
 docs/models/EdfiAdminApiEdfiAdminV1StateEducationAgency.md
 docs/models/EdfiAdminApiEdfiAdminV1StateEducationAgencyCreatedResponse.md
 docs/models/EdfiAdminApiEdfiAdminV1StudentEconomicSituationReportResponse.md
@@ -514,6 +535,7 @@ docs/models/EdfiAdminApiEdfiAdminV1UpdateInstanceApplicationRequest.md
 docs/models/EdfiAdminApiEdfiAdminV1UpdateInstanceRequest.md
 docs/models/EdfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequest.md
 docs/models/EdfiAdminApiEdfiAdminV1UpdateOnboardingStepRequest.md
+docs/models/EdfiAdminApiEdfiAdminV1UpdateSpecificationRequest.md
 docs/models/EdfiAdminApiEdfiAdminV1UpdateStateEducationAgencyRequest.md
 docs/models/EdfiAdminApiEdfiAdminV1UpdateVendorRequest.md
 docs/models/EdfiAdminApiEdfiAdminV1Vendor.md
@@ -531,6 +553,7 @@ docs/models/EvaluationApiEvaluationSettingsV1UsersSetResponse.md
 docs/models/EvaluationApiEvaluationsV1CampusResponse.md
 docs/models/EvaluationApiEvaluationsV1CampusResponsePaginatedItemsViewModel.md
 docs/models/EvaluationApiEvaluationsV1CreateEvaluationRequest.md
+docs/models/EvaluationApiEvaluationsV1EvaluationCountResponse.md
 docs/models/EvaluationApiEvaluationsV1EvaluationCreatedResponse.md
 docs/models/EvaluationApiEvaluationsV1EvaluationDeletedResponse.md
 docs/models/EvaluationApiEvaluationsV1EvaluationResponse.md
@@ -588,6 +611,11 @@ docs/models/FormApiSubmissionsV1SubmissionResponsePaginatedItemsViewModel.md
 docs/models/FormApiSubmissionsV1SubmissionUpdatedResponse.md
 docs/models/FormApiSubmissionsV1SubmissionsExportedResponse.md
 docs/models/FormApiSubmissionsV1UpdateSubmissionRequest.md
+docs/models/GoogleProtobufWellKnownTypesListValue.md
+docs/models/GoogleProtobufWellKnownTypesNullValue.md
+docs/models/GoogleProtobufWellKnownTypesStruct.md
+docs/models/GoogleProtobufWellKnownTypesValue.md
+docs/models/GoogleProtobufWellKnownTypesValueKindOneofCase.md
 docs/models/IMSAdminApiV1ClientsAccessTokenType.md
 docs/models/IMSAdminApiV1ClientsAddClientSecretRequest.md
 docs/models/IMSAdminApiV1ClientsClaim.md
@@ -922,6 +950,7 @@ docs/scripts/git_push.ps1
 docs/scripts/git_push.sh
 src/EdGraph.Platform.Client.Test/Api/APIClientsApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/AnalyticsConnectorsApiTests.cs
+src/EdGraph.Platform.Client.Test/Api/AnalyticsDataLakeApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/AnalyticsUserAuthorizationsApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/ApiTestsBase.cs
 src/EdGraph.Platform.Client.Test/Api/ApplicationsApiTests.cs
@@ -930,6 +959,7 @@ src/EdGraph.Platform.Client.Test/Api/ApplicationsTilesApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/CacheApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/CapacitiesApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/CategoriesApiTests.cs
+src/EdGraph.Platform.Client.Test/Api/ChangesLogsApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/ClientsSecretsApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/CollectionsApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/ConfigurationsApiTests.cs
@@ -981,6 +1011,8 @@ src/EdGraph.Platform.Client.Test/Api/MyExtensionsApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/MyPreferencesApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/MyProfileApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/MyTenantsApiTests.cs
+src/EdGraph.Platform.Client.Test/Api/ObservationConfigurationApiTests.cs
+src/EdGraph.Platform.Client.Test/Api/ObservationsApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/OnboardingStepsApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/OnboardingStepsConnectionsApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/OrganizationsApiTests.cs
@@ -994,6 +1026,7 @@ src/EdGraph.Platform.Client.Test/Api/ReportsApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/RulesApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/SectionsApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/SettingsApiTests.cs
+src/EdGraph.Platform.Client.Test/Api/SpecificationsApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/StaffClassificationsApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/StateReportingStepsApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/SubmissionsApiTests.cs
@@ -1037,6 +1070,8 @@ src/EdGraph.Platform.Client.Test/Model/AnalyticsApiGroupsV1CreateGroupRequestTes
 src/EdGraph.Platform.Client.Test/Model/AnalyticsApiGroupsV1GroupResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/AnalyticsApiGroupsV1GroupUsersResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/AnalyticsApiGroupsV1GroupsResponseTests.cs
+src/EdGraph.Platform.Client.Test/Model/AnalyticsApiLakehousesV1LakehouseRecordTests.cs
+src/EdGraph.Platform.Client.Test/Model/AnalyticsApiLakehousesV1PaginatedLakehouseRecordsResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/AnalyticsApiReportsV1AnalyticsEmbedTokenTests.cs
 src/EdGraph.Platform.Client.Test/Model/AnalyticsApiReportsV1AnalyticsReportDatasetTests.cs
 src/EdGraph.Platform.Client.Test/Model/AnalyticsApiReportsV1AnalyticsReportTests.cs
@@ -1059,6 +1094,8 @@ src/EdGraph.Platform.Client.Test/Model/ApplicationApiApplicationV1ApplicationTyp
 src/EdGraph.Platform.Client.Test/Model/ApplicationApiApplicationV1PaginatedItemsResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/ApplicationApiApplicationV1RoleTests.cs
 src/EdGraph.Platform.Client.Test/Model/ApplicationApiApplicationV1UrlTypeTests.cs
+src/EdGraph.Platform.Client.Test/Model/ChangeLogChangeV1ChangeLogResponsePaginatedItemsViewModelTests.cs
+src/EdGraph.Platform.Client.Test/Model/ChangeLogChangeV1ChangeLogResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/DataSyncApiConnectionV1ConnectionListResponsePaginatedItemsViewModelTests.cs
 src/EdGraph.Platform.Client.Test/Model/DataSyncApiConnectionV1ConnectionListResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/DataSyncApiConnectionV1ConnectionMetadataTests.cs
@@ -1321,6 +1358,7 @@ src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1CreateInstanceRequ
 src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1CreateInstanceRequestTests.cs
 src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequestTests.cs
 src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1CreateOnboardingStepRequestTests.cs
+src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1CreateSpecificationRequestTests.cs
 src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1CreateStateEducationAgencyRequestTests.cs
 src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1CreateVendorRequestTests.cs
 src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1DatabaseTierTests.cs
@@ -1355,6 +1393,9 @@ src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1EducationOrganizat
 src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1EducationOrganizationTests.cs
 src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1EducationServiceCenterCreatedResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1EducationServiceCenterTests.cs
+src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1ExportSpecificationsRequestTests.cs
+src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1ExportStatusTests.cs
+src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1ExportTypeTests.cs
 src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1GenderRepresentationTests.cs
 src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1GenerateReportsResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1GetLocalEducationAgencyProfileResponseTests.cs
@@ -1401,9 +1442,17 @@ src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1SaveClaimSetReques
 src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1SaveClaimSetResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1SchoolCountRepresentationTests.cs
 src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1SchoolsByTypeReportResponseTests.cs
+src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1SearchSpecificationsRequestTests.cs
 src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1SecretEncryptionMetadataTests.cs
 src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1SecretValueTypeTests.cs
 src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1SetInstanceIsDefaultRequestTests.cs
+src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1SpecificationDeletedResponseTests.cs
+src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1SpecificationPurgedResponseTests.cs
+src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1SpecificationRecoveredResponseTests.cs
+src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1SpecificationResponseTests.cs
+src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1SpecificationUpdatedResponseTests.cs
+src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1SpecificationsExportedResponseTests.cs
+src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1SpecificationsSearchResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1StateEducationAgencyCreatedResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1StateEducationAgencyTests.cs
 src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1StudentEconomicSituationReportResponseTests.cs
@@ -1434,6 +1483,7 @@ src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1UpdateInstanceAppl
 src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1UpdateInstanceRequestTests.cs
 src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequestTests.cs
 src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1UpdateOnboardingStepRequestTests.cs
+src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1UpdateSpecificationRequestTests.cs
 src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1UpdateStateEducationAgencyRequestTests.cs
 src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1UpdateVendorRequestTests.cs
 src/EdGraph.Platform.Client.Test/Model/EdfiAdminApiEdfiAdminV1VendorCreatedResponseTests.cs
@@ -1451,6 +1501,7 @@ src/EdGraph.Platform.Client.Test/Model/EvaluationApiEvaluationSettingsV1UsersSet
 src/EdGraph.Platform.Client.Test/Model/EvaluationApiEvaluationsV1CampusResponsePaginatedItemsViewModelTests.cs
 src/EdGraph.Platform.Client.Test/Model/EvaluationApiEvaluationsV1CampusResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/EvaluationApiEvaluationsV1CreateEvaluationRequestTests.cs
+src/EdGraph.Platform.Client.Test/Model/EvaluationApiEvaluationsV1EvaluationCountResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/EvaluationApiEvaluationsV1EvaluationCreatedResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/EvaluationApiEvaluationsV1EvaluationDeletedResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/EvaluationApiEvaluationsV1EvaluationResponsePaginatedItemsViewModelTests.cs
@@ -1508,6 +1559,11 @@ src/EdGraph.Platform.Client.Test/Model/FormApiSubmissionsV1SubmissionResponseTes
 src/EdGraph.Platform.Client.Test/Model/FormApiSubmissionsV1SubmissionUpdatedResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/FormApiSubmissionsV1SubmissionsExportedResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/FormApiSubmissionsV1UpdateSubmissionRequestTests.cs
+src/EdGraph.Platform.Client.Test/Model/GoogleProtobufWellKnownTypesListValueTests.cs
+src/EdGraph.Platform.Client.Test/Model/GoogleProtobufWellKnownTypesNullValueTests.cs
+src/EdGraph.Platform.Client.Test/Model/GoogleProtobufWellKnownTypesStructTests.cs
+src/EdGraph.Platform.Client.Test/Model/GoogleProtobufWellKnownTypesValueKindOneofCaseTests.cs
+src/EdGraph.Platform.Client.Test/Model/GoogleProtobufWellKnownTypesValueTests.cs
 src/EdGraph.Platform.Client.Test/Model/IMSAdminApiV1ClientsAccessTokenTypeTests.cs
 src/EdGraph.Platform.Client.Test/Model/IMSAdminApiV1ClientsAddClientSecretRequestTests.cs
 src/EdGraph.Platform.Client.Test/Model/IMSAdminApiV1ClientsClaimTests.cs
@@ -1841,6 +1897,7 @@ src/EdGraph.Platform.Client.Test/Model/ValidationsApiValidationResultsV1Validati
 src/EdGraph.Platform.Client.Test/README.md
 src/EdGraph.Platform.Client/Api/APIClientsApi.cs
 src/EdGraph.Platform.Client/Api/AnalyticsConnectorsApi.cs
+src/EdGraph.Platform.Client/Api/AnalyticsDataLakeApi.cs
 src/EdGraph.Platform.Client/Api/AnalyticsUserAuthorizationsApi.cs
 src/EdGraph.Platform.Client/Api/ApplicationsApi.cs
 src/EdGraph.Platform.Client/Api/ApplicationsSettingsApi.cs
@@ -1848,6 +1905,7 @@ src/EdGraph.Platform.Client/Api/ApplicationsTilesApi.cs
 src/EdGraph.Platform.Client/Api/CacheApi.cs
 src/EdGraph.Platform.Client/Api/CapacitiesApi.cs
 src/EdGraph.Platform.Client/Api/CategoriesApi.cs
+src/EdGraph.Platform.Client/Api/ChangesLogsApi.cs
 src/EdGraph.Platform.Client/Api/ClientsSecretsApi.cs
 src/EdGraph.Platform.Client/Api/CollectionsApi.cs
 src/EdGraph.Platform.Client/Api/ConfigurationsApi.cs
@@ -1899,6 +1957,8 @@ src/EdGraph.Platform.Client/Api/MyExtensionsApi.cs
 src/EdGraph.Platform.Client/Api/MyPreferencesApi.cs
 src/EdGraph.Platform.Client/Api/MyProfileApi.cs
 src/EdGraph.Platform.Client/Api/MyTenantsApi.cs
+src/EdGraph.Platform.Client/Api/ObservationConfigurationApi.cs
+src/EdGraph.Platform.Client/Api/ObservationsApi.cs
 src/EdGraph.Platform.Client/Api/OnboardingStepsApi.cs
 src/EdGraph.Platform.Client/Api/OnboardingStepsConnectionsApi.cs
 src/EdGraph.Platform.Client/Api/OrganizationsApi.cs
@@ -1912,6 +1972,7 @@ src/EdGraph.Platform.Client/Api/ReportsApi.cs
 src/EdGraph.Platform.Client/Api/RulesApi.cs
 src/EdGraph.Platform.Client/Api/SectionsApi.cs
 src/EdGraph.Platform.Client/Api/SettingsApi.cs
+src/EdGraph.Platform.Client/Api/SpecificationsApi.cs
 src/EdGraph.Platform.Client/Api/StaffClassificationsApi.cs
 src/EdGraph.Platform.Client/Api/StateReportingStepsApi.cs
 src/EdGraph.Platform.Client/Api/SubmissionsApi.cs
@@ -1977,6 +2038,8 @@ src/EdGraph.Platform.Client/Model/AnalyticsApiGroupsV1CreateGroupRequest.cs
 src/EdGraph.Platform.Client/Model/AnalyticsApiGroupsV1GroupResponse.cs
 src/EdGraph.Platform.Client/Model/AnalyticsApiGroupsV1GroupUsersResponse.cs
 src/EdGraph.Platform.Client/Model/AnalyticsApiGroupsV1GroupsResponse.cs
+src/EdGraph.Platform.Client/Model/AnalyticsApiLakehousesV1LakehouseRecord.cs
+src/EdGraph.Platform.Client/Model/AnalyticsApiLakehousesV1PaginatedLakehouseRecordsResponse.cs
 src/EdGraph.Platform.Client/Model/AnalyticsApiReportsV1AnalyticsEmbedToken.cs
 src/EdGraph.Platform.Client/Model/AnalyticsApiReportsV1AnalyticsReport.cs
 src/EdGraph.Platform.Client/Model/AnalyticsApiReportsV1AnalyticsReportDataset.cs
@@ -1999,6 +2062,8 @@ src/EdGraph.Platform.Client/Model/ApplicationApiApplicationV1ApplicationType.cs
 src/EdGraph.Platform.Client/Model/ApplicationApiApplicationV1PaginatedItemsResponse.cs
 src/EdGraph.Platform.Client/Model/ApplicationApiApplicationV1Role.cs
 src/EdGraph.Platform.Client/Model/ApplicationApiApplicationV1UrlType.cs
+src/EdGraph.Platform.Client/Model/ChangeLogChangeV1ChangeLogResponse.cs
+src/EdGraph.Platform.Client/Model/ChangeLogChangeV1ChangeLogResponsePaginatedItemsViewModel.cs
 src/EdGraph.Platform.Client/Model/DataSyncApiConnectionV1ConnectionListResponse.cs
 src/EdGraph.Platform.Client/Model/DataSyncApiConnectionV1ConnectionListResponsePaginatedItemsViewModel.cs
 src/EdGraph.Platform.Client/Model/DataSyncApiConnectionV1ConnectionMetadata.cs
@@ -2261,6 +2326,7 @@ src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1CreateInstanceRequest.c
 src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1CreateInstanceRequestSchoolYear.cs
 src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequest.cs
 src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1CreateOnboardingStepRequest.cs
+src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1CreateSpecificationRequest.cs
 src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1CreateStateEducationAgencyRequest.cs
 src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1CreateVendorRequest.cs
 src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1DatabaseTier.cs
@@ -2295,6 +2361,9 @@ src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1EducationOrganizationAd
 src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1EducationOrganizationCategoryDescriptor.cs
 src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1EducationServiceCenter.cs
 src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1EducationServiceCenterCreatedResponse.cs
+src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1ExportSpecificationsRequest.cs
+src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1ExportStatus.cs
+src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1ExportType.cs
 src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1GenderRepresentation.cs
 src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1GenerateReportsResponse.cs
 src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1GetLocalEducationAgencyProfileResponse.cs
@@ -2341,9 +2410,17 @@ src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1SaveClaimSetRequest.cs
 src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1SaveClaimSetResponse.cs
 src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1SchoolCountRepresentation.cs
 src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1SchoolsByTypeReportResponse.cs
+src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1SearchSpecificationsRequest.cs
 src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1SecretEncryptionMetadata.cs
 src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1SecretValueType.cs
 src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1SetInstanceIsDefaultRequest.cs
+src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1SpecificationDeletedResponse.cs
+src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1SpecificationPurgedResponse.cs
+src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1SpecificationRecoveredResponse.cs
+src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1SpecificationResponse.cs
+src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1SpecificationUpdatedResponse.cs
+src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1SpecificationsExportedResponse.cs
+src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1SpecificationsSearchResponse.cs
 src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1StateEducationAgency.cs
 src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1StateEducationAgencyCreatedResponse.cs
 src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1StudentEconomicSituationReportResponse.cs
@@ -2374,6 +2451,7 @@ src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1UpdateInstanceApplicati
 src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1UpdateInstanceRequest.cs
 src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequest.cs
 src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1UpdateOnboardingStepRequest.cs
+src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1UpdateSpecificationRequest.cs
 src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1UpdateStateEducationAgencyRequest.cs
 src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1UpdateVendorRequest.cs
 src/EdGraph.Platform.Client/Model/EdfiAdminApiEdfiAdminV1Vendor.cs
@@ -2391,6 +2469,7 @@ src/EdGraph.Platform.Client/Model/EvaluationApiEvaluationSettingsV1UsersSetRespo
 src/EdGraph.Platform.Client/Model/EvaluationApiEvaluationsV1CampusResponse.cs
 src/EdGraph.Platform.Client/Model/EvaluationApiEvaluationsV1CampusResponsePaginatedItemsViewModel.cs
 src/EdGraph.Platform.Client/Model/EvaluationApiEvaluationsV1CreateEvaluationRequest.cs
+src/EdGraph.Platform.Client/Model/EvaluationApiEvaluationsV1EvaluationCountResponse.cs
 src/EdGraph.Platform.Client/Model/EvaluationApiEvaluationsV1EvaluationCreatedResponse.cs
 src/EdGraph.Platform.Client/Model/EvaluationApiEvaluationsV1EvaluationDeletedResponse.cs
 src/EdGraph.Platform.Client/Model/EvaluationApiEvaluationsV1EvaluationResponse.cs
@@ -2448,6 +2527,11 @@ src/EdGraph.Platform.Client/Model/FormApiSubmissionsV1SubmissionResponsePaginate
 src/EdGraph.Platform.Client/Model/FormApiSubmissionsV1SubmissionUpdatedResponse.cs
 src/EdGraph.Platform.Client/Model/FormApiSubmissionsV1SubmissionsExportedResponse.cs
 src/EdGraph.Platform.Client/Model/FormApiSubmissionsV1UpdateSubmissionRequest.cs
+src/EdGraph.Platform.Client/Model/GoogleProtobufWellKnownTypesListValue.cs
+src/EdGraph.Platform.Client/Model/GoogleProtobufWellKnownTypesNullValue.cs
+src/EdGraph.Platform.Client/Model/GoogleProtobufWellKnownTypesStruct.cs
+src/EdGraph.Platform.Client/Model/GoogleProtobufWellKnownTypesValue.cs
+src/EdGraph.Platform.Client/Model/GoogleProtobufWellKnownTypesValueKindOneofCase.cs
 src/EdGraph.Platform.Client/Model/IMSAdminApiV1ClientsAccessTokenType.cs
 src/EdGraph.Platform.Client/Model/IMSAdminApiV1ClientsAddClientSecretRequest.cs
 src/EdGraph.Platform.Client/Model/IMSAdminApiV1ClientsClaim.cs

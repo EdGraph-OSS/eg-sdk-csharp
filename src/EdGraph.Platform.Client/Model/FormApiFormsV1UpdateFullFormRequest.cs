@@ -42,8 +42,9 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="tenantId">tenantId</param>
         /// <param name="status">status</param>
         /// <param name="sections">sections</param>
+        /// <param name="image">image</param>
         [JsonConstructor]
-        public FormApiFormsV1UpdateFullFormRequest(Option<string?> id = default, Option<string?> name = default, Option<string?> description = default, Option<FormApiFormsV1FormSource?> source = default, Option<string?> varVersion = default, Option<bool?> anonymous = default, Option<string?> tenantId = default, Option<FormApiFormsV1FormStatus?> status = default, Option<List<FormApiFormsV1UpdateFullSectionRequest>?> sections = default)
+        public FormApiFormsV1UpdateFullFormRequest(Option<string?> id = default, Option<string?> name = default, Option<string?> description = default, Option<FormApiFormsV1FormSource?> source = default, Option<string?> varVersion = default, Option<bool?> anonymous = default, Option<string?> tenantId = default, Option<FormApiFormsV1FormStatus?> status = default, Option<List<FormApiFormsV1UpdateFullSectionRequest>?> sections = default, Option<string?> image = default)
         {
             IdOption = id;
             NameOption = name;
@@ -54,6 +55,7 @@ namespace EdGraph.Platform.Client.Model
             TenantIdOption = tenantId;
             StatusOption = status;
             SectionsOption = sections;
+            ImageOption = image;
             OnCreated();
         }
 
@@ -177,6 +179,19 @@ namespace EdGraph.Platform.Client.Model
         public List<FormApiFormsV1UpdateFullSectionRequest>? Sections { get { return this.SectionsOption; } }
 
         /// <summary>
+        /// Used to track the state of Image
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> ImageOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets Image
+        /// </summary>
+        [JsonPropertyName("image")]
+        public string? Image { get { return this.ImageOption; } set { this.ImageOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -193,6 +208,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  TenantId: ").Append(TenantId).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Sections: ").Append(Sections).Append("\n");
+            sb.Append("  Image: ").Append(Image).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -239,6 +255,7 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> tenantId = default;
             Option<FormApiFormsV1FormStatus?> status = default;
             Option<List<FormApiFormsV1UpdateFullSectionRequest>?> sections = default;
+            Option<string?> image = default;
 
             while (utf8JsonReader.Read())
             {
@@ -288,6 +305,9 @@ namespace EdGraph.Platform.Client.Model
                             if (utf8JsonReader.TokenType != JsonTokenType.Null)
                                 sections = new Option<List<FormApiFormsV1UpdateFullSectionRequest>?>(JsonSerializer.Deserialize<List<FormApiFormsV1UpdateFullSectionRequest>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
+                        case "image":
+                            image = new Option<string?>(utf8JsonReader.GetString());
+                            break;
                         default:
                             break;
                     }
@@ -300,7 +320,7 @@ namespace EdGraph.Platform.Client.Model
             if (status.IsSet && status.Value == null)
                 throw new ArgumentNullException(nameof(status), "Property is not nullable for class FormApiFormsV1UpdateFullFormRequest.");
 
-            return new FormApiFormsV1UpdateFullFormRequest(id, name, description, source, varVersion, anonymous, tenantId, status, sections);
+            return new FormApiFormsV1UpdateFullFormRequest(id, name, description, source, varVersion, anonymous, tenantId, status, sections, image);
         }
 
         /// <summary>
@@ -381,6 +401,11 @@ namespace EdGraph.Platform.Client.Model
                 }
                 else
                     writer.WriteNull("sections");
+            if (formApiFormsV1UpdateFullFormRequest.ImageOption.IsSet)
+                if (formApiFormsV1UpdateFullFormRequest.ImageOption.Value != null)
+                    writer.WriteString("image", formApiFormsV1UpdateFullFormRequest.Image);
+                else
+                    writer.WriteNull("image");
         }
     }
 }

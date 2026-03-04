@@ -7,6 +7,7 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 | [**CreateEvaluation**](EvaluationsApi.md#createevaluation) | **POST** /tenants/{tenantId}/evaluations | Creates a new Evaluation for a given tenant |
 | [**DeleteEvaluation**](EvaluationsApi.md#deleteevaluation) | **DELETE** /tenants/{tenantId}/evaluations/{evaluationId} | Deletes an Evaluation for a given tenant |
 | [**GetEvaluation**](EvaluationsApi.md#getevaluation) | **GET** /tenants/{tenantId}/evaluations/{evaluationId} | Get an Evaluation for a given tenant |
+| [**GetEvaluationCount**](EvaluationsApi.md#getevaluationcount) | **GET** /tenants/{tenantId}/evaluations/count |  |
 | [**SearchEvaluationAppraisers**](EvaluationsApi.md#searchevaluationappraisers) | **GET** /tenants/{tenantId}/evaluations/appraisers | Searches the Appraisers associated with an Evaluation for a given Tenant. |
 | [**SearchEvaluationCampuses**](EvaluationsApi.md#searchevaluationcampuses) | **GET** /tenants/{tenantId}/evaluations/campuses | Searches the Campuses associated with an Evaluation for a given Tenant. |
 | [**SearchEvaluationForms**](EvaluationsApi.md#searchevaluationforms) | **GET** /tenants/{tenantId}/evaluations/forms | Searches the Forms associated with an Evaluation for a given Tenant. |
@@ -305,6 +306,100 @@ catch (ApiException e)
 | **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
 | **200** | The requested resource was successfully retrieved. |  -  |
 | **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+<a id="getevaluationcount"></a>
+# **GetEvaluationCount**
+> EvaluationApiEvaluationsV1EvaluationCountResponse GetEvaluationCount (Guid tenantId)
+
+
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using EdGraph.Platform.Client.Api;
+using EdGraph.Platform.Client.Client;
+using EdGraph.Platform.Client.Model;
+
+namespace Example
+{
+    public class GetEvaluationCountExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.dev.edgraph.com/tenant";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new EvaluationsApi(config);
+            var tenantId = "tenantId_example";  // Guid | 
+
+            try
+            {
+                EvaluationApiEvaluationsV1EvaluationCountResponse result = apiInstance.GetEvaluationCount(tenantId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling EvaluationsApi.GetEvaluationCount: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetEvaluationCountWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    ApiResponse<EvaluationApiEvaluationsV1EvaluationCountResponse> response = apiInstance.GetEvaluationCountWithHttpInfo(tenantId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling EvaluationsApi.GetEvaluationCountWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **Guid** |  |  |
+
+### Return type
+
+[**EvaluationApiEvaluationsV1EvaluationCountResponse**](EvaluationApiEvaluationsV1EvaluationCountResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | Success |  -  |
+| **400** | Bad Request |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

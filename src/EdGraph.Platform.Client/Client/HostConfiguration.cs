@@ -67,6 +67,8 @@ namespace EdGraph.Platform.Client.Client
             _jsonOptions.Converters.Add(new AnalyticsApiGroupsV1GroupResponseJsonConverter());
             _jsonOptions.Converters.Add(new AnalyticsApiGroupsV1GroupUsersResponseJsonConverter());
             _jsonOptions.Converters.Add(new AnalyticsApiGroupsV1GroupsResponseJsonConverter());
+            _jsonOptions.Converters.Add(new AnalyticsApiLakehousesV1LakehouseRecordJsonConverter());
+            _jsonOptions.Converters.Add(new AnalyticsApiLakehousesV1PaginatedLakehouseRecordsResponseJsonConverter());
             _jsonOptions.Converters.Add(new AnalyticsApiReportsV1AnalyticsEmbedTokenJsonConverter());
             _jsonOptions.Converters.Add(new AnalyticsApiReportsV1AnalyticsReportJsonConverter());
             _jsonOptions.Converters.Add(new AnalyticsApiReportsV1AnalyticsReportDatasetJsonConverter());
@@ -94,6 +96,8 @@ namespace EdGraph.Platform.Client.Client
             _jsonOptions.Converters.Add(new ApplicationApiApplicationV1RoleJsonConverter());
             _jsonOptions.Converters.Add(new ApplicationApiApplicationV1UrlTypeJsonConverter());
             _jsonOptions.Converters.Add(new ApplicationApiApplicationV1UrlTypeNullableJsonConverter());
+            _jsonOptions.Converters.Add(new ChangeLogChangeV1ChangeLogResponseJsonConverter());
+            _jsonOptions.Converters.Add(new ChangeLogChangeV1ChangeLogResponsePaginatedItemsViewModelJsonConverter());
             _jsonOptions.Converters.Add(new DataSyncApiConnectionV1ConnectionListResponseJsonConverter());
             _jsonOptions.Converters.Add(new DataSyncApiConnectionV1ConnectionListResponsePaginatedItemsViewModelJsonConverter());
             _jsonOptions.Converters.Add(new DataSyncApiConnectionV1ConnectionMetadataJsonConverter());
@@ -371,6 +375,7 @@ namespace EdGraph.Platform.Client.Client
             _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1CreateInstanceRequestSchoolYearJsonConverter());
             _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequestJsonConverter());
             _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1CreateOnboardingStepRequestJsonConverter());
+            _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1CreateSpecificationRequestJsonConverter());
             _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1CreateStateEducationAgencyRequestJsonConverter());
             _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1CreateVendorRequestJsonConverter());
             _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1DatabaseTierJsonConverter());
@@ -406,6 +411,11 @@ namespace EdGraph.Platform.Client.Client
             _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1EducationOrganizationCategoryDescriptorJsonConverter());
             _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1EducationServiceCenterJsonConverter());
             _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1EducationServiceCenterCreatedResponseJsonConverter());
+            _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1ExportSpecificationsRequestJsonConverter());
+            _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1ExportStatusJsonConverter());
+            _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1ExportStatusNullableJsonConverter());
+            _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1ExportTypeJsonConverter());
+            _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1ExportTypeNullableJsonConverter());
             _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1GenderRepresentationJsonConverter());
             _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1GenerateReportsResponseJsonConverter());
             _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1GetLocalEducationAgencyProfileResponseJsonConverter());
@@ -453,10 +463,18 @@ namespace EdGraph.Platform.Client.Client
             _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1SaveClaimSetResponseJsonConverter());
             _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1SchoolCountRepresentationJsonConverter());
             _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1SchoolsByTypeReportResponseJsonConverter());
+            _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1SearchSpecificationsRequestJsonConverter());
             _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1SecretEncryptionMetadataJsonConverter());
             _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1SecretValueTypeJsonConverter());
             _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1SecretValueTypeNullableJsonConverter());
             _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1SetInstanceIsDefaultRequestJsonConverter());
+            _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1SpecificationDeletedResponseJsonConverter());
+            _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1SpecificationPurgedResponseJsonConverter());
+            _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1SpecificationRecoveredResponseJsonConverter());
+            _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1SpecificationResponseJsonConverter());
+            _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1SpecificationUpdatedResponseJsonConverter());
+            _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1SpecificationsExportedResponseJsonConverter());
+            _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1SpecificationsSearchResponseJsonConverter());
             _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1StateEducationAgencyJsonConverter());
             _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1StateEducationAgencyCreatedResponseJsonConverter());
             _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1StudentEconomicSituationReportResponseJsonConverter());
@@ -487,6 +505,7 @@ namespace EdGraph.Platform.Client.Client
             _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1UpdateInstanceRequestJsonConverter());
             _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequestJsonConverter());
             _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1UpdateOnboardingStepRequestJsonConverter());
+            _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1UpdateSpecificationRequestJsonConverter());
             _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1UpdateStateEducationAgencyRequestJsonConverter());
             _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1UpdateVendorRequestJsonConverter());
             _jsonOptions.Converters.Add(new EdfiAdminApiEdfiAdminV1VendorJsonConverter());
@@ -505,6 +524,7 @@ namespace EdGraph.Platform.Client.Client
             _jsonOptions.Converters.Add(new EvaluationApiEvaluationsV1CampusResponseJsonConverter());
             _jsonOptions.Converters.Add(new EvaluationApiEvaluationsV1CampusResponsePaginatedItemsViewModelJsonConverter());
             _jsonOptions.Converters.Add(new EvaluationApiEvaluationsV1CreateEvaluationRequestJsonConverter());
+            _jsonOptions.Converters.Add(new EvaluationApiEvaluationsV1EvaluationCountResponseJsonConverter());
             _jsonOptions.Converters.Add(new EvaluationApiEvaluationsV1EvaluationCreatedResponseJsonConverter());
             _jsonOptions.Converters.Add(new EvaluationApiEvaluationsV1EvaluationDeletedResponseJsonConverter());
             _jsonOptions.Converters.Add(new EvaluationApiEvaluationsV1EvaluationResponseJsonConverter());
@@ -572,6 +592,13 @@ namespace EdGraph.Platform.Client.Client
             _jsonOptions.Converters.Add(new FormApiSubmissionsV1SubmissionUpdatedResponseJsonConverter());
             _jsonOptions.Converters.Add(new FormApiSubmissionsV1SubmissionsExportedResponseJsonConverter());
             _jsonOptions.Converters.Add(new FormApiSubmissionsV1UpdateSubmissionRequestJsonConverter());
+            _jsonOptions.Converters.Add(new GoogleProtobufWellKnownTypesListValueJsonConverter());
+            _jsonOptions.Converters.Add(new GoogleProtobufWellKnownTypesNullValueJsonConverter());
+            _jsonOptions.Converters.Add(new GoogleProtobufWellKnownTypesNullValueNullableJsonConverter());
+            _jsonOptions.Converters.Add(new GoogleProtobufWellKnownTypesStructJsonConverter());
+            _jsonOptions.Converters.Add(new GoogleProtobufWellKnownTypesValueJsonConverter());
+            _jsonOptions.Converters.Add(new GoogleProtobufWellKnownTypesValueKindOneofCaseJsonConverter());
+            _jsonOptions.Converters.Add(new GoogleProtobufWellKnownTypesValueKindOneofCaseNullableJsonConverter());
             _jsonOptions.Converters.Add(new IMSAdminApiV1ClientsAccessTokenTypeJsonConverter());
             _jsonOptions.Converters.Add(new IMSAdminApiV1ClientsAccessTokenTypeNullableJsonConverter());
             _jsonOptions.Converters.Add(new IMSAdminApiV1ClientsAddClientSecretRequestJsonConverter());
@@ -942,6 +969,8 @@ namespace EdGraph.Platform.Client.Client
             _services.AddTransient<IAPIClientsApi, APIClientsApi>();
             _services.AddSingleton<AnalyticsConnectorsApiEvents>();
             _services.AddTransient<IAnalyticsConnectorsApi, AnalyticsConnectorsApi>();
+            _services.AddSingleton<AnalyticsDataLakeApiEvents>();
+            _services.AddTransient<IAnalyticsDataLakeApi, AnalyticsDataLakeApi>();
             _services.AddSingleton<AnalyticsUserAuthorizationsApiEvents>();
             _services.AddTransient<IAnalyticsUserAuthorizationsApi, AnalyticsUserAuthorizationsApi>();
             _services.AddSingleton<ApplicationsApiEvents>();
@@ -956,6 +985,8 @@ namespace EdGraph.Platform.Client.Client
             _services.AddTransient<ICapacitiesApi, CapacitiesApi>();
             _services.AddSingleton<CategoriesApiEvents>();
             _services.AddTransient<ICategoriesApi, CategoriesApi>();
+            _services.AddSingleton<ChangesLogsApiEvents>();
+            _services.AddTransient<IChangesLogsApi, ChangesLogsApi>();
             _services.AddSingleton<ClientsSecretsApiEvents>();
             _services.AddTransient<IClientsSecretsApi, ClientsSecretsApi>();
             _services.AddSingleton<CollectionsApiEvents>();
@@ -1056,6 +1087,10 @@ namespace EdGraph.Platform.Client.Client
             _services.AddTransient<IMyProfileApi, MyProfileApi>();
             _services.AddSingleton<MyTenantsApiEvents>();
             _services.AddTransient<IMyTenantsApi, MyTenantsApi>();
+            _services.AddSingleton<ObservationConfigurationApiEvents>();
+            _services.AddTransient<IObservationConfigurationApi, ObservationConfigurationApi>();
+            _services.AddSingleton<ObservationsApiEvents>();
+            _services.AddTransient<IObservationsApi, ObservationsApi>();
             _services.AddSingleton<OnboardingStepsApiEvents>();
             _services.AddTransient<IOnboardingStepsApi, OnboardingStepsApi>();
             _services.AddSingleton<OnboardingStepsConnectionsApiEvents>();
@@ -1082,6 +1117,8 @@ namespace EdGraph.Platform.Client.Client
             _services.AddTransient<ISectionsApi, SectionsApi>();
             _services.AddSingleton<SettingsApiEvents>();
             _services.AddTransient<ISettingsApi, SettingsApi>();
+            _services.AddSingleton<SpecificationsApiEvents>();
+            _services.AddTransient<ISpecificationsApi, SpecificationsApi>();
             _services.AddSingleton<StaffClassificationsApiEvents>();
             _services.AddTransient<IStaffClassificationsApi, StaffClassificationsApi>();
             _services.AddSingleton<StateReportingStepsApiEvents>();
@@ -1137,6 +1174,7 @@ namespace EdGraph.Platform.Client.Client
 
             builders.Add(_services.AddHttpClient<IAPIClientsApi, APIClientsApi>(client));
             builders.Add(_services.AddHttpClient<IAnalyticsConnectorsApi, AnalyticsConnectorsApi>(client));
+            builders.Add(_services.AddHttpClient<IAnalyticsDataLakeApi, AnalyticsDataLakeApi>(client));
             builders.Add(_services.AddHttpClient<IAnalyticsUserAuthorizationsApi, AnalyticsUserAuthorizationsApi>(client));
             builders.Add(_services.AddHttpClient<IApplicationsApi, ApplicationsApi>(client));
             builders.Add(_services.AddHttpClient<IApplicationsSettingsApi, ApplicationsSettingsApi>(client));
@@ -1144,6 +1182,7 @@ namespace EdGraph.Platform.Client.Client
             builders.Add(_services.AddHttpClient<ICacheApi, CacheApi>(client));
             builders.Add(_services.AddHttpClient<ICapacitiesApi, CapacitiesApi>(client));
             builders.Add(_services.AddHttpClient<ICategoriesApi, CategoriesApi>(client));
+            builders.Add(_services.AddHttpClient<IChangesLogsApi, ChangesLogsApi>(client));
             builders.Add(_services.AddHttpClient<IClientsSecretsApi, ClientsSecretsApi>(client));
             builders.Add(_services.AddHttpClient<ICollectionsApi, CollectionsApi>(client));
             builders.Add(_services.AddHttpClient<IConfigurationsApi, ConfigurationsApi>(client));
@@ -1194,6 +1233,8 @@ namespace EdGraph.Platform.Client.Client
             builders.Add(_services.AddHttpClient<IMyPreferencesApi, MyPreferencesApi>(client));
             builders.Add(_services.AddHttpClient<IMyProfileApi, MyProfileApi>(client));
             builders.Add(_services.AddHttpClient<IMyTenantsApi, MyTenantsApi>(client));
+            builders.Add(_services.AddHttpClient<IObservationConfigurationApi, ObservationConfigurationApi>(client));
+            builders.Add(_services.AddHttpClient<IObservationsApi, ObservationsApi>(client));
             builders.Add(_services.AddHttpClient<IOnboardingStepsApi, OnboardingStepsApi>(client));
             builders.Add(_services.AddHttpClient<IOnboardingStepsConnectionsApi, OnboardingStepsConnectionsApi>(client));
             builders.Add(_services.AddHttpClient<IOrganizationsApi, OrganizationsApi>(client));
@@ -1207,6 +1248,7 @@ namespace EdGraph.Platform.Client.Client
             builders.Add(_services.AddHttpClient<IRulesApi, RulesApi>(client));
             builders.Add(_services.AddHttpClient<ISectionsApi, SectionsApi>(client));
             builders.Add(_services.AddHttpClient<ISettingsApi, SettingsApi>(client));
+            builders.Add(_services.AddHttpClient<ISpecificationsApi, SpecificationsApi>(client));
             builders.Add(_services.AddHttpClient<IStaffClassificationsApi, StaffClassificationsApi>(client));
             builders.Add(_services.AddHttpClient<IStateReportingStepsApi, StateReportingStepsApi>(client));
             builders.Add(_services.AddHttpClient<ISubmissionsApi, SubmissionsApi>(client));

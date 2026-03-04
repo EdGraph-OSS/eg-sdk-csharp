@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **TenantId** | **string** |  | [optional] 
 **Status** | **FormApiFormsV1FormStatus** |  | [optional] 
 **Sections** | [**List&lt;FormApiFormsV1CreateFullSectionRequest&gt;**](FormApiFormsV1CreateFullSectionRequest.md) |  | [optional] [readonly] 
+**Image** | **string** |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

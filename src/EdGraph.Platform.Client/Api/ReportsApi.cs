@@ -50,9 +50,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tags"> (optional)</param>
         /// <param name="isVisible"> (optional)</param>
         /// <param name="version"> (optional)</param>
+        /// <param name="identityRequired"> (optional)</param>
+        /// <param name="rolesRequired"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ICreateReportAsyncApiResponse"/>&gt;</returns>
-        Task<ICreateReportAsyncApiResponse> CreateReportAsyncAsync(string tenantId, Option<System.IO.Stream> file = default, Option<string> name = default, Option<string> shortDescription = default, Option<string> description = default, Option<string> tags = default, Option<bool> isVisible = default, Option<string> version = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<ICreateReportAsyncApiResponse> CreateReportAsyncAsync(string tenantId, Option<System.IO.Stream> file = default, Option<string> name = default, Option<string> shortDescription = default, Option<string> description = default, Option<string> tags = default, Option<bool> isVisible = default, Option<string> version = default, Option<bool> identityRequired = default, Option<bool> rolesRequired = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates a new report (Does not upload pbix file).
@@ -68,9 +70,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tags"> (optional)</param>
         /// <param name="isVisible"> (optional)</param>
         /// <param name="version"> (optional)</param>
+        /// <param name="identityRequired"> (optional)</param>
+        /// <param name="rolesRequired"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ICreateReportAsyncApiResponse"/>?&gt;</returns>
-        Task<ICreateReportAsyncApiResponse?> CreateReportAsyncOrDefaultAsync(string tenantId, Option<System.IO.Stream> file = default, Option<string> name = default, Option<string> shortDescription = default, Option<string> description = default, Option<string> tags = default, Option<bool> isVisible = default, Option<string> version = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<ICreateReportAsyncApiResponse?> CreateReportAsyncOrDefaultAsync(string tenantId, Option<System.IO.Stream> file = default, Option<string> name = default, Option<string> shortDescription = default, Option<string> description = default, Option<string> tags = default, Option<bool> isVisible = default, Option<string> version = default, Option<bool> identityRequired = default, Option<bool> rolesRequired = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Removes a report.
@@ -813,7 +817,7 @@ namespace EdGraph.Platform.Client.Api
             OauthTokenProvider = oauthTokenProvider;
         }
 
-        partial void FormatCreateReportAsync(ref string tenantId, ref Option<System.IO.Stream> file, ref Option<string> name, ref Option<string> shortDescription, ref Option<string> description, ref Option<string> tags, ref Option<bool> isVisible, ref Option<string> version);
+        partial void FormatCreateReportAsync(ref string tenantId, ref Option<System.IO.Stream> file, ref Option<string> name, ref Option<string> shortDescription, ref Option<string> description, ref Option<string> tags, ref Option<bool> isVisible, ref Option<string> version, ref Option<bool> identityRequired, ref Option<bool> rolesRequired);
 
         /// <summary>
         /// Validates the request parameters
@@ -862,10 +866,12 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tags"></param>
         /// <param name="isVisible"></param>
         /// <param name="version"></param>
-        private void AfterCreateReportAsyncDefaultImplementation(ICreateReportAsyncApiResponse apiResponseLocalVar, string tenantId, Option<System.IO.Stream> file, Option<string> name, Option<string> shortDescription, Option<string> description, Option<string> tags, Option<bool> isVisible, Option<string> version)
+        /// <param name="identityRequired"></param>
+        /// <param name="rolesRequired"></param>
+        private void AfterCreateReportAsyncDefaultImplementation(ICreateReportAsyncApiResponse apiResponseLocalVar, string tenantId, Option<System.IO.Stream> file, Option<string> name, Option<string> shortDescription, Option<string> description, Option<string> tags, Option<bool> isVisible, Option<string> version, Option<bool> identityRequired, Option<bool> rolesRequired)
         {
             bool suppressDefaultLog = false;
-            AfterCreateReportAsync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, file, name, shortDescription, description, tags, isVisible, version);
+            AfterCreateReportAsync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, file, name, shortDescription, description, tags, isVisible, version, identityRequired, rolesRequired);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -883,7 +889,9 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tags"></param>
         /// <param name="isVisible"></param>
         /// <param name="version"></param>
-        partial void AfterCreateReportAsync(ref bool suppressDefaultLog, ICreateReportAsyncApiResponse apiResponseLocalVar, string tenantId, Option<System.IO.Stream> file, Option<string> name, Option<string> shortDescription, Option<string> description, Option<string> tags, Option<bool> isVisible, Option<string> version);
+        /// <param name="identityRequired"></param>
+        /// <param name="rolesRequired"></param>
+        partial void AfterCreateReportAsync(ref bool suppressDefaultLog, ICreateReportAsyncApiResponse apiResponseLocalVar, string tenantId, Option<System.IO.Stream> file, Option<string> name, Option<string> shortDescription, Option<string> description, Option<string> tags, Option<bool> isVisible, Option<string> version, Option<bool> identityRequired, Option<bool> rolesRequired);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -899,10 +907,12 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tags"></param>
         /// <param name="isVisible"></param>
         /// <param name="version"></param>
-        private void OnErrorCreateReportAsyncDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, Option<System.IO.Stream> file, Option<string> name, Option<string> shortDescription, Option<string> description, Option<string> tags, Option<bool> isVisible, Option<string> version)
+        /// <param name="identityRequired"></param>
+        /// <param name="rolesRequired"></param>
+        private void OnErrorCreateReportAsyncDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, Option<System.IO.Stream> file, Option<string> name, Option<string> shortDescription, Option<string> description, Option<string> tags, Option<bool> isVisible, Option<string> version, Option<bool> identityRequired, Option<bool> rolesRequired)
         {
             bool suppressDefaultLog = false;
-            OnErrorCreateReportAsync(ref suppressDefaultLog, exception, pathFormat, path, tenantId, file, name, shortDescription, description, tags, isVisible, version);
+            OnErrorCreateReportAsync(ref suppressDefaultLog, exception, pathFormat, path, tenantId, file, name, shortDescription, description, tags, isVisible, version, identityRequired, rolesRequired);
             if (!suppressDefaultLog)
                 Logger.LogError(exception, "An error occurred while sending the request to the server.");
         }
@@ -922,7 +932,9 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tags"></param>
         /// <param name="isVisible"></param>
         /// <param name="version"></param>
-        partial void OnErrorCreateReportAsync(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, Option<System.IO.Stream> file, Option<string> name, Option<string> shortDescription, Option<string> description, Option<string> tags, Option<bool> isVisible, Option<string> version);
+        /// <param name="identityRequired"></param>
+        /// <param name="rolesRequired"></param>
+        partial void OnErrorCreateReportAsync(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, Option<System.IO.Stream> file, Option<string> name, Option<string> shortDescription, Option<string> description, Option<string> tags, Option<bool> isVisible, Option<string> version, Option<bool> identityRequired, Option<bool> rolesRequired);
 
         /// <summary>
         /// Creates a new report (Does not upload pbix file). 
@@ -935,13 +947,15 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tags"> (optional)</param>
         /// <param name="isVisible"> (optional)</param>
         /// <param name="version"> (optional)</param>
+        /// <param name="identityRequired"> (optional)</param>
+        /// <param name="rolesRequired"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ICreateReportAsyncApiResponse"/>&gt;</returns>
-        public async Task<ICreateReportAsyncApiResponse?> CreateReportAsyncOrDefaultAsync(string tenantId, Option<System.IO.Stream> file = default, Option<string> name = default, Option<string> shortDescription = default, Option<string> description = default, Option<string> tags = default, Option<bool> isVisible = default, Option<string> version = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<ICreateReportAsyncApiResponse?> CreateReportAsyncOrDefaultAsync(string tenantId, Option<System.IO.Stream> file = default, Option<string> name = default, Option<string> shortDescription = default, Option<string> description = default, Option<string> tags = default, Option<bool> isVisible = default, Option<string> version = default, Option<bool> identityRequired = default, Option<bool> rolesRequired = default, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await CreateReportAsyncAsync(tenantId, file, name, shortDescription, description, tags, isVisible, version, cancellationToken).ConfigureAwait(false);
+                return await CreateReportAsyncAsync(tenantId, file, name, shortDescription, description, tags, isVisible, version, identityRequired, rolesRequired, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -961,9 +975,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tags"> (optional)</param>
         /// <param name="isVisible"> (optional)</param>
         /// <param name="version"> (optional)</param>
+        /// <param name="identityRequired"> (optional)</param>
+        /// <param name="rolesRequired"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ICreateReportAsyncApiResponse"/>&gt;</returns>
-        public async Task<ICreateReportAsyncApiResponse> CreateReportAsyncAsync(string tenantId, Option<System.IO.Stream> file = default, Option<string> name = default, Option<string> shortDescription = default, Option<string> description = default, Option<string> tags = default, Option<bool> isVisible = default, Option<string> version = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<ICreateReportAsyncApiResponse> CreateReportAsyncAsync(string tenantId, Option<System.IO.Stream> file = default, Option<string> name = default, Option<string> shortDescription = default, Option<string> description = default, Option<string> tags = default, Option<bool> isVisible = default, Option<string> version = default, Option<bool> identityRequired = default, Option<bool> rolesRequired = default, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
@@ -971,7 +987,7 @@ namespace EdGraph.Platform.Client.Api
             {
                 ValidateCreateReportAsync(tenantId, file, name, shortDescription, description, tags, version);
 
-                FormatCreateReportAsync(ref tenantId, ref file, ref name, ref shortDescription, ref description, ref tags, ref isVisible, ref version);
+                FormatCreateReportAsync(ref tenantId, ref file, ref name, ref shortDescription, ref description, ref tags, ref isVisible, ref version, ref identityRequired, ref rolesRequired);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -1007,6 +1023,12 @@ namespace EdGraph.Platform.Client.Api
 
                     if (version.IsSet)
                         formParameterLocalVars.Add(new KeyValuePair<string?, string?>("Version", ClientUtils.ParameterToString(version.Value)));
+
+                    if (identityRequired.IsSet)
+                        formParameterLocalVars.Add(new KeyValuePair<string?, string?>("IdentityRequired", ClientUtils.ParameterToString(identityRequired.Value)));
+
+                    if (rolesRequired.IsSet)
+                        formParameterLocalVars.Add(new KeyValuePair<string?, string?>("RolesRequired", ClientUtils.ParameterToString(rolesRequired.Value)));
 
                     List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
                     httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
@@ -1047,7 +1069,7 @@ namespace EdGraph.Platform.Client.Api
 
                         CreateReportAsyncApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/analytics/reports", requestedAtLocalVar, _jsonSerializerOptions);
 
-                        AfterCreateReportAsyncDefaultImplementation(apiResponseLocalVar, tenantId, file, name, shortDescription, description, tags, isVisible, version);
+                        AfterCreateReportAsyncDefaultImplementation(apiResponseLocalVar, tenantId, file, name, shortDescription, description, tags, isVisible, version, identityRequired, rolesRequired);
 
                         Events.ExecuteOnCreateReportAsync(apiResponseLocalVar);
 
@@ -1061,7 +1083,7 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorCreateReportAsyncDefaultImplementation(e, "/tenants/{tenantId}/analytics/reports", uriBuilderLocalVar.Path, tenantId, file, name, shortDescription, description, tags, isVisible, version);
+                OnErrorCreateReportAsyncDefaultImplementation(e, "/tenants/{tenantId}/analytics/reports", uriBuilderLocalVar.Path, tenantId, file, name, shortDescription, description, tags, isVisible, version, identityRequired, rolesRequired);
                 Events.ExecuteOnErrorCreateReportAsync(e);
                 throw;
             }

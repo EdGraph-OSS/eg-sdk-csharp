@@ -41,8 +41,9 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="anonymous">anonymous</param>
         /// <param name="tenantId">tenantId</param>
         /// <param name="status">status</param>
+        /// <param name="image">image</param>
         [JsonConstructor]
-        public FormApiFormsV1UpdateFormRequest(Option<string?> id = default, Option<string?> name = default, Option<string?> description = default, Option<FormApiFormsV1FormSource?> source = default, Option<string?> varVersion = default, Option<bool?> anonymous = default, Option<string?> tenantId = default, Option<FormApiFormsV1FormStatus?> status = default)
+        public FormApiFormsV1UpdateFormRequest(Option<string?> id = default, Option<string?> name = default, Option<string?> description = default, Option<FormApiFormsV1FormSource?> source = default, Option<string?> varVersion = default, Option<bool?> anonymous = default, Option<string?> tenantId = default, Option<FormApiFormsV1FormStatus?> status = default, Option<string?> image = default)
         {
             IdOption = id;
             NameOption = name;
@@ -52,6 +53,7 @@ namespace EdGraph.Platform.Client.Model
             AnonymousOption = anonymous;
             TenantIdOption = tenantId;
             StatusOption = status;
+            ImageOption = image;
             OnCreated();
         }
 
@@ -162,6 +164,19 @@ namespace EdGraph.Platform.Client.Model
         public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of Image
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> ImageOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets Image
+        /// </summary>
+        [JsonPropertyName("image")]
+        public string? Image { get { return this.ImageOption; } set { this.ImageOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -177,6 +192,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  Anonymous: ").Append(Anonymous).Append("\n");
             sb.Append("  TenantId: ").Append(TenantId).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  Image: ").Append(Image).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -222,6 +238,7 @@ namespace EdGraph.Platform.Client.Model
             Option<bool?> anonymous = default;
             Option<string?> tenantId = default;
             Option<FormApiFormsV1FormStatus?> status = default;
+            Option<string?> image = default;
 
             while (utf8JsonReader.Read())
             {
@@ -267,6 +284,9 @@ namespace EdGraph.Platform.Client.Model
                             if (statusRawValue != null)
                                 status = new Option<FormApiFormsV1FormStatus?>(FormApiFormsV1FormStatusValueConverter.FromStringOrDefault(statusRawValue));
                             break;
+                        case "image":
+                            image = new Option<string?>(utf8JsonReader.GetString());
+                            break;
                         default:
                             break;
                     }
@@ -279,7 +299,7 @@ namespace EdGraph.Platform.Client.Model
             if (status.IsSet && status.Value == null)
                 throw new ArgumentNullException(nameof(status), "Property is not nullable for class FormApiFormsV1UpdateFormRequest.");
 
-            return new FormApiFormsV1UpdateFormRequest(id, name, description, source, varVersion, anonymous, tenantId, status);
+            return new FormApiFormsV1UpdateFormRequest(id, name, description, source, varVersion, anonymous, tenantId, status, image);
         }
 
         /// <summary>
@@ -352,6 +372,11 @@ namespace EdGraph.Platform.Client.Model
                 var statusRawValue = FormApiFormsV1FormStatusValueConverter.ToJsonValue(formApiFormsV1UpdateFormRequest.Status!.Value);
                 writer.WriteString("status", statusRawValue);
             }
+            if (formApiFormsV1UpdateFormRequest.ImageOption.IsSet)
+                if (formApiFormsV1UpdateFormRequest.ImageOption.Value != null)
+                    writer.WriteString("image", formApiFormsV1UpdateFormRequest.Image);
+                else
+                    writer.WriteNull("image");
         }
     }
 }

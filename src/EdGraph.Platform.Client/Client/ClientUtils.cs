@@ -162,6 +162,10 @@ namespace EdGraph.Platform.Client.Client
                 return EdGraphServicesStateReportingV1SubmissionStatusValueConverter.ToJsonValue(edGraphServicesStateReportingV1SubmissionStatus);
             if (obj is EdfiAdminApiEdfiAdminV1DatabaseTier edfiAdminApiEdfiAdminV1DatabaseTier)
                 return EdfiAdminApiEdfiAdminV1DatabaseTierValueConverter.ToJsonValue(edfiAdminApiEdfiAdminV1DatabaseTier);
+            if (obj is EdfiAdminApiEdfiAdminV1ExportStatus edfiAdminApiEdfiAdminV1ExportStatus)
+                return EdfiAdminApiEdfiAdminV1ExportStatusValueConverter.ToJsonValue(edfiAdminApiEdfiAdminV1ExportStatus);
+            if (obj is EdfiAdminApiEdfiAdminV1ExportType edfiAdminApiEdfiAdminV1ExportType)
+                return EdfiAdminApiEdfiAdminV1ExportTypeValueConverter.ToJsonValue(edfiAdminApiEdfiAdminV1ExportType);
             if (obj is EdfiAdminApiEdfiAdminV1InstanceType edfiAdminApiEdfiAdminV1InstanceType)
                 return EdfiAdminApiEdfiAdminV1InstanceTypeValueConverter.ToJsonValue(edfiAdminApiEdfiAdminV1InstanceType);
             if (obj is EdfiAdminApiEdfiAdminV1SecretValueType edfiAdminApiEdfiAdminV1SecretValueType)
@@ -188,6 +192,10 @@ namespace EdGraph.Platform.Client.Client
                 return FormApiSubmissionsV1ExportStatusValueConverter.ToJsonValue(formApiSubmissionsV1ExportStatus);
             if (obj is FormApiSubmissionsV1ExportType formApiSubmissionsV1ExportType)
                 return FormApiSubmissionsV1ExportTypeValueConverter.ToJsonValue(formApiSubmissionsV1ExportType);
+            if (obj is GoogleProtobufWellKnownTypesNullValue googleProtobufWellKnownTypesNullValue)
+                return GoogleProtobufWellKnownTypesNullValueValueConverter.ToJsonValue(googleProtobufWellKnownTypesNullValue);
+            if (obj is GoogleProtobufWellKnownTypesValueKindOneofCase googleProtobufWellKnownTypesValueKindOneofCase)
+                return GoogleProtobufWellKnownTypesValueKindOneofCaseValueConverter.ToJsonValue(googleProtobufWellKnownTypesValueKindOneofCase);
             if (obj is IMSAdminApiV1ClientsAccessTokenType iMSAdminApiV1ClientsAccessTokenType)
                 return IMSAdminApiV1ClientsAccessTokenTypeValueConverter.ToJsonValue(iMSAdminApiV1ClientsAccessTokenType);
             if (obj is IMSAdminApiV1ClientsTokenExpiration iMSAdminApiV1ClientsTokenExpiration)

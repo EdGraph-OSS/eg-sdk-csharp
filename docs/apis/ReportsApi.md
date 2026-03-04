@@ -15,7 +15,7 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 <a id="createreportasync"></a>
 # **CreateReportAsync**
-> AnalyticsApiReportsV1ReportIdResponse CreateReportAsync (string tenantId, System.IO.Stream file = null, string name = null, string shortDescription = null, string description = null, string tags = null, bool isVisible = null, string version = null)
+> AnalyticsApiReportsV1ReportIdResponse CreateReportAsync (string tenantId, System.IO.Stream file = null, string name = null, string shortDescription = null, string description = null, string tags = null, bool isVisible = null, string version = null, bool identityRequired = null, bool rolesRequired = null)
 
 Creates a new report (Does not upload pbix file).
 
@@ -47,11 +47,13 @@ namespace Example
             var tags = "tags_example";  // string |  (optional) 
             var isVisible = true;  // bool |  (optional) 
             var version = "version_example";  // string |  (optional) 
+            var identityRequired = true;  // bool |  (optional) 
+            var rolesRequired = true;  // bool |  (optional) 
 
             try
             {
                 // Creates a new report (Does not upload pbix file).
-                AnalyticsApiReportsV1ReportIdResponse result = apiInstance.CreateReportAsync(tenantId, file, name, shortDescription, description, tags, isVisible, version);
+                AnalyticsApiReportsV1ReportIdResponse result = apiInstance.CreateReportAsync(tenantId, file, name, shortDescription, description, tags, isVisible, version, identityRequired, rolesRequired);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -72,7 +74,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Creates a new report (Does not upload pbix file).
-    ApiResponse<AnalyticsApiReportsV1ReportIdResponse> response = apiInstance.CreateReportAsyncWithHttpInfo(tenantId, file, name, shortDescription, description, tags, isVisible, version);
+    ApiResponse<AnalyticsApiReportsV1ReportIdResponse> response = apiInstance.CreateReportAsyncWithHttpInfo(tenantId, file, name, shortDescription, description, tags, isVisible, version, identityRequired, rolesRequired);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -97,6 +99,8 @@ catch (ApiException e)
 | **tags** | **string** |  | [optional]  |
 | **isVisible** | **bool** |  | [optional]  |
 | **version** | **string** |  | [optional]  |
+| **identityRequired** | **bool** |  | [optional]  |
+| **rolesRequired** | **bool** |  | [optional]  |
 
 ### Return type
 

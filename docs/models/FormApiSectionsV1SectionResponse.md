@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **DeletedDateTime** | **string** |  | [optional] 
 **IsDeleted** | **bool** |  | [optional] 
 **Order** | **int** |  | [optional] 
+**SubHeading** | **string** |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

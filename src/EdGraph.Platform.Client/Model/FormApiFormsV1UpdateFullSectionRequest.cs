@@ -38,14 +38,16 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="description">description</param>
         /// <param name="questions">questions</param>
         /// <param name="order">order</param>
+        /// <param name="subHeading">subHeading</param>
         [JsonConstructor]
-        public FormApiFormsV1UpdateFullSectionRequest(Option<string?> id = default, Option<string?> title = default, Option<string?> description = default, Option<List<FormApiFormsV1UpdateFullQuestionRequest>?> questions = default, Option<int?> order = default)
+        public FormApiFormsV1UpdateFullSectionRequest(Option<string?> id = default, Option<string?> title = default, Option<string?> description = default, Option<List<FormApiFormsV1UpdateFullQuestionRequest>?> questions = default, Option<int?> order = default, Option<string?> subHeading = default)
         {
             IdOption = id;
             TitleOption = title;
             DescriptionOption = description;
             QuestionsOption = questions;
             OrderOption = order;
+            SubHeadingOption = subHeading;
             OnCreated();
         }
 
@@ -117,6 +119,19 @@ namespace EdGraph.Platform.Client.Model
         public int? Order { get { return this.OrderOption; } set { this.OrderOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of SubHeading
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> SubHeadingOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets SubHeading
+        /// </summary>
+        [JsonPropertyName("subHeading")]
+        public string? SubHeading { get { return this.SubHeadingOption; } set { this.SubHeadingOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -129,6 +144,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Questions: ").Append(Questions).Append("\n");
             sb.Append("  Order: ").Append(Order).Append("\n");
+            sb.Append("  SubHeading: ").Append(SubHeading).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -171,6 +187,7 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> description = default;
             Option<List<FormApiFormsV1UpdateFullQuestionRequest>?> questions = default;
             Option<int?> order = default;
+            Option<string?> subHeading = default;
 
             while (utf8JsonReader.Read())
             {
@@ -204,13 +221,16 @@ namespace EdGraph.Platform.Client.Model
                             if (utf8JsonReader.TokenType != JsonTokenType.Null)
                                 order = new Option<int?>(utf8JsonReader.GetInt32());
                             break;
+                        case "subHeading":
+                            subHeading = new Option<string?>(utf8JsonReader.GetString());
+                            break;
                         default:
                             break;
                     }
                 }
             }
 
-            return new FormApiFormsV1UpdateFullSectionRequest(id, title, description, questions, order);
+            return new FormApiFormsV1UpdateFullSectionRequest(id, title, description, questions, order, subHeading);
         }
 
         /// <summary>
@@ -268,6 +288,12 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteNumber("order", formApiFormsV1UpdateFullSectionRequest.OrderOption.Value!.Value);
                 else
                     writer.WriteNull("order");
+
+            if (formApiFormsV1UpdateFullSectionRequest.SubHeadingOption.IsSet)
+                if (formApiFormsV1UpdateFullSectionRequest.SubHeadingOption.Value != null)
+                    writer.WriteString("subHeading", formApiFormsV1UpdateFullSectionRequest.SubHeading);
+                else
+                    writer.WriteNull("subHeading");
         }
     }
 }

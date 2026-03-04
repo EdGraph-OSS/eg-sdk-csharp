@@ -58,7 +58,22 @@ namespace EdGraph.Platform.Client.Model
         /// <summary>
         /// Enum CustomComponent for value: CustomComponent
         /// </summary>
-        CustomComponent
+        CustomComponent,
+
+        /// <summary>
+        /// Enum Scoring for value: Scoring
+        /// </summary>
+        Scoring,
+
+        /// <summary>
+        /// Enum Html for value: Html
+        /// </summary>
+        Html,
+
+        /// <summary>
+        /// Enum Image for value: Image
+        /// </summary>
+        Image
     }
 
     /// <summary>
@@ -91,6 +106,15 @@ namespace EdGraph.Platform.Client.Model
             if (value.Equals("CustomComponent"))
                 return FormApiQuestionsV1QuestionType.CustomComponent;
 
+            if (value.Equals("Scoring"))
+                return FormApiQuestionsV1QuestionType.Scoring;
+
+            if (value.Equals("Html"))
+                return FormApiQuestionsV1QuestionType.Html;
+
+            if (value.Equals("Image"))
+                return FormApiQuestionsV1QuestionType.Image;
+
             throw new NotImplementedException($"Could not convert value to type FormApiQuestionsV1QuestionType: '{value}'");
         }
 
@@ -118,6 +142,15 @@ namespace EdGraph.Platform.Client.Model
 
             if (value.Equals("CustomComponent"))
                 return FormApiQuestionsV1QuestionType.CustomComponent;
+
+            if (value.Equals("Scoring"))
+                return FormApiQuestionsV1QuestionType.Scoring;
+
+            if (value.Equals("Html"))
+                return FormApiQuestionsV1QuestionType.Html;
+
+            if (value.Equals("Image"))
+                return FormApiQuestionsV1QuestionType.Image;
 
             return null;
         }
@@ -147,6 +180,15 @@ namespace EdGraph.Platform.Client.Model
 
             if (value == FormApiQuestionsV1QuestionType.CustomComponent)
                 return "CustomComponent";
+
+            if (value == FormApiQuestionsV1QuestionType.Scoring)
+                return "Scoring";
+
+            if (value == FormApiQuestionsV1QuestionType.Html)
+                return "Html";
+
+            if (value == FormApiQuestionsV1QuestionType.Image)
+                return "Image";
 
             throw new NotImplementedException($"Value could not be handled: '{value}'");
         }

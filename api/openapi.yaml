@@ -9,6 +9,90 @@ security:
 - oauth2:
   - https://api.edgraph.com/auth/tenant
 paths:
+  /tenants/{tenantId}/analytics/datalake/query:
+    get:
+      operationId: GetPaginatedLakehouseRecords
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 10
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: orderBy
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsApi.Lakehouses.V1.PaginatedLakehouseRecordsResponse'
+          description: The requested resource was successfully retrieved.
+        "400":
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Retrieves gold-tier data from the lakehouse
+      tags:
+      - Analytics / Data Lake
   /tenants/{tenantId}/analytics/connectors/{connectorId}:
     delete:
       operationId: DeleteConnector
@@ -2647,6 +2731,89 @@ paths:
       summary: Adds a Data Steward to Categories.
       tags:
       - Categories
+  /changes/{tenantId}/changes:
+    get:
+      operationId: GetAllChangesAsync
+      parameters:
+      - explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 10
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: orderBy
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChangeLog.Change.V1.ChangeLogResponsePaginatedItemsViewModel'
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request
+      tags:
+      - Changes Logs
   /tenants/{tenantId}/oneroster/instances/{instanceId}/clients/{clientId}/regeneratesecret:
     put:
       operationId: RegenerateOneRosterApiClientSecretAsync
@@ -12831,6 +12998,56 @@ paths:
       summary: Searches the Campuses associated with an Evaluation for a given Tenant.
       tags:
       - Evaluations
+  /tenants/{tenantId}/evaluations/count:
+    get:
+      operationId: GetEvaluationCount
+      parameters:
+      - explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvaluationApi.Evaluations.V1.EvaluationCountResponse'
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request
+      tags:
+      - Evaluations
   /tenants/{tenantId}/evaluations/forms:
     get:
       operationId: SearchEvaluationForms
@@ -15567,6 +15784,82 @@ paths:
                 $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
           description: The resource could not be found.
       summary: Retrieves an API Client of an Application by ID.
+      tags:
+      - Instances / Applications
+  /tenants/{tenantId}/edfiadmin/instances/{instanceId}/applications/{applicationId}/apiclients/regenerate:
+    put:
+      operationId: RegenerateApplicationApiClientCredentials
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: instanceId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: applicationId
+        required: true
+        schema:
+          format: int32
+          type: integer
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.RegenerateApiClientSecretResponse'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: The resource could not be found.
+      summary: Regenerates an application's API Client Credentials
       tags:
       - Instances / Applications
   /tenants/{tenantId}/edfiadmin/instances/{instanceId}/applications/{applicationId}/apiclients:
@@ -27092,6 +27385,979 @@ paths:
       summary: Searches tenants associated to the user.
       tags:
       - My Tenants
+  /tenants/{tenantId}/observations/configuration/application:
+    post:
+      operationId: SetObservationSettingApplicationSetting
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EvaluationApi.EvaluationSettings.V1.SetApplicationRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EvaluationApi.EvaluationSettings.V1.SetApplicationRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EvaluationApi.EvaluationSettings.V1.SetApplicationRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EvaluationApi.EvaluationSettings.V1.SetApplicationRequest'
+        description: ""
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvaluationApi.EvaluationSettings.V1.ApplicationSetResponse'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Sets the Application Settings of an Observation for a given Tenant
+      tags:
+      - Observation Configuration
+  /tenants/{tenantId}/observations/configuration/users:
+    post:
+      operationId: SetObservationSettingUserSetting
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EvaluationApi.EvaluationSettings.V1.SetUsersRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EvaluationApi.EvaluationSettings.V1.SetUsersRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EvaluationApi.EvaluationSettings.V1.SetUsersRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EvaluationApi.EvaluationSettings.V1.SetUsersRequest'
+        description: ""
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvaluationApi.EvaluationSettings.V1.UsersSetResponse'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Sets the User Settings of an Observation for a given Tenant
+      tags:
+      - Observation Configuration
+  /tenants/{tenantId}/observations/configuration:
+    get:
+      operationId: GetTenantObservationSettings
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvaluationApi.EvaluationSettings.V1.EvaluationSettingResponse'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Gets the Observation Settings for a given tenant
+      tags:
+      - Observation Configuration
+  /tenants/{tenantId}/observations/{observationId}:
+    delete:
+      operationId: DeleteObservation
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: observationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvaluationApi.Evaluations.V1.EvaluationDeletedResponse'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Deletes an Observation for a given tenant
+      tags:
+      - Observations
+    get:
+      operationId: GetObservation
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: observationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvaluationApi.Evaluations.V1.EvaluationResponse'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Get an Observation for a given tenant
+      tags:
+      - Observations
+    put:
+      operationId: UpdateObservation
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: observationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EvaluationApi.Evaluations.V1.UpdateEvaluationRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EvaluationApi.Evaluations.V1.UpdateEvaluationRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EvaluationApi.Evaluations.V1.UpdateEvaluationRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EvaluationApi.Evaluations.V1.UpdateEvaluationRequest'
+        description: ""
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvaluationApi.Evaluations.V1.EvaluationUpdatedResponse'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Updates an Observation for a given tenant
+      tags:
+      - Observations
+  /tenants/{tenantId}/observations/campuses:
+    get:
+      operationId: SearchObservationCampuses
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 10
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: orderBy
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvaluationApi.Evaluations.V1.CampusResponsePaginatedItemsViewModel'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Searches the Campuses associated with an Observation for a given Tenant.
+      tags:
+      - Observations
+  /tenants/{tenantId}/observations/count:
+    get:
+      operationId: GetObservationCount
+      parameters:
+      - explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvaluationApi.Evaluations.V1.EvaluationCountResponse'
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request
+      tags:
+      - Observations
+  /tenants/{tenantId}/observations/evaluees:
+    get:
+      operationId: SearchObservationEvaluees
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 10
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: orderBy
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Evaluations.StaffSearchedResponse'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Searches the Staff associated with an Observation for a given Tenant.
+      tags:
+      - Observations
+  /tenants/{tenantId}/observations/forms:
+    get:
+      operationId: SearchObservationForms
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 10
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: orderBy
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvaluationApi.Evaluations.V1.FormResponsePaginatedItemsViewModel'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Searches the Forms associated with an Observation for a given Tenant.
+      tags:
+      - Observations
+  /tenants/{tenantId}/observations/observers:
+    get:
+      operationId: SearchObservationObservers
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 10
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: orderBy
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Evaluations.AppraisersSearchedResponse'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Searches the Appraisers associated with an Observation for a given
+        Tenant.
+      tags:
+      - Observations
+  /tenants/{tenantId}/observations:
+    get:
+      operationId: SearchObservations
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 10
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: orderBy
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvaluationApi.Evaluations.V1.EvaluationResponsePaginatedItemsViewModel'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Searches the Observations for a given tenant
+      tags:
+      - Observations
+    post:
+      operationId: CreateObservation
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EvaluationApi.Evaluations.V1.CreateEvaluationRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EvaluationApi.Evaluations.V1.CreateEvaluationRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EvaluationApi.Evaluations.V1.CreateEvaluationRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EvaluationApi.Evaluations.V1.CreateEvaluationRequest'
+        description: ""
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvaluationApi.Evaluations.V1.EvaluationCreatedResponse'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Creates a new Observation for a given tenant
+      tags:
+      - Observations
   /tenants/{tenantId}/onboardingsteps/{stepNumber}/connections/{connectionId}:
     get:
       operationId: GetOnboardingStepConnectionById
@@ -31258,6 +32524,10 @@ paths:
                 style: form
               Version:
                 style: form
+              IdentityRequired:
+                style: form
+              RolesRequired:
+                style: form
             schema:
               $ref: '#/components/schemas/CreateReportAsync_request'
       responses:
@@ -33022,6 +34292,641 @@ paths:
       summary: Retrieves a list of the Tenant's settings.
       tags:
       - Settings
+  /tenants/{tenantId}/edfiadmin/instances/{instanceId}/specifications/{id}:
+    delete:
+      operationId: DeleteSpecification
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: instanceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.SpecificationDeletedResponse'
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Not Found
+      summary: Delete of Specification resource
+      tags:
+      - Specifications
+    get:
+      operationId: GetSpecification
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: instanceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.SpecificationResponse'
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Not Found
+      summary: Get Specification resource
+      tags:
+      - Specifications
+    put:
+      operationId: UpdateSpecification
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: instanceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.UpdateSpecificationRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.UpdateSpecificationRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.UpdateSpecificationRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.UpdateSpecificationRequest'
+        description: ""
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.SpecificationUpdatedResponse'
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Not Found
+      summary: Update specification
+      tags:
+      - Specifications
+  /tenants/{tenantId}/edfiadmin/instances/{instanceId}/specifications/{specificationId}/purge:
+    delete:
+      operationId: PurgeSpecification
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: instanceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: specificationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.SpecificationPurgedResponse'
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Not Found
+      summary: Purge a deleted Specification resource
+      tags:
+      - Specifications
+  /tenants/{tenantId}/edfiadmin/instances/{instanceId}/specifications/{specificationId}/recover:
+    post:
+      operationId: RecoverSpecification
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: instanceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: specificationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.SpecificationRecoveredResponse'
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Not Found
+      summary: Recover deleted Specification resource
+      tags:
+      - Specifications
+  /tenants/{tenantId}/edfiadmin/instances/{instanceId}/specifications/export:
+    post:
+      operationId: ExportSpecifications
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: instanceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.ExportSpecificationsRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.ExportSpecificationsRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.ExportSpecificationsRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.ExportSpecificationsRequest'
+        description: ""
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.SpecificationsExportedResponse'
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Not Found
+      summary: Export all Specifications resources given a Tenant
+      tags:
+      - Specifications
+  /tenants/{tenantId}/edfiadmin/instances/{instanceId}/specifications/search:
+    post:
+      operationId: SearchSpecifications
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: instanceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.SearchSpecificationsRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.SearchSpecificationsRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.SearchSpecificationsRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.SearchSpecificationsRequest'
+        description: ""
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.SpecificationsSearchResponse'
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Not Found
+      summary: Seaarch specifications
+      tags:
+      - Specifications
+  /tenants/{tenantId}/edfiadmin/instances/{instanceId}/specifications:
+    post:
+      operationId: CreateSpecification
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: instanceId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.CreateSpecificationRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.CreateSpecificationRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.CreateSpecificationRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.CreateSpecificationRequest'
+        description: ""
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          description: Success
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Not Found
+      summary: Create a Specification resource
+      tags:
+      - Specifications
   /tenants/{tenantId}/staffclassifications/{staffClassificationId}:
     delete:
       operationId: DeleteStaffClassification
@@ -40662,6 +42567,83 @@ components:
           readOnly: true
           type: array
       type: object
+    AnalyticsApi.Lakehouses.V1.LakehouseRecord:
+      additionalProperties: false
+      example:
+        lastModifiedDateTime: lastModifiedDateTime
+        entityName: entityName
+        dataStandardVersion: dataStandardVersion
+        resourceKeyHash: resourceKeyHash
+        jsonPayload: jsonPayload
+        tenantId: tenantId
+        schoolYear: 2
+        dataStandardName: dataStandardName
+      properties:
+        tenantId:
+          nullable: true
+          type: string
+        schoolYear:
+          format: int32
+          type: integer
+        dataStandardName:
+          nullable: true
+          type: string
+        dataStandardVersion:
+          nullable: true
+          type: string
+        entityName:
+          nullable: true
+          type: string
+        resourceKeyHash:
+          nullable: true
+          type: string
+        jsonPayload:
+          nullable: true
+          type: string
+        lastModifiedDateTime:
+          nullable: true
+          type: string
+      type: object
+    AnalyticsApi.Lakehouses.V1.PaginatedLakehouseRecordsResponse:
+      additionalProperties: false
+      example:
+        data:
+        - lastModifiedDateTime: lastModifiedDateTime
+          entityName: entityName
+          dataStandardVersion: dataStandardVersion
+          resourceKeyHash: resourceKeyHash
+          jsonPayload: jsonPayload
+          tenantId: tenantId
+          schoolYear: 2
+          dataStandardName: dataStandardName
+        - lastModifiedDateTime: lastModifiedDateTime
+          entityName: entityName
+          dataStandardVersion: dataStandardVersion
+          resourceKeyHash: resourceKeyHash
+          jsonPayload: jsonPayload
+          tenantId: tenantId
+          schoolYear: 2
+          dataStandardName: dataStandardName
+        pageIndex: 1
+        count: 5
+        pageSize: 5
+      properties:
+        pageIndex:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        count:
+          format: int64
+          type: integer
+        data:
+          items:
+            $ref: '#/components/schemas/AnalyticsApi.Lakehouses.V1.LakehouseRecord'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
     AnalyticsApi.Reports.V1.AnalyticsEmbedToken:
       additionalProperties: false
       example:
@@ -41473,6 +43455,289 @@ components:
       - Link
       - Asset
       type: string
+    ChangeLog.Change.V1.ChangeLogResponse:
+      additionalProperties: false
+      example:
+        traceId: traceId
+        eventId: eventId
+        entityType: entityType
+        eventVersion: eventVersion
+        createdDateTime: createdDateTime
+        entityId: entityId
+        eventPayload:
+          fields:
+            key:
+              listValue:
+                values:
+                - null
+                - null
+              stringValue: stringValue
+              kindCase: "{}"
+              hasNumberValue: true
+              structValue: null
+              hasNullValue: true
+              boolValue: true
+              numberValue: 5.962133916683182
+              nullValue: NullValue
+              hasBoolValue: true
+              hasStringValue: true
+        source: source
+        producerClientId: producerClientId
+        eventType: eventType
+        producedBy: producedBy
+        extensions:
+          fields:
+            key:
+              listValue:
+                values:
+                - null
+                - null
+              stringValue: stringValue
+              kindCase: "{}"
+              hasNumberValue: true
+              structValue: null
+              hasNullValue: true
+              boolValue: true
+              numberValue: 5.962133916683182
+              nullValue: NullValue
+              hasBoolValue: true
+              hasStringValue: true
+        producedDateTime: producedDateTime
+        createdBy: createdBy
+        eventSchema:
+          fields:
+            key:
+              listValue:
+                values:
+                - null
+                - null
+              stringValue: stringValue
+              kindCase: "{}"
+              hasNumberValue: true
+              structValue: null
+              hasNullValue: true
+              boolValue: true
+              numberValue: 5.962133916683182
+              nullValue: NullValue
+              hasBoolValue: true
+              hasStringValue: true
+        tenantId: tenantId
+        correlationId: correlationId
+        id: id
+        producerAddress: producerAddress
+      properties:
+        id:
+          nullable: true
+          type: string
+        createdBy:
+          nullable: true
+          type: string
+        createdDateTime:
+          nullable: true
+          type: string
+        source:
+          nullable: true
+          type: string
+        traceId:
+          nullable: true
+          type: string
+        correlationId:
+          nullable: true
+          type: string
+        tenantId:
+          nullable: true
+          type: string
+        producedBy:
+          nullable: true
+          type: string
+        producedDateTime:
+          nullable: true
+          type: string
+        producerClientId:
+          nullable: true
+          type: string
+        producerAddress:
+          nullable: true
+          type: string
+        entityType:
+          nullable: true
+          type: string
+        entityId:
+          nullable: true
+          type: string
+        eventType:
+          nullable: true
+          type: string
+        eventId:
+          nullable: true
+          type: string
+        eventPayload:
+          $ref: '#/components/schemas/Google.Protobuf.WellKnownTypes.Struct'
+        eventSchema:
+          $ref: '#/components/schemas/Google.Protobuf.WellKnownTypes.Struct'
+        eventVersion:
+          nullable: true
+          type: string
+        extensions:
+          $ref: '#/components/schemas/Google.Protobuf.WellKnownTypes.Struct'
+      type: object
+    ChangeLog.Change.V1.ChangeLogResponsePaginatedItemsViewModel:
+      additionalProperties: false
+      example:
+        data:
+        - traceId: traceId
+          eventId: eventId
+          entityType: entityType
+          eventVersion: eventVersion
+          createdDateTime: createdDateTime
+          entityId: entityId
+          eventPayload:
+            fields:
+              key:
+                listValue:
+                  values:
+                  - null
+                  - null
+                stringValue: stringValue
+                kindCase: "{}"
+                hasNumberValue: true
+                structValue: null
+                hasNullValue: true
+                boolValue: true
+                numberValue: 5.962133916683182
+                nullValue: NullValue
+                hasBoolValue: true
+                hasStringValue: true
+          source: source
+          producerClientId: producerClientId
+          eventType: eventType
+          producedBy: producedBy
+          extensions:
+            fields:
+              key:
+                listValue:
+                  values:
+                  - null
+                  - null
+                stringValue: stringValue
+                kindCase: "{}"
+                hasNumberValue: true
+                structValue: null
+                hasNullValue: true
+                boolValue: true
+                numberValue: 5.962133916683182
+                nullValue: NullValue
+                hasBoolValue: true
+                hasStringValue: true
+          producedDateTime: producedDateTime
+          createdBy: createdBy
+          eventSchema:
+            fields:
+              key:
+                listValue:
+                  values:
+                  - null
+                  - null
+                stringValue: stringValue
+                kindCase: "{}"
+                hasNumberValue: true
+                structValue: null
+                hasNullValue: true
+                boolValue: true
+                numberValue: 5.962133916683182
+                nullValue: NullValue
+                hasBoolValue: true
+                hasStringValue: true
+          tenantId: tenantId
+          correlationId: correlationId
+          id: id
+          producerAddress: producerAddress
+        - traceId: traceId
+          eventId: eventId
+          entityType: entityType
+          eventVersion: eventVersion
+          createdDateTime: createdDateTime
+          entityId: entityId
+          eventPayload:
+            fields:
+              key:
+                listValue:
+                  values:
+                  - null
+                  - null
+                stringValue: stringValue
+                kindCase: "{}"
+                hasNumberValue: true
+                structValue: null
+                hasNullValue: true
+                boolValue: true
+                numberValue: 5.962133916683182
+                nullValue: NullValue
+                hasBoolValue: true
+                hasStringValue: true
+          source: source
+          producerClientId: producerClientId
+          eventType: eventType
+          producedBy: producedBy
+          extensions:
+            fields:
+              key:
+                listValue:
+                  values:
+                  - null
+                  - null
+                stringValue: stringValue
+                kindCase: "{}"
+                hasNumberValue: true
+                structValue: null
+                hasNullValue: true
+                boolValue: true
+                numberValue: 5.962133916683182
+                nullValue: NullValue
+                hasBoolValue: true
+                hasStringValue: true
+          producedDateTime: producedDateTime
+          createdBy: createdBy
+          eventSchema:
+            fields:
+              key:
+                listValue:
+                  values:
+                  - null
+                  - null
+                stringValue: stringValue
+                kindCase: "{}"
+                hasNumberValue: true
+                structValue: null
+                hasNullValue: true
+                boolValue: true
+                numberValue: 5.962133916683182
+                nullValue: NullValue
+                hasBoolValue: true
+                hasStringValue: true
+          tenantId: tenantId
+          correlationId: correlationId
+          id: id
+          producerAddress: producerAddress
+        pageIndex: 0
+        count: 1
+        pageSize: 6
+      properties:
+        pageIndex:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        count:
+          format: int64
+          type: integer
+        data:
+          items:
+            $ref: '#/components/schemas/ChangeLog.Change.V1.ChangeLogResponse'
+          nullable: true
+          type: array
+      type: object
     DataSyncApi.Connection.V1.ConnectionListResponse:
       additionalProperties: false
       example:
@@ -46038,6 +48303,7 @@ components:
     EdGraph.HttpAggregators.Tenant.Api.Services.Forms.v1.Form:
       additionalProperties: false
       example:
+        image: image
         lastModifiedDateTime: lastModifiedDateTime
         lastModifiedBy: lastModifiedBy
         submissionCount: 0
@@ -46101,12 +48367,16 @@ components:
           type: string
         isDeleted:
           type: boolean
+        image:
+          nullable: true
+          type: string
       type: object
     EdGraph.HttpAggregators.Tenant.Api.Services.Forms.v1.FormPaginatedItemsViewModel:
       additionalProperties: false
       example:
         data:
-        - lastModifiedDateTime: lastModifiedDateTime
+        - image: image
+          lastModifiedDateTime: lastModifiedDateTime
           lastModifiedBy: lastModifiedBy
           submissionCount: 0
           description: description
@@ -46122,7 +48392,8 @@ components:
           anonymous: true
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           status: status
-        - lastModifiedDateTime: lastModifiedDateTime
+        - image: image
+          lastModifiedDateTime: lastModifiedDateTime
           lastModifiedBy: lastModifiedBy
           submissionCount: 0
           description: description
@@ -51602,6 +53873,25 @@ components:
           nullable: true
           type: string
       type: object
+    EdfiAdminApi.EdfiAdmin.V1.CreateSpecificationRequest:
+      additionalProperties: false
+      properties:
+        tenantId:
+          nullable: true
+          type: string
+        instanceId:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        description:
+          nullable: true
+          type: string
+        specification:
+          nullable: true
+          type: string
+      type: object
     EdfiAdminApi.EdfiAdmin.V1.CreateStateEducationAgencyRequest:
       additionalProperties: false
       properties:
@@ -52901,6 +55191,33 @@ components:
           nullable: true
           type: string
       type: object
+    EdfiAdminApi.EdfiAdmin.V1.ExportSpecificationsRequest:
+      additionalProperties: false
+      properties:
+        id:
+          nullable: true
+          type: string
+        tenantId:
+          nullable: true
+          type: string
+        instanceId:
+          nullable: true
+          type: string
+        type:
+          $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.ExportType'
+      type: object
+    EdfiAdminApi.EdfiAdmin.V1.ExportStatus:
+      enum:
+      - Unknown
+      - Failure
+      - Exported
+      type: string
+    EdfiAdminApi.EdfiAdmin.V1.ExportType:
+      enum:
+      - Unknown
+      - Json
+      - Csv
+      type: string
     EdfiAdminApi.EdfiAdmin.V1.GenderRepresentation:
       additionalProperties: false
       example:
@@ -55685,6 +58002,22 @@ components:
           readOnly: true
           type: array
       type: object
+    EdfiAdminApi.EdfiAdmin.V1.SearchSpecificationsRequest:
+      additionalProperties: false
+      properties:
+        pageSize:
+          format: int32
+          type: integer
+        pageIndex:
+          format: int32
+          type: integer
+        orderBy:
+          nullable: true
+          type: string
+        filter:
+          nullable: true
+          type: string
+      type: object
     EdfiAdminApi.EdfiAdmin.V1.SecretEncryptionMetadata:
       additionalProperties: false
       example:
@@ -55715,6 +58048,217 @@ components:
           type: string
         isDefault:
           type: boolean
+      type: object
+    EdfiAdminApi.EdfiAdmin.V1.SpecificationDeletedResponse:
+      additionalProperties: false
+      example:
+        instanceId: instanceId
+        tenantId: tenantId
+        id: id
+      properties:
+        id:
+          nullable: true
+          type: string
+        tenantId:
+          nullable: true
+          type: string
+        instanceId:
+          nullable: true
+          type: string
+      type: object
+    EdfiAdminApi.EdfiAdmin.V1.SpecificationPurgedResponse:
+      additionalProperties: false
+      example:
+        instanceId: instanceId
+        tenantId: tenantId
+        id: id
+      properties:
+        id:
+          nullable: true
+          type: string
+        tenantId:
+          nullable: true
+          type: string
+        instanceId:
+          nullable: true
+          type: string
+      type: object
+    EdfiAdminApi.EdfiAdmin.V1.SpecificationRecoveredResponse:
+      additionalProperties: false
+      example:
+        instanceId: instanceId
+        tenantId: tenantId
+        id: id
+      properties:
+        id:
+          nullable: true
+          type: string
+        tenantId:
+          nullable: true
+          type: string
+        instanceId:
+          nullable: true
+          type: string
+      type: object
+    EdfiAdminApi.EdfiAdmin.V1.SpecificationResponse:
+      additionalProperties: false
+      example:
+        lastModifiedDateTime: lastModifiedDateTime
+        lastModifiedBy: lastModifiedBy
+        description: description
+        specification: specification
+        createdDateTime: createdDateTime
+        deletedDateTime: deletedDateTime
+        deletedBy: deletedBy
+        instanceId: instanceId
+        isDeleted: true
+        createdBy: createdBy
+        tenantId: tenantId
+        name: name
+        id: id
+      properties:
+        id:
+          nullable: true
+          type: string
+        instanceId:
+          nullable: true
+          type: string
+        tenantId:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        description:
+          nullable: true
+          type: string
+        specification:
+          nullable: true
+          type: string
+        createdBy:
+          nullable: true
+          type: string
+        createdDateTime:
+          nullable: true
+          type: string
+        lastModifiedBy:
+          nullable: true
+          type: string
+        lastModifiedDateTime:
+          nullable: true
+          type: string
+        isDeleted:
+          nullable: true
+          type: boolean
+        deletedBy:
+          nullable: true
+          type: string
+        deletedDateTime:
+          nullable: true
+          type: string
+      type: object
+    EdfiAdminApi.EdfiAdmin.V1.SpecificationUpdatedResponse:
+      additionalProperties: false
+      example:
+        instanceId: instanceId
+        tenantId: tenantId
+        id: id
+      properties:
+        id:
+          nullable: true
+          type: string
+        tenantId:
+          nullable: true
+          type: string
+        instanceId:
+          nullable: true
+          type: string
+      type: object
+    EdfiAdminApi.EdfiAdmin.V1.SpecificationsExportedResponse:
+      additionalProperties: false
+      example:
+        instanceId: instanceId
+        contents:
+        - 0
+        - 0
+        tenantId: tenantId
+        details: details
+        id: id
+        type: Unknown
+        status: Unknown
+      properties:
+        id:
+          nullable: true
+          type: string
+        tenantId:
+          nullable: true
+          type: string
+        instanceId:
+          nullable: true
+          type: string
+        type:
+          $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.ExportType'
+        status:
+          $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.ExportStatus'
+        details:
+          nullable: true
+          type: string
+        contents:
+          items:
+            format: int32
+            type: integer
+          nullable: true
+          type: array
+      type: object
+    EdfiAdminApi.EdfiAdmin.V1.SpecificationsSearchResponse:
+      additionalProperties: false
+      example:
+        data:
+        - lastModifiedDateTime: lastModifiedDateTime
+          lastModifiedBy: lastModifiedBy
+          description: description
+          specification: specification
+          createdDateTime: createdDateTime
+          deletedDateTime: deletedDateTime
+          deletedBy: deletedBy
+          instanceId: instanceId
+          isDeleted: true
+          createdBy: createdBy
+          tenantId: tenantId
+          name: name
+          id: id
+        - lastModifiedDateTime: lastModifiedDateTime
+          lastModifiedBy: lastModifiedBy
+          description: description
+          specification: specification
+          createdDateTime: createdDateTime
+          deletedDateTime: deletedDateTime
+          deletedBy: deletedBy
+          instanceId: instanceId
+          isDeleted: true
+          createdBy: createdBy
+          tenantId: tenantId
+          name: name
+          id: id
+        pageIndex: 6
+        count: 1
+        pageSize: 0
+      properties:
+        pageSize:
+          format: int32
+          type: integer
+        pageIndex:
+          format: int32
+          type: integer
+        count:
+          format: int64
+          type: integer
+        data:
+          items:
+            $ref: '#/components/schemas/EdfiAdminApi.EdfiAdmin.V1.SpecificationResponse'
+          nullable: true
+          readOnly: true
+          type: array
       type: object
     EdfiAdminApi.EdfiAdmin.V1.StateEducationAgency:
       additionalProperties: false
@@ -56478,6 +59022,28 @@ components:
           nullable: true
           type: string
       type: object
+    EdfiAdminApi.EdfiAdmin.V1.UpdateSpecificationRequest:
+      additionalProperties: false
+      properties:
+        id:
+          nullable: true
+          type: string
+        tenantId:
+          nullable: true
+          type: string
+        instanceId:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        description:
+          nullable: true
+          type: string
+        specification:
+          nullable: true
+          type: string
+      type: object
     EdfiAdminApi.EdfiAdmin.V1.UpdateStateEducationAgencyRequest:
       additionalProperties: false
       properties:
@@ -56927,6 +59493,23 @@ components:
           nullable: true
           type: string
       type: object
+    EvaluationApi.Evaluations.V1.EvaluationCountResponse:
+      additionalProperties: false
+      example:
+        appraiserCount: 6
+        evaluationCount: 0
+        staffCount: 1
+      properties:
+        evaluationCount:
+          format: int32
+          type: integer
+        appraiserCount:
+          format: int32
+          type: integer
+        staffCount:
+          format: int32
+          type: integer
+      type: object
     EvaluationApi.Evaluations.V1.EvaluationCreatedResponse:
       additionalProperties: false
       example:
@@ -57324,6 +59907,9 @@ components:
           type: string
         status:
           $ref: '#/components/schemas/FormApi.Forms.V1.FormStatus'
+        image:
+          nullable: true
+          type: string
       type: object
     FormApi.Forms.V1.CreateFullFormRequest:
       additionalProperties: false
@@ -57353,6 +59939,9 @@ components:
           nullable: true
           readOnly: true
           type: array
+        image:
+          nullable: true
+          type: string
       type: object
     FormApi.Forms.V1.CreateFullQuestionRequest:
       additionalProperties: false
@@ -57418,6 +60007,9 @@ components:
           format: int32
           nullable: true
           type: integer
+        subHeading:
+          nullable: true
+          type: string
       type: object
     FormApi.Forms.V1.FormAccessResponse:
       additionalProperties: false
@@ -57619,6 +60211,9 @@ components:
           type: string
         status:
           $ref: '#/components/schemas/FormApi.Forms.V1.FormStatus'
+        image:
+          nullable: true
+          type: string
       type: object
     FormApi.Forms.V1.UpdateFullFormRequest:
       additionalProperties: false
@@ -57651,6 +60246,9 @@ components:
           nullable: true
           readOnly: true
           type: array
+        image:
+          nullable: true
+          type: string
       type: object
     FormApi.Forms.V1.UpdateFullQuestionRequest:
       additionalProperties: false
@@ -57722,6 +60320,9 @@ components:
           format: int32
           nullable: true
           type: integer
+        subHeading:
+          nullable: true
+          type: string
       type: object
     FormApi.Questions.V1.QuestionCreatedResponse:
       additionalProperties: false
@@ -57765,6 +60366,9 @@ components:
       - Date
       - Radio
       - CustomComponent
+      - Scoring
+      - Html
+      - Image
       type: string
     FormApi.Questions.V1.QuestionUpdatedResponse:
       additionalProperties: false
@@ -57806,6 +60410,9 @@ components:
           format: int32
           nullable: true
           type: integer
+        subHeading:
+          nullable: true
+          type: string
       type: object
     FormApi.Sections.V1.SectionCreatedResponse:
       additionalProperties: false
@@ -57850,6 +60457,7 @@ components:
         deletedBy: deletedBy
         isDeleted: true
         createdBy: createdBy
+        subHeading: subHeading
         tenantId: tenantId
         id: id
         order: 0
@@ -57894,6 +60502,9 @@ components:
           format: int32
           nullable: true
           type: integer
+        subHeading:
+          nullable: true
+          type: string
       type: object
     FormApi.Sections.V1.SectionResponsePaginatedItemsViewModel:
       additionalProperties: false
@@ -57909,6 +60520,7 @@ components:
           deletedBy: deletedBy
           isDeleted: true
           createdBy: createdBy
+          subHeading: subHeading
           tenantId: tenantId
           id: id
           order: 0
@@ -57922,6 +60534,7 @@ components:
           deletedBy: deletedBy
           isDeleted: true
           createdBy: createdBy
+          subHeading: subHeading
           tenantId: tenantId
           id: id
           order: 0
@@ -57983,6 +60596,9 @@ components:
           format: int32
           nullable: true
           type: integer
+        subHeading:
+          nullable: true
+          type: string
       type: object
     FormApi.Submissions.V1.CreateSubmissionRequest:
       additionalProperties: false
@@ -58225,6 +60841,108 @@ components:
           nullable: true
           type: string
       type: object
+    Google.Protobuf.WellKnownTypes.ListValue:
+      additionalProperties: false
+      example:
+        values:
+        - null
+        - null
+      properties:
+        values:
+          items:
+            $ref: '#/components/schemas/Google.Protobuf.WellKnownTypes.Value'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    Google.Protobuf.WellKnownTypes.NullValue:
+      enum:
+      - NullValue
+      type: string
+    Google.Protobuf.WellKnownTypes.Struct:
+      additionalProperties: false
+      example:
+        fields:
+          key:
+            listValue:
+              values:
+              - null
+              - null
+            stringValue: stringValue
+            kindCase: "{}"
+            hasNumberValue: true
+            structValue: null
+            hasNullValue: true
+            boolValue: true
+            numberValue: 5.962133916683182
+            nullValue: NullValue
+            hasBoolValue: true
+            hasStringValue: true
+      properties:
+        fields:
+          additionalProperties:
+            $ref: '#/components/schemas/Google.Protobuf.WellKnownTypes.Value'
+          nullable: true
+          readOnly: true
+          type: object
+      type: object
+    Google.Protobuf.WellKnownTypes.Value:
+      additionalProperties: false
+      example:
+        listValue:
+          values:
+          - null
+          - null
+        stringValue: stringValue
+        kindCase: "{}"
+        hasNumberValue: true
+        structValue: null
+        hasNullValue: true
+        boolValue: true
+        numberValue: 5.962133916683182
+        nullValue: NullValue
+        hasBoolValue: true
+        hasStringValue: true
+      properties:
+        nullValue:
+          $ref: '#/components/schemas/Google.Protobuf.WellKnownTypes.NullValue'
+        hasNullValue:
+          readOnly: true
+          type: boolean
+        numberValue:
+          format: double
+          type: number
+        hasNumberValue:
+          readOnly: true
+          type: boolean
+        stringValue:
+          nullable: true
+          type: string
+        hasStringValue:
+          readOnly: true
+          type: boolean
+        boolValue:
+          type: boolean
+        hasBoolValue:
+          readOnly: true
+          type: boolean
+        structValue:
+          $ref: '#/components/schemas/Google.Protobuf.WellKnownTypes.Struct'
+        listValue:
+          $ref: '#/components/schemas/Google.Protobuf.WellKnownTypes.ListValue'
+        kindCase:
+          $ref: '#/components/schemas/Google.Protobuf.WellKnownTypes.Value+KindOneofCase'
+      type: object
+    Google.Protobuf.WellKnownTypes.Value+KindOneofCase:
+      enum:
+      - None
+      - NullValue
+      - NumberValue
+      - StringValue
+      - BoolValue
+      - StructValue
+      - ListValue
+      type: string
     IMSAdminApi.V1.Clients.AccessTokenType:
       enum:
       - Jwt
@@ -70535,6 +73253,10 @@ components:
           type: boolean
         Version:
           type: string
+        IdentityRequired:
+          type: boolean
+        RolesRequired:
+          type: boolean
       type: object
     UpdateTenantBranding_request:
       properties:

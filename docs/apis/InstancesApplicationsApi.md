@@ -15,6 +15,7 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 | [**GetApplicationByIdAsync**](InstancesApplicationsApi.md#getapplicationbyidasync) | **GET** /tenants/{tenantId}/edfiadmin/instances/{instanceId}/applications/{applicationId} | Retrieves an Application by ID. |
 | [**GetApplicationsAsync**](InstancesApplicationsApi.md#getapplicationsasync) | **GET** /tenants/{tenantId}/edfiadmin/instances/{instanceId}/applications | Retrieves a list of Applications. |
 | [**RegenerateApiClientSecretAsync**](InstancesApplicationsApi.md#regenerateapiclientsecretasync) | **PUT** /tenants/{tenantId}/edfiadmin/instances/{instanceId}/applications/{applicationId}/apiclients/{apiClientId}/regenerate | Regenerates the secret of an API Client. |
+| [**RegenerateApplicationApiClientCredentials**](InstancesApplicationsApi.md#regenerateapplicationapiclientcredentials) | **PUT** /tenants/{tenantId}/edfiadmin/instances/{instanceId}/applications/{applicationId}/apiclients/regenerate | Regenerates an application&#39;s API Client Credentials |
 | [**SyncApplicationAsync**](InstancesApplicationsApi.md#syncapplicationasync) | **POST** /tenants/{tenantId}/edfiadmin/instances/{instanceId}/applications/{applicationId}/sync | Copies an Application from one instance to another/other instance(s) |
 | [**UpdateApplicationAsync**](InstancesApplicationsApi.md#updateapplicationasync) | **PUT** /tenants/{tenantId}/edfiadmin/instances/{instanceId}/applications/{applicationId} | Updates an Application. |
 | [**UpdateApplicationUserAccessAsync**](InstancesApplicationsApi.md#updateapplicationuseraccessasync) | **PUT** /tenants/{tenantId}/edfiadmin/instances/{instanceId}/applications/{applicationId}/apiclients/{apiClientId}/access/{accessId} | Updates a new application access. |
@@ -1126,6 +1127,107 @@ catch (ApiException e)
 | **instanceId** | **string** |  |  |
 | **applicationId** | **int** |  |  |
 | **apiClientId** | **int** |  |  |
+
+### Return type
+
+[**EdfiAdminApiEdfiAdminV1RegenerateApiClientSecretResponse**](EdfiAdminApiEdfiAdminV1RegenerateApiClientSecretResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | The requested resource was successfully retrieved. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+| **404** | The resource could not be found. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+<a id="regenerateapplicationapiclientcredentials"></a>
+# **RegenerateApplicationApiClientCredentials**
+> EdfiAdminApiEdfiAdminV1RegenerateApiClientSecretResponse RegenerateApplicationApiClientCredentials (string tenantId, string instanceId, int applicationId)
+
+Regenerates an application's API Client Credentials
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using EdGraph.Platform.Client.Api;
+using EdGraph.Platform.Client.Client;
+using EdGraph.Platform.Client.Model;
+
+namespace Example
+{
+    public class RegenerateApplicationApiClientCredentialsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.dev.edgraph.com/tenant";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new InstancesApplicationsApi(config);
+            var tenantId = "tenantId_example";  // string | 
+            var instanceId = "instanceId_example";  // string | 
+            var applicationId = 56;  // int | 
+
+            try
+            {
+                // Regenerates an application's API Client Credentials
+                EdfiAdminApiEdfiAdminV1RegenerateApiClientSecretResponse result = apiInstance.RegenerateApplicationApiClientCredentials(tenantId, instanceId, applicationId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling InstancesApplicationsApi.RegenerateApplicationApiClientCredentials: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the RegenerateApplicationApiClientCredentialsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Regenerates an application's API Client Credentials
+    ApiResponse<EdfiAdminApiEdfiAdminV1RegenerateApiClientSecretResponse> response = apiInstance.RegenerateApplicationApiClientCredentialsWithHttpInfo(tenantId, instanceId, applicationId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling InstancesApplicationsApi.RegenerateApplicationApiClientCredentialsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **string** |  |  |
+| **instanceId** | **string** |  |  |
+| **applicationId** | **int** |  |  |
 
 ### Return type
 

@@ -46,8 +46,9 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="deletedDateTime">deletedDateTime</param>
         /// <param name="isDeleted">isDeleted</param>
         /// <param name="order">order</param>
+        /// <param name="subHeading">subHeading</param>
         [JsonConstructor]
-        public FormApiSectionsV1SectionResponse(Option<string?> id = default, Option<string?> formId = default, Option<string?> tenantId = default, Option<string?> title = default, Option<string?> description = default, Option<string?> createdBy = default, Option<string?> createdDateTime = default, Option<string?> lastModifiedBy = default, Option<string?> lastModifiedDateTime = default, Option<string?> deletedBy = default, Option<string?> deletedDateTime = default, Option<bool?> isDeleted = default, Option<int?> order = default)
+        public FormApiSectionsV1SectionResponse(Option<string?> id = default, Option<string?> formId = default, Option<string?> tenantId = default, Option<string?> title = default, Option<string?> description = default, Option<string?> createdBy = default, Option<string?> createdDateTime = default, Option<string?> lastModifiedBy = default, Option<string?> lastModifiedDateTime = default, Option<string?> deletedBy = default, Option<string?> deletedDateTime = default, Option<bool?> isDeleted = default, Option<int?> order = default, Option<string?> subHeading = default)
         {
             IdOption = id;
             FormIdOption = formId;
@@ -62,6 +63,7 @@ namespace EdGraph.Platform.Client.Model
             DeletedDateTimeOption = deletedDateTime;
             IsDeletedOption = isDeleted;
             OrderOption = order;
+            SubHeadingOption = subHeading;
             OnCreated();
         }
 
@@ -237,6 +239,19 @@ namespace EdGraph.Platform.Client.Model
         public int? Order { get { return this.OrderOption; } set { this.OrderOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of SubHeading
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> SubHeadingOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets SubHeading
+        /// </summary>
+        [JsonPropertyName("subHeading")]
+        public string? SubHeading { get { return this.SubHeadingOption; } set { this.SubHeadingOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -257,6 +272,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  DeletedDateTime: ").Append(DeletedDateTime).Append("\n");
             sb.Append("  IsDeleted: ").Append(IsDeleted).Append("\n");
             sb.Append("  Order: ").Append(Order).Append("\n");
+            sb.Append("  SubHeading: ").Append(SubHeading).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -307,6 +323,7 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> deletedDateTime = default;
             Option<bool?> isDeleted = default;
             Option<int?> order = default;
+            Option<string?> subHeading = default;
 
             while (utf8JsonReader.Read())
             {
@@ -364,13 +381,16 @@ namespace EdGraph.Platform.Client.Model
                             if (utf8JsonReader.TokenType != JsonTokenType.Null)
                                 order = new Option<int?>(utf8JsonReader.GetInt32());
                             break;
+                        case "subHeading":
+                            subHeading = new Option<string?>(utf8JsonReader.GetString());
+                            break;
                         default:
                             break;
                     }
                 }
             }
 
-            return new FormApiSectionsV1SectionResponse(id, formId, tenantId, title, description, createdBy, createdDateTime, lastModifiedBy, lastModifiedDateTime, deletedBy, deletedDateTime, isDeleted, order);
+            return new FormApiSectionsV1SectionResponse(id, formId, tenantId, title, description, createdBy, createdDateTime, lastModifiedBy, lastModifiedDateTime, deletedBy, deletedDateTime, isDeleted, order, subHeading);
         }
 
         /// <summary>
@@ -474,6 +494,12 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteNumber("order", formApiSectionsV1SectionResponse.OrderOption.Value!.Value);
                 else
                     writer.WriteNull("order");
+
+            if (formApiSectionsV1SectionResponse.SubHeadingOption.IsSet)
+                if (formApiSectionsV1SectionResponse.SubHeadingOption.Value != null)
+                    writer.WriteString("subHeading", formApiSectionsV1SectionResponse.SubHeading);
+                else
+                    writer.WriteNull("subHeading");
         }
     }
 }

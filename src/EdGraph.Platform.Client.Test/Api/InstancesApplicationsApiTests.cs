@@ -217,6 +217,20 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
+        /// Test RegenerateApplicationApiClientCredentials
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task RegenerateApplicationApiClientCredentialsAsyncTest()
+        {
+            string tenantId = default!;
+            string instanceId = default!;
+            int applicationId = default!;
+            var response = await _instance.RegenerateApplicationApiClientCredentialsAsync(tenantId, instanceId, applicationId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdfiAdminApiEdfiAdminV1RegenerateApiClientSecretResponse>(model);
+        }
+
+        /// <summary>
         /// Test SyncApplicationAsync
         /// </summary>
         [Fact (Skip = "not implemented")]

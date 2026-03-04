@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **Anonymous** | **bool** |  | [optional] 
 **TenantId** | **string** |  | [optional] 
 **Status** | **FormApiFormsV1FormStatus** |  | [optional] 
+**Image** | **string** |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

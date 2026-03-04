@@ -49,8 +49,9 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="deletedBy">deletedBy</param>
         /// <param name="deletedDateTime">deletedDateTime</param>
         /// <param name="isDeleted">isDeleted</param>
+        /// <param name="image">image</param>
         [JsonConstructor]
-        public EdGraphHttpAggregatorsTenantApiServicesFormsV1Form(Option<Guid?> id = default, Option<Guid?> tenantId = default, Option<string?> name = default, Option<string?> description = default, Option<string?> source = default, Option<string?> varVersion = default, Option<bool?> anonymous = default, Option<string?> status = default, Option<int?> submissionCount = default, Option<string?> createdBy = default, Option<string?> createdDateTime = default, Option<string?> lastModifiedBy = default, Option<string?> lastModifiedDateTime = default, Option<string?> deletedBy = default, Option<string?> deletedDateTime = default, Option<bool?> isDeleted = default)
+        public EdGraphHttpAggregatorsTenantApiServicesFormsV1Form(Option<Guid?> id = default, Option<Guid?> tenantId = default, Option<string?> name = default, Option<string?> description = default, Option<string?> source = default, Option<string?> varVersion = default, Option<bool?> anonymous = default, Option<string?> status = default, Option<int?> submissionCount = default, Option<string?> createdBy = default, Option<string?> createdDateTime = default, Option<string?> lastModifiedBy = default, Option<string?> lastModifiedDateTime = default, Option<string?> deletedBy = default, Option<string?> deletedDateTime = default, Option<bool?> isDeleted = default, Option<string?> image = default)
         {
             IdOption = id;
             TenantIdOption = tenantId;
@@ -68,6 +69,7 @@ namespace EdGraph.Platform.Client.Model
             DeletedByOption = deletedBy;
             DeletedDateTimeOption = deletedDateTime;
             IsDeletedOption = isDeleted;
+            ImageOption = image;
             OnCreated();
         }
 
@@ -282,6 +284,19 @@ namespace EdGraph.Platform.Client.Model
         public bool? IsDeleted { get { return this.IsDeletedOption; } set { this.IsDeletedOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of Image
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> ImageOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets Image
+        /// </summary>
+        [JsonPropertyName("image")]
+        public string? Image { get { return this.ImageOption; } set { this.ImageOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -305,6 +320,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  DeletedBy: ").Append(DeletedBy).Append("\n");
             sb.Append("  DeletedDateTime: ").Append(DeletedDateTime).Append("\n");
             sb.Append("  IsDeleted: ").Append(IsDeleted).Append("\n");
+            sb.Append("  Image: ").Append(Image).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -358,6 +374,7 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> deletedBy = default;
             Option<string?> deletedDateTime = default;
             Option<bool?> isDeleted = default;
+            Option<string?> image = default;
 
             while (utf8JsonReader.Read())
             {
@@ -427,6 +444,9 @@ namespace EdGraph.Platform.Client.Model
                             if (utf8JsonReader.TokenType != JsonTokenType.Null)
                                 isDeleted = new Option<bool?>(utf8JsonReader.GetBoolean());
                             break;
+                        case "image":
+                            image = new Option<string?>(utf8JsonReader.GetString());
+                            break;
                         default:
                             break;
                     }
@@ -448,7 +468,7 @@ namespace EdGraph.Platform.Client.Model
             if (isDeleted.IsSet && isDeleted.Value == null)
                 throw new ArgumentNullException(nameof(isDeleted), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiServicesFormsV1Form.");
 
-            return new EdGraphHttpAggregatorsTenantApiServicesFormsV1Form(id, tenantId, name, description, source, varVersion, anonymous, status, submissionCount, createdBy, createdDateTime, lastModifiedBy, lastModifiedDateTime, deletedBy, deletedDateTime, isDeleted);
+            return new EdGraphHttpAggregatorsTenantApiServicesFormsV1Form(id, tenantId, name, description, source, varVersion, anonymous, status, submissionCount, createdBy, createdDateTime, lastModifiedBy, lastModifiedDateTime, deletedBy, deletedDateTime, isDeleted, image);
         }
 
         /// <summary>
@@ -555,6 +575,12 @@ namespace EdGraph.Platform.Client.Model
 
             if (edGraphHttpAggregatorsTenantApiServicesFormsV1Form.IsDeletedOption.IsSet)
                 writer.WriteBoolean("isDeleted", edGraphHttpAggregatorsTenantApiServicesFormsV1Form.IsDeletedOption.Value!.Value);
+
+            if (edGraphHttpAggregatorsTenantApiServicesFormsV1Form.ImageOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiServicesFormsV1Form.ImageOption.Value != null)
+                    writer.WriteString("image", edGraphHttpAggregatorsTenantApiServicesFormsV1Form.Image);
+                else
+                    writer.WriteNull("image");
         }
     }
 }

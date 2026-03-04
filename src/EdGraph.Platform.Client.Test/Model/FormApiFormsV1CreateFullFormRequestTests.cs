@@ -124,5 +124,14 @@ namespace EdGraph.Platform.Client.Test.Model
         {
             // TODO unit test for the property 'Sections'
         }
+
+        /// <summary>
+        /// Test the property 'Image'
+        /// </summary>
+        [Fact]
+        public void ImageTest()
+        {
+            // TODO unit test for the property 'Image'
+        }
     }
 }

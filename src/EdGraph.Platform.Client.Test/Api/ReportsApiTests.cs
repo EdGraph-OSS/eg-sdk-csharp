@@ -64,7 +64,9 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> tags = default!;
             Client.Option<bool> isVisible = default!;
             Client.Option<string> version = default!;
-            var response = await _instance.CreateReportAsyncAsync(tenantId, file, name, shortDescription, description, tags, isVisible, version);
+            Client.Option<bool> identityRequired = default!;
+            Client.Option<bool> rolesRequired = default!;
+            var response = await _instance.CreateReportAsyncAsync(tenantId, file, name, shortDescription, description, tags, isVisible, version, identityRequired, rolesRequired);
             var model = response.Unauthorized();
             Assert.IsType<AnalyticsApiReportsV1ReportIdResponse>(model);
         }

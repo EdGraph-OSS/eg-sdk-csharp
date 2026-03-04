@@ -90,6 +90,18 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
+        /// Test GetEvaluationCount
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetEvaluationCountAsyncTest()
+        {
+            Guid tenantId = default!;
+            var response = await _instance.GetEvaluationCountAsync(tenantId);
+            var model = response.Unauthorized();
+            Assert.IsType<EvaluationApiEvaluationsV1EvaluationCountResponse>(model);
+        }
+
+        /// <summary>
         /// Test SearchEvaluationAppraisers
         /// </summary>
         [Fact (Skip = "not implemented")]
