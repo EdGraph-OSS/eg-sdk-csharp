@@ -49,7 +49,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="localEducationAgencyCategoryDescriptorCodeValue">localEducationAgencyCategoryDescriptorCodeValue</param>
         /// <param name="id">id</param>
         [JsonConstructor]
-        public EdfiAdminApiEdfiAdminV1LocalEducationAgency(Option<string?> tenantId = default, Option<string?> instanceId = default, Option<int?> educationOrganizationId = default, Option<int?> localEducationAgencyId = default, Option<string?> nameOfInstitution = default, Option<string?> shortnameOfInstitution = default, Option<string?> webSite = default, Option<int?> operationalStatusDescriptorId = default, Option<string?> discriminator = default, Option<string?> createDate = default, Option<string?> lastModifiedDate = default, Option<List<EdfiAdminApiEdfiAdminV1EducationOrganizationAddress>?> addresses = default, Option<List<EdfiAdminApiEdfiAdminV1EducationOrganizationCategoryDescriptor>?> categories = default, Option<string?> localEducationAgencyCategoryDescriptorCodeValue = default, Option<string?> id = default)
+        public EdfiAdminApiEdfiAdminV1LocalEducationAgency(Option<string?> tenantId = default, Option<string?> instanceId = default, Option<long?> educationOrganizationId = default, Option<int?> localEducationAgencyId = default, Option<string?> nameOfInstitution = default, Option<string?> shortnameOfInstitution = default, Option<string?> webSite = default, Option<int?> operationalStatusDescriptorId = default, Option<string?> discriminator = default, Option<string?> createDate = default, Option<string?> lastModifiedDate = default, Option<List<EdfiAdminApiEdfiAdminV1EducationOrganizationAddress>?> addresses = default, Option<List<EdfiAdminApiEdfiAdminV1EducationOrganizationCategoryDescriptor>?> categories = default, Option<string?> localEducationAgencyCategoryDescriptorCodeValue = default, Option<string?> id = default)
         {
             TenantIdOption = tenantId;
             InstanceIdOption = instanceId;
@@ -102,13 +102,13 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<int?> EducationOrganizationIdOption { get; private set; }
+        public Option<long?> EducationOrganizationIdOption { get; private set; }
 
         /// <summary>
         /// Gets or Sets EducationOrganizationId
         /// </summary>
         [JsonPropertyName("educationOrganizationId")]
-        public int? EducationOrganizationId { get { return this.EducationOrganizationIdOption; } set { this.EducationOrganizationIdOption = new(value); } }
+        public long? EducationOrganizationId { get { return this.EducationOrganizationIdOption; } set { this.EducationOrganizationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LocalEducationAgencyId
@@ -328,7 +328,7 @@ namespace EdGraph.Platform.Client.Model
 
             Option<string?> tenantId = default;
             Option<string?> instanceId = default;
-            Option<int?> educationOrganizationId = default;
+            Option<long?> educationOrganizationId = default;
             Option<int?> localEducationAgencyId = default;
             Option<string?> nameOfInstitution = default;
             Option<string?> shortnameOfInstitution = default;
@@ -365,7 +365,7 @@ namespace EdGraph.Platform.Client.Model
                             break;
                         case "educationOrganizationId":
                             if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                educationOrganizationId = new Option<int?>(utf8JsonReader.GetInt32());
+                                educationOrganizationId = new Option<long?>(utf8JsonReader.GetInt64());
                             break;
                         case "localEducationAgencyId":
                             if (utf8JsonReader.TokenType != JsonTokenType.Null)

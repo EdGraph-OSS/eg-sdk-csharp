@@ -86,6 +86,7 @@ docs/apis/SubmissionsApi.md
 docs/apis/SubscriptionsApi.md
 docs/apis/TagsApi.md
 docs/apis/TenantBrandingApi.md
+docs/apis/TenantDslApi.md
 docs/apis/TenantInstancesApi.md
 docs/apis/TenantSecurityScoreSyncApi.md
 docs/apis/TenantSettingTypesApi.md
@@ -154,6 +155,11 @@ docs/models/DataSyncApiConnectionV1ConnectionMetadata.md
 docs/models/DataSyncApiConnectionV1ConnectionProfileResponse.md
 docs/models/DataSyncApiConnectionV1ConnectionTestedResponse.md
 docs/models/DataSyncApiConnectionV1TestConnectionRequest.md
+docs/models/DataSyncApiDslV1CreateJobRequest.md
+docs/models/DataSyncApiDslV1DslJobExecutedResponse.md
+docs/models/DataSyncApiDslV1DslProfile.md
+docs/models/DataSyncApiDslV1JobCreatedResponse.md
+docs/models/DataSyncApiDslV1UpdateJobRequest.md
 docs/models/DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobMode.md
 docs/models/DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfile.md
 docs/models/DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProvider.md
@@ -1033,6 +1039,7 @@ src/EdGraph.Platform.Client.Test/Api/SubmissionsApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/SubscriptionsApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/TagsApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/TenantBrandingApiTests.cs
+src/EdGraph.Platform.Client.Test/Api/TenantDslApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/TenantInstancesApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/TenantSecurityScoreSyncApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/TenantSettingTypesApiTests.cs
@@ -1102,6 +1109,11 @@ src/EdGraph.Platform.Client.Test/Model/DataSyncApiConnectionV1ConnectionMetadata
 src/EdGraph.Platform.Client.Test/Model/DataSyncApiConnectionV1ConnectionProfileResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/DataSyncApiConnectionV1ConnectionTestedResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/DataSyncApiConnectionV1TestConnectionRequestTests.cs
+src/EdGraph.Platform.Client.Test/Model/DataSyncApiDslV1CreateJobRequestTests.cs
+src/EdGraph.Platform.Client.Test/Model/DataSyncApiDslV1DslJobExecutedResponseTests.cs
+src/EdGraph.Platform.Client.Test/Model/DataSyncApiDslV1DslProfileTests.cs
+src/EdGraph.Platform.Client.Test/Model/DataSyncApiDslV1JobCreatedResponseTests.cs
+src/EdGraph.Platform.Client.Test/Model/DataSyncApiDslV1UpdateJobRequestTests.cs
 src/EdGraph.Platform.Client.Test/Model/DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobModeTests.cs
 src/EdGraph.Platform.Client.Test/Model/DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfileTests.cs
 src/EdGraph.Platform.Client.Test/Model/DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProviderTests.cs
@@ -1979,6 +1991,7 @@ src/EdGraph.Platform.Client/Api/SubmissionsApi.cs
 src/EdGraph.Platform.Client/Api/SubscriptionsApi.cs
 src/EdGraph.Platform.Client/Api/TagsApi.cs
 src/EdGraph.Platform.Client/Api/TenantBrandingApi.cs
+src/EdGraph.Platform.Client/Api/TenantDslApi.cs
 src/EdGraph.Platform.Client/Api/TenantInstancesApi.cs
 src/EdGraph.Platform.Client/Api/TenantSecurityScoreSyncApi.cs
 src/EdGraph.Platform.Client/Api/TenantSettingTypesApi.cs
@@ -2070,6 +2083,11 @@ src/EdGraph.Platform.Client/Model/DataSyncApiConnectionV1ConnectionMetadata.cs
 src/EdGraph.Platform.Client/Model/DataSyncApiConnectionV1ConnectionProfileResponse.cs
 src/EdGraph.Platform.Client/Model/DataSyncApiConnectionV1ConnectionTestedResponse.cs
 src/EdGraph.Platform.Client/Model/DataSyncApiConnectionV1TestConnectionRequest.cs
+src/EdGraph.Platform.Client/Model/DataSyncApiDslV1CreateJobRequest.cs
+src/EdGraph.Platform.Client/Model/DataSyncApiDslV1DslJobExecutedResponse.cs
+src/EdGraph.Platform.Client/Model/DataSyncApiDslV1DslProfile.cs
+src/EdGraph.Platform.Client/Model/DataSyncApiDslV1JobCreatedResponse.cs
+src/EdGraph.Platform.Client/Model/DataSyncApiDslV1UpdateJobRequest.cs
 src/EdGraph.Platform.Client/Model/DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobMode.cs
 src/EdGraph.Platform.Client/Model/DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfile.cs
 src/EdGraph.Platform.Client/Model/DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProvider.cs

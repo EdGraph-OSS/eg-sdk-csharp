@@ -47,7 +47,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="localEducationAgencyId">localEducationAgencyId</param>
         /// <param name="schoolId">schoolId</param>
         [JsonConstructor]
-        public EdfiAdminApiEdfiAdminV1EducationOrganization(Option<int?> educationOrganizationId = default, Option<string?> nameOfInstitution = default, Option<string?> shortnameOfInstitution = default, Option<string?> webSite = default, Option<int?> operationalStatusDescriptorId = default, Option<string?> discriminator = default, Option<string?> createDate = default, Option<string?> lastModifiedDate = default, Option<string?> id = default, Option<long?> changeVersion = default, Option<int?> createdByOwnershipTokenId = default, Option<int?> localEducationAgencyId = default, Option<string?> schoolId = default)
+        public EdfiAdminApiEdfiAdminV1EducationOrganization(Option<long?> educationOrganizationId = default, Option<string?> nameOfInstitution = default, Option<string?> shortnameOfInstitution = default, Option<string?> webSite = default, Option<int?> operationalStatusDescriptorId = default, Option<string?> discriminator = default, Option<string?> createDate = default, Option<string?> lastModifiedDate = default, Option<string?> id = default, Option<long?> changeVersion = default, Option<int?> createdByOwnershipTokenId = default, Option<int?> localEducationAgencyId = default, Option<string?> schoolId = default)
         {
             EducationOrganizationIdOption = educationOrganizationId;
             NameOfInstitutionOption = nameOfInstitution;
@@ -72,13 +72,13 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<int?> EducationOrganizationIdOption { get; private set; }
+        public Option<long?> EducationOrganizationIdOption { get; private set; }
 
         /// <summary>
         /// Gets or Sets EducationOrganizationId
         /// </summary>
         [JsonPropertyName("educationOrganizationId")]
-        public int? EducationOrganizationId { get { return this.EducationOrganizationIdOption; } set { this.EducationOrganizationIdOption = new(value); } }
+        public long? EducationOrganizationId { get { return this.EducationOrganizationIdOption; } set { this.EducationOrganizationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of NameOfInstitution
@@ -294,7 +294,7 @@ namespace EdGraph.Platform.Client.Model
 
             JsonTokenType startingTokenType = utf8JsonReader.TokenType;
 
-            Option<int?> educationOrganizationId = default;
+            Option<long?> educationOrganizationId = default;
             Option<string?> nameOfInstitution = default;
             Option<string?> shortnameOfInstitution = default;
             Option<string?> webSite = default;
@@ -325,7 +325,7 @@ namespace EdGraph.Platform.Client.Model
                     {
                         case "educationOrganizationId":
                             if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                educationOrganizationId = new Option<int?>(utf8JsonReader.GetInt32());
+                                educationOrganizationId = new Option<long?>(utf8JsonReader.GetInt64());
                             break;
                         case "nameOfInstitution":
                             nameOfInstitution = new Option<string?>(utf8JsonReader.GetString());

@@ -104,6 +104,11 @@ namespace EdGraph.Platform.Client.Client
             _jsonOptions.Converters.Add(new DataSyncApiConnectionV1ConnectionProfileResponseJsonConverter());
             _jsonOptions.Converters.Add(new DataSyncApiConnectionV1ConnectionTestedResponseJsonConverter());
             _jsonOptions.Converters.Add(new DataSyncApiConnectionV1TestConnectionRequestJsonConverter());
+            _jsonOptions.Converters.Add(new DataSyncApiDslV1CreateJobRequestJsonConverter());
+            _jsonOptions.Converters.Add(new DataSyncApiDslV1DslJobExecutedResponseJsonConverter());
+            _jsonOptions.Converters.Add(new DataSyncApiDslV1DslProfileJsonConverter());
+            _jsonOptions.Converters.Add(new DataSyncApiDslV1JobCreatedResponseJsonConverter());
+            _jsonOptions.Converters.Add(new DataSyncApiDslV1UpdateJobRequestJsonConverter());
             _jsonOptions.Converters.Add(new DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobModeJsonConverter());
             _jsonOptions.Converters.Add(new DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobModeNullableJsonConverter());
             _jsonOptions.Converters.Add(new DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfileJsonConverter());
@@ -1131,6 +1136,8 @@ namespace EdGraph.Platform.Client.Client
             _services.AddTransient<ITagsApi, TagsApi>();
             _services.AddSingleton<TenantBrandingApiEvents>();
             _services.AddTransient<ITenantBrandingApi, TenantBrandingApi>();
+            _services.AddSingleton<TenantDslApiEvents>();
+            _services.AddTransient<ITenantDslApi, TenantDslApi>();
             _services.AddSingleton<TenantInstancesApiEvents>();
             _services.AddTransient<ITenantInstancesApi, TenantInstancesApi>();
             _services.AddSingleton<TenantSecurityScoreSyncApiEvents>();
@@ -1255,6 +1262,7 @@ namespace EdGraph.Platform.Client.Client
             builders.Add(_services.AddHttpClient<ISubscriptionsApi, SubscriptionsApi>(client));
             builders.Add(_services.AddHttpClient<ITagsApi, TagsApi>(client));
             builders.Add(_services.AddHttpClient<ITenantBrandingApi, TenantBrandingApi>(client));
+            builders.Add(_services.AddHttpClient<ITenantDslApi, TenantDslApi>(client));
             builders.Add(_services.AddHttpClient<ITenantInstancesApi, TenantInstancesApi>(client));
             builders.Add(_services.AddHttpClient<ITenantSecurityScoreSyncApi, TenantSecurityScoreSyncApi>(client));
             builders.Add(_services.AddHttpClient<ITenantSettingTypesApi, TenantSettingTypesApi>(client));

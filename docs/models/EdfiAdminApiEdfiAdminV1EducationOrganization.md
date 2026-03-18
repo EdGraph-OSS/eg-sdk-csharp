@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**EducationOrganizationId** | **int** |  | [optional] 
+**EducationOrganizationId** | **long** |  | [optional] 
 **NameOfInstitution** | **string** |  | [optional] 
 **ShortnameOfInstitution** | **string** |  | [optional] 
 **WebSite** | **string** |  | [optional] 

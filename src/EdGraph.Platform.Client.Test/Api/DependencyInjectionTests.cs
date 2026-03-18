@@ -319,6 +319,9 @@ namespace EdGraph.Platform.Client.Test.Api
             var tenantBrandingApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<ITenantBrandingApi>();
             Assert.True(tenantBrandingApi.HttpClient.BaseAddress != null);
 
+            var tenantDslApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<ITenantDslApi>();
+            Assert.True(tenantDslApi.HttpClient.BaseAddress != null);
+
             var tenantInstancesApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<ITenantInstancesApi>();
             Assert.True(tenantInstancesApi.HttpClient.BaseAddress != null);
 
@@ -610,6 +613,9 @@ namespace EdGraph.Platform.Client.Test.Api
 
             var tenantBrandingApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<ITenantBrandingApi>();
             Assert.True(tenantBrandingApi.HttpClient.BaseAddress != null);
+
+            var tenantDslApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<ITenantDslApi>();
+            Assert.True(tenantDslApi.HttpClient.BaseAddress != null);
 
             var tenantInstancesApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<ITenantInstancesApi>();
             Assert.True(tenantInstancesApi.HttpClient.BaseAddress != null);
@@ -903,6 +909,9 @@ namespace EdGraph.Platform.Client.Test.Api
             var tenantBrandingApi = _hostUsingAddWithAClient.Services.GetRequiredService<ITenantBrandingApi>();
             Assert.True(tenantBrandingApi.HttpClient.BaseAddress != null);
             
+            var tenantDslApi = _hostUsingAddWithAClient.Services.GetRequiredService<ITenantDslApi>();
+            Assert.True(tenantDslApi.HttpClient.BaseAddress != null);
+            
             var tenantInstancesApi = _hostUsingAddWithAClient.Services.GetRequiredService<ITenantInstancesApi>();
             Assert.True(tenantInstancesApi.HttpClient.BaseAddress != null);
             
@@ -1194,6 +1203,9 @@ namespace EdGraph.Platform.Client.Test.Api
 
             var tenantBrandingApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<ITenantBrandingApi>();
             Assert.True(tenantBrandingApi.HttpClient.BaseAddress != null);
+
+            var tenantDslApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<ITenantDslApi>();
+            Assert.True(tenantDslApi.HttpClient.BaseAddress != null);
 
             var tenantInstancesApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<ITenantInstancesApi>();
             Assert.True(tenantInstancesApi.HttpClient.BaseAddress != null);

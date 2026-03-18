@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TenantId** | **string** |  | [optional] 
 **InstanceId** | **string** |  | [optional] 
-**EducationOrganizationId** | **int** |  | [optional] 
+**EducationOrganizationId** | **long** |  | [optional] 
 **LocalEducationAgencyId** | **int** |  | [optional] 
 **NameOfInstitution** | **string** |  | [optional] 
 **ShortnameOfInstitution** | **string** |  | [optional] 
