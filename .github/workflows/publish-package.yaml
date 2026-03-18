@@ -23,6 +23,31 @@ jobs:
         with: 
           dotnet-version: '8.0.x'
 
+      - name: 🔧 Apply Patches
+        run: |
+          PATCH_DIR=".github/workflows/patches"
+          TARGET_DIR="src/EdGraph.Platform.Client/Client"
+          
+          echo "Applying patches to $TARGET_DIR..."
+          
+          # Patch TokenProvider`1.cs
+          if [ -f "$PATCH_DIR/TokenProvider\`1.cs" ]; then
+            cp "$PATCH_DIR/TokenProvider\`1.cs" "$TARGET_DIR/TokenProvider\`1.cs"
+            echo "✓ Patched TokenProvider\`1.cs"
+          else
+            echo "⚠ Warning: TokenProvider\`1.cs not found in patches"
+          fi
+          
+          # Patch RateLimitProvider`1.cs
+          if [ -f "$PATCH_DIR/RateLimitProvider\`1.cs" ]; then
+            cp "$PATCH_DIR/RateLimitProvider\`1.cs" "$TARGET_DIR/RateLimitProvider\`1.cs"
+            echo "✓ Patched RateLimitProvider\`1.cs"
+          else
+            echo "⚠ Warning: RateLimitProvider\`1.cs not found in patches"
+          fi
+          
+          echo "Patch application complete"
+
       - name: 📦 Pack Nuget Package
         run: dotnet pack -c Release -o ./nupkg
         
