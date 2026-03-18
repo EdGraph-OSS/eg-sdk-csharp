@@ -47,8 +47,10 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="isDeleted">isDeleted</param>
         /// <param name="appraisers">appraisers</param>
         /// <param name="staffClassifications">staffClassifications</param>
+        /// <param name="availablePersonas">availablePersonas</param>
+        /// <param name="roleConfigurations">roleConfigurations</param>
         [JsonConstructor]
-        public EvaluationApiEvaluationSettingsV1EvaluationSettingResponse(Option<string?> id = default, Option<string?> tenantId = default, Option<List<string>?> forms = default, Option<int?> recommendedNumberOfEvaluations = default, Option<EvaluationApiEvaluationSettingsV1ScheduleType?> reminderEmailSchedule = default, Option<string?> createdBy = default, Option<string?> createdDateTime = default, Option<string?> lastModifiedBy = default, Option<string?> lastModifiedDateTime = default, Option<string?> deletedBy = default, Option<string?> deletedDateTime = default, Option<bool?> isDeleted = default, Option<List<string>?> appraisers = default, Option<List<string>?> staffClassifications = default)
+        public EvaluationApiEvaluationSettingsV1EvaluationSettingResponse(Option<string?> id = default, Option<string?> tenantId = default, Option<List<EvaluationApiEvaluationSettingsV1FormConfigurationResponse>?> forms = default, Option<int?> recommendedNumberOfEvaluations = default, Option<EvaluationApiEvaluationSettingsV1ScheduleType?> reminderEmailSchedule = default, Option<string?> createdBy = default, Option<string?> createdDateTime = default, Option<string?> lastModifiedBy = default, Option<string?> lastModifiedDateTime = default, Option<string?> deletedBy = default, Option<string?> deletedDateTime = default, Option<bool?> isDeleted = default, Option<List<string>?> appraisers = default, Option<List<string>?> staffClassifications = default, Option<List<EvaluationApiEvaluationSettingsV1PersonaResponse>?> availablePersonas = default, Option<List<EvaluationApiEvaluationSettingsV1RoleConfigurationResponse>?> roleConfigurations = default)
         {
             IdOption = id;
             TenantIdOption = tenantId;
@@ -64,6 +66,8 @@ namespace EdGraph.Platform.Client.Model
             IsDeletedOption = isDeleted;
             AppraisersOption = appraisers;
             StaffClassificationsOption = staffClassifications;
+            AvailablePersonasOption = availablePersonas;
+            RoleConfigurationsOption = roleConfigurations;
             OnCreated();
         }
 
@@ -113,13 +117,13 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<List<string>?> FormsOption { get; }
+        public Option<List<EvaluationApiEvaluationSettingsV1FormConfigurationResponse>?> FormsOption { get; }
 
         /// <summary>
         /// Gets or Sets Forms
         /// </summary>
         [JsonPropertyName("forms")]
-        public List<string>? Forms { get { return this.FormsOption; } }
+        public List<EvaluationApiEvaluationSettingsV1FormConfigurationResponse>? Forms { get { return this.FormsOption; } }
 
         /// <summary>
         /// Used to track the state of RecommendedNumberOfEvaluations
@@ -252,6 +256,32 @@ namespace EdGraph.Platform.Client.Model
         public List<string>? StaffClassifications { get { return this.StaffClassificationsOption; } }
 
         /// <summary>
+        /// Used to track the state of AvailablePersonas
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<List<EvaluationApiEvaluationSettingsV1PersonaResponse>?> AvailablePersonasOption { get; }
+
+        /// <summary>
+        /// Gets or Sets AvailablePersonas
+        /// </summary>
+        [JsonPropertyName("availablePersonas")]
+        public List<EvaluationApiEvaluationSettingsV1PersonaResponse>? AvailablePersonas { get { return this.AvailablePersonasOption; } }
+
+        /// <summary>
+        /// Used to track the state of RoleConfigurations
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<List<EvaluationApiEvaluationSettingsV1RoleConfigurationResponse>?> RoleConfigurationsOption { get; }
+
+        /// <summary>
+        /// Gets or Sets RoleConfigurations
+        /// </summary>
+        [JsonPropertyName("roleConfigurations")]
+        public List<EvaluationApiEvaluationSettingsV1RoleConfigurationResponse>? RoleConfigurations { get { return this.RoleConfigurationsOption; } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -273,6 +303,8 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  IsDeleted: ").Append(IsDeleted).Append("\n");
             sb.Append("  Appraisers: ").Append(Appraisers).Append("\n");
             sb.Append("  StaffClassifications: ").Append(StaffClassifications).Append("\n");
+            sb.Append("  AvailablePersonas: ").Append(AvailablePersonas).Append("\n");
+            sb.Append("  RoleConfigurations: ").Append(RoleConfigurations).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -312,7 +344,7 @@ namespace EdGraph.Platform.Client.Model
 
             Option<string?> id = default;
             Option<string?> tenantId = default;
-            Option<List<string>?> forms = default;
+            Option<List<EvaluationApiEvaluationSettingsV1FormConfigurationResponse>?> forms = default;
             Option<int?> recommendedNumberOfEvaluations = default;
             Option<EvaluationApiEvaluationSettingsV1ScheduleType?> reminderEmailSchedule = default;
             Option<string?> createdBy = default;
@@ -324,6 +356,8 @@ namespace EdGraph.Platform.Client.Model
             Option<bool?> isDeleted = default;
             Option<List<string>?> appraisers = default;
             Option<List<string>?> staffClassifications = default;
+            Option<List<EvaluationApiEvaluationSettingsV1PersonaResponse>?> availablePersonas = default;
+            Option<List<EvaluationApiEvaluationSettingsV1RoleConfigurationResponse>?> roleConfigurations = default;
 
             while (utf8JsonReader.Read())
             {
@@ -348,7 +382,7 @@ namespace EdGraph.Platform.Client.Model
                             break;
                         case "forms":
                             if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                forms = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                                forms = new Option<List<EvaluationApiEvaluationSettingsV1FormConfigurationResponse>?>(JsonSerializer.Deserialize<List<EvaluationApiEvaluationSettingsV1FormConfigurationResponse>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "recommendedNumberOfEvaluations":
                             if (utf8JsonReader.TokenType != JsonTokenType.Null)
@@ -389,6 +423,14 @@ namespace EdGraph.Platform.Client.Model
                             if (utf8JsonReader.TokenType != JsonTokenType.Null)
                                 staffClassifications = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
+                        case "availablePersonas":
+                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
+                                availablePersonas = new Option<List<EvaluationApiEvaluationSettingsV1PersonaResponse>?>(JsonSerializer.Deserialize<List<EvaluationApiEvaluationSettingsV1PersonaResponse>>(ref utf8JsonReader, jsonSerializerOptions));
+                            break;
+                        case "roleConfigurations":
+                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
+                                roleConfigurations = new Option<List<EvaluationApiEvaluationSettingsV1RoleConfigurationResponse>?>(JsonSerializer.Deserialize<List<EvaluationApiEvaluationSettingsV1RoleConfigurationResponse>>(ref utf8JsonReader, jsonSerializerOptions));
+                            break;
                         default:
                             break;
                     }
@@ -398,7 +440,7 @@ namespace EdGraph.Platform.Client.Model
             if (reminderEmailSchedule.IsSet && reminderEmailSchedule.Value == null)
                 throw new ArgumentNullException(nameof(reminderEmailSchedule), "Property is not nullable for class EvaluationApiEvaluationSettingsV1EvaluationSettingResponse.");
 
-            return new EvaluationApiEvaluationSettingsV1EvaluationSettingResponse(id, tenantId, forms, recommendedNumberOfEvaluations, reminderEmailSchedule, createdBy, createdDateTime, lastModifiedBy, lastModifiedDateTime, deletedBy, deletedDateTime, isDeleted, appraisers, staffClassifications);
+            return new EvaluationApiEvaluationSettingsV1EvaluationSettingResponse(id, tenantId, forms, recommendedNumberOfEvaluations, reminderEmailSchedule, createdBy, createdDateTime, lastModifiedBy, lastModifiedDateTime, deletedBy, deletedDateTime, isDeleted, appraisers, staffClassifications, availablePersonas, roleConfigurations);
         }
 
         /// <summary>
@@ -514,6 +556,22 @@ namespace EdGraph.Platform.Client.Model
                 }
                 else
                     writer.WriteNull("staffClassifications");
+            if (evaluationApiEvaluationSettingsV1EvaluationSettingResponse.AvailablePersonasOption.IsSet)
+                if (evaluationApiEvaluationSettingsV1EvaluationSettingResponse.AvailablePersonasOption.Value != null)
+                {
+                    writer.WritePropertyName("availablePersonas");
+                    JsonSerializer.Serialize(writer, evaluationApiEvaluationSettingsV1EvaluationSettingResponse.AvailablePersonas, jsonSerializerOptions);
+                }
+                else
+                    writer.WriteNull("availablePersonas");
+            if (evaluationApiEvaluationSettingsV1EvaluationSettingResponse.RoleConfigurationsOption.IsSet)
+                if (evaluationApiEvaluationSettingsV1EvaluationSettingResponse.RoleConfigurationsOption.Value != null)
+                {
+                    writer.WritePropertyName("roleConfigurations");
+                    JsonSerializer.Serialize(writer, evaluationApiEvaluationSettingsV1EvaluationSettingResponse.RoleConfigurations, jsonSerializerOptions);
+                }
+                else
+                    writer.WriteNull("roleConfigurations");
         }
     }
 }

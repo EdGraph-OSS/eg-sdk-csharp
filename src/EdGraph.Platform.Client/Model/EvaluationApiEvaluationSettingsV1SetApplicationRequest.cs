@@ -38,7 +38,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="recommendedNumberOfEvaluations">recommendedNumberOfEvaluations</param>
         /// <param name="reminderEmailSchedule">reminderEmailSchedule</param>
         [JsonConstructor]
-        public EvaluationApiEvaluationSettingsV1SetApplicationRequest(Option<string?> tenantId = default, Option<List<string>?> forms = default, Option<int?> recommendedNumberOfEvaluations = default, Option<EvaluationApiEvaluationSettingsV1ScheduleType?> reminderEmailSchedule = default)
+        public EvaluationApiEvaluationSettingsV1SetApplicationRequest(Option<string?> tenantId = default, Option<List<EvaluationApiEvaluationSettingsV1SetFormConfigurationRequest>?> forms = default, Option<int?> recommendedNumberOfEvaluations = default, Option<EvaluationApiEvaluationSettingsV1ScheduleType?> reminderEmailSchedule = default)
         {
             TenantIdOption = tenantId;
             FormsOption = forms;
@@ -80,13 +80,13 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<List<string>?> FormsOption { get; }
+        public Option<List<EvaluationApiEvaluationSettingsV1SetFormConfigurationRequest>?> FormsOption { get; }
 
         /// <summary>
         /// Gets or Sets Forms
         /// </summary>
         [JsonPropertyName("forms")]
-        public List<string>? Forms { get { return this.FormsOption; } }
+        public List<EvaluationApiEvaluationSettingsV1SetFormConfigurationRequest>? Forms { get { return this.FormsOption; } }
 
         /// <summary>
         /// Used to track the state of RecommendedNumberOfEvaluations
@@ -151,7 +151,7 @@ namespace EdGraph.Platform.Client.Model
             JsonTokenType startingTokenType = utf8JsonReader.TokenType;
 
             Option<string?> tenantId = default;
-            Option<List<string>?> forms = default;
+            Option<List<EvaluationApiEvaluationSettingsV1SetFormConfigurationRequest>?> forms = default;
             Option<int?> recommendedNumberOfEvaluations = default;
             Option<EvaluationApiEvaluationSettingsV1ScheduleType?> reminderEmailSchedule = default;
 
@@ -175,7 +175,7 @@ namespace EdGraph.Platform.Client.Model
                             break;
                         case "forms":
                             if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                forms = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                                forms = new Option<List<EvaluationApiEvaluationSettingsV1SetFormConfigurationRequest>?>(JsonSerializer.Deserialize<List<EvaluationApiEvaluationSettingsV1SetFormConfigurationRequest>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "recommendedNumberOfEvaluations":
                             if (utf8JsonReader.TokenType != JsonTokenType.Null)

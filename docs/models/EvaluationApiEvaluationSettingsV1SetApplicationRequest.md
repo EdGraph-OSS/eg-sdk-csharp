@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **TenantId** | **string** |  | [optional] 
-**Forms** | **List&lt;string&gt;** |  | [optional] [readonly] 
+**Forms** | [**List&lt;EvaluationApiEvaluationSettingsV1SetFormConfigurationRequest&gt;**](EvaluationApiEvaluationSettingsV1SetFormConfigurationRequest.md) |  | [optional] [readonly] 
 **RecommendedNumberOfEvaluations** | **int** |  | [optional] 
 **ReminderEmailSchedule** | **EvaluationApiEvaluationSettingsV1ScheduleType** |  | [optional] 
 

@@ -57,10 +57,10 @@ namespace EdGraph.Platform.Client.Test.Api
         public async Task CreateObservationAsyncTest()
         {
             Guid tenantId = default!;
-            Client.Option<EvaluationApiEvaluationsV1CreateEvaluationRequest> evaluationApiEvaluationsV1CreateEvaluationRequest = default!;
-            var response = await _instance.CreateObservationAsync(tenantId, evaluationApiEvaluationsV1CreateEvaluationRequest);
+            Client.Option<EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationRequest> edGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationRequest = default!;
+            var response = await _instance.CreateObservationAsync(tenantId, edGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EvaluationApiEvaluationsV1EvaluationCreatedResponse>(model);
+            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationResponse>(model);
         }
 
         /// <summary>
@@ -73,126 +73,104 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid observationId = default!;
             var response = await _instance.DeleteObservationAsync(tenantId, observationId);
             var model = response.Unauthorized();
-            Assert.IsType<EvaluationApiEvaluationsV1EvaluationDeletedResponse>(model);
+            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsDeleteObservationResponse>(model);
         }
 
         /// <summary>
-        /// Test GetObservation
+        /// Test GetObservationById
         /// </summary>
         [Fact (Skip = "not implemented")]
-        public async Task GetObservationAsyncTest()
+        public async Task GetObservationByIdAsyncTest()
         {
             Guid tenantId = default!;
             Guid observationId = default!;
-            var response = await _instance.GetObservationAsync(tenantId, observationId);
+            var response = await _instance.GetObservationByIdAsync(tenantId, observationId);
             var model = response.Unauthorized();
-            Assert.IsType<EvaluationApiEvaluationsV1EvaluationResponse>(model);
+            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse>(model);
         }
 
         /// <summary>
-        /// Test GetObservationCount
+        /// Test GetPaginatedAvailableCampuses
         /// </summary>
         [Fact (Skip = "not implemented")]
-        public async Task GetObservationCountAsyncTest()
-        {
-            Guid tenantId = default!;
-            var response = await _instance.GetObservationCountAsync(tenantId);
-            var model = response.Unauthorized();
-            Assert.IsType<EvaluationApiEvaluationsV1EvaluationCountResponse>(model);
-        }
-
-        /// <summary>
-        /// Test SearchObservationCampuses
-        /// </summary>
-        [Fact (Skip = "not implemented")]
-        public async Task SearchObservationCampusesAsyncTest()
+        public async Task GetPaginatedAvailableCampusesAsyncTest()
         {
             Guid tenantId = default!;
             Client.Option<int> pageSize = default!;
             Client.Option<int> pageIndex = default!;
             Client.Option<string> orderBy = default!;
-            Client.Option<string> filter = default!;
-            var response = await _instance.SearchObservationCampusesAsync(tenantId, pageSize, pageIndex, orderBy, filter);
+            var response = await _instance.GetPaginatedAvailableCampusesAsync(tenantId, pageSize, pageIndex, orderBy);
             var model = response.Unauthorized();
-            Assert.IsType<EvaluationApiEvaluationsV1CampusResponsePaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsCampusResponseGetPaginatedItemsResponse>(model);
         }
 
         /// <summary>
-        /// Test SearchObservationEvaluees
+        /// Test GetPaginatedAvailableForms
         /// </summary>
         [Fact (Skip = "not implemented")]
-        public async Task SearchObservationEvalueesAsyncTest()
+        public async Task GetPaginatedAvailableFormsAsyncTest()
+        {
+            Guid tenantId = default!;
+            Client.Option<int> pageIndex = default!;
+            Client.Option<int> pageSize = default!;
+            Client.Option<string> orderBy = default!;
+            Client.Option<string> filter = default!;
+            var response = await _instance.GetPaginatedAvailableFormsAsync(tenantId, pageIndex, pageSize, orderBy, filter);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse>(model);
+        }
+
+        /// <summary>
+        /// Test GetPaginatedEvaluees
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetPaginatedEvalueesAsyncTest()
         {
             Guid tenantId = default!;
             Client.Option<int> pageSize = default!;
             Client.Option<int> pageIndex = default!;
             Client.Option<string> orderBy = default!;
-            Client.Option<string> filter = default!;
-            var response = await _instance.SearchObservationEvalueesAsync(tenantId, pageSize, pageIndex, orderBy, filter);
+            Client.Option<string> campus = default!;
+            Client.Option<string> evalueeId = default!;
+            var response = await _instance.GetPaginatedEvalueesAsync(tenantId, pageSize, pageIndex, orderBy, campus, evalueeId);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchedResponse>(model);
+            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponseGetPaginatedItemsResponse>(model);
         }
 
         /// <summary>
-        /// Test SearchObservationForms
+        /// Test GetPaginatedObservations
         /// </summary>
         [Fact (Skip = "not implemented")]
-        public async Task SearchObservationFormsAsyncTest()
+        public async Task GetPaginatedObservationsAsyncTest()
         {
             Guid tenantId = default!;
             Client.Option<int> pageSize = default!;
             Client.Option<int> pageIndex = default!;
             Client.Option<string> orderBy = default!;
-            Client.Option<string> filter = default!;
-            var response = await _instance.SearchObservationFormsAsync(tenantId, pageSize, pageIndex, orderBy, filter);
+            Client.Option<string> campus = default!;
+            Client.Option<string> evalueeName = default!;
+            Client.Option<string> evalueeId = default!;
+            Client.Option<string> formId = default!;
+            Client.Option<string> status = default!;
+            Client.Option<string> from = default!;
+            Client.Option<string> to = default!;
+            var response = await _instance.GetPaginatedObservationsAsync(tenantId, pageSize, pageIndex, orderBy, campus, evalueeName, evalueeId, formId, status, from, to);
             var model = response.Unauthorized();
-            Assert.IsType<EvaluationApiEvaluationsV1FormResponsePaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponsePaginatedItemsViewModel>(model);
         }
 
         /// <summary>
-        /// Test SearchObservationObservers
+        /// Test GetSubmittedObservationsCount
         /// </summary>
         [Fact (Skip = "not implemented")]
-        public async Task SearchObservationObserversAsyncTest()
+        public async Task GetSubmittedObservationsCountAsyncTest()
         {
             Guid tenantId = default!;
-            Client.Option<int> pageSize = default!;
-            Client.Option<int> pageIndex = default!;
-            Client.Option<string> orderBy = default!;
-            Client.Option<string> filter = default!;
-            var response = await _instance.SearchObservationObserversAsync(tenantId, pageSize, pageIndex, orderBy, filter);
+            Client.Option<string> evalueeId = default!;
+            Client.Option<string> campus = default!;
+            var response = await _instance.GetSubmittedObservationsCountAsync(tenantId, evalueeId, campus);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsAppraisersSearchedResponse>(model);
-        }
-
-        /// <summary>
-        /// Test SearchObservations
-        /// </summary>
-        [Fact (Skip = "not implemented")]
-        public async Task SearchObservationsAsyncTest()
-        {
-            Guid tenantId = default!;
-            Client.Option<int> pageSize = default!;
-            Client.Option<int> pageIndex = default!;
-            Client.Option<string> orderBy = default!;
-            Client.Option<string> filter = default!;
-            var response = await _instance.SearchObservationsAsync(tenantId, pageSize, pageIndex, orderBy, filter);
-            var model = response.Unauthorized();
-            Assert.IsType<EvaluationApiEvaluationsV1EvaluationResponsePaginatedItemsViewModel>(model);
-        }
-
-        /// <summary>
-        /// Test UpdateObservation
-        /// </summary>
-        [Fact (Skip = "not implemented")]
-        public async Task UpdateObservationAsyncTest()
-        {
-            Guid tenantId = default!;
-            Guid observationId = default!;
-            Client.Option<EvaluationApiEvaluationsV1UpdateEvaluationRequest> evaluationApiEvaluationsV1UpdateEvaluationRequest = default!;
-            var response = await _instance.UpdateObservationAsync(tenantId, observationId, evaluationApiEvaluationsV1UpdateEvaluationRequest);
-            var model = response.Unauthorized();
-            Assert.IsType<EvaluationApiEvaluationsV1EvaluationUpdatedResponse>(model);
+            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsGetSubmittedObservationsCountResponse>(model);
         }
     }
 }

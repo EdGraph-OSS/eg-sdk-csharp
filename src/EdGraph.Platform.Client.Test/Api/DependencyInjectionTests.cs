@@ -253,8 +253,8 @@ namespace EdGraph.Platform.Client.Test.Api
             var myTenantsApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IMyTenantsApi>();
             Assert.True(myTenantsApi.HttpClient.BaseAddress != null);
 
-            var observationConfigurationApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IObservationConfigurationApi>();
-            Assert.True(observationConfigurationApi.HttpClient.BaseAddress != null);
+            var observationSettingsApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IObservationSettingsApi>();
+            Assert.True(observationSettingsApi.HttpClient.BaseAddress != null);
 
             var observationsApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IObservationsApi>();
             Assert.True(observationsApi.HttpClient.BaseAddress != null);
@@ -548,8 +548,8 @@ namespace EdGraph.Platform.Client.Test.Api
             var myTenantsApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IMyTenantsApi>();
             Assert.True(myTenantsApi.HttpClient.BaseAddress != null);
 
-            var observationConfigurationApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IObservationConfigurationApi>();
-            Assert.True(observationConfigurationApi.HttpClient.BaseAddress != null);
+            var observationSettingsApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IObservationSettingsApi>();
+            Assert.True(observationSettingsApi.HttpClient.BaseAddress != null);
 
             var observationsApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IObservationsApi>();
             Assert.True(observationsApi.HttpClient.BaseAddress != null);
@@ -843,8 +843,8 @@ namespace EdGraph.Platform.Client.Test.Api
             var myTenantsApi = _hostUsingAddWithAClient.Services.GetRequiredService<IMyTenantsApi>();
             Assert.True(myTenantsApi.HttpClient.BaseAddress != null);
             
-            var observationConfigurationApi = _hostUsingAddWithAClient.Services.GetRequiredService<IObservationConfigurationApi>();
-            Assert.True(observationConfigurationApi.HttpClient.BaseAddress != null);
+            var observationSettingsApi = _hostUsingAddWithAClient.Services.GetRequiredService<IObservationSettingsApi>();
+            Assert.True(observationSettingsApi.HttpClient.BaseAddress != null);
             
             var observationsApi = _hostUsingAddWithAClient.Services.GetRequiredService<IObservationsApi>();
             Assert.True(observationsApi.HttpClient.BaseAddress != null);
@@ -1138,8 +1138,8 @@ namespace EdGraph.Platform.Client.Test.Api
             var myTenantsApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IMyTenantsApi>();
             Assert.True(myTenantsApi.HttpClient.BaseAddress != null);
 
-            var observationConfigurationApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IObservationConfigurationApi>();
-            Assert.True(observationConfigurationApi.HttpClient.BaseAddress != null);
+            var observationSettingsApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IObservationSettingsApi>();
+            Assert.True(observationSettingsApi.HttpClient.BaseAddress != null);
 
             var observationsApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IObservationsApi>();
             Assert.True(observationsApi.HttpClient.BaseAddress != null);

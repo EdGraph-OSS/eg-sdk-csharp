@@ -178,5 +178,23 @@ namespace EdGraph.Platform.Client.Test.Model
         {
             // TODO unit test for the property 'StaffClassifications'
         }
+
+        /// <summary>
+        /// Test the property 'AvailablePersonas'
+        /// </summary>
+        [Fact]
+        public void AvailablePersonasTest()
+        {
+            // TODO unit test for the property 'AvailablePersonas'
+        }
+
+        /// <summary>
+        /// Test the property 'RoleConfigurations'
+        /// </summary>
+        [Fact]
+        public void RoleConfigurationsTest()
+        {
+            // TODO unit test for the property 'RoleConfigurations'
+        }
     }
 }
