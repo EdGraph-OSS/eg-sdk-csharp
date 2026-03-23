@@ -39,66 +39,66 @@ using EdGraph.Platform.Client.Model;
 namespace EdGraph.Platform.Client.Test.Api
 {
     /// <summary>
-    ///  Class for testing TenantDslApi
+    ///  Class for testing TenantJobsDSLApi
     /// </summary>
-    public sealed class TenantDslApiTests : ApiTestsBase
+    public sealed class TenantJobsDSLApiTests : ApiTestsBase
     {
-        private readonly ITenantDslApi _instance;
+        private readonly ITenantJobsDSLApi _instance;
 
-        public TenantDslApiTests(): base(Array.Empty<string>())
+        public TenantJobsDSLApiTests(): base(Array.Empty<string>())
         {
-            _instance = _host.Services.GetRequiredService<ITenantDslApi>();
+            _instance = _host.Services.GetRequiredService<ITenantJobsDSLApi>();
         }
 
         /// <summary>
-        /// Test CreateDslSync
+        /// Test CreateDslJob
         /// </summary>
         [Fact (Skip = "not implemented")]
-        public async Task CreateDslSyncAsyncTest()
+        public async Task CreateDslJobAsyncTest()
         {
             Guid tenantId = default!;
             Client.Option<DataSyncApiDslV1CreateJobRequest> dataSyncApiDslV1CreateJobRequest = default!;
-            var response = await _instance.CreateDslSyncAsync(tenantId, dataSyncApiDslV1CreateJobRequest);
+            var response = await _instance.CreateDslJobAsync(tenantId, dataSyncApiDslV1CreateJobRequest);
             var model = response.Unauthorized();
             Assert.IsType<DataSyncApiDslV1JobCreatedResponse>(model);
         }
 
         /// <summary>
-        /// Test ExecuteDslSyncJob
+        /// Test ExecuteDslJob
         /// </summary>
         [Fact (Skip = "not implemented")]
-        public async Task ExecuteDslSyncJobAsyncTest()
+        public async Task ExecuteDslJobAsyncTest()
         {
             Guid tenantId = default!;
             Guid jobId = default!;
-            var response = await _instance.ExecuteDslSyncJobAsync(tenantId, jobId);
+            var response = await _instance.ExecuteDslJobAsync(tenantId, jobId);
             var model = response.Unauthorized();
             Assert.IsType<DataSyncApiDslV1DslJobExecutedResponse>(model);
         }
 
         /// <summary>
-        /// Test GetDslSyncData
+        /// Test GetDslJob
         /// </summary>
         [Fact (Skip = "not implemented")]
-        public async Task GetDslSyncDataAsyncTest()
+        public async Task GetDslJobAsyncTest()
         {
             Guid tenantId = default!;
             Guid jobId = default!;
-            var response = await _instance.GetDslSyncDataAsync(tenantId, jobId);
+            var response = await _instance.GetDslJobAsync(tenantId, jobId);
             var model = response.Unauthorized();
             Assert.IsType<DataSyncApiDslV1DslProfile>(model);
         }
 
         /// <summary>
-        /// Test UpdateDslSync
+        /// Test UpdateDslJob
         /// </summary>
         [Fact (Skip = "not implemented")]
-        public async Task UpdateDslSyncAsyncTest()
+        public async Task UpdateDslJobAsyncTest()
         {
             Guid tenantId = default!;
             Guid jobId = default!;
             Client.Option<DataSyncApiDslV1UpdateJobRequest> dataSyncApiDslV1UpdateJobRequest = default!;
-            var response = await _instance.UpdateDslSyncAsync(tenantId, jobId, dataSyncApiDslV1UpdateJobRequest);
+            var response = await _instance.UpdateDslJobAsync(tenantId, jobId, dataSyncApiDslV1UpdateJobRequest);
             var model = response.Unauthorized();
             Assert.IsType<Object>(model);
         }

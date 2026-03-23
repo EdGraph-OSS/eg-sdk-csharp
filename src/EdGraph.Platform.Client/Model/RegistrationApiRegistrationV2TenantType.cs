@@ -78,7 +78,12 @@ namespace EdGraph.Platform.Client.Model
         /// <summary>
         /// Enum AssessmentProvider for value: AssessmentProvider
         /// </summary>
-        AssessmentProvider
+        AssessmentProvider,
+
+        /// <summary>
+        /// Enum ServiceProvider for value: ServiceProvider
+        /// </summary>
+        ServiceProvider
     }
 
     /// <summary>
@@ -123,6 +128,9 @@ namespace EdGraph.Platform.Client.Model
             if (value.Equals("AssessmentProvider"))
                 return RegistrationApiRegistrationV2TenantType.AssessmentProvider;
 
+            if (value.Equals("ServiceProvider"))
+                return RegistrationApiRegistrationV2TenantType.ServiceProvider;
+
             throw new NotImplementedException($"Could not convert value to type RegistrationApiRegistrationV2TenantType: '{value}'");
         }
 
@@ -162,6 +170,9 @@ namespace EdGraph.Platform.Client.Model
 
             if (value.Equals("AssessmentProvider"))
                 return RegistrationApiRegistrationV2TenantType.AssessmentProvider;
+
+            if (value.Equals("ServiceProvider"))
+                return RegistrationApiRegistrationV2TenantType.ServiceProvider;
 
             return null;
         }
@@ -203,6 +214,9 @@ namespace EdGraph.Platform.Client.Model
 
             if (value == RegistrationApiRegistrationV2TenantType.AssessmentProvider)
                 return "AssessmentProvider";
+
+            if (value == RegistrationApiRegistrationV2TenantType.ServiceProvider)
+                return "ServiceProvider";
 
             throw new NotImplementedException($"Value could not be handled: '{value}'");
         }

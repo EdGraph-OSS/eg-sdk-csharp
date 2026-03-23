@@ -28,12 +28,12 @@ namespace EdGraph.Platform.Client.Api
     /// Represents a collection of functions to interact with the API endpoints
     /// This class is registered as transient.
     /// </summary>
-    public interface ITenantDslApi : IApi
+    public interface ITenantJobsDSLApi : IApi
     {
         /// <summary>
         /// The class containing the events
         /// </summary>
-        TenantDslApiEvents Events { get; }
+        TenantJobsDSLApiEvents Events { get; }
 
         /// <summary>
         /// Creates a DSL Sync Job for a given tenant
@@ -45,8 +45,8 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="dataSyncApiDslV1CreateJobRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="ICreateDslSyncApiResponse"/>&gt;</returns>
-        Task<ICreateDslSyncApiResponse> CreateDslSyncAsync(Guid tenantId, Option<DataSyncApiDslV1CreateJobRequest> dataSyncApiDslV1CreateJobRequest = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns><see cref="Task"/>&lt;<see cref="ICreateDslJobApiResponse"/>&gt;</returns>
+        Task<ICreateDslJobApiResponse> CreateDslJobAsync(Guid tenantId, Option<DataSyncApiDslV1CreateJobRequest> dataSyncApiDslV1CreateJobRequest = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates a DSL Sync Job for a given tenant
@@ -57,8 +57,8 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="dataSyncApiDslV1CreateJobRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="ICreateDslSyncApiResponse"/>?&gt;</returns>
-        Task<ICreateDslSyncApiResponse?> CreateDslSyncOrDefaultAsync(Guid tenantId, Option<DataSyncApiDslV1CreateJobRequest> dataSyncApiDslV1CreateJobRequest = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns><see cref="Task"/>&lt;<see cref="ICreateDslJobApiResponse"/>?&gt;</returns>
+        Task<ICreateDslJobApiResponse?> CreateDslJobOrDefaultAsync(Guid tenantId, Option<DataSyncApiDslV1CreateJobRequest> dataSyncApiDslV1CreateJobRequest = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Executes a DSL Sync Job for a given tenant
@@ -70,8 +70,8 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="jobId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IExecuteDslSyncJobApiResponse"/>&gt;</returns>
-        Task<IExecuteDslSyncJobApiResponse> ExecuteDslSyncJobAsync(Guid tenantId, Guid jobId, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns><see cref="Task"/>&lt;<see cref="IExecuteDslJobApiResponse"/>&gt;</returns>
+        Task<IExecuteDslJobApiResponse> ExecuteDslJobAsync(Guid tenantId, Guid jobId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Executes a DSL Sync Job for a given tenant
@@ -82,8 +82,8 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="jobId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IExecuteDslSyncJobApiResponse"/>?&gt;</returns>
-        Task<IExecuteDslSyncJobApiResponse?> ExecuteDslSyncJobOrDefaultAsync(Guid tenantId, Guid jobId, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns><see cref="Task"/>&lt;<see cref="IExecuteDslJobApiResponse"/>?&gt;</returns>
+        Task<IExecuteDslJobApiResponse?> ExecuteDslJobOrDefaultAsync(Guid tenantId, Guid jobId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a DSL jobs profile for a given tenant
@@ -95,8 +95,8 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="jobId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IGetDslSyncDataApiResponse"/>&gt;</returns>
-        Task<IGetDslSyncDataApiResponse> GetDslSyncDataAsync(Guid tenantId, Guid jobId, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetDslJobApiResponse"/>&gt;</returns>
+        Task<IGetDslJobApiResponse> GetDslJobAsync(Guid tenantId, Guid jobId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a DSL jobs profile for a given tenant
@@ -107,8 +107,8 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="jobId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IGetDslSyncDataApiResponse"/>?&gt;</returns>
-        Task<IGetDslSyncDataApiResponse?> GetDslSyncDataOrDefaultAsync(Guid tenantId, Guid jobId, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetDslJobApiResponse"/>?&gt;</returns>
+        Task<IGetDslJobApiResponse?> GetDslJobOrDefaultAsync(Guid tenantId, Guid jobId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates a DSL Sync Job for a given tenant
@@ -121,8 +121,8 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="jobId"></param>
         /// <param name="dataSyncApiDslV1UpdateJobRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IUpdateDslSyncApiResponse"/>&gt;</returns>
-        Task<IUpdateDslSyncApiResponse> UpdateDslSyncAsync(Guid tenantId, Guid jobId, Option<DataSyncApiDslV1UpdateJobRequest> dataSyncApiDslV1UpdateJobRequest = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns><see cref="Task"/>&lt;<see cref="IUpdateDslJobApiResponse"/>&gt;</returns>
+        Task<IUpdateDslJobApiResponse> UpdateDslJobAsync(Guid tenantId, Guid jobId, Option<DataSyncApiDslV1UpdateJobRequest> dataSyncApiDslV1UpdateJobRequest = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates a DSL Sync Job for a given tenant
@@ -134,14 +134,14 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="jobId"></param>
         /// <param name="dataSyncApiDslV1UpdateJobRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IUpdateDslSyncApiResponse"/>?&gt;</returns>
-        Task<IUpdateDslSyncApiResponse?> UpdateDslSyncOrDefaultAsync(Guid tenantId, Guid jobId, Option<DataSyncApiDslV1UpdateJobRequest> dataSyncApiDslV1UpdateJobRequest = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns><see cref="Task"/>&lt;<see cref="IUpdateDslJobApiResponse"/>?&gt;</returns>
+        Task<IUpdateDslJobApiResponse?> UpdateDslJobOrDefaultAsync(Guid tenantId, Guid jobId, Option<DataSyncApiDslV1UpdateJobRequest> dataSyncApiDslV1UpdateJobRequest = default, System.Threading.CancellationToken cancellationToken = default);
     }
 
     /// <summary>
-    /// The <see cref="ICreateDslSyncApiResponse"/>
+    /// The <see cref="ICreateDslJobApiResponse"/>
     /// </summary>
-    public interface ICreateDslSyncApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.DataSyncApiDslV1JobCreatedResponse?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>
+    public interface ICreateDslJobApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.DataSyncApiDslV1JobCreatedResponse?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>
     {
         /// <summary>
         /// Returns true if the response is 401 Unauthorized
@@ -175,9 +175,9 @@ namespace EdGraph.Platform.Client.Api
     }
 
     /// <summary>
-    /// The <see cref="IExecuteDslSyncJobApiResponse"/>
+    /// The <see cref="IExecuteDslJobApiResponse"/>
     /// </summary>
-    public interface IExecuteDslSyncJobApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IAccepted<EdGraph.Platform.Client.Model.DataSyncApiDslV1DslJobExecutedResponse?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>
+    public interface IExecuteDslJobApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IAccepted<EdGraph.Platform.Client.Model.DataSyncApiDslV1DslJobExecutedResponse?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>
     {
         /// <summary>
         /// Returns true if the response is 401 Unauthorized
@@ -211,9 +211,9 @@ namespace EdGraph.Platform.Client.Api
     }
 
     /// <summary>
-    /// The <see cref="IGetDslSyncDataApiResponse"/>
+    /// The <see cref="IGetDslJobApiResponse"/>
     /// </summary>
-    public interface IGetDslSyncDataApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.DataSyncApiDslV1DslProfile?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>
+    public interface IGetDslJobApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.DataSyncApiDslV1DslProfile?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>
     {
         /// <summary>
         /// Returns true if the response is 401 Unauthorized
@@ -247,9 +247,9 @@ namespace EdGraph.Platform.Client.Api
     }
 
     /// <summary>
-    /// The <see cref="IUpdateDslSyncApiResponse"/>
+    /// The <see cref="IUpdateDslJobApiResponse"/>
     /// </summary>
-    public interface IUpdateDslSyncApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<Object?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>
+    public interface IUpdateDslJobApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<Object?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>
     {
         /// <summary>
         /// Returns true if the response is 401 Unauthorized
@@ -291,93 +291,93 @@ namespace EdGraph.Platform.Client.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public class TenantDslApiEvents
+    public class TenantJobsDSLApiEvents
     {
         /// <summary>
         /// The event raised after the server response
         /// </summary>
-        public event EventHandler<ApiResponseEventArgs>? OnCreateDslSync;
+        public event EventHandler<ApiResponseEventArgs>? OnCreateDslJob;
 
         /// <summary>
         /// The event raised after an error querying the server
         /// </summary>
-        public event EventHandler<ExceptionEventArgs>? OnErrorCreateDslSync;
+        public event EventHandler<ExceptionEventArgs>? OnErrorCreateDslJob;
 
-        internal void ExecuteOnCreateDslSync(TenantDslApi.CreateDslSyncApiResponse apiResponse)
+        internal void ExecuteOnCreateDslJob(TenantJobsDSLApi.CreateDslJobApiResponse apiResponse)
         {
-            OnCreateDslSync?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+            OnCreateDslJob?.Invoke(this, new ApiResponseEventArgs(apiResponse));
         }
 
-        internal void ExecuteOnErrorCreateDslSync(Exception exception)
+        internal void ExecuteOnErrorCreateDslJob(Exception exception)
         {
-            OnErrorCreateDslSync?.Invoke(this, new ExceptionEventArgs(exception));
+            OnErrorCreateDslJob?.Invoke(this, new ExceptionEventArgs(exception));
         }
 
         /// <summary>
         /// The event raised after the server response
         /// </summary>
-        public event EventHandler<ApiResponseEventArgs>? OnExecuteDslSyncJob;
+        public event EventHandler<ApiResponseEventArgs>? OnExecuteDslJob;
 
         /// <summary>
         /// The event raised after an error querying the server
         /// </summary>
-        public event EventHandler<ExceptionEventArgs>? OnErrorExecuteDslSyncJob;
+        public event EventHandler<ExceptionEventArgs>? OnErrorExecuteDslJob;
 
-        internal void ExecuteOnExecuteDslSyncJob(TenantDslApi.ExecuteDslSyncJobApiResponse apiResponse)
+        internal void ExecuteOnExecuteDslJob(TenantJobsDSLApi.ExecuteDslJobApiResponse apiResponse)
         {
-            OnExecuteDslSyncJob?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+            OnExecuteDslJob?.Invoke(this, new ApiResponseEventArgs(apiResponse));
         }
 
-        internal void ExecuteOnErrorExecuteDslSyncJob(Exception exception)
+        internal void ExecuteOnErrorExecuteDslJob(Exception exception)
         {
-            OnErrorExecuteDslSyncJob?.Invoke(this, new ExceptionEventArgs(exception));
+            OnErrorExecuteDslJob?.Invoke(this, new ExceptionEventArgs(exception));
         }
 
         /// <summary>
         /// The event raised after the server response
         /// </summary>
-        public event EventHandler<ApiResponseEventArgs>? OnGetDslSyncData;
+        public event EventHandler<ApiResponseEventArgs>? OnGetDslJob;
 
         /// <summary>
         /// The event raised after an error querying the server
         /// </summary>
-        public event EventHandler<ExceptionEventArgs>? OnErrorGetDslSyncData;
+        public event EventHandler<ExceptionEventArgs>? OnErrorGetDslJob;
 
-        internal void ExecuteOnGetDslSyncData(TenantDslApi.GetDslSyncDataApiResponse apiResponse)
+        internal void ExecuteOnGetDslJob(TenantJobsDSLApi.GetDslJobApiResponse apiResponse)
         {
-            OnGetDslSyncData?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+            OnGetDslJob?.Invoke(this, new ApiResponseEventArgs(apiResponse));
         }
 
-        internal void ExecuteOnErrorGetDslSyncData(Exception exception)
+        internal void ExecuteOnErrorGetDslJob(Exception exception)
         {
-            OnErrorGetDslSyncData?.Invoke(this, new ExceptionEventArgs(exception));
+            OnErrorGetDslJob?.Invoke(this, new ExceptionEventArgs(exception));
         }
 
         /// <summary>
         /// The event raised after the server response
         /// </summary>
-        public event EventHandler<ApiResponseEventArgs>? OnUpdateDslSync;
+        public event EventHandler<ApiResponseEventArgs>? OnUpdateDslJob;
 
         /// <summary>
         /// The event raised after an error querying the server
         /// </summary>
-        public event EventHandler<ExceptionEventArgs>? OnErrorUpdateDslSync;
+        public event EventHandler<ExceptionEventArgs>? OnErrorUpdateDslJob;
 
-        internal void ExecuteOnUpdateDslSync(TenantDslApi.UpdateDslSyncApiResponse apiResponse)
+        internal void ExecuteOnUpdateDslJob(TenantJobsDSLApi.UpdateDslJobApiResponse apiResponse)
         {
-            OnUpdateDslSync?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+            OnUpdateDslJob?.Invoke(this, new ApiResponseEventArgs(apiResponse));
         }
 
-        internal void ExecuteOnErrorUpdateDslSync(Exception exception)
+        internal void ExecuteOnErrorUpdateDslJob(Exception exception)
         {
-            OnErrorUpdateDslSync?.Invoke(this, new ExceptionEventArgs(exception));
+            OnErrorUpdateDslJob?.Invoke(this, new ExceptionEventArgs(exception));
         }
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public sealed partial class TenantDslApi : ITenantDslApi
+    public sealed partial class TenantJobsDSLApi : ITenantJobsDSLApi
     {
         private JsonSerializerOptions _jsonSerializerOptions;
 
@@ -389,7 +389,7 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// The logger
         /// </summary>
-        public ILogger<TenantDslApi> Logger { get; }
+        public ILogger<TenantJobsDSLApi> Logger { get; }
 
         /// <summary>
         /// The HttpClient
@@ -399,7 +399,7 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// The class containing the events
         /// </summary>
-        public TenantDslApiEvents Events { get; }
+        public TenantJobsDSLApiEvents Events { get; }
 
         /// <summary>
         /// A token provider of type <see cref="OauthTokenProvider"/>
@@ -407,28 +407,28 @@ namespace EdGraph.Platform.Client.Api
         public TokenProvider<OAuthToken> OauthTokenProvider { get; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="TenantDslApi"/> class.
+        /// Initializes a new instance of the <see cref="TenantJobsDSLApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public TenantDslApi(ILogger<TenantDslApi> logger, ILoggerFactory loggerFactory, HttpClient httpClient, JsonSerializerOptionsProvider jsonSerializerOptionsProvider, TenantDslApiEvents tenantDslApiEvents,
+        public TenantJobsDSLApi(ILogger<TenantJobsDSLApi> logger, ILoggerFactory loggerFactory, HttpClient httpClient, JsonSerializerOptionsProvider jsonSerializerOptionsProvider, TenantJobsDSLApiEvents tenantJobsDSLApiEvents,
             TokenProvider<OAuthToken> oauthTokenProvider)
         {
             _jsonSerializerOptions = jsonSerializerOptionsProvider.Options;
             LoggerFactory = loggerFactory;
-            Logger = LoggerFactory.CreateLogger<TenantDslApi>();
+            Logger = LoggerFactory.CreateLogger<TenantJobsDSLApi>();
             HttpClient = httpClient;
-            Events = tenantDslApiEvents;
+            Events = tenantJobsDSLApiEvents;
             OauthTokenProvider = oauthTokenProvider;
         }
 
-        partial void FormatCreateDslSync(ref Guid tenantId, Option<DataSyncApiDslV1CreateJobRequest> dataSyncApiDslV1CreateJobRequest);
+        partial void FormatCreateDslJob(ref Guid tenantId, Option<DataSyncApiDslV1CreateJobRequest> dataSyncApiDslV1CreateJobRequest);
 
         /// <summary>
         /// Validates the request parameters
         /// </summary>
         /// <param name="dataSyncApiDslV1CreateJobRequest"></param>
         /// <returns></returns>
-        private void ValidateCreateDslSync(Option<DataSyncApiDslV1CreateJobRequest> dataSyncApiDslV1CreateJobRequest)
+        private void ValidateCreateDslJob(Option<DataSyncApiDslV1CreateJobRequest> dataSyncApiDslV1CreateJobRequest)
         {
             if (dataSyncApiDslV1CreateJobRequest.IsSet && dataSyncApiDslV1CreateJobRequest.Value == null)
                 throw new ArgumentNullException(nameof(dataSyncApiDslV1CreateJobRequest));
@@ -440,10 +440,10 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="dataSyncApiDslV1CreateJobRequest"></param>
-        private void AfterCreateDslSyncDefaultImplementation(ICreateDslSyncApiResponse apiResponseLocalVar, Guid tenantId, Option<DataSyncApiDslV1CreateJobRequest> dataSyncApiDslV1CreateJobRequest)
+        private void AfterCreateDslJobDefaultImplementation(ICreateDslJobApiResponse apiResponseLocalVar, Guid tenantId, Option<DataSyncApiDslV1CreateJobRequest> dataSyncApiDslV1CreateJobRequest)
         {
             bool suppressDefaultLog = false;
-            AfterCreateDslSync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, dataSyncApiDslV1CreateJobRequest);
+            AfterCreateDslJob(ref suppressDefaultLog, apiResponseLocalVar, tenantId, dataSyncApiDslV1CreateJobRequest);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -455,7 +455,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="dataSyncApiDslV1CreateJobRequest"></param>
-        partial void AfterCreateDslSync(ref bool suppressDefaultLog, ICreateDslSyncApiResponse apiResponseLocalVar, Guid tenantId, Option<DataSyncApiDslV1CreateJobRequest> dataSyncApiDslV1CreateJobRequest);
+        partial void AfterCreateDslJob(ref bool suppressDefaultLog, ICreateDslJobApiResponse apiResponseLocalVar, Guid tenantId, Option<DataSyncApiDslV1CreateJobRequest> dataSyncApiDslV1CreateJobRequest);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -465,10 +465,10 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="path"></param>
         /// <param name="tenantId"></param>
         /// <param name="dataSyncApiDslV1CreateJobRequest"></param>
-        private void OnErrorCreateDslSyncDefaultImplementation(Exception exception, string pathFormat, string path, Guid tenantId, Option<DataSyncApiDslV1CreateJobRequest> dataSyncApiDslV1CreateJobRequest)
+        private void OnErrorCreateDslJobDefaultImplementation(Exception exception, string pathFormat, string path, Guid tenantId, Option<DataSyncApiDslV1CreateJobRequest> dataSyncApiDslV1CreateJobRequest)
         {
             bool suppressDefaultLog = false;
-            OnErrorCreateDslSync(ref suppressDefaultLog, exception, pathFormat, path, tenantId, dataSyncApiDslV1CreateJobRequest);
+            OnErrorCreateDslJob(ref suppressDefaultLog, exception, pathFormat, path, tenantId, dataSyncApiDslV1CreateJobRequest);
             if (!suppressDefaultLog)
                 Logger.LogError(exception, "An error occurred while sending the request to the server.");
         }
@@ -482,7 +482,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="path"></param>
         /// <param name="tenantId"></param>
         /// <param name="dataSyncApiDslV1CreateJobRequest"></param>
-        partial void OnErrorCreateDslSync(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, Guid tenantId, Option<DataSyncApiDslV1CreateJobRequest> dataSyncApiDslV1CreateJobRequest);
+        partial void OnErrorCreateDslJob(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, Guid tenantId, Option<DataSyncApiDslV1CreateJobRequest> dataSyncApiDslV1CreateJobRequest);
 
         /// <summary>
         /// Creates a DSL Sync Job for a given tenant 
@@ -490,12 +490,12 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="dataSyncApiDslV1CreateJobRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="ICreateDslSyncApiResponse"/>&gt;</returns>
-        public async Task<ICreateDslSyncApiResponse?> CreateDslSyncOrDefaultAsync(Guid tenantId, Option<DataSyncApiDslV1CreateJobRequest> dataSyncApiDslV1CreateJobRequest = default, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns><see cref="Task"/>&lt;<see cref="ICreateDslJobApiResponse"/>&gt;</returns>
+        public async Task<ICreateDslJobApiResponse?> CreateDslJobOrDefaultAsync(Guid tenantId, Option<DataSyncApiDslV1CreateJobRequest> dataSyncApiDslV1CreateJobRequest = default, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await CreateDslSyncAsync(tenantId, dataSyncApiDslV1CreateJobRequest, cancellationToken).ConfigureAwait(false);
+                return await CreateDslJobAsync(tenantId, dataSyncApiDslV1CreateJobRequest, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -510,16 +510,16 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="dataSyncApiDslV1CreateJobRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="ICreateDslSyncApiResponse"/>&gt;</returns>
-        public async Task<ICreateDslSyncApiResponse> CreateDslSyncAsync(Guid tenantId, Option<DataSyncApiDslV1CreateJobRequest> dataSyncApiDslV1CreateJobRequest = default, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns><see cref="Task"/>&lt;<see cref="ICreateDslJobApiResponse"/>&gt;</returns>
+        public async Task<ICreateDslJobApiResponse> CreateDslJobAsync(Guid tenantId, Option<DataSyncApiDslV1CreateJobRequest> dataSyncApiDslV1CreateJobRequest = default, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
             try
             {
-                ValidateCreateDslSync(dataSyncApiDslV1CreateJobRequest);
+                ValidateCreateDslJob(dataSyncApiDslV1CreateJobRequest);
 
-                FormatCreateDslSync(ref tenantId, dataSyncApiDslV1CreateJobRequest);
+                FormatCreateDslJob(ref tenantId, dataSyncApiDslV1CreateJobRequest);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -572,13 +572,13 @@ namespace EdGraph.Platform.Client.Api
                     {
                         string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
 
-                        ILogger<CreateDslSyncApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<CreateDslSyncApiResponse>();
+                        ILogger<CreateDslJobApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<CreateDslJobApiResponse>();
 
-                        CreateDslSyncApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/jobs/dsl", requestedAtLocalVar, _jsonSerializerOptions);
+                        CreateDslJobApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/jobs/dsl", requestedAtLocalVar, _jsonSerializerOptions);
 
-                        AfterCreateDslSyncDefaultImplementation(apiResponseLocalVar, tenantId, dataSyncApiDslV1CreateJobRequest);
+                        AfterCreateDslJobDefaultImplementation(apiResponseLocalVar, tenantId, dataSyncApiDslV1CreateJobRequest);
 
-                        Events.ExecuteOnCreateDslSync(apiResponseLocalVar);
+                        Events.ExecuteOnCreateDslJob(apiResponseLocalVar);
 
                         if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
                             foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
@@ -590,24 +590,24 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorCreateDslSyncDefaultImplementation(e, "/tenants/{tenantId}/jobs/dsl", uriBuilderLocalVar.Path, tenantId, dataSyncApiDslV1CreateJobRequest);
-                Events.ExecuteOnErrorCreateDslSync(e);
+                OnErrorCreateDslJobDefaultImplementation(e, "/tenants/{tenantId}/jobs/dsl", uriBuilderLocalVar.Path, tenantId, dataSyncApiDslV1CreateJobRequest);
+                Events.ExecuteOnErrorCreateDslJob(e);
                 throw;
             }
         }
 
         /// <summary>
-        /// The <see cref="CreateDslSyncApiResponse"/>
+        /// The <see cref="CreateDslJobApiResponse"/>
         /// </summary>
-        public partial class CreateDslSyncApiResponse : EdGraph.Platform.Client.Client.ApiResponse, ICreateDslSyncApiResponse
+        public partial class CreateDslJobApiResponse : EdGraph.Platform.Client.Client.ApiResponse, ICreateDslJobApiResponse
         {
             /// <summary>
             /// The logger
             /// </summary>
-            public ILogger<CreateDslSyncApiResponse> Logger { get; }
+            public ILogger<CreateDslJobApiResponse> Logger { get; }
 
             /// <summary>
-            /// The <see cref="CreateDslSyncApiResponse"/>
+            /// The <see cref="CreateDslJobApiResponse"/>
             /// </summary>
             /// <param name="logger"></param>
             /// <param name="httpRequestMessage"></param>
@@ -616,7 +616,7 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public CreateDslSyncApiResponse(ILogger<CreateDslSyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            public CreateDslJobApiResponse(ILogger<CreateDslJobApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -825,7 +825,7 @@ namespace EdGraph.Platform.Client.Api
             partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
         }
 
-        partial void FormatExecuteDslSyncJob(ref Guid tenantId, ref Guid jobId);
+        partial void FormatExecuteDslJob(ref Guid tenantId, ref Guid jobId);
 
         /// <summary>
         /// Processes the server response
@@ -833,10 +833,10 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="jobId"></param>
-        private void AfterExecuteDslSyncJobDefaultImplementation(IExecuteDslSyncJobApiResponse apiResponseLocalVar, Guid tenantId, Guid jobId)
+        private void AfterExecuteDslJobDefaultImplementation(IExecuteDslJobApiResponse apiResponseLocalVar, Guid tenantId, Guid jobId)
         {
             bool suppressDefaultLog = false;
-            AfterExecuteDslSyncJob(ref suppressDefaultLog, apiResponseLocalVar, tenantId, jobId);
+            AfterExecuteDslJob(ref suppressDefaultLog, apiResponseLocalVar, tenantId, jobId);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -848,7 +848,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="jobId"></param>
-        partial void AfterExecuteDslSyncJob(ref bool suppressDefaultLog, IExecuteDslSyncJobApiResponse apiResponseLocalVar, Guid tenantId, Guid jobId);
+        partial void AfterExecuteDslJob(ref bool suppressDefaultLog, IExecuteDslJobApiResponse apiResponseLocalVar, Guid tenantId, Guid jobId);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -858,10 +858,10 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="path"></param>
         /// <param name="tenantId"></param>
         /// <param name="jobId"></param>
-        private void OnErrorExecuteDslSyncJobDefaultImplementation(Exception exception, string pathFormat, string path, Guid tenantId, Guid jobId)
+        private void OnErrorExecuteDslJobDefaultImplementation(Exception exception, string pathFormat, string path, Guid tenantId, Guid jobId)
         {
             bool suppressDefaultLog = false;
-            OnErrorExecuteDslSyncJob(ref suppressDefaultLog, exception, pathFormat, path, tenantId, jobId);
+            OnErrorExecuteDslJob(ref suppressDefaultLog, exception, pathFormat, path, tenantId, jobId);
             if (!suppressDefaultLog)
                 Logger.LogError(exception, "An error occurred while sending the request to the server.");
         }
@@ -875,7 +875,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="path"></param>
         /// <param name="tenantId"></param>
         /// <param name="jobId"></param>
-        partial void OnErrorExecuteDslSyncJob(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, Guid tenantId, Guid jobId);
+        partial void OnErrorExecuteDslJob(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, Guid tenantId, Guid jobId);
 
         /// <summary>
         /// Executes a DSL Sync Job for a given tenant 
@@ -883,12 +883,12 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="jobId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IExecuteDslSyncJobApiResponse"/>&gt;</returns>
-        public async Task<IExecuteDslSyncJobApiResponse?> ExecuteDslSyncJobOrDefaultAsync(Guid tenantId, Guid jobId, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns><see cref="Task"/>&lt;<see cref="IExecuteDslJobApiResponse"/>&gt;</returns>
+        public async Task<IExecuteDslJobApiResponse?> ExecuteDslJobOrDefaultAsync(Guid tenantId, Guid jobId, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await ExecuteDslSyncJobAsync(tenantId, jobId, cancellationToken).ConfigureAwait(false);
+                return await ExecuteDslJobAsync(tenantId, jobId, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -903,14 +903,14 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="jobId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IExecuteDslSyncJobApiResponse"/>&gt;</returns>
-        public async Task<IExecuteDslSyncJobApiResponse> ExecuteDslSyncJobAsync(Guid tenantId, Guid jobId, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns><see cref="Task"/>&lt;<see cref="IExecuteDslJobApiResponse"/>&gt;</returns>
+        public async Task<IExecuteDslJobApiResponse> ExecuteDslJobAsync(Guid tenantId, Guid jobId, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
             try
             {
-                FormatExecuteDslSyncJob(ref tenantId, ref jobId);
+                FormatExecuteDslJob(ref tenantId, ref jobId);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -947,13 +947,13 @@ namespace EdGraph.Platform.Client.Api
                     {
                         string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
 
-                        ILogger<ExecuteDslSyncJobApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<ExecuteDslSyncJobApiResponse>();
+                        ILogger<ExecuteDslJobApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<ExecuteDslJobApiResponse>();
 
-                        ExecuteDslSyncJobApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/jobs/dsl/{jobId}/execute", requestedAtLocalVar, _jsonSerializerOptions);
+                        ExecuteDslJobApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/jobs/dsl/{jobId}/execute", requestedAtLocalVar, _jsonSerializerOptions);
 
-                        AfterExecuteDslSyncJobDefaultImplementation(apiResponseLocalVar, tenantId, jobId);
+                        AfterExecuteDslJobDefaultImplementation(apiResponseLocalVar, tenantId, jobId);
 
-                        Events.ExecuteOnExecuteDslSyncJob(apiResponseLocalVar);
+                        Events.ExecuteOnExecuteDslJob(apiResponseLocalVar);
 
                         if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
                             foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
@@ -965,24 +965,24 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorExecuteDslSyncJobDefaultImplementation(e, "/tenants/{tenantId}/jobs/dsl/{jobId}/execute", uriBuilderLocalVar.Path, tenantId, jobId);
-                Events.ExecuteOnErrorExecuteDslSyncJob(e);
+                OnErrorExecuteDslJobDefaultImplementation(e, "/tenants/{tenantId}/jobs/dsl/{jobId}/execute", uriBuilderLocalVar.Path, tenantId, jobId);
+                Events.ExecuteOnErrorExecuteDslJob(e);
                 throw;
             }
         }
 
         /// <summary>
-        /// The <see cref="ExecuteDslSyncJobApiResponse"/>
+        /// The <see cref="ExecuteDslJobApiResponse"/>
         /// </summary>
-        public partial class ExecuteDslSyncJobApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IExecuteDslSyncJobApiResponse
+        public partial class ExecuteDslJobApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IExecuteDslJobApiResponse
         {
             /// <summary>
             /// The logger
             /// </summary>
-            public ILogger<ExecuteDslSyncJobApiResponse> Logger { get; }
+            public ILogger<ExecuteDslJobApiResponse> Logger { get; }
 
             /// <summary>
-            /// The <see cref="ExecuteDslSyncJobApiResponse"/>
+            /// The <see cref="ExecuteDslJobApiResponse"/>
             /// </summary>
             /// <param name="logger"></param>
             /// <param name="httpRequestMessage"></param>
@@ -991,7 +991,7 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public ExecuteDslSyncJobApiResponse(ILogger<ExecuteDslSyncJobApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            public ExecuteDslJobApiResponse(ILogger<ExecuteDslJobApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -1200,7 +1200,7 @@ namespace EdGraph.Platform.Client.Api
             partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
         }
 
-        partial void FormatGetDslSyncData(ref Guid tenantId, ref Guid jobId);
+        partial void FormatGetDslJob(ref Guid tenantId, ref Guid jobId);
 
         /// <summary>
         /// Processes the server response
@@ -1208,10 +1208,10 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="jobId"></param>
-        private void AfterGetDslSyncDataDefaultImplementation(IGetDslSyncDataApiResponse apiResponseLocalVar, Guid tenantId, Guid jobId)
+        private void AfterGetDslJobDefaultImplementation(IGetDslJobApiResponse apiResponseLocalVar, Guid tenantId, Guid jobId)
         {
             bool suppressDefaultLog = false;
-            AfterGetDslSyncData(ref suppressDefaultLog, apiResponseLocalVar, tenantId, jobId);
+            AfterGetDslJob(ref suppressDefaultLog, apiResponseLocalVar, tenantId, jobId);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -1223,7 +1223,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="jobId"></param>
-        partial void AfterGetDslSyncData(ref bool suppressDefaultLog, IGetDslSyncDataApiResponse apiResponseLocalVar, Guid tenantId, Guid jobId);
+        partial void AfterGetDslJob(ref bool suppressDefaultLog, IGetDslJobApiResponse apiResponseLocalVar, Guid tenantId, Guid jobId);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -1233,10 +1233,10 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="path"></param>
         /// <param name="tenantId"></param>
         /// <param name="jobId"></param>
-        private void OnErrorGetDslSyncDataDefaultImplementation(Exception exception, string pathFormat, string path, Guid tenantId, Guid jobId)
+        private void OnErrorGetDslJobDefaultImplementation(Exception exception, string pathFormat, string path, Guid tenantId, Guid jobId)
         {
             bool suppressDefaultLog = false;
-            OnErrorGetDslSyncData(ref suppressDefaultLog, exception, pathFormat, path, tenantId, jobId);
+            OnErrorGetDslJob(ref suppressDefaultLog, exception, pathFormat, path, tenantId, jobId);
             if (!suppressDefaultLog)
                 Logger.LogError(exception, "An error occurred while sending the request to the server.");
         }
@@ -1250,7 +1250,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="path"></param>
         /// <param name="tenantId"></param>
         /// <param name="jobId"></param>
-        partial void OnErrorGetDslSyncData(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, Guid tenantId, Guid jobId);
+        partial void OnErrorGetDslJob(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, Guid tenantId, Guid jobId);
 
         /// <summary>
         /// Retrieves a DSL jobs profile for a given tenant 
@@ -1258,12 +1258,12 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="jobId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IGetDslSyncDataApiResponse"/>&gt;</returns>
-        public async Task<IGetDslSyncDataApiResponse?> GetDslSyncDataOrDefaultAsync(Guid tenantId, Guid jobId, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetDslJobApiResponse"/>&gt;</returns>
+        public async Task<IGetDslJobApiResponse?> GetDslJobOrDefaultAsync(Guid tenantId, Guid jobId, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await GetDslSyncDataAsync(tenantId, jobId, cancellationToken).ConfigureAwait(false);
+                return await GetDslJobAsync(tenantId, jobId, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -1278,14 +1278,14 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="jobId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IGetDslSyncDataApiResponse"/>&gt;</returns>
-        public async Task<IGetDslSyncDataApiResponse> GetDslSyncDataAsync(Guid tenantId, Guid jobId, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetDslJobApiResponse"/>&gt;</returns>
+        public async Task<IGetDslJobApiResponse> GetDslJobAsync(Guid tenantId, Guid jobId, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
             try
             {
-                FormatGetDslSyncData(ref tenantId, ref jobId);
+                FormatGetDslJob(ref tenantId, ref jobId);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -1322,13 +1322,13 @@ namespace EdGraph.Platform.Client.Api
                     {
                         string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
 
-                        ILogger<GetDslSyncDataApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<GetDslSyncDataApiResponse>();
+                        ILogger<GetDslJobApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<GetDslJobApiResponse>();
 
-                        GetDslSyncDataApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/jobs/dsl/{jobId}", requestedAtLocalVar, _jsonSerializerOptions);
+                        GetDslJobApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/jobs/dsl/{jobId}", requestedAtLocalVar, _jsonSerializerOptions);
 
-                        AfterGetDslSyncDataDefaultImplementation(apiResponseLocalVar, tenantId, jobId);
+                        AfterGetDslJobDefaultImplementation(apiResponseLocalVar, tenantId, jobId);
 
-                        Events.ExecuteOnGetDslSyncData(apiResponseLocalVar);
+                        Events.ExecuteOnGetDslJob(apiResponseLocalVar);
 
                         if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
                             foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
@@ -1340,24 +1340,24 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorGetDslSyncDataDefaultImplementation(e, "/tenants/{tenantId}/jobs/dsl/{jobId}", uriBuilderLocalVar.Path, tenantId, jobId);
-                Events.ExecuteOnErrorGetDslSyncData(e);
+                OnErrorGetDslJobDefaultImplementation(e, "/tenants/{tenantId}/jobs/dsl/{jobId}", uriBuilderLocalVar.Path, tenantId, jobId);
+                Events.ExecuteOnErrorGetDslJob(e);
                 throw;
             }
         }
 
         /// <summary>
-        /// The <see cref="GetDslSyncDataApiResponse"/>
+        /// The <see cref="GetDslJobApiResponse"/>
         /// </summary>
-        public partial class GetDslSyncDataApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IGetDslSyncDataApiResponse
+        public partial class GetDslJobApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IGetDslJobApiResponse
         {
             /// <summary>
             /// The logger
             /// </summary>
-            public ILogger<GetDslSyncDataApiResponse> Logger { get; }
+            public ILogger<GetDslJobApiResponse> Logger { get; }
 
             /// <summary>
-            /// The <see cref="GetDslSyncDataApiResponse"/>
+            /// The <see cref="GetDslJobApiResponse"/>
             /// </summary>
             /// <param name="logger"></param>
             /// <param name="httpRequestMessage"></param>
@@ -1366,7 +1366,7 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public GetDslSyncDataApiResponse(ILogger<GetDslSyncDataApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            public GetDslJobApiResponse(ILogger<GetDslJobApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -1575,14 +1575,14 @@ namespace EdGraph.Platform.Client.Api
             partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
         }
 
-        partial void FormatUpdateDslSync(ref Guid tenantId, ref Guid jobId, Option<DataSyncApiDslV1UpdateJobRequest> dataSyncApiDslV1UpdateJobRequest);
+        partial void FormatUpdateDslJob(ref Guid tenantId, ref Guid jobId, Option<DataSyncApiDslV1UpdateJobRequest> dataSyncApiDslV1UpdateJobRequest);
 
         /// <summary>
         /// Validates the request parameters
         /// </summary>
         /// <param name="dataSyncApiDslV1UpdateJobRequest"></param>
         /// <returns></returns>
-        private void ValidateUpdateDslSync(Option<DataSyncApiDslV1UpdateJobRequest> dataSyncApiDslV1UpdateJobRequest)
+        private void ValidateUpdateDslJob(Option<DataSyncApiDslV1UpdateJobRequest> dataSyncApiDslV1UpdateJobRequest)
         {
             if (dataSyncApiDslV1UpdateJobRequest.IsSet && dataSyncApiDslV1UpdateJobRequest.Value == null)
                 throw new ArgumentNullException(nameof(dataSyncApiDslV1UpdateJobRequest));
@@ -1595,10 +1595,10 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="jobId"></param>
         /// <param name="dataSyncApiDslV1UpdateJobRequest"></param>
-        private void AfterUpdateDslSyncDefaultImplementation(IUpdateDslSyncApiResponse apiResponseLocalVar, Guid tenantId, Guid jobId, Option<DataSyncApiDslV1UpdateJobRequest> dataSyncApiDslV1UpdateJobRequest)
+        private void AfterUpdateDslJobDefaultImplementation(IUpdateDslJobApiResponse apiResponseLocalVar, Guid tenantId, Guid jobId, Option<DataSyncApiDslV1UpdateJobRequest> dataSyncApiDslV1UpdateJobRequest)
         {
             bool suppressDefaultLog = false;
-            AfterUpdateDslSync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, jobId, dataSyncApiDslV1UpdateJobRequest);
+            AfterUpdateDslJob(ref suppressDefaultLog, apiResponseLocalVar, tenantId, jobId, dataSyncApiDslV1UpdateJobRequest);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -1611,7 +1611,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="jobId"></param>
         /// <param name="dataSyncApiDslV1UpdateJobRequest"></param>
-        partial void AfterUpdateDslSync(ref bool suppressDefaultLog, IUpdateDslSyncApiResponse apiResponseLocalVar, Guid tenantId, Guid jobId, Option<DataSyncApiDslV1UpdateJobRequest> dataSyncApiDslV1UpdateJobRequest);
+        partial void AfterUpdateDslJob(ref bool suppressDefaultLog, IUpdateDslJobApiResponse apiResponseLocalVar, Guid tenantId, Guid jobId, Option<DataSyncApiDslV1UpdateJobRequest> dataSyncApiDslV1UpdateJobRequest);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -1622,10 +1622,10 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="jobId"></param>
         /// <param name="dataSyncApiDslV1UpdateJobRequest"></param>
-        private void OnErrorUpdateDslSyncDefaultImplementation(Exception exception, string pathFormat, string path, Guid tenantId, Guid jobId, Option<DataSyncApiDslV1UpdateJobRequest> dataSyncApiDslV1UpdateJobRequest)
+        private void OnErrorUpdateDslJobDefaultImplementation(Exception exception, string pathFormat, string path, Guid tenantId, Guid jobId, Option<DataSyncApiDslV1UpdateJobRequest> dataSyncApiDslV1UpdateJobRequest)
         {
             bool suppressDefaultLog = false;
-            OnErrorUpdateDslSync(ref suppressDefaultLog, exception, pathFormat, path, tenantId, jobId, dataSyncApiDslV1UpdateJobRequest);
+            OnErrorUpdateDslJob(ref suppressDefaultLog, exception, pathFormat, path, tenantId, jobId, dataSyncApiDslV1UpdateJobRequest);
             if (!suppressDefaultLog)
                 Logger.LogError(exception, "An error occurred while sending the request to the server.");
         }
@@ -1640,7 +1640,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="jobId"></param>
         /// <param name="dataSyncApiDslV1UpdateJobRequest"></param>
-        partial void OnErrorUpdateDslSync(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, Guid tenantId, Guid jobId, Option<DataSyncApiDslV1UpdateJobRequest> dataSyncApiDslV1UpdateJobRequest);
+        partial void OnErrorUpdateDslJob(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, Guid tenantId, Guid jobId, Option<DataSyncApiDslV1UpdateJobRequest> dataSyncApiDslV1UpdateJobRequest);
 
         /// <summary>
         /// Updates a DSL Sync Job for a given tenant 
@@ -1649,12 +1649,12 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="jobId"></param>
         /// <param name="dataSyncApiDslV1UpdateJobRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IUpdateDslSyncApiResponse"/>&gt;</returns>
-        public async Task<IUpdateDslSyncApiResponse?> UpdateDslSyncOrDefaultAsync(Guid tenantId, Guid jobId, Option<DataSyncApiDslV1UpdateJobRequest> dataSyncApiDslV1UpdateJobRequest = default, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns><see cref="Task"/>&lt;<see cref="IUpdateDslJobApiResponse"/>&gt;</returns>
+        public async Task<IUpdateDslJobApiResponse?> UpdateDslJobOrDefaultAsync(Guid tenantId, Guid jobId, Option<DataSyncApiDslV1UpdateJobRequest> dataSyncApiDslV1UpdateJobRequest = default, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await UpdateDslSyncAsync(tenantId, jobId, dataSyncApiDslV1UpdateJobRequest, cancellationToken).ConfigureAwait(false);
+                return await UpdateDslJobAsync(tenantId, jobId, dataSyncApiDslV1UpdateJobRequest, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -1670,16 +1670,16 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="jobId"></param>
         /// <param name="dataSyncApiDslV1UpdateJobRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IUpdateDslSyncApiResponse"/>&gt;</returns>
-        public async Task<IUpdateDslSyncApiResponse> UpdateDslSyncAsync(Guid tenantId, Guid jobId, Option<DataSyncApiDslV1UpdateJobRequest> dataSyncApiDslV1UpdateJobRequest = default, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns><see cref="Task"/>&lt;<see cref="IUpdateDslJobApiResponse"/>&gt;</returns>
+        public async Task<IUpdateDslJobApiResponse> UpdateDslJobAsync(Guid tenantId, Guid jobId, Option<DataSyncApiDslV1UpdateJobRequest> dataSyncApiDslV1UpdateJobRequest = default, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
             try
             {
-                ValidateUpdateDslSync(dataSyncApiDslV1UpdateJobRequest);
+                ValidateUpdateDslJob(dataSyncApiDslV1UpdateJobRequest);
 
-                FormatUpdateDslSync(ref tenantId, ref jobId, dataSyncApiDslV1UpdateJobRequest);
+                FormatUpdateDslJob(ref tenantId, ref jobId, dataSyncApiDslV1UpdateJobRequest);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -1733,13 +1733,13 @@ namespace EdGraph.Platform.Client.Api
                     {
                         string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
 
-                        ILogger<UpdateDslSyncApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<UpdateDslSyncApiResponse>();
+                        ILogger<UpdateDslJobApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<UpdateDslJobApiResponse>();
 
-                        UpdateDslSyncApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/jobs/dsl/{jobId}", requestedAtLocalVar, _jsonSerializerOptions);
+                        UpdateDslJobApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/jobs/dsl/{jobId}", requestedAtLocalVar, _jsonSerializerOptions);
 
-                        AfterUpdateDslSyncDefaultImplementation(apiResponseLocalVar, tenantId, jobId, dataSyncApiDslV1UpdateJobRequest);
+                        AfterUpdateDslJobDefaultImplementation(apiResponseLocalVar, tenantId, jobId, dataSyncApiDslV1UpdateJobRequest);
 
-                        Events.ExecuteOnUpdateDslSync(apiResponseLocalVar);
+                        Events.ExecuteOnUpdateDslJob(apiResponseLocalVar);
 
                         if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
                             foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
@@ -1751,24 +1751,24 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorUpdateDslSyncDefaultImplementation(e, "/tenants/{tenantId}/jobs/dsl/{jobId}", uriBuilderLocalVar.Path, tenantId, jobId, dataSyncApiDslV1UpdateJobRequest);
-                Events.ExecuteOnErrorUpdateDslSync(e);
+                OnErrorUpdateDslJobDefaultImplementation(e, "/tenants/{tenantId}/jobs/dsl/{jobId}", uriBuilderLocalVar.Path, tenantId, jobId, dataSyncApiDslV1UpdateJobRequest);
+                Events.ExecuteOnErrorUpdateDslJob(e);
                 throw;
             }
         }
 
         /// <summary>
-        /// The <see cref="UpdateDslSyncApiResponse"/>
+        /// The <see cref="UpdateDslJobApiResponse"/>
         /// </summary>
-        public partial class UpdateDslSyncApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IUpdateDslSyncApiResponse
+        public partial class UpdateDslJobApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IUpdateDslJobApiResponse
         {
             /// <summary>
             /// The logger
             /// </summary>
-            public ILogger<UpdateDslSyncApiResponse> Logger { get; }
+            public ILogger<UpdateDslJobApiResponse> Logger { get; }
 
             /// <summary>
-            /// The <see cref="UpdateDslSyncApiResponse"/>
+            /// The <see cref="UpdateDslJobApiResponse"/>
             /// </summary>
             /// <param name="logger"></param>
             /// <param name="httpRequestMessage"></param>
@@ -1777,7 +1777,7 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public UpdateDslSyncApiResponse(ILogger<UpdateDslSyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            public UpdateDslJobApiResponse(ILogger<UpdateDslJobApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);

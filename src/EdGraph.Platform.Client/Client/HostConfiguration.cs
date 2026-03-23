@@ -1170,10 +1170,10 @@ namespace EdGraph.Platform.Client.Client
             _services.AddTransient<ITagsApi, TagsApi>();
             _services.AddSingleton<TenantBrandingApiEvents>();
             _services.AddTransient<ITenantBrandingApi, TenantBrandingApi>();
-            _services.AddSingleton<TenantDslApiEvents>();
-            _services.AddTransient<ITenantDslApi, TenantDslApi>();
             _services.AddSingleton<TenantInstancesApiEvents>();
             _services.AddTransient<ITenantInstancesApi, TenantInstancesApi>();
+            _services.AddSingleton<TenantJobsDSLApiEvents>();
+            _services.AddTransient<ITenantJobsDSLApi, TenantJobsDSLApi>();
             _services.AddSingleton<TenantSecurityScoreSyncApiEvents>();
             _services.AddTransient<ITenantSecurityScoreSyncApi, TenantSecurityScoreSyncApi>();
             _services.AddSingleton<TenantSettingTypesApiEvents>();
@@ -1296,8 +1296,8 @@ namespace EdGraph.Platform.Client.Client
             builders.Add(_services.AddHttpClient<ISubscriptionsApi, SubscriptionsApi>(client));
             builders.Add(_services.AddHttpClient<ITagsApi, TagsApi>(client));
             builders.Add(_services.AddHttpClient<ITenantBrandingApi, TenantBrandingApi>(client));
-            builders.Add(_services.AddHttpClient<ITenantDslApi, TenantDslApi>(client));
             builders.Add(_services.AddHttpClient<ITenantInstancesApi, TenantInstancesApi>(client));
+            builders.Add(_services.AddHttpClient<ITenantJobsDSLApi, TenantJobsDSLApi>(client));
             builders.Add(_services.AddHttpClient<ITenantSecurityScoreSyncApi, TenantSecurityScoreSyncApi>(client));
             builders.Add(_services.AddHttpClient<ITenantSettingTypesApi, TenantSettingTypesApi>(client));
             builders.Add(_services.AddHttpClient<ITenantsApi, TenantsApi>(client));

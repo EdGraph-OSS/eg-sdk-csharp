@@ -86,8 +86,8 @@ docs/apis/SubmissionsApi.md
 docs/apis/SubscriptionsApi.md
 docs/apis/TagsApi.md
 docs/apis/TenantBrandingApi.md
-docs/apis/TenantDslApi.md
 docs/apis/TenantInstancesApi.md
+docs/apis/TenantJobsDSLApi.md
 docs/apis/TenantSecurityScoreSyncApi.md
 docs/apis/TenantSettingTypesApi.md
 docs/apis/TenantsApi.md
@@ -1073,8 +1073,8 @@ src/EdGraph.Platform.Client.Test/Api/SubmissionsApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/SubscriptionsApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/TagsApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/TenantBrandingApiTests.cs
-src/EdGraph.Platform.Client.Test/Api/TenantDslApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/TenantInstancesApiTests.cs
+src/EdGraph.Platform.Client.Test/Api/TenantJobsDSLApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/TenantSecurityScoreSyncApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/TenantSettingTypesApiTests.cs
 src/EdGraph.Platform.Client.Test/Api/TenantsApiTests.cs
@@ -2059,8 +2059,8 @@ src/EdGraph.Platform.Client/Api/SubmissionsApi.cs
 src/EdGraph.Platform.Client/Api/SubscriptionsApi.cs
 src/EdGraph.Platform.Client/Api/TagsApi.cs
 src/EdGraph.Platform.Client/Api/TenantBrandingApi.cs
-src/EdGraph.Platform.Client/Api/TenantDslApi.cs
 src/EdGraph.Platform.Client/Api/TenantInstancesApi.cs
+src/EdGraph.Platform.Client/Api/TenantJobsDSLApi.cs
 src/EdGraph.Platform.Client/Api/TenantSecurityScoreSyncApi.cs
 src/EdGraph.Platform.Client/Api/TenantSettingTypesApi.cs
 src/EdGraph.Platform.Client/Api/TenantsApi.cs

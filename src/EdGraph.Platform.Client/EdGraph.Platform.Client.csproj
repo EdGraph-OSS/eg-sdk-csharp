@@ -12,7 +12,7 @@
     <Description>EdGraph Platform Client SDK</Description>
     <Copyright>No Copyright</Copyright>
     <RootNamespace>EdGraph.Platform.Client</RootNamespace>
-    <Version>0.0.21</Version>
+    <Version>0.0.22</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\EdGraph.Platform.Client.xml</DocumentationFile>
     <RepositoryUrl>https://github.com/EdGraph-OSS/csharp-sdk.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
