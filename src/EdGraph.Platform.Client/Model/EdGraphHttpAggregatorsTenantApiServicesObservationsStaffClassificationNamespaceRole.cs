@@ -34,13 +34,11 @@ namespace EdGraph.Platform.Client.Model
         /// Initializes a new instance of the <see cref="EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRole" /> class.
         /// </summary>
         /// <param name="role">role</param>
-        /// <param name="description">description</param>
         /// <param name="assignedPersonaIdentifiers">assignedPersonaIdentifiers</param>
         [JsonConstructor]
-        public EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRole(Option<string?> role = default, Option<string?> description = default, Option<List<string>?> assignedPersonaIdentifiers = default)
+        public EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRole(Option<string?> role = default, Option<List<string>?> assignedPersonaIdentifiers = default)
         {
             RoleOption = role;
-            DescriptionOption = description;
             AssignedPersonaIdentifiersOption = assignedPersonaIdentifiers;
             OnCreated();
         }
@@ -59,19 +57,6 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         [JsonPropertyName("role")]
         public string? Role { get { return this.RoleOption; } set { this.RoleOption = new(value); } }
-
-        /// <summary>
-        /// Used to track the state of Description
-        /// </summary>
-        [JsonIgnore]
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<string?> DescriptionOption { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets Description
-        /// </summary>
-        [JsonPropertyName("description")]
-        public string? Description { get { return this.DescriptionOption; } set { this.DescriptionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AssignedPersonaIdentifiers
@@ -95,7 +80,6 @@ namespace EdGraph.Platform.Client.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRole {\n");
             sb.Append("  Role: ").Append(Role).Append("\n");
-            sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  AssignedPersonaIdentifiers: ").Append(AssignedPersonaIdentifiers).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -135,7 +119,6 @@ namespace EdGraph.Platform.Client.Model
             JsonTokenType startingTokenType = utf8JsonReader.TokenType;
 
             Option<string?> role = default;
-            Option<string?> description = default;
             Option<List<string>?> assignedPersonaIdentifiers = default;
 
             while (utf8JsonReader.Read())
@@ -156,9 +139,6 @@ namespace EdGraph.Platform.Client.Model
                         case "role":
                             role = new Option<string?>(utf8JsonReader.GetString());
                             break;
-                        case "description":
-                            description = new Option<string?>(utf8JsonReader.GetString());
-                            break;
                         case "assignedPersonaIdentifiers":
                             if (utf8JsonReader.TokenType != JsonTokenType.Null)
                                 assignedPersonaIdentifiers = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
@@ -169,7 +149,7 @@ namespace EdGraph.Platform.Client.Model
                 }
             }
 
-            return new EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRole(role, description, assignedPersonaIdentifiers);
+            return new EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRole(role, assignedPersonaIdentifiers);
         }
 
         /// <summary>
@@ -201,12 +181,6 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteString("role", edGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRole.Role);
                 else
                     writer.WriteNull("role");
-
-            if (edGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRole.DescriptionOption.IsSet)
-                if (edGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRole.DescriptionOption.Value != null)
-                    writer.WriteString("description", edGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRole.Description);
-                else
-                    writer.WriteNull("description");
 
             if (edGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRole.AssignedPersonaIdentifiersOption.IsSet)
                 if (edGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRole.AssignedPersonaIdentifiersOption.Value != null)

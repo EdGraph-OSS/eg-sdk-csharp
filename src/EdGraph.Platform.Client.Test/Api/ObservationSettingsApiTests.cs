@@ -104,6 +104,22 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
+        /// Test GetPaginatedStaffClassifications
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetPaginatedStaffClassificationsAsyncTest()
+        {
+            Guid tenantId = default!;
+            Client.Option<int> pageIndex = default!;
+            Client.Option<int> pageSize = default!;
+            Client.Option<string> orderBy = default!;
+            Client.Option<string> filter = default!;
+            var response = await _instance.GetPaginatedStaffClassificationsAsync(tenantId, pageIndex, pageSize, orderBy, filter);
+            var model = response.Unauthorized();
+            Assert.IsType<IdentityApiStaffClassificationV1GetStaffClassificationsResponse>(model);
+        }
+
+        /// <summary>
         /// Test GetStaffClassificationsSettings
         /// </summary>
         [Fact (Skip = "not implemented")]

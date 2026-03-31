@@ -36,9 +36,14 @@ namespace EdGraph.Platform.Client.Model
         Unknown,
 
         /// <summary>
-        /// Enum StateEducationAgency for value: StateEducationAgency
+        /// Enum EducationOrganizationNetwork for value: EducationOrganizationNetwork
         /// </summary>
-        StateEducationAgency,
+        EducationOrganizationNetwork,
+
+        /// <summary>
+        /// Enum EducationServiceCenter for value: EducationServiceCenter
+        /// </summary>
+        EducationServiceCenter,
 
         /// <summary>
         /// Enum LocalEducationAgency for value: LocalEducationAgency
@@ -46,9 +51,29 @@ namespace EdGraph.Platform.Client.Model
         LocalEducationAgency,
 
         /// <summary>
+        /// Enum OrganizationDepartment for value: OrganizationDepartment
+        /// </summary>
+        OrganizationDepartment,
+
+        /// <summary>
+        /// Enum Other for value: Other
+        /// </summary>
+        Other,
+
+        /// <summary>
+        /// Enum PostSecondaryInstitution for value: PostSecondaryInstitution
+        /// </summary>
+        PostSecondaryInstitution,
+
+        /// <summary>
         /// Enum School for value: School
         /// </summary>
-        School
+        School,
+
+        /// <summary>
+        /// Enum StateEducationAgency for value: StateEducationAgency
+        /// </summary>
+        StateEducationAgency
     }
 
     /// <summary>
@@ -66,14 +91,29 @@ namespace EdGraph.Platform.Client.Model
             if (value.Equals("Unknown"))
                 return EvaluationApiEvaluationsV1OrganizationDiscriminator.Unknown;
 
-            if (value.Equals("StateEducationAgency"))
-                return EvaluationApiEvaluationsV1OrganizationDiscriminator.StateEducationAgency;
+            if (value.Equals("EducationOrganizationNetwork"))
+                return EvaluationApiEvaluationsV1OrganizationDiscriminator.EducationOrganizationNetwork;
+
+            if (value.Equals("EducationServiceCenter"))
+                return EvaluationApiEvaluationsV1OrganizationDiscriminator.EducationServiceCenter;
 
             if (value.Equals("LocalEducationAgency"))
                 return EvaluationApiEvaluationsV1OrganizationDiscriminator.LocalEducationAgency;
 
+            if (value.Equals("OrganizationDepartment"))
+                return EvaluationApiEvaluationsV1OrganizationDiscriminator.OrganizationDepartment;
+
+            if (value.Equals("Other"))
+                return EvaluationApiEvaluationsV1OrganizationDiscriminator.Other;
+
+            if (value.Equals("PostSecondaryInstitution"))
+                return EvaluationApiEvaluationsV1OrganizationDiscriminator.PostSecondaryInstitution;
+
             if (value.Equals("School"))
                 return EvaluationApiEvaluationsV1OrganizationDiscriminator.School;
+
+            if (value.Equals("StateEducationAgency"))
+                return EvaluationApiEvaluationsV1OrganizationDiscriminator.StateEducationAgency;
 
             throw new NotImplementedException($"Could not convert value to type EvaluationApiEvaluationsV1OrganizationDiscriminator: '{value}'");
         }
@@ -88,14 +128,29 @@ namespace EdGraph.Platform.Client.Model
             if (value.Equals("Unknown"))
                 return EvaluationApiEvaluationsV1OrganizationDiscriminator.Unknown;
 
-            if (value.Equals("StateEducationAgency"))
-                return EvaluationApiEvaluationsV1OrganizationDiscriminator.StateEducationAgency;
+            if (value.Equals("EducationOrganizationNetwork"))
+                return EvaluationApiEvaluationsV1OrganizationDiscriminator.EducationOrganizationNetwork;
+
+            if (value.Equals("EducationServiceCenter"))
+                return EvaluationApiEvaluationsV1OrganizationDiscriminator.EducationServiceCenter;
 
             if (value.Equals("LocalEducationAgency"))
                 return EvaluationApiEvaluationsV1OrganizationDiscriminator.LocalEducationAgency;
 
+            if (value.Equals("OrganizationDepartment"))
+                return EvaluationApiEvaluationsV1OrganizationDiscriminator.OrganizationDepartment;
+
+            if (value.Equals("Other"))
+                return EvaluationApiEvaluationsV1OrganizationDiscriminator.Other;
+
+            if (value.Equals("PostSecondaryInstitution"))
+                return EvaluationApiEvaluationsV1OrganizationDiscriminator.PostSecondaryInstitution;
+
             if (value.Equals("School"))
                 return EvaluationApiEvaluationsV1OrganizationDiscriminator.School;
+
+            if (value.Equals("StateEducationAgency"))
+                return EvaluationApiEvaluationsV1OrganizationDiscriminator.StateEducationAgency;
 
             return null;
         }
@@ -111,14 +166,29 @@ namespace EdGraph.Platform.Client.Model
             if (value == EvaluationApiEvaluationsV1OrganizationDiscriminator.Unknown)
                 return "Unknown";
 
-            if (value == EvaluationApiEvaluationsV1OrganizationDiscriminator.StateEducationAgency)
-                return "StateEducationAgency";
+            if (value == EvaluationApiEvaluationsV1OrganizationDiscriminator.EducationOrganizationNetwork)
+                return "EducationOrganizationNetwork";
+
+            if (value == EvaluationApiEvaluationsV1OrganizationDiscriminator.EducationServiceCenter)
+                return "EducationServiceCenter";
 
             if (value == EvaluationApiEvaluationsV1OrganizationDiscriminator.LocalEducationAgency)
                 return "LocalEducationAgency";
 
+            if (value == EvaluationApiEvaluationsV1OrganizationDiscriminator.OrganizationDepartment)
+                return "OrganizationDepartment";
+
+            if (value == EvaluationApiEvaluationsV1OrganizationDiscriminator.Other)
+                return "Other";
+
+            if (value == EvaluationApiEvaluationsV1OrganizationDiscriminator.PostSecondaryInstitution)
+                return "PostSecondaryInstitution";
+
             if (value == EvaluationApiEvaluationsV1OrganizationDiscriminator.School)
                 return "School";
+
+            if (value == EvaluationApiEvaluationsV1OrganizationDiscriminator.StateEducationAgency)
+                return "StateEducationAgency";
 
             throw new NotImplementedException($"Value could not be handled: '{value}'");
         }

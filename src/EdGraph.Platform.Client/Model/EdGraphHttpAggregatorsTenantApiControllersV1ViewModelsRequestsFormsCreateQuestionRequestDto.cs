@@ -45,8 +45,9 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options">options</param>
         /// <param name="order">order</param>
         /// <param name="component">component</param>
+        /// <param name="visibilityCondition">visibilityCondition</param>
         [JsonConstructor]
-        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto(Option<Guid?> formId = default, Option<Guid?> sectionId = default, Option<Guid?> tenantId = default, Option<string?> title = default, Option<string?> description = default, Option<FormApiQuestionsV1QuestionType?> type = default, Option<bool?> required = default, Option<string?> defaultValue = default, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionValidationRequestDto?> validation = default, Option<List<string>?> options = default, Option<int?> order = default, Option<Object?> component = default)
+        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto(Option<Guid?> formId = default, Option<Guid?> sectionId = default, Option<Guid?> tenantId = default, Option<string?> title = default, Option<string?> description = default, Option<FormApiQuestionsV1QuestionType?> type = default, Option<bool?> required = default, Option<string?> defaultValue = default, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionValidationRequestDto?> validation = default, Option<List<string>?> options = default, Option<int?> order = default, Option<Object?> component = default, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto?> visibilityCondition = default)
         {
             FormIdOption = formId;
             SectionIdOption = sectionId;
@@ -60,6 +61,7 @@ namespace EdGraph.Platform.Client.Model
             OptionsOption = options;
             OrderOption = order;
             ComponentOption = component;
+            VisibilityConditionOption = visibilityCondition;
             OnCreated();
         }
 
@@ -222,6 +224,19 @@ namespace EdGraph.Platform.Client.Model
         public Object? Component { get { return this.ComponentOption; } set { this.ComponentOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of VisibilityCondition
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto?> VisibilityConditionOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets VisibilityCondition
+        /// </summary>
+        [JsonPropertyName("visibilityCondition")]
+        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto? VisibilityCondition { get { return this.VisibilityConditionOption; } set { this.VisibilityConditionOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -241,6 +256,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  Options: ").Append(Options).Append("\n");
             sb.Append("  Order: ").Append(Order).Append("\n");
             sb.Append("  Component: ").Append(Component).Append("\n");
+            sb.Append("  VisibilityCondition: ").Append(VisibilityCondition).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -290,6 +306,7 @@ namespace EdGraph.Platform.Client.Model
             Option<List<string>?> options = default;
             Option<int?> order = default;
             Option<Object?> component = default;
+            Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto?> visibilityCondition = default;
 
             while (utf8JsonReader.Read())
             {
@@ -352,6 +369,10 @@ namespace EdGraph.Platform.Client.Model
                             if (utf8JsonReader.TokenType != JsonTokenType.Null)
                                 component = new Option<Object?>(JsonSerializer.Deserialize<Object>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
+                        case "visibilityCondition":
+                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
+                                visibilityCondition = new Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto?>(JsonSerializer.Deserialize<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            break;
                         default:
                             break;
                     }
@@ -379,7 +400,10 @@ namespace EdGraph.Platform.Client.Model
             if (order.IsSet && order.Value == null)
                 throw new ArgumentNullException(nameof(order), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto.");
 
-            return new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto(formId, sectionId, tenantId, title, description, type, required, defaultValue, validation, options, order, component);
+            if (visibilityCondition.IsSet && visibilityCondition.Value == null)
+                throw new ArgumentNullException(nameof(visibilityCondition), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto.");
+
+            return new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto(formId, sectionId, tenantId, title, description, type, required, defaultValue, validation, options, order, component, visibilityCondition);
         }
 
         /// <summary>
@@ -408,6 +432,9 @@ namespace EdGraph.Platform.Client.Model
         {
             if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto.ValidationOption.IsSet && edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto.Validation == null)
                 throw new ArgumentNullException(nameof(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto.Validation), "Property is required for class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto.");
+
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto.VisibilityConditionOption.IsSet && edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto.VisibilityCondition == null)
+                throw new ArgumentNullException(nameof(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto.VisibilityCondition), "Property is required for class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto.");
 
             if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto.FormIdOption.IsSet)
                 writer.WriteString("formId", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto.FormIdOption.Value!.Value);
@@ -468,6 +495,11 @@ namespace EdGraph.Platform.Client.Model
                 }
                 else
                     writer.WriteNull("component");
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto.VisibilityConditionOption.IsSet)
+            {
+                writer.WritePropertyName("visibilityCondition");
+                JsonSerializer.Serialize(writer, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto.VisibilityCondition, jsonSerializerOptions);
+            }
         }
     }
 }

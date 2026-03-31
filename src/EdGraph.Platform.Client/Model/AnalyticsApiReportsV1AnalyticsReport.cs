@@ -59,8 +59,9 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="varVersion">varVersion</param>
         /// <param name="rolesRequired">rolesRequired</param>
         /// <param name="identityRequired">identityRequired</param>
+        /// <param name="state">state</param>
         [JsonConstructor]
-        public AnalyticsApiReportsV1AnalyticsReport(Option<string?> id = default, Option<string?> tenantId = default, Option<string?> reportId = default, Option<string?> groupId = default, Option<List<AnalyticsApiReportsV1AnalyticsReportDataset>?> datasetIds = default, Option<string?> name = default, Option<string?> reportName = default, Option<string?> shortDescription = default, Option<string?> description = default, Option<string?> embedUrl = default, Option<string?> type = default, Option<AnalyticsApiReportsV1ReportSource?> source = default, Option<bool?> isVisible = default, Option<List<string>?> tags = default, Option<string?> createdBy = default, Option<string?> createdDateTime = default, Option<string?> lastModifiedBy = default, Option<string?> lastModifiedDateTime = default, Option<string?> deletedBy = default, Option<string?> deletedDateTime = default, Option<string?> lastUploadedBy = default, Option<string?> lastUploadedDateTime = default, Option<string?> downloadUri = default, Option<string?> varVersion = default, Option<bool?> rolesRequired = default, Option<bool?> identityRequired = default)
+        public AnalyticsApiReportsV1AnalyticsReport(Option<string?> id = default, Option<string?> tenantId = default, Option<string?> reportId = default, Option<string?> groupId = default, Option<List<AnalyticsApiReportsV1AnalyticsReportDataset>?> datasetIds = default, Option<string?> name = default, Option<string?> reportName = default, Option<string?> shortDescription = default, Option<string?> description = default, Option<string?> embedUrl = default, Option<string?> type = default, Option<AnalyticsApiReportsV1ReportSource?> source = default, Option<bool?> isVisible = default, Option<List<string>?> tags = default, Option<string?> createdBy = default, Option<string?> createdDateTime = default, Option<string?> lastModifiedBy = default, Option<string?> lastModifiedDateTime = default, Option<string?> deletedBy = default, Option<string?> deletedDateTime = default, Option<string?> lastUploadedBy = default, Option<string?> lastUploadedDateTime = default, Option<string?> downloadUri = default, Option<string?> varVersion = default, Option<bool?> rolesRequired = default, Option<bool?> identityRequired = default, Option<string?> state = default)
         {
             IdOption = id;
             TenantIdOption = tenantId;
@@ -88,6 +89,7 @@ namespace EdGraph.Platform.Client.Model
             VarVersionOption = varVersion;
             RolesRequiredOption = rolesRequired;
             IdentityRequiredOption = identityRequired;
+            StateOption = state;
             OnCreated();
         }
 
@@ -432,6 +434,19 @@ namespace EdGraph.Platform.Client.Model
         public bool? IdentityRequired { get { return this.IdentityRequiredOption; } set { this.IdentityRequiredOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of State
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> StateOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets State
+        /// </summary>
+        [JsonPropertyName("state")]
+        public string? State { get { return this.StateOption; } set { this.StateOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -465,6 +480,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
             sb.Append("  RolesRequired: ").Append(RolesRequired).Append("\n");
             sb.Append("  IdentityRequired: ").Append(IdentityRequired).Append("\n");
+            sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -528,6 +544,7 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> varVersion = default;
             Option<bool?> rolesRequired = default;
             Option<bool?> identityRequired = default;
+            Option<string?> state = default;
 
             while (utf8JsonReader.Read())
             {
@@ -629,6 +646,9 @@ namespace EdGraph.Platform.Client.Model
                             if (utf8JsonReader.TokenType != JsonTokenType.Null)
                                 identityRequired = new Option<bool?>(utf8JsonReader.GetBoolean());
                             break;
+                        case "state":
+                            state = new Option<string?>(utf8JsonReader.GetString());
+                            break;
                         default:
                             break;
                     }
@@ -641,7 +661,7 @@ namespace EdGraph.Platform.Client.Model
             if (isVisible.IsSet && isVisible.Value == null)
                 throw new ArgumentNullException(nameof(isVisible), "Property is not nullable for class AnalyticsApiReportsV1AnalyticsReport.");
 
-            return new AnalyticsApiReportsV1AnalyticsReport(id, tenantId, reportId, groupId, datasetIds, name, reportName, shortDescription, description, embedUrl, type, source, isVisible, tags, createdBy, createdDateTime, lastModifiedBy, lastModifiedDateTime, deletedBy, deletedDateTime, lastUploadedBy, lastUploadedDateTime, downloadUri, varVersion, rolesRequired, identityRequired);
+            return new AnalyticsApiReportsV1AnalyticsReport(id, tenantId, reportId, groupId, datasetIds, name, reportName, shortDescription, description, embedUrl, type, source, isVisible, tags, createdBy, createdDateTime, lastModifiedBy, lastModifiedDateTime, deletedBy, deletedDateTime, lastUploadedBy, lastUploadedDateTime, downloadUri, varVersion, rolesRequired, identityRequired, state);
         }
 
         /// <summary>
@@ -823,6 +843,12 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteBoolean("identityRequired", analyticsApiReportsV1AnalyticsReport.IdentityRequiredOption.Value!.Value);
                 else
                     writer.WriteNull("identityRequired");
+
+            if (analyticsApiReportsV1AnalyticsReport.StateOption.IsSet)
+                if (analyticsApiReportsV1AnalyticsReport.StateOption.Value != null)
+                    writer.WriteString("state", analyticsApiReportsV1AnalyticsReport.State);
+                else
+                    writer.WriteNull("state");
         }
     }
 }

@@ -42,8 +42,9 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options">options</param>
         /// <param name="order">order</param>
         /// <param name="component">component</param>
+        /// <param name="visibilityCondition">visibilityCondition</param>
         [JsonConstructor]
-        public FormApiFormsV1CreateFullQuestionRequest(Option<string?> title = default, Option<string?> description = default, Option<FormApiQuestionsV1QuestionType?> type = default, Option<bool?> required = default, Option<string?> defaultValue = default, Option<FormApiFormsV1CreateFullQuestionValidationRequest?> validation = default, Option<List<string>?> options = default, Option<int?> order = default, Option<string?> component = default)
+        public FormApiFormsV1CreateFullQuestionRequest(Option<string?> title = default, Option<string?> description = default, Option<FormApiQuestionsV1QuestionType?> type = default, Option<bool?> required = default, Option<string?> defaultValue = default, Option<FormApiFormsV1CreateFullQuestionValidationRequest?> validation = default, Option<List<string>?> options = default, Option<int?> order = default, Option<string?> component = default, Option<FormApiQuestionsV1QuestionVisibilityCondition?> visibilityCondition = default)
         {
             TitleOption = title;
             DescriptionOption = description;
@@ -54,6 +55,7 @@ namespace EdGraph.Platform.Client.Model
             OptionsOption = options;
             OrderOption = order;
             ComponentOption = component;
+            VisibilityConditionOption = visibilityCondition;
             OnCreated();
         }
 
@@ -177,6 +179,19 @@ namespace EdGraph.Platform.Client.Model
         public string? Component { get { return this.ComponentOption; } set { this.ComponentOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of VisibilityCondition
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<FormApiQuestionsV1QuestionVisibilityCondition?> VisibilityConditionOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets VisibilityCondition
+        /// </summary>
+        [JsonPropertyName("visibilityCondition")]
+        public FormApiQuestionsV1QuestionVisibilityCondition? VisibilityCondition { get { return this.VisibilityConditionOption; } set { this.VisibilityConditionOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -193,6 +208,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  Options: ").Append(Options).Append("\n");
             sb.Append("  Order: ").Append(Order).Append("\n");
             sb.Append("  Component: ").Append(Component).Append("\n");
+            sb.Append("  VisibilityCondition: ").Append(VisibilityCondition).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -239,6 +255,7 @@ namespace EdGraph.Platform.Client.Model
             Option<List<string>?> options = default;
             Option<int?> order = default;
             Option<string?> component = default;
+            Option<FormApiQuestionsV1QuestionVisibilityCondition?> visibilityCondition = default;
 
             while (utf8JsonReader.Read())
             {
@@ -288,6 +305,10 @@ namespace EdGraph.Platform.Client.Model
                         case "component":
                             component = new Option<string?>(utf8JsonReader.GetString());
                             break;
+                        case "visibilityCondition":
+                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
+                                visibilityCondition = new Option<FormApiQuestionsV1QuestionVisibilityCondition?>(JsonSerializer.Deserialize<FormApiQuestionsV1QuestionVisibilityCondition>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            break;
                         default:
                             break;
                     }
@@ -300,7 +321,10 @@ namespace EdGraph.Platform.Client.Model
             if (validation.IsSet && validation.Value == null)
                 throw new ArgumentNullException(nameof(validation), "Property is not nullable for class FormApiFormsV1CreateFullQuestionRequest.");
 
-            return new FormApiFormsV1CreateFullQuestionRequest(title, description, type, required, defaultValue, validation, options, order, component);
+            if (visibilityCondition.IsSet && visibilityCondition.Value == null)
+                throw new ArgumentNullException(nameof(visibilityCondition), "Property is not nullable for class FormApiFormsV1CreateFullQuestionRequest.");
+
+            return new FormApiFormsV1CreateFullQuestionRequest(title, description, type, required, defaultValue, validation, options, order, component, visibilityCondition);
         }
 
         /// <summary>
@@ -329,6 +353,9 @@ namespace EdGraph.Platform.Client.Model
         {
             if (formApiFormsV1CreateFullQuestionRequest.ValidationOption.IsSet && formApiFormsV1CreateFullQuestionRequest.Validation == null)
                 throw new ArgumentNullException(nameof(formApiFormsV1CreateFullQuestionRequest.Validation), "Property is required for class FormApiFormsV1CreateFullQuestionRequest.");
+
+            if (formApiFormsV1CreateFullQuestionRequest.VisibilityConditionOption.IsSet && formApiFormsV1CreateFullQuestionRequest.VisibilityCondition == null)
+                throw new ArgumentNullException(nameof(formApiFormsV1CreateFullQuestionRequest.VisibilityCondition), "Property is required for class FormApiFormsV1CreateFullQuestionRequest.");
 
             if (formApiFormsV1CreateFullQuestionRequest.TitleOption.IsSet)
                 if (formApiFormsV1CreateFullQuestionRequest.TitleOption.Value != null)
@@ -383,6 +410,12 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteString("component", formApiFormsV1CreateFullQuestionRequest.Component);
                 else
                     writer.WriteNull("component");
+
+            if (formApiFormsV1CreateFullQuestionRequest.VisibilityConditionOption.IsSet)
+            {
+                writer.WritePropertyName("visibilityCondition");
+                JsonSerializer.Serialize(writer, formApiFormsV1CreateFullQuestionRequest.VisibilityCondition, jsonSerializerOptions);
+            }
         }
     }
 }

@@ -27599,6 +27599,98 @@ paths:
       summary: Sets the Application Settings of an Observation for a given Tenant
       tags:
       - Observation Settings
+  /tenants/{tenantId}/observations/settings/available-staffclassifications:
+    get:
+      operationId: GetPaginatedStaffClassifications
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 10
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: orderBy
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityApi.StaffClassification.V1.GetStaffClassificationsResponse'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Get Paginated Available Forms
+      tags:
+      - Observation Settings
   /tenants/{tenantId}/observations/settings/personas:
     get:
       operationId: GetPaginatedPersonas
@@ -32330,6 +32422,8 @@ paths:
                 style: form
               IdentityRequired:
                 style: form
+              State:
+                style: form
             schema:
               $ref: '#/components/schemas/UpdateReportAsync_request'
       responses:
@@ -32698,6 +32792,8 @@ paths:
               IdentityRequired:
                 style: form
               RolesRequired:
+                style: form
+              State:
                 style: form
             schema:
               $ref: '#/components/schemas/CreateReportAsync_request'
@@ -43132,6 +43228,7 @@ components:
         deletedBy: deletedBy
         identityRequired: true
         id: id
+        state: state
         reportId: reportId
         lastUploadedDateTime: lastUploadedDateTime
         lastModifiedBy: lastModifiedBy
@@ -43227,6 +43324,9 @@ components:
         identityRequired:
           nullable: true
           type: boolean
+        state:
+          nullable: true
+          type: string
       type: object
     AnalyticsApi.Reports.V1.AnalyticsReportDataset:
       additionalProperties: false
@@ -43295,6 +43395,7 @@ components:
           deletedBy: deletedBy
           identityRequired: true
           id: id
+          state: state
           reportId: reportId
           lastUploadedDateTime: lastUploadedDateTime
           lastModifiedBy: lastModifiedBy
@@ -43329,6 +43430,7 @@ components:
           deletedBy: deletedBy
           identityRequired: true
           id: id
+          state: state
           reportId: reportId
           lastUploadedDateTime: lastUploadedDateTime
           lastModifiedBy: lastModifiedBy
@@ -43387,6 +43489,7 @@ components:
           deletedBy: deletedBy
           identityRequired: true
           id: id
+          state: state
           reportId: reportId
           lastUploadedDateTime: lastUploadedDateTime
           lastModifiedBy: lastModifiedBy
@@ -46824,6 +46927,8 @@ components:
           type: integer
         component:
           nullable: true
+        visibilityCondition:
+          $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Forms.QuestionVisibilityConditionDto'
       type: object
     EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Requests.Forms.CreateQuestionValidationRequestDto:
       additionalProperties: false
@@ -46877,6 +46982,8 @@ components:
           type: integer
         component:
           nullable: true
+        visibilityCondition:
+          $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Forms.QuestionVisibilityConditionDto'
       type: object
     EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Requests.Forms.UpdateQuestionValidationRequestDto:
       additionalProperties: false
@@ -47678,6 +47785,15 @@ components:
         lastModifiedDateTime: 2000-01-23T04:56:07.000+00:00
         defaultValue: defaultValue
         lastModifiedBy: lastModifiedBy
+        visibilityCondition:
+          rules:
+          - value: value
+            operator: operator
+            fieldId: fieldId
+          - value: value
+            operator: operator
+            fieldId: fieldId
+          logic: logic
         description: description
         createdDateTime: 2000-01-23T04:56:07.000+00:00
         deletedDateTime: 2000-01-23T04:56:07.000+00:00
@@ -47758,6 +47874,8 @@ components:
           type: integer
         component:
           nullable: true
+        visibilityCondition:
+          $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Forms.QuestionVisibilityConditionDto'
       type: object
     EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Forms.QuestionResponseDtoPaginatedItemsViewModel:
       additionalProperties: false
@@ -47767,6 +47885,15 @@ components:
           lastModifiedDateTime: 2000-01-23T04:56:07.000+00:00
           defaultValue: defaultValue
           lastModifiedBy: lastModifiedBy
+          visibilityCondition:
+            rules:
+            - value: value
+              operator: operator
+              fieldId: fieldId
+            - value: value
+              operator: operator
+              fieldId: fieldId
+            logic: logic
           description: description
           createdDateTime: 2000-01-23T04:56:07.000+00:00
           deletedDateTime: 2000-01-23T04:56:07.000+00:00
@@ -47791,6 +47918,15 @@ components:
           lastModifiedDateTime: 2000-01-23T04:56:07.000+00:00
           defaultValue: defaultValue
           lastModifiedBy: lastModifiedBy
+          visibilityCondition:
+            rules:
+            - value: value
+              operator: operator
+              fieldId: fieldId
+            - value: value
+              operator: operator
+              fieldId: fieldId
+            logic: logic
           description: description
           createdDateTime: 2000-01-23T04:56:07.000+00:00
           deletedDateTime: 2000-01-23T04:56:07.000+00:00
@@ -47844,6 +47980,44 @@ components:
           format: int32
           nullable: true
           type: integer
+      type: object
+    EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Forms.QuestionVisibilityConditionDto:
+      additionalProperties: false
+      example:
+        rules:
+        - value: value
+          operator: operator
+          fieldId: fieldId
+        - value: value
+          operator: operator
+          fieldId: fieldId
+        logic: logic
+      properties:
+        logic:
+          nullable: true
+          type: string
+        rules:
+          items:
+            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Forms.QuestionVisibilityRuleDto'
+          nullable: true
+          type: array
+      type: object
+    EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Forms.QuestionVisibilityRuleDto:
+      additionalProperties: false
+      example:
+        value: value
+        operator: operator
+        fieldId: fieldId
+      properties:
+        fieldId:
+          nullable: true
+          type: string
+        operator:
+          nullable: true
+          type: string
+        value:
+          nullable: true
+          type: string
       type: object
     EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Role:
       additionalProperties: false
@@ -49409,24 +49583,20 @@ components:
         namespaces:
         - roles:
           - role: role
-            description: description
             assignedPersonaIdentifiers:
             - assignedPersonaIdentifiers
             - assignedPersonaIdentifiers
           - role: role
-            description: description
             assignedPersonaIdentifiers:
             - assignedPersonaIdentifiers
             - assignedPersonaIdentifiers
           namespace: namespace
         - roles:
           - role: role
-            description: description
             assignedPersonaIdentifiers:
             - assignedPersonaIdentifiers
             - assignedPersonaIdentifiers
           - role: role
-            description: description
             assignedPersonaIdentifiers:
             - assignedPersonaIdentifiers
             - assignedPersonaIdentifiers
@@ -49710,12 +49880,10 @@ components:
       example:
         roles:
         - role: role
-          description: description
           assignedPersonaIdentifiers:
           - assignedPersonaIdentifiers
           - assignedPersonaIdentifiers
         - role: role
-          description: description
           assignedPersonaIdentifiers:
           - assignedPersonaIdentifiers
           - assignedPersonaIdentifiers
@@ -49734,15 +49902,11 @@ components:
       additionalProperties: false
       example:
         role: role
-        description: description
         assignedPersonaIdentifiers:
         - assignedPersonaIdentifiers
         - assignedPersonaIdentifiers
       properties:
         role:
-          nullable: true
-          type: string
-        description:
           nullable: true
           type: string
         assignedPersonaIdentifiers:
@@ -61119,9 +61283,14 @@ components:
     EvaluationApi.Evaluations.V1.OrganizationDiscriminator:
       enum:
       - Unknown
-      - StateEducationAgency
+      - EducationOrganizationNetwork
+      - EducationServiceCenter
       - LocalEducationAgency
+      - OrganizationDepartment
+      - Other
+      - PostSecondaryInstitution
       - School
+      - StateEducationAgency
       type: string
     EvaluationApi.Evaluations.V1.OrganizationIdentifierType:
       enum:
@@ -61348,6 +61517,8 @@ components:
         component:
           nullable: true
           type: string
+        visibilityCondition:
+          $ref: '#/components/schemas/FormApi.Questions.V1.QuestionVisibilityCondition'
       type: object
     FormApi.Forms.V1.CreateFullQuestionValidationRequest:
       additionalProperties: false
@@ -61658,6 +61829,8 @@ components:
         component:
           nullable: true
           type: string
+        visibilityCondition:
+          $ref: '#/components/schemas/FormApi.Questions.V1.QuestionVisibilityCondition'
       type: object
     FormApi.Forms.V1.UpdateFullQuestionValidationRequest:
       additionalProperties: false
@@ -61761,6 +61934,32 @@ components:
           nullable: true
           type: string
         tenantId:
+          nullable: true
+          type: string
+      type: object
+    FormApi.Questions.V1.QuestionVisibilityCondition:
+      additionalProperties: false
+      properties:
+        logic:
+          nullable: true
+          type: string
+        rules:
+          items:
+            $ref: '#/components/schemas/FormApi.Questions.V1.QuestionVisibilityRule'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    FormApi.Questions.V1.QuestionVisibilityRule:
+      additionalProperties: false
+      properties:
+        fieldId:
+          nullable: true
+          type: string
+        operator:
+          nullable: true
+          type: string
+        value:
           nullable: true
           type: string
       type: object
@@ -74611,6 +74810,8 @@ components:
           type: boolean
         IdentityRequired:
           type: boolean
+        State:
+          type: string
       type: object
     CreateReportAsync_request:
       properties:
@@ -74633,6 +74834,8 @@ components:
           type: boolean
         RolesRequired:
           type: boolean
+        State:
+          type: string
       type: object
     UpdateTenantBranding_request:
       properties:

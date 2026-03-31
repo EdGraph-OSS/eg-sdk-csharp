@@ -63,15 +63,6 @@ namespace EdGraph.Platform.Client.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'Description'
-        /// </summary>
-        [Fact]
-        public void DescriptionTest()
-        {
-            // TODO unit test for the property 'Description'
-        }
-
-        /// <summary>
         /// Test the property 'AssignedPersonaIdentifiers'
         /// </summary>
         [Fact]

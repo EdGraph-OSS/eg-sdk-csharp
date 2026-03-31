@@ -66,7 +66,8 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> version = default!;
             Client.Option<bool> identityRequired = default!;
             Client.Option<bool> rolesRequired = default!;
-            var response = await _instance.CreateReportAsyncAsync(tenantId, file, name, shortDescription, description, tags, isVisible, version, identityRequired, rolesRequired);
+            Client.Option<string> state = default!;
+            var response = await _instance.CreateReportAsyncAsync(tenantId, file, name, shortDescription, description, tags, isVisible, version, identityRequired, rolesRequired, state);
             var model = response.Unauthorized();
             Assert.IsType<AnalyticsApiReportsV1ReportIdResponse>(model);
         }
@@ -169,7 +170,8 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> version = default!;
             Client.Option<bool> rolesRequired = default!;
             Client.Option<bool> identityRequired = default!;
-            var response = await _instance.UpdateReportAsyncAsync(tenantId, reportId, file, id, name, shortDescription, description, tags, isVisible, version, rolesRequired, identityRequired);
+            Client.Option<string> state = default!;
+            var response = await _instance.UpdateReportAsyncAsync(tenantId, reportId, file, id, name, shortDescription, description, tags, isVisible, version, rolesRequired, identityRequired, state);
             var model = response.Unauthorized();
             Assert.IsType<AnalyticsApiReportsV1AnalyticsReport>(model);
         }

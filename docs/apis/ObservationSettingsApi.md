@@ -8,6 +8,7 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 | [**GetApplicationSettings**](ObservationSettingsApi.md#getapplicationsettings) | **GET** /tenants/{tenantId}/observations/settings/application | Gets the application settings for the tenant |
 | [**GetPaginatedForms**](ObservationSettingsApi.md#getpaginatedforms) | **GET** /tenants/{tenantId}/observations/forms | Get Paginated Forms |
 | [**GetPaginatedPersonas**](ObservationSettingsApi.md#getpaginatedpersonas) | **GET** /tenants/{tenantId}/observations/settings/personas | Gets available personas |
+| [**GetPaginatedStaffClassifications**](ObservationSettingsApi.md#getpaginatedstaffclassifications) | **GET** /tenants/{tenantId}/observations/settings/available-staffclassifications | Get Paginated Available Forms |
 | [**GetStaffClassificationsSettings**](ObservationSettingsApi.md#getstaffclassificationssettings) | **GET** /tenants/{tenantId}/observations/settings/staffclassifications | Gets the staffClassification settings for the tenant |
 | [**SetApplicationSettings**](ObservationSettingsApi.md#setapplicationsettings) | **POST** /tenants/{tenantId}/observations/settings/application | Sets the Application Settings of an Observation for a given Tenant |
 | [**SetRolePersonasSettings**](ObservationSettingsApi.md#setrolepersonassettings) | **POST** /tenants/{tenantId}/observations/settings/rolepersonas | Updates personas assigned to a role configuration of the tenants setting |
@@ -384,6 +385,110 @@ catch (ApiException e)
 ### Return type
 
 [**EdGraphHttpAggregatorsTenantApiServicesObservationsPersonaResponseGetPaginatedItemsResponse**](EdGraphHttpAggregatorsTenantApiServicesObservationsPersonaResponseGetPaginatedItemsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | The requested resource was successfully retrieved. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+<a id="getpaginatedstaffclassifications"></a>
+# **GetPaginatedStaffClassifications**
+> IdentityApiStaffClassificationV1GetStaffClassificationsResponse GetPaginatedStaffClassifications (Guid tenantId, int pageIndex = null, int pageSize = null, string orderBy = null, string filter = null)
+
+Get Paginated Available Forms
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using EdGraph.Platform.Client.Api;
+using EdGraph.Platform.Client.Client;
+using EdGraph.Platform.Client.Model;
+
+namespace Example
+{
+    public class GetPaginatedStaffClassificationsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.dev.edgraph.com/tenant";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ObservationSettingsApi(config);
+            var tenantId = "tenantId_example";  // Guid | 
+            var pageIndex = 0;  // int |  (optional)  (default to 0)
+            var pageSize = 10;  // int |  (optional)  (default to 10)
+            var orderBy = "\"\"";  // string |  (optional)  (default to "")
+            var filter = "\"\"";  // string |  (optional)  (default to "")
+
+            try
+            {
+                // Get Paginated Available Forms
+                IdentityApiStaffClassificationV1GetStaffClassificationsResponse result = apiInstance.GetPaginatedStaffClassifications(tenantId, pageIndex, pageSize, orderBy, filter);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ObservationSettingsApi.GetPaginatedStaffClassifications: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetPaginatedStaffClassificationsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Get Paginated Available Forms
+    ApiResponse<IdentityApiStaffClassificationV1GetStaffClassificationsResponse> response = apiInstance.GetPaginatedStaffClassificationsWithHttpInfo(tenantId, pageIndex, pageSize, orderBy, filter);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ObservationSettingsApi.GetPaginatedStaffClassificationsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **Guid** |  |  |
+| **pageIndex** | **int** |  | [optional] [default to 0] |
+| **pageSize** | **int** |  | [optional] [default to 10] |
+| **orderBy** | **string** |  | [optional] [default to &quot;&quot;] |
+| **filter** | **string** |  | [optional] [default to &quot;&quot;] |
+
+### Return type
+
+[**IdentityApiStaffClassificationV1GetStaffClassificationsResponse**](IdentityApiStaffClassificationV1GetStaffClassificationsResponse.md)
 
 ### Authorization
 

@@ -24,6 +24,7 @@ Name | Type | Description | Notes
 **IsDeleted** | **bool** |  | [optional] 
 **Order** | **int** |  | [optional] 
 **Component** | **Object** |  | [optional] 
+**VisibilityCondition** | [**EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto**](EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto.md) |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

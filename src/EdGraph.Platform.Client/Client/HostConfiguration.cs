@@ -214,6 +214,8 @@ namespace EdGraph.Platform.Client.Client
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionResponseDtoJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionResponseDtoPaginatedItemsViewModelJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionValidationResponseDtoJsonConverter());
+            _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDtoJsonConverter());
+            _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityRuleDtoJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesRoleJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesSubscriptionListResponseDtoJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesSubscriptionListResponseDtoPaginatedItemsViewModelJsonConverter());
@@ -612,6 +614,8 @@ namespace EdGraph.Platform.Client.Client
             _jsonOptions.Converters.Add(new FormApiQuestionsV1QuestionTypeJsonConverter());
             _jsonOptions.Converters.Add(new FormApiQuestionsV1QuestionTypeNullableJsonConverter());
             _jsonOptions.Converters.Add(new FormApiQuestionsV1QuestionUpdatedResponseJsonConverter());
+            _jsonOptions.Converters.Add(new FormApiQuestionsV1QuestionVisibilityConditionJsonConverter());
+            _jsonOptions.Converters.Add(new FormApiQuestionsV1QuestionVisibilityRuleJsonConverter());
             _jsonOptions.Converters.Add(new FormApiSectionsV1CreateSectionRequestJsonConverter());
             _jsonOptions.Converters.Add(new FormApiSectionsV1SectionCreatedResponseJsonConverter());
             _jsonOptions.Converters.Add(new FormApiSectionsV1SectionDeletedResponseJsonConverter());
