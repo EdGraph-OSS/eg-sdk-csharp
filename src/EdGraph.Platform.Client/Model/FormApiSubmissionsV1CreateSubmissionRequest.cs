@@ -37,13 +37,15 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="tenantId">tenantId</param>
         /// <param name="currentStep">currentStep</param>
         /// <param name="data">data</param>
+        /// <param name="evaluationId">evaluationId</param>
         [JsonConstructor]
-        public FormApiSubmissionsV1CreateSubmissionRequest(Option<string?> formId = default, Option<string?> tenantId = default, Option<int?> currentStep = default, Option<string?> data = default)
+        public FormApiSubmissionsV1CreateSubmissionRequest(Option<string?> formId = default, Option<string?> tenantId = default, Option<int?> currentStep = default, Option<string?> data = default, Option<string?> evaluationId = default)
         {
             FormIdOption = formId;
             TenantIdOption = tenantId;
             CurrentStepOption = currentStep;
             DataOption = data;
+            EvaluationIdOption = evaluationId;
             OnCreated();
         }
 
@@ -102,6 +104,19 @@ namespace EdGraph.Platform.Client.Model
         public string? Data { get { return this.DataOption; } set { this.DataOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of EvaluationId
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> EvaluationIdOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets EvaluationId
+        /// </summary>
+        [JsonPropertyName("evaluationId")]
+        public string? EvaluationId { get { return this.EvaluationIdOption; } set { this.EvaluationIdOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -113,6 +128,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  TenantId: ").Append(TenantId).Append("\n");
             sb.Append("  CurrentStep: ").Append(CurrentStep).Append("\n");
             sb.Append("  Data: ").Append(Data).Append("\n");
+            sb.Append("  EvaluationId: ").Append(EvaluationId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -154,6 +170,7 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> tenantId = default;
             Option<int?> currentStep = default;
             Option<string?> data = default;
+            Option<string?> evaluationId = default;
 
             while (utf8JsonReader.Read())
             {
@@ -183,13 +200,16 @@ namespace EdGraph.Platform.Client.Model
                         case "data":
                             data = new Option<string?>(utf8JsonReader.GetString());
                             break;
+                        case "evaluationId":
+                            evaluationId = new Option<string?>(utf8JsonReader.GetString());
+                            break;
                         default:
                             break;
                     }
                 }
             }
 
-            return new FormApiSubmissionsV1CreateSubmissionRequest(formId, tenantId, currentStep, data);
+            return new FormApiSubmissionsV1CreateSubmissionRequest(formId, tenantId, currentStep, data, evaluationId);
         }
 
         /// <summary>
@@ -239,6 +259,12 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteString("data", formApiSubmissionsV1CreateSubmissionRequest.Data);
                 else
                     writer.WriteNull("data");
+
+            if (formApiSubmissionsV1CreateSubmissionRequest.EvaluationIdOption.IsSet)
+                if (formApiSubmissionsV1CreateSubmissionRequest.EvaluationIdOption.Value != null)
+                    writer.WriteString("evaluationId", formApiSubmissionsV1CreateSubmissionRequest.EvaluationId);
+                else
+                    writer.WriteNull("evaluationId");
         }
     }
 }

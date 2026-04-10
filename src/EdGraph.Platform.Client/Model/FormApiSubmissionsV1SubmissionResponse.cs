@@ -47,8 +47,9 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="isDeleted">isDeleted</param>
         /// <param name="name">name</param>
         /// <param name="email">email</param>
+        /// <param name="evaluationId">evaluationId</param>
         [JsonConstructor]
-        public FormApiSubmissionsV1SubmissionResponse(Option<string?> id = default, Option<string?> formId = default, Option<string?> tenantId = default, Option<int?> currentStep = default, Option<string?> data = default, Option<string?> createdBy = default, Option<string?> createdDateTime = default, Option<string?> lastModifiedBy = default, Option<string?> lastModifiedDateTime = default, Option<string?> deletedBy = default, Option<string?> deletedDateTime = default, Option<bool?> isDeleted = default, Option<string?> name = default, Option<string?> email = default)
+        public FormApiSubmissionsV1SubmissionResponse(Option<string?> id = default, Option<string?> formId = default, Option<string?> tenantId = default, Option<int?> currentStep = default, Option<string?> data = default, Option<string?> createdBy = default, Option<string?> createdDateTime = default, Option<string?> lastModifiedBy = default, Option<string?> lastModifiedDateTime = default, Option<string?> deletedBy = default, Option<string?> deletedDateTime = default, Option<bool?> isDeleted = default, Option<string?> name = default, Option<string?> email = default, Option<string?> evaluationId = default)
         {
             IdOption = id;
             FormIdOption = formId;
@@ -64,6 +65,7 @@ namespace EdGraph.Platform.Client.Model
             IsDeletedOption = isDeleted;
             NameOption = name;
             EmailOption = email;
+            EvaluationIdOption = evaluationId;
             OnCreated();
         }
 
@@ -252,6 +254,19 @@ namespace EdGraph.Platform.Client.Model
         public string? Email { get { return this.EmailOption; } set { this.EmailOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of EvaluationId
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> EvaluationIdOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets EvaluationId
+        /// </summary>
+        [JsonPropertyName("evaluationId")]
+        public string? EvaluationId { get { return this.EvaluationIdOption; } set { this.EvaluationIdOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -273,6 +288,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  IsDeleted: ").Append(IsDeleted).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
+            sb.Append("  EvaluationId: ").Append(EvaluationId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -324,6 +340,7 @@ namespace EdGraph.Platform.Client.Model
             Option<bool?> isDeleted = default;
             Option<string?> name = default;
             Option<string?> email = default;
+            Option<string?> evaluationId = default;
 
             while (utf8JsonReader.Read())
             {
@@ -384,13 +401,16 @@ namespace EdGraph.Platform.Client.Model
                         case "email":
                             email = new Option<string?>(utf8JsonReader.GetString());
                             break;
+                        case "evaluationId":
+                            evaluationId = new Option<string?>(utf8JsonReader.GetString());
+                            break;
                         default:
                             break;
                     }
                 }
             }
 
-            return new FormApiSubmissionsV1SubmissionResponse(id, formId, tenantId, currentStep, data, createdBy, createdDateTime, lastModifiedBy, lastModifiedDateTime, deletedBy, deletedDateTime, isDeleted, name, email);
+            return new FormApiSubmissionsV1SubmissionResponse(id, formId, tenantId, currentStep, data, createdBy, createdDateTime, lastModifiedBy, lastModifiedDateTime, deletedBy, deletedDateTime, isDeleted, name, email, evaluationId);
         }
 
         /// <summary>
@@ -500,6 +520,12 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteString("email", formApiSubmissionsV1SubmissionResponse.Email);
                 else
                     writer.WriteNull("email");
+
+            if (formApiSubmissionsV1SubmissionResponse.EvaluationIdOption.IsSet)
+                if (formApiSubmissionsV1SubmissionResponse.EvaluationIdOption.Value != null)
+                    writer.WriteString("evaluationId", formApiSubmissionsV1SubmissionResponse.EvaluationId);
+                else
+                    writer.WriteNull("evaluationId");
         }
     }
 }

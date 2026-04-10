@@ -162,15 +162,6 @@ namespace EdGraph.Platform.Client.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'Class'
-        /// </summary>
-        [Fact]
-        public void ClassTest()
-        {
-            // TODO unit test for the property 'Class'
-        }
-
-        /// <summary>
         /// Test the property 'ObservationDate'
         /// </summary>
         [Fact]
@@ -231,6 +222,15 @@ namespace EdGraph.Platform.Client.Test.Model
         public void DeletedDateTimeTest()
         {
             // TODO unit test for the property 'DeletedDateTime'
+        }
+
+        /// <summary>
+        /// Test the property 'CampusClassId'
+        /// </summary>
+        [Fact]
+        public void CampusClassIdTest()
+        {
+            // TODO unit test for the property 'CampusClassId'
         }
     }
 }

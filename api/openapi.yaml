@@ -13762,6 +13762,75 @@ paths:
       summary: Duplicates all Form data for a given tenant (with Sections and Questions).
       tags:
       - Forms
+  /tenants/{tenantId}/forms/{formId}/full/schemas:
+    get:
+      operationId: GetFullFormSchema
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: formId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FormApi.Forms.V1.FullFormSchemaResponse'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails'
+          description: Not Found
+      summary: Get a Forms Json and UI React JSON compatible Schema.
+      tags:
+      - Forms
   /tenants/{tenantId}/forms/{formId}/full:
     put:
       operationId: UpdateFullForm
@@ -27688,7 +27757,7 @@ paths:
           description: Bad Request. The request was invalid and cannot be completed.
             See the response body for specific validation errors. This will typically
             be an issue with the query parameters or the request body values.
-      summary: Get Paginated Available Forms
+      summary: Get Paginated Available StaffClassifications
       tags:
       - Observation Settings
   /tenants/{tenantId}/observations/settings/personas:
@@ -27936,6 +28005,376 @@ paths:
       summary: Gets the staffClassification settings for the tenant
       tags:
       - Observation Settings
+  /tenants/{tenantId}/observations/settings/verify-credentials:
+    get:
+      operationId: VerifySysAdminCredentials
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ActionResult'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Gets the staffClassification settings for the tenant
+      tags:
+      - Observation Settings
+  /tenants/{tenantId}/observations/{observationId}/available-forms/{formId}/draft:
+    get:
+      operationId: GetObservationDraft
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: observationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: formId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.ObservationDraftResponse'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Get an observation form's draft
+      tags:
+      - Observations
+    post:
+      operationId: UpsertObservationDraft
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: observationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: formId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpsertObservationDraftRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpsertObservationDraftRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpsertObservationDraftRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpsertObservationDraftRequest'
+        description: ""
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpsertObservationDraftResponse'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Creates a draft for an observation forms
+      tags:
+      - Observations
+  /tenants/{tenantId}/observations/{observationId}/available-forms/{formId}/submission:
+    get:
+      operationId: GetObservationSubmission
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: observationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: formId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.ObservationSubmissionResponseGetPaginatedItemsResponse'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Gets a submission for a specific observation
+      tags:
+      - Observations
+  /tenants/{tenantId}/observations/{observationId}/available-forms/{formId}/submit:
+    post:
+      operationId: CreateObservationSubmission
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: formId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: observationId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CreateObservationSubmissionRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CreateObservationSubmissionRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CreateObservationSubmissionRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CreateObservationSubmissionRequest'
+        description: ""
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CreateObservationSubmissionResponse'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Creates a submission for an available form referencing an existing
+        observation
+      tags:
+      - Observations
   /tenants/{tenantId}/observations/{observationId}:
     delete:
       operationId: DeleteObservation
@@ -28059,6 +28498,175 @@ paths:
             See the response body for specific validation errors. This will typically
             be an issue with the query parameters or the request body values.
       summary: Get an Observation for a given tenant
+      tags:
+      - Observations
+    put:
+      operationId: UpdateObservation
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: observationId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpdateObservationRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpdateObservationRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpdateObservationRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpdateObservationRequest'
+        description: ""
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpdateObservationResponse'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Update an Observation for a given tenant
+      tags:
+      - Observations
+  /tenants/{tenantId}/observations/available-forms:
+    get:
+      operationId: GetPaginatedAvailableForms
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 10
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: orderBy
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormResponseGetPaginatedItemsResponse'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Get Paginated Available Forms
       tags:
       - Observations
   /tenants/{tenantId}/observations/campuses:
@@ -28243,98 +28851,6 @@ paths:
             See the response body for specific validation errors. This will typically
             be an issue with the query parameters or the request body values.
       summary: Get paginated evaluees
-      tags:
-      - Observations
-  /tenants/{tenantId}/observations/forms/available:
-    get:
-      operationId: GetPaginatedAvailableForms
-      parameters:
-      - description: ""
-        explode: false
-        in: path
-        name: tenantId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: ""
-        explode: true
-        in: query
-        name: pageIndex
-        required: false
-        schema:
-          default: 0
-          format: int32
-          type: integer
-        style: form
-      - description: ""
-        explode: true
-        in: query
-        name: pageSize
-        required: false
-        schema:
-          default: 10
-          format: int32
-          type: integer
-        style: form
-      - description: ""
-        explode: true
-        in: query
-        name: orderBy
-        required: false
-        schema:
-          default: ""
-          type: string
-        style: form
-      - description: ""
-        explode: true
-        in: query
-        name: filter
-        required: false
-        schema:
-          default: ""
-          type: string
-        style: form
-      responses:
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
-          description: Unauthorized. The request requires authentication. The OAuth
-            bearer token was either not provided or is invalid. The operation may
-            succeed once authentication has been successfully completed.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
-          description: Forbidden. The request cannot be completed in the current authorization
-            context. Contact your administrator if you believe this operation should
-            be allowed.
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
-          description: An unhandled error occurred on the server.See the response
-            body for details.
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormResponseGetPaginatedItemsResponse'
-          description: The requested resource was successfully retrieved.
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
-          description: Bad Request. The request was invalid and cannot be completed.
-            See the response body for specific validation errors. This will typically
-            be an issue with the query parameters or the request body values.
-      summary: Get Paginated Available Forms
       tags:
       - Observations
   /tenants/{tenantId}/observations:
@@ -49357,6 +49873,9 @@ components:
         formVersion:
           nullable: true
           type: string
+        campusClassId:
+          nullable: true
+          type: string
       type: object
     EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CreateObservationResponse:
       additionalProperties: false
@@ -49368,6 +49887,42 @@ components:
           nullable: true
           type: string
         observationId:
+          nullable: true
+          type: string
+      type: object
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CreateObservationSubmissionRequest:
+      additionalProperties: false
+      properties:
+        formId:
+          nullable: true
+          type: string
+        tenantId:
+          nullable: true
+          type: string
+        currentStep:
+          format: int32
+          type: integer
+        data:
+          nullable: true
+          type: string
+        observationId:
+          nullable: true
+          type: string
+      type: object
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CreateObservationSubmissionResponse:
+      additionalProperties: false
+      example:
+        formId: formId
+        tenantId: tenantId
+        id: id
+      properties:
+        id:
+          nullable: true
+          type: string
+        formId:
+          nullable: true
+          type: string
+        tenantId:
           nullable: true
           type: string
       type: object
@@ -49632,6 +50187,58 @@ components:
           format: int64
           type: integer
       type: object
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.ObservationDraftResponse:
+      additionalProperties: false
+      example:
+        formId: formId
+        observationId: observationId
+        lastModifiedDateTime: lastModifiedDateTime
+        data: data
+        isDeleted: true
+        createdBy: createdBy
+        lastModifiedBy: lastModifiedBy
+        tenantId: tenantId
+        name: name
+        createdDateTime: createdDateTime
+        id: id
+        email: email
+      properties:
+        id:
+          nullable: true
+          type: string
+        formId:
+          nullable: true
+          type: string
+        tenantId:
+          nullable: true
+          type: string
+        data:
+          nullable: true
+          type: string
+        createdBy:
+          nullable: true
+          type: string
+        createdDateTime:
+          nullable: true
+          type: string
+        lastModifiedBy:
+          nullable: true
+          type: string
+        lastModifiedDateTime:
+          nullable: true
+          type: string
+        isDeleted:
+          type: boolean
+        name:
+          nullable: true
+          type: string
+        email:
+          nullable: true
+          type: string
+        observationId:
+          nullable: true
+          type: string
+      type: object
     EdGraph.HttpAggregators.Tenant.Api.Services.Observations.ObservationProfileResponse:
       additionalProperties: false
       example:
@@ -49647,13 +50254,13 @@ components:
         observerId: observerId
         evalueeName: evalueeName
         deletedBy: deletedBy
+        campusClassId: campusClassId
         observationDate: observationDate
         isDeleted: true
         createdBy: createdBy
         tenantId: tenantId
         id: id
         observerName: observerName
-        class: class
         status: status
       properties:
         id:
@@ -49691,9 +50298,6 @@ components:
           type: string
         isDeleted:
           type: boolean
-        class:
-          nullable: true
-          type: string
         observationDate:
           nullable: true
           type: string
@@ -49715,6 +50319,9 @@ components:
         deletedDateTime:
           nullable: true
           type: string
+        campusClassId:
+          nullable: true
+          type: string
       type: object
     EdGraph.HttpAggregators.Tenant.Api.Services.Observations.ObservationProfileResponsePaginatedItemsViewModel:
       additionalProperties: false
@@ -49732,13 +50339,13 @@ components:
           observerId: observerId
           evalueeName: evalueeName
           deletedBy: deletedBy
+          campusClassId: campusClassId
           observationDate: observationDate
           isDeleted: true
           createdBy: createdBy
           tenantId: tenantId
           id: id
           observerName: observerName
-          class: class
           status: status
         - formId: formId
           lastModifiedDateTime: lastModifiedDateTime
@@ -49752,13 +50359,13 @@ components:
           observerId: observerId
           evalueeName: evalueeName
           deletedBy: deletedBy
+          campusClassId: campusClassId
           observationDate: observationDate
           isDeleted: true
           createdBy: createdBy
           tenantId: tenantId
           id: id
           observerName: observerName
-          class: class
           status: status
         pageIndex: 0
         count: 1
@@ -49778,6 +50385,105 @@ components:
             $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.ObservationProfileResponse'
           nullable: true
           type: array
+      type: object
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.ObservationSubmissionResponse:
+      additionalProperties: false
+      example:
+        formId: formId
+        observationId: observationId
+        lastModifiedDateTime: lastModifiedDateTime
+        data: data
+        isDeleted: true
+        createdBy: createdBy
+        lastModifiedBy: lastModifiedBy
+        tenantId: tenantId
+        name: name
+        createdDateTime: createdDateTime
+        id: id
+        email: email
+      properties:
+        id:
+          nullable: true
+          type: string
+        formId:
+          nullable: true
+          type: string
+        tenantId:
+          nullable: true
+          type: string
+        data:
+          nullable: true
+          type: string
+        createdBy:
+          nullable: true
+          type: string
+        createdDateTime:
+          nullable: true
+          type: string
+        lastModifiedBy:
+          nullable: true
+          type: string
+        lastModifiedDateTime:
+          nullable: true
+          type: string
+        isDeleted:
+          type: boolean
+        name:
+          nullable: true
+          type: string
+        email:
+          nullable: true
+          type: string
+        observationId:
+          nullable: true
+          type: string
+      type: object
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.ObservationSubmissionResponseGetPaginatedItemsResponse:
+      additionalProperties: false
+      example:
+        data:
+        - formId: formId
+          observationId: observationId
+          lastModifiedDateTime: lastModifiedDateTime
+          data: data
+          isDeleted: true
+          createdBy: createdBy
+          lastModifiedBy: lastModifiedBy
+          tenantId: tenantId
+          name: name
+          createdDateTime: createdDateTime
+          id: id
+          email: email
+        - formId: formId
+          observationId: observationId
+          lastModifiedDateTime: lastModifiedDateTime
+          data: data
+          isDeleted: true
+          createdBy: createdBy
+          lastModifiedBy: lastModifiedBy
+          tenantId: tenantId
+          name: name
+          createdDateTime: createdDateTime
+          id: id
+          email: email
+        pageIndex: 0
+        count: 1
+        pageSize: 6
+      properties:
+        pageIndex:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        data:
+          items:
+            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.ObservationSubmissionResponse'
+          nullable: true
+          type: array
+        count:
+          format: int64
+          type: integer
       type: object
     EdGraph.HttpAggregators.Tenant.Api.Services.Observations.PersonaResponse:
       additionalProperties: false
@@ -49914,6 +50620,74 @@ components:
             type: string
           nullable: true
           type: array
+      type: object
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpdateObservationRequest:
+      additionalProperties: false
+      properties:
+        tenantId:
+          nullable: true
+          type: string
+        observationId:
+          nullable: true
+          type: string
+        observationDate:
+          nullable: true
+          type: string
+        formId:
+          nullable: true
+          type: string
+      type: object
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpdateObservationResponse:
+      additionalProperties: false
+      example:
+        observationId: observationId
+        tenantId: tenantId
+      properties:
+        tenantId:
+          nullable: true
+          type: string
+        observationId:
+          nullable: true
+          type: string
+      type: object
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpsertObservationDraftRequest:
+      additionalProperties: false
+      properties:
+        id:
+          nullable: true
+          type: string
+        formId:
+          nullable: true
+          type: string
+        tenantId:
+          nullable: true
+          type: string
+        currentStep:
+          format: int32
+          type: integer
+        data:
+          nullable: true
+          type: string
+        observationId:
+          nullable: true
+          type: string
+      type: object
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpsertObservationDraftResponse:
+      additionalProperties: false
+      example:
+        formId: formId
+        tenantId: tenantId
+        id: id
+      properties:
+        id:
+          nullable: true
+          type: string
+        formId:
+          nullable: true
+          type: string
+        tenantId:
+          nullable: true
+          type: string
       type: object
     EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.ConnectionCreatedResponse:
       additionalProperties: false
@@ -61029,6 +61803,9 @@ components:
         formVersion:
           nullable: true
           type: string
+        campusClassId:
+          nullable: true
+          type: string
       type: object
     EvaluationApi.Evaluations.V1.EvaluationCountResponse:
       additionalProperties: false
@@ -61088,6 +61865,7 @@ components:
         staffFullName: staffFullName
         deletedBy: deletedBy
         appraiserFullName: appraiserFullName
+        campusClassId: campusClassId
         staffUserId: staffUserId
         evaluationDate: evaluationDate
         isDeleted: true
@@ -61152,6 +61930,9 @@ components:
         staffFullName:
           nullable: true
           type: string
+        campusClassId:
+          nullable: true
+          type: string
       type: object
     EvaluationApi.Evaluations.V1.EvaluationResponsePaginatedItemsViewModel:
       additionalProperties: false
@@ -61169,6 +61950,7 @@ components:
           staffFullName: staffFullName
           deletedBy: deletedBy
           appraiserFullName: appraiserFullName
+          campusClassId: campusClassId
           staffUserId: staffUserId
           evaluationDate: evaluationDate
           isDeleted: true
@@ -61188,6 +61970,7 @@ components:
           staffFullName: staffFullName
           deletedBy: deletedBy
           appraiserFullName: appraiserFullName
+          campusClassId: campusClassId
           staffUserId: staffUserId
           evaluationDate: evaluationDate
           isDeleted: true
@@ -61687,6 +62470,34 @@ components:
           nullable: true
           type: string
       type: object
+    FormApi.Forms.V1.FullFormSchemaResponse:
+      additionalProperties: false
+      example:
+        jsonSchema: jsonSchema
+        tenantId: tenantId
+        uiSchema: uiSchema
+        details: details
+        id: id
+        status: Unknown
+      properties:
+        id:
+          nullable: true
+          type: string
+        tenantId:
+          nullable: true
+          type: string
+        jsonSchema:
+          nullable: true
+          type: string
+        uiSchema:
+          nullable: true
+          type: string
+        details:
+          nullable: true
+          type: string
+        status:
+          $ref: '#/components/schemas/FormApi.Forms.V1.SchemaStatus'
+      type: object
     FormApi.Forms.V1.FullFormUpdatedResponse:
       additionalProperties: false
       example:
@@ -61703,6 +62514,14 @@ components:
     FormApi.Forms.V1.ImportFormRequest:
       additionalProperties: false
       type: object
+    FormApi.Forms.V1.SchemaStatus:
+      enum:
+      - Unknown
+      - CompleteSuccess
+      - OnlyJson
+      - OnlyUi
+      - CompleteFailure
+      type: string
     FormApi.Forms.V1.SetFormAccessRequest:
       additionalProperties: false
       properties:
@@ -62188,6 +63007,9 @@ components:
         data:
           nullable: true
           type: string
+        evaluationId:
+          nullable: true
+          type: string
       type: object
     FormApi.Submissions.V1.ExportStatus:
       enum:
@@ -62242,6 +63064,7 @@ components:
         deletedDateTime: deletedDateTime
         deletedBy: deletedBy
         currentStep: 0
+        evaluationId: evaluationId
         isDeleted: true
         createdBy: createdBy
         tenantId: tenantId
@@ -62292,6 +63115,9 @@ components:
         email:
           nullable: true
           type: string
+        evaluationId:
+          nullable: true
+          type: string
       type: object
     FormApi.Submissions.V1.SubmissionResponsePaginatedItemsViewModel:
       additionalProperties: false
@@ -62305,6 +63131,7 @@ components:
           deletedDateTime: deletedDateTime
           deletedBy: deletedBy
           currentStep: 0
+          evaluationId: evaluationId
           isDeleted: true
           createdBy: createdBy
           tenantId: tenantId
@@ -62319,6 +63146,7 @@ components:
           deletedDateTime: deletedDateTime
           deletedBy: deletedBy
           currentStep: 0
+          evaluationId: evaluationId
           isDeleted: true
           createdBy: createdBy
           tenantId: tenantId
@@ -66821,6 +67649,9 @@ components:
           readOnly: true
           type: array
       type: object
+    Microsoft.AspNetCore.Mvc.ActionResult:
+      additionalProperties: false
+      type: object
     Microsoft.AspNetCore.Mvc.NoContentResult:
       additionalProperties: false
       example:
@@ -69717,6 +70548,7 @@ components:
         name: name
         childContainersCount: 5
         id: id
+        state: state
         childContainers:
         - null
         - null
@@ -69767,6 +70599,9 @@ components:
         certificationStatus:
           nullable: true
           type: string
+        state:
+          nullable: true
+          type: string
       type: object
     ValidationsApi.Containers.V1.ContainerDto+Types+TagDto:
       additionalProperties: false
@@ -69811,6 +70646,9 @@ components:
           nullable: true
           readOnly: true
           type: array
+        state:
+          nullable: true
+          type: string
       type: object
     ValidationsApi.Containers.V1.CreateContainerRequest:
       additionalProperties: false
@@ -70098,6 +70936,7 @@ components:
           name: name
           childContainersCount: 5
           id: id
+          state: state
           childContainers:
           - null
           - null
@@ -70115,6 +70954,7 @@ components:
           name: name
           childContainersCount: 5
           id: id
+          state: state
           childContainers:
           - null
           - null
@@ -70228,6 +71068,9 @@ components:
           nullable: true
           readOnly: true
           type: array
+        state:
+          nullable: true
+          type: string
       type: object
     ValidationsApi.Containers.V1.UpdateContainerRequest:
       additionalProperties: false
@@ -71349,6 +72192,7 @@ components:
             name: name
             childContainersCount: 5
             id: id
+            state: state
             childContainers:
             - null
             - null
@@ -71372,6 +72216,7 @@ components:
             name: name
             childContainersCount: 5
             id: id
+            state: state
             childContainers:
             - null
             - null
@@ -71414,6 +72259,7 @@ components:
           name: name
           childContainersCount: 5
           id: id
+          state: state
           childContainers:
           - null
           - null
@@ -72347,6 +73193,7 @@ components:
             name: name
             childContainersCount: 5
             id: id
+            state: state
             childContainers:
             - null
             - null
@@ -72366,6 +73213,7 @@ components:
               name: name
               childContainersCount: 5
               id: id
+              state: state
               childContainers:
               - null
               - null
@@ -72386,6 +73234,7 @@ components:
                 name: name
                 childContainersCount: 5
                 id: id
+                state: state
                 childContainers:
                 - null
                 - null
@@ -72413,6 +73262,7 @@ components:
                 name: name
                 childContainersCount: 5
                 id: id
+                state: state
                 childContainers:
                 - null
                 - null
@@ -72459,6 +73309,7 @@ components:
                 name: name
                 childContainersCount: 5
                 id: id
+                state: state
                 childContainers:
                 - null
                 - null
@@ -72486,6 +73337,7 @@ components:
                 name: name
                 childContainersCount: 5
                 id: id
+                state: state
                 childContainers:
                 - null
                 - null
@@ -72531,6 +73383,7 @@ components:
               name: name
               childContainersCount: 5
               id: id
+              state: state
               childContainers:
               - null
               - null
@@ -72551,6 +73404,7 @@ components:
                 name: name
                 childContainersCount: 5
                 id: id
+                state: state
                 childContainers:
                 - null
                 - null
@@ -72578,6 +73432,7 @@ components:
                 name: name
                 childContainersCount: 5
                 id: id
+                state: state
                 childContainers:
                 - null
                 - null
@@ -72624,6 +73479,7 @@ components:
                 name: name
                 childContainersCount: 5
                 id: id
+                state: state
                 childContainers:
                 - null
                 - null
@@ -72651,6 +73507,7 @@ components:
                 name: name
                 childContainersCount: 5
                 id: id
+                state: state
                 childContainers:
                 - null
                 - null
@@ -72696,6 +73553,7 @@ components:
             name: name
             childContainersCount: 5
             id: id
+            state: state
             childContainers:
             - null
             - null
@@ -72715,6 +73573,7 @@ components:
               name: name
               childContainersCount: 5
               id: id
+              state: state
               childContainers:
               - null
               - null
@@ -72735,6 +73594,7 @@ components:
                 name: name
                 childContainersCount: 5
                 id: id
+                state: state
                 childContainers:
                 - null
                 - null
@@ -72762,6 +73622,7 @@ components:
                 name: name
                 childContainersCount: 5
                 id: id
+                state: state
                 childContainers:
                 - null
                 - null
@@ -72808,6 +73669,7 @@ components:
                 name: name
                 childContainersCount: 5
                 id: id
+                state: state
                 childContainers:
                 - null
                 - null
@@ -72835,6 +73697,7 @@ components:
                 name: name
                 childContainersCount: 5
                 id: id
+                state: state
                 childContainers:
                 - null
                 - null
@@ -72880,6 +73743,7 @@ components:
               name: name
               childContainersCount: 5
               id: id
+              state: state
               childContainers:
               - null
               - null
@@ -72900,6 +73764,7 @@ components:
                 name: name
                 childContainersCount: 5
                 id: id
+                state: state
                 childContainers:
                 - null
                 - null
@@ -72927,6 +73792,7 @@ components:
                 name: name
                 childContainersCount: 5
                 id: id
+                state: state
                 childContainers:
                 - null
                 - null
@@ -72973,6 +73839,7 @@ components:
                 name: name
                 childContainersCount: 5
                 id: id
+                state: state
                 childContainers:
                 - null
                 - null
@@ -73000,6 +73867,7 @@ components:
                 name: name
                 childContainersCount: 5
                 id: id
+                state: state
                 childContainers:
                 - null
                 - null
@@ -73089,6 +73957,7 @@ components:
           name: name
           childContainersCount: 5
           id: id
+          state: state
           childContainers:
           - null
           - null
@@ -73108,6 +73977,7 @@ components:
             name: name
             childContainersCount: 5
             id: id
+            state: state
             childContainers:
             - null
             - null
@@ -73128,6 +73998,7 @@ components:
               name: name
               childContainersCount: 5
               id: id
+              state: state
               childContainers:
               - null
               - null
@@ -73155,6 +74026,7 @@ components:
               name: name
               childContainersCount: 5
               id: id
+              state: state
               childContainers:
               - null
               - null
@@ -73201,6 +74073,7 @@ components:
               name: name
               childContainersCount: 5
               id: id
+              state: state
               childContainers:
               - null
               - null
@@ -73228,6 +74101,7 @@ components:
               name: name
               childContainersCount: 5
               id: id
+              state: state
               childContainers:
               - null
               - null
@@ -73273,6 +74147,7 @@ components:
             name: name
             childContainersCount: 5
             id: id
+            state: state
             childContainers:
             - null
             - null
@@ -73293,6 +74168,7 @@ components:
               name: name
               childContainersCount: 5
               id: id
+              state: state
               childContainers:
               - null
               - null
@@ -73320,6 +74196,7 @@ components:
               name: name
               childContainersCount: 5
               id: id
+              state: state
               childContainers:
               - null
               - null
@@ -73366,6 +74243,7 @@ components:
               name: name
               childContainersCount: 5
               id: id
+              state: state
               childContainers:
               - null
               - null
@@ -73393,6 +74271,7 @@ components:
               name: name
               childContainersCount: 5
               id: id
+              state: state
               childContainers:
               - null
               - null
@@ -73453,6 +74332,7 @@ components:
           name: name
           childContainersCount: 5
           id: id
+          state: state
           childContainers:
           - null
           - null
@@ -73472,6 +74352,7 @@ components:
             name: name
             childContainersCount: 5
             id: id
+            state: state
             childContainers:
             - null
             - null
@@ -73492,6 +74373,7 @@ components:
               name: name
               childContainersCount: 5
               id: id
+              state: state
               childContainers:
               - null
               - null
@@ -73519,6 +74401,7 @@ components:
               name: name
               childContainersCount: 5
               id: id
+              state: state
               childContainers:
               - null
               - null
@@ -73565,6 +74448,7 @@ components:
               name: name
               childContainersCount: 5
               id: id
+              state: state
               childContainers:
               - null
               - null
@@ -73592,6 +74476,7 @@ components:
               name: name
               childContainersCount: 5
               id: id
+              state: state
               childContainers:
               - null
               - null
@@ -73637,6 +74522,7 @@ components:
             name: name
             childContainersCount: 5
             id: id
+            state: state
             childContainers:
             - null
             - null
@@ -73657,6 +74543,7 @@ components:
               name: name
               childContainersCount: 5
               id: id
+              state: state
               childContainers:
               - null
               - null
@@ -73684,6 +74571,7 @@ components:
               name: name
               childContainersCount: 5
               id: id
+              state: state
               childContainers:
               - null
               - null
@@ -73730,6 +74618,7 @@ components:
               name: name
               childContainersCount: 5
               id: id
+              state: state
               childContainers:
               - null
               - null
@@ -73757,6 +74646,7 @@ components:
               name: name
               childContainersCount: 5
               id: id
+              state: state
               childContainers:
               - null
               - null
@@ -73815,6 +74705,7 @@ components:
           name: name
           childContainersCount: 5
           id: id
+          state: state
           childContainers:
           - null
           - null
@@ -73835,6 +74726,7 @@ components:
             name: name
             childContainersCount: 5
             id: id
+            state: state
             childContainers:
             - null
             - null
@@ -73862,6 +74754,7 @@ components:
             name: name
             childContainersCount: 5
             id: id
+            state: state
             childContainers:
             - null
             - null
@@ -73908,6 +74801,7 @@ components:
             name: name
             childContainersCount: 5
             id: id
+            state: state
             childContainers:
             - null
             - null
@@ -73935,6 +74829,7 @@ components:
             name: name
             childContainersCount: 5
             id: id
+            state: state
             childContainers:
             - null
             - null
@@ -74082,6 +74977,7 @@ components:
             name: name
             childContainersCount: 5
             id: id
+            state: state
             childContainers:
             - null
             - null
@@ -74109,6 +75005,7 @@ components:
             name: name
             childContainersCount: 5
             id: id
+            state: state
             childContainers:
             - null
             - null
@@ -74155,6 +75052,7 @@ components:
             name: name
             childContainersCount: 5
             id: id
+            state: state
             childContainers:
             - null
             - null
@@ -74182,6 +75080,7 @@ components:
             name: name
             childContainersCount: 5
             id: id
+            state: state
             childContainers:
             - null
             - null
@@ -74251,6 +75150,7 @@ components:
           name: name
           childContainersCount: 5
           id: id
+          state: state
           childContainers:
           - null
           - null
@@ -74278,6 +75178,7 @@ components:
           name: name
           childContainersCount: 5
           id: id
+          state: state
           childContainers:
           - null
           - null

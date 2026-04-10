@@ -40,8 +40,9 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="tags">tags</param>
         /// <param name="environmentId">environmentId</param>
         /// <param name="urls">urls</param>
+        /// <param name="state">state</param>
         [JsonConstructor]
-        public ValidationsApiContainersV1CreateCollectionRequest(Option<string?> tenantId = default, Option<string?> name = default, Option<string?> description = default, Option<string?> environmentType = default, Option<List<string>?> tags = default, Option<string?> environmentId = default, Option<List<ValidationsApiContainersV1Url>?> urls = default)
+        public ValidationsApiContainersV1CreateCollectionRequest(Option<string?> tenantId = default, Option<string?> name = default, Option<string?> description = default, Option<string?> environmentType = default, Option<List<string>?> tags = default, Option<string?> environmentId = default, Option<List<ValidationsApiContainersV1Url>?> urls = default, Option<string?> state = default)
         {
             TenantIdOption = tenantId;
             NameOption = name;
@@ -50,6 +51,7 @@ namespace EdGraph.Platform.Client.Model
             TagsOption = tags;
             EnvironmentIdOption = environmentId;
             UrlsOption = urls;
+            StateOption = state;
             OnCreated();
         }
 
@@ -147,6 +149,19 @@ namespace EdGraph.Platform.Client.Model
         public List<ValidationsApiContainersV1Url>? Urls { get { return this.UrlsOption; } }
 
         /// <summary>
+        /// Used to track the state of State
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> StateOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets State
+        /// </summary>
+        [JsonPropertyName("state")]
+        public string? State { get { return this.StateOption; } set { this.StateOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -161,6 +176,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  EnvironmentId: ").Append(EnvironmentId).Append("\n");
             sb.Append("  Urls: ").Append(Urls).Append("\n");
+            sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -205,6 +221,7 @@ namespace EdGraph.Platform.Client.Model
             Option<List<string>?> tags = default;
             Option<string?> environmentId = default;
             Option<List<ValidationsApiContainersV1Url>?> urls = default;
+            Option<string?> state = default;
 
             while (utf8JsonReader.Read())
             {
@@ -244,13 +261,16 @@ namespace EdGraph.Platform.Client.Model
                             if (utf8JsonReader.TokenType != JsonTokenType.Null)
                                 urls = new Option<List<ValidationsApiContainersV1Url>?>(JsonSerializer.Deserialize<List<ValidationsApiContainersV1Url>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
+                        case "state":
+                            state = new Option<string?>(utf8JsonReader.GetString());
+                            break;
                         default:
                             break;
                     }
                 }
             }
 
-            return new ValidationsApiContainersV1CreateCollectionRequest(tenantId, name, description, environmentType, tags, environmentId, urls);
+            return new ValidationsApiContainersV1CreateCollectionRequest(tenantId, name, description, environmentType, tags, environmentId, urls, state);
         }
 
         /// <summary>
@@ -323,6 +343,11 @@ namespace EdGraph.Platform.Client.Model
                 }
                 else
                     writer.WriteNull("urls");
+            if (validationsApiContainersV1CreateCollectionRequest.StateOption.IsSet)
+                if (validationsApiContainersV1CreateCollectionRequest.StateOption.Value != null)
+                    writer.WriteString("state", validationsApiContainersV1CreateCollectionRequest.State);
+                else
+                    writer.WriteNull("state");
         }
     }
 }

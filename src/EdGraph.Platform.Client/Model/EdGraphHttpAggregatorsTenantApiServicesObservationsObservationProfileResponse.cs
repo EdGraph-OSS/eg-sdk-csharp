@@ -45,7 +45,6 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="status">status</param>
         /// <param name="createdBy">createdBy</param>
         /// <param name="isDeleted">isDeleted</param>
-        /// <param name="class">class</param>
         /// <param name="observationDate">observationDate</param>
         /// <param name="submissionDate">submissionDate</param>
         /// <param name="createdDateTime">createdDateTime</param>
@@ -53,8 +52,9 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="lastModifiedDateTime">lastModifiedDateTime</param>
         /// <param name="deletedBy">deletedBy</param>
         /// <param name="deletedDateTime">deletedDateTime</param>
+        /// <param name="campusClassId">campusClassId</param>
         [JsonConstructor]
-        public EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse(Option<string?> id = default, Option<string?> tenantId = default, Option<string?> campus = default, Option<string?> observerId = default, Option<string?> observerName = default, Option<string?> evalueeId = default, Option<string?> evalueeName = default, Option<string?> formId = default, Option<string?> formVersion = default, Option<string?> status = default, Option<string?> createdBy = default, Option<bool?> isDeleted = default, Option<string?> @class = default, Option<string?> observationDate = default, Option<string?> submissionDate = default, Option<string?> createdDateTime = default, Option<string?> lastModifiedBy = default, Option<string?> lastModifiedDateTime = default, Option<string?> deletedBy = default, Option<string?> deletedDateTime = default)
+        public EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse(Option<string?> id = default, Option<string?> tenantId = default, Option<string?> campus = default, Option<string?> observerId = default, Option<string?> observerName = default, Option<string?> evalueeId = default, Option<string?> evalueeName = default, Option<string?> formId = default, Option<string?> formVersion = default, Option<string?> status = default, Option<string?> createdBy = default, Option<bool?> isDeleted = default, Option<string?> observationDate = default, Option<string?> submissionDate = default, Option<string?> createdDateTime = default, Option<string?> lastModifiedBy = default, Option<string?> lastModifiedDateTime = default, Option<string?> deletedBy = default, Option<string?> deletedDateTime = default, Option<string?> campusClassId = default)
         {
             IdOption = id;
             TenantIdOption = tenantId;
@@ -68,7 +68,6 @@ namespace EdGraph.Platform.Client.Model
             StatusOption = status;
             CreatedByOption = createdBy;
             IsDeletedOption = isDeleted;
-            ClassOption = @class;
             ObservationDateOption = observationDate;
             SubmissionDateOption = submissionDate;
             CreatedDateTimeOption = createdDateTime;
@@ -76,6 +75,7 @@ namespace EdGraph.Platform.Client.Model
             LastModifiedDateTimeOption = lastModifiedDateTime;
             DeletedByOption = deletedBy;
             DeletedDateTimeOption = deletedDateTime;
+            CampusClassIdOption = campusClassId;
             OnCreated();
         }
 
@@ -238,19 +238,6 @@ namespace EdGraph.Platform.Client.Model
         public bool? IsDeleted { get { return this.IsDeletedOption; } set { this.IsDeletedOption = new(value); } }
 
         /// <summary>
-        /// Used to track the state of Class
-        /// </summary>
-        [JsonIgnore]
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<string?> ClassOption { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets Class
-        /// </summary>
-        [JsonPropertyName("class")]
-        public string? Class { get { return this.ClassOption; } set { this.ClassOption = new(value); } }
-
-        /// <summary>
         /// Used to track the state of ObservationDate
         /// </summary>
         [JsonIgnore]
@@ -342,6 +329,19 @@ namespace EdGraph.Platform.Client.Model
         public string? DeletedDateTime { get { return this.DeletedDateTimeOption; } set { this.DeletedDateTimeOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of CampusClassId
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> CampusClassIdOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets CampusClassId
+        /// </summary>
+        [JsonPropertyName("campusClassId")]
+        public string? CampusClassId { get { return this.CampusClassIdOption; } set { this.CampusClassIdOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -361,7 +361,6 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
             sb.Append("  IsDeleted: ").Append(IsDeleted).Append("\n");
-            sb.Append("  Class: ").Append(Class).Append("\n");
             sb.Append("  ObservationDate: ").Append(ObservationDate).Append("\n");
             sb.Append("  SubmissionDate: ").Append(SubmissionDate).Append("\n");
             sb.Append("  CreatedDateTime: ").Append(CreatedDateTime).Append("\n");
@@ -369,6 +368,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  LastModifiedDateTime: ").Append(LastModifiedDateTime).Append("\n");
             sb.Append("  DeletedBy: ").Append(DeletedBy).Append("\n");
             sb.Append("  DeletedDateTime: ").Append(DeletedDateTime).Append("\n");
+            sb.Append("  CampusClassId: ").Append(CampusClassId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -418,7 +418,6 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> status = default;
             Option<string?> createdBy = default;
             Option<bool?> isDeleted = default;
-            Option<string?> varClass = default;
             Option<string?> observationDate = default;
             Option<string?> submissionDate = default;
             Option<string?> createdDateTime = default;
@@ -426,6 +425,7 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> lastModifiedDateTime = default;
             Option<string?> deletedBy = default;
             Option<string?> deletedDateTime = default;
+            Option<string?> campusClassId = default;
 
             while (utf8JsonReader.Read())
             {
@@ -479,9 +479,6 @@ namespace EdGraph.Platform.Client.Model
                             if (utf8JsonReader.TokenType != JsonTokenType.Null)
                                 isDeleted = new Option<bool?>(utf8JsonReader.GetBoolean());
                             break;
-                        case "class":
-                            varClass = new Option<string?>(utf8JsonReader.GetString());
-                            break;
                         case "observationDate":
                             observationDate = new Option<string?>(utf8JsonReader.GetString());
                             break;
@@ -503,6 +500,9 @@ namespace EdGraph.Platform.Client.Model
                         case "deletedDateTime":
                             deletedDateTime = new Option<string?>(utf8JsonReader.GetString());
                             break;
+                        case "campusClassId":
+                            campusClassId = new Option<string?>(utf8JsonReader.GetString());
+                            break;
                         default:
                             break;
                     }
@@ -512,7 +512,7 @@ namespace EdGraph.Platform.Client.Model
             if (isDeleted.IsSet && isDeleted.Value == null)
                 throw new ArgumentNullException(nameof(isDeleted), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse.");
 
-            return new EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse(id, tenantId, campus, observerId, observerName, evalueeId, evalueeName, formId, formVersion, status, createdBy, isDeleted, varClass, observationDate, submissionDate, createdDateTime, lastModifiedBy, lastModifiedDateTime, deletedBy, deletedDateTime);
+            return new EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse(id, tenantId, campus, observerId, observerName, evalueeId, evalueeName, formId, formVersion, status, createdBy, isDeleted, observationDate, submissionDate, createdDateTime, lastModifiedBy, lastModifiedDateTime, deletedBy, deletedDateTime, campusClassId);
         }
 
         /// <summary>
@@ -608,12 +608,6 @@ namespace EdGraph.Platform.Client.Model
             if (edGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse.IsDeletedOption.IsSet)
                 writer.WriteBoolean("isDeleted", edGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse.IsDeletedOption.Value!.Value);
 
-            if (edGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse.ClassOption.IsSet)
-                if (edGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse.ClassOption.Value != null)
-                    writer.WriteString("class", edGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse.Class);
-                else
-                    writer.WriteNull("class");
-
             if (edGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse.ObservationDateOption.IsSet)
                 if (edGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse.ObservationDateOption.Value != null)
                     writer.WriteString("observationDate", edGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse.ObservationDate);
@@ -655,6 +649,12 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteString("deletedDateTime", edGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse.DeletedDateTime);
                 else
                     writer.WriteNull("deletedDateTime");
+
+            if (edGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse.CampusClassIdOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse.CampusClassIdOption.Value != null)
+                    writer.WriteString("campusClassId", edGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse.CampusClassId);
+                else
+                    writer.WriteNull("campusClassId");
         }
     }
 }

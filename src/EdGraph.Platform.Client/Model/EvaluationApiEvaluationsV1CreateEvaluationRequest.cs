@@ -40,8 +40,9 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="staffUserId">staffUserId</param>
         /// <param name="formId">formId</param>
         /// <param name="formVersion">formVersion</param>
+        /// <param name="campusClassId">campusClassId</param>
         [JsonConstructor]
-        public EvaluationApiEvaluationsV1CreateEvaluationRequest(Option<string?> tenantId = default, Option<string?> evaluationDate = default, Option<string?> campus = default, Option<string?> appraiserUserId = default, Option<string?> staffUserId = default, Option<string?> formId = default, Option<string?> formVersion = default)
+        public EvaluationApiEvaluationsV1CreateEvaluationRequest(Option<string?> tenantId = default, Option<string?> evaluationDate = default, Option<string?> campus = default, Option<string?> appraiserUserId = default, Option<string?> staffUserId = default, Option<string?> formId = default, Option<string?> formVersion = default, Option<string?> campusClassId = default)
         {
             TenantIdOption = tenantId;
             EvaluationDateOption = evaluationDate;
@@ -50,6 +51,7 @@ namespace EdGraph.Platform.Client.Model
             StaffUserIdOption = staffUserId;
             FormIdOption = formId;
             FormVersionOption = formVersion;
+            CampusClassIdOption = campusClassId;
             OnCreated();
         }
 
@@ -147,6 +149,19 @@ namespace EdGraph.Platform.Client.Model
         public string? FormVersion { get { return this.FormVersionOption; } set { this.FormVersionOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of CampusClassId
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> CampusClassIdOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets CampusClassId
+        /// </summary>
+        [JsonPropertyName("campusClassId")]
+        public string? CampusClassId { get { return this.CampusClassIdOption; } set { this.CampusClassIdOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -161,6 +176,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  StaffUserId: ").Append(StaffUserId).Append("\n");
             sb.Append("  FormId: ").Append(FormId).Append("\n");
             sb.Append("  FormVersion: ").Append(FormVersion).Append("\n");
+            sb.Append("  CampusClassId: ").Append(CampusClassId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -205,6 +221,7 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> staffUserId = default;
             Option<string?> formId = default;
             Option<string?> formVersion = default;
+            Option<string?> campusClassId = default;
 
             while (utf8JsonReader.Read())
             {
@@ -242,13 +259,16 @@ namespace EdGraph.Platform.Client.Model
                         case "formVersion":
                             formVersion = new Option<string?>(utf8JsonReader.GetString());
                             break;
+                        case "campusClassId":
+                            campusClassId = new Option<string?>(utf8JsonReader.GetString());
+                            break;
                         default:
                             break;
                     }
                 }
             }
 
-            return new EvaluationApiEvaluationsV1CreateEvaluationRequest(tenantId, evaluationDate, campus, appraiserUserId, staffUserId, formId, formVersion);
+            return new EvaluationApiEvaluationsV1CreateEvaluationRequest(tenantId, evaluationDate, campus, appraiserUserId, staffUserId, formId, formVersion, campusClassId);
         }
 
         /// <summary>
@@ -316,6 +336,12 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteString("formVersion", evaluationApiEvaluationsV1CreateEvaluationRequest.FormVersion);
                 else
                     writer.WriteNull("formVersion");
+
+            if (evaluationApiEvaluationsV1CreateEvaluationRequest.CampusClassIdOption.IsSet)
+                if (evaluationApiEvaluationsV1CreateEvaluationRequest.CampusClassIdOption.Value != null)
+                    writer.WriteString("campusClassId", evaluationApiEvaluationsV1CreateEvaluationRequest.CampusClassId);
+                else
+                    writer.WriteNull("campusClassId");
         }
     }
 }

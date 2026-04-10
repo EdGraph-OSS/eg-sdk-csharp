@@ -46,8 +46,9 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="tags">tags</param>
         /// <param name="rulesCount">rulesCount</param>
         /// <param name="certificationStatus">certificationStatus</param>
+        /// <param name="state">state</param>
         [JsonConstructor]
-        public ValidationsApiContainersV1ContainerDto(Option<string?> tenantId = default, Option<string?> id = default, Option<string?> name = default, Option<string?> description = default, Option<string?> containerType = default, Option<string?> parentContainerId = default, Option<bool?> isDefault = default, Option<string?> environmentType = default, Option<List<ValidationsApiContainersV1ContainerDto>?> childContainers = default, Option<int?> childContainersCount = default, Option<List<ValidationsApiContainersV1ContainerDtoTypesTagDto>?> tags = default, Option<int?> rulesCount = default, Option<string?> certificationStatus = default)
+        public ValidationsApiContainersV1ContainerDto(Option<string?> tenantId = default, Option<string?> id = default, Option<string?> name = default, Option<string?> description = default, Option<string?> containerType = default, Option<string?> parentContainerId = default, Option<bool?> isDefault = default, Option<string?> environmentType = default, Option<List<ValidationsApiContainersV1ContainerDto>?> childContainers = default, Option<int?> childContainersCount = default, Option<List<ValidationsApiContainersV1ContainerDtoTypesTagDto>?> tags = default, Option<int?> rulesCount = default, Option<string?> certificationStatus = default, Option<string?> state = default)
         {
             TenantIdOption = tenantId;
             IdOption = id;
@@ -62,6 +63,7 @@ namespace EdGraph.Platform.Client.Model
             TagsOption = tags;
             RulesCountOption = rulesCount;
             CertificationStatusOption = certificationStatus;
+            StateOption = state;
             OnCreated();
         }
 
@@ -237,6 +239,19 @@ namespace EdGraph.Platform.Client.Model
         public string? CertificationStatus { get { return this.CertificationStatusOption; } set { this.CertificationStatusOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of State
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> StateOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets State
+        /// </summary>
+        [JsonPropertyName("state")]
+        public string? State { get { return this.StateOption; } set { this.StateOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -257,6 +272,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  RulesCount: ").Append(RulesCount).Append("\n");
             sb.Append("  CertificationStatus: ").Append(CertificationStatus).Append("\n");
+            sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -307,6 +323,7 @@ namespace EdGraph.Platform.Client.Model
             Option<List<ValidationsApiContainersV1ContainerDtoTypesTagDto>?> tags = default;
             Option<int?> rulesCount = default;
             Option<string?> certificationStatus = default;
+            Option<string?> state = default;
 
             while (utf8JsonReader.Read())
             {
@@ -367,6 +384,9 @@ namespace EdGraph.Platform.Client.Model
                         case "certificationStatus":
                             certificationStatus = new Option<string?>(utf8JsonReader.GetString());
                             break;
+                        case "state":
+                            state = new Option<string?>(utf8JsonReader.GetString());
+                            break;
                         default:
                             break;
                     }
@@ -376,7 +396,7 @@ namespace EdGraph.Platform.Client.Model
             if (isDefault.IsSet && isDefault.Value == null)
                 throw new ArgumentNullException(nameof(isDefault), "Property is not nullable for class ValidationsApiContainersV1ContainerDto.");
 
-            return new ValidationsApiContainersV1ContainerDto(tenantId, id, name, description, containerType, parentContainerId, isDefault, environmentType, childContainers, childContainersCount, tags, rulesCount, certificationStatus);
+            return new ValidationsApiContainersV1ContainerDto(tenantId, id, name, description, containerType, parentContainerId, isDefault, environmentType, childContainers, childContainersCount, tags, rulesCount, certificationStatus, state);
         }
 
         /// <summary>
@@ -481,6 +501,12 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteString("certificationStatus", validationsApiContainersV1ContainerDto.CertificationStatus);
                 else
                     writer.WriteNull("certificationStatus");
+
+            if (validationsApiContainersV1ContainerDto.StateOption.IsSet)
+                if (validationsApiContainersV1ContainerDto.StateOption.Value != null)
+                    writer.WriteString("state", validationsApiContainersV1ContainerDto.State);
+                else
+                    writer.WriteNull("state");
         }
     }
 }

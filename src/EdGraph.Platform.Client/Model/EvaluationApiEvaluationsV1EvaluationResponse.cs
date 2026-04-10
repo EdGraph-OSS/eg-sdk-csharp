@@ -52,8 +52,9 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="isDeleted">isDeleted</param>
         /// <param name="appraiserFullName">appraiserFullName</param>
         /// <param name="staffFullName">staffFullName</param>
+        /// <param name="campusClassId">campusClassId</param>
         [JsonConstructor]
-        public EvaluationApiEvaluationsV1EvaluationResponse(Option<string?> id = default, Option<string?> tenantId = default, Option<string?> evaluationDate = default, Option<string?> submissionDate = default, Option<string?> campus = default, Option<string?> appraiserUserId = default, Option<string?> staffUserId = default, Option<string?> formId = default, Option<string?> formVersion = default, Option<EvaluationApiEvaluationsV1EvaluationStatus?> status = default, Option<string?> createdBy = default, Option<string?> createdDateTime = default, Option<string?> lastModifiedBy = default, Option<string?> lastModifiedDateTime = default, Option<string?> deletedBy = default, Option<string?> deletedDateTime = default, Option<bool?> isDeleted = default, Option<string?> appraiserFullName = default, Option<string?> staffFullName = default)
+        public EvaluationApiEvaluationsV1EvaluationResponse(Option<string?> id = default, Option<string?> tenantId = default, Option<string?> evaluationDate = default, Option<string?> submissionDate = default, Option<string?> campus = default, Option<string?> appraiserUserId = default, Option<string?> staffUserId = default, Option<string?> formId = default, Option<string?> formVersion = default, Option<EvaluationApiEvaluationsV1EvaluationStatus?> status = default, Option<string?> createdBy = default, Option<string?> createdDateTime = default, Option<string?> lastModifiedBy = default, Option<string?> lastModifiedDateTime = default, Option<string?> deletedBy = default, Option<string?> deletedDateTime = default, Option<bool?> isDeleted = default, Option<string?> appraiserFullName = default, Option<string?> staffFullName = default, Option<string?> campusClassId = default)
         {
             IdOption = id;
             TenantIdOption = tenantId;
@@ -74,6 +75,7 @@ namespace EdGraph.Platform.Client.Model
             IsDeletedOption = isDeleted;
             AppraiserFullNameOption = appraiserFullName;
             StaffFullNameOption = staffFullName;
+            CampusClassIdOption = campusClassId;
             OnCreated();
         }
 
@@ -327,6 +329,19 @@ namespace EdGraph.Platform.Client.Model
         public string? StaffFullName { get { return this.StaffFullNameOption; } set { this.StaffFullNameOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of CampusClassId
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> CampusClassIdOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets CampusClassId
+        /// </summary>
+        [JsonPropertyName("campusClassId")]
+        public string? CampusClassId { get { return this.CampusClassIdOption; } set { this.CampusClassIdOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -353,6 +368,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  IsDeleted: ").Append(IsDeleted).Append("\n");
             sb.Append("  AppraiserFullName: ").Append(AppraiserFullName).Append("\n");
             sb.Append("  StaffFullName: ").Append(StaffFullName).Append("\n");
+            sb.Append("  CampusClassId: ").Append(CampusClassId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -409,6 +425,7 @@ namespace EdGraph.Platform.Client.Model
             Option<bool?> isDeleted = default;
             Option<string?> appraiserFullName = default;
             Option<string?> staffFullName = default;
+            Option<string?> campusClassId = default;
 
             while (utf8JsonReader.Read())
             {
@@ -485,6 +502,9 @@ namespace EdGraph.Platform.Client.Model
                         case "staffFullName":
                             staffFullName = new Option<string?>(utf8JsonReader.GetString());
                             break;
+                        case "campusClassId":
+                            campusClassId = new Option<string?>(utf8JsonReader.GetString());
+                            break;
                         default:
                             break;
                     }
@@ -494,7 +514,7 @@ namespace EdGraph.Platform.Client.Model
             if (status.IsSet && status.Value == null)
                 throw new ArgumentNullException(nameof(status), "Property is not nullable for class EvaluationApiEvaluationsV1EvaluationResponse.");
 
-            return new EvaluationApiEvaluationsV1EvaluationResponse(id, tenantId, evaluationDate, submissionDate, campus, appraiserUserId, staffUserId, formId, formVersion, status, createdBy, createdDateTime, lastModifiedBy, lastModifiedDateTime, deletedBy, deletedDateTime, isDeleted, appraiserFullName, staffFullName);
+            return new EvaluationApiEvaluationsV1EvaluationResponse(id, tenantId, evaluationDate, submissionDate, campus, appraiserUserId, staffUserId, formId, formVersion, status, createdBy, createdDateTime, lastModifiedBy, lastModifiedDateTime, deletedBy, deletedDateTime, isDeleted, appraiserFullName, staffFullName, campusClassId);
         }
 
         /// <summary>
@@ -633,6 +653,12 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteString("staffFullName", evaluationApiEvaluationsV1EvaluationResponse.StaffFullName);
                 else
                     writer.WriteNull("staffFullName");
+
+            if (evaluationApiEvaluationsV1EvaluationResponse.CampusClassIdOption.IsSet)
+                if (evaluationApiEvaluationsV1EvaluationResponse.CampusClassIdOption.Value != null)
+                    writer.WriteString("campusClassId", evaluationApiEvaluationsV1EvaluationResponse.CampusClassId);
+                else
+                    writer.WriteNull("campusClassId");
         }
     }
 }

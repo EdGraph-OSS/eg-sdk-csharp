@@ -10,6 +10,7 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 | [**DuplicateForm**](FormsApi.md#duplicateform) | **POST** /tenants/{tenantId}/forms/{formId}/duplicate | Duplicates all Form data for a given tenant (with Sections and Questions). |
 | [**GetForm**](FormsApi.md#getform) | **GET** /tenants/{tenantId}/forms/{formId} | Get Form. |
 | [**GetFormAccess**](FormsApi.md#getformaccess) | **GET** /tenants/{tenantId}/forms/{formId}/access | Get the Access Type for a Form. |
+| [**GetFullFormSchema**](FormsApi.md#getfullformschema) | **GET** /tenants/{tenantId}/forms/{formId}/full/schemas | Get a Forms Json and UI React JSON compatible Schema. |
 | [**ImportForm**](FormsApi.md#importform) | **POST** /tenants/{tenantId}/forms/import | Imports all form data for a given tenant. |
 | [**SearchForms**](FormsApi.md#searchforms) | **GET** /tenants/{tenantId}/forms | Search Forms |
 | [**SetFormAccess**](FormsApi.md#setformaccess) | **PUT** /tenants/{tenantId}/forms/{formId}/access | Sets the Access Type for a Form. |
@@ -584,6 +585,105 @@ catch (ApiException e)
 ### Return type
 
 [**FormApiFormsV1FormAccessResponse**](FormApiFormsV1FormAccessResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | The requested resource was successfully retrieved. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+| **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+<a id="getfullformschema"></a>
+# **GetFullFormSchema**
+> FormApiFormsV1FullFormSchemaResponse GetFullFormSchema (Guid tenantId, Guid formId)
+
+Get a Forms Json and UI React JSON compatible Schema.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using EdGraph.Platform.Client.Api;
+using EdGraph.Platform.Client.Client;
+using EdGraph.Platform.Client.Model;
+
+namespace Example
+{
+    public class GetFullFormSchemaExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.dev.edgraph.com/tenant";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new FormsApi(config);
+            var tenantId = "tenantId_example";  // Guid | 
+            var formId = "formId_example";  // Guid | 
+
+            try
+            {
+                // Get a Forms Json and UI React JSON compatible Schema.
+                FormApiFormsV1FullFormSchemaResponse result = apiInstance.GetFullFormSchema(tenantId, formId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling FormsApi.GetFullFormSchema: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetFullFormSchemaWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Get a Forms Json and UI React JSON compatible Schema.
+    ApiResponse<FormApiFormsV1FullFormSchemaResponse> response = apiInstance.GetFullFormSchemaWithHttpInfo(tenantId, formId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling FormsApi.GetFullFormSchemaWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **Guid** |  |  |
+| **formId** | **Guid** |  |  |
+
+### Return type
+
+[**FormApiFormsV1FullFormSchemaResponse**](FormApiFormsV1FullFormSchemaResponse.md)
 
 ### Authorization
 

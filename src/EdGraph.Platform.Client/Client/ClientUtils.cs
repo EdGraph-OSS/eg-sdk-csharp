@@ -186,6 +186,8 @@ namespace EdGraph.Platform.Client.Client
                 return FormApiFormsV1FormSourceValueConverter.ToJsonValue(formApiFormsV1FormSource);
             if (obj is FormApiFormsV1FormStatus formApiFormsV1FormStatus)
                 return FormApiFormsV1FormStatusValueConverter.ToJsonValue(formApiFormsV1FormStatus);
+            if (obj is FormApiFormsV1SchemaStatus formApiFormsV1SchemaStatus)
+                return FormApiFormsV1SchemaStatusValueConverter.ToJsonValue(formApiFormsV1SchemaStatus);
             if (obj is FormApiQuestionsV1QuestionType formApiQuestionsV1QuestionType)
                 return FormApiQuestionsV1QuestionTypeValueConverter.ToJsonValue(formApiQuestionsV1QuestionType);
             if (obj is FormApiSubmissionsV1ExportStatus formApiSubmissionsV1ExportStatus)

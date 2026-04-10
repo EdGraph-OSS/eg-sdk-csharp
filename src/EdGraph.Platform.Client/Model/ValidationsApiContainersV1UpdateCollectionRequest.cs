@@ -39,8 +39,9 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="description">description</param>
         /// <param name="environmentType">environmentType</param>
         /// <param name="tags">tags</param>
+        /// <param name="state">state</param>
         [JsonConstructor]
-        public ValidationsApiContainersV1UpdateCollectionRequest(Option<string?> tenantId = default, Option<string?> id = default, Option<string?> name = default, Option<string?> description = default, Option<string?> environmentType = default, Option<List<string>?> tags = default)
+        public ValidationsApiContainersV1UpdateCollectionRequest(Option<string?> tenantId = default, Option<string?> id = default, Option<string?> name = default, Option<string?> description = default, Option<string?> environmentType = default, Option<List<string>?> tags = default, Option<string?> state = default)
         {
             TenantIdOption = tenantId;
             IdOption = id;
@@ -48,6 +49,7 @@ namespace EdGraph.Platform.Client.Model
             DescriptionOption = description;
             EnvironmentTypeOption = environmentType;
             TagsOption = tags;
+            StateOption = state;
             OnCreated();
         }
 
@@ -132,6 +134,19 @@ namespace EdGraph.Platform.Client.Model
         public List<string>? Tags { get { return this.TagsOption; } }
 
         /// <summary>
+        /// Used to track the state of State
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> StateOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets State
+        /// </summary>
+        [JsonPropertyName("state")]
+        public string? State { get { return this.StateOption; } set { this.StateOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -145,6 +160,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  EnvironmentType: ").Append(EnvironmentType).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
+            sb.Append("  State: ").Append(State).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -188,6 +204,7 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> description = default;
             Option<string?> environmentType = default;
             Option<List<string>?> tags = default;
+            Option<string?> state = default;
 
             while (utf8JsonReader.Read())
             {
@@ -223,13 +240,16 @@ namespace EdGraph.Platform.Client.Model
                             if (utf8JsonReader.TokenType != JsonTokenType.Null)
                                 tags = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
+                        case "state":
+                            state = new Option<string?>(utf8JsonReader.GetString());
+                            break;
                         default:
                             break;
                     }
                 }
             }
 
-            return new ValidationsApiContainersV1UpdateCollectionRequest(tenantId, id, name, description, environmentType, tags);
+            return new ValidationsApiContainersV1UpdateCollectionRequest(tenantId, id, name, description, environmentType, tags, state);
         }
 
         /// <summary>
@@ -294,6 +314,11 @@ namespace EdGraph.Platform.Client.Model
                 }
                 else
                     writer.WriteNull("tags");
+            if (validationsApiContainersV1UpdateCollectionRequest.StateOption.IsSet)
+                if (validationsApiContainersV1UpdateCollectionRequest.StateOption.Value != null)
+                    writer.WriteString("state", validationsApiContainersV1UpdateCollectionRequest.State);
+                else
+                    writer.WriteNull("state");
         }
     }
 }

@@ -156,5 +156,17 @@ namespace EdGraph.Platform.Client.Test.Api
             var model = response.Unauthorized();
             Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationResponse>(model);
         }
+
+        /// <summary>
+        /// Test VerifySysAdminCredentials
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task VerifySysAdminCredentialsAsyncTest()
+        {
+            Guid tenantId = default!;
+            var response = await _instance.VerifySysAdminCredentialsAsync(tenantId);
+            var model = response.Unauthorized();
+            Assert.IsType<Object>(model);
+        }
     }
 }

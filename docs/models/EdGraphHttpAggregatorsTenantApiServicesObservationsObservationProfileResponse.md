@@ -16,7 +16,6 @@ Name | Type | Description | Notes
 **Status** | **string** |  | [optional] 
 **CreatedBy** | **string** |  | [optional] 
 **IsDeleted** | **bool** |  | [optional] 
-**Class** | **string** |  | [optional] 
 **ObservationDate** | **string** |  | [optional] 
 **SubmissionDate** | **string** |  | [optional] 
 **CreatedDateTime** | **string** |  | [optional] 
@@ -24,6 +23,7 @@ Name | Type | Description | Notes
 **LastModifiedDateTime** | **string** |  | [optional] 
 **DeletedBy** | **string** |  | [optional] 
 **DeletedDateTime** | **string** |  | [optional] 
+**CampusClassId** | **string** |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

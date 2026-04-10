@@ -64,6 +64,21 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
+        /// Test CreateObservationSubmission
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task CreateObservationSubmissionAsyncTest()
+        {
+            Guid tenantId = default!;
+            Guid formId = default!;
+            string observationId = default!;
+            Client.Option<EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationSubmissionRequest> edGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationSubmissionRequest = default!;
+            var response = await _instance.CreateObservationSubmissionAsync(tenantId, formId, observationId, edGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationSubmissionRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationSubmissionResponse>(model);
+        }
+
+        /// <summary>
         /// Test DeleteObservation
         /// </summary>
         [Fact (Skip = "not implemented")]
@@ -87,6 +102,34 @@ namespace EdGraph.Platform.Client.Test.Api
             var response = await _instance.GetObservationByIdAsync(tenantId, observationId);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse>(model);
+        }
+
+        /// <summary>
+        /// Test GetObservationDraft
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetObservationDraftAsyncTest()
+        {
+            Guid tenantId = default!;
+            Guid observationId = default!;
+            Guid formId = default!;
+            var response = await _instance.GetObservationDraftAsync(tenantId, observationId, formId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsObservationDraftResponse>(model);
+        }
+
+        /// <summary>
+        /// Test GetObservationSubmission
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetObservationSubmissionAsyncTest()
+        {
+            Guid tenantId = default!;
+            Guid observationId = default!;
+            Guid formId = default!;
+            var response = await _instance.GetObservationSubmissionAsync(tenantId, observationId, formId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponseGetPaginatedItemsResponse>(model);
         }
 
         /// <summary>
@@ -171,6 +214,35 @@ namespace EdGraph.Platform.Client.Test.Api
             var response = await _instance.GetSubmittedObservationsCountAsync(tenantId, evalueeId, campus);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsGetSubmittedObservationsCountResponse>(model);
+        }
+
+        /// <summary>
+        /// Test UpdateObservation
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task UpdateObservationAsyncTest()
+        {
+            Guid tenantId = default!;
+            Guid observationId = default!;
+            Client.Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest = default!;
+            var response = await _instance.UpdateObservationAsync(tenantId, observationId, edGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationResponse>(model);
+        }
+
+        /// <summary>
+        /// Test UpsertObservationDraft
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task UpsertObservationDraftAsyncTest()
+        {
+            Guid tenantId = default!;
+            Guid observationId = default!;
+            Guid formId = default!;
+            Client.Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertObservationDraftRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUpsertObservationDraftRequest = default!;
+            var response = await _instance.UpsertObservationDraftAsync(tenantId, observationId, formId, edGraphHttpAggregatorsTenantApiServicesObservationsUpsertObservationDraftRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertObservationDraftResponse>(model);
         }
     }
 }
