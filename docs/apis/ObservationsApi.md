@@ -516,7 +516,7 @@ catch (ApiException e)
 
 <a id="getobservationsubmission"></a>
 # **GetObservationSubmission**
-> EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponseGetPaginatedItemsResponse GetObservationSubmission (Guid tenantId, Guid observationId, Guid formId)
+> EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponse GetObservationSubmission (Guid tenantId, Guid observationId, Guid formId)
 
 Gets a submission for a specific observation
 
@@ -547,7 +547,7 @@ namespace Example
             try
             {
                 // Gets a submission for a specific observation
-                EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponseGetPaginatedItemsResponse result = apiInstance.GetObservationSubmission(tenantId, observationId, formId);
+                EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponse result = apiInstance.GetObservationSubmission(tenantId, observationId, formId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -568,7 +568,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Gets a submission for a specific observation
-    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponseGetPaginatedItemsResponse> response = apiInstance.GetObservationSubmissionWithHttpInfo(tenantId, observationId, formId);
+    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponse> response = apiInstance.GetObservationSubmissionWithHttpInfo(tenantId, observationId, formId);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -591,7 +591,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponseGetPaginatedItemsResponse**](EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponseGetPaginatedItemsResponse.md)
+[**EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponse**](EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponse.md)
 
 ### Authorization
 

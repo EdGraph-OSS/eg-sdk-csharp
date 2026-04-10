@@ -28276,7 +28276,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.ObservationSubmissionResponseGetPaginatedItemsResponse'
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.ObservationSubmissionResponse'
           description: The requested resource was successfully retrieved.
         "400":
           content:
@@ -50437,53 +50437,6 @@ components:
         observationId:
           nullable: true
           type: string
-      type: object
-    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.ObservationSubmissionResponseGetPaginatedItemsResponse:
-      additionalProperties: false
-      example:
-        data:
-        - formId: formId
-          observationId: observationId
-          lastModifiedDateTime: lastModifiedDateTime
-          data: data
-          isDeleted: true
-          createdBy: createdBy
-          lastModifiedBy: lastModifiedBy
-          tenantId: tenantId
-          name: name
-          createdDateTime: createdDateTime
-          id: id
-          email: email
-        - formId: formId
-          observationId: observationId
-          lastModifiedDateTime: lastModifiedDateTime
-          data: data
-          isDeleted: true
-          createdBy: createdBy
-          lastModifiedBy: lastModifiedBy
-          tenantId: tenantId
-          name: name
-          createdDateTime: createdDateTime
-          id: id
-          email: email
-        pageIndex: 0
-        count: 1
-        pageSize: 6
-      properties:
-        pageIndex:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        data:
-          items:
-            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.ObservationSubmissionResponse'
-          nullable: true
-          type: array
-        count:
-          format: int64
-          type: integer
       type: object
     EdGraph.HttpAggregators.Tenant.Api.Services.Observations.PersonaResponse:
       additionalProperties: false

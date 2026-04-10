@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid formId = default!;
             var response = await _instance.GetObservationSubmissionAsync(tenantId, observationId, formId);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponseGetPaginatedItemsResponse>(model);
+            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponse>(model);
         }
 
         /// <summary>
