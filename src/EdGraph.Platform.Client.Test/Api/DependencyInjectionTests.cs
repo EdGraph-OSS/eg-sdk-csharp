@@ -325,6 +325,9 @@ namespace EdGraph.Platform.Client.Test.Api
             var tenantJobsDSLApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<ITenantJobsDSLApi>();
             Assert.True(tenantJobsDSLApi.HttpClient.BaseAddress != null);
 
+            var tenantJobsInstructionalInsightsApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<ITenantJobsInstructionalInsightsApi>();
+            Assert.True(tenantJobsInstructionalInsightsApi.HttpClient.BaseAddress != null);
+
             var tenantSecurityScoreSyncApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<ITenantSecurityScoreSyncApi>();
             Assert.True(tenantSecurityScoreSyncApi.HttpClient.BaseAddress != null);
 
@@ -619,6 +622,9 @@ namespace EdGraph.Platform.Client.Test.Api
 
             var tenantJobsDSLApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<ITenantJobsDSLApi>();
             Assert.True(tenantJobsDSLApi.HttpClient.BaseAddress != null);
+
+            var tenantJobsInstructionalInsightsApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<ITenantJobsInstructionalInsightsApi>();
+            Assert.True(tenantJobsInstructionalInsightsApi.HttpClient.BaseAddress != null);
 
             var tenantSecurityScoreSyncApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<ITenantSecurityScoreSyncApi>();
             Assert.True(tenantSecurityScoreSyncApi.HttpClient.BaseAddress != null);
@@ -915,6 +921,9 @@ namespace EdGraph.Platform.Client.Test.Api
             var tenantJobsDSLApi = _hostUsingAddWithAClient.Services.GetRequiredService<ITenantJobsDSLApi>();
             Assert.True(tenantJobsDSLApi.HttpClient.BaseAddress != null);
             
+            var tenantJobsInstructionalInsightsApi = _hostUsingAddWithAClient.Services.GetRequiredService<ITenantJobsInstructionalInsightsApi>();
+            Assert.True(tenantJobsInstructionalInsightsApi.HttpClient.BaseAddress != null);
+            
             var tenantSecurityScoreSyncApi = _hostUsingAddWithAClient.Services.GetRequiredService<ITenantSecurityScoreSyncApi>();
             Assert.True(tenantSecurityScoreSyncApi.HttpClient.BaseAddress != null);
             
@@ -1209,6 +1218,9 @@ namespace EdGraph.Platform.Client.Test.Api
 
             var tenantJobsDSLApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<ITenantJobsDSLApi>();
             Assert.True(tenantJobsDSLApi.HttpClient.BaseAddress != null);
+
+            var tenantJobsInstructionalInsightsApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<ITenantJobsInstructionalInsightsApi>();
+            Assert.True(tenantJobsInstructionalInsightsApi.HttpClient.BaseAddress != null);
 
             var tenantSecurityScoreSyncApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<ITenantSecurityScoreSyncApi>();
             Assert.True(tenantSecurityScoreSyncApi.HttpClient.BaseAddress != null);

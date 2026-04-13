@@ -7,6 +7,8 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 | [**CreateObservation**](ObservationsApi.md#createobservation) | **POST** /tenants/{tenantId}/observations | Creates a new Observation for a given tenant |
 | [**CreateObservationSubmission**](ObservationsApi.md#createobservationsubmission) | **POST** /tenants/{tenantId}/observations/{observationId}/available-forms/{formId}/submit | Creates a submission for an available form referencing an existing observation |
 | [**DeleteObservation**](ObservationsApi.md#deleteobservation) | **DELETE** /tenants/{tenantId}/observations/{observationId} | Deletes an Observation for a given tenant |
+| [**GetFormQuestions**](ObservationsApi.md#getformquestions) | **GET** /tenants/{tenantId}/observations/available-forms/{formId}/sections/{sectionId}/questions | Search Questions |
+| [**GetFormSections**](ObservationsApi.md#getformsections) | **GET** /tenants/{tenantId}/observations/available-forms/{formId}/sections | Search Observation Form Sections |
 | [**GetObservationById**](ObservationsApi.md#getobservationbyid) | **GET** /tenants/{tenantId}/observations/{observationId} | Get an Observation for a given tenant |
 | [**GetObservationDraft**](ObservationsApi.md#getobservationdraft) | **GET** /tenants/{tenantId}/observations/{observationId}/available-forms/{formId}/draft | Get an observation form&#39;s draft |
 | [**GetObservationSubmission**](ObservationsApi.md#getobservationsubmission) | **GET** /tenants/{tenantId}/observations/{observationId}/available-forms/{formId}/submission | Gets a submission for a specific observation |
@@ -294,6 +296,212 @@ catch (ApiException e)
 ### Return type
 
 [**EdGraphHttpAggregatorsTenantApiServicesObservationsDeleteObservationResponse**](EdGraphHttpAggregatorsTenantApiServicesObservationsDeleteObservationResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | The requested resource was successfully retrieved. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+<a id="getformquestions"></a>
+# **GetFormQuestions**
+> EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponsePaginatedItemsViewModel GetFormQuestions (Guid tenantId, Guid formId, Guid sectionId, int pageIndex = null, int pageSize = null)
+
+Search Questions
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using EdGraph.Platform.Client.Api;
+using EdGraph.Platform.Client.Client;
+using EdGraph.Platform.Client.Model;
+
+namespace Example
+{
+    public class GetFormQuestionsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.dev.edgraph.com/tenant";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ObservationsApi(config);
+            var tenantId = "tenantId_example";  // Guid | 
+            var formId = "formId_example";  // Guid | 
+            var sectionId = "sectionId_example";  // Guid | 
+            var pageIndex = 0;  // int |  (optional)  (default to 0)
+            var pageSize = 10;  // int |  (optional)  (default to 10)
+
+            try
+            {
+                // Search Questions
+                EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponsePaginatedItemsViewModel result = apiInstance.GetFormQuestions(tenantId, formId, sectionId, pageIndex, pageSize);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ObservationsApi.GetFormQuestions: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetFormQuestionsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Search Questions
+    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponsePaginatedItemsViewModel> response = apiInstance.GetFormQuestionsWithHttpInfo(tenantId, formId, sectionId, pageIndex, pageSize);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ObservationsApi.GetFormQuestionsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **Guid** |  |  |
+| **formId** | **Guid** |  |  |
+| **sectionId** | **Guid** |  |  |
+| **pageIndex** | **int** |  | [optional] [default to 0] |
+| **pageSize** | **int** |  | [optional] [default to 10] |
+
+### Return type
+
+[**EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponsePaginatedItemsViewModel**](EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponsePaginatedItemsViewModel.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | The requested resource was successfully retrieved. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+<a id="getformsections"></a>
+# **GetFormSections**
+> EdGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponsePaginatedItemsViewModel GetFormSections (Guid tenantId, Guid formId, int pageIndex = null, int pageSize = null)
+
+Search Observation Form Sections
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using EdGraph.Platform.Client.Api;
+using EdGraph.Platform.Client.Client;
+using EdGraph.Platform.Client.Model;
+
+namespace Example
+{
+    public class GetFormSectionsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.dev.edgraph.com/tenant";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ObservationsApi(config);
+            var tenantId = "tenantId_example";  // Guid | 
+            var formId = "formId_example";  // Guid | 
+            var pageIndex = 0;  // int |  (optional)  (default to 0)
+            var pageSize = 10;  // int |  (optional)  (default to 10)
+
+            try
+            {
+                // Search Observation Form Sections
+                EdGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponsePaginatedItemsViewModel result = apiInstance.GetFormSections(tenantId, formId, pageIndex, pageSize);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ObservationsApi.GetFormSections: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetFormSectionsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Search Observation Form Sections
+    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponsePaginatedItemsViewModel> response = apiInstance.GetFormSectionsWithHttpInfo(tenantId, formId, pageIndex, pageSize);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ObservationsApi.GetFormSectionsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **Guid** |  |  |
+| **formId** | **Guid** |  |  |
+| **pageIndex** | **int** |  | [optional] [default to 0] |
+| **pageSize** | **int** |  | [optional] [default to 10] |
+
+### Return type
+
+[**EdGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponsePaginatedItemsViewModel**](EdGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponsePaginatedItemsViewModel.md)
 
 ### Authorization
 

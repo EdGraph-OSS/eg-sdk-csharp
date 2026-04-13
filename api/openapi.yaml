@@ -28577,6 +28577,181 @@ paths:
       summary: Update an Observation for a given tenant
       tags:
       - Observations
+  /tenants/{tenantId}/observations/available-forms/{formId}/sections/{sectionId}/questions:
+    get:
+      operationId: GetFormQuestions
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: formId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: sectionId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 10
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormQuestionResponsePaginatedItemsViewModel'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Search Questions
+      tags:
+      - Observations
+  /tenants/{tenantId}/observations/available-forms/{formId}/sections:
+    get:
+      operationId: GetFormSections
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: formId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 10
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormSectionResponsePaginatedItemsViewModel'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Search Observation Form Sections
+      tags:
+      - Observations
   /tenants/{tenantId}/observations/available-forms:
     get:
       operationId: GetPaginatedAvailableForms
@@ -38018,6 +38193,471 @@ paths:
       summary: Creates a DSL Sync Job for a given tenant
       tags:
       - Tenant / Jobs / DSL
+  /tenants/{tenantId}/jobs/instructionalinsights/execute:
+    post:
+      operationId: ExecuteInstructionalInsightsSecuritySyncJob
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "202":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityApi.InstructionalInsights.V1.InstructionalInsightsSecuritySyncJobExecutedResponse'
+          description: The job execution was successfully requested.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Executes an Instructional Insights Security Sync Job
+      tags:
+      - Tenant / Jobs / Instructional Insights
+  /tenants/{tenantId}/jobs/instructionalinsights/executions/{executionId}/logs:
+    get:
+      operationId: SearchInstructionalInsightsSecuritySyncJobExecutionLogs
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: executionId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: true
+        in: query
+        name: jobId
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 10
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: orderBy
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: level
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: message
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityApi.InstructionalInsights.V1.SearchInstructionalInsightsSecuritySyncJobExecutionLogsResponse'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Searches Instructional Insights Security Sync Job Execution Logs for
+        a given tenant and execution
+      tags:
+      - Tenant / Jobs / Instructional Insights
+  /tenants/{tenantId}/jobs/instructionalinsights/executions:
+    get:
+      operationId: SearchInstructionalInsightsSecuritySyncJobExecutions
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: true
+        in: query
+        name: jobId
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 10
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: orderBy
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityApi.InstructionalInsights.V1.SearchInstructionalInsightsSecuritySyncJobExecutionsResponse'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Searches Instructional Insights Security Sync Job Executions for a
+        given tenant
+      tags:
+      - Tenant / Jobs / Instructional Insights
+  /tenants/{tenantId}/jobs/instructionalinsights:
+    get:
+      operationId: GetInstructionalInsightsSecuritySyncJob
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityApi.InstructionalInsights.V1.InstructionalInsightsSecuritySyncJobResponse'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Retrieves an Instructional Insights Security Sync Job for a given tenant
+      tags:
+      - Tenant / Jobs / Instructional Insights
+    post:
+      operationId: CreateInstructionalInsightsSecuritySyncJob
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/IdentityApi.InstructionalInsights.V1.CreateInstructionalInsightsSecuritySyncJobRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdentityApi.InstructionalInsights.V1.CreateInstructionalInsightsSecuritySyncJobRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/IdentityApi.InstructionalInsights.V1.CreateInstructionalInsightsSecuritySyncJobRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/IdentityApi.InstructionalInsights.V1.CreateInstructionalInsightsSecuritySyncJobRequest'
+        description: ""
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/IdentityApi.InstructionalInsights.V1.InstructionalInsightsSecuritySyncJobCreatedResponse'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Creates an Instructional Insights Security Sync Job for a given tenant
+      tags:
+      - Tenant / Jobs / Instructional Insights
+    put:
+      operationId: UpdateInstructionalInsightsSecuritySyncJob
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/IdentityApi.InstructionalInsights.V1.UpdateInstructionalInsightsSecuritySyncJobRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/IdentityApi.InstructionalInsights.V1.UpdateInstructionalInsightsSecuritySyncJobRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/IdentityApi.InstructionalInsights.V1.UpdateInstructionalInsightsSecuritySyncJobRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/IdentityApi.InstructionalInsights.V1.UpdateInstructionalInsightsSecuritySyncJobRequest'
+        description: ""
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "204":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.NoContentResult'
+          description: The resource was successfully updated.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Updates an Instructional Insights Security Sync Job for a given tenant
+      tags:
+      - Tenant / Jobs / Instructional Insights
   /tenants/{tenantId}/jobs/securityscore/{jobId}/executions/{jobExecutionId}:
     get:
       operationId: GetSecurityScoreSyncJobExecution
@@ -50024,11 +50664,189 @@ components:
           nullable: true
           type: array
       type: object
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormQuestionResponse:
+      additionalProperties: false
+      example:
+        formId: formId
+        lastModifiedDateTime: lastModifiedDateTime
+        defaultValue: defaultValue
+        lastModifiedBy: lastModifiedBy
+        description: description
+        createdDateTime: createdDateTime
+        deletedDateTime: deletedDateTime
+        sectionId: sectionId
+        title: title
+        type: type
+        required: true
+        deletedBy: deletedBy
+        component: ""
+        isDeleted: true
+        createdBy: createdBy
+        tenantId: tenantId
+        options:
+        - options
+        - options
+        id: id
+        validation:
+          minLength: 5
+          maxLength: 5
+        order: 2
+      properties:
+        id:
+          nullable: true
+          type: string
+        sectionId:
+          nullable: true
+          type: string
+        formId:
+          nullable: true
+          type: string
+        tenantId:
+          nullable: true
+          type: string
+        title:
+          nullable: true
+          type: string
+        description:
+          nullable: true
+          type: string
+        type:
+          nullable: true
+          type: string
+        required:
+          type: boolean
+        defaultValue:
+          nullable: true
+          type: string
+        validation:
+          $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormQuestionValidationResponse'
+        options:
+          items:
+            type: string
+          nullable: true
+          type: array
+        createdBy:
+          nullable: true
+          type: string
+        createdDateTime:
+          nullable: true
+          type: string
+        lastModifiedBy:
+          nullable: true
+          type: string
+        lastModifiedDateTime:
+          nullable: true
+          type: string
+        deletedBy:
+          nullable: true
+          type: string
+        deletedDateTime:
+          nullable: true
+          type: string
+        isDeleted:
+          type: boolean
+        order:
+          format: int32
+          type: integer
+        component:
+          nullable: true
+      type: object
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormQuestionResponsePaginatedItemsViewModel:
+      additionalProperties: false
+      example:
+        data:
+        - formId: formId
+          lastModifiedDateTime: lastModifiedDateTime
+          defaultValue: defaultValue
+          lastModifiedBy: lastModifiedBy
+          description: description
+          createdDateTime: createdDateTime
+          deletedDateTime: deletedDateTime
+          sectionId: sectionId
+          title: title
+          type: type
+          required: true
+          deletedBy: deletedBy
+          component: ""
+          isDeleted: true
+          createdBy: createdBy
+          tenantId: tenantId
+          options:
+          - options
+          - options
+          id: id
+          validation:
+            minLength: 5
+            maxLength: 5
+          order: 2
+        - formId: formId
+          lastModifiedDateTime: lastModifiedDateTime
+          defaultValue: defaultValue
+          lastModifiedBy: lastModifiedBy
+          description: description
+          createdDateTime: createdDateTime
+          deletedDateTime: deletedDateTime
+          sectionId: sectionId
+          title: title
+          type: type
+          required: true
+          deletedBy: deletedBy
+          component: ""
+          isDeleted: true
+          createdBy: createdBy
+          tenantId: tenantId
+          options:
+          - options
+          - options
+          id: id
+          validation:
+            minLength: 5
+            maxLength: 5
+          order: 2
+        pageIndex: 0
+        count: 1
+        pageSize: 6
+      properties:
+        pageIndex:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        count:
+          format: int64
+          type: integer
+        data:
+          items:
+            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormQuestionResponse'
+          nullable: true
+          type: array
+      type: object
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormQuestionValidationResponse:
+      additionalProperties: false
+      example:
+        minLength: 5
+        maxLength: 5
+      properties:
+        minLength:
+          format: int32
+          nullable: true
+          type: integer
+        maxLength:
+          format: int32
+          nullable: true
+          type: integer
+      type: object
     EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormResponse:
       additionalProperties: false
       example:
+        image: image
+        isDeleted: true
         name: name
+        tenantId: tenantId
+        description: description
         id: id
+        source: source
         version: version
       properties:
         id:
@@ -50040,16 +50858,40 @@ components:
         version:
           nullable: true
           type: string
+        tenantId:
+          nullable: true
+          type: string
+        description:
+          nullable: true
+          type: string
+        source:
+          nullable: true
+          type: string
+        image:
+          nullable: true
+          type: string
+        isDeleted:
+          type: boolean
       type: object
     EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormResponseGetPaginatedItemsResponse:
       additionalProperties: false
       example:
         data:
-        - name: name
+        - image: image
+          isDeleted: true
+          name: name
+          tenantId: tenantId
+          description: description
           id: id
+          source: source
           version: version
-        - name: name
+        - image: image
+          isDeleted: true
+          name: name
+          tenantId: tenantId
+          description: description
           id: id
+          source: source
           version: version
         pageIndex: 0
         count: 1
@@ -50069,6 +50911,111 @@ components:
         count:
           format: int64
           type: integer
+      type: object
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormSectionResponse:
+      additionalProperties: false
+      example:
+        formId: formId
+        lastModifiedDateTime: lastModifiedDateTime
+        lastModifiedBy: lastModifiedBy
+        description: description
+        createdDateTime: createdDateTime
+        deletedDateTime: deletedDateTime
+        title: title
+        deletedBy: deletedBy
+        isDeleted: true
+        createdBy: createdBy
+        tenantId: tenantId
+        id: id
+        order: 5
+      properties:
+        id:
+          nullable: true
+          type: string
+        formId:
+          nullable: true
+          type: string
+        tenantId:
+          nullable: true
+          type: string
+        title:
+          nullable: true
+          type: string
+        description:
+          nullable: true
+          type: string
+        createdBy:
+          nullable: true
+          type: string
+        createdDateTime:
+          nullable: true
+          type: string
+        lastModifiedBy:
+          nullable: true
+          type: string
+        lastModifiedDateTime:
+          nullable: true
+          type: string
+        deletedBy:
+          nullable: true
+          type: string
+        deletedDateTime:
+          nullable: true
+          type: string
+        isDeleted:
+          type: boolean
+        order:
+          format: int32
+          type: integer
+      type: object
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormSectionResponsePaginatedItemsViewModel:
+      additionalProperties: false
+      example:
+        data:
+        - formId: formId
+          lastModifiedDateTime: lastModifiedDateTime
+          lastModifiedBy: lastModifiedBy
+          description: description
+          createdDateTime: createdDateTime
+          deletedDateTime: deletedDateTime
+          title: title
+          deletedBy: deletedBy
+          isDeleted: true
+          createdBy: createdBy
+          tenantId: tenantId
+          id: id
+          order: 5
+        - formId: formId
+          lastModifiedDateTime: lastModifiedDateTime
+          lastModifiedBy: lastModifiedBy
+          description: description
+          createdDateTime: createdDateTime
+          deletedDateTime: deletedDateTime
+          title: title
+          deletedBy: deletedBy
+          isDeleted: true
+          createdBy: createdBy
+          tenantId: tenantId
+          id: id
+          order: 5
+        pageIndex: 0
+        count: 1
+        pageSize: 6
+      properties:
+        pageIndex:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        count:
+          format: int64
+          type: integer
+        data:
+          items:
+            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormSectionResponse'
+          nullable: true
+          type: array
       type: object
     EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormVersionConfigurationRequest:
       additionalProperties: false
@@ -65192,6 +66139,493 @@ components:
         data:
           items:
             $ref: '#/components/schemas/IdentityApi.ClientSettingsType.V1.ClientSettingsTypeResponse'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    IdentityApi.InstructionalInsights.V1.CallbackNotificationMessage:
+      additionalProperties: false
+      example:
+        notificationType: notificationType
+        value: value
+      properties:
+        notificationType:
+          nullable: true
+          type: string
+        value:
+          nullable: true
+          type: string
+      type: object
+    IdentityApi.InstructionalInsights.V1.CreateInstructionalInsightsSecuritySyncJobRequest:
+      additionalProperties: false
+      properties:
+        tenantId:
+          nullable: true
+          type: string
+        jobId:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        input:
+          $ref: '#/components/schemas/IdentityApi.InstructionalInsights.V1.InstructionalInsightsSecuritySyncJobInputMessage'
+        schedule:
+          $ref: '#/components/schemas/IdentityApi.InstructionalInsights.V1.ScheduleMessage'
+        retryPolicy:
+          $ref: '#/components/schemas/IdentityApi.InstructionalInsights.V1.RetryPolicyMessage'
+        callbackNotifications:
+          items:
+            $ref: '#/components/schemas/IdentityApi.InstructionalInsights.V1.CallbackNotificationMessage'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    IdentityApi.InstructionalInsights.V1.InstructionalInsightsSecuritySyncJobCreatedResponse:
+      additionalProperties: false
+      example:
+        jobId: jobId
+      properties:
+        jobId:
+          nullable: true
+          type: string
+      type: object
+    IdentityApi.InstructionalInsights.V1.InstructionalInsightsSecuritySyncJobExecutedResponse:
+      additionalProperties: false
+      example:
+        jobId: jobId
+        executionId: executionId
+      properties:
+        jobId:
+          nullable: true
+          type: string
+        executionId:
+          nullable: true
+          type: string
+      type: object
+    IdentityApi.InstructionalInsights.V1.InstructionalInsightsSecuritySyncJobExecutionLogMessage:
+      additionalProperties: false
+      example:
+        jobId: jobId
+        executionId: executionId
+        loggedDateTime: loggedDateTime
+        level: level
+        tenantId: tenantId
+        message: message
+      properties:
+        tenantId:
+          nullable: true
+          type: string
+        jobId:
+          nullable: true
+          type: string
+        executionId:
+          nullable: true
+          type: string
+        loggedDateTime:
+          nullable: true
+          type: string
+        level:
+          nullable: true
+          type: string
+        message:
+          nullable: true
+          type: string
+      type: object
+    IdentityApi.InstructionalInsights.V1.InstructionalInsightsSecuritySyncJobExecutionMessage:
+      additionalProperties: false
+      example:
+        queuedDateTime: queuedDateTime
+        output: output
+        executionId: executionId
+        jobId: jobId
+        input: input
+        startDateTime: startDateTime
+        tenantId: tenantId
+        cancelDateTime: cancelDateTime
+        metrics:
+        - processed: 5
+          success: 5
+          entity: entity
+          errors: 2
+        - processed: 5
+          success: 5
+          entity: entity
+          errors: 2
+        endDateTime: endDateTime
+        status: status
+      properties:
+        executionId:
+          nullable: true
+          type: string
+        tenantId:
+          nullable: true
+          type: string
+        jobId:
+          nullable: true
+          type: string
+        status:
+          nullable: true
+          type: string
+        queuedDateTime:
+          nullable: true
+          type: string
+        startDateTime:
+          nullable: true
+          type: string
+        cancelDateTime:
+          nullable: true
+          type: string
+        endDateTime:
+          nullable: true
+          type: string
+        input:
+          nullable: true
+          type: string
+        output:
+          nullable: true
+          type: string
+        metrics:
+          items:
+            $ref: '#/components/schemas/IdentityApi.InstructionalInsights.V1.InstructionalInsightsSecuritySyncJobExecutionMetricMessage'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    IdentityApi.InstructionalInsights.V1.InstructionalInsightsSecuritySyncJobExecutionMetricMessage:
+      additionalProperties: false
+      example:
+        processed: 5
+        success: 5
+        entity: entity
+        errors: 2
+      properties:
+        entity:
+          nullable: true
+          type: string
+        processed:
+          format: int32
+          type: integer
+        success:
+          format: int32
+          type: integer
+        errors:
+          format: int32
+          type: integer
+      type: object
+    IdentityApi.InstructionalInsights.V1.InstructionalInsightsSecuritySyncJobInputMessage:
+      additionalProperties: false
+      properties:
+        tenant:
+          nullable: true
+          type: string
+        pageSize:
+          format: int32
+          nullable: true
+          type: integer
+        orderBy:
+          nullable: true
+          type: string
+        filter:
+          nullable: true
+          type: string
+        loadBatchSize:
+          format: int32
+          nullable: true
+          type: integer
+        loadBatchThrottle:
+          nullable: true
+          type: string
+      type: object
+    IdentityApi.InstructionalInsights.V1.InstructionalInsightsSecuritySyncJobResponse:
+      additionalProperties: false
+      example:
+        lastModifiedDateTime: lastModifiedDateTime
+        retryPolicy:
+          backoffMultiplier: 0.8008282
+          maxAttempts: 6
+          maxBackoff: maxBackoff
+          initialDelay: initialDelay
+          timeout: timeout
+        jobTypeName: jobTypeName
+        lastModifiedBy: lastModifiedBy
+        lastExecution:
+          output: output
+          executionId: executionId
+          input: input
+          startDateTime: startDateTime
+          queueDateTime: queueDateTime
+          endDateTime: endDateTime
+          status: status
+        createdDateTime: createdDateTime
+        active: true
+        input: input
+        schedule:
+          cronExpression: cronExpression
+          beginDate: beginDate
+          endDate: endDate
+          timeZone: timeZone
+          enabled: true
+        isDeleted: true
+        createdBy: createdBy
+        callbackNotifications:
+        - notificationType: notificationType
+          value: value
+        - notificationType: notificationType
+          value: value
+        tenantId: tenantId
+        name: name
+        id: id
+        jobTypeId: jobTypeId
+      properties:
+        id:
+          nullable: true
+          type: string
+        createdBy:
+          nullable: true
+          type: string
+        createdDateTime:
+          nullable: true
+          type: string
+        lastModifiedBy:
+          nullable: true
+          type: string
+        lastModifiedDateTime:
+          nullable: true
+          type: string
+        isDeleted:
+          type: boolean
+        tenantId:
+          nullable: true
+          type: string
+        jobTypeId:
+          nullable: true
+          type: string
+        jobTypeName:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        input:
+          nullable: true
+          type: string
+        active:
+          type: boolean
+        schedule:
+          $ref: '#/components/schemas/IdentityApi.InstructionalInsights.V1.ScheduleMessage'
+        retryPolicy:
+          $ref: '#/components/schemas/IdentityApi.InstructionalInsights.V1.RetryPolicyMessage'
+        callbackNotifications:
+          items:
+            $ref: '#/components/schemas/IdentityApi.InstructionalInsights.V1.CallbackNotificationMessage'
+          nullable: true
+          readOnly: true
+          type: array
+        lastExecution:
+          $ref: '#/components/schemas/IdentityApi.InstructionalInsights.V1.JobExecutionMessage'
+      type: object
+    IdentityApi.InstructionalInsights.V1.JobExecutionMessage:
+      additionalProperties: false
+      example:
+        output: output
+        executionId: executionId
+        input: input
+        startDateTime: startDateTime
+        queueDateTime: queueDateTime
+        endDateTime: endDateTime
+        status: status
+      properties:
+        executionId:
+          nullable: true
+          type: string
+        status:
+          nullable: true
+          type: string
+        queueDateTime:
+          nullable: true
+          type: string
+        startDateTime:
+          nullable: true
+          type: string
+        endDateTime:
+          nullable: true
+          type: string
+        input:
+          nullable: true
+          type: string
+        output:
+          nullable: true
+          type: string
+      type: object
+    IdentityApi.InstructionalInsights.V1.RetryPolicyMessage:
+      additionalProperties: false
+      example:
+        backoffMultiplier: 0.8008282
+        maxAttempts: 6
+        maxBackoff: maxBackoff
+        initialDelay: initialDelay
+        timeout: timeout
+      properties:
+        backoffMultiplier:
+          format: float
+          type: number
+        initialDelay:
+          nullable: true
+          type: string
+        maxAttempts:
+          format: int32
+          type: integer
+        maxBackoff:
+          nullable: true
+          type: string
+        timeout:
+          nullable: true
+          type: string
+      type: object
+    IdentityApi.InstructionalInsights.V1.ScheduleMessage:
+      additionalProperties: false
+      example:
+        cronExpression: cronExpression
+        beginDate: beginDate
+        endDate: endDate
+        timeZone: timeZone
+        enabled: true
+      properties:
+        enabled:
+          type: boolean
+        beginDate:
+          nullable: true
+          type: string
+        endDate:
+          nullable: true
+          type: string
+        cronExpression:
+          nullable: true
+          type: string
+        timeZone:
+          nullable: true
+          type: string
+      type: object
+    IdentityApi.InstructionalInsights.V1.SearchInstructionalInsightsSecuritySyncJobExecutionLogsResponse:
+      additionalProperties: false
+      example:
+        data:
+        - jobId: jobId
+          executionId: executionId
+          loggedDateTime: loggedDateTime
+          level: level
+          tenantId: tenantId
+          message: message
+        - jobId: jobId
+          executionId: executionId
+          loggedDateTime: loggedDateTime
+          level: level
+          tenantId: tenantId
+          message: message
+        pageIndex: 0
+        count: 1
+        pageSize: 6
+      properties:
+        pageIndex:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        count:
+          format: int64
+          type: integer
+        data:
+          items:
+            $ref: '#/components/schemas/IdentityApi.InstructionalInsights.V1.InstructionalInsightsSecuritySyncJobExecutionLogMessage'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    IdentityApi.InstructionalInsights.V1.SearchInstructionalInsightsSecuritySyncJobExecutionsResponse:
+      additionalProperties: false
+      example:
+        data:
+        - queuedDateTime: queuedDateTime
+          output: output
+          executionId: executionId
+          jobId: jobId
+          input: input
+          startDateTime: startDateTime
+          tenantId: tenantId
+          cancelDateTime: cancelDateTime
+          metrics:
+          - processed: 5
+            success: 5
+            entity: entity
+            errors: 2
+          - processed: 5
+            success: 5
+            entity: entity
+            errors: 2
+          endDateTime: endDateTime
+          status: status
+        - queuedDateTime: queuedDateTime
+          output: output
+          executionId: executionId
+          jobId: jobId
+          input: input
+          startDateTime: startDateTime
+          tenantId: tenantId
+          cancelDateTime: cancelDateTime
+          metrics:
+          - processed: 5
+            success: 5
+            entity: entity
+            errors: 2
+          - processed: 5
+            success: 5
+            entity: entity
+            errors: 2
+          endDateTime: endDateTime
+          status: status
+        pageIndex: 0
+        count: 1
+        pageSize: 6
+      properties:
+        pageIndex:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        count:
+          format: int64
+          type: integer
+        data:
+          items:
+            $ref: '#/components/schemas/IdentityApi.InstructionalInsights.V1.InstructionalInsightsSecuritySyncJobExecutionMessage'
+          nullable: true
+          readOnly: true
+          type: array
+      type: object
+    IdentityApi.InstructionalInsights.V1.UpdateInstructionalInsightsSecuritySyncJobRequest:
+      additionalProperties: false
+      properties:
+        jobId:
+          nullable: true
+          type: string
+        tenantId:
+          nullable: true
+          type: string
+        name:
+          nullable: true
+          type: string
+        input:
+          $ref: '#/components/schemas/IdentityApi.InstructionalInsights.V1.InstructionalInsightsSecuritySyncJobInputMessage'
+        schedule:
+          $ref: '#/components/schemas/IdentityApi.InstructionalInsights.V1.ScheduleMessage'
+        retryPolicy:
+          $ref: '#/components/schemas/IdentityApi.InstructionalInsights.V1.RetryPolicyMessage'
+        callbackNotifications:
+          items:
+            $ref: '#/components/schemas/IdentityApi.InstructionalInsights.V1.CallbackNotificationMessage'
           nullable: true
           readOnly: true
           type: array

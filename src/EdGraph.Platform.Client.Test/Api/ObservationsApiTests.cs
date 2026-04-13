@@ -92,6 +92,37 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
+        /// Test GetFormQuestions
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetFormQuestionsAsyncTest()
+        {
+            Guid tenantId = default!;
+            Guid formId = default!;
+            Guid sectionId = default!;
+            Client.Option<int> pageIndex = default!;
+            Client.Option<int> pageSize = default!;
+            var response = await _instance.GetFormQuestionsAsync(tenantId, formId, sectionId, pageIndex, pageSize);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponsePaginatedItemsViewModel>(model);
+        }
+
+        /// <summary>
+        /// Test GetFormSections
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetFormSectionsAsyncTest()
+        {
+            Guid tenantId = default!;
+            Guid formId = default!;
+            Client.Option<int> pageIndex = default!;
+            Client.Option<int> pageSize = default!;
+            var response = await _instance.GetFormSectionsAsync(tenantId, formId, pageIndex, pageSize);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponsePaginatedItemsViewModel>(model);
+        }
+
+        /// <summary>
         /// Test GetObservationById
         /// </summary>
         [Fact (Skip = "not implemented")]

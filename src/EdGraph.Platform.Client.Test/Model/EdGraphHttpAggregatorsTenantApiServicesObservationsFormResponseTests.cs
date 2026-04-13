@@ -79,5 +79,50 @@ namespace EdGraph.Platform.Client.Test.Model
         {
             // TODO unit test for the property 'VarVersion'
         }
+
+        /// <summary>
+        /// Test the property 'TenantId'
+        /// </summary>
+        [Fact]
+        public void TenantIdTest()
+        {
+            // TODO unit test for the property 'TenantId'
+        }
+
+        /// <summary>
+        /// Test the property 'Description'
+        /// </summary>
+        [Fact]
+        public void DescriptionTest()
+        {
+            // TODO unit test for the property 'Description'
+        }
+
+        /// <summary>
+        /// Test the property 'Source'
+        /// </summary>
+        [Fact]
+        public void SourceTest()
+        {
+            // TODO unit test for the property 'Source'
+        }
+
+        /// <summary>
+        /// Test the property 'Image'
+        /// </summary>
+        [Fact]
+        public void ImageTest()
+        {
+            // TODO unit test for the property 'Image'
+        }
+
+        /// <summary>
+        /// Test the property 'IsDeleted'
+        /// </summary>
+        [Fact]
+        public void IsDeletedTest()
+        {
+            // TODO unit test for the property 'IsDeleted'
+        }
     }
 }

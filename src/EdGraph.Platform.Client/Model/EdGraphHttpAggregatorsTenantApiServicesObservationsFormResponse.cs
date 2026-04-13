@@ -36,12 +36,22 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="id">id</param>
         /// <param name="name">name</param>
         /// <param name="varVersion">varVersion</param>
+        /// <param name="tenantId">tenantId</param>
+        /// <param name="description">description</param>
+        /// <param name="source">source</param>
+        /// <param name="image">image</param>
+        /// <param name="isDeleted">isDeleted</param>
         [JsonConstructor]
-        public EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponse(Option<string?> id = default, Option<string?> name = default, Option<string?> varVersion = default)
+        public EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponse(Option<string?> id = default, Option<string?> name = default, Option<string?> varVersion = default, Option<string?> tenantId = default, Option<string?> description = default, Option<string?> source = default, Option<string?> image = default, Option<bool?> isDeleted = default)
         {
             IdOption = id;
             NameOption = name;
             VarVersionOption = varVersion;
+            TenantIdOption = tenantId;
+            DescriptionOption = description;
+            SourceOption = source;
+            ImageOption = image;
+            IsDeletedOption = isDeleted;
             OnCreated();
         }
 
@@ -87,6 +97,71 @@ namespace EdGraph.Platform.Client.Model
         public string? VarVersion { get { return this.VarVersionOption; } set { this.VarVersionOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of TenantId
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> TenantIdOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets TenantId
+        /// </summary>
+        [JsonPropertyName("tenantId")]
+        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of Description
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> DescriptionOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets Description
+        /// </summary>
+        [JsonPropertyName("description")]
+        public string? Description { get { return this.DescriptionOption; } set { this.DescriptionOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of Source
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> SourceOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets Source
+        /// </summary>
+        [JsonPropertyName("source")]
+        public string? Source { get { return this.SourceOption; } set { this.SourceOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of Image
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> ImageOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets Image
+        /// </summary>
+        [JsonPropertyName("image")]
+        public string? Image { get { return this.ImageOption; } set { this.ImageOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of IsDeleted
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<bool?> IsDeletedOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets IsDeleted
+        /// </summary>
+        [JsonPropertyName("isDeleted")]
+        public bool? IsDeleted { get { return this.IsDeletedOption; } set { this.IsDeletedOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -97,6 +172,11 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
+            sb.Append("  TenantId: ").Append(TenantId).Append("\n");
+            sb.Append("  Description: ").Append(Description).Append("\n");
+            sb.Append("  Source: ").Append(Source).Append("\n");
+            sb.Append("  Image: ").Append(Image).Append("\n");
+            sb.Append("  IsDeleted: ").Append(IsDeleted).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -137,6 +217,11 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> id = default;
             Option<string?> name = default;
             Option<string?> varVersion = default;
+            Option<string?> tenantId = default;
+            Option<string?> description = default;
+            Option<string?> source = default;
+            Option<string?> image = default;
+            Option<bool?> isDeleted = default;
 
             while (utf8JsonReader.Read())
             {
@@ -162,13 +247,32 @@ namespace EdGraph.Platform.Client.Model
                         case "version":
                             varVersion = new Option<string?>(utf8JsonReader.GetString());
                             break;
+                        case "tenantId":
+                            tenantId = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "description":
+                            description = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "source":
+                            source = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "image":
+                            image = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "isDeleted":
+                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
+                                isDeleted = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            break;
                         default:
                             break;
                     }
                 }
             }
 
-            return new EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponse(id, name, varVersion);
+            if (isDeleted.IsSet && isDeleted.Value == null)
+                throw new ArgumentNullException(nameof(isDeleted), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponse.");
+
+            return new EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponse(id, name, varVersion, tenantId, description, source, image, isDeleted);
         }
 
         /// <summary>
@@ -212,6 +316,33 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteString("version", edGraphHttpAggregatorsTenantApiServicesObservationsFormResponse.VarVersion);
                 else
                     writer.WriteNull("version");
+
+            if (edGraphHttpAggregatorsTenantApiServicesObservationsFormResponse.TenantIdOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiServicesObservationsFormResponse.TenantIdOption.Value != null)
+                    writer.WriteString("tenantId", edGraphHttpAggregatorsTenantApiServicesObservationsFormResponse.TenantId);
+                else
+                    writer.WriteNull("tenantId");
+
+            if (edGraphHttpAggregatorsTenantApiServicesObservationsFormResponse.DescriptionOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiServicesObservationsFormResponse.DescriptionOption.Value != null)
+                    writer.WriteString("description", edGraphHttpAggregatorsTenantApiServicesObservationsFormResponse.Description);
+                else
+                    writer.WriteNull("description");
+
+            if (edGraphHttpAggregatorsTenantApiServicesObservationsFormResponse.SourceOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiServicesObservationsFormResponse.SourceOption.Value != null)
+                    writer.WriteString("source", edGraphHttpAggregatorsTenantApiServicesObservationsFormResponse.Source);
+                else
+                    writer.WriteNull("source");
+
+            if (edGraphHttpAggregatorsTenantApiServicesObservationsFormResponse.ImageOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiServicesObservationsFormResponse.ImageOption.Value != null)
+                    writer.WriteString("image", edGraphHttpAggregatorsTenantApiServicesObservationsFormResponse.Image);
+                else
+                    writer.WriteNull("image");
+
+            if (edGraphHttpAggregatorsTenantApiServicesObservationsFormResponse.IsDeletedOption.IsSet)
+                writer.WriteBoolean("isDeleted", edGraphHttpAggregatorsTenantApiServicesObservationsFormResponse.IsDeletedOption.Value!.Value);
         }
     }
 }
