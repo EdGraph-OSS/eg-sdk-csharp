@@ -42,9 +42,10 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options">options</param>
         /// <param name="order">order</param>
         /// <param name="component">component</param>
+        /// <param name="customId">customId</param>
         /// <param name="visibilityCondition">visibilityCondition</param>
         [JsonConstructor]
-        public FormApiFormsV1CreateFullQuestionRequest(Option<string?> title = default, Option<string?> description = default, Option<FormApiQuestionsV1QuestionType?> type = default, Option<bool?> required = default, Option<string?> defaultValue = default, Option<FormApiFormsV1CreateFullQuestionValidationRequest?> validation = default, Option<List<string>?> options = default, Option<int?> order = default, Option<string?> component = default, Option<FormApiQuestionsV1QuestionVisibilityCondition?> visibilityCondition = default)
+        public FormApiFormsV1CreateFullQuestionRequest(Option<string?> title = default, Option<string?> description = default, Option<FormApiQuestionsV1QuestionType?> type = default, Option<bool?> required = default, Option<string?> defaultValue = default, Option<FormApiFormsV1CreateFullQuestionValidationRequest?> validation = default, Option<List<string>?> options = default, Option<int?> order = default, Option<string?> component = default, Option<string?> customId = default, Option<FormApiQuestionsV1QuestionVisibilityCondition?> visibilityCondition = default)
         {
             TitleOption = title;
             DescriptionOption = description;
@@ -55,6 +56,7 @@ namespace EdGraph.Platform.Client.Model
             OptionsOption = options;
             OrderOption = order;
             ComponentOption = component;
+            CustomIdOption = customId;
             VisibilityConditionOption = visibilityCondition;
             OnCreated();
         }
@@ -179,6 +181,19 @@ namespace EdGraph.Platform.Client.Model
         public string? Component { get { return this.ComponentOption; } set { this.ComponentOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of CustomId
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> CustomIdOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets CustomId
+        /// </summary>
+        [JsonPropertyName("customId")]
+        public string? CustomId { get { return this.CustomIdOption; } set { this.CustomIdOption = new(value); } }
+
+        /// <summary>
         /// Used to track the state of VisibilityCondition
         /// </summary>
         [JsonIgnore]
@@ -208,6 +223,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  Options: ").Append(Options).Append("\n");
             sb.Append("  Order: ").Append(Order).Append("\n");
             sb.Append("  Component: ").Append(Component).Append("\n");
+            sb.Append("  CustomId: ").Append(CustomId).Append("\n");
             sb.Append("  VisibilityCondition: ").Append(VisibilityCondition).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -255,6 +271,7 @@ namespace EdGraph.Platform.Client.Model
             Option<List<string>?> options = default;
             Option<int?> order = default;
             Option<string?> component = default;
+            Option<string?> customId = default;
             Option<FormApiQuestionsV1QuestionVisibilityCondition?> visibilityCondition = default;
 
             while (utf8JsonReader.Read())
@@ -305,6 +322,9 @@ namespace EdGraph.Platform.Client.Model
                         case "component":
                             component = new Option<string?>(utf8JsonReader.GetString());
                             break;
+                        case "customId":
+                            customId = new Option<string?>(utf8JsonReader.GetString());
+                            break;
                         case "visibilityCondition":
                             if (utf8JsonReader.TokenType != JsonTokenType.Null)
                                 visibilityCondition = new Option<FormApiQuestionsV1QuestionVisibilityCondition?>(JsonSerializer.Deserialize<FormApiQuestionsV1QuestionVisibilityCondition>(ref utf8JsonReader, jsonSerializerOptions)!);
@@ -324,7 +344,7 @@ namespace EdGraph.Platform.Client.Model
             if (visibilityCondition.IsSet && visibilityCondition.Value == null)
                 throw new ArgumentNullException(nameof(visibilityCondition), "Property is not nullable for class FormApiFormsV1CreateFullQuestionRequest.");
 
-            return new FormApiFormsV1CreateFullQuestionRequest(title, description, type, required, defaultValue, validation, options, order, component, visibilityCondition);
+            return new FormApiFormsV1CreateFullQuestionRequest(title, description, type, required, defaultValue, validation, options, order, component, customId, visibilityCondition);
         }
 
         /// <summary>
@@ -410,6 +430,12 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteString("component", formApiFormsV1CreateFullQuestionRequest.Component);
                 else
                     writer.WriteNull("component");
+
+            if (formApiFormsV1CreateFullQuestionRequest.CustomIdOption.IsSet)
+                if (formApiFormsV1CreateFullQuestionRequest.CustomIdOption.Value != null)
+                    writer.WriteString("customId", formApiFormsV1CreateFullQuestionRequest.CustomId);
+                else
+                    writer.WriteNull("customId");
 
             if (formApiFormsV1CreateFullQuestionRequest.VisibilityConditionOption.IsSet)
             {

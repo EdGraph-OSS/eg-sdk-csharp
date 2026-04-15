@@ -264,9 +264,10 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pageSize"> (optional, default to 10)</param>
         /// <param name="pageIndex"> (optional, default to 0)</param>
         /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
+        /// <param name="nameOfInstitution"> (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetPaginatedAvailableCampusesApiResponse"/>&gt;</returns>
-        Task<IGetPaginatedAvailableCampusesApiResponse> GetPaginatedAvailableCampusesAsync(Guid tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IGetPaginatedAvailableCampusesApiResponse> GetPaginatedAvailableCampusesAsync(Guid tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> nameOfInstitution = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get Available Campuses
@@ -278,9 +279,10 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pageSize"> (optional, default to 10)</param>
         /// <param name="pageIndex"> (optional, default to 0)</param>
         /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
+        /// <param name="nameOfInstitution"> (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetPaginatedAvailableCampusesApiResponse"/>?&gt;</returns>
-        Task<IGetPaginatedAvailableCampusesApiResponse?> GetPaginatedAvailableCampusesOrDefaultAsync(Guid tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IGetPaginatedAvailableCampusesApiResponse?> GetPaginatedAvailableCampusesOrDefaultAsync(Guid tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> nameOfInstitution = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get Paginated Available Forms
@@ -4507,17 +4509,21 @@ namespace EdGraph.Platform.Client.Api
             partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
         }
 
-        partial void FormatGetPaginatedAvailableCampuses(ref Guid tenantId, ref Option<int> pageSize, ref Option<int> pageIndex, ref Option<string> orderBy);
+        partial void FormatGetPaginatedAvailableCampuses(ref Guid tenantId, ref Option<int> pageSize, ref Option<int> pageIndex, ref Option<string> orderBy, ref Option<string> nameOfInstitution);
 
         /// <summary>
         /// Validates the request parameters
         /// </summary>
         /// <param name="orderBy"></param>
+        /// <param name="nameOfInstitution"></param>
         /// <returns></returns>
-        private void ValidateGetPaginatedAvailableCampuses(Option<string> orderBy)
+        private void ValidateGetPaginatedAvailableCampuses(Option<string> orderBy, Option<string> nameOfInstitution)
         {
             if (orderBy.IsSet && orderBy.Value == null)
                 throw new ArgumentNullException(nameof(orderBy));
+
+            if (nameOfInstitution.IsSet && nameOfInstitution.Value == null)
+                throw new ArgumentNullException(nameof(nameOfInstitution));
         }
 
         /// <summary>
@@ -4528,10 +4534,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pageSize"></param>
         /// <param name="pageIndex"></param>
         /// <param name="orderBy"></param>
-        private void AfterGetPaginatedAvailableCampusesDefaultImplementation(IGetPaginatedAvailableCampusesApiResponse apiResponseLocalVar, Guid tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy)
+        /// <param name="nameOfInstitution"></param>
+        private void AfterGetPaginatedAvailableCampusesDefaultImplementation(IGetPaginatedAvailableCampusesApiResponse apiResponseLocalVar, Guid tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> nameOfInstitution)
         {
             bool suppressDefaultLog = false;
-            AfterGetPaginatedAvailableCampuses(ref suppressDefaultLog, apiResponseLocalVar, tenantId, pageSize, pageIndex, orderBy);
+            AfterGetPaginatedAvailableCampuses(ref suppressDefaultLog, apiResponseLocalVar, tenantId, pageSize, pageIndex, orderBy, nameOfInstitution);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -4545,7 +4552,8 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pageSize"></param>
         /// <param name="pageIndex"></param>
         /// <param name="orderBy"></param>
-        partial void AfterGetPaginatedAvailableCampuses(ref bool suppressDefaultLog, IGetPaginatedAvailableCampusesApiResponse apiResponseLocalVar, Guid tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy);
+        /// <param name="nameOfInstitution"></param>
+        partial void AfterGetPaginatedAvailableCampuses(ref bool suppressDefaultLog, IGetPaginatedAvailableCampusesApiResponse apiResponseLocalVar, Guid tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> nameOfInstitution);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -4557,10 +4565,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pageSize"></param>
         /// <param name="pageIndex"></param>
         /// <param name="orderBy"></param>
-        private void OnErrorGetPaginatedAvailableCampusesDefaultImplementation(Exception exception, string pathFormat, string path, Guid tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy)
+        /// <param name="nameOfInstitution"></param>
+        private void OnErrorGetPaginatedAvailableCampusesDefaultImplementation(Exception exception, string pathFormat, string path, Guid tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> nameOfInstitution)
         {
             bool suppressDefaultLog = false;
-            OnErrorGetPaginatedAvailableCampuses(ref suppressDefaultLog, exception, pathFormat, path, tenantId, pageSize, pageIndex, orderBy);
+            OnErrorGetPaginatedAvailableCampuses(ref suppressDefaultLog, exception, pathFormat, path, tenantId, pageSize, pageIndex, orderBy, nameOfInstitution);
             if (!suppressDefaultLog)
                 Logger.LogError(exception, "An error occurred while sending the request to the server.");
         }
@@ -4576,7 +4585,8 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pageSize"></param>
         /// <param name="pageIndex"></param>
         /// <param name="orderBy"></param>
-        partial void OnErrorGetPaginatedAvailableCampuses(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, Guid tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy);
+        /// <param name="nameOfInstitution"></param>
+        partial void OnErrorGetPaginatedAvailableCampuses(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, Guid tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> nameOfInstitution);
 
         /// <summary>
         /// Get Available Campuses 
@@ -4585,13 +4595,14 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pageSize"> (optional, default to 10)</param>
         /// <param name="pageIndex"> (optional, default to 0)</param>
         /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
+        /// <param name="nameOfInstitution"> (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetPaginatedAvailableCampusesApiResponse"/>&gt;</returns>
-        public async Task<IGetPaginatedAvailableCampusesApiResponse?> GetPaginatedAvailableCampusesOrDefaultAsync(Guid tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IGetPaginatedAvailableCampusesApiResponse?> GetPaginatedAvailableCampusesOrDefaultAsync(Guid tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> nameOfInstitution = default, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await GetPaginatedAvailableCampusesAsync(tenantId, pageSize, pageIndex, orderBy, cancellationToken).ConfigureAwait(false);
+                return await GetPaginatedAvailableCampusesAsync(tenantId, pageSize, pageIndex, orderBy, nameOfInstitution, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -4607,17 +4618,18 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pageSize"> (optional, default to 10)</param>
         /// <param name="pageIndex"> (optional, default to 0)</param>
         /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
+        /// <param name="nameOfInstitution"> (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetPaginatedAvailableCampusesApiResponse"/>&gt;</returns>
-        public async Task<IGetPaginatedAvailableCampusesApiResponse> GetPaginatedAvailableCampusesAsync(Guid tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IGetPaginatedAvailableCampusesApiResponse> GetPaginatedAvailableCampusesAsync(Guid tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> nameOfInstitution = default, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
             try
             {
-                ValidateGetPaginatedAvailableCampuses(orderBy);
+                ValidateGetPaginatedAvailableCampuses(orderBy, nameOfInstitution);
 
-                FormatGetPaginatedAvailableCampuses(ref tenantId, ref pageSize, ref pageIndex, ref orderBy);
+                FormatGetPaginatedAvailableCampuses(ref tenantId, ref pageSize, ref pageIndex, ref orderBy, ref nameOfInstitution);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -4637,6 +4649,9 @@ namespace EdGraph.Platform.Client.Api
 
                     if (orderBy.IsSet)
                         parseQueryStringLocalVar["orderBy"] = ClientUtils.ParameterToString(orderBy.Value);
+
+                    if (nameOfInstitution.IsSet)
+                        parseQueryStringLocalVar["nameOfInstitution"] = ClientUtils.ParameterToString(nameOfInstitution.Value);
 
                     uriBuilderLocalVar.Query = parseQueryStringLocalVar.ToString();
 
@@ -4670,7 +4685,7 @@ namespace EdGraph.Platform.Client.Api
 
                         GetPaginatedAvailableCampusesApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/observations/campuses", requestedAtLocalVar, _jsonSerializerOptions);
 
-                        AfterGetPaginatedAvailableCampusesDefaultImplementation(apiResponseLocalVar, tenantId, pageSize, pageIndex, orderBy);
+                        AfterGetPaginatedAvailableCampusesDefaultImplementation(apiResponseLocalVar, tenantId, pageSize, pageIndex, orderBy, nameOfInstitution);
 
                         Events.ExecuteOnGetPaginatedAvailableCampuses(apiResponseLocalVar);
 
@@ -4684,7 +4699,7 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorGetPaginatedAvailableCampusesDefaultImplementation(e, "/tenants/{tenantId}/observations/campuses", uriBuilderLocalVar.Path, tenantId, pageSize, pageIndex, orderBy);
+                OnErrorGetPaginatedAvailableCampusesDefaultImplementation(e, "/tenants/{tenantId}/observations/campuses", uriBuilderLocalVar.Path, tenantId, pageSize, pageIndex, orderBy, nameOfInstitution);
                 Events.ExecuteOnErrorGetPaginatedAvailableCampuses(e);
                 throw;
             }

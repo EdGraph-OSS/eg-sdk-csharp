@@ -135,6 +135,15 @@ namespace EdGraph.Platform.Client.Test.Model
         }
 
         /// <summary>
+        /// Test the property 'CustomId'
+        /// </summary>
+        [Fact]
+        public void CustomIdTest()
+        {
+            // TODO unit test for the property 'CustomId'
+        }
+
+        /// <summary>
         /// Test the property 'VisibilityCondition'
         /// </summary>
         [Fact]

@@ -39,8 +39,9 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="questions">questions</param>
         /// <param name="order">order</param>
         /// <param name="subHeading">subHeading</param>
+        /// <param name="customId">customId</param>
         [JsonConstructor]
-        public FormApiFormsV1UpdateFullSectionRequest(Option<string?> id = default, Option<string?> title = default, Option<string?> description = default, Option<List<FormApiFormsV1UpdateFullQuestionRequest>?> questions = default, Option<int?> order = default, Option<string?> subHeading = default)
+        public FormApiFormsV1UpdateFullSectionRequest(Option<string?> id = default, Option<string?> title = default, Option<string?> description = default, Option<List<FormApiFormsV1UpdateFullQuestionRequest>?> questions = default, Option<int?> order = default, Option<string?> subHeading = default, Option<string?> customId = default)
         {
             IdOption = id;
             TitleOption = title;
@@ -48,6 +49,7 @@ namespace EdGraph.Platform.Client.Model
             QuestionsOption = questions;
             OrderOption = order;
             SubHeadingOption = subHeading;
+            CustomIdOption = customId;
             OnCreated();
         }
 
@@ -132,6 +134,19 @@ namespace EdGraph.Platform.Client.Model
         public string? SubHeading { get { return this.SubHeadingOption; } set { this.SubHeadingOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of CustomId
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> CustomIdOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets CustomId
+        /// </summary>
+        [JsonPropertyName("customId")]
+        public string? CustomId { get { return this.CustomIdOption; } set { this.CustomIdOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -145,6 +160,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  Questions: ").Append(Questions).Append("\n");
             sb.Append("  Order: ").Append(Order).Append("\n");
             sb.Append("  SubHeading: ").Append(SubHeading).Append("\n");
+            sb.Append("  CustomId: ").Append(CustomId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -188,6 +204,7 @@ namespace EdGraph.Platform.Client.Model
             Option<List<FormApiFormsV1UpdateFullQuestionRequest>?> questions = default;
             Option<int?> order = default;
             Option<string?> subHeading = default;
+            Option<string?> customId = default;
 
             while (utf8JsonReader.Read())
             {
@@ -224,13 +241,16 @@ namespace EdGraph.Platform.Client.Model
                         case "subHeading":
                             subHeading = new Option<string?>(utf8JsonReader.GetString());
                             break;
+                        case "customId":
+                            customId = new Option<string?>(utf8JsonReader.GetString());
+                            break;
                         default:
                             break;
                     }
                 }
             }
 
-            return new FormApiFormsV1UpdateFullSectionRequest(id, title, description, questions, order, subHeading);
+            return new FormApiFormsV1UpdateFullSectionRequest(id, title, description, questions, order, subHeading, customId);
         }
 
         /// <summary>
@@ -294,6 +314,12 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteString("subHeading", formApiFormsV1UpdateFullSectionRequest.SubHeading);
                 else
                     writer.WriteNull("subHeading");
+
+            if (formApiFormsV1UpdateFullSectionRequest.CustomIdOption.IsSet)
+                if (formApiFormsV1UpdateFullSectionRequest.CustomIdOption.Value != null)
+                    writer.WriteString("customId", formApiFormsV1UpdateFullSectionRequest.CustomId);
+                else
+                    writer.WriteNull("customId");
         }
     }
 }

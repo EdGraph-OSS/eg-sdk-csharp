@@ -824,7 +824,7 @@ catch (ApiException e)
 
 <a id="getpaginatedavailablecampuses"></a>
 # **GetPaginatedAvailableCampuses**
-> EdGraphHttpAggregatorsTenantApiServicesObservationsCampusResponseGetPaginatedItemsResponse GetPaginatedAvailableCampuses (Guid tenantId, int pageSize = null, int pageIndex = null, string orderBy = null)
+> EdGraphHttpAggregatorsTenantApiServicesObservationsCampusResponseGetPaginatedItemsResponse GetPaginatedAvailableCampuses (Guid tenantId, int pageSize = null, int pageIndex = null, string orderBy = null, string nameOfInstitution = null)
 
 Get Available Campuses
 
@@ -852,11 +852,12 @@ namespace Example
             var pageSize = 10;  // int |  (optional)  (default to 10)
             var pageIndex = 0;  // int |  (optional)  (default to 0)
             var orderBy = "\"\"";  // string |  (optional)  (default to "")
+            var nameOfInstitution = "\"\"";  // string |  (optional)  (default to "")
 
             try
             {
                 // Get Available Campuses
-                EdGraphHttpAggregatorsTenantApiServicesObservationsCampusResponseGetPaginatedItemsResponse result = apiInstance.GetPaginatedAvailableCampuses(tenantId, pageSize, pageIndex, orderBy);
+                EdGraphHttpAggregatorsTenantApiServicesObservationsCampusResponseGetPaginatedItemsResponse result = apiInstance.GetPaginatedAvailableCampuses(tenantId, pageSize, pageIndex, orderBy, nameOfInstitution);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -877,7 +878,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Get Available Campuses
-    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesObservationsCampusResponseGetPaginatedItemsResponse> response = apiInstance.GetPaginatedAvailableCampusesWithHttpInfo(tenantId, pageSize, pageIndex, orderBy);
+    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesObservationsCampusResponseGetPaginatedItemsResponse> response = apiInstance.GetPaginatedAvailableCampusesWithHttpInfo(tenantId, pageSize, pageIndex, orderBy, nameOfInstitution);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -898,6 +899,7 @@ catch (ApiException e)
 | **pageSize** | **int** |  | [optional] [default to 10] |
 | **pageIndex** | **int** |  | [optional] [default to 0] |
 | **orderBy** | **string** |  | [optional] [default to &quot;&quot;] |
+| **nameOfInstitution** | **string** |  | [optional] [default to &quot;&quot;] |
 
 ### Return type
 

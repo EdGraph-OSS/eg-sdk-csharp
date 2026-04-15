@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **Order** | **int** |  | [optional] 
 **Component** | **Object** |  | [optional] 
 **VisibilityCondition** | [**EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto**](EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto.md) |  | [optional] 
+**CustomId** | **string** |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 
