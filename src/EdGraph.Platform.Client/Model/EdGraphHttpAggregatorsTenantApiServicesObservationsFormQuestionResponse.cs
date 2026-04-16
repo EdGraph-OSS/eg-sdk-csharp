@@ -53,8 +53,9 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="isDeleted">isDeleted</param>
         /// <param name="order">order</param>
         /// <param name="component">component</param>
+        /// <param name="visibilityCondition">visibilityCondition</param>
         [JsonConstructor]
-        public EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponse(Option<string?> id = default, Option<string?> sectionId = default, Option<string?> formId = default, Option<string?> tenantId = default, Option<string?> title = default, Option<string?> description = default, Option<string?> type = default, Option<bool?> required = default, Option<string?> defaultValue = default, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionValidationResponse?> validation = default, Option<List<string>?> options = default, Option<string?> createdBy = default, Option<string?> createdDateTime = default, Option<string?> lastModifiedBy = default, Option<string?> lastModifiedDateTime = default, Option<string?> deletedBy = default, Option<string?> deletedDateTime = default, Option<bool?> isDeleted = default, Option<int?> order = default, Option<Object?> component = default)
+        public EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponse(Option<string?> id = default, Option<string?> sectionId = default, Option<string?> formId = default, Option<string?> tenantId = default, Option<string?> title = default, Option<string?> description = default, Option<string?> type = default, Option<bool?> required = default, Option<string?> defaultValue = default, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionValidationResponseDto?> validation = default, Option<List<string>?> options = default, Option<string?> createdBy = default, Option<string?> createdDateTime = default, Option<string?> lastModifiedBy = default, Option<string?> lastModifiedDateTime = default, Option<string?> deletedBy = default, Option<string?> deletedDateTime = default, Option<bool?> isDeleted = default, Option<int?> order = default, Option<Object?> component = default, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto?> visibilityCondition = default)
         {
             IdOption = id;
             SectionIdOption = sectionId;
@@ -76,6 +77,7 @@ namespace EdGraph.Platform.Client.Model
             IsDeletedOption = isDeleted;
             OrderOption = order;
             ComponentOption = component;
+            VisibilityConditionOption = visibilityCondition;
             OnCreated();
         }
 
@@ -203,13 +205,13 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionValidationResponse?> ValidationOption { get; private set; }
+        public Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionValidationResponseDto?> ValidationOption { get; private set; }
 
         /// <summary>
         /// Gets or Sets Validation
         /// </summary>
         [JsonPropertyName("validation")]
-        public EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionValidationResponse? Validation { get { return this.ValidationOption; } set { this.ValidationOption = new(value); } }
+        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionValidationResponseDto? Validation { get { return this.ValidationOption; } set { this.ValidationOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Options
@@ -342,6 +344,19 @@ namespace EdGraph.Platform.Client.Model
         public Object? Component { get { return this.ComponentOption; } set { this.ComponentOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of VisibilityCondition
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto?> VisibilityConditionOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets VisibilityCondition
+        /// </summary>
+        [JsonPropertyName("visibilityCondition")]
+        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto? VisibilityCondition { get { return this.VisibilityConditionOption; } set { this.VisibilityConditionOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -369,6 +384,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  IsDeleted: ").Append(IsDeleted).Append("\n");
             sb.Append("  Order: ").Append(Order).Append("\n");
             sb.Append("  Component: ").Append(Component).Append("\n");
+            sb.Append("  VisibilityCondition: ").Append(VisibilityCondition).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -415,7 +431,7 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> type = default;
             Option<bool?> required = default;
             Option<string?> defaultValue = default;
-            Option<EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionValidationResponse?> validation = default;
+            Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionValidationResponseDto?> validation = default;
             Option<List<string>?> options = default;
             Option<string?> createdBy = default;
             Option<string?> createdDateTime = default;
@@ -426,6 +442,7 @@ namespace EdGraph.Platform.Client.Model
             Option<bool?> isDeleted = default;
             Option<int?> order = default;
             Option<Object?> component = default;
+            Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto?> visibilityCondition = default;
 
             while (utf8JsonReader.Read())
             {
@@ -472,7 +489,7 @@ namespace EdGraph.Platform.Client.Model
                             break;
                         case "validation":
                             if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                validation = new Option<EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionValidationResponse?>(JsonSerializer.Deserialize<EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionValidationResponse>(ref utf8JsonReader, jsonSerializerOptions)!);
+                                validation = new Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionValidationResponseDto?>(JsonSerializer.Deserialize<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionValidationResponseDto>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "options":
                             if (utf8JsonReader.TokenType != JsonTokenType.Null)
@@ -508,6 +525,10 @@ namespace EdGraph.Platform.Client.Model
                             if (utf8JsonReader.TokenType != JsonTokenType.Null)
                                 component = new Option<Object?>(JsonSerializer.Deserialize<Object>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
+                        case "visibilityCondition":
+                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
+                                visibilityCondition = new Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto?>(JsonSerializer.Deserialize<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            break;
                         default:
                             break;
                     }
@@ -526,7 +547,10 @@ namespace EdGraph.Platform.Client.Model
             if (order.IsSet && order.Value == null)
                 throw new ArgumentNullException(nameof(order), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponse.");
 
-            return new EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponse(id, sectionId, formId, tenantId, title, description, type, required, defaultValue, validation, options, createdBy, createdDateTime, lastModifiedBy, lastModifiedDateTime, deletedBy, deletedDateTime, isDeleted, order, component);
+            if (visibilityCondition.IsSet && visibilityCondition.Value == null)
+                throw new ArgumentNullException(nameof(visibilityCondition), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponse.");
+
+            return new EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponse(id, sectionId, formId, tenantId, title, description, type, required, defaultValue, validation, options, createdBy, createdDateTime, lastModifiedBy, lastModifiedDateTime, deletedBy, deletedDateTime, isDeleted, order, component, visibilityCondition);
         }
 
         /// <summary>
@@ -555,6 +579,9 @@ namespace EdGraph.Platform.Client.Model
         {
             if (edGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponse.ValidationOption.IsSet && edGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponse.Validation == null)
                 throw new ArgumentNullException(nameof(edGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponse.Validation), "Property is required for class EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponse.");
+
+            if (edGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponse.VisibilityConditionOption.IsSet && edGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponse.VisibilityCondition == null)
+                throw new ArgumentNullException(nameof(edGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponse.VisibilityCondition), "Property is required for class EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponse.");
 
             if (edGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponse.IdOption.IsSet)
                 if (edGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponse.IdOption.Value != null)
@@ -670,6 +697,11 @@ namespace EdGraph.Platform.Client.Model
                 }
                 else
                     writer.WriteNull("component");
+            if (edGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponse.VisibilityConditionOption.IsSet)
+            {
+                writer.WritePropertyName("visibilityCondition");
+                JsonSerializer.Serialize(writer, edGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponse.VisibilityCondition, jsonSerializerOptions);
+            }
         }
     }
 }

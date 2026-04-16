@@ -48983,9 +48983,9 @@ components:
         - options
         id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
         validation:
-          minLength: 0
-          maxLength: 6
-        order: 1
+          minLength: 5
+          maxLength: 5
+        order: 0
       properties:
         id:
           format: uuid
@@ -49087,9 +49087,9 @@ components:
           - options
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           validation:
-            minLength: 0
-            maxLength: 6
-          order: 1
+            minLength: 5
+            maxLength: 5
+          order: 0
         - formId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           lastModifiedDateTime: 2000-01-23T04:56:07.000+00:00
           defaultValue: defaultValue
@@ -49121,9 +49121,9 @@ components:
           - options
           id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           validation:
-            minLength: 0
-            maxLength: 6
-          order: 1
+            minLength: 5
+            maxLength: 5
+          order: 0
         pageIndex: 0
         count: 1
         pageSize: 6
@@ -49146,8 +49146,8 @@ components:
     EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Forms.QuestionValidationResponseDto:
       additionalProperties: false
       example:
-        minLength: 0
-        maxLength: 6
+        minLength: 5
+        maxLength: 5
       properties:
         minLength:
           format: int32
@@ -50692,6 +50692,15 @@ components:
         lastModifiedDateTime: lastModifiedDateTime
         defaultValue: defaultValue
         lastModifiedBy: lastModifiedBy
+        visibilityCondition:
+          rules:
+          - value: value
+            operator: operator
+            fieldId: fieldId
+          - value: value
+            operator: operator
+            fieldId: fieldId
+          logic: logic
         description: description
         createdDateTime: createdDateTime
         deletedDateTime: deletedDateTime
@@ -50740,7 +50749,7 @@ components:
           nullable: true
           type: string
         validation:
-          $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormQuestionValidationResponse'
+          $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Forms.QuestionValidationResponseDto'
         options:
           items:
             type: string
@@ -50771,6 +50780,8 @@ components:
           type: integer
         component:
           nullable: true
+        visibilityCondition:
+          $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Forms.QuestionVisibilityConditionDto'
       type: object
     EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormQuestionResponsePaginatedItemsViewModel:
       additionalProperties: false
@@ -50780,6 +50791,15 @@ components:
           lastModifiedDateTime: lastModifiedDateTime
           defaultValue: defaultValue
           lastModifiedBy: lastModifiedBy
+          visibilityCondition:
+            rules:
+            - value: value
+              operator: operator
+              fieldId: fieldId
+            - value: value
+              operator: operator
+              fieldId: fieldId
+            logic: logic
           description: description
           createdDateTime: createdDateTime
           deletedDateTime: deletedDateTime
@@ -50804,6 +50824,15 @@ components:
           lastModifiedDateTime: lastModifiedDateTime
           defaultValue: defaultValue
           lastModifiedBy: lastModifiedBy
+          visibilityCondition:
+            rules:
+            - value: value
+              operator: operator
+              fieldId: fieldId
+            - value: value
+              operator: operator
+              fieldId: fieldId
+            logic: logic
           description: description
           createdDateTime: createdDateTime
           deletedDateTime: deletedDateTime
@@ -50842,21 +50871,6 @@ components:
             $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormQuestionResponse'
           nullable: true
           type: array
-      type: object
-    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormQuestionValidationResponse:
-      additionalProperties: false
-      example:
-        minLength: 5
-        maxLength: 5
-      properties:
-        minLength:
-          format: int32
-          nullable: true
-          type: integer
-        maxLength:
-          format: int32
-          nullable: true
-          type: integer
       type: object
     EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormResponse:
       additionalProperties: false

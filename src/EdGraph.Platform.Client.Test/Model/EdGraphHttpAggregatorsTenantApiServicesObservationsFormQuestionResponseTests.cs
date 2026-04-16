@@ -232,5 +232,14 @@ namespace EdGraph.Platform.Client.Test.Model
         {
             // TODO unit test for the property 'Component'
         }
+
+        /// <summary>
+        /// Test the property 'VisibilityCondition'
+        /// </summary>
+        [Fact]
+        public void VisibilityConditionTest()
+        {
+            // TODO unit test for the property 'VisibilityCondition'
+        }
     }
 }
