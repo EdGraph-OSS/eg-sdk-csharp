@@ -104,7 +104,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<int> pageSize = default!;
             var response = await _instance.GetFormQuestionsAsync(tenantId, formId, sectionId, pageIndex, pageSize);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponsePaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionResponseDtoPaginatedItemsViewModel>(model);
         }
 
         /// <summary>

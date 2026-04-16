@@ -320,7 +320,7 @@ catch (ApiException e)
 
 <a id="getformquestions"></a>
 # **GetFormQuestions**
-> EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponsePaginatedItemsViewModel GetFormQuestions (Guid tenantId, Guid formId, Guid sectionId, int pageIndex = null, int pageSize = null)
+> EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionResponseDtoPaginatedItemsViewModel GetFormQuestions (Guid tenantId, Guid formId, Guid sectionId, int pageIndex = null, int pageSize = null)
 
 Search Questions
 
@@ -353,7 +353,7 @@ namespace Example
             try
             {
                 // Search Questions
-                EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponsePaginatedItemsViewModel result = apiInstance.GetFormQuestions(tenantId, formId, sectionId, pageIndex, pageSize);
+                EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionResponseDtoPaginatedItemsViewModel result = apiInstance.GetFormQuestions(tenantId, formId, sectionId, pageIndex, pageSize);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -374,7 +374,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Search Questions
-    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponsePaginatedItemsViewModel> response = apiInstance.GetFormQuestionsWithHttpInfo(tenantId, formId, sectionId, pageIndex, pageSize);
+    ApiResponse<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionResponseDtoPaginatedItemsViewModel> response = apiInstance.GetFormQuestionsWithHttpInfo(tenantId, formId, sectionId, pageIndex, pageSize);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -399,7 +399,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponsePaginatedItemsViewModel**](EdGraphHttpAggregatorsTenantApiServicesObservationsFormQuestionResponsePaginatedItemsViewModel.md)
+[**EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionResponseDtoPaginatedItemsViewModel**](EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionResponseDtoPaginatedItemsViewModel.md)
 
 ### Authorization
 

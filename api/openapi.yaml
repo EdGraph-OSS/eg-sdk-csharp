@@ -28656,7 +28656,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormQuestionResponsePaginatedItemsViewModel'
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Forms.QuestionResponseDtoPaginatedItemsViewModel'
           description: The requested resource was successfully retrieved.
         "400":
           content:
@@ -48985,7 +48985,7 @@ components:
         validation:
           minLength: 5
           maxLength: 5
-        order: 0
+        order: 2
       properties:
         id:
           format: uuid
@@ -49089,7 +49089,7 @@ components:
           validation:
             minLength: 5
             maxLength: 5
-          order: 0
+          order: 2
         - formId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
           lastModifiedDateTime: 2000-01-23T04:56:07.000+00:00
           defaultValue: defaultValue
@@ -49123,7 +49123,7 @@ components:
           validation:
             minLength: 5
             maxLength: 5
-          order: 0
+          order: 2
         pageIndex: 0
         count: 1
         pageSize: 6
@@ -50682,193 +50682,6 @@ components:
         versions:
           items:
             $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormVersionConfigurationResponse'
-          nullable: true
-          type: array
-      type: object
-    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormQuestionResponse:
-      additionalProperties: false
-      example:
-        formId: formId
-        lastModifiedDateTime: lastModifiedDateTime
-        defaultValue: defaultValue
-        lastModifiedBy: lastModifiedBy
-        visibilityCondition:
-          rules:
-          - value: value
-            operator: operator
-            fieldId: fieldId
-          - value: value
-            operator: operator
-            fieldId: fieldId
-          logic: logic
-        description: description
-        createdDateTime: createdDateTime
-        deletedDateTime: deletedDateTime
-        sectionId: sectionId
-        title: title
-        type: type
-        required: true
-        deletedBy: deletedBy
-        component: ""
-        isDeleted: true
-        createdBy: createdBy
-        tenantId: tenantId
-        options:
-        - options
-        - options
-        id: id
-        validation:
-          minLength: 5
-          maxLength: 5
-        order: 2
-      properties:
-        id:
-          nullable: true
-          type: string
-        sectionId:
-          nullable: true
-          type: string
-        formId:
-          nullable: true
-          type: string
-        tenantId:
-          nullable: true
-          type: string
-        title:
-          nullable: true
-          type: string
-        description:
-          nullable: true
-          type: string
-        type:
-          nullable: true
-          type: string
-        required:
-          type: boolean
-        defaultValue:
-          nullable: true
-          type: string
-        validation:
-          $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Forms.QuestionValidationResponseDto'
-        options:
-          items:
-            type: string
-          nullable: true
-          type: array
-        createdBy:
-          nullable: true
-          type: string
-        createdDateTime:
-          nullable: true
-          type: string
-        lastModifiedBy:
-          nullable: true
-          type: string
-        lastModifiedDateTime:
-          nullable: true
-          type: string
-        deletedBy:
-          nullable: true
-          type: string
-        deletedDateTime:
-          nullable: true
-          type: string
-        isDeleted:
-          type: boolean
-        order:
-          format: int32
-          type: integer
-        component:
-          nullable: true
-        visibilityCondition:
-          $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Forms.QuestionVisibilityConditionDto'
-      type: object
-    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormQuestionResponsePaginatedItemsViewModel:
-      additionalProperties: false
-      example:
-        data:
-        - formId: formId
-          lastModifiedDateTime: lastModifiedDateTime
-          defaultValue: defaultValue
-          lastModifiedBy: lastModifiedBy
-          visibilityCondition:
-            rules:
-            - value: value
-              operator: operator
-              fieldId: fieldId
-            - value: value
-              operator: operator
-              fieldId: fieldId
-            logic: logic
-          description: description
-          createdDateTime: createdDateTime
-          deletedDateTime: deletedDateTime
-          sectionId: sectionId
-          title: title
-          type: type
-          required: true
-          deletedBy: deletedBy
-          component: ""
-          isDeleted: true
-          createdBy: createdBy
-          tenantId: tenantId
-          options:
-          - options
-          - options
-          id: id
-          validation:
-            minLength: 5
-            maxLength: 5
-          order: 2
-        - formId: formId
-          lastModifiedDateTime: lastModifiedDateTime
-          defaultValue: defaultValue
-          lastModifiedBy: lastModifiedBy
-          visibilityCondition:
-            rules:
-            - value: value
-              operator: operator
-              fieldId: fieldId
-            - value: value
-              operator: operator
-              fieldId: fieldId
-            logic: logic
-          description: description
-          createdDateTime: createdDateTime
-          deletedDateTime: deletedDateTime
-          sectionId: sectionId
-          title: title
-          type: type
-          required: true
-          deletedBy: deletedBy
-          component: ""
-          isDeleted: true
-          createdBy: createdBy
-          tenantId: tenantId
-          options:
-          - options
-          - options
-          id: id
-          validation:
-            minLength: 5
-            maxLength: 5
-          order: 2
-        pageIndex: 0
-        count: 1
-        pageSize: 6
-      properties:
-        pageIndex:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        count:
-          format: int64
-          type: integer
-        data:
-          items:
-            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormQuestionResponse'
           nullable: true
           type: array
       type: object
