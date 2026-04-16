@@ -50770,6 +50770,7 @@ components:
         createdDateTime: createdDateTime
         deletedDateTime: deletedDateTime
         title: title
+        customId: customId
         deletedBy: deletedBy
         isDeleted: true
         createdBy: createdBy
@@ -50815,6 +50816,9 @@ components:
         order:
           format: int32
           type: integer
+        customId:
+          nullable: true
+          type: string
       type: object
     EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormSectionResponsePaginatedItemsViewModel:
       additionalProperties: false
@@ -50827,6 +50831,7 @@ components:
           createdDateTime: createdDateTime
           deletedDateTime: deletedDateTime
           title: title
+          customId: customId
           deletedBy: deletedBy
           isDeleted: true
           createdBy: createdBy
@@ -50840,6 +50845,7 @@ components:
           createdDateTime: createdDateTime
           deletedDateTime: deletedDateTime
           title: title
+          customId: customId
           deletedBy: deletedBy
           isDeleted: true
           createdBy: createdBy

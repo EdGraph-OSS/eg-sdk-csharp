@@ -46,8 +46,9 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="deletedDateTime">deletedDateTime</param>
         /// <param name="isDeleted">isDeleted</param>
         /// <param name="order">order</param>
+        /// <param name="customId">customId</param>
         [JsonConstructor]
-        public EdGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponse(Option<string?> id = default, Option<string?> formId = default, Option<string?> tenantId = default, Option<string?> title = default, Option<string?> description = default, Option<string?> createdBy = default, Option<string?> createdDateTime = default, Option<string?> lastModifiedBy = default, Option<string?> lastModifiedDateTime = default, Option<string?> deletedBy = default, Option<string?> deletedDateTime = default, Option<bool?> isDeleted = default, Option<int?> order = default)
+        public EdGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponse(Option<string?> id = default, Option<string?> formId = default, Option<string?> tenantId = default, Option<string?> title = default, Option<string?> description = default, Option<string?> createdBy = default, Option<string?> createdDateTime = default, Option<string?> lastModifiedBy = default, Option<string?> lastModifiedDateTime = default, Option<string?> deletedBy = default, Option<string?> deletedDateTime = default, Option<bool?> isDeleted = default, Option<int?> order = default, Option<string?> customId = default)
         {
             IdOption = id;
             FormIdOption = formId;
@@ -62,6 +63,7 @@ namespace EdGraph.Platform.Client.Model
             DeletedDateTimeOption = deletedDateTime;
             IsDeletedOption = isDeleted;
             OrderOption = order;
+            CustomIdOption = customId;
             OnCreated();
         }
 
@@ -237,6 +239,19 @@ namespace EdGraph.Platform.Client.Model
         public int? Order { get { return this.OrderOption; } set { this.OrderOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of CustomId
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> CustomIdOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets CustomId
+        /// </summary>
+        [JsonPropertyName("customId")]
+        public string? CustomId { get { return this.CustomIdOption; } set { this.CustomIdOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -257,6 +272,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  DeletedDateTime: ").Append(DeletedDateTime).Append("\n");
             sb.Append("  IsDeleted: ").Append(IsDeleted).Append("\n");
             sb.Append("  Order: ").Append(Order).Append("\n");
+            sb.Append("  CustomId: ").Append(CustomId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -307,6 +323,7 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> deletedDateTime = default;
             Option<bool?> isDeleted = default;
             Option<int?> order = default;
+            Option<string?> customId = default;
 
             while (utf8JsonReader.Read())
             {
@@ -364,6 +381,9 @@ namespace EdGraph.Platform.Client.Model
                             if (utf8JsonReader.TokenType != JsonTokenType.Null)
                                 order = new Option<int?>(utf8JsonReader.GetInt32());
                             break;
+                        case "customId":
+                            customId = new Option<string?>(utf8JsonReader.GetString());
+                            break;
                         default:
                             break;
                     }
@@ -376,7 +396,7 @@ namespace EdGraph.Platform.Client.Model
             if (order.IsSet && order.Value == null)
                 throw new ArgumentNullException(nameof(order), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponse.");
 
-            return new EdGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponse(id, formId, tenantId, title, description, createdBy, createdDateTime, lastModifiedBy, lastModifiedDateTime, deletedBy, deletedDateTime, isDeleted, order);
+            return new EdGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponse(id, formId, tenantId, title, description, createdBy, createdDateTime, lastModifiedBy, lastModifiedDateTime, deletedBy, deletedDateTime, isDeleted, order, customId);
         }
 
         /// <summary>
@@ -474,6 +494,12 @@ namespace EdGraph.Platform.Client.Model
 
             if (edGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponse.OrderOption.IsSet)
                 writer.WriteNumber("order", edGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponse.OrderOption.Value!.Value);
+
+            if (edGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponse.CustomIdOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponse.CustomIdOption.Value != null)
+                    writer.WriteString("customId", edGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponse.CustomId);
+                else
+                    writer.WriteNull("customId");
         }
     }
 }
