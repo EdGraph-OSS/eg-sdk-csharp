@@ -196,6 +196,23 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
+        /// Test GetPaginatedCampusSections
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetPaginatedCampusSectionsAsyncTest()
+        {
+            Guid tenantId = default!;
+            string campusId = default!;
+            Client.Option<int> pageIndex = default!;
+            Client.Option<int> pageSize = default!;
+            Client.Option<string> orderBy = default!;
+            Client.Option<string> courseTitle = default!;
+            var response = await _instance.GetPaginatedCampusSectionsAsync(tenantId, campusId, pageIndex, pageSize, orderBy, courseTitle);
+            var model = response.Unauthorized();
+            Assert.IsType<TenantApiSectionsV1SectionListResponseGetPaginatedItemsResponse>(model);
+        }
+
+        /// <summary>
         /// Test GetPaginatedEvaluees
         /// </summary>
         [Fact (Skip = "not implemented")]

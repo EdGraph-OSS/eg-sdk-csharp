@@ -28844,6 +28844,106 @@ paths:
       summary: Get Paginated Available Forms
       tags:
       - Observations
+  /tenants/{tenantId}/observations/campuses/{campusId}/sections:
+    get:
+      operationId: GetPaginatedCampusSections
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: campusId
+        required: true
+        schema:
+          type: string
+        style: simple
+      - description: ""
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 10
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: orderBy
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: courseTitle
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TenantApi.Sections.V1.SectionListResponseGetPaginatedItemsResponse'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Retrieves a list of Sections for a given available campus.
+      tags:
+      - Observations
   /tenants/{tenantId}/observations/campuses:
     get:
       operationId: GetPaginatedAvailableCampuses
@@ -50468,6 +50568,7 @@ components:
       additionalProperties: false
       example:
         name: name
+        campusId: campusId
         identifierType: identifierType
         discriminator: discriminator
       properties:
@@ -50480,15 +50581,20 @@ components:
         discriminator:
           nullable: true
           type: string
+        campusId:
+          nullable: true
+          type: string
       type: object
     EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CampusResponseGetPaginatedItemsResponse:
       additionalProperties: false
       example:
         data:
         - name: name
+          campusId: campusId
           identifierType: identifierType
           discriminator: discriminator
         - name: name
+          campusId: campusId
           identifierType: identifierType
           discriminator: discriminator
         pageIndex: 0
@@ -69587,7 +69693,7 @@ components:
           jobId: jobId
           createdBy: createdBy
           sectionIdentifier: sectionIdentifier
-          schoolId: 5
+          schoolId: 1
           edFiInstanceId: edFiInstanceId
           tenantId: tenantId
           schoolYear: 5
@@ -69615,7 +69721,7 @@ components:
           jobId: jobId
           createdBy: createdBy
           sectionIdentifier: sectionIdentifier
-          schoolId: 5
+          schoolId: 1
           edFiInstanceId: edFiInstanceId
           tenantId: tenantId
           schoolYear: 5
@@ -69765,7 +69871,7 @@ components:
         jobId: jobId
         createdBy: createdBy
         sectionIdentifier: sectionIdentifier
-        schoolId: 5
+        schoolId: 1
         edFiInstanceId: edFiInstanceId
         tenantId: tenantId
         schoolYear: 5
@@ -69849,6 +69955,85 @@ components:
           type: string
         schoolYear:
           format: int32
+          type: integer
+      type: object
+    TenantApi.Sections.V1.SectionListResponseGetPaginatedItemsResponse:
+      additionalProperties: false
+      example:
+        data:
+        - localCourseCode: localCourseCode
+          offeredGradeLevels:
+          - offeredGradeLevels
+          - offeredGradeLevels
+          lastModifiedDateTime: lastModifiedDateTime
+          jobExecutionId: jobExecutionId
+          lastModifiedBy: lastModifiedBy
+          sessionName: sessionName
+          courseCode: courseCode
+          createdDateTime: createdDateTime
+          sectionId: sectionId
+          source: Unknown
+          localCourseTitle: localCourseTitle
+          courseTitle: courseTitle
+          academicSubjects:
+          - academicSubjects
+          - academicSubjects
+          sectionName: sectionName
+          jobId: jobId
+          createdBy: createdBy
+          sectionIdentifier: sectionIdentifier
+          schoolId: 1
+          edFiInstanceId: edFiInstanceId
+          tenantId: tenantId
+          schoolYear: 5
+          term: term
+          schoolName: schoolName
+          sectionType: sectionType
+        - localCourseCode: localCourseCode
+          offeredGradeLevels:
+          - offeredGradeLevels
+          - offeredGradeLevels
+          lastModifiedDateTime: lastModifiedDateTime
+          jobExecutionId: jobExecutionId
+          lastModifiedBy: lastModifiedBy
+          sessionName: sessionName
+          courseCode: courseCode
+          createdDateTime: createdDateTime
+          sectionId: sectionId
+          source: Unknown
+          localCourseTitle: localCourseTitle
+          courseTitle: courseTitle
+          academicSubjects:
+          - academicSubjects
+          - academicSubjects
+          sectionName: sectionName
+          jobId: jobId
+          createdBy: createdBy
+          sectionIdentifier: sectionIdentifier
+          schoolId: 1
+          edFiInstanceId: edFiInstanceId
+          tenantId: tenantId
+          schoolYear: 5
+          term: term
+          schoolName: schoolName
+          sectionType: sectionType
+        pageIndex: 0
+        count: 5
+        pageSize: 6
+      properties:
+        pageIndex:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        data:
+          items:
+            $ref: '#/components/schemas/TenantApi.Sections.V1.SectionListResponse'
+          nullable: true
+          type: array
+        count:
+          format: int64
           type: integer
       type: object
     TenantApi.Sections.V1.SectionProfileResponse:

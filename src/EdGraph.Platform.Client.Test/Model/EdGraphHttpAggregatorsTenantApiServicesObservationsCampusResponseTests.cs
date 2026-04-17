@@ -79,5 +79,14 @@ namespace EdGraph.Platform.Client.Test.Model
         {
             // TODO unit test for the property 'Discriminator'
         }
+
+        /// <summary>
+        /// Test the property 'CampusId'
+        /// </summary>
+        [Fact]
+        public void CampusIdTest()
+        {
+            // TODO unit test for the property 'CampusId'
+        }
     }
 }

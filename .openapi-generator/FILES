@@ -851,6 +851,7 @@ docs/models/TenantApiSectionsV1PaginatedSessionsResponse.md
 docs/models/TenantApiSectionsV1PaginatedTermsResponse.md
 docs/models/TenantApiSectionsV1SchoolListResponse.md
 docs/models/TenantApiSectionsV1SectionListResponse.md
+docs/models/TenantApiSectionsV1SectionListResponseGetPaginatedItemsResponse.md
 docs/models/TenantApiSectionsV1SectionProfileResponse.md
 docs/models/TenantApiSectionsV1SectionSource.md
 docs/models/TenantApiSectionsV1SessionListResponse.md
@@ -1870,6 +1871,7 @@ src/EdGraph.Platform.Client.Test/Model/TenantApiSectionsV1PaginatedSchoolsRespon
 src/EdGraph.Platform.Client.Test/Model/TenantApiSectionsV1PaginatedSessionsResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/TenantApiSectionsV1PaginatedTermsResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/TenantApiSectionsV1SchoolListResponseTests.cs
+src/EdGraph.Platform.Client.Test/Model/TenantApiSectionsV1SectionListResponseGetPaginatedItemsResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/TenantApiSectionsV1SectionListResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/TenantApiSectionsV1SectionProfileResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/TenantApiSectionsV1SectionSourceTests.cs
@@ -2911,6 +2913,7 @@ src/EdGraph.Platform.Client/Model/TenantApiSectionsV1PaginatedSessionsResponse.c
 src/EdGraph.Platform.Client/Model/TenantApiSectionsV1PaginatedTermsResponse.cs
 src/EdGraph.Platform.Client/Model/TenantApiSectionsV1SchoolListResponse.cs
 src/EdGraph.Platform.Client/Model/TenantApiSectionsV1SectionListResponse.cs
+src/EdGraph.Platform.Client/Model/TenantApiSectionsV1SectionListResponseGetPaginatedItemsResponse.cs
 src/EdGraph.Platform.Client/Model/TenantApiSectionsV1SectionProfileResponse.cs
 src/EdGraph.Platform.Client/Model/TenantApiSectionsV1SectionSource.cs
 src/EdGraph.Platform.Client/Model/TenantApiSectionsV1SessionListResponse.cs

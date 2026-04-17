@@ -849,6 +849,7 @@ namespace EdGraph.Platform.Client.Client
             _jsonOptions.Converters.Add(new TenantApiSectionsV1PaginatedTermsResponseJsonConverter());
             _jsonOptions.Converters.Add(new TenantApiSectionsV1SchoolListResponseJsonConverter());
             _jsonOptions.Converters.Add(new TenantApiSectionsV1SectionListResponseJsonConverter());
+            _jsonOptions.Converters.Add(new TenantApiSectionsV1SectionListResponseGetPaginatedItemsResponseJsonConverter());
             _jsonOptions.Converters.Add(new TenantApiSectionsV1SectionProfileResponseJsonConverter());
             _jsonOptions.Converters.Add(new TenantApiSectionsV1SectionSourceJsonConverter());
             _jsonOptions.Converters.Add(new TenantApiSectionsV1SectionSourceNullableJsonConverter());

@@ -36,12 +36,14 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="name">name</param>
         /// <param name="identifierType">identifierType</param>
         /// <param name="discriminator">discriminator</param>
+        /// <param name="campusId">campusId</param>
         [JsonConstructor]
-        public EdGraphHttpAggregatorsTenantApiServicesObservationsCampusResponse(Option<string?> name = default, Option<string?> identifierType = default, Option<string?> discriminator = default)
+        public EdGraphHttpAggregatorsTenantApiServicesObservationsCampusResponse(Option<string?> name = default, Option<string?> identifierType = default, Option<string?> discriminator = default, Option<string?> campusId = default)
         {
             NameOption = name;
             IdentifierTypeOption = identifierType;
             DiscriminatorOption = discriminator;
+            CampusIdOption = campusId;
             OnCreated();
         }
 
@@ -87,6 +89,19 @@ namespace EdGraph.Platform.Client.Model
         public string? Discriminator { get { return this.DiscriminatorOption; } set { this.DiscriminatorOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of CampusId
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> CampusIdOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets CampusId
+        /// </summary>
+        [JsonPropertyName("campusId")]
+        public string? CampusId { get { return this.CampusIdOption; } set { this.CampusIdOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -97,6 +112,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  IdentifierType: ").Append(IdentifierType).Append("\n");
             sb.Append("  Discriminator: ").Append(Discriminator).Append("\n");
+            sb.Append("  CampusId: ").Append(CampusId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -137,6 +153,7 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> name = default;
             Option<string?> identifierType = default;
             Option<string?> discriminator = default;
+            Option<string?> campusId = default;
 
             while (utf8JsonReader.Read())
             {
@@ -162,13 +179,16 @@ namespace EdGraph.Platform.Client.Model
                         case "discriminator":
                             discriminator = new Option<string?>(utf8JsonReader.GetString());
                             break;
+                        case "campusId":
+                            campusId = new Option<string?>(utf8JsonReader.GetString());
+                            break;
                         default:
                             break;
                     }
                 }
             }
 
-            return new EdGraphHttpAggregatorsTenantApiServicesObservationsCampusResponse(name, identifierType, discriminator);
+            return new EdGraphHttpAggregatorsTenantApiServicesObservationsCampusResponse(name, identifierType, discriminator, campusId);
         }
 
         /// <summary>
@@ -212,6 +232,12 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteString("discriminator", edGraphHttpAggregatorsTenantApiServicesObservationsCampusResponse.Discriminator);
                 else
                     writer.WriteNull("discriminator");
+
+            if (edGraphHttpAggregatorsTenantApiServicesObservationsCampusResponse.CampusIdOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiServicesObservationsCampusResponse.CampusIdOption.Value != null)
+                    writer.WriteString("campusId", edGraphHttpAggregatorsTenantApiServicesObservationsCampusResponse.CampusId);
+                else
+                    writer.WriteNull("campusId");
         }
     }
 }
