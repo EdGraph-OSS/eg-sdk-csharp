@@ -1139,7 +1139,7 @@ catch (ApiException e)
 
 <a id="getpaginatedevaluees"></a>
 # **GetPaginatedEvaluees**
-> EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponseGetPaginatedItemsResponse GetPaginatedEvaluees (Guid tenantId, int pageSize = null, int pageIndex = null, string orderBy = null, string campus = null, string evalueeId = null)
+> EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponseGetPaginatedItemsResponse GetPaginatedEvaluees (Guid tenantId, int pageSize = null, int pageIndex = null, string orderBy = null, string campus = null, string evalueeId = null, string firstName = null, string lastName = null)
 
 Get paginated evaluees
 
@@ -1169,11 +1169,13 @@ namespace Example
             var orderBy = "\"\"";  // string |  (optional)  (default to "")
             var campus = "\"\"";  // string |  (optional)  (default to "")
             var evalueeId = "\"\"";  // string |  (optional)  (default to "")
+            var firstName = "\"\"";  // string |  (optional)  (default to "")
+            var lastName = "\"\"";  // string |  (optional)  (default to "")
 
             try
             {
                 // Get paginated evaluees
-                EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponseGetPaginatedItemsResponse result = apiInstance.GetPaginatedEvaluees(tenantId, pageSize, pageIndex, orderBy, campus, evalueeId);
+                EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponseGetPaginatedItemsResponse result = apiInstance.GetPaginatedEvaluees(tenantId, pageSize, pageIndex, orderBy, campus, evalueeId, firstName, lastName);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1194,7 +1196,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Get paginated evaluees
-    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponseGetPaginatedItemsResponse> response = apiInstance.GetPaginatedEvalueesWithHttpInfo(tenantId, pageSize, pageIndex, orderBy, campus, evalueeId);
+    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponseGetPaginatedItemsResponse> response = apiInstance.GetPaginatedEvalueesWithHttpInfo(tenantId, pageSize, pageIndex, orderBy, campus, evalueeId, firstName, lastName);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -1217,6 +1219,8 @@ catch (ApiException e)
 | **orderBy** | **string** |  | [optional] [default to &quot;&quot;] |
 | **campus** | **string** |  | [optional] [default to &quot;&quot;] |
 | **evalueeId** | **string** |  | [optional] [default to &quot;&quot;] |
+| **firstName** | **string** |  | [optional] [default to &quot;&quot;] |
+| **lastName** | **string** |  | [optional] [default to &quot;&quot;] |
 
 ### Return type
 

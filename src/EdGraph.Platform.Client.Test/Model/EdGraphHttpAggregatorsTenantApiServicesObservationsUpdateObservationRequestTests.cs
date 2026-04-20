@@ -81,12 +81,57 @@ namespace EdGraph.Platform.Client.Test.Model
         }
 
         /// <summary>
+        /// Test the property 'Campus'
+        /// </summary>
+        [Fact]
+        public void CampusTest()
+        {
+            // TODO unit test for the property 'Campus'
+        }
+
+        /// <summary>
+        /// Test the property 'ObserverId'
+        /// </summary>
+        [Fact]
+        public void ObserverIdTest()
+        {
+            // TODO unit test for the property 'ObserverId'
+        }
+
+        /// <summary>
+        /// Test the property 'EvalueeId'
+        /// </summary>
+        [Fact]
+        public void EvalueeIdTest()
+        {
+            // TODO unit test for the property 'EvalueeId'
+        }
+
+        /// <summary>
         /// Test the property 'FormId'
         /// </summary>
         [Fact]
         public void FormIdTest()
         {
             // TODO unit test for the property 'FormId'
+        }
+
+        /// <summary>
+        /// Test the property 'FormVersion'
+        /// </summary>
+        [Fact]
+        public void FormVersionTest()
+        {
+            // TODO unit test for the property 'FormVersion'
+        }
+
+        /// <summary>
+        /// Test the property 'CampusClassId'
+        /// </summary>
+        [Fact]
+        public void CampusClassIdTest()
+        {
+            // TODO unit test for the property 'CampusClassId'
         }
     }
 }

@@ -224,7 +224,9 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> orderBy = default!;
             Client.Option<string> campus = default!;
             Client.Option<string> evalueeId = default!;
-            var response = await _instance.GetPaginatedEvalueesAsync(tenantId, pageSize, pageIndex, orderBy, campus, evalueeId);
+            Client.Option<string> firstName = default!;
+            Client.Option<string> lastName = default!;
+            var response = await _instance.GetPaginatedEvalueesAsync(tenantId, pageSize, pageIndex, orderBy, campus, evalueeId, firstName, lastName);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponseGetPaginatedItemsResponse>(model);
         }

@@ -124,5 +124,14 @@ namespace EdGraph.Platform.Client.Test.Model
         {
             // TODO unit test for the property 'FormVersion'
         }
+
+        /// <summary>
+        /// Test the property 'CampusClassId'
+        /// </summary>
+        [Fact]
+        public void CampusClassIdTest()
+        {
+            // TODO unit test for the property 'CampusClassId'
+        }
     }
 }

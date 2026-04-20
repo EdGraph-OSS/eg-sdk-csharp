@@ -29096,6 +29096,24 @@ paths:
           default: ""
           type: string
         style: form
+      - description: ""
+        explode: true
+        in: query
+        name: firstName
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: lastName
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
       responses:
         "401":
           content:
@@ -51493,7 +51511,22 @@ components:
         observationDate:
           nullable: true
           type: string
+        campus:
+          nullable: true
+          type: string
+        observerId:
+          nullable: true
+          type: string
+        evalueeId:
+          nullable: true
+          type: string
         formId:
+          nullable: true
+          type: string
+        formVersion:
+          nullable: true
+          type: string
+        campusClassId:
           nullable: true
           type: string
       type: object
@@ -62966,6 +62999,9 @@ components:
           nullable: true
           type: string
         formVersion:
+          nullable: true
+          type: string
+        campusClassId:
           nullable: true
           type: string
       type: object

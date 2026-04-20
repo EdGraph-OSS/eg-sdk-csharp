@@ -36,14 +36,24 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="tenantId">tenantId</param>
         /// <param name="observationId">observationId</param>
         /// <param name="observationDate">observationDate</param>
+        /// <param name="campus">campus</param>
+        /// <param name="observerId">observerId</param>
+        /// <param name="evalueeId">evalueeId</param>
         /// <param name="formId">formId</param>
+        /// <param name="formVersion">formVersion</param>
+        /// <param name="campusClassId">campusClassId</param>
         [JsonConstructor]
-        public EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest(Option<string?> tenantId = default, Option<string?> observationId = default, Option<string?> observationDate = default, Option<string?> formId = default)
+        public EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest(Option<string?> tenantId = default, Option<string?> observationId = default, Option<string?> observationDate = default, Option<string?> campus = default, Option<string?> observerId = default, Option<string?> evalueeId = default, Option<string?> formId = default, Option<string?> formVersion = default, Option<string?> campusClassId = default)
         {
             TenantIdOption = tenantId;
             ObservationIdOption = observationId;
             ObservationDateOption = observationDate;
+            CampusOption = campus;
+            ObserverIdOption = observerId;
+            EvalueeIdOption = evalueeId;
             FormIdOption = formId;
+            FormVersionOption = formVersion;
+            CampusClassIdOption = campusClassId;
             OnCreated();
         }
 
@@ -89,6 +99,45 @@ namespace EdGraph.Platform.Client.Model
         public string? ObservationDate { get { return this.ObservationDateOption; } set { this.ObservationDateOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of Campus
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> CampusOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets Campus
+        /// </summary>
+        [JsonPropertyName("campus")]
+        public string? Campus { get { return this.CampusOption; } set { this.CampusOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of ObserverId
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> ObserverIdOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets ObserverId
+        /// </summary>
+        [JsonPropertyName("observerId")]
+        public string? ObserverId { get { return this.ObserverIdOption; } set { this.ObserverIdOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of EvalueeId
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> EvalueeIdOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets EvalueeId
+        /// </summary>
+        [JsonPropertyName("evalueeId")]
+        public string? EvalueeId { get { return this.EvalueeIdOption; } set { this.EvalueeIdOption = new(value); } }
+
+        /// <summary>
         /// Used to track the state of FormId
         /// </summary>
         [JsonIgnore]
@@ -102,6 +151,32 @@ namespace EdGraph.Platform.Client.Model
         public string? FormId { get { return this.FormIdOption; } set { this.FormIdOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of FormVersion
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> FormVersionOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets FormVersion
+        /// </summary>
+        [JsonPropertyName("formVersion")]
+        public string? FormVersion { get { return this.FormVersionOption; } set { this.FormVersionOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of CampusClassId
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> CampusClassIdOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets CampusClassId
+        /// </summary>
+        [JsonPropertyName("campusClassId")]
+        public string? CampusClassId { get { return this.CampusClassIdOption; } set { this.CampusClassIdOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -112,7 +187,12 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  TenantId: ").Append(TenantId).Append("\n");
             sb.Append("  ObservationId: ").Append(ObservationId).Append("\n");
             sb.Append("  ObservationDate: ").Append(ObservationDate).Append("\n");
+            sb.Append("  Campus: ").Append(Campus).Append("\n");
+            sb.Append("  ObserverId: ").Append(ObserverId).Append("\n");
+            sb.Append("  EvalueeId: ").Append(EvalueeId).Append("\n");
             sb.Append("  FormId: ").Append(FormId).Append("\n");
+            sb.Append("  FormVersion: ").Append(FormVersion).Append("\n");
+            sb.Append("  CampusClassId: ").Append(CampusClassId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -153,7 +233,12 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> tenantId = default;
             Option<string?> observationId = default;
             Option<string?> observationDate = default;
+            Option<string?> campus = default;
+            Option<string?> observerId = default;
+            Option<string?> evalueeId = default;
             Option<string?> formId = default;
+            Option<string?> formVersion = default;
+            Option<string?> campusClassId = default;
 
             while (utf8JsonReader.Read())
             {
@@ -179,8 +264,23 @@ namespace EdGraph.Platform.Client.Model
                         case "observationDate":
                             observationDate = new Option<string?>(utf8JsonReader.GetString());
                             break;
+                        case "campus":
+                            campus = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "observerId":
+                            observerId = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "evalueeId":
+                            evalueeId = new Option<string?>(utf8JsonReader.GetString());
+                            break;
                         case "formId":
                             formId = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "formVersion":
+                            formVersion = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "campusClassId":
+                            campusClassId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         default:
                             break;
@@ -188,7 +288,7 @@ namespace EdGraph.Platform.Client.Model
                 }
             }
 
-            return new EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest(tenantId, observationId, observationDate, formId);
+            return new EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest(tenantId, observationId, observationDate, campus, observerId, evalueeId, formId, formVersion, campusClassId);
         }
 
         /// <summary>
@@ -233,11 +333,41 @@ namespace EdGraph.Platform.Client.Model
                 else
                     writer.WriteNull("observationDate");
 
+            if (edGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest.CampusOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest.CampusOption.Value != null)
+                    writer.WriteString("campus", edGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest.Campus);
+                else
+                    writer.WriteNull("campus");
+
+            if (edGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest.ObserverIdOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest.ObserverIdOption.Value != null)
+                    writer.WriteString("observerId", edGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest.ObserverId);
+                else
+                    writer.WriteNull("observerId");
+
+            if (edGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest.EvalueeIdOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest.EvalueeIdOption.Value != null)
+                    writer.WriteString("evalueeId", edGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest.EvalueeId);
+                else
+                    writer.WriteNull("evalueeId");
+
             if (edGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest.FormIdOption.IsSet)
                 if (edGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest.FormIdOption.Value != null)
                     writer.WriteString("formId", edGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest.FormId);
                 else
                     writer.WriteNull("formId");
+
+            if (edGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest.FormVersionOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest.FormVersionOption.Value != null)
+                    writer.WriteString("formVersion", edGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest.FormVersion);
+                else
+                    writer.WriteNull("formVersion");
+
+            if (edGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest.CampusClassIdOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest.CampusClassIdOption.Value != null)
+                    writer.WriteString("campusClassId", edGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest.CampusClassId);
+                else
+                    writer.WriteNull("campusClassId");
         }
     }
 }
