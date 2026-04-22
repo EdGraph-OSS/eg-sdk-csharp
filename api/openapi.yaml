@@ -28897,7 +28897,7 @@ paths:
       - description: ""
         explode: true
         in: query
-        name: courseTitle
+        name: filter
         required: false
         schema:
           default: ""
@@ -63308,6 +63308,9 @@ components:
           type: string
         visibilityCondition:
           $ref: '#/components/schemas/FormApi.Questions.V1.QuestionVisibilityCondition'
+        originalQuestionId:
+          nullable: true
+          type: string
       type: object
     FormApi.Forms.V1.CreateFullQuestionValidationRequest:
       additionalProperties: false

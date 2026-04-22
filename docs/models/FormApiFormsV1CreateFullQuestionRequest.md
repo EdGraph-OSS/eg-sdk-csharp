@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **Component** | **string** |  | [optional] 
 **CustomId** | **string** |  | [optional] 
 **VisibilityCondition** | [**FormApiQuestionsV1QuestionVisibilityCondition**](FormApiQuestionsV1QuestionVisibilityCondition.md) |  | [optional] 
+**OriginalQuestionId** | **string** |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

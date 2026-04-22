@@ -151,5 +151,14 @@ namespace EdGraph.Platform.Client.Test.Model
         {
             // TODO unit test for the property 'VisibilityCondition'
         }
+
+        /// <summary>
+        /// Test the property 'OriginalQuestionId'
+        /// </summary>
+        [Fact]
+        public void OriginalQuestionIdTest()
+        {
+            // TODO unit test for the property 'OriginalQuestionId'
+        }
     }
 }

@@ -360,10 +360,10 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pageIndex"> (optional, default to 0)</param>
         /// <param name="pageSize"> (optional, default to 10)</param>
         /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
-        /// <param name="courseTitle"> (optional, default to &quot;&quot;)</param>
+        /// <param name="filter"> (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetPaginatedCampusSectionsApiResponse"/>&gt;</returns>
-        Task<IGetPaginatedCampusSectionsApiResponse> GetPaginatedCampusSectionsAsync(Guid tenantId, string campusId, Option<int> pageIndex = default, Option<int> pageSize = default, Option<string> orderBy = default, Option<string> courseTitle = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IGetPaginatedCampusSectionsApiResponse> GetPaginatedCampusSectionsAsync(Guid tenantId, string campusId, Option<int> pageIndex = default, Option<int> pageSize = default, Option<string> orderBy = default, Option<string> filter = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a list of Sections for a given available campus.
@@ -376,10 +376,10 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pageIndex"> (optional, default to 0)</param>
         /// <param name="pageSize"> (optional, default to 10)</param>
         /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
-        /// <param name="courseTitle"> (optional, default to &quot;&quot;)</param>
+        /// <param name="filter"> (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetPaginatedCampusSectionsApiResponse"/>?&gt;</returns>
-        Task<IGetPaginatedCampusSectionsApiResponse?> GetPaginatedCampusSectionsOrDefaultAsync(Guid tenantId, string campusId, Option<int> pageIndex = default, Option<int> pageSize = default, Option<string> orderBy = default, Option<string> courseTitle = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IGetPaginatedCampusSectionsApiResponse?> GetPaginatedCampusSectionsOrDefaultAsync(Guid tenantId, string campusId, Option<int> pageIndex = default, Option<int> pageSize = default, Option<string> orderBy = default, Option<string> filter = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get paginated evaluees
@@ -6017,16 +6017,16 @@ namespace EdGraph.Platform.Client.Api
             partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
         }
 
-        partial void FormatGetPaginatedCampusSections(ref Guid tenantId, ref string campusId, ref Option<int> pageIndex, ref Option<int> pageSize, ref Option<string> orderBy, ref Option<string> courseTitle);
+        partial void FormatGetPaginatedCampusSections(ref Guid tenantId, ref string campusId, ref Option<int> pageIndex, ref Option<int> pageSize, ref Option<string> orderBy, ref Option<string> filter);
 
         /// <summary>
         /// Validates the request parameters
         /// </summary>
         /// <param name="campusId"></param>
         /// <param name="orderBy"></param>
-        /// <param name="courseTitle"></param>
+        /// <param name="filter"></param>
         /// <returns></returns>
-        private void ValidateGetPaginatedCampusSections(string campusId, Option<string> orderBy, Option<string> courseTitle)
+        private void ValidateGetPaginatedCampusSections(string campusId, Option<string> orderBy, Option<string> filter)
         {
             if (campusId == null)
                 throw new ArgumentNullException(nameof(campusId));
@@ -6034,8 +6034,8 @@ namespace EdGraph.Platform.Client.Api
             if (orderBy.IsSet && orderBy.Value == null)
                 throw new ArgumentNullException(nameof(orderBy));
 
-            if (courseTitle.IsSet && courseTitle.Value == null)
-                throw new ArgumentNullException(nameof(courseTitle));
+            if (filter.IsSet && filter.Value == null)
+                throw new ArgumentNullException(nameof(filter));
         }
 
         /// <summary>
@@ -6047,11 +6047,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <param name="orderBy"></param>
-        /// <param name="courseTitle"></param>
-        private void AfterGetPaginatedCampusSectionsDefaultImplementation(IGetPaginatedCampusSectionsApiResponse apiResponseLocalVar, Guid tenantId, string campusId, Option<int> pageIndex, Option<int> pageSize, Option<string> orderBy, Option<string> courseTitle)
+        /// <param name="filter"></param>
+        private void AfterGetPaginatedCampusSectionsDefaultImplementation(IGetPaginatedCampusSectionsApiResponse apiResponseLocalVar, Guid tenantId, string campusId, Option<int> pageIndex, Option<int> pageSize, Option<string> orderBy, Option<string> filter)
         {
             bool suppressDefaultLog = false;
-            AfterGetPaginatedCampusSections(ref suppressDefaultLog, apiResponseLocalVar, tenantId, campusId, pageIndex, pageSize, orderBy, courseTitle);
+            AfterGetPaginatedCampusSections(ref suppressDefaultLog, apiResponseLocalVar, tenantId, campusId, pageIndex, pageSize, orderBy, filter);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -6066,8 +6066,8 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <param name="orderBy"></param>
-        /// <param name="courseTitle"></param>
-        partial void AfterGetPaginatedCampusSections(ref bool suppressDefaultLog, IGetPaginatedCampusSectionsApiResponse apiResponseLocalVar, Guid tenantId, string campusId, Option<int> pageIndex, Option<int> pageSize, Option<string> orderBy, Option<string> courseTitle);
+        /// <param name="filter"></param>
+        partial void AfterGetPaginatedCampusSections(ref bool suppressDefaultLog, IGetPaginatedCampusSectionsApiResponse apiResponseLocalVar, Guid tenantId, string campusId, Option<int> pageIndex, Option<int> pageSize, Option<string> orderBy, Option<string> filter);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -6080,11 +6080,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <param name="orderBy"></param>
-        /// <param name="courseTitle"></param>
-        private void OnErrorGetPaginatedCampusSectionsDefaultImplementation(Exception exception, string pathFormat, string path, Guid tenantId, string campusId, Option<int> pageIndex, Option<int> pageSize, Option<string> orderBy, Option<string> courseTitle)
+        /// <param name="filter"></param>
+        private void OnErrorGetPaginatedCampusSectionsDefaultImplementation(Exception exception, string pathFormat, string path, Guid tenantId, string campusId, Option<int> pageIndex, Option<int> pageSize, Option<string> orderBy, Option<string> filter)
         {
             bool suppressDefaultLog = false;
-            OnErrorGetPaginatedCampusSections(ref suppressDefaultLog, exception, pathFormat, path, tenantId, campusId, pageIndex, pageSize, orderBy, courseTitle);
+            OnErrorGetPaginatedCampusSections(ref suppressDefaultLog, exception, pathFormat, path, tenantId, campusId, pageIndex, pageSize, orderBy, filter);
             if (!suppressDefaultLog)
                 Logger.LogError(exception, "An error occurred while sending the request to the server.");
         }
@@ -6101,8 +6101,8 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pageIndex"></param>
         /// <param name="pageSize"></param>
         /// <param name="orderBy"></param>
-        /// <param name="courseTitle"></param>
-        partial void OnErrorGetPaginatedCampusSections(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, Guid tenantId, string campusId, Option<int> pageIndex, Option<int> pageSize, Option<string> orderBy, Option<string> courseTitle);
+        /// <param name="filter"></param>
+        partial void OnErrorGetPaginatedCampusSections(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, Guid tenantId, string campusId, Option<int> pageIndex, Option<int> pageSize, Option<string> orderBy, Option<string> filter);
 
         /// <summary>
         /// Retrieves a list of Sections for a given available campus. 
@@ -6112,14 +6112,14 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pageIndex"> (optional, default to 0)</param>
         /// <param name="pageSize"> (optional, default to 10)</param>
         /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
-        /// <param name="courseTitle"> (optional, default to &quot;&quot;)</param>
+        /// <param name="filter"> (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetPaginatedCampusSectionsApiResponse"/>&gt;</returns>
-        public async Task<IGetPaginatedCampusSectionsApiResponse?> GetPaginatedCampusSectionsOrDefaultAsync(Guid tenantId, string campusId, Option<int> pageIndex = default, Option<int> pageSize = default, Option<string> orderBy = default, Option<string> courseTitle = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IGetPaginatedCampusSectionsApiResponse?> GetPaginatedCampusSectionsOrDefaultAsync(Guid tenantId, string campusId, Option<int> pageIndex = default, Option<int> pageSize = default, Option<string> orderBy = default, Option<string> filter = default, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await GetPaginatedCampusSectionsAsync(tenantId, campusId, pageIndex, pageSize, orderBy, courseTitle, cancellationToken).ConfigureAwait(false);
+                return await GetPaginatedCampusSectionsAsync(tenantId, campusId, pageIndex, pageSize, orderBy, filter, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -6136,18 +6136,18 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pageIndex"> (optional, default to 0)</param>
         /// <param name="pageSize"> (optional, default to 10)</param>
         /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
-        /// <param name="courseTitle"> (optional, default to &quot;&quot;)</param>
+        /// <param name="filter"> (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetPaginatedCampusSectionsApiResponse"/>&gt;</returns>
-        public async Task<IGetPaginatedCampusSectionsApiResponse> GetPaginatedCampusSectionsAsync(Guid tenantId, string campusId, Option<int> pageIndex = default, Option<int> pageSize = default, Option<string> orderBy = default, Option<string> courseTitle = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IGetPaginatedCampusSectionsApiResponse> GetPaginatedCampusSectionsAsync(Guid tenantId, string campusId, Option<int> pageIndex = default, Option<int> pageSize = default, Option<string> orderBy = default, Option<string> filter = default, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
             try
             {
-                ValidateGetPaginatedCampusSections(campusId, orderBy, courseTitle);
+                ValidateGetPaginatedCampusSections(campusId, orderBy, filter);
 
-                FormatGetPaginatedCampusSections(ref tenantId, ref campusId, ref pageIndex, ref pageSize, ref orderBy, ref courseTitle);
+                FormatGetPaginatedCampusSections(ref tenantId, ref campusId, ref pageIndex, ref pageSize, ref orderBy, ref filter);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -6169,8 +6169,8 @@ namespace EdGraph.Platform.Client.Api
                     if (orderBy.IsSet)
                         parseQueryStringLocalVar["orderBy"] = ClientUtils.ParameterToString(orderBy.Value);
 
-                    if (courseTitle.IsSet)
-                        parseQueryStringLocalVar["courseTitle"] = ClientUtils.ParameterToString(courseTitle.Value);
+                    if (filter.IsSet)
+                        parseQueryStringLocalVar["filter"] = ClientUtils.ParameterToString(filter.Value);
 
                     uriBuilderLocalVar.Query = parseQueryStringLocalVar.ToString();
 
@@ -6204,7 +6204,7 @@ namespace EdGraph.Platform.Client.Api
 
                         GetPaginatedCampusSectionsApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/observations/campuses/{campusId}/sections", requestedAtLocalVar, _jsonSerializerOptions);
 
-                        AfterGetPaginatedCampusSectionsDefaultImplementation(apiResponseLocalVar, tenantId, campusId, pageIndex, pageSize, orderBy, courseTitle);
+                        AfterGetPaginatedCampusSectionsDefaultImplementation(apiResponseLocalVar, tenantId, campusId, pageIndex, pageSize, orderBy, filter);
 
                         Events.ExecuteOnGetPaginatedCampusSections(apiResponseLocalVar);
 
@@ -6218,7 +6218,7 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorGetPaginatedCampusSectionsDefaultImplementation(e, "/tenants/{tenantId}/observations/campuses/{campusId}/sections", uriBuilderLocalVar.Path, tenantId, campusId, pageIndex, pageSize, orderBy, courseTitle);
+                OnErrorGetPaginatedCampusSectionsDefaultImplementation(e, "/tenants/{tenantId}/observations/campuses/{campusId}/sections", uriBuilderLocalVar.Path, tenantId, campusId, pageIndex, pageSize, orderBy, filter);
                 Events.ExecuteOnErrorGetPaginatedCampusSections(e);
                 throw;
             }

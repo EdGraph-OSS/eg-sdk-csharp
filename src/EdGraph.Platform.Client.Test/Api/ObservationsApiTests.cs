@@ -223,8 +223,8 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<int> pageIndex = default!;
             Client.Option<int> pageSize = default!;
             Client.Option<string> orderBy = default!;
-            Client.Option<string> courseTitle = default!;
-            var response = await _instance.GetPaginatedCampusSectionsAsync(tenantId, campusId, pageIndex, pageSize, orderBy, courseTitle);
+            Client.Option<string> filter = default!;
+            var response = await _instance.GetPaginatedCampusSectionsAsync(tenantId, campusId, pageIndex, pageSize, orderBy, filter);
             var model = response.Unauthorized();
             Assert.IsType<TenantApiSectionsV1SectionListResponseGetPaginatedItemsResponse>(model);
         }

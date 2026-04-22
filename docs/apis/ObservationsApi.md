@@ -1141,7 +1141,7 @@ catch (ApiException e)
 
 <a id="getpaginatedcampussections"></a>
 # **GetPaginatedCampusSections**
-> TenantApiSectionsV1SectionListResponseGetPaginatedItemsResponse GetPaginatedCampusSections (Guid tenantId, string campusId, int pageIndex = null, int pageSize = null, string orderBy = null, string courseTitle = null)
+> TenantApiSectionsV1SectionListResponseGetPaginatedItemsResponse GetPaginatedCampusSections (Guid tenantId, string campusId, int pageIndex = null, int pageSize = null, string orderBy = null, string filter = null)
 
 Retrieves a list of Sections for a given available campus.
 
@@ -1170,12 +1170,12 @@ namespace Example
             var pageIndex = 0;  // int |  (optional)  (default to 0)
             var pageSize = 10;  // int |  (optional)  (default to 10)
             var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var courseTitle = "\"\"";  // string |  (optional)  (default to "")
+            var filter = "\"\"";  // string |  (optional)  (default to "")
 
             try
             {
                 // Retrieves a list of Sections for a given available campus.
-                TenantApiSectionsV1SectionListResponseGetPaginatedItemsResponse result = apiInstance.GetPaginatedCampusSections(tenantId, campusId, pageIndex, pageSize, orderBy, courseTitle);
+                TenantApiSectionsV1SectionListResponseGetPaginatedItemsResponse result = apiInstance.GetPaginatedCampusSections(tenantId, campusId, pageIndex, pageSize, orderBy, filter);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1196,7 +1196,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Retrieves a list of Sections for a given available campus.
-    ApiResponse<TenantApiSectionsV1SectionListResponseGetPaginatedItemsResponse> response = apiInstance.GetPaginatedCampusSectionsWithHttpInfo(tenantId, campusId, pageIndex, pageSize, orderBy, courseTitle);
+    ApiResponse<TenantApiSectionsV1SectionListResponseGetPaginatedItemsResponse> response = apiInstance.GetPaginatedCampusSectionsWithHttpInfo(tenantId, campusId, pageIndex, pageSize, orderBy, filter);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -1218,7 +1218,7 @@ catch (ApiException e)
 | **pageIndex** | **int** |  | [optional] [default to 0] |
 | **pageSize** | **int** |  | [optional] [default to 10] |
 | **orderBy** | **string** |  | [optional] [default to &quot;&quot;] |
-| **courseTitle** | **string** |  | [optional] [default to &quot;&quot;] |
+| **filter** | **string** |  | [optional] [default to &quot;&quot;] |
 
 ### Return type
 
