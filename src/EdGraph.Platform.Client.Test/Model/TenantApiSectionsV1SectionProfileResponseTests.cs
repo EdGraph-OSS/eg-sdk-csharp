@@ -268,5 +268,14 @@ namespace EdGraph.Platform.Client.Test.Model
         {
             // TODO unit test for the property 'SchoolYear'
         }
+
+        /// <summary>
+        /// Test the property 'ClassPeriods'
+        /// </summary>
+        [Fact]
+        public void ClassPeriodsTest()
+        {
+            // TODO unit test for the property 'ClassPeriods'
+        }
     }
 }

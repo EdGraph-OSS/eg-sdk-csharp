@@ -7,6 +7,7 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 | [**CreateObservation**](ObservationsApi.md#createobservation) | **POST** /tenants/{tenantId}/observations | Creates a new Observation for a given tenant |
 | [**CreateObservationSubmission**](ObservationsApi.md#createobservationsubmission) | **POST** /tenants/{tenantId}/observations/{observationId}/available-forms/{formId}/submit | Creates a submission for an available form referencing an existing observation |
 | [**DeleteObservation**](ObservationsApi.md#deleteobservation) | **DELETE** /tenants/{tenantId}/observations/{observationId} | Deletes an Observation for a given tenant |
+| [**GetEvalueeSections**](ObservationsApi.md#getevalueesections) | **GET** /tenants/{tenantId}/observations/evaluees/{evalueeId}/sections | Gets the Sections of an evaluee. |
 | [**GetFormQuestions**](ObservationsApi.md#getformquestions) | **GET** /tenants/{tenantId}/observations/available-forms/{formId}/sections/{sectionId}/questions | Search Questions |
 | [**GetFormSections**](ObservationsApi.md#getformsections) | **GET** /tenants/{tenantId}/observations/available-forms/{formId}/sections | Search Observation Form Sections |
 | [**GetObservationById**](ObservationsApi.md#getobservationbyid) | **GET** /tenants/{tenantId}/observations/{observationId} | Get an Observation for a given tenant |
@@ -316,6 +317,113 @@ catch (ApiException e)
 | **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
 | **200** | The requested resource was successfully retrieved. |  -  |
 | **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+<a id="getevalueesections"></a>
+# **GetEvalueeSections**
+> IdentityApiUserV1SectionResponseGetPaginatedItemsResponse GetEvalueeSections (Guid tenantId, Guid evalueeId, int pageIndex = null, int pageSize = null, string orderBy = null, string filterBy = null)
+
+Gets the Sections of an evaluee.
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using EdGraph.Platform.Client.Api;
+using EdGraph.Platform.Client.Client;
+using EdGraph.Platform.Client.Model;
+
+namespace Example
+{
+    public class GetEvalueeSectionsExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.dev.edgraph.com/tenant";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ObservationsApi(config);
+            var tenantId = "tenantId_example";  // Guid | 
+            var evalueeId = "evalueeId_example";  // Guid | 
+            var pageIndex = 0;  // int |  (optional)  (default to 0)
+            var pageSize = 0;  // int |  (optional)  (default to 0)
+            var orderBy = "\"\"";  // string |  (optional)  (default to "")
+            var filterBy = "\"\"";  // string |  (optional)  (default to "")
+
+            try
+            {
+                // Gets the Sections of an evaluee.
+                IdentityApiUserV1SectionResponseGetPaginatedItemsResponse result = apiInstance.GetEvalueeSections(tenantId, evalueeId, pageIndex, pageSize, orderBy, filterBy);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ObservationsApi.GetEvalueeSections: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetEvalueeSectionsWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Gets the Sections of an evaluee.
+    ApiResponse<IdentityApiUserV1SectionResponseGetPaginatedItemsResponse> response = apiInstance.GetEvalueeSectionsWithHttpInfo(tenantId, evalueeId, pageIndex, pageSize, orderBy, filterBy);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ObservationsApi.GetEvalueeSectionsWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **Guid** |  |  |
+| **evalueeId** | **Guid** |  |  |
+| **pageIndex** | **int** |  | [optional] [default to 0] |
+| **pageSize** | **int** |  | [optional] [default to 0] |
+| **orderBy** | **string** |  | [optional] [default to &quot;&quot;] |
+| **filterBy** | **string** |  | [optional] [default to &quot;&quot;] |
+
+### Return type
+
+[**IdentityApiUserV1SectionResponseGetPaginatedItemsResponse**](IdentityApiUserV1SectionResponseGetPaginatedItemsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | The requested resource was successfully retrieved. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+| **404** | The resource could not be found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

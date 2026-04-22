@@ -783,6 +783,7 @@ namespace EdGraph.Platform.Client.Client
             _jsonOptions.Converters.Add(new IdentityApiUserV1SectionRemovedBulkResponseJsonConverter());
             _jsonOptions.Converters.Add(new IdentityApiUserV1SectionRemovedResponseJsonConverter());
             _jsonOptions.Converters.Add(new IdentityApiUserV1SectionResponseJsonConverter());
+            _jsonOptions.Converters.Add(new IdentityApiUserV1SectionResponseGetPaginatedItemsResponseJsonConverter());
             _jsonOptions.Converters.Add(new IdentityApiUserV1SectionUpdatedBulkResponseJsonConverter());
             _jsonOptions.Converters.Add(new IdentityApiUserV1SectionUpdatedResponseJsonConverter());
             _jsonOptions.Converters.Add(new IdentityApiUserV1SetUserExtensionRequestJsonConverter());

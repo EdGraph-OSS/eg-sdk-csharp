@@ -92,6 +92,23 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
+        /// Test GetEvalueeSections
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetEvalueeSectionsAsyncTest()
+        {
+            Guid tenantId = default!;
+            Guid evalueeId = default!;
+            Client.Option<int> pageIndex = default!;
+            Client.Option<int> pageSize = default!;
+            Client.Option<string> orderBy = default!;
+            Client.Option<string> filterBy = default!;
+            var response = await _instance.GetEvalueeSectionsAsync(tenantId, evalueeId, pageIndex, pageSize, orderBy, filterBy);
+            var model = response.Unauthorized();
+            Assert.IsType<IdentityApiUserV1SectionResponseGetPaginatedItemsResponse>(model);
+        }
+
+        /// <summary>
         /// Test GetFormQuestions
         /// </summary>
         [Fact (Skip = "not implemented")]

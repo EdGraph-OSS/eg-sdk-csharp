@@ -57,8 +57,9 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="jobId">jobId</param>
         /// <param name="jobExecutionId">jobExecutionId</param>
         /// <param name="schoolYear">schoolYear</param>
+        /// <param name="classPeriods">classPeriods</param>
         [JsonConstructor]
-        public TenantApiSectionsV1SectionListResponse(Option<string?> sectionId = default, Option<string?> createdBy = default, Option<string?> createdDateTime = default, Option<string?> lastModifiedBy = default, Option<string?> lastModifiedDateTime = default, Option<string?> tenantId = default, Option<int?> schoolId = default, Option<string?> schoolName = default, Option<string?> sessionName = default, Option<string?> term = default, Option<string?> localCourseCode = default, Option<string?> localCourseTitle = default, Option<string?> courseCode = default, Option<string?> courseTitle = default, Option<List<string>?> academicSubjects = default, Option<List<string>?> offeredGradeLevels = default, Option<string?> sectionIdentifier = default, Option<string?> sectionName = default, Option<string?> sectionType = default, Option<TenantApiSectionsV1SectionSource?> source = default, Option<string?> edFiInstanceId = default, Option<string?> jobId = default, Option<string?> jobExecutionId = default, Option<int?> schoolYear = default)
+        public TenantApiSectionsV1SectionListResponse(Option<string?> sectionId = default, Option<string?> createdBy = default, Option<string?> createdDateTime = default, Option<string?> lastModifiedBy = default, Option<string?> lastModifiedDateTime = default, Option<string?> tenantId = default, Option<int?> schoolId = default, Option<string?> schoolName = default, Option<string?> sessionName = default, Option<string?> term = default, Option<string?> localCourseCode = default, Option<string?> localCourseTitle = default, Option<string?> courseCode = default, Option<string?> courseTitle = default, Option<List<string>?> academicSubjects = default, Option<List<string>?> offeredGradeLevels = default, Option<string?> sectionIdentifier = default, Option<string?> sectionName = default, Option<string?> sectionType = default, Option<TenantApiSectionsV1SectionSource?> source = default, Option<string?> edFiInstanceId = default, Option<string?> jobId = default, Option<string?> jobExecutionId = default, Option<int?> schoolYear = default, Option<List<string>?> classPeriods = default)
         {
             SectionIdOption = sectionId;
             CreatedByOption = createdBy;
@@ -84,6 +85,7 @@ namespace EdGraph.Platform.Client.Model
             JobIdOption = jobId;
             JobExecutionIdOption = jobExecutionId;
             SchoolYearOption = schoolYear;
+            ClassPeriodsOption = classPeriods;
             OnCreated();
         }
 
@@ -402,6 +404,19 @@ namespace EdGraph.Platform.Client.Model
         public int? SchoolYear { get { return this.SchoolYearOption; } set { this.SchoolYearOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of ClassPeriods
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<List<string>?> ClassPeriodsOption { get; }
+
+        /// <summary>
+        /// Gets or Sets ClassPeriods
+        /// </summary>
+        [JsonPropertyName("classPeriods")]
+        public List<string>? ClassPeriods { get { return this.ClassPeriodsOption; } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -433,6 +448,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  JobId: ").Append(JobId).Append("\n");
             sb.Append("  JobExecutionId: ").Append(JobExecutionId).Append("\n");
             sb.Append("  SchoolYear: ").Append(SchoolYear).Append("\n");
+            sb.Append("  ClassPeriods: ").Append(ClassPeriods).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -494,6 +510,7 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> jobId = default;
             Option<string?> jobExecutionId = default;
             Option<int?> schoolYear = default;
+            Option<List<string>?> classPeriods = default;
 
             while (utf8JsonReader.Read())
             {
@@ -588,6 +605,10 @@ namespace EdGraph.Platform.Client.Model
                             if (utf8JsonReader.TokenType != JsonTokenType.Null)
                                 schoolYear = new Option<int?>(utf8JsonReader.GetInt32());
                             break;
+                        case "classPeriods":
+                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
+                                classPeriods = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            break;
                         default:
                             break;
                     }
@@ -603,7 +624,7 @@ namespace EdGraph.Platform.Client.Model
             if (schoolYear.IsSet && schoolYear.Value == null)
                 throw new ArgumentNullException(nameof(schoolYear), "Property is not nullable for class TenantApiSectionsV1SectionListResponse.");
 
-            return new TenantApiSectionsV1SectionListResponse(sectionId, createdBy, createdDateTime, lastModifiedBy, lastModifiedDateTime, tenantId, schoolId, schoolName, sessionName, term, localCourseCode, localCourseTitle, courseCode, courseTitle, academicSubjects, offeredGradeLevels, sectionIdentifier, sectionName, sectionType, source, edFiInstanceId, jobId, jobExecutionId, schoolYear);
+            return new TenantApiSectionsV1SectionListResponse(sectionId, createdBy, createdDateTime, lastModifiedBy, lastModifiedDateTime, tenantId, schoolId, schoolName, sessionName, term, localCourseCode, localCourseTitle, courseCode, courseTitle, academicSubjects, offeredGradeLevels, sectionIdentifier, sectionName, sectionType, source, edFiInstanceId, jobId, jobExecutionId, schoolYear, classPeriods);
         }
 
         /// <summary>
@@ -770,6 +791,15 @@ namespace EdGraph.Platform.Client.Model
 
             if (tenantApiSectionsV1SectionListResponse.SchoolYearOption.IsSet)
                 writer.WriteNumber("schoolYear", tenantApiSectionsV1SectionListResponse.SchoolYearOption.Value!.Value);
+
+            if (tenantApiSectionsV1SectionListResponse.ClassPeriodsOption.IsSet)
+                if (tenantApiSectionsV1SectionListResponse.ClassPeriodsOption.Value != null)
+                {
+                    writer.WritePropertyName("classPeriods");
+                    JsonSerializer.Serialize(writer, tenantApiSectionsV1SectionListResponse.ClassPeriods, jsonSerializerOptions);
+                }
+                else
+                    writer.WriteNull("classPeriods");
         }
     }
 }

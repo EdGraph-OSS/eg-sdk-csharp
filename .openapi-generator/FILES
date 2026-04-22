@@ -792,6 +792,7 @@ docs/models/IdentityApiUserV1SectionAddedResponse.md
 docs/models/IdentityApiUserV1SectionRemovedBulkResponse.md
 docs/models/IdentityApiUserV1SectionRemovedResponse.md
 docs/models/IdentityApiUserV1SectionResponse.md
+docs/models/IdentityApiUserV1SectionResponseGetPaginatedItemsResponse.md
 docs/models/IdentityApiUserV1SectionUpdatedBulkResponse.md
 docs/models/IdentityApiUserV1SectionUpdatedResponse.md
 docs/models/IdentityApiUserV1SetUserExtensionRequest.md
@@ -1812,6 +1813,7 @@ src/EdGraph.Platform.Client.Test/Model/IdentityApiUserV1SectionAddedBulkResponse
 src/EdGraph.Platform.Client.Test/Model/IdentityApiUserV1SectionAddedResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/IdentityApiUserV1SectionRemovedBulkResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/IdentityApiUserV1SectionRemovedResponseTests.cs
+src/EdGraph.Platform.Client.Test/Model/IdentityApiUserV1SectionResponseGetPaginatedItemsResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/IdentityApiUserV1SectionResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/IdentityApiUserV1SectionUpdatedBulkResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/IdentityApiUserV1SectionUpdatedResponseTests.cs
@@ -2854,6 +2856,7 @@ src/EdGraph.Platform.Client/Model/IdentityApiUserV1SectionAddedResponse.cs
 src/EdGraph.Platform.Client/Model/IdentityApiUserV1SectionRemovedBulkResponse.cs
 src/EdGraph.Platform.Client/Model/IdentityApiUserV1SectionRemovedResponse.cs
 src/EdGraph.Platform.Client/Model/IdentityApiUserV1SectionResponse.cs
+src/EdGraph.Platform.Client/Model/IdentityApiUserV1SectionResponseGetPaginatedItemsResponse.cs
 src/EdGraph.Platform.Client/Model/IdentityApiUserV1SectionUpdatedBulkResponse.cs
 src/EdGraph.Platform.Client/Model/IdentityApiUserV1SectionUpdatedResponse.cs
 src/EdGraph.Platform.Client/Model/IdentityApiUserV1SetUserExtensionRequest.cs
