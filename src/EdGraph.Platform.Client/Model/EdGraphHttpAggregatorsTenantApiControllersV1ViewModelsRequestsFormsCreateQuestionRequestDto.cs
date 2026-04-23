@@ -47,8 +47,9 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="component">component</param>
         /// <param name="visibilityCondition">visibilityCondition</param>
         /// <param name="customId">customId</param>
+        /// <param name="multiline">multiline</param>
         [JsonConstructor]
-        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto(Option<Guid?> formId = default, Option<Guid?> sectionId = default, Option<Guid?> tenantId = default, Option<string?> title = default, Option<string?> description = default, Option<FormApiQuestionsV1QuestionType?> type = default, Option<bool?> required = default, Option<string?> defaultValue = default, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionValidationRequestDto?> validation = default, Option<List<string>?> options = default, Option<int?> order = default, Option<Object?> component = default, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto?> visibilityCondition = default, Option<string?> customId = default)
+        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto(Option<Guid?> formId = default, Option<Guid?> sectionId = default, Option<Guid?> tenantId = default, Option<string?> title = default, Option<string?> description = default, Option<FormApiQuestionsV1QuestionType?> type = default, Option<bool?> required = default, Option<string?> defaultValue = default, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionValidationRequestDto?> validation = default, Option<List<string>?> options = default, Option<int?> order = default, Option<Object?> component = default, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto?> visibilityCondition = default, Option<string?> customId = default, Option<bool?> multiline = default)
         {
             FormIdOption = formId;
             SectionIdOption = sectionId;
@@ -64,6 +65,7 @@ namespace EdGraph.Platform.Client.Model
             ComponentOption = component;
             VisibilityConditionOption = visibilityCondition;
             CustomIdOption = customId;
+            MultilineOption = multiline;
             OnCreated();
         }
 
@@ -252,6 +254,19 @@ namespace EdGraph.Platform.Client.Model
         public string? CustomId { get { return this.CustomIdOption; } set { this.CustomIdOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of Multiline
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<bool?> MultilineOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets Multiline
+        /// </summary>
+        [JsonPropertyName("multiline")]
+        public bool? Multiline { get { return this.MultilineOption; } set { this.MultilineOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -273,6 +288,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  Component: ").Append(Component).Append("\n");
             sb.Append("  VisibilityCondition: ").Append(VisibilityCondition).Append("\n");
             sb.Append("  CustomId: ").Append(CustomId).Append("\n");
+            sb.Append("  Multiline: ").Append(Multiline).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -324,6 +340,7 @@ namespace EdGraph.Platform.Client.Model
             Option<Object?> component = default;
             Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityConditionDto?> visibilityCondition = default;
             Option<string?> customId = default;
+            Option<bool?> multiline = default;
 
             while (utf8JsonReader.Read())
             {
@@ -393,6 +410,10 @@ namespace EdGraph.Platform.Client.Model
                         case "customId":
                             customId = new Option<string?>(utf8JsonReader.GetString());
                             break;
+                        case "multiline":
+                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
+                                multiline = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            break;
                         default:
                             break;
                     }
@@ -423,7 +444,7 @@ namespace EdGraph.Platform.Client.Model
             if (visibilityCondition.IsSet && visibilityCondition.Value == null)
                 throw new ArgumentNullException(nameof(visibilityCondition), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto.");
 
-            return new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto(formId, sectionId, tenantId, title, description, type, required, defaultValue, validation, options, order, component, visibilityCondition, customId);
+            return new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto(formId, sectionId, tenantId, title, description, type, required, defaultValue, validation, options, order, component, visibilityCondition, customId, multiline);
         }
 
         /// <summary>
@@ -525,6 +546,12 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteString("customId", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto.CustomId);
                 else
                     writer.WriteNull("customId");
+
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto.MultilineOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto.MultilineOption.Value != null)
+                    writer.WriteBoolean("multiline", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto.MultilineOption.Value!.Value);
+                else
+                    writer.WriteNull("multiline");
         }
     }
 }

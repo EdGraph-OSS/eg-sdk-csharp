@@ -75,6 +75,8 @@ namespace EdGraph.Platform.Client.Client
             _jsonOptions.Converters.Add(new AnalyticsApiReportsV1DownloadReportResponseJsonConverter());
             _jsonOptions.Converters.Add(new AnalyticsApiReportsV1ReportIdResponseJsonConverter());
             _jsonOptions.Converters.Add(new AnalyticsApiReportsV1ReportPaginatedItemsResponseJsonConverter());
+            _jsonOptions.Converters.Add(new AnalyticsApiReportsV1ReportPreferenceDetailsResponseJsonConverter());
+            _jsonOptions.Converters.Add(new AnalyticsApiReportsV1ReportPreferencesResponseJsonConverter());
             _jsonOptions.Converters.Add(new AnalyticsApiReportsV1ReportResponseJsonConverter());
             _jsonOptions.Converters.Add(new AnalyticsApiReportsV1ReportSourceJsonConverter());
             _jsonOptions.Converters.Add(new AnalyticsApiReportsV1ReportSourceNullableJsonConverter());
@@ -284,8 +286,12 @@ namespace EdGraph.Platform.Client.Client
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRoleJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequestJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationResponseJsonConverter());
+            _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequestJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertObservationDraftRequestJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertObservationDraftResponseJsonConverter());
+            _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertReportPreferenceDetailsJsonConverter());
+            _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequestJsonConverter());
+            _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessResponseJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsConnectionCreatedResponseJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsConnectionResponseJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsConnectionUpdatedResponseJsonConverter());

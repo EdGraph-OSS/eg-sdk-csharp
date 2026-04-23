@@ -7,6 +7,8 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 | [**CreateObservation**](ObservationsApi.md#createobservation) | **POST** /tenants/{tenantId}/observations | Creates a new Observation for a given tenant |
 | [**CreateObservationSubmission**](ObservationsApi.md#createobservationsubmission) | **POST** /tenants/{tenantId}/observations/{observationId}/available-forms/{formId}/submit | Creates a submission for an available form referencing an existing observation |
 | [**DeleteObservation**](ObservationsApi.md#deleteobservation) | **DELETE** /tenants/{tenantId}/observations/{observationId} | Deletes an Observation for a given tenant |
+| [**GetDashboard**](ObservationsApi.md#getdashboard) | **GET** /tenants/{tenantId}/observations/dashboards/{dashboardId} | Get Observation Dashboard |
+| [**GetDashboardPreferences**](ObservationsApi.md#getdashboardpreferences) | **GET** /tenants/{tenantId}/observations/dashboards/{dashboardId}/preferences | Save user preferences for a given Dashboard |
 | [**GetEvalueeSections**](ObservationsApi.md#getevalueesections) | **GET** /tenants/{tenantId}/observations/evaluees/{evalueeId}/sections | Gets the Sections of an evaluee. |
 | [**GetFormQuestions**](ObservationsApi.md#getformquestions) | **GET** /tenants/{tenantId}/observations/available-forms/{formId}/sections/{sectionId}/questions | Search Questions |
 | [**GetFormSections**](ObservationsApi.md#getformsections) | **GET** /tenants/{tenantId}/observations/available-forms/{formId}/sections | Search Observation Form Sections |
@@ -19,8 +21,10 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 | [**GetPaginatedEvaluees**](ObservationsApi.md#getpaginatedevaluees) | **GET** /tenants/{tenantId}/observations/evaluees | Get paginated evaluees |
 | [**GetPaginatedObservations**](ObservationsApi.md#getpaginatedobservations) | **GET** /tenants/{tenantId}/observations | Get Paginated Observations for a given tenant |
 | [**GetSubmittedObservationsCount**](ObservationsApi.md#getsubmittedobservationscount) | **GET** /tenants/{tenantId}/submittedobservations | Get submitted Observations count |
+| [**SaveDashboardPreferences**](ObservationsApi.md#savedashboardpreferences) | **POST** /tenants/{tenantId}/observations/dashboards/{dashboardId}/preferences | Save user preferences for a given Dashboard |
 | [**UpdateObservation**](ObservationsApi.md#updateobservation) | **PUT** /tenants/{tenantId}/observations/{observationId} | Update an Observation for a given tenant |
 | [**UpsertObservationDraft**](ObservationsApi.md#upsertobservationdraft) | **POST** /tenants/{tenantId}/observations/{observationId}/available-forms/{formId}/draft | Creates a draft for an observation forms |
+| [**VerifyDashboardAccess**](ObservationsApi.md#verifydashboardaccess) | **POST** /tenants/{tenantId}/observations/dashboards/access | Verify user access to dashboards |
 
 <a id="createobservation"></a>
 # **CreateObservation**
@@ -298,6 +302,204 @@ catch (ApiException e)
 ### Return type
 
 [**EdGraphHttpAggregatorsTenantApiServicesObservationsDeleteObservationResponse**](EdGraphHttpAggregatorsTenantApiServicesObservationsDeleteObservationResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | The requested resource was successfully retrieved. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+<a id="getdashboard"></a>
+# **GetDashboard**
+> AnalyticsApiReportsV1ReportResponse GetDashboard (Guid tenantId, Guid dashboardId, string personaIdentifier = null)
+
+Get Observation Dashboard
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using EdGraph.Platform.Client.Api;
+using EdGraph.Platform.Client.Client;
+using EdGraph.Platform.Client.Model;
+
+namespace Example
+{
+    public class GetDashboardExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.dev.edgraph.com/tenant";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ObservationsApi(config);
+            var tenantId = "tenantId_example";  // Guid | 
+            var dashboardId = "dashboardId_example";  // Guid | 
+            var personaIdentifier = "personaIdentifier_example";  // string |  (optional) 
+
+            try
+            {
+                // Get Observation Dashboard
+                AnalyticsApiReportsV1ReportResponse result = apiInstance.GetDashboard(tenantId, dashboardId, personaIdentifier);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ObservationsApi.GetDashboard: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetDashboardWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Get Observation Dashboard
+    ApiResponse<AnalyticsApiReportsV1ReportResponse> response = apiInstance.GetDashboardWithHttpInfo(tenantId, dashboardId, personaIdentifier);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ObservationsApi.GetDashboardWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **Guid** |  |  |
+| **dashboardId** | **Guid** |  |  |
+| **personaIdentifier** | **string** |  | [optional]  |
+
+### Return type
+
+[**AnalyticsApiReportsV1ReportResponse**](AnalyticsApiReportsV1ReportResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | The requested resource was successfully retrieved. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+<a id="getdashboardpreferences"></a>
+# **GetDashboardPreferences**
+> AnalyticsApiReportsV1ReportPreferencesResponse GetDashboardPreferences (Guid tenantId, Guid dashboardId)
+
+Save user preferences for a given Dashboard
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using EdGraph.Platform.Client.Api;
+using EdGraph.Platform.Client.Client;
+using EdGraph.Platform.Client.Model;
+
+namespace Example
+{
+    public class GetDashboardPreferencesExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.dev.edgraph.com/tenant";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ObservationsApi(config);
+            var tenantId = "tenantId_example";  // Guid | 
+            var dashboardId = "dashboardId_example";  // Guid | 
+
+            try
+            {
+                // Save user preferences for a given Dashboard
+                AnalyticsApiReportsV1ReportPreferencesResponse result = apiInstance.GetDashboardPreferences(tenantId, dashboardId);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ObservationsApi.GetDashboardPreferences: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the GetDashboardPreferencesWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Save user preferences for a given Dashboard
+    ApiResponse<AnalyticsApiReportsV1ReportPreferencesResponse> response = apiInstance.GetDashboardPreferencesWithHttpInfo(tenantId, dashboardId);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ObservationsApi.GetDashboardPreferencesWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **Guid** |  |  |
+| **dashboardId** | **Guid** |  |  |
+
+### Return type
+
+[**AnalyticsApiReportsV1ReportPreferencesResponse**](AnalyticsApiReportsV1ReportPreferencesResponse.md)
 
 ### Authorization
 
@@ -1571,6 +1773,106 @@ catch (ApiException e)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+<a id="savedashboardpreferences"></a>
+# **SaveDashboardPreferences**
+> AnalyticsApiReportsV1ReportResponse SaveDashboardPreferences (Guid tenantId, Guid dashboardId, EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest = null)
+
+Save user preferences for a given Dashboard
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using EdGraph.Platform.Client.Api;
+using EdGraph.Platform.Client.Client;
+using EdGraph.Platform.Client.Model;
+
+namespace Example
+{
+    public class SaveDashboardPreferencesExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.dev.edgraph.com/tenant";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ObservationsApi(config);
+            var tenantId = "tenantId_example";  // Guid | 
+            var dashboardId = "dashboardId_example";  // Guid | 
+            var edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest = new EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest(); // EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest |  (optional) 
+
+            try
+            {
+                // Save user preferences for a given Dashboard
+                AnalyticsApiReportsV1ReportResponse result = apiInstance.SaveDashboardPreferences(tenantId, dashboardId, edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ObservationsApi.SaveDashboardPreferences: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the SaveDashboardPreferencesWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Save user preferences for a given Dashboard
+    ApiResponse<AnalyticsApiReportsV1ReportResponse> response = apiInstance.SaveDashboardPreferencesWithHttpInfo(tenantId, dashboardId, edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ObservationsApi.SaveDashboardPreferencesWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **Guid** |  |  |
+| **dashboardId** | **Guid** |  |  |
+| **edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest** | [**EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest**](EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest.md) |  | [optional]  |
+
+### Return type
+
+[**AnalyticsApiReportsV1ReportResponse**](AnalyticsApiReportsV1ReportResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | The requested resource was successfully retrieved. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 <a id="updateobservation"></a>
 # **UpdateObservation**
 > EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationResponse UpdateObservation (Guid tenantId, Guid observationId, EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest edGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest = null)
@@ -1751,6 +2053,106 @@ catch (ApiException e)
 ### Return type
 
 [**EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertObservationDraftResponse**](EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertObservationDraftResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | The requested resource was successfully retrieved. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+<a id="verifydashboardaccess"></a>
+# **VerifyDashboardAccess**
+> EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessResponse VerifyDashboardAccess (Guid tenantId, Guid reportId, EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest = null)
+
+Verify user access to dashboards
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using EdGraph.Platform.Client.Api;
+using EdGraph.Platform.Client.Client;
+using EdGraph.Platform.Client.Model;
+
+namespace Example
+{
+    public class VerifyDashboardAccessExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.dev.edgraph.com/tenant";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ObservationsApi(config);
+            var tenantId = "tenantId_example";  // Guid | 
+            var reportId = "reportId_example";  // Guid | 
+            var edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest = new EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest(); // EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest |  (optional) 
+
+            try
+            {
+                // Verify user access to dashboards
+                EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessResponse result = apiInstance.VerifyDashboardAccess(tenantId, reportId, edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ObservationsApi.VerifyDashboardAccess: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the VerifyDashboardAccessWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Verify user access to dashboards
+    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessResponse> response = apiInstance.VerifyDashboardAccessWithHttpInfo(tenantId, reportId, edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ObservationsApi.VerifyDashboardAccessWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **Guid** |  |  |
+| **reportId** | **Guid** |  |  |
+| **edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest** | [**EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest**](EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest.md) |  | [optional]  |
+
+### Return type
+
+[**EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessResponse**](EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessResponse.md)
 
 ### Authorization
 

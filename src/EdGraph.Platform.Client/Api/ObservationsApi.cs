@@ -115,6 +115,58 @@ namespace EdGraph.Platform.Client.Api
         Task<IDeleteObservationApiResponse?> DeleteObservationOrDefaultAsync(Guid tenantId, Guid observationId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
+        /// Get Observation Dashboard
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="dashboardId"></param>
+        /// <param name="personaIdentifier"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetDashboardApiResponse"/>&gt;</returns>
+        Task<IGetDashboardApiResponse> GetDashboardAsync(Guid tenantId, Guid dashboardId, Option<string> personaIdentifier = default, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Get Observation Dashboard
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <param name="tenantId"></param>
+        /// <param name="dashboardId"></param>
+        /// <param name="personaIdentifier"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetDashboardApiResponse"/>?&gt;</returns>
+        Task<IGetDashboardApiResponse?> GetDashboardOrDefaultAsync(Guid tenantId, Guid dashboardId, Option<string> personaIdentifier = default, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Save user preferences for a given Dashboard
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="dashboardId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetDashboardPreferencesApiResponse"/>&gt;</returns>
+        Task<IGetDashboardPreferencesApiResponse> GetDashboardPreferencesAsync(Guid tenantId, Guid dashboardId, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Save user preferences for a given Dashboard
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <param name="tenantId"></param>
+        /// <param name="dashboardId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetDashboardPreferencesApiResponse"/>?&gt;</returns>
+        Task<IGetDashboardPreferencesApiResponse?> GetDashboardPreferencesOrDefaultAsync(Guid tenantId, Guid dashboardId, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
         /// Gets the Sections of an evaluee.
         /// </summary>
         /// <remarks>
@@ -489,6 +541,33 @@ namespace EdGraph.Platform.Client.Api
         Task<IGetSubmittedObservationsCountApiResponse?> GetSubmittedObservationsCountOrDefaultAsync(Guid tenantId, Option<string> evalueeId = default, Option<string> campus = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
+        /// Save user preferences for a given Dashboard
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="dashboardId"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="ISaveDashboardPreferencesApiResponse"/>&gt;</returns>
+        Task<ISaveDashboardPreferencesApiResponse> SaveDashboardPreferencesAsync(Guid tenantId, Guid dashboardId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest = default, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Save user preferences for a given Dashboard
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <param name="tenantId"></param>
+        /// <param name="dashboardId"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="ISaveDashboardPreferencesApiResponse"/>?&gt;</returns>
+        Task<ISaveDashboardPreferencesApiResponse?> SaveDashboardPreferencesOrDefaultAsync(Guid tenantId, Guid dashboardId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest = default, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
         /// Update an Observation for a given tenant
         /// </summary>
         /// <remarks>
@@ -543,6 +622,33 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IUpsertObservationDraftApiResponse"/>?&gt;</returns>
         Task<IUpsertObservationDraftApiResponse?> UpsertObservationDraftOrDefaultAsync(Guid tenantId, Guid observationId, Guid formId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertObservationDraftRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUpsertObservationDraftRequest = default, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Verify user access to dashboards
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="reportId"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IVerifyDashboardAccessApiResponse"/>&gt;</returns>
+        Task<IVerifyDashboardAccessApiResponse> VerifyDashboardAccessAsync(Guid tenantId, Guid reportId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest = default, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Verify user access to dashboards
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <param name="tenantId"></param>
+        /// <param name="reportId"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IVerifyDashboardAccessApiResponse"/>?&gt;</returns>
+        Task<IVerifyDashboardAccessApiResponse?> VerifyDashboardAccessOrDefaultAsync(Guid tenantId, Guid reportId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest = default, System.Threading.CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -621,6 +727,78 @@ namespace EdGraph.Platform.Client.Api
     /// The <see cref="IDeleteObservationApiResponse"/>
     /// </summary>
     public interface IDeleteObservationApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiServicesObservationsDeleteObservationResponse?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>
+    {
+        /// <summary>
+        /// Returns true if the response is 401 Unauthorized
+        /// </summary>
+        /// <returns></returns>
+        bool IsUnauthorized { get; }
+
+        /// <summary>
+        /// Returns true if the response is 403 Forbidden
+        /// </summary>
+        /// <returns></returns>
+        bool IsForbidden { get; }
+
+        /// <summary>
+        /// Returns true if the response is 500 InternalServerError
+        /// </summary>
+        /// <returns></returns>
+        bool IsInternalServerError { get; }
+
+        /// <summary>
+        /// Returns true if the response is 200 Ok
+        /// </summary>
+        /// <returns></returns>
+        bool IsOk { get; }
+
+        /// <summary>
+        /// Returns true if the response is 400 BadRequest
+        /// </summary>
+        /// <returns></returns>
+        bool IsBadRequest { get; }
+    }
+
+    /// <summary>
+    /// The <see cref="IGetDashboardApiResponse"/>
+    /// </summary>
+    public interface IGetDashboardApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.AnalyticsApiReportsV1ReportResponse?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>
+    {
+        /// <summary>
+        /// Returns true if the response is 401 Unauthorized
+        /// </summary>
+        /// <returns></returns>
+        bool IsUnauthorized { get; }
+
+        /// <summary>
+        /// Returns true if the response is 403 Forbidden
+        /// </summary>
+        /// <returns></returns>
+        bool IsForbidden { get; }
+
+        /// <summary>
+        /// Returns true if the response is 500 InternalServerError
+        /// </summary>
+        /// <returns></returns>
+        bool IsInternalServerError { get; }
+
+        /// <summary>
+        /// Returns true if the response is 200 Ok
+        /// </summary>
+        /// <returns></returns>
+        bool IsOk { get; }
+
+        /// <summary>
+        /// Returns true if the response is 400 BadRequest
+        /// </summary>
+        /// <returns></returns>
+        bool IsBadRequest { get; }
+    }
+
+    /// <summary>
+    /// The <see cref="IGetDashboardPreferencesApiResponse"/>
+    /// </summary>
+    public interface IGetDashboardPreferencesApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.AnalyticsApiReportsV1ReportPreferencesResponse?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>
     {
         /// <summary>
         /// Returns true if the response is 401 Unauthorized
@@ -1092,6 +1270,42 @@ namespace EdGraph.Platform.Client.Api
     }
 
     /// <summary>
+    /// The <see cref="ISaveDashboardPreferencesApiResponse"/>
+    /// </summary>
+    public interface ISaveDashboardPreferencesApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.AnalyticsApiReportsV1ReportResponse?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>
+    {
+        /// <summary>
+        /// Returns true if the response is 401 Unauthorized
+        /// </summary>
+        /// <returns></returns>
+        bool IsUnauthorized { get; }
+
+        /// <summary>
+        /// Returns true if the response is 403 Forbidden
+        /// </summary>
+        /// <returns></returns>
+        bool IsForbidden { get; }
+
+        /// <summary>
+        /// Returns true if the response is 500 InternalServerError
+        /// </summary>
+        /// <returns></returns>
+        bool IsInternalServerError { get; }
+
+        /// <summary>
+        /// Returns true if the response is 200 Ok
+        /// </summary>
+        /// <returns></returns>
+        bool IsOk { get; }
+
+        /// <summary>
+        /// Returns true if the response is 400 BadRequest
+        /// </summary>
+        /// <returns></returns>
+        bool IsBadRequest { get; }
+    }
+
+    /// <summary>
     /// The <see cref="IUpdateObservationApiResponse"/>
     /// </summary>
     public interface IUpdateObservationApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationResponse?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>
@@ -1131,6 +1345,42 @@ namespace EdGraph.Platform.Client.Api
     /// The <see cref="IUpsertObservationDraftApiResponse"/>
     /// </summary>
     public interface IUpsertObservationDraftApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertObservationDraftResponse?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>
+    {
+        /// <summary>
+        /// Returns true if the response is 401 Unauthorized
+        /// </summary>
+        /// <returns></returns>
+        bool IsUnauthorized { get; }
+
+        /// <summary>
+        /// Returns true if the response is 403 Forbidden
+        /// </summary>
+        /// <returns></returns>
+        bool IsForbidden { get; }
+
+        /// <summary>
+        /// Returns true if the response is 500 InternalServerError
+        /// </summary>
+        /// <returns></returns>
+        bool IsInternalServerError { get; }
+
+        /// <summary>
+        /// Returns true if the response is 200 Ok
+        /// </summary>
+        /// <returns></returns>
+        bool IsOk { get; }
+
+        /// <summary>
+        /// Returns true if the response is 400 BadRequest
+        /// </summary>
+        /// <returns></returns>
+        bool IsBadRequest { get; }
+    }
+
+    /// <summary>
+    /// The <see cref="IVerifyDashboardAccessApiResponse"/>
+    /// </summary>
+    public interface IVerifyDashboardAccessApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessResponse?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>
     {
         /// <summary>
         /// Returns true if the response is 401 Unauthorized
@@ -1226,6 +1476,46 @@ namespace EdGraph.Platform.Client.Api
         internal void ExecuteOnErrorDeleteObservation(Exception exception)
         {
             OnErrorDeleteObservation?.Invoke(this, new ExceptionEventArgs(exception));
+        }
+
+        /// <summary>
+        /// The event raised after the server response
+        /// </summary>
+        public event EventHandler<ApiResponseEventArgs>? OnGetDashboard;
+
+        /// <summary>
+        /// The event raised after an error querying the server
+        /// </summary>
+        public event EventHandler<ExceptionEventArgs>? OnErrorGetDashboard;
+
+        internal void ExecuteOnGetDashboard(ObservationsApi.GetDashboardApiResponse apiResponse)
+        {
+            OnGetDashboard?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+        }
+
+        internal void ExecuteOnErrorGetDashboard(Exception exception)
+        {
+            OnErrorGetDashboard?.Invoke(this, new ExceptionEventArgs(exception));
+        }
+
+        /// <summary>
+        /// The event raised after the server response
+        /// </summary>
+        public event EventHandler<ApiResponseEventArgs>? OnGetDashboardPreferences;
+
+        /// <summary>
+        /// The event raised after an error querying the server
+        /// </summary>
+        public event EventHandler<ExceptionEventArgs>? OnErrorGetDashboardPreferences;
+
+        internal void ExecuteOnGetDashboardPreferences(ObservationsApi.GetDashboardPreferencesApiResponse apiResponse)
+        {
+            OnGetDashboardPreferences?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+        }
+
+        internal void ExecuteOnErrorGetDashboardPreferences(Exception exception)
+        {
+            OnErrorGetDashboardPreferences?.Invoke(this, new ExceptionEventArgs(exception));
         }
 
         /// <summary>
@@ -1471,6 +1761,26 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// The event raised after the server response
         /// </summary>
+        public event EventHandler<ApiResponseEventArgs>? OnSaveDashboardPreferences;
+
+        /// <summary>
+        /// The event raised after an error querying the server
+        /// </summary>
+        public event EventHandler<ExceptionEventArgs>? OnErrorSaveDashboardPreferences;
+
+        internal void ExecuteOnSaveDashboardPreferences(ObservationsApi.SaveDashboardPreferencesApiResponse apiResponse)
+        {
+            OnSaveDashboardPreferences?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+        }
+
+        internal void ExecuteOnErrorSaveDashboardPreferences(Exception exception)
+        {
+            OnErrorSaveDashboardPreferences?.Invoke(this, new ExceptionEventArgs(exception));
+        }
+
+        /// <summary>
+        /// The event raised after the server response
+        /// </summary>
         public event EventHandler<ApiResponseEventArgs>? OnUpdateObservation;
 
         /// <summary>
@@ -1506,6 +1816,26 @@ namespace EdGraph.Platform.Client.Api
         internal void ExecuteOnErrorUpsertObservationDraft(Exception exception)
         {
             OnErrorUpsertObservationDraft?.Invoke(this, new ExceptionEventArgs(exception));
+        }
+
+        /// <summary>
+        /// The event raised after the server response
+        /// </summary>
+        public event EventHandler<ApiResponseEventArgs>? OnVerifyDashboardAccess;
+
+        /// <summary>
+        /// The event raised after an error querying the server
+        /// </summary>
+        public event EventHandler<ExceptionEventArgs>? OnErrorVerifyDashboardAccess;
+
+        internal void ExecuteOnVerifyDashboardAccess(ObservationsApi.VerifyDashboardAccessApiResponse apiResponse)
+        {
+            OnVerifyDashboardAccess?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+        }
+
+        internal void ExecuteOnErrorVerifyDashboardAccess(Exception exception)
+        {
+            OnErrorVerifyDashboardAccess?.Invoke(this, new ExceptionEventArgs(exception));
         }
     }
 
@@ -2694,6 +3024,782 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="result"></param>
             /// <returns></returns>
             public bool TryOk([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiServicesObservationsDeleteObservationResponse? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Ok();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)200);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 400 BadRequest
+            /// </summary>
+            /// <returns></returns>
+            public bool IsBadRequest => 400 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 400 BadRequest
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails? BadRequest()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsBadRequest
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 400 BadRequest and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryBadRequest([NotNullWhen(true)]out EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = BadRequest();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)400);
+                }
+
+                return result != null;
+            }
+
+            private void OnDeserializationErrorDefaultImplementation(Exception exception, HttpStatusCode httpStatusCode)
+            {
+                bool suppressDefaultLog = false;
+                OnDeserializationError(ref suppressDefaultLog, exception, httpStatusCode);
+                if (!suppressDefaultLog)
+                    Logger.LogError(exception, "An error occurred while deserializing the {code} response.", httpStatusCode);
+            }
+
+            partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
+        }
+
+        partial void FormatGetDashboard(ref Guid tenantId, ref Guid dashboardId, ref Option<string> personaIdentifier);
+
+        /// <summary>
+        /// Validates the request parameters
+        /// </summary>
+        /// <param name="personaIdentifier"></param>
+        /// <returns></returns>
+        private void ValidateGetDashboard(Option<string> personaIdentifier)
+        {
+            if (personaIdentifier.IsSet && personaIdentifier.Value == null)
+                throw new ArgumentNullException(nameof(personaIdentifier));
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="dashboardId"></param>
+        /// <param name="personaIdentifier"></param>
+        private void AfterGetDashboardDefaultImplementation(IGetDashboardApiResponse apiResponseLocalVar, Guid tenantId, Guid dashboardId, Option<string> personaIdentifier)
+        {
+            bool suppressDefaultLog = false;
+            AfterGetDashboard(ref suppressDefaultLog, apiResponseLocalVar, tenantId, dashboardId, personaIdentifier);
+            if (!suppressDefaultLog)
+                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="suppressDefaultLog"></param>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="dashboardId"></param>
+        /// <param name="personaIdentifier"></param>
+        partial void AfterGetDashboard(ref bool suppressDefaultLog, IGetDashboardApiResponse apiResponseLocalVar, Guid tenantId, Guid dashboardId, Option<string> personaIdentifier);
+
+        /// <summary>
+        /// Logs exceptions that occur while retrieving the server response
+        /// </summary>
+        /// <param name="exception"></param>
+        /// <param name="pathFormat"></param>
+        /// <param name="path"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="dashboardId"></param>
+        /// <param name="personaIdentifier"></param>
+        private void OnErrorGetDashboardDefaultImplementation(Exception exception, string pathFormat, string path, Guid tenantId, Guid dashboardId, Option<string> personaIdentifier)
+        {
+            bool suppressDefaultLog = false;
+            OnErrorGetDashboard(ref suppressDefaultLog, exception, pathFormat, path, tenantId, dashboardId, personaIdentifier);
+            if (!suppressDefaultLog)
+                Logger.LogError(exception, "An error occurred while sending the request to the server.");
+        }
+
+        /// <summary>
+        /// A partial method that gives developers a way to provide customized exception handling
+        /// </summary>
+        /// <param name="suppressDefaultLog"></param>
+        /// <param name="exception"></param>
+        /// <param name="pathFormat"></param>
+        /// <param name="path"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="dashboardId"></param>
+        /// <param name="personaIdentifier"></param>
+        partial void OnErrorGetDashboard(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, Guid tenantId, Guid dashboardId, Option<string> personaIdentifier);
+
+        /// <summary>
+        /// Get Observation Dashboard 
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="dashboardId"></param>
+        /// <param name="personaIdentifier"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetDashboardApiResponse"/>&gt;</returns>
+        public async Task<IGetDashboardApiResponse?> GetDashboardOrDefaultAsync(Guid tenantId, Guid dashboardId, Option<string> personaIdentifier = default, System.Threading.CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                return await GetDashboardAsync(tenantId, dashboardId, personaIdentifier, cancellationToken).ConfigureAwait(false);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Get Observation Dashboard 
+        /// </summary>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="dashboardId"></param>
+        /// <param name="personaIdentifier"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetDashboardApiResponse"/>&gt;</returns>
+        public async Task<IGetDashboardApiResponse> GetDashboardAsync(Guid tenantId, Guid dashboardId, Option<string> personaIdentifier = default, System.Threading.CancellationToken cancellationToken = default)
+        {
+            UriBuilder uriBuilderLocalVar = new UriBuilder();
+
+            try
+            {
+                ValidateGetDashboard(personaIdentifier);
+
+                FormatGetDashboard(ref tenantId, ref dashboardId, ref personaIdentifier);
+
+                using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
+                {
+                    uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
+                    uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
+                    uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
+                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/observations/dashboards/{dashboardId}";
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BdashboardId%7D", Uri.EscapeDataString(dashboardId.ToString()));
+
+                    System.Collections.Specialized.NameValueCollection parseQueryStringLocalVar = System.Web.HttpUtility.ParseQueryString(string.Empty);
+
+                    if (personaIdentifier.IsSet)
+                        parseQueryStringLocalVar["personaIdentifier"] = ClientUtils.ParameterToString(personaIdentifier.Value);
+
+                    uriBuilderLocalVar.Query = parseQueryStringLocalVar.ToString();
+
+                    List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
+                    httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
+
+                    OAuthToken oauthTokenLocalVar1 = (OAuthToken) await OauthTokenProvider.GetAsync(cancellation: cancellationToken).ConfigureAwait(false);
+
+                    tokenBaseLocalVars.Add(oauthTokenLocalVar1);
+
+                    oauthTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar, "");
+
+                    string[] acceptLocalVars = new string[] {
+                        "application/json"
+                    };
+
+                    string? acceptLocalVar = ClientUtils.SelectHeaderAccept(acceptLocalVars);
+
+                    if (acceptLocalVar != null)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptLocalVar));
+
+                    httpRequestMessageLocalVar.Method = HttpMethod.Get;
+
+                    DateTime requestedAtLocalVar = DateTime.UtcNow;
+
+                    using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
+                    {
+                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+
+                        ILogger<GetDashboardApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<GetDashboardApiResponse>();
+
+                        GetDashboardApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/observations/dashboards/{dashboardId}", requestedAtLocalVar, _jsonSerializerOptions);
+
+                        AfterGetDashboardDefaultImplementation(apiResponseLocalVar, tenantId, dashboardId, personaIdentifier);
+
+                        Events.ExecuteOnGetDashboard(apiResponseLocalVar);
+
+                        if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
+                            foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
+                                tokenBaseLocalVar.BeginRateLimit();
+
+                        return apiResponseLocalVar;
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                OnErrorGetDashboardDefaultImplementation(e, "/tenants/{tenantId}/observations/dashboards/{dashboardId}", uriBuilderLocalVar.Path, tenantId, dashboardId, personaIdentifier);
+                Events.ExecuteOnErrorGetDashboard(e);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// The <see cref="GetDashboardApiResponse"/>
+        /// </summary>
+        public partial class GetDashboardApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IGetDashboardApiResponse
+        {
+            /// <summary>
+            /// The logger
+            /// </summary>
+            public ILogger<GetDashboardApiResponse> Logger { get; }
+
+            /// <summary>
+            /// The <see cref="GetDashboardApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="rawContent"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public GetDashboardApiResponse(ILogger<GetDashboardApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            partial void OnCreated(global::System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage);
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public bool IsUnauthorized => 401 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Unauthorized()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsUnauthorized
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryUnauthorized([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Unauthorized();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)401);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public bool IsForbidden => 403 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Forbidden()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsForbidden
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryForbidden([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Forbidden();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)403);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public bool IsInternalServerError => 500 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? InternalServerError()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsInternalServerError
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryInternalServerError([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = InternalServerError();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)500);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public bool IsOk => 200 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.AnalyticsApiReportsV1ReportResponse? Ok()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsOk
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.AnalyticsApiReportsV1ReportResponse>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryOk([NotNullWhen(true)]out EdGraph.Platform.Client.Model.AnalyticsApiReportsV1ReportResponse? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Ok();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)200);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 400 BadRequest
+            /// </summary>
+            /// <returns></returns>
+            public bool IsBadRequest => 400 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 400 BadRequest
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails? BadRequest()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsBadRequest
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 400 BadRequest and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryBadRequest([NotNullWhen(true)]out EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = BadRequest();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)400);
+                }
+
+                return result != null;
+            }
+
+            private void OnDeserializationErrorDefaultImplementation(Exception exception, HttpStatusCode httpStatusCode)
+            {
+                bool suppressDefaultLog = false;
+                OnDeserializationError(ref suppressDefaultLog, exception, httpStatusCode);
+                if (!suppressDefaultLog)
+                    Logger.LogError(exception, "An error occurred while deserializing the {code} response.", httpStatusCode);
+            }
+
+            partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
+        }
+
+        partial void FormatGetDashboardPreferences(ref Guid tenantId, ref Guid dashboardId);
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="dashboardId"></param>
+        private void AfterGetDashboardPreferencesDefaultImplementation(IGetDashboardPreferencesApiResponse apiResponseLocalVar, Guid tenantId, Guid dashboardId)
+        {
+            bool suppressDefaultLog = false;
+            AfterGetDashboardPreferences(ref suppressDefaultLog, apiResponseLocalVar, tenantId, dashboardId);
+            if (!suppressDefaultLog)
+                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="suppressDefaultLog"></param>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="dashboardId"></param>
+        partial void AfterGetDashboardPreferences(ref bool suppressDefaultLog, IGetDashboardPreferencesApiResponse apiResponseLocalVar, Guid tenantId, Guid dashboardId);
+
+        /// <summary>
+        /// Logs exceptions that occur while retrieving the server response
+        /// </summary>
+        /// <param name="exception"></param>
+        /// <param name="pathFormat"></param>
+        /// <param name="path"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="dashboardId"></param>
+        private void OnErrorGetDashboardPreferencesDefaultImplementation(Exception exception, string pathFormat, string path, Guid tenantId, Guid dashboardId)
+        {
+            bool suppressDefaultLog = false;
+            OnErrorGetDashboardPreferences(ref suppressDefaultLog, exception, pathFormat, path, tenantId, dashboardId);
+            if (!suppressDefaultLog)
+                Logger.LogError(exception, "An error occurred while sending the request to the server.");
+        }
+
+        /// <summary>
+        /// A partial method that gives developers a way to provide customized exception handling
+        /// </summary>
+        /// <param name="suppressDefaultLog"></param>
+        /// <param name="exception"></param>
+        /// <param name="pathFormat"></param>
+        /// <param name="path"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="dashboardId"></param>
+        partial void OnErrorGetDashboardPreferences(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, Guid tenantId, Guid dashboardId);
+
+        /// <summary>
+        /// Save user preferences for a given Dashboard 
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="dashboardId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetDashboardPreferencesApiResponse"/>&gt;</returns>
+        public async Task<IGetDashboardPreferencesApiResponse?> GetDashboardPreferencesOrDefaultAsync(Guid tenantId, Guid dashboardId, System.Threading.CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                return await GetDashboardPreferencesAsync(tenantId, dashboardId, cancellationToken).ConfigureAwait(false);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Save user preferences for a given Dashboard 
+        /// </summary>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="dashboardId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetDashboardPreferencesApiResponse"/>&gt;</returns>
+        public async Task<IGetDashboardPreferencesApiResponse> GetDashboardPreferencesAsync(Guid tenantId, Guid dashboardId, System.Threading.CancellationToken cancellationToken = default)
+        {
+            UriBuilder uriBuilderLocalVar = new UriBuilder();
+
+            try
+            {
+                FormatGetDashboardPreferences(ref tenantId, ref dashboardId);
+
+                using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
+                {
+                    uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
+                    uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
+                    uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
+                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/observations/dashboards/{dashboardId}/preferences";
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BdashboardId%7D", Uri.EscapeDataString(dashboardId.ToString()));
+
+                    List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
+                    httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
+
+                    OAuthToken oauthTokenLocalVar1 = (OAuthToken) await OauthTokenProvider.GetAsync(cancellation: cancellationToken).ConfigureAwait(false);
+
+                    tokenBaseLocalVars.Add(oauthTokenLocalVar1);
+
+                    oauthTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar, "");
+
+                    string[] acceptLocalVars = new string[] {
+                        "application/json"
+                    };
+
+                    string? acceptLocalVar = ClientUtils.SelectHeaderAccept(acceptLocalVars);
+
+                    if (acceptLocalVar != null)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptLocalVar));
+
+                    httpRequestMessageLocalVar.Method = HttpMethod.Get;
+
+                    DateTime requestedAtLocalVar = DateTime.UtcNow;
+
+                    using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
+                    {
+                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+
+                        ILogger<GetDashboardPreferencesApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<GetDashboardPreferencesApiResponse>();
+
+                        GetDashboardPreferencesApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/observations/dashboards/{dashboardId}/preferences", requestedAtLocalVar, _jsonSerializerOptions);
+
+                        AfterGetDashboardPreferencesDefaultImplementation(apiResponseLocalVar, tenantId, dashboardId);
+
+                        Events.ExecuteOnGetDashboardPreferences(apiResponseLocalVar);
+
+                        if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
+                            foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
+                                tokenBaseLocalVar.BeginRateLimit();
+
+                        return apiResponseLocalVar;
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                OnErrorGetDashboardPreferencesDefaultImplementation(e, "/tenants/{tenantId}/observations/dashboards/{dashboardId}/preferences", uriBuilderLocalVar.Path, tenantId, dashboardId);
+                Events.ExecuteOnErrorGetDashboardPreferences(e);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// The <see cref="GetDashboardPreferencesApiResponse"/>
+        /// </summary>
+        public partial class GetDashboardPreferencesApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IGetDashboardPreferencesApiResponse
+        {
+            /// <summary>
+            /// The logger
+            /// </summary>
+            public ILogger<GetDashboardPreferencesApiResponse> Logger { get; }
+
+            /// <summary>
+            /// The <see cref="GetDashboardPreferencesApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="rawContent"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public GetDashboardPreferencesApiResponse(ILogger<GetDashboardPreferencesApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            partial void OnCreated(global::System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage);
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public bool IsUnauthorized => 401 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Unauthorized()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsUnauthorized
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryUnauthorized([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Unauthorized();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)401);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public bool IsForbidden => 403 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Forbidden()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsForbidden
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryForbidden([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Forbidden();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)403);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public bool IsInternalServerError => 500 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? InternalServerError()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsInternalServerError
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryInternalServerError([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = InternalServerError();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)500);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public bool IsOk => 200 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.AnalyticsApiReportsV1ReportPreferencesResponse? Ok()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsOk
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.AnalyticsApiReportsV1ReportPreferencesResponse>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryOk([NotNullWhen(true)]out EdGraph.Platform.Client.Model.AnalyticsApiReportsV1ReportPreferencesResponse? result)
             {
                 result = null;
 
@@ -7827,6 +8933,417 @@ namespace EdGraph.Platform.Client.Api
             partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
         }
 
+        partial void FormatSaveDashboardPreferences(ref Guid tenantId, ref Guid dashboardId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest);
+
+        /// <summary>
+        /// Validates the request parameters
+        /// </summary>
+        /// <param name="edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest"></param>
+        /// <returns></returns>
+        private void ValidateSaveDashboardPreferences(Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest)
+        {
+            if (edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest.IsSet && edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest.Value == null)
+                throw new ArgumentNullException(nameof(edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest));
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="dashboardId"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest"></param>
+        private void AfterSaveDashboardPreferencesDefaultImplementation(ISaveDashboardPreferencesApiResponse apiResponseLocalVar, Guid tenantId, Guid dashboardId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest)
+        {
+            bool suppressDefaultLog = false;
+            AfterSaveDashboardPreferences(ref suppressDefaultLog, apiResponseLocalVar, tenantId, dashboardId, edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest);
+            if (!suppressDefaultLog)
+                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="suppressDefaultLog"></param>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="dashboardId"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest"></param>
+        partial void AfterSaveDashboardPreferences(ref bool suppressDefaultLog, ISaveDashboardPreferencesApiResponse apiResponseLocalVar, Guid tenantId, Guid dashboardId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest);
+
+        /// <summary>
+        /// Logs exceptions that occur while retrieving the server response
+        /// </summary>
+        /// <param name="exception"></param>
+        /// <param name="pathFormat"></param>
+        /// <param name="path"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="dashboardId"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest"></param>
+        private void OnErrorSaveDashboardPreferencesDefaultImplementation(Exception exception, string pathFormat, string path, Guid tenantId, Guid dashboardId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest)
+        {
+            bool suppressDefaultLog = false;
+            OnErrorSaveDashboardPreferences(ref suppressDefaultLog, exception, pathFormat, path, tenantId, dashboardId, edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest);
+            if (!suppressDefaultLog)
+                Logger.LogError(exception, "An error occurred while sending the request to the server.");
+        }
+
+        /// <summary>
+        /// A partial method that gives developers a way to provide customized exception handling
+        /// </summary>
+        /// <param name="suppressDefaultLog"></param>
+        /// <param name="exception"></param>
+        /// <param name="pathFormat"></param>
+        /// <param name="path"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="dashboardId"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest"></param>
+        partial void OnErrorSaveDashboardPreferences(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, Guid tenantId, Guid dashboardId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest);
+
+        /// <summary>
+        /// Save user preferences for a given Dashboard 
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="dashboardId"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="ISaveDashboardPreferencesApiResponse"/>&gt;</returns>
+        public async Task<ISaveDashboardPreferencesApiResponse?> SaveDashboardPreferencesOrDefaultAsync(Guid tenantId, Guid dashboardId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest = default, System.Threading.CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                return await SaveDashboardPreferencesAsync(tenantId, dashboardId, edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest, cancellationToken).ConfigureAwait(false);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Save user preferences for a given Dashboard 
+        /// </summary>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="dashboardId"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="ISaveDashboardPreferencesApiResponse"/>&gt;</returns>
+        public async Task<ISaveDashboardPreferencesApiResponse> SaveDashboardPreferencesAsync(Guid tenantId, Guid dashboardId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest = default, System.Threading.CancellationToken cancellationToken = default)
+        {
+            UriBuilder uriBuilderLocalVar = new UriBuilder();
+
+            try
+            {
+                ValidateSaveDashboardPreferences(edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest);
+
+                FormatSaveDashboardPreferences(ref tenantId, ref dashboardId, edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest);
+
+                using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
+                {
+                    uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
+                    uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
+                    uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
+                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/observations/dashboards/{dashboardId}/preferences";
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BdashboardId%7D", Uri.EscapeDataString(dashboardId.ToString()));
+
+                    if (edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest.IsSet)
+                        httpRequestMessageLocalVar.Content = (edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest.Value as object) is System.IO.Stream stream
+                            ? httpRequestMessageLocalVar.Content = new StreamContent(stream)
+                            : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest.Value, _jsonSerializerOptions));
+
+                    List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
+                    httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
+
+                    OAuthToken oauthTokenLocalVar1 = (OAuthToken) await OauthTokenProvider.GetAsync(cancellation: cancellationToken).ConfigureAwait(false);
+
+                    tokenBaseLocalVars.Add(oauthTokenLocalVar1);
+
+                    oauthTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar, "");
+
+                    string[] contentTypes = new string[] {
+                        "application/json-patch+json",
+                        "application/json",
+                        "text/json",
+                        "application/*+json"
+                    };
+
+                    string? contentTypeLocalVar = ClientUtils.SelectHeaderContentType(contentTypes);
+
+                    if (contentTypeLocalVar != null && httpRequestMessageLocalVar.Content != null)
+                        httpRequestMessageLocalVar.Content.Headers.ContentType = new MediaTypeHeaderValue(contentTypeLocalVar);
+
+                    string[] acceptLocalVars = new string[] {
+                        "application/json"
+                    };
+
+                    string? acceptLocalVar = ClientUtils.SelectHeaderAccept(acceptLocalVars);
+
+                    if (acceptLocalVar != null)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptLocalVar));
+
+                    httpRequestMessageLocalVar.Method = HttpMethod.Post;
+
+                    DateTime requestedAtLocalVar = DateTime.UtcNow;
+
+                    using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
+                    {
+                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+
+                        ILogger<SaveDashboardPreferencesApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<SaveDashboardPreferencesApiResponse>();
+
+                        SaveDashboardPreferencesApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/observations/dashboards/{dashboardId}/preferences", requestedAtLocalVar, _jsonSerializerOptions);
+
+                        AfterSaveDashboardPreferencesDefaultImplementation(apiResponseLocalVar, tenantId, dashboardId, edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest);
+
+                        Events.ExecuteOnSaveDashboardPreferences(apiResponseLocalVar);
+
+                        if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
+                            foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
+                                tokenBaseLocalVar.BeginRateLimit();
+
+                        return apiResponseLocalVar;
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                OnErrorSaveDashboardPreferencesDefaultImplementation(e, "/tenants/{tenantId}/observations/dashboards/{dashboardId}/preferences", uriBuilderLocalVar.Path, tenantId, dashboardId, edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest);
+                Events.ExecuteOnErrorSaveDashboardPreferences(e);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// The <see cref="SaveDashboardPreferencesApiResponse"/>
+        /// </summary>
+        public partial class SaveDashboardPreferencesApiResponse : EdGraph.Platform.Client.Client.ApiResponse, ISaveDashboardPreferencesApiResponse
+        {
+            /// <summary>
+            /// The logger
+            /// </summary>
+            public ILogger<SaveDashboardPreferencesApiResponse> Logger { get; }
+
+            /// <summary>
+            /// The <see cref="SaveDashboardPreferencesApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="rawContent"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public SaveDashboardPreferencesApiResponse(ILogger<SaveDashboardPreferencesApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            partial void OnCreated(global::System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage);
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public bool IsUnauthorized => 401 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Unauthorized()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsUnauthorized
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryUnauthorized([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Unauthorized();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)401);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public bool IsForbidden => 403 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Forbidden()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsForbidden
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryForbidden([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Forbidden();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)403);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public bool IsInternalServerError => 500 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? InternalServerError()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsInternalServerError
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryInternalServerError([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = InternalServerError();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)500);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public bool IsOk => 200 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.AnalyticsApiReportsV1ReportResponse? Ok()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsOk
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.AnalyticsApiReportsV1ReportResponse>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryOk([NotNullWhen(true)]out EdGraph.Platform.Client.Model.AnalyticsApiReportsV1ReportResponse? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Ok();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)200);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 400 BadRequest
+            /// </summary>
+            /// <returns></returns>
+            public bool IsBadRequest => 400 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 400 BadRequest
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails? BadRequest()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsBadRequest
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 400 BadRequest and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryBadRequest([NotNullWhen(true)]out EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = BadRequest();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)400);
+                }
+
+                return result != null;
+            }
+
+            private void OnDeserializationErrorDefaultImplementation(Exception exception, HttpStatusCode httpStatusCode)
+            {
+                bool suppressDefaultLog = false;
+                OnDeserializationError(ref suppressDefaultLog, exception, httpStatusCode);
+                if (!suppressDefaultLog)
+                    Logger.LogError(exception, "An error occurred while deserializing the {code} response.", httpStatusCode);
+            }
+
+            partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
+        }
+
         partial void FormatUpdateObservation(ref Guid tenantId, ref Guid observationId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest);
 
         /// <summary>
@@ -8593,6 +10110,417 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="result"></param>
             /// <returns></returns>
             public bool TryOk([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertObservationDraftResponse? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Ok();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)200);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 400 BadRequest
+            /// </summary>
+            /// <returns></returns>
+            public bool IsBadRequest => 400 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 400 BadRequest
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails? BadRequest()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsBadRequest
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 400 BadRequest and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryBadRequest([NotNullWhen(true)]out EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = BadRequest();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)400);
+                }
+
+                return result != null;
+            }
+
+            private void OnDeserializationErrorDefaultImplementation(Exception exception, HttpStatusCode httpStatusCode)
+            {
+                bool suppressDefaultLog = false;
+                OnDeserializationError(ref suppressDefaultLog, exception, httpStatusCode);
+                if (!suppressDefaultLog)
+                    Logger.LogError(exception, "An error occurred while deserializing the {code} response.", httpStatusCode);
+            }
+
+            partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
+        }
+
+        partial void FormatVerifyDashboardAccess(ref Guid tenantId, ref Guid reportId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
+
+        /// <summary>
+        /// Validates the request parameters
+        /// </summary>
+        /// <param name="edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest"></param>
+        /// <returns></returns>
+        private void ValidateVerifyDashboardAccess(Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest)
+        {
+            if (edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest.IsSet && edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest.Value == null)
+                throw new ArgumentNullException(nameof(edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest));
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="reportId"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest"></param>
+        private void AfterVerifyDashboardAccessDefaultImplementation(IVerifyDashboardAccessApiResponse apiResponseLocalVar, Guid tenantId, Guid reportId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest)
+        {
+            bool suppressDefaultLog = false;
+            AfterVerifyDashboardAccess(ref suppressDefaultLog, apiResponseLocalVar, tenantId, reportId, edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
+            if (!suppressDefaultLog)
+                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="suppressDefaultLog"></param>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="reportId"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest"></param>
+        partial void AfterVerifyDashboardAccess(ref bool suppressDefaultLog, IVerifyDashboardAccessApiResponse apiResponseLocalVar, Guid tenantId, Guid reportId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
+
+        /// <summary>
+        /// Logs exceptions that occur while retrieving the server response
+        /// </summary>
+        /// <param name="exception"></param>
+        /// <param name="pathFormat"></param>
+        /// <param name="path"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="reportId"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest"></param>
+        private void OnErrorVerifyDashboardAccessDefaultImplementation(Exception exception, string pathFormat, string path, Guid tenantId, Guid reportId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest)
+        {
+            bool suppressDefaultLog = false;
+            OnErrorVerifyDashboardAccess(ref suppressDefaultLog, exception, pathFormat, path, tenantId, reportId, edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
+            if (!suppressDefaultLog)
+                Logger.LogError(exception, "An error occurred while sending the request to the server.");
+        }
+
+        /// <summary>
+        /// A partial method that gives developers a way to provide customized exception handling
+        /// </summary>
+        /// <param name="suppressDefaultLog"></param>
+        /// <param name="exception"></param>
+        /// <param name="pathFormat"></param>
+        /// <param name="path"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="reportId"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest"></param>
+        partial void OnErrorVerifyDashboardAccess(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, Guid tenantId, Guid reportId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
+
+        /// <summary>
+        /// Verify user access to dashboards 
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="reportId"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IVerifyDashboardAccessApiResponse"/>&gt;</returns>
+        public async Task<IVerifyDashboardAccessApiResponse?> VerifyDashboardAccessOrDefaultAsync(Guid tenantId, Guid reportId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest = default, System.Threading.CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                return await VerifyDashboardAccessAsync(tenantId, reportId, edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest, cancellationToken).ConfigureAwait(false);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Verify user access to dashboards 
+        /// </summary>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="reportId"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IVerifyDashboardAccessApiResponse"/>&gt;</returns>
+        public async Task<IVerifyDashboardAccessApiResponse> VerifyDashboardAccessAsync(Guid tenantId, Guid reportId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest = default, System.Threading.CancellationToken cancellationToken = default)
+        {
+            UriBuilder uriBuilderLocalVar = new UriBuilder();
+
+            try
+            {
+                ValidateVerifyDashboardAccess(edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
+
+                FormatVerifyDashboardAccess(ref tenantId, ref reportId, edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
+
+                using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
+                {
+                    uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
+                    uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
+                    uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
+                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/observations/dashboards/access";
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BreportId%7D", Uri.EscapeDataString(reportId.ToString()));
+
+                    if (edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest.IsSet)
+                        httpRequestMessageLocalVar.Content = (edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest.Value as object) is System.IO.Stream stream
+                            ? httpRequestMessageLocalVar.Content = new StreamContent(stream)
+                            : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest.Value, _jsonSerializerOptions));
+
+                    List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
+                    httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
+
+                    OAuthToken oauthTokenLocalVar1 = (OAuthToken) await OauthTokenProvider.GetAsync(cancellation: cancellationToken).ConfigureAwait(false);
+
+                    tokenBaseLocalVars.Add(oauthTokenLocalVar1);
+
+                    oauthTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar, "");
+
+                    string[] contentTypes = new string[] {
+                        "application/json-patch+json",
+                        "application/json",
+                        "text/json",
+                        "application/*+json"
+                    };
+
+                    string? contentTypeLocalVar = ClientUtils.SelectHeaderContentType(contentTypes);
+
+                    if (contentTypeLocalVar != null && httpRequestMessageLocalVar.Content != null)
+                        httpRequestMessageLocalVar.Content.Headers.ContentType = new MediaTypeHeaderValue(contentTypeLocalVar);
+
+                    string[] acceptLocalVars = new string[] {
+                        "application/json"
+                    };
+
+                    string? acceptLocalVar = ClientUtils.SelectHeaderAccept(acceptLocalVars);
+
+                    if (acceptLocalVar != null)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptLocalVar));
+
+                    httpRequestMessageLocalVar.Method = HttpMethod.Post;
+
+                    DateTime requestedAtLocalVar = DateTime.UtcNow;
+
+                    using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
+                    {
+                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+
+                        ILogger<VerifyDashboardAccessApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<VerifyDashboardAccessApiResponse>();
+
+                        VerifyDashboardAccessApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/observations/dashboards/access", requestedAtLocalVar, _jsonSerializerOptions);
+
+                        AfterVerifyDashboardAccessDefaultImplementation(apiResponseLocalVar, tenantId, reportId, edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
+
+                        Events.ExecuteOnVerifyDashboardAccess(apiResponseLocalVar);
+
+                        if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
+                            foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
+                                tokenBaseLocalVar.BeginRateLimit();
+
+                        return apiResponseLocalVar;
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                OnErrorVerifyDashboardAccessDefaultImplementation(e, "/tenants/{tenantId}/observations/dashboards/access", uriBuilderLocalVar.Path, tenantId, reportId, edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
+                Events.ExecuteOnErrorVerifyDashboardAccess(e);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// The <see cref="VerifyDashboardAccessApiResponse"/>
+        /// </summary>
+        public partial class VerifyDashboardAccessApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IVerifyDashboardAccessApiResponse
+        {
+            /// <summary>
+            /// The logger
+            /// </summary>
+            public ILogger<VerifyDashboardAccessApiResponse> Logger { get; }
+
+            /// <summary>
+            /// The <see cref="VerifyDashboardAccessApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="rawContent"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public VerifyDashboardAccessApiResponse(ILogger<VerifyDashboardAccessApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            partial void OnCreated(global::System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage);
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public bool IsUnauthorized => 401 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Unauthorized()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsUnauthorized
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryUnauthorized([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Unauthorized();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)401);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public bool IsForbidden => 403 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Forbidden()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsForbidden
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryForbidden([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Forbidden();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)403);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public bool IsInternalServerError => 500 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? InternalServerError()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsInternalServerError
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryInternalServerError([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = InternalServerError();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)500);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public bool IsOk => 200 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessResponse? Ok()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsOk
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessResponse>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryOk([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessResponse? result)
             {
                 result = null;
 

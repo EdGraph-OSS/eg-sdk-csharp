@@ -178,5 +178,14 @@ namespace EdGraph.Platform.Client.Test.Model
         {
             // TODO unit test for the property 'CustomId'
         }
+
+        /// <summary>
+        /// Test the property 'Multiline'
+        /// </summary>
+        [Fact]
+        public void MultilineTest()
+        {
+            // TODO unit test for the property 'Multiline'
+        }
     }
 }

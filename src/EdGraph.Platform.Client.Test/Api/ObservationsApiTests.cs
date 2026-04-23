@@ -92,6 +92,33 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
+        /// Test GetDashboard
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetDashboardAsyncTest()
+        {
+            Guid tenantId = default!;
+            Guid dashboardId = default!;
+            Client.Option<string> personaIdentifier = default!;
+            var response = await _instance.GetDashboardAsync(tenantId, dashboardId, personaIdentifier);
+            var model = response.Unauthorized();
+            Assert.IsType<AnalyticsApiReportsV1ReportResponse>(model);
+        }
+
+        /// <summary>
+        /// Test GetDashboardPreferences
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetDashboardPreferencesAsyncTest()
+        {
+            Guid tenantId = default!;
+            Guid dashboardId = default!;
+            var response = await _instance.GetDashboardPreferencesAsync(tenantId, dashboardId);
+            var model = response.Unauthorized();
+            Assert.IsType<AnalyticsApiReportsV1ReportPreferencesResponse>(model);
+        }
+
+        /// <summary>
         /// Test GetEvalueeSections
         /// </summary>
         [Fact (Skip = "not implemented")]
@@ -285,6 +312,20 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
+        /// Test SaveDashboardPreferences
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task SaveDashboardPreferencesAsyncTest()
+        {
+            Guid tenantId = default!;
+            Guid dashboardId = default!;
+            Client.Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest = default!;
+            var response = await _instance.SaveDashboardPreferencesAsync(tenantId, dashboardId, edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<AnalyticsApiReportsV1ReportResponse>(model);
+        }
+
+        /// <summary>
         /// Test UpdateObservation
         /// </summary>
         [Fact (Skip = "not implemented")]
@@ -311,6 +352,20 @@ namespace EdGraph.Platform.Client.Test.Api
             var response = await _instance.UpsertObservationDraftAsync(tenantId, observationId, formId, edGraphHttpAggregatorsTenantApiServicesObservationsUpsertObservationDraftRequest);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertObservationDraftResponse>(model);
+        }
+
+        /// <summary>
+        /// Test VerifyDashboardAccess
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task VerifyDashboardAccessAsyncTest()
+        {
+            Guid tenantId = default!;
+            Guid reportId = default!;
+            Client.Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest = default!;
+            var response = await _instance.VerifyDashboardAccessAsync(tenantId, reportId, edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessResponse>(model);
         }
     }
 }
