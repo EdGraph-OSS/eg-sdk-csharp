@@ -322,7 +322,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest = default!;
             var response = await _instance.SaveDashboardPreferencesAsync(tenantId, dashboardId, edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest);
             var model = response.Unauthorized();
-            Assert.IsType<AnalyticsApiReportsV1ReportResponse>(model);
+            Assert.IsType<AnalyticsApiReportsV1ReportPreferencesSavedResponse>(model);
         }
 
         /// <summary>
@@ -361,9 +361,8 @@ namespace EdGraph.Platform.Client.Test.Api
         public async Task VerifyDashboardAccessAsyncTest()
         {
             Guid tenantId = default!;
-            Guid reportId = default!;
             Client.Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest = default!;
-            var response = await _instance.VerifyDashboardAccessAsync(tenantId, reportId, edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
+            var response = await _instance.VerifyDashboardAccessAsync(tenantId, edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessResponse>(model);
         }

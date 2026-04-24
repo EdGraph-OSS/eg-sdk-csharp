@@ -77,6 +77,7 @@ namespace EdGraph.Platform.Client.Client
             _jsonOptions.Converters.Add(new AnalyticsApiReportsV1ReportPaginatedItemsResponseJsonConverter());
             _jsonOptions.Converters.Add(new AnalyticsApiReportsV1ReportPreferenceDetailsResponseJsonConverter());
             _jsonOptions.Converters.Add(new AnalyticsApiReportsV1ReportPreferencesResponseJsonConverter());
+            _jsonOptions.Converters.Add(new AnalyticsApiReportsV1ReportPreferencesSavedResponseJsonConverter());
             _jsonOptions.Converters.Add(new AnalyticsApiReportsV1ReportResponseJsonConverter());
             _jsonOptions.Converters.Add(new AnalyticsApiReportsV1ReportSourceJsonConverter());
             _jsonOptions.Converters.Add(new AnalyticsApiReportsV1ReportSourceNullableJsonConverter());

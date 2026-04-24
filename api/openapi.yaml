@@ -29163,7 +29163,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/AnalyticsApi.Reports.V1.ReportResponse'
+                $ref: '#/components/schemas/AnalyticsApi.Reports.V1.ReportPreferencesSavedResponse'
           description: The requested resource was successfully retrieved.
         "400":
           content:
@@ -29255,15 +29255,6 @@ paths:
         explode: false
         in: path
         name: tenantId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: ""
-        explode: false
-        in: path
-        name: reportId
         required: true
         schema:
           format: uuid
@@ -45182,6 +45173,23 @@ components:
           nullable: true
           readOnly: true
           type: array
+      type: object
+    AnalyticsApi.Reports.V1.ReportPreferencesSavedResponse:
+      additionalProperties: false
+      example:
+        reportId: reportId
+        tenantId: tenantId
+        userId: userId
+      properties:
+        tenantId:
+          nullable: true
+          type: string
+        reportId:
+          nullable: true
+          type: string
+        userId:
+          nullable: true
+          type: string
       type: object
     AnalyticsApi.Reports.V1.ReportResponse:
       additionalProperties: false

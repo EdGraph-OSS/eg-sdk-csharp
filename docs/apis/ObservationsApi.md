@@ -1775,7 +1775,7 @@ catch (ApiException e)
 
 <a id="savedashboardpreferences"></a>
 # **SaveDashboardPreferences**
-> AnalyticsApiReportsV1ReportResponse SaveDashboardPreferences (Guid tenantId, Guid dashboardId, EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest = null)
+> AnalyticsApiReportsV1ReportPreferencesSavedResponse SaveDashboardPreferences (Guid tenantId, Guid dashboardId, EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest = null)
 
 Save user preferences for a given Dashboard
 
@@ -1806,7 +1806,7 @@ namespace Example
             try
             {
                 // Save user preferences for a given Dashboard
-                AnalyticsApiReportsV1ReportResponse result = apiInstance.SaveDashboardPreferences(tenantId, dashboardId, edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest);
+                AnalyticsApiReportsV1ReportPreferencesSavedResponse result = apiInstance.SaveDashboardPreferences(tenantId, dashboardId, edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -1827,7 +1827,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Save user preferences for a given Dashboard
-    ApiResponse<AnalyticsApiReportsV1ReportResponse> response = apiInstance.SaveDashboardPreferencesWithHttpInfo(tenantId, dashboardId, edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest);
+    ApiResponse<AnalyticsApiReportsV1ReportPreferencesSavedResponse> response = apiInstance.SaveDashboardPreferencesWithHttpInfo(tenantId, dashboardId, edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -1850,7 +1850,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**AnalyticsApiReportsV1ReportResponse**](AnalyticsApiReportsV1ReportResponse.md)
+[**AnalyticsApiReportsV1ReportPreferencesSavedResponse**](AnalyticsApiReportsV1ReportPreferencesSavedResponse.md)
 
 ### Authorization
 
@@ -2077,7 +2077,7 @@ catch (ApiException e)
 
 <a id="verifydashboardaccess"></a>
 # **VerifyDashboardAccess**
-> EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessResponse VerifyDashboardAccess (Guid tenantId, Guid reportId, EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest = null)
+> EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessResponse VerifyDashboardAccess (Guid tenantId, EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest = null)
 
 Verify user access to dashboards
 
@@ -2102,13 +2102,12 @@ namespace Example
 
             var apiInstance = new ObservationsApi(config);
             var tenantId = "tenantId_example";  // Guid | 
-            var reportId = "reportId_example";  // Guid | 
             var edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest = new EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest(); // EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest |  (optional) 
 
             try
             {
                 // Verify user access to dashboards
-                EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessResponse result = apiInstance.VerifyDashboardAccess(tenantId, reportId, edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
+                EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessResponse result = apiInstance.VerifyDashboardAccess(tenantId, edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -2129,7 +2128,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Verify user access to dashboards
-    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessResponse> response = apiInstance.VerifyDashboardAccessWithHttpInfo(tenantId, reportId, edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
+    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessResponse> response = apiInstance.VerifyDashboardAccessWithHttpInfo(tenantId, edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -2147,7 +2146,6 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **tenantId** | **Guid** |  |  |
-| **reportId** | **Guid** |  |  |
 | **edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest** | [**EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest**](EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest.md) |  | [optional]  |
 
 ### Return type

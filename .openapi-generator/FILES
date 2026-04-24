@@ -134,6 +134,7 @@ docs/models/AnalyticsApiReportsV1ReportIdResponse.md
 docs/models/AnalyticsApiReportsV1ReportPaginatedItemsResponse.md
 docs/models/AnalyticsApiReportsV1ReportPreferenceDetailsResponse.md
 docs/models/AnalyticsApiReportsV1ReportPreferencesResponse.md
+docs/models/AnalyticsApiReportsV1ReportPreferencesSavedResponse.md
 docs/models/AnalyticsApiReportsV1ReportResponse.md
 docs/models/AnalyticsApiReportsV1ReportSource.md
 docs/models/AnalyticsApiReportsV1SyncLatestVersionRequest.md
@@ -1162,6 +1163,7 @@ src/EdGraph.Platform.Client.Test/Model/AnalyticsApiReportsV1ReportIdResponseTest
 src/EdGraph.Platform.Client.Test/Model/AnalyticsApiReportsV1ReportPaginatedItemsResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/AnalyticsApiReportsV1ReportPreferenceDetailsResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/AnalyticsApiReportsV1ReportPreferencesResponseTests.cs
+src/EdGraph.Platform.Client.Test/Model/AnalyticsApiReportsV1ReportPreferencesSavedResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/AnalyticsApiReportsV1ReportResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/AnalyticsApiReportsV1ReportSourceTests.cs
 src/EdGraph.Platform.Client.Test/Model/AnalyticsApiReportsV1SyncLatestVersionRequestTests.cs
@@ -2210,6 +2212,7 @@ src/EdGraph.Platform.Client/Model/AnalyticsApiReportsV1ReportIdResponse.cs
 src/EdGraph.Platform.Client/Model/AnalyticsApiReportsV1ReportPaginatedItemsResponse.cs
 src/EdGraph.Platform.Client/Model/AnalyticsApiReportsV1ReportPreferenceDetailsResponse.cs
 src/EdGraph.Platform.Client/Model/AnalyticsApiReportsV1ReportPreferencesResponse.cs
+src/EdGraph.Platform.Client/Model/AnalyticsApiReportsV1ReportPreferencesSavedResponse.cs
 src/EdGraph.Platform.Client/Model/AnalyticsApiReportsV1ReportResponse.cs
 src/EdGraph.Platform.Client/Model/AnalyticsApiReportsV1ReportSource.cs
 src/EdGraph.Platform.Client/Model/AnalyticsApiReportsV1SyncLatestVersionRequest.cs

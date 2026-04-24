@@ -631,11 +631,10 @@ namespace EdGraph.Platform.Client.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
-        /// <param name="reportId"></param>
         /// <param name="edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IVerifyDashboardAccessApiResponse"/>&gt;</returns>
-        Task<IVerifyDashboardAccessApiResponse> VerifyDashboardAccessAsync(Guid tenantId, Guid reportId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IVerifyDashboardAccessApiResponse> VerifyDashboardAccessAsync(Guid tenantId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Verify user access to dashboards
@@ -644,11 +643,10 @@ namespace EdGraph.Platform.Client.Api
         /// 
         /// </remarks>
         /// <param name="tenantId"></param>
-        /// <param name="reportId"></param>
         /// <param name="edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IVerifyDashboardAccessApiResponse"/>?&gt;</returns>
-        Task<IVerifyDashboardAccessApiResponse?> VerifyDashboardAccessOrDefaultAsync(Guid tenantId, Guid reportId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IVerifyDashboardAccessApiResponse?> VerifyDashboardAccessOrDefaultAsync(Guid tenantId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest = default, System.Threading.CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -1272,7 +1270,7 @@ namespace EdGraph.Platform.Client.Api
     /// <summary>
     /// The <see cref="ISaveDashboardPreferencesApiResponse"/>
     /// </summary>
-    public interface ISaveDashboardPreferencesApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.AnalyticsApiReportsV1ReportResponse?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>
+    public interface ISaveDashboardPreferencesApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.AnalyticsApiReportsV1ReportPreferencesSavedResponse?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>
     {
         /// <summary>
         /// Returns true if the response is 401 Unauthorized
@@ -9267,11 +9265,11 @@ namespace EdGraph.Platform.Client.Api
             /// Deserializes the response if the response is 200 Ok
             /// </summary>
             /// <returns></returns>
-            public EdGraph.Platform.Client.Model.AnalyticsApiReportsV1ReportResponse? Ok()
+            public EdGraph.Platform.Client.Model.AnalyticsApiReportsV1ReportPreferencesSavedResponse? Ok()
             {
                 // This logic may be modified with the AsModel.mustache template
                 return IsOk
-                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.AnalyticsApiReportsV1ReportResponse>(RawContent, _jsonSerializerOptions)
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.AnalyticsApiReportsV1ReportPreferencesSavedResponse>(RawContent, _jsonSerializerOptions)
                     : null;
             }
 
@@ -9280,7 +9278,7 @@ namespace EdGraph.Platform.Client.Api
             /// </summary>
             /// <param name="result"></param>
             /// <returns></returns>
-            public bool TryOk([NotNullWhen(true)]out EdGraph.Platform.Client.Model.AnalyticsApiReportsV1ReportResponse? result)
+            public bool TryOk([NotNullWhen(true)]out EdGraph.Platform.Client.Model.AnalyticsApiReportsV1ReportPreferencesSavedResponse? result)
             {
                 result = null;
 
@@ -10173,7 +10171,7 @@ namespace EdGraph.Platform.Client.Api
             partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
         }
 
-        partial void FormatVerifyDashboardAccess(ref Guid tenantId, ref Guid reportId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
+        partial void FormatVerifyDashboardAccess(ref Guid tenantId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
 
         /// <summary>
         /// Validates the request parameters
@@ -10191,12 +10189,11 @@ namespace EdGraph.Platform.Client.Api
         /// </summary>
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
-        /// <param name="reportId"></param>
         /// <param name="edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest"></param>
-        private void AfterVerifyDashboardAccessDefaultImplementation(IVerifyDashboardAccessApiResponse apiResponseLocalVar, Guid tenantId, Guid reportId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest)
+        private void AfterVerifyDashboardAccessDefaultImplementation(IVerifyDashboardAccessApiResponse apiResponseLocalVar, Guid tenantId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest)
         {
             bool suppressDefaultLog = false;
-            AfterVerifyDashboardAccess(ref suppressDefaultLog, apiResponseLocalVar, tenantId, reportId, edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
+            AfterVerifyDashboardAccess(ref suppressDefaultLog, apiResponseLocalVar, tenantId, edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -10207,9 +10204,8 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="suppressDefaultLog"></param>
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
-        /// <param name="reportId"></param>
         /// <param name="edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest"></param>
-        partial void AfterVerifyDashboardAccess(ref bool suppressDefaultLog, IVerifyDashboardAccessApiResponse apiResponseLocalVar, Guid tenantId, Guid reportId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
+        partial void AfterVerifyDashboardAccess(ref bool suppressDefaultLog, IVerifyDashboardAccessApiResponse apiResponseLocalVar, Guid tenantId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -10218,12 +10214,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pathFormat"></param>
         /// <param name="path"></param>
         /// <param name="tenantId"></param>
-        /// <param name="reportId"></param>
         /// <param name="edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest"></param>
-        private void OnErrorVerifyDashboardAccessDefaultImplementation(Exception exception, string pathFormat, string path, Guid tenantId, Guid reportId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest)
+        private void OnErrorVerifyDashboardAccessDefaultImplementation(Exception exception, string pathFormat, string path, Guid tenantId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest)
         {
             bool suppressDefaultLog = false;
-            OnErrorVerifyDashboardAccess(ref suppressDefaultLog, exception, pathFormat, path, tenantId, reportId, edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
+            OnErrorVerifyDashboardAccess(ref suppressDefaultLog, exception, pathFormat, path, tenantId, edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
             if (!suppressDefaultLog)
                 Logger.LogError(exception, "An error occurred while sending the request to the server.");
         }
@@ -10236,23 +10231,21 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pathFormat"></param>
         /// <param name="path"></param>
         /// <param name="tenantId"></param>
-        /// <param name="reportId"></param>
         /// <param name="edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest"></param>
-        partial void OnErrorVerifyDashboardAccess(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, Guid tenantId, Guid reportId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
+        partial void OnErrorVerifyDashboardAccess(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, Guid tenantId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
 
         /// <summary>
         /// Verify user access to dashboards 
         /// </summary>
         /// <param name="tenantId"></param>
-        /// <param name="reportId"></param>
         /// <param name="edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IVerifyDashboardAccessApiResponse"/>&gt;</returns>
-        public async Task<IVerifyDashboardAccessApiResponse?> VerifyDashboardAccessOrDefaultAsync(Guid tenantId, Guid reportId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IVerifyDashboardAccessApiResponse?> VerifyDashboardAccessOrDefaultAsync(Guid tenantId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest = default, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await VerifyDashboardAccessAsync(tenantId, reportId, edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest, cancellationToken).ConfigureAwait(false);
+                return await VerifyDashboardAccessAsync(tenantId, edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -10265,11 +10258,10 @@ namespace EdGraph.Platform.Client.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
-        /// <param name="reportId"></param>
         /// <param name="edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IVerifyDashboardAccessApiResponse"/>&gt;</returns>
-        public async Task<IVerifyDashboardAccessApiResponse> VerifyDashboardAccessAsync(Guid tenantId, Guid reportId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IVerifyDashboardAccessApiResponse> VerifyDashboardAccessAsync(Guid tenantId, Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest = default, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
@@ -10277,7 +10269,7 @@ namespace EdGraph.Platform.Client.Api
             {
                 ValidateVerifyDashboardAccess(edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
 
-                FormatVerifyDashboardAccess(ref tenantId, ref reportId, edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
+                FormatVerifyDashboardAccess(ref tenantId, edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -10286,7 +10278,6 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
                     uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/observations/dashboards/access";
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
-                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BreportId%7D", Uri.EscapeDataString(reportId.ToString()));
 
                     if (edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest.IsSet)
                         httpRequestMessageLocalVar.Content = (edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest.Value as object) is System.IO.Stream stream
@@ -10335,7 +10326,7 @@ namespace EdGraph.Platform.Client.Api
 
                         VerifyDashboardAccessApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/observations/dashboards/access", requestedAtLocalVar, _jsonSerializerOptions);
 
-                        AfterVerifyDashboardAccessDefaultImplementation(apiResponseLocalVar, tenantId, reportId, edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
+                        AfterVerifyDashboardAccessDefaultImplementation(apiResponseLocalVar, tenantId, edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
 
                         Events.ExecuteOnVerifyDashboardAccess(apiResponseLocalVar);
 
@@ -10349,7 +10340,7 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorVerifyDashboardAccessDefaultImplementation(e, "/tenants/{tenantId}/observations/dashboards/access", uriBuilderLocalVar.Path, tenantId, reportId, edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
+                OnErrorVerifyDashboardAccessDefaultImplementation(e, "/tenants/{tenantId}/observations/dashboards/access", uriBuilderLocalVar.Path, tenantId, edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
                 Events.ExecuteOnErrorVerifyDashboardAccess(e);
                 throw;
             }
