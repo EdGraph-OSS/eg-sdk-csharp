@@ -88,5 +88,14 @@ namespace EdGraph.Platform.Client.Test.Model
         {
             // TODO unit test for the property 'Email'
         }
+
+        /// <summary>
+        /// Test the property 'Campus'
+        /// </summary>
+        [Fact]
+        public void CampusTest()
+        {
+            // TODO unit test for the property 'Campus'
+        }
     }
 }

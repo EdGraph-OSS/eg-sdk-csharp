@@ -29542,6 +29542,107 @@ paths:
       summary: Get paginated evaluees
       tags:
       - Observations
+  /tenants/{tenantId}/observations/search/evaluees:
+    get:
+      operationId: SearchPaginatedEvaluees
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 10
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: orderBy
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: firstName
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: lastName
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails'
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.EvalueeResponsePaginatedItemsViewModel'
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails'
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Search paginated evaluees
+      tags:
+      - Observations
   /tenants/{tenantId}/observations:
     get:
       operationId: GetPaginatedObservations
@@ -51186,6 +51287,7 @@ components:
       example:
         firstName: firstName
         lastName: lastName
+        campus: campus
         userId: userId
         email: email
       properties:
@@ -51201,6 +51303,9 @@ components:
         email:
           nullable: true
           type: string
+        campus:
+          nullable: true
+          type: string
       type: object
     EdGraph.HttpAggregators.Tenant.Api.Services.Observations.EvalueeResponseGetPaginatedItemsResponse:
       additionalProperties: false
@@ -51208,10 +51313,12 @@ components:
         data:
         - firstName: firstName
           lastName: lastName
+          campus: campus
           userId: userId
           email: email
         - firstName: firstName
           lastName: lastName
+          campus: campus
           userId: userId
           email: email
         pageIndex: 0
@@ -51232,6 +51339,39 @@ components:
         count:
           format: int64
           type: integer
+      type: object
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.EvalueeResponsePaginatedItemsViewModel:
+      additionalProperties: false
+      example:
+        data:
+        - firstName: firstName
+          lastName: lastName
+          campus: campus
+          userId: userId
+          email: email
+        - firstName: firstName
+          lastName: lastName
+          campus: campus
+          userId: userId
+          email: email
+        pageIndex: 0
+        count: 1
+        pageSize: 6
+      properties:
+        pageIndex:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        count:
+          format: int64
+          type: integer
+        data:
+          items:
+            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.EvalueeResponse'
+          nullable: true
+          type: array
       type: object
     EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormConfigurationRequest:
       additionalProperties: false

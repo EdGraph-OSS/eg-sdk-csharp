@@ -326,6 +326,23 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
+        /// Test SearchPaginatedEvaluees
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task SearchPaginatedEvalueesAsyncTest()
+        {
+            Guid tenantId = default!;
+            Client.Option<int> pageSize = default!;
+            Client.Option<int> pageIndex = default!;
+            Client.Option<string> orderBy = default!;
+            Client.Option<string> firstName = default!;
+            Client.Option<string> lastName = default!;
+            var response = await _instance.SearchPaginatedEvalueesAsync(tenantId, pageSize, pageIndex, orderBy, firstName, lastName);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponsePaginatedItemsViewModel>(model);
+        }
+
+        /// <summary>
         /// Test UpdateObservation
         /// </summary>
         [Fact (Skip = "not implemented")]

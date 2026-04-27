@@ -37,13 +37,15 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="firstName">firstName</param>
         /// <param name="lastName">lastName</param>
         /// <param name="email">email</param>
+        /// <param name="campus">campus</param>
         [JsonConstructor]
-        public EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponse(Option<string?> userId = default, Option<string?> firstName = default, Option<string?> lastName = default, Option<string?> email = default)
+        public EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponse(Option<string?> userId = default, Option<string?> firstName = default, Option<string?> lastName = default, Option<string?> email = default, Option<string?> campus = default)
         {
             UserIdOption = userId;
             FirstNameOption = firstName;
             LastNameOption = lastName;
             EmailOption = email;
+            CampusOption = campus;
             OnCreated();
         }
 
@@ -102,6 +104,19 @@ namespace EdGraph.Platform.Client.Model
         public string? Email { get { return this.EmailOption; } set { this.EmailOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of Campus
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> CampusOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets Campus
+        /// </summary>
+        [JsonPropertyName("campus")]
+        public string? Campus { get { return this.CampusOption; } set { this.CampusOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -113,6 +128,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  FirstName: ").Append(FirstName).Append("\n");
             sb.Append("  LastName: ").Append(LastName).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
+            sb.Append("  Campus: ").Append(Campus).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -154,6 +170,7 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> firstName = default;
             Option<string?> lastName = default;
             Option<string?> email = default;
+            Option<string?> campus = default;
 
             while (utf8JsonReader.Read())
             {
@@ -182,13 +199,16 @@ namespace EdGraph.Platform.Client.Model
                         case "email":
                             email = new Option<string?>(utf8JsonReader.GetString());
                             break;
+                        case "campus":
+                            campus = new Option<string?>(utf8JsonReader.GetString());
+                            break;
                         default:
                             break;
                     }
                 }
             }
 
-            return new EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponse(userId, firstName, lastName, email);
+            return new EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponse(userId, firstName, lastName, email, campus);
         }
 
         /// <summary>
@@ -238,6 +258,12 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteString("email", edGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponse.Email);
                 else
                     writer.WriteNull("email");
+
+            if (edGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponse.CampusOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponse.CampusOption.Value != null)
+                    writer.WriteString("campus", edGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponse.Campus);
+                else
+                    writer.WriteNull("campus");
         }
     }
 }

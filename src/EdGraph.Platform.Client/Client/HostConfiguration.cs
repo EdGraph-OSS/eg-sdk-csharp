@@ -262,6 +262,7 @@ namespace EdGraph.Platform.Client.Client
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsDeleteObservationResponseJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponseJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponseGetPaginatedItemsResponseJsonConverter());
+            _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponsePaginatedItemsViewModelJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsFormConfigurationRequestJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsFormConfigurationResponseJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseJsonConverter());

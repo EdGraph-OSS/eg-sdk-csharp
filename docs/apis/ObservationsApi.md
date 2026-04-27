@@ -22,6 +22,7 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 | [**GetPaginatedObservations**](ObservationsApi.md#getpaginatedobservations) | **GET** /tenants/{tenantId}/observations | Get Paginated Observations for a given tenant |
 | [**GetSubmittedObservationsCount**](ObservationsApi.md#getsubmittedobservationscount) | **GET** /tenants/{tenantId}/submittedobservations | Get submitted Observations count |
 | [**SaveDashboardPreferences**](ObservationsApi.md#savedashboardpreferences) | **POST** /tenants/{tenantId}/observations/dashboards/{dashboardId}/preferences | Save user preferences for a given Dashboard |
+| [**SearchPaginatedEvaluees**](ObservationsApi.md#searchpaginatedevaluees) | **GET** /tenants/{tenantId}/observations/search/evaluees | Search paginated evaluees |
 | [**UpdateObservation**](ObservationsApi.md#updateobservation) | **PUT** /tenants/{tenantId}/observations/{observationId} | Update an Observation for a given tenant |
 | [**UpsertObservationDraft**](ObservationsApi.md#upsertobservationdraft) | **POST** /tenants/{tenantId}/observations/{observationId}/available-forms/{formId}/draft | Creates a draft for an observation forms |
 | [**VerifyDashboardAccess**](ObservationsApi.md#verifydashboardaccess) | **POST** /tenants/{tenantId}/observations/dashboards/access | Verify user access to dashboards |
@@ -1859,6 +1860,112 @@ catch (ApiException e)
 ### HTTP request headers
 
  - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | The requested resource was successfully retrieved. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+<a id="searchpaginatedevaluees"></a>
+# **SearchPaginatedEvaluees**
+> EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponsePaginatedItemsViewModel SearchPaginatedEvaluees (Guid tenantId, int pageSize = null, int pageIndex = null, string orderBy = null, string firstName = null, string lastName = null)
+
+Search paginated evaluees
+
+### Example
+```csharp
+using System.Collections.Generic;
+using System.Diagnostics;
+using EdGraph.Platform.Client.Api;
+using EdGraph.Platform.Client.Client;
+using EdGraph.Platform.Client.Model;
+
+namespace Example
+{
+    public class SearchPaginatedEvalueesExample
+    {
+        public static void Main()
+        {
+            Configuration config = new Configuration();
+            config.BasePath = "https://api.dev.edgraph.com/tenant";
+            // Configure OAuth2 access token for authorization: oauth2
+            config.AccessToken = "YOUR_ACCESS_TOKEN";
+
+            var apiInstance = new ObservationsApi(config);
+            var tenantId = "tenantId_example";  // Guid | 
+            var pageSize = 10;  // int |  (optional)  (default to 10)
+            var pageIndex = 0;  // int |  (optional)  (default to 0)
+            var orderBy = "\"\"";  // string |  (optional)  (default to "")
+            var firstName = "\"\"";  // string |  (optional)  (default to "")
+            var lastName = "\"\"";  // string |  (optional)  (default to "")
+
+            try
+            {
+                // Search paginated evaluees
+                EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponsePaginatedItemsViewModel result = apiInstance.SearchPaginatedEvaluees(tenantId, pageSize, pageIndex, orderBy, firstName, lastName);
+                Debug.WriteLine(result);
+            }
+            catch (ApiException  e)
+            {
+                Debug.Print("Exception when calling ObservationsApi.SearchPaginatedEvaluees: " + e.Message);
+                Debug.Print("Status Code: " + e.ErrorCode);
+                Debug.Print(e.StackTrace);
+            }
+        }
+    }
+}
+```
+
+#### Using the SearchPaginatedEvalueesWithHttpInfo variant
+This returns an ApiResponse object which contains the response data, status code and headers.
+
+```csharp
+try
+{
+    // Search paginated evaluees
+    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponsePaginatedItemsViewModel> response = apiInstance.SearchPaginatedEvalueesWithHttpInfo(tenantId, pageSize, pageIndex, orderBy, firstName, lastName);
+    Debug.Write("Status Code: " + response.StatusCode);
+    Debug.Write("Response Headers: " + response.Headers);
+    Debug.Write("Response Body: " + response.Data);
+}
+catch (ApiException e)
+{
+    Debug.Print("Exception when calling ObservationsApi.SearchPaginatedEvalueesWithHttpInfo: " + e.Message);
+    Debug.Print("Status Code: " + e.ErrorCode);
+    Debug.Print(e.StackTrace);
+}
+```
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **Guid** |  |  |
+| **pageSize** | **int** |  | [optional] [default to 10] |
+| **pageIndex** | **int** |  | [optional] [default to 0] |
+| **orderBy** | **string** |  | [optional] [default to &quot;&quot;] |
+| **firstName** | **string** |  | [optional] [default to &quot;&quot;] |
+| **lastName** | **string** |  | [optional] [default to &quot;&quot;] |
+
+### Return type
+
+[**EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponsePaginatedItemsViewModel**](EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponsePaginatedItemsViewModel.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 
