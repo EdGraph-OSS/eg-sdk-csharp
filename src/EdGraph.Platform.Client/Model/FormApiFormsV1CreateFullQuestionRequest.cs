@@ -45,8 +45,9 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="customId">customId</param>
         /// <param name="visibilityCondition">visibilityCondition</param>
         /// <param name="originalQuestionId">originalQuestionId</param>
+        /// <param name="multiline">multiline</param>
         [JsonConstructor]
-        public FormApiFormsV1CreateFullQuestionRequest(Option<string?> title = default, Option<string?> description = default, Option<FormApiQuestionsV1QuestionType?> type = default, Option<bool?> required = default, Option<string?> defaultValue = default, Option<FormApiFormsV1CreateFullQuestionValidationRequest?> validation = default, Option<List<string>?> options = default, Option<int?> order = default, Option<string?> component = default, Option<string?> customId = default, Option<FormApiQuestionsV1QuestionVisibilityCondition?> visibilityCondition = default, Option<string?> originalQuestionId = default)
+        public FormApiFormsV1CreateFullQuestionRequest(Option<string?> title = default, Option<string?> description = default, Option<FormApiQuestionsV1QuestionType?> type = default, Option<bool?> required = default, Option<string?> defaultValue = default, Option<FormApiFormsV1CreateFullQuestionValidationRequest?> validation = default, Option<List<string>?> options = default, Option<int?> order = default, Option<string?> component = default, Option<string?> customId = default, Option<FormApiQuestionsV1QuestionVisibilityCondition?> visibilityCondition = default, Option<string?> originalQuestionId = default, Option<bool?> multiline = default)
         {
             TitleOption = title;
             DescriptionOption = description;
@@ -60,6 +61,7 @@ namespace EdGraph.Platform.Client.Model
             CustomIdOption = customId;
             VisibilityConditionOption = visibilityCondition;
             OriginalQuestionIdOption = originalQuestionId;
+            MultilineOption = multiline;
             OnCreated();
         }
 
@@ -222,6 +224,19 @@ namespace EdGraph.Platform.Client.Model
         public string? OriginalQuestionId { get { return this.OriginalQuestionIdOption; } set { this.OriginalQuestionIdOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of Multiline
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<bool?> MultilineOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets Multiline
+        /// </summary>
+        [JsonPropertyName("multiline")]
+        public bool? Multiline { get { return this.MultilineOption; } set { this.MultilineOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -241,6 +256,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  CustomId: ").Append(CustomId).Append("\n");
             sb.Append("  VisibilityCondition: ").Append(VisibilityCondition).Append("\n");
             sb.Append("  OriginalQuestionId: ").Append(OriginalQuestionId).Append("\n");
+            sb.Append("  Multiline: ").Append(Multiline).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -290,6 +306,7 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> customId = default;
             Option<FormApiQuestionsV1QuestionVisibilityCondition?> visibilityCondition = default;
             Option<string?> originalQuestionId = default;
+            Option<bool?> multiline = default;
 
             while (utf8JsonReader.Read())
             {
@@ -349,6 +366,10 @@ namespace EdGraph.Platform.Client.Model
                         case "originalQuestionId":
                             originalQuestionId = new Option<string?>(utf8JsonReader.GetString());
                             break;
+                        case "multiline":
+                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
+                                multiline = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            break;
                         default:
                             break;
                     }
@@ -364,7 +385,7 @@ namespace EdGraph.Platform.Client.Model
             if (visibilityCondition.IsSet && visibilityCondition.Value == null)
                 throw new ArgumentNullException(nameof(visibilityCondition), "Property is not nullable for class FormApiFormsV1CreateFullQuestionRequest.");
 
-            return new FormApiFormsV1CreateFullQuestionRequest(title, description, type, required, defaultValue, validation, options, order, component, customId, visibilityCondition, originalQuestionId);
+            return new FormApiFormsV1CreateFullQuestionRequest(title, description, type, required, defaultValue, validation, options, order, component, customId, visibilityCondition, originalQuestionId, multiline);
         }
 
         /// <summary>
@@ -467,6 +488,12 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteString("originalQuestionId", formApiFormsV1CreateFullQuestionRequest.OriginalQuestionId);
                 else
                     writer.WriteNull("originalQuestionId");
+
+            if (formApiFormsV1CreateFullQuestionRequest.MultilineOption.IsSet)
+                if (formApiFormsV1CreateFullQuestionRequest.MultilineOption.Value != null)
+                    writer.WriteBoolean("multiline", formApiFormsV1CreateFullQuestionRequest.MultilineOption.Value!.Value);
+                else
+                    writer.WriteNull("multiline");
         }
     }
 }

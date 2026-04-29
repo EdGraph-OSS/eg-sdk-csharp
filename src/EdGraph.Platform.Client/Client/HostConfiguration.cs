@@ -889,6 +889,7 @@ namespace EdGraph.Platform.Client.Client
             _jsonOptions.Converters.Add(new TenantApiTenantV1OrganizationJsonConverter());
             _jsonOptions.Converters.Add(new TenantApiTenantV1OrganizationCreatedResponseJsonConverter());
             _jsonOptions.Converters.Add(new TenantApiTenantV1OrganizationDeletedResponseJsonConverter());
+            _jsonOptions.Converters.Add(new TenantApiTenantV1OrganizationGetPaginatedItemsResponseJsonConverter());
             _jsonOptions.Converters.Add(new TenantApiTenantV1OrganizationUpdatedResponseJsonConverter());
             _jsonOptions.Converters.Add(new TenantApiTenantV1SetAppSettingsRequestJsonConverter());
             _jsonOptions.Converters.Add(new TenantApiTenantV1SetAppSettingsResponseJsonConverter());

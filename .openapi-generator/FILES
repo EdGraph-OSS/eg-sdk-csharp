@@ -885,6 +885,7 @@ docs/models/TenantApiTenantV1OnboardingStepsReponse.md
 docs/models/TenantApiTenantV1Organization.md
 docs/models/TenantApiTenantV1OrganizationCreatedResponse.md
 docs/models/TenantApiTenantV1OrganizationDeletedResponse.md
+docs/models/TenantApiTenantV1OrganizationGetPaginatedItemsResponse.md
 docs/models/TenantApiTenantV1OrganizationUpdatedResponse.md
 docs/models/TenantApiTenantV1SetAppSettingsRequest.md
 docs/models/TenantApiTenantV1SetAppSettingsResponse.md
@@ -1914,6 +1915,7 @@ src/EdGraph.Platform.Client.Test/Model/TenantApiTenantV1OnboardingStepsReponseTe
 src/EdGraph.Platform.Client.Test/Model/TenantApiTenantV1OnboardingTests.cs
 src/EdGraph.Platform.Client.Test/Model/TenantApiTenantV1OrganizationCreatedResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/TenantApiTenantV1OrganizationDeletedResponseTests.cs
+src/EdGraph.Platform.Client.Test/Model/TenantApiTenantV1OrganizationGetPaginatedItemsResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/TenantApiTenantV1OrganizationTests.cs
 src/EdGraph.Platform.Client.Test/Model/TenantApiTenantV1OrganizationUpdatedResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/TenantApiTenantV1SetAppSettingsRequestTests.cs
@@ -2965,6 +2967,7 @@ src/EdGraph.Platform.Client/Model/TenantApiTenantV1OnboardingStepsReponse.cs
 src/EdGraph.Platform.Client/Model/TenantApiTenantV1Organization.cs
 src/EdGraph.Platform.Client/Model/TenantApiTenantV1OrganizationCreatedResponse.cs
 src/EdGraph.Platform.Client/Model/TenantApiTenantV1OrganizationDeletedResponse.cs
+src/EdGraph.Platform.Client/Model/TenantApiTenantV1OrganizationGetPaginatedItemsResponse.cs
 src/EdGraph.Platform.Client/Model/TenantApiTenantV1OrganizationUpdatedResponse.cs
 src/EdGraph.Platform.Client/Model/TenantApiTenantV1SetAppSettingsRequest.cs
 src/EdGraph.Platform.Client/Model/TenantApiTenantV1SetAppSettingsResponse.cs

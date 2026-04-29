@@ -132,6 +132,22 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
+        /// Test GetTEATenantOrganizations
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetTEATenantOrganizationsAsyncTest()
+        {
+            Guid tenantId = default!;
+            Client.Option<int> pageSize = default!;
+            Client.Option<int> pageIndex = default!;
+            Client.Option<string> orderBy = default!;
+            Client.Option<string> filter = default!;
+            var response = await _instance.GetTEATenantOrganizationsAsync(tenantId, pageSize, pageIndex, orderBy, filter);
+            var model = response.Unauthorized();
+            Assert.IsType<TenantApiTenantV1OrganizationGetPaginatedItemsResponse>(model);
+        }
+
+        /// <summary>
         /// Test SetApplicationSettings
         /// </summary>
         [Fact (Skip = "not implemented")]
