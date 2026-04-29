@@ -28075,6 +28075,15 @@ paths:
       - description: ""
         explode: true
         in: query
+        name: teaTenantId
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
         name: pageSize
         required: false
         schema:

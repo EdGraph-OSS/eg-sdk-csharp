@@ -138,11 +138,12 @@ namespace EdGraph.Platform.Client.Test.Api
         public async Task GetTEATenantOrganizationsAsyncTest()
         {
             Guid tenantId = default!;
+            Client.Option<string> teaTenantId = default!;
             Client.Option<int> pageSize = default!;
             Client.Option<int> pageIndex = default!;
             Client.Option<string> orderBy = default!;
             Client.Option<string> filter = default!;
-            var response = await _instance.GetTEATenantOrganizationsAsync(tenantId, pageSize, pageIndex, orderBy, filter);
+            var response = await _instance.GetTEATenantOrganizationsAsync(tenantId, teaTenantId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
             Assert.IsType<TenantApiTenantV1OrganizationGetPaginatedItemsResponse>(model);
         }

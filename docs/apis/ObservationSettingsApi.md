@@ -611,7 +611,7 @@ catch (ApiException e)
 
 <a id="getteatenantorganizations"></a>
 # **GetTEATenantOrganizations**
-> TenantApiTenantV1OrganizationGetPaginatedItemsResponse GetTEATenantOrganizations (Guid tenantId, int pageSize = null, int pageIndex = null, string orderBy = null, string filter = null)
+> TenantApiTenantV1OrganizationGetPaginatedItemsResponse GetTEATenantOrganizations (Guid tenantId, string teaTenantId = null, int pageSize = null, int pageIndex = null, string orderBy = null, string filter = null)
 
 Get TEA tenant organizations
 
@@ -636,6 +636,7 @@ namespace Example
 
             var apiInstance = new ObservationSettingsApi(config);
             var tenantId = "tenantId_example";  // Guid | 
+            var teaTenantId = "\"\"";  // string |  (optional)  (default to "")
             var pageSize = 10;  // int |  (optional)  (default to 10)
             var pageIndex = 0;  // int |  (optional)  (default to 0)
             var orderBy = "\"\"";  // string |  (optional)  (default to "")
@@ -644,7 +645,7 @@ namespace Example
             try
             {
                 // Get TEA tenant organizations
-                TenantApiTenantV1OrganizationGetPaginatedItemsResponse result = apiInstance.GetTEATenantOrganizations(tenantId, pageSize, pageIndex, orderBy, filter);
+                TenantApiTenantV1OrganizationGetPaginatedItemsResponse result = apiInstance.GetTEATenantOrganizations(tenantId, teaTenantId, pageSize, pageIndex, orderBy, filter);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -665,7 +666,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Get TEA tenant organizations
-    ApiResponse<TenantApiTenantV1OrganizationGetPaginatedItemsResponse> response = apiInstance.GetTEATenantOrganizationsWithHttpInfo(tenantId, pageSize, pageIndex, orderBy, filter);
+    ApiResponse<TenantApiTenantV1OrganizationGetPaginatedItemsResponse> response = apiInstance.GetTEATenantOrganizationsWithHttpInfo(tenantId, teaTenantId, pageSize, pageIndex, orderBy, filter);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -683,6 +684,7 @@ catch (ApiException e)
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **tenantId** | **Guid** |  |  |
+| **teaTenantId** | **string** |  | [optional] [default to &quot;&quot;] |
 | **pageSize** | **int** |  | [optional] [default to 10] |
 | **pageIndex** | **int** |  | [optional] [default to 0] |
 | **orderBy** | **string** |  | [optional] [default to &quot;&quot;] |

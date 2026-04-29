@@ -199,13 +199,14 @@ namespace EdGraph.Platform.Client.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
+        /// <param name="teaTenantId"> (optional, default to &quot;&quot;)</param>
         /// <param name="pageSize"> (optional, default to 10)</param>
         /// <param name="pageIndex"> (optional, default to 0)</param>
         /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
         /// <param name="filter"> (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetTEATenantOrganizationsApiResponse"/>&gt;</returns>
-        Task<IGetTEATenantOrganizationsApiResponse> GetTEATenantOrganizationsAsync(Guid tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IGetTEATenantOrganizationsApiResponse> GetTEATenantOrganizationsAsync(Guid tenantId, Option<string> teaTenantId = default, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get TEA tenant organizations
@@ -214,13 +215,14 @@ namespace EdGraph.Platform.Client.Api
         /// 
         /// </remarks>
         /// <param name="tenantId"></param>
+        /// <param name="teaTenantId"> (optional, default to &quot;&quot;)</param>
         /// <param name="pageSize"> (optional, default to 10)</param>
         /// <param name="pageIndex"> (optional, default to 0)</param>
         /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
         /// <param name="filter"> (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetTEATenantOrganizationsApiResponse"/>?&gt;</returns>
-        Task<IGetTEATenantOrganizationsApiResponse?> GetTEATenantOrganizationsOrDefaultAsync(Guid tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IGetTEATenantOrganizationsApiResponse?> GetTEATenantOrganizationsOrDefaultAsync(Guid tenantId, Option<string> teaTenantId = default, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Sets the Application Settings of an Observation for a given Tenant
@@ -3267,16 +3269,20 @@ namespace EdGraph.Platform.Client.Api
             partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
         }
 
-        partial void FormatGetTEATenantOrganizations(ref Guid tenantId, ref Option<int> pageSize, ref Option<int> pageIndex, ref Option<string> orderBy, ref Option<string> filter);
+        partial void FormatGetTEATenantOrganizations(ref Guid tenantId, ref Option<string> teaTenantId, ref Option<int> pageSize, ref Option<int> pageIndex, ref Option<string> orderBy, ref Option<string> filter);
 
         /// <summary>
         /// Validates the request parameters
         /// </summary>
+        /// <param name="teaTenantId"></param>
         /// <param name="orderBy"></param>
         /// <param name="filter"></param>
         /// <returns></returns>
-        private void ValidateGetTEATenantOrganizations(Option<string> orderBy, Option<string> filter)
+        private void ValidateGetTEATenantOrganizations(Option<string> teaTenantId, Option<string> orderBy, Option<string> filter)
         {
+            if (teaTenantId.IsSet && teaTenantId.Value == null)
+                throw new ArgumentNullException(nameof(teaTenantId));
+
             if (orderBy.IsSet && orderBy.Value == null)
                 throw new ArgumentNullException(nameof(orderBy));
 
@@ -3289,14 +3295,15 @@ namespace EdGraph.Platform.Client.Api
         /// </summary>
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
+        /// <param name="teaTenantId"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageIndex"></param>
         /// <param name="orderBy"></param>
         /// <param name="filter"></param>
-        private void AfterGetTEATenantOrganizationsDefaultImplementation(IGetTEATenantOrganizationsApiResponse apiResponseLocalVar, Guid tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter)
+        private void AfterGetTEATenantOrganizationsDefaultImplementation(IGetTEATenantOrganizationsApiResponse apiResponseLocalVar, Guid tenantId, Option<string> teaTenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter)
         {
             bool suppressDefaultLog = false;
-            AfterGetTEATenantOrganizations(ref suppressDefaultLog, apiResponseLocalVar, tenantId, pageSize, pageIndex, orderBy, filter);
+            AfterGetTEATenantOrganizations(ref suppressDefaultLog, apiResponseLocalVar, tenantId, teaTenantId, pageSize, pageIndex, orderBy, filter);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -3307,11 +3314,12 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="suppressDefaultLog"></param>
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
+        /// <param name="teaTenantId"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageIndex"></param>
         /// <param name="orderBy"></param>
         /// <param name="filter"></param>
-        partial void AfterGetTEATenantOrganizations(ref bool suppressDefaultLog, IGetTEATenantOrganizationsApiResponse apiResponseLocalVar, Guid tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter);
+        partial void AfterGetTEATenantOrganizations(ref bool suppressDefaultLog, IGetTEATenantOrganizationsApiResponse apiResponseLocalVar, Guid tenantId, Option<string> teaTenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -3320,14 +3328,15 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pathFormat"></param>
         /// <param name="path"></param>
         /// <param name="tenantId"></param>
+        /// <param name="teaTenantId"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageIndex"></param>
         /// <param name="orderBy"></param>
         /// <param name="filter"></param>
-        private void OnErrorGetTEATenantOrganizationsDefaultImplementation(Exception exception, string pathFormat, string path, Guid tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter)
+        private void OnErrorGetTEATenantOrganizationsDefaultImplementation(Exception exception, string pathFormat, string path, Guid tenantId, Option<string> teaTenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter)
         {
             bool suppressDefaultLog = false;
-            OnErrorGetTEATenantOrganizations(ref suppressDefaultLog, exception, pathFormat, path, tenantId, pageSize, pageIndex, orderBy, filter);
+            OnErrorGetTEATenantOrganizations(ref suppressDefaultLog, exception, pathFormat, path, tenantId, teaTenantId, pageSize, pageIndex, orderBy, filter);
             if (!suppressDefaultLog)
                 Logger.LogError(exception, "An error occurred while sending the request to the server.");
         }
@@ -3340,27 +3349,29 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pathFormat"></param>
         /// <param name="path"></param>
         /// <param name="tenantId"></param>
+        /// <param name="teaTenantId"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageIndex"></param>
         /// <param name="orderBy"></param>
         /// <param name="filter"></param>
-        partial void OnErrorGetTEATenantOrganizations(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, Guid tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter);
+        partial void OnErrorGetTEATenantOrganizations(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, Guid tenantId, Option<string> teaTenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter);
 
         /// <summary>
         /// Get TEA tenant organizations 
         /// </summary>
         /// <param name="tenantId"></param>
+        /// <param name="teaTenantId"> (optional, default to &quot;&quot;)</param>
         /// <param name="pageSize"> (optional, default to 10)</param>
         /// <param name="pageIndex"> (optional, default to 0)</param>
         /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
         /// <param name="filter"> (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetTEATenantOrganizationsApiResponse"/>&gt;</returns>
-        public async Task<IGetTEATenantOrganizationsApiResponse?> GetTEATenantOrganizationsOrDefaultAsync(Guid tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IGetTEATenantOrganizationsApiResponse?> GetTEATenantOrganizationsOrDefaultAsync(Guid tenantId, Option<string> teaTenantId = default, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await GetTEATenantOrganizationsAsync(tenantId, pageSize, pageIndex, orderBy, filter, cancellationToken).ConfigureAwait(false);
+                return await GetTEATenantOrganizationsAsync(tenantId, teaTenantId, pageSize, pageIndex, orderBy, filter, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -3373,21 +3384,22 @@ namespace EdGraph.Platform.Client.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
+        /// <param name="teaTenantId"> (optional, default to &quot;&quot;)</param>
         /// <param name="pageSize"> (optional, default to 10)</param>
         /// <param name="pageIndex"> (optional, default to 0)</param>
         /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
         /// <param name="filter"> (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetTEATenantOrganizationsApiResponse"/>&gt;</returns>
-        public async Task<IGetTEATenantOrganizationsApiResponse> GetTEATenantOrganizationsAsync(Guid tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IGetTEATenantOrganizationsApiResponse> GetTEATenantOrganizationsAsync(Guid tenantId, Option<string> teaTenantId = default, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
             try
             {
-                ValidateGetTEATenantOrganizations(orderBy, filter);
+                ValidateGetTEATenantOrganizations(teaTenantId, orderBy, filter);
 
-                FormatGetTEATenantOrganizations(ref tenantId, ref pageSize, ref pageIndex, ref orderBy, ref filter);
+                FormatGetTEATenantOrganizations(ref tenantId, ref teaTenantId, ref pageSize, ref pageIndex, ref orderBy, ref filter);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -3398,6 +3410,9 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
 
                     System.Collections.Specialized.NameValueCollection parseQueryStringLocalVar = System.Web.HttpUtility.ParseQueryString(string.Empty);
+
+                    if (teaTenantId.IsSet)
+                        parseQueryStringLocalVar["teaTenantId"] = ClientUtils.ParameterToString(teaTenantId.Value);
 
                     if (pageSize.IsSet)
                         parseQueryStringLocalVar["pageSize"] = ClientUtils.ParameterToString(pageSize.Value);
@@ -3443,7 +3458,7 @@ namespace EdGraph.Platform.Client.Api
 
                         GetTEATenantOrganizationsApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/observations/tenantorganizations", requestedAtLocalVar, _jsonSerializerOptions);
 
-                        AfterGetTEATenantOrganizationsDefaultImplementation(apiResponseLocalVar, tenantId, pageSize, pageIndex, orderBy, filter);
+                        AfterGetTEATenantOrganizationsDefaultImplementation(apiResponseLocalVar, tenantId, teaTenantId, pageSize, pageIndex, orderBy, filter);
 
                         Events.ExecuteOnGetTEATenantOrganizations(apiResponseLocalVar);
 
@@ -3457,7 +3472,7 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorGetTEATenantOrganizationsDefaultImplementation(e, "/tenants/{tenantId}/observations/tenantorganizations", uriBuilderLocalVar.Path, tenantId, pageSize, pageIndex, orderBy, filter);
+                OnErrorGetTEATenantOrganizationsDefaultImplementation(e, "/tenants/{tenantId}/observations/tenantorganizations", uriBuilderLocalVar.Path, tenantId, teaTenantId, pageSize, pageIndex, orderBy, filter);
                 Events.ExecuteOnErrorGetTEATenantOrganizations(e);
                 throw;
             }
