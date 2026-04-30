@@ -88,7 +88,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetPaginatedFormsAsync(tenantId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse>(model);
+            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse>(model);
         }
 
         /// <summary>

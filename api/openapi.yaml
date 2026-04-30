@@ -27533,7 +27533,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormResponseGetPaginatedItemsResponse'
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Forms.v1.FormGetPaginatedItemsResponse'
           description: The requested resource was successfully retrieved.
         "400":
           content:
@@ -28840,7 +28840,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormSectionResponsePaginatedItemsViewModel'
+                $ref: '#/components/schemas/FormApi.Sections.V1.SectionResponsePaginatedItemsViewModel'
           description: The requested resource was successfully retrieved.
         "400":
           content:
@@ -28932,7 +28932,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormResponseGetPaginatedItemsResponse'
+                $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Forms.v1.FormGetPaginatedItemsResponse'
           description: The requested resource was successfully retrieved.
         "400":
           content:
@@ -51057,6 +51057,63 @@ components:
           nullable: true
           type: string
       type: object
+    EdGraph.HttpAggregators.Tenant.Api.Services.Forms.v1.FormGetPaginatedItemsResponse:
+      additionalProperties: false
+      example:
+        data:
+        - image: image
+          lastModifiedDateTime: lastModifiedDateTime
+          lastModifiedBy: lastModifiedBy
+          submissionCount: 0
+          description: description
+          createdDateTime: createdDateTime
+          deletedDateTime: deletedDateTime
+          source: source
+          version: version
+          deletedBy: deletedBy
+          isDeleted: true
+          createdBy: createdBy
+          tenantId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          anonymous: true
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          status: status
+        - image: image
+          lastModifiedDateTime: lastModifiedDateTime
+          lastModifiedBy: lastModifiedBy
+          submissionCount: 0
+          description: description
+          createdDateTime: createdDateTime
+          deletedDateTime: deletedDateTime
+          source: source
+          version: version
+          deletedBy: deletedBy
+          isDeleted: true
+          createdBy: createdBy
+          tenantId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          name: name
+          anonymous: true
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          status: status
+        pageIndex: 0
+        count: 1
+        pageSize: 6
+      properties:
+        pageIndex:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        data:
+          items:
+            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Forms.v1.Form'
+          nullable: true
+          type: array
+        count:
+          format: int64
+          type: integer
+      type: object
     EdGraph.HttpAggregators.Tenant.Api.Services.Forms.v1.FormPaginatedItemsViewModel:
       additionalProperties: false
       example:
@@ -51504,192 +51561,6 @@ components:
         versions:
           items:
             $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormVersionConfigurationResponse'
-          nullable: true
-          type: array
-      type: object
-    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormResponse:
-      additionalProperties: false
-      example:
-        image: image
-        isDeleted: true
-        name: name
-        tenantId: tenantId
-        description: description
-        id: id
-        source: source
-        version: version
-      properties:
-        id:
-          nullable: true
-          type: string
-        name:
-          nullable: true
-          type: string
-        version:
-          nullable: true
-          type: string
-        tenantId:
-          nullable: true
-          type: string
-        description:
-          nullable: true
-          type: string
-        source:
-          nullable: true
-          type: string
-        image:
-          nullable: true
-          type: string
-        isDeleted:
-          type: boolean
-      type: object
-    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormResponseGetPaginatedItemsResponse:
-      additionalProperties: false
-      example:
-        data:
-        - image: image
-          isDeleted: true
-          name: name
-          tenantId: tenantId
-          description: description
-          id: id
-          source: source
-          version: version
-        - image: image
-          isDeleted: true
-          name: name
-          tenantId: tenantId
-          description: description
-          id: id
-          source: source
-          version: version
-        pageIndex: 0
-        count: 1
-        pageSize: 6
-      properties:
-        pageIndex:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        data:
-          items:
-            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormResponse'
-          nullable: true
-          type: array
-        count:
-          format: int64
-          type: integer
-      type: object
-    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormSectionResponse:
-      additionalProperties: false
-      example:
-        formId: formId
-        lastModifiedDateTime: lastModifiedDateTime
-        lastModifiedBy: lastModifiedBy
-        description: description
-        createdDateTime: createdDateTime
-        deletedDateTime: deletedDateTime
-        title: title
-        customId: customId
-        deletedBy: deletedBy
-        isDeleted: true
-        createdBy: createdBy
-        tenantId: tenantId
-        id: id
-        order: 5
-      properties:
-        id:
-          nullable: true
-          type: string
-        formId:
-          nullable: true
-          type: string
-        tenantId:
-          nullable: true
-          type: string
-        title:
-          nullable: true
-          type: string
-        description:
-          nullable: true
-          type: string
-        createdBy:
-          nullable: true
-          type: string
-        createdDateTime:
-          nullable: true
-          type: string
-        lastModifiedBy:
-          nullable: true
-          type: string
-        lastModifiedDateTime:
-          nullable: true
-          type: string
-        deletedBy:
-          nullable: true
-          type: string
-        deletedDateTime:
-          nullable: true
-          type: string
-        isDeleted:
-          type: boolean
-        order:
-          format: int32
-          type: integer
-        customId:
-          nullable: true
-          type: string
-      type: object
-    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormSectionResponsePaginatedItemsViewModel:
-      additionalProperties: false
-      example:
-        data:
-        - formId: formId
-          lastModifiedDateTime: lastModifiedDateTime
-          lastModifiedBy: lastModifiedBy
-          description: description
-          createdDateTime: createdDateTime
-          deletedDateTime: deletedDateTime
-          title: title
-          customId: customId
-          deletedBy: deletedBy
-          isDeleted: true
-          createdBy: createdBy
-          tenantId: tenantId
-          id: id
-          order: 5
-        - formId: formId
-          lastModifiedDateTime: lastModifiedDateTime
-          lastModifiedBy: lastModifiedBy
-          description: description
-          createdDateTime: createdDateTime
-          deletedDateTime: deletedDateTime
-          title: title
-          customId: customId
-          deletedBy: deletedBy
-          isDeleted: true
-          createdBy: createdBy
-          tenantId: tenantId
-          id: id
-          order: 5
-        pageIndex: 0
-        count: 1
-        pageSize: 6
-      properties:
-        pageIndex:
-          format: int32
-          type: integer
-        pageSize:
-          format: int32
-          type: integer
-        count:
-          format: int64
-          type: integer
-        data:
-          items:
-            $ref: '#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.FormSectionResponse'
           nullable: true
           type: array
       type: object
@@ -64511,7 +64382,7 @@ components:
         subHeading: subHeading
         tenantId: tenantId
         id: id
-        order: 0
+        order: 5
       properties:
         id:
           nullable: true
@@ -64578,7 +64449,7 @@ components:
           subHeading: subHeading
           tenantId: tenantId
           id: id
-          order: 0
+          order: 5
         - formId: formId
           lastModifiedDateTime: lastModifiedDateTime
           lastModifiedBy: lastModifiedBy
@@ -64593,7 +64464,7 @@ components:
           subHeading: subHeading
           tenantId: tenantId
           id: id
-          order: 0
+          order: 5
         pageIndex: 0
         count: 1
         pageSize: 6

@@ -163,7 +163,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<int> pageSize = default!;
             var response = await _instance.GetFormSectionsAsync(tenantId, formId, pageIndex, pageSize);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponsePaginatedItemsViewModel>(model);
+            Assert.IsType<FormApiSectionsV1SectionResponsePaginatedItemsViewModel>(model);
         }
 
         /// <summary>
@@ -236,7 +236,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetPaginatedAvailableFormsAsync(tenantId, pageIndex, pageSize, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse>(model);
+            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse>(model);
         }
 
         /// <summary>

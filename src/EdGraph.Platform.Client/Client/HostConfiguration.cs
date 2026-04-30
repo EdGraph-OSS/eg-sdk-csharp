@@ -247,6 +247,7 @@ namespace EdGraph.Platform.Client.Client
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDtoJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncJobCreatedResultJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesFormsV1FormJsonConverter());
+            _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponseJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesFormsV1FormPaginatedItemsViewModelJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesInstanceApplicationsUseCasesCreateTenantInstanceApplicationRequestJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesInstancesInstanceResponseJsonConverter());
@@ -265,10 +266,6 @@ namespace EdGraph.Platform.Client.Client
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponsePaginatedItemsViewModelJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsFormConfigurationRequestJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsFormConfigurationResponseJsonConverter());
-            _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseJsonConverter());
-            _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponseJsonConverter());
-            _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponseJsonConverter());
-            _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsFormSectionResponsePaginatedItemsViewModelJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsFormVersionConfigurationRequestJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsFormVersionConfigurationResponseJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsGetApplicationSettingsResponseJsonConverter());

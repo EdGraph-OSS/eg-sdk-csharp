@@ -211,7 +211,7 @@ catch (ApiException e)
 
 <a id="getpaginatedforms"></a>
 # **GetPaginatedForms**
-> EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse GetPaginatedForms (Guid tenantId, int pageSize = null, int pageIndex = null, string orderBy = null, string filter = null)
+> EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse GetPaginatedForms (Guid tenantId, int pageSize = null, int pageIndex = null, string orderBy = null, string filter = null)
 
 Get Paginated Forms
 
@@ -244,7 +244,7 @@ namespace Example
             try
             {
                 // Get Paginated Forms
-                EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse result = apiInstance.GetPaginatedForms(tenantId, pageSize, pageIndex, orderBy, filter);
+                EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse result = apiInstance.GetPaginatedForms(tenantId, pageSize, pageIndex, orderBy, filter);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -265,7 +265,7 @@ This returns an ApiResponse object which contains the response data, status code
 try
 {
     // Get Paginated Forms
-    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse> response = apiInstance.GetPaginatedFormsWithHttpInfo(tenantId, pageSize, pageIndex, orderBy, filter);
+    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse> response = apiInstance.GetPaginatedFormsWithHttpInfo(tenantId, pageSize, pageIndex, orderBy, filter);
     Debug.Write("Status Code: " + response.StatusCode);
     Debug.Write("Response Headers: " + response.Headers);
     Debug.Write("Response Body: " + response.Data);
@@ -290,7 +290,7 @@ catch (ApiException e)
 
 ### Return type
 
-[**EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse**](EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse.md)
+[**EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse**](EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse.md)
 
 ### Authorization
 

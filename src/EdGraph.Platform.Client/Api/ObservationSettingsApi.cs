@@ -373,7 +373,7 @@ namespace EdGraph.Platform.Client.Api
     /// <summary>
     /// The <see cref="IGetPaginatedFormsApiResponse"/>
     /// </summary>
-    public interface IGetPaginatedFormsApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>
+    public interface IGetPaginatedFormsApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>
     {
         /// <summary>
         /// Returns true if the response is 401 Unauthorized
@@ -2031,11 +2031,11 @@ namespace EdGraph.Platform.Client.Api
             /// Deserializes the response if the response is 200 Ok
             /// </summary>
             /// <returns></returns>
-            public EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse? Ok()
+            public EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse? Ok()
             {
                 // This logic may be modified with the AsModel.mustache template
                 return IsOk
-                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse>(RawContent, _jsonSerializerOptions)
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse>(RawContent, _jsonSerializerOptions)
                     : null;
             }
 
@@ -2044,7 +2044,7 @@ namespace EdGraph.Platform.Client.Api
             /// </summary>
             /// <param name="result"></param>
             /// <returns></returns>
-            public bool TryOk([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse? result)
+            public bool TryOk([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse? result)
             {
                 result = null;
 

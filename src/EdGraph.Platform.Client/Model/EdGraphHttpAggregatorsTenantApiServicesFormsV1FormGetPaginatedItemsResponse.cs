@@ -26,19 +26,19 @@ using EdGraph.Platform.Client.Client;
 namespace EdGraph.Platform.Client.Model
 {
     /// <summary>
-    /// EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse
+    /// EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse
     /// </summary>
-    public partial class EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse : IValidatableObject
+    public partial class EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse" /> class.
+        /// Initializes a new instance of the <see cref="EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse" /> class.
         /// </summary>
         /// <param name="pageIndex">pageIndex</param>
         /// <param name="pageSize">pageSize</param>
         /// <param name="data">data</param>
         /// <param name="count">count</param>
         [JsonConstructor]
-        public EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse(Option<int?> pageIndex = default, Option<int?> pageSize = default, Option<List<EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponse>?> data = default, Option<long?> count = default)
+        public EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse(Option<int?> pageIndex = default, Option<int?> pageSize = default, Option<List<EdGraphHttpAggregatorsTenantApiServicesFormsV1Form>?> data = default, Option<long?> count = default)
         {
             PageIndexOption = pageIndex;
             PageSizeOption = pageSize;
@@ -80,13 +80,13 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<List<EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponse>?> DataOption { get; private set; }
+        public Option<List<EdGraphHttpAggregatorsTenantApiServicesFormsV1Form>?> DataOption { get; private set; }
 
         /// <summary>
         /// Gets or Sets Data
         /// </summary>
         [JsonPropertyName("data")]
-        public List<EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponse>? Data { get { return this.DataOption; } set { this.DataOption = new(value); } }
+        public List<EdGraphHttpAggregatorsTenantApiServicesFormsV1Form>? Data { get { return this.DataOption; } set { this.DataOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Count
@@ -108,7 +108,7 @@ namespace EdGraph.Platform.Client.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse {\n");
+            sb.Append("class EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse {\n");
             sb.Append("  PageIndex: ").Append(PageIndex).Append("\n");
             sb.Append("  PageSize: ").Append(PageSize).Append("\n");
             sb.Append("  Data: ").Append(Data).Append("\n");
@@ -129,19 +129,19 @@ namespace EdGraph.Platform.Client.Model
     }
 
     /// <summary>
-    /// A Json converter for type <see cref="EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse" />
+    /// A Json converter for type <see cref="EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse" />
     /// </summary>
-    public class EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponseJsonConverter : JsonConverter<EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse>
+    public class EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponseJsonConverter : JsonConverter<EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse>
     {
         /// <summary>
-        /// Deserializes json to <see cref="EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse" />
+        /// Deserializes json to <see cref="EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse" />
         /// </summary>
         /// <param name="utf8JsonReader"></param>
         /// <param name="typeToConvert"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <returns></returns>
         /// <exception cref="JsonException"></exception>
-        public override EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
+        public override EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
         {
             int currentDepth = utf8JsonReader.CurrentDepth;
 
@@ -152,7 +152,7 @@ namespace EdGraph.Platform.Client.Model
 
             Option<int?> pageIndex = default;
             Option<int?> pageSize = default;
-            Option<List<EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponse>?> data = default;
+            Option<List<EdGraphHttpAggregatorsTenantApiServicesFormsV1Form>?> data = default;
             Option<long?> count = default;
 
             while (utf8JsonReader.Read())
@@ -180,7 +180,7 @@ namespace EdGraph.Platform.Client.Model
                             break;
                         case "data":
                             if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                data = new Option<List<EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponse>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponse>>(ref utf8JsonReader, jsonSerializerOptions));
+                                data = new Option<List<EdGraphHttpAggregatorsTenantApiServicesFormsV1Form>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiServicesFormsV1Form>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "count":
                             if (utf8JsonReader.TokenType != JsonTokenType.Null)
@@ -193,57 +193,57 @@ namespace EdGraph.Platform.Client.Model
             }
 
             if (pageIndex.IsSet && pageIndex.Value == null)
-                throw new ArgumentNullException(nameof(pageIndex), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse.");
+                throw new ArgumentNullException(nameof(pageIndex), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse.");
 
             if (pageSize.IsSet && pageSize.Value == null)
-                throw new ArgumentNullException(nameof(pageSize), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse.");
+                throw new ArgumentNullException(nameof(pageSize), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse.");
 
             if (count.IsSet && count.Value == null)
-                throw new ArgumentNullException(nameof(count), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse.");
+                throw new ArgumentNullException(nameof(count), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse.");
 
-            return new EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse(pageIndex, pageSize, data, count);
+            return new EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse(pageIndex, pageSize, data, count);
         }
 
         /// <summary>
-        /// Serializes a <see cref="EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse" />
+        /// Serializes a <see cref="EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public override void Write(Utf8JsonWriter writer, EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse edGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse, JsonSerializerOptions jsonSerializerOptions)
+        public override void Write(Utf8JsonWriter writer, EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse edGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
 
-            WriteProperties(writer, edGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse, jsonSerializerOptions);
+            WriteProperties(writer, edGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse, jsonSerializerOptions);
             writer.WriteEndObject();
         }
 
         /// <summary>
-        /// Serializes the properties of <see cref="EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse" />
+        /// Serializes the properties of <see cref="EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public void WriteProperties(Utf8JsonWriter writer, EdGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse edGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse, JsonSerializerOptions jsonSerializerOptions)
+        public void WriteProperties(Utf8JsonWriter writer, EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse edGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (edGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse.PageIndexOption.IsSet)
-                writer.WriteNumber("pageIndex", edGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse.PageIndexOption.Value!.Value);
+            if (edGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse.PageIndexOption.IsSet)
+                writer.WriteNumber("pageIndex", edGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse.PageIndexOption.Value!.Value);
 
-            if (edGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse.PageSizeOption.IsSet)
-                writer.WriteNumber("pageSize", edGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse.PageSizeOption.Value!.Value);
+            if (edGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse.PageSizeOption.IsSet)
+                writer.WriteNumber("pageSize", edGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse.PageSizeOption.Value!.Value);
 
-            if (edGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse.DataOption.IsSet)
-                if (edGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse.DataOption.Value != null)
+            if (edGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse.DataOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse.DataOption.Value != null)
                 {
                     writer.WritePropertyName("data");
-                    JsonSerializer.Serialize(writer, edGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse.Data, jsonSerializerOptions);
+                    JsonSerializer.Serialize(writer, edGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse.Data, jsonSerializerOptions);
                 }
                 else
                     writer.WriteNull("data");
-            if (edGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse.CountOption.IsSet)
-                writer.WriteNumber("count", edGraphHttpAggregatorsTenantApiServicesObservationsFormResponseGetPaginatedItemsResponse.CountOption.Value!.Value);
+            if (edGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse.CountOption.IsSet)
+                writer.WriteNumber("count", edGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse.CountOption.Value!.Value);
         }
     }
 }
