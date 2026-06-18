@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ProgramName
         /// </summary>
         [JsonPropertyName("programName")]
-        public string? ProgramName { get { return this.ProgramNameOption; } set { this.ProgramNameOption = new(value); } }
+        public string? ProgramName { get { return this.ProgramNameOption.Value; } set { this.ProgramNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of PercentOfTotalStudents
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets PercentOfTotalStudents
         /// </summary>
         [JsonPropertyName("percentOfTotalStudents")]
-        public double? PercentOfTotalStudents { get { return this.PercentOfTotalStudentsOption; } set { this.PercentOfTotalStudentsOption = new(value); } }
+        public double? PercentOfTotalStudents { get { return this.PercentOfTotalStudentsOption.Value; } set { this.PercentOfTotalStudentsOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -140,8 +140,7 @@ namespace EdGraph.Platform.Client.Model
                             programName = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "percentOfTotalStudents":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                percentOfTotalStudents = new Option<double?>(utf8JsonReader.GetDouble());
+                            percentOfTotalStudents = new Option<double?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (double?)null : utf8JsonReader.GetDouble());
                             break;
                         default:
                             break;

@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid userId = default!;
             var response = await _instance.ReleaseUserLockoutAsync(tenantId, userId);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiUserV1ReleaseUserLockoutResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

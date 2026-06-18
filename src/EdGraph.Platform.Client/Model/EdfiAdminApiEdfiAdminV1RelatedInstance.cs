@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Provider
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Provider
         /// </summary>
         [JsonPropertyName("provider")]
-        public string? Provider { get { return this.ProviderOption; } set { this.ProviderOption = new(value); } }
+        public string? Provider { get { return this.ProviderOption.Value; } set { this.ProviderOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

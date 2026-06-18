@@ -57,7 +57,7 @@ namespace EdGraph.Platform.Client.Test.Api
         public async Task CreateReportAsyncAsyncTest()
         {
             string tenantId = default!;
-            Client.Option<System.IO.Stream> file = default!;
+            Client.Option<EdGraph.Platform.Client.Client.FileParameter> file = default!;
             Client.Option<string> name = default!;
             Client.Option<string> shortDescription = default!;
             Client.Option<string> description = default!;
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> state = default!;
             var response = await _instance.CreateReportAsyncAsync(tenantId, file, name, shortDescription, description, tags, isVisible, version, identityRequired, rolesRequired, state);
             var model = response.Unauthorized();
-            Assert.IsType<AnalyticsApiReportsV1ReportIdResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -80,7 +80,9 @@ namespace EdGraph.Platform.Client.Test.Api
         {
             string tenantId = default!;
             string reportId = default!;
-            await _instance.DeleteReportAsyncAsync(tenantId, reportId);
+            var response = await _instance.DeleteReportAsyncAsync(tenantId, reportId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -94,7 +96,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string groupId = default!;
             var response = await _instance.DownloadReportAsyncAsync(tenantId, reportId, groupId);
             var model = response.Unauthorized();
-            Assert.IsType<AnalyticsApiReportsV1DownloadReportResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -110,7 +112,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetAllTenantAnalyticsWorkspaceReportsAsyncAsync(tenantId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<AnalyticsApiReportsV1ReportPaginatedItemsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -123,7 +125,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string reportId = default!;
             var response = await _instance.GetReportByIdAsyncAsync(tenantId, reportId);
             var model = response.Unauthorized();
-            Assert.IsType<AnalyticsApiReportsV1ReportResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -136,7 +138,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<AnalyticsApiReportsV1SyncLatestVersionRequest> analyticsApiReportsV1SyncLatestVersionRequest = default!;
             var response = await _instance.SyncLatestVersionAsync(tenantId, analyticsApiReportsV1SyncLatestVersionRequest);
             var model = response.Unauthorized();
-            Assert.IsType<Object>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -149,7 +151,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<AnalyticsApiReportsV1SyncWorkspacesRequest> analyticsApiReportsV1SyncWorkspacesRequest = default!;
             var response = await _instance.SyncWorkspacesAsyncAsync(tenantId, analyticsApiReportsV1SyncWorkspacesRequest);
             var model = response.Unauthorized();
-            Assert.IsType<Object>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -160,7 +162,7 @@ namespace EdGraph.Platform.Client.Test.Api
         {
             string tenantId = default!;
             string reportId = default!;
-            Client.Option<System.IO.Stream> file = default!;
+            Client.Option<EdGraph.Platform.Client.Client.FileParameter> file = default!;
             Client.Option<string> id = default!;
             Client.Option<string> name = default!;
             Client.Option<string> shortDescription = default!;
@@ -173,7 +175,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> state = default!;
             var response = await _instance.UpdateReportAsyncAsync(tenantId, reportId, file, id, name, shortDescription, description, tags, isVisible, version, rolesRequired, identityRequired, state);
             var model = response.Unauthorized();
-            Assert.IsType<AnalyticsApiReportsV1AnalyticsReport>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

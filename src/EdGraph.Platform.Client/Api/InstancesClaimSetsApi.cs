@@ -12,7 +12,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Net;
+using System.IO;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using System.Net.Http;
@@ -755,7 +757,7 @@ namespace EdGraph.Platform.Client.Api
             bool suppressDefaultLog = false;
             AfterCreateClaimSetAsync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, instanceId, edfiAdminApiEdfiAdminV1SaveClaimSetRequest);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -771,31 +773,31 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
         /// </summary>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="edfiAdminApiEdfiAdminV1SaveClaimSetRequest"></param>
-        private void OnErrorCreateClaimSetAsyncDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, string instanceId, Option<EdfiAdminApiEdfiAdminV1SaveClaimSetRequest> edfiAdminApiEdfiAdminV1SaveClaimSetRequest)
+        private void OnErrorCreateClaimSetAsyncDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, Option<EdfiAdminApiEdfiAdminV1SaveClaimSetRequest> edfiAdminApiEdfiAdminV1SaveClaimSetRequest)
         {
-            bool suppressDefaultLog = false;
-            OnErrorCreateClaimSetAsync(ref suppressDefaultLog, exception, pathFormat, path, tenantId, instanceId, edfiAdminApiEdfiAdminV1SaveClaimSetRequest);
-            if (!suppressDefaultLog)
-                Logger.LogError(exception, "An error occurred while sending the request to the server.");
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorCreateClaimSetAsync(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, instanceId, edfiAdminApiEdfiAdminV1SaveClaimSetRequest);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
 
         /// <summary>
         /// A partial method that gives developers a way to provide customized exception handling
         /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="edfiAdminApiEdfiAdminV1SaveClaimSetRequest"></param>
-        partial void OnErrorCreateClaimSetAsync(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, string instanceId, Option<EdfiAdminApiEdfiAdminV1SaveClaimSetRequest> edfiAdminApiEdfiAdminV1SaveClaimSetRequest);
+        partial void OnErrorCreateClaimSetAsync(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, Option<EdfiAdminApiEdfiAdminV1SaveClaimSetRequest> edfiAdminApiEdfiAdminV1SaveClaimSetRequest);
 
         /// <summary>
         /// Creates a ClaimSet. 
@@ -841,14 +843,18 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BinstanceId%7D", Uri.EscapeDataString(instanceId.ToString()));
 
                     if (edfiAdminApiEdfiAdminV1SaveClaimSetRequest.IsSet)
-                        httpRequestMessageLocalVar.Content = (edfiAdminApiEdfiAdminV1SaveClaimSetRequest.Value as object) is System.IO.Stream stream
-                            ? httpRequestMessageLocalVar.Content = new StreamContent(stream)
-                            : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(edfiAdminApiEdfiAdminV1SaveClaimSetRequest.Value, _jsonSerializerOptions));
+                    {
+                      httpRequestMessageLocalVar.Content = (edfiAdminApiEdfiAdminV1SaveClaimSetRequest.Value as object) is EdGraph.Platform.Client.Client.FileParameter fileParameterLocalVar
+                        ? httpRequestMessageLocalVar.Content = new StreamContent(fileParameterLocalVar.Content)
+                        : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(edfiAdminApiEdfiAdminV1SaveClaimSetRequest.Value, _jsonSerializerOptions));
+                    }
 
                     List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
                     httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
@@ -875,10 +881,10 @@ namespace EdGraph.Platform.Client.Api
                         "application/json"
                     };
 
-                    string? acceptLocalVar = ClientUtils.SelectHeaderAccept(acceptLocalVars);
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
 
-                    if (acceptLocalVar != null)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptLocalVar));
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
 
                     httpRequestMessageLocalVar.Method = HttpMethod.Post;
 
@@ -886,11 +892,17 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<CreateClaimSetAsyncApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<CreateClaimSetAsyncApiResponse>();
+                        CreateClaimSetAsyncApiResponse apiResponseLocalVar;
 
-                        CreateClaimSetAsyncApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterCreateClaimSetAsyncDefaultImplementation(apiResponseLocalVar, tenantId, instanceId, edfiAdminApiEdfiAdminV1SaveClaimSetRequest);
 
@@ -933,6 +945,22 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public CreateClaimSetAsyncApiResponse(ILogger<CreateClaimSetAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="CreateClaimSetAsyncApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public CreateClaimSetAsyncApiResponse(ILogger<CreateClaimSetAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -1208,7 +1236,7 @@ namespace EdGraph.Platform.Client.Api
             bool suppressDefaultLog = false;
             AfterDeleteClaimSetAsync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, instanceId, claimSetId);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -1224,31 +1252,31 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
         /// </summary>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="claimSetId"></param>
-        private void OnErrorDeleteClaimSetAsyncDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, string instanceId, int claimSetId)
+        private void OnErrorDeleteClaimSetAsyncDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, int claimSetId)
         {
-            bool suppressDefaultLog = false;
-            OnErrorDeleteClaimSetAsync(ref suppressDefaultLog, exception, pathFormat, path, tenantId, instanceId, claimSetId);
-            if (!suppressDefaultLog)
-                Logger.LogError(exception, "An error occurred while sending the request to the server.");
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorDeleteClaimSetAsync(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, instanceId, claimSetId);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
 
         /// <summary>
         /// A partial method that gives developers a way to provide customized exception handling
         /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="claimSetId"></param>
-        partial void OnErrorDeleteClaimSetAsync(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, string instanceId, int claimSetId);
+        partial void OnErrorDeleteClaimSetAsync(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, int claimSetId);
 
         /// <summary>
         /// Deletes a ClaimSet. 
@@ -1294,7 +1322,9 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets/{claimSetId}";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets/{claimSetId}"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets/{claimSetId}");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BinstanceId%7D", Uri.EscapeDataString(instanceId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BclaimSetId%7D", Uri.EscapeDataString(claimSetId.ToString()));
@@ -1312,10 +1342,10 @@ namespace EdGraph.Platform.Client.Api
                         "application/json"
                     };
 
-                    string? acceptLocalVar = ClientUtils.SelectHeaderAccept(acceptLocalVars);
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
 
-                    if (acceptLocalVar != null)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptLocalVar));
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
 
                     httpRequestMessageLocalVar.Method = HttpMethod.Delete;
 
@@ -1323,11 +1353,17 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<DeleteClaimSetAsyncApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<DeleteClaimSetAsyncApiResponse>();
+                        DeleteClaimSetAsyncApiResponse apiResponseLocalVar;
 
-                        DeleteClaimSetAsyncApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets/{claimSetId}", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets/{claimSetId}", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterDeleteClaimSetAsyncDefaultImplementation(apiResponseLocalVar, tenantId, instanceId, claimSetId);
 
@@ -1370,6 +1406,22 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public DeleteClaimSetAsyncApiResponse(ILogger<DeleteClaimSetAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="DeleteClaimSetAsyncApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public DeleteClaimSetAsyncApiResponse(ILogger<DeleteClaimSetAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -1613,7 +1665,7 @@ namespace EdGraph.Platform.Client.Api
             bool suppressDefaultLog = false;
             AfterGetClaimSetByIdAsync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, instanceId, claimSetId);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -1629,31 +1681,31 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
         /// </summary>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="claimSetId"></param>
-        private void OnErrorGetClaimSetByIdAsyncDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, string instanceId, int claimSetId)
+        private void OnErrorGetClaimSetByIdAsyncDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, int claimSetId)
         {
-            bool suppressDefaultLog = false;
-            OnErrorGetClaimSetByIdAsync(ref suppressDefaultLog, exception, pathFormat, path, tenantId, instanceId, claimSetId);
-            if (!suppressDefaultLog)
-                Logger.LogError(exception, "An error occurred while sending the request to the server.");
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorGetClaimSetByIdAsync(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, instanceId, claimSetId);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
 
         /// <summary>
         /// A partial method that gives developers a way to provide customized exception handling
         /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="claimSetId"></param>
-        partial void OnErrorGetClaimSetByIdAsync(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, string instanceId, int claimSetId);
+        partial void OnErrorGetClaimSetByIdAsync(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, int claimSetId);
 
         /// <summary>
         /// Retrieves a ClaimSet by ID. 
@@ -1699,7 +1751,9 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets/{claimSetId}";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets/{claimSetId}"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets/{claimSetId}");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BinstanceId%7D", Uri.EscapeDataString(instanceId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BclaimSetId%7D", Uri.EscapeDataString(claimSetId.ToString()));
@@ -1717,10 +1771,10 @@ namespace EdGraph.Platform.Client.Api
                         "application/json"
                     };
 
-                    string? acceptLocalVar = ClientUtils.SelectHeaderAccept(acceptLocalVars);
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
 
-                    if (acceptLocalVar != null)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptLocalVar));
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
 
                     httpRequestMessageLocalVar.Method = HttpMethod.Get;
 
@@ -1728,11 +1782,17 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<GetClaimSetByIdAsyncApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<GetClaimSetByIdAsyncApiResponse>();
+                        GetClaimSetByIdAsyncApiResponse apiResponseLocalVar;
 
-                        GetClaimSetByIdAsyncApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets/{claimSetId}", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets/{claimSetId}", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterGetClaimSetByIdAsyncDefaultImplementation(apiResponseLocalVar, tenantId, instanceId, claimSetId);
 
@@ -1775,6 +1835,22 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public GetClaimSetByIdAsyncApiResponse(ILogger<GetClaimSetByIdAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="GetClaimSetByIdAsyncApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public GetClaimSetByIdAsyncApiResponse(ILogger<GetClaimSetByIdAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -2061,7 +2137,7 @@ namespace EdGraph.Platform.Client.Api
             bool suppressDefaultLog = false;
             AfterGetClaimSetsAsync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, instanceId, pageSize, pageIndex, orderBy, filter);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -2080,37 +2156,37 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
         /// </summary>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageIndex"></param>
         /// <param name="orderBy"></param>
         /// <param name="filter"></param>
-        private void OnErrorGetClaimSetsAsyncDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, string instanceId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter)
+        private void OnErrorGetClaimSetsAsyncDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter)
         {
-            bool suppressDefaultLog = false;
-            OnErrorGetClaimSetsAsync(ref suppressDefaultLog, exception, pathFormat, path, tenantId, instanceId, pageSize, pageIndex, orderBy, filter);
-            if (!suppressDefaultLog)
-                Logger.LogError(exception, "An error occurred while sending the request to the server.");
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorGetClaimSetsAsync(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, instanceId, pageSize, pageIndex, orderBy, filter);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
 
         /// <summary>
         /// A partial method that gives developers a way to provide customized exception handling
         /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageIndex"></param>
         /// <param name="orderBy"></param>
         /// <param name="filter"></param>
-        partial void OnErrorGetClaimSetsAsync(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, string instanceId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter);
+        partial void OnErrorGetClaimSetsAsync(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter);
 
         /// <summary>
         /// Retrieves a list of ClaimSets. 
@@ -2162,7 +2238,9 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BinstanceId%7D", Uri.EscapeDataString(instanceId.ToString()));
 
@@ -2195,10 +2273,10 @@ namespace EdGraph.Platform.Client.Api
                         "application/json"
                     };
 
-                    string? acceptLocalVar = ClientUtils.SelectHeaderAccept(acceptLocalVars);
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
 
-                    if (acceptLocalVar != null)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptLocalVar));
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
 
                     httpRequestMessageLocalVar.Method = HttpMethod.Get;
 
@@ -2206,11 +2284,17 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<GetClaimSetsAsyncApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<GetClaimSetsAsyncApiResponse>();
+                        GetClaimSetsAsyncApiResponse apiResponseLocalVar;
 
-                        GetClaimSetsAsyncApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterGetClaimSetsAsyncDefaultImplementation(apiResponseLocalVar, tenantId, instanceId, pageSize, pageIndex, orderBy, filter);
 
@@ -2253,6 +2337,22 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public GetClaimSetsAsyncApiResponse(ILogger<GetClaimSetsAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="GetClaimSetsAsyncApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public GetClaimSetsAsyncApiResponse(ILogger<GetClaimSetsAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -2528,7 +2628,7 @@ namespace EdGraph.Platform.Client.Api
             bool suppressDefaultLog = false;
             AfterGetResourceClaimsGridAsync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, instanceId, claimSetId);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -2544,31 +2644,31 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
         /// </summary>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="claimSetId"></param>
-        private void OnErrorGetResourceClaimsGridAsyncDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, string instanceId, int claimSetId)
+        private void OnErrorGetResourceClaimsGridAsyncDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, int claimSetId)
         {
-            bool suppressDefaultLog = false;
-            OnErrorGetResourceClaimsGridAsync(ref suppressDefaultLog, exception, pathFormat, path, tenantId, instanceId, claimSetId);
-            if (!suppressDefaultLog)
-                Logger.LogError(exception, "An error occurred while sending the request to the server.");
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorGetResourceClaimsGridAsync(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, instanceId, claimSetId);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
 
         /// <summary>
         /// A partial method that gives developers a way to provide customized exception handling
         /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="claimSetId"></param>
-        partial void OnErrorGetResourceClaimsGridAsync(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, string instanceId, int claimSetId);
+        partial void OnErrorGetResourceClaimsGridAsync(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, int claimSetId);
 
         /// <summary>
         /// Retrieves a grid of Resource Claims. 
@@ -2614,7 +2714,9 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets/{claimSetId}/resourceclaims";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets/{claimSetId}/resourceclaims"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets/{claimSetId}/resourceclaims");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BinstanceId%7D", Uri.EscapeDataString(instanceId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BclaimSetId%7D", Uri.EscapeDataString(claimSetId.ToString()));
@@ -2632,10 +2734,10 @@ namespace EdGraph.Platform.Client.Api
                         "application/json"
                     };
 
-                    string? acceptLocalVar = ClientUtils.SelectHeaderAccept(acceptLocalVars);
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
 
-                    if (acceptLocalVar != null)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptLocalVar));
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
 
                     httpRequestMessageLocalVar.Method = HttpMethod.Get;
 
@@ -2643,11 +2745,17 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<GetResourceClaimsGridAsyncApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<GetResourceClaimsGridAsyncApiResponse>();
+                        GetResourceClaimsGridAsyncApiResponse apiResponseLocalVar;
 
-                        GetResourceClaimsGridAsyncApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets/{claimSetId}/resourceclaims", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets/{claimSetId}/resourceclaims", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterGetResourceClaimsGridAsyncDefaultImplementation(apiResponseLocalVar, tenantId, instanceId, claimSetId);
 
@@ -2690,6 +2798,22 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public GetResourceClaimsGridAsyncApiResponse(ILogger<GetResourceClaimsGridAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="GetResourceClaimsGridAsyncApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public GetResourceClaimsGridAsyncApiResponse(ILogger<GetResourceClaimsGridAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -2970,7 +3094,7 @@ namespace EdGraph.Platform.Client.Api
             bool suppressDefaultLog = false;
             AfterSyncClaimSetAsync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, instanceId, claimSetId, edfiAdminApiEdfiAdminV1SyncClaimSetRequest);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -2987,33 +3111,33 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
         /// </summary>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="claimSetId"></param>
         /// <param name="edfiAdminApiEdfiAdminV1SyncClaimSetRequest"></param>
-        private void OnErrorSyncClaimSetAsyncDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, string instanceId, int claimSetId, Option<EdfiAdminApiEdfiAdminV1SyncClaimSetRequest> edfiAdminApiEdfiAdminV1SyncClaimSetRequest)
+        private void OnErrorSyncClaimSetAsyncDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, int claimSetId, Option<EdfiAdminApiEdfiAdminV1SyncClaimSetRequest> edfiAdminApiEdfiAdminV1SyncClaimSetRequest)
         {
-            bool suppressDefaultLog = false;
-            OnErrorSyncClaimSetAsync(ref suppressDefaultLog, exception, pathFormat, path, tenantId, instanceId, claimSetId, edfiAdminApiEdfiAdminV1SyncClaimSetRequest);
-            if (!suppressDefaultLog)
-                Logger.LogError(exception, "An error occurred while sending the request to the server.");
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorSyncClaimSetAsync(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, instanceId, claimSetId, edfiAdminApiEdfiAdminV1SyncClaimSetRequest);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
 
         /// <summary>
         /// A partial method that gives developers a way to provide customized exception handling
         /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="claimSetId"></param>
         /// <param name="edfiAdminApiEdfiAdminV1SyncClaimSetRequest"></param>
-        partial void OnErrorSyncClaimSetAsync(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, string instanceId, int claimSetId, Option<EdfiAdminApiEdfiAdminV1SyncClaimSetRequest> edfiAdminApiEdfiAdminV1SyncClaimSetRequest);
+        partial void OnErrorSyncClaimSetAsync(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, int claimSetId, Option<EdfiAdminApiEdfiAdminV1SyncClaimSetRequest> edfiAdminApiEdfiAdminV1SyncClaimSetRequest);
 
         /// <summary>
         /// Copies a Claim Set from one instance to another/other instance(s) 
@@ -3061,15 +3185,19 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets/{claimSetId}/sync";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets/{claimSetId}/sync"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets/{claimSetId}/sync");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BinstanceId%7D", Uri.EscapeDataString(instanceId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BclaimSetId%7D", Uri.EscapeDataString(claimSetId.ToString()));
 
                     if (edfiAdminApiEdfiAdminV1SyncClaimSetRequest.IsSet)
-                        httpRequestMessageLocalVar.Content = (edfiAdminApiEdfiAdminV1SyncClaimSetRequest.Value as object) is System.IO.Stream stream
-                            ? httpRequestMessageLocalVar.Content = new StreamContent(stream)
-                            : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(edfiAdminApiEdfiAdminV1SyncClaimSetRequest.Value, _jsonSerializerOptions));
+                    {
+                      httpRequestMessageLocalVar.Content = (edfiAdminApiEdfiAdminV1SyncClaimSetRequest.Value as object) is EdGraph.Platform.Client.Client.FileParameter fileParameterLocalVar
+                        ? httpRequestMessageLocalVar.Content = new StreamContent(fileParameterLocalVar.Content)
+                        : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(edfiAdminApiEdfiAdminV1SyncClaimSetRequest.Value, _jsonSerializerOptions));
+                    }
 
                     List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
                     httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
@@ -3096,10 +3224,10 @@ namespace EdGraph.Platform.Client.Api
                         "application/json"
                     };
 
-                    string? acceptLocalVar = ClientUtils.SelectHeaderAccept(acceptLocalVars);
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
 
-                    if (acceptLocalVar != null)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptLocalVar));
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
 
                     httpRequestMessageLocalVar.Method = HttpMethod.Post;
 
@@ -3107,11 +3235,17 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<SyncClaimSetAsyncApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<SyncClaimSetAsyncApiResponse>();
+                        SyncClaimSetAsyncApiResponse apiResponseLocalVar;
 
-                        SyncClaimSetAsyncApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets/{claimSetId}/sync", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets/{claimSetId}/sync", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterSyncClaimSetAsyncDefaultImplementation(apiResponseLocalVar, tenantId, instanceId, claimSetId, edfiAdminApiEdfiAdminV1SyncClaimSetRequest);
 
@@ -3154,6 +3288,22 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public SyncClaimSetAsyncApiResponse(ILogger<SyncClaimSetAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="SyncClaimSetAsyncApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public SyncClaimSetAsyncApiResponse(ILogger<SyncClaimSetAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -3402,7 +3552,7 @@ namespace EdGraph.Platform.Client.Api
             bool suppressDefaultLog = false;
             AfterUpdateClaimSetAsync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, instanceId, claimSetId, edfiAdminApiEdfiAdminV1SaveClaimSetRequest);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -3419,33 +3569,33 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
         /// </summary>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="claimSetId"></param>
         /// <param name="edfiAdminApiEdfiAdminV1SaveClaimSetRequest"></param>
-        private void OnErrorUpdateClaimSetAsyncDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, string instanceId, int claimSetId, Option<EdfiAdminApiEdfiAdminV1SaveClaimSetRequest> edfiAdminApiEdfiAdminV1SaveClaimSetRequest)
+        private void OnErrorUpdateClaimSetAsyncDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, int claimSetId, Option<EdfiAdminApiEdfiAdminV1SaveClaimSetRequest> edfiAdminApiEdfiAdminV1SaveClaimSetRequest)
         {
-            bool suppressDefaultLog = false;
-            OnErrorUpdateClaimSetAsync(ref suppressDefaultLog, exception, pathFormat, path, tenantId, instanceId, claimSetId, edfiAdminApiEdfiAdminV1SaveClaimSetRequest);
-            if (!suppressDefaultLog)
-                Logger.LogError(exception, "An error occurred while sending the request to the server.");
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorUpdateClaimSetAsync(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, instanceId, claimSetId, edfiAdminApiEdfiAdminV1SaveClaimSetRequest);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
 
         /// <summary>
         /// A partial method that gives developers a way to provide customized exception handling
         /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="claimSetId"></param>
         /// <param name="edfiAdminApiEdfiAdminV1SaveClaimSetRequest"></param>
-        partial void OnErrorUpdateClaimSetAsync(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, string instanceId, int claimSetId, Option<EdfiAdminApiEdfiAdminV1SaveClaimSetRequest> edfiAdminApiEdfiAdminV1SaveClaimSetRequest);
+        partial void OnErrorUpdateClaimSetAsync(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, int claimSetId, Option<EdfiAdminApiEdfiAdminV1SaveClaimSetRequest> edfiAdminApiEdfiAdminV1SaveClaimSetRequest);
 
         /// <summary>
         /// Updates a ClaimSet. 
@@ -3493,15 +3643,19 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets/{claimSetId}";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets/{claimSetId}"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets/{claimSetId}");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BinstanceId%7D", Uri.EscapeDataString(instanceId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BclaimSetId%7D", Uri.EscapeDataString(claimSetId.ToString()));
 
                     if (edfiAdminApiEdfiAdminV1SaveClaimSetRequest.IsSet)
-                        httpRequestMessageLocalVar.Content = (edfiAdminApiEdfiAdminV1SaveClaimSetRequest.Value as object) is System.IO.Stream stream
-                            ? httpRequestMessageLocalVar.Content = new StreamContent(stream)
-                            : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(edfiAdminApiEdfiAdminV1SaveClaimSetRequest.Value, _jsonSerializerOptions));
+                    {
+                      httpRequestMessageLocalVar.Content = (edfiAdminApiEdfiAdminV1SaveClaimSetRequest.Value as object) is EdGraph.Platform.Client.Client.FileParameter fileParameterLocalVar
+                        ? httpRequestMessageLocalVar.Content = new StreamContent(fileParameterLocalVar.Content)
+                        : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(edfiAdminApiEdfiAdminV1SaveClaimSetRequest.Value, _jsonSerializerOptions));
+                    }
 
                     List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
                     httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
@@ -3528,10 +3682,10 @@ namespace EdGraph.Platform.Client.Api
                         "application/json"
                     };
 
-                    string? acceptLocalVar = ClientUtils.SelectHeaderAccept(acceptLocalVars);
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
 
-                    if (acceptLocalVar != null)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptLocalVar));
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
 
                     httpRequestMessageLocalVar.Method = HttpMethod.Put;
 
@@ -3539,11 +3693,17 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<UpdateClaimSetAsyncApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<UpdateClaimSetAsyncApiResponse>();
+                        UpdateClaimSetAsyncApiResponse apiResponseLocalVar;
 
-                        UpdateClaimSetAsyncApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets/{claimSetId}", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/claimsets/{claimSetId}", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterUpdateClaimSetAsyncDefaultImplementation(apiResponseLocalVar, tenantId, instanceId, claimSetId, edfiAdminApiEdfiAdminV1SaveClaimSetRequest);
 
@@ -3586,6 +3746,22 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public UpdateClaimSetAsyncApiResponse(ILogger<UpdateClaimSetAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="UpdateClaimSetAsyncApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public UpdateClaimSetAsyncApiResponse(ILogger<UpdateClaimSetAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);

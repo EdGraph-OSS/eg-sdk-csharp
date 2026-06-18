@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InstanceId
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceId
         /// </summary>
         [JsonPropertyName("instanceId")]
-        public string? InstanceId { get { return this.InstanceIdOption; } set { this.InstanceIdOption = new(value); } }
+        public string? InstanceId { get { return this.InstanceIdOption.Value; } set { this.InstanceIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApiClientId
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApiClientId
         /// </summary>
         [JsonPropertyName("apiClientId")]
-        public int? ApiClientId { get { return this.ApiClientIdOption; } set { this.ApiClientIdOption = new(value); } }
+        public int? ApiClientId { get { return this.ApiClientIdOption.Value; } set { this.ApiClientIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of NewSecret
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets NewSecret
         /// </summary>
         [JsonPropertyName("newSecret")]
-        public string? NewSecret { get { return this.NewSecretOption; } set { this.NewSecretOption = new(value); } }
+        public string? NewSecret { get { return this.NewSecretOption.Value; } set { this.NewSecretOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -177,8 +177,7 @@ namespace EdGraph.Platform.Client.Model
                             instanceId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "apiClientId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                apiClientId = new Option<int?>(utf8JsonReader.GetInt32());
+                            apiClientId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "newSecret":
                             newSecret = new Option<string?>(utf8JsonReader.GetString());

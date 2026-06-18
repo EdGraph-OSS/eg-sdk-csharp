@@ -64,7 +64,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Id
@@ -77,7 +77,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Name
@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Name
         /// </summary>
         [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption; } set { this.NameOption = new(value); } }
+        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Description
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Description
         /// </summary>
         [JsonPropertyName("description")]
-        public string? Description { get { return this.DescriptionOption; } set { this.DescriptionOption = new(value); } }
+        public string? Description { get { return this.DescriptionOption.Value; } set { this.DescriptionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Tags
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Tags
         /// </summary>
         [JsonPropertyName("tags")]
-        public List<string>? Tags { get { return this.TagsOption; } }
+        public List<string>? Tags { get { return this.TagsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of Urls
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Urls
         /// </summary>
         [JsonPropertyName("urls")]
-        public List<ValidationsApiContainersV1Url>? Urls { get { return this.UrlsOption; } }
+        public List<ValidationsApiContainersV1Url>? Urls { get { return this.UrlsOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -217,12 +217,10 @@ namespace EdGraph.Platform.Client.Model
                             description = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "tags":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                tags = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            tags = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "urls":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                urls = new Option<List<ValidationsApiContainersV1Url>?>(JsonSerializer.Deserialize<List<ValidationsApiContainersV1Url>>(ref utf8JsonReader, jsonSerializerOptions));
+                            urls = new Option<List<ValidationsApiContainersV1Url>?>(JsonSerializer.Deserialize<List<ValidationsApiContainersV1Url>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

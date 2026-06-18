@@ -40,8 +40,10 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="claimSetName">claimSetName</param>
         /// <param name="vendorId">vendorId</param>
         /// <param name="operationalContextUri">operationalContextUri</param>
+        /// <param name="key">key</param>
+        /// <param name="secret">secret</param>
         [JsonConstructor]
-        public EdfiAdminApiEdfiAdminV1EdFiApplicationCreatedResponse(Option<string?> tenantId = default, Option<string?> instanceId = default, Option<int?> applicationId = default, Option<string?> applicationName = default, Option<string?> claimSetName = default, Option<int?> vendorId = default, Option<string?> operationalContextUri = default)
+        public EdfiAdminApiEdfiAdminV1EdFiApplicationCreatedResponse(Option<string?> tenantId = default, Option<string?> instanceId = default, Option<int?> applicationId = default, Option<string?> applicationName = default, Option<string?> claimSetName = default, Option<int?> vendorId = default, Option<string?> operationalContextUri = default, Option<string?> key = default, Option<string?> secret = default)
         {
             TenantIdOption = tenantId;
             InstanceIdOption = instanceId;
@@ -50,6 +52,8 @@ namespace EdGraph.Platform.Client.Model
             ClaimSetNameOption = claimSetName;
             VendorIdOption = vendorId;
             OperationalContextUriOption = operationalContextUri;
+            KeyOption = key;
+            SecretOption = secret;
             OnCreated();
         }
 
@@ -66,7 +70,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InstanceId
@@ -79,7 +83,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceId
         /// </summary>
         [JsonPropertyName("instanceId")]
-        public string? InstanceId { get { return this.InstanceIdOption; } set { this.InstanceIdOption = new(value); } }
+        public string? InstanceId { get { return this.InstanceIdOption.Value; } set { this.InstanceIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApplicationId
@@ -92,7 +96,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApplicationId
         /// </summary>
         [JsonPropertyName("applicationId")]
-        public int? ApplicationId { get { return this.ApplicationIdOption; } set { this.ApplicationIdOption = new(value); } }
+        public int? ApplicationId { get { return this.ApplicationIdOption.Value; } set { this.ApplicationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApplicationName
@@ -105,7 +109,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApplicationName
         /// </summary>
         [JsonPropertyName("applicationName")]
-        public string? ApplicationName { get { return this.ApplicationNameOption; } set { this.ApplicationNameOption = new(value); } }
+        public string? ApplicationName { get { return this.ApplicationNameOption.Value; } set { this.ApplicationNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ClaimSetName
@@ -118,7 +122,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ClaimSetName
         /// </summary>
         [JsonPropertyName("claimSetName")]
-        public string? ClaimSetName { get { return this.ClaimSetNameOption; } set { this.ClaimSetNameOption = new(value); } }
+        public string? ClaimSetName { get { return this.ClaimSetNameOption.Value; } set { this.ClaimSetNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of VendorId
@@ -131,7 +135,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets VendorId
         /// </summary>
         [JsonPropertyName("vendorId")]
-        public int? VendorId { get { return this.VendorIdOption; } set { this.VendorIdOption = new(value); } }
+        public int? VendorId { get { return this.VendorIdOption.Value; } set { this.VendorIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of OperationalContextUri
@@ -144,7 +148,33 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets OperationalContextUri
         /// </summary>
         [JsonPropertyName("operationalContextUri")]
-        public string? OperationalContextUri { get { return this.OperationalContextUriOption; } set { this.OperationalContextUriOption = new(value); } }
+        public string? OperationalContextUri { get { return this.OperationalContextUriOption.Value; } set { this.OperationalContextUriOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of Key
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> KeyOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets Key
+        /// </summary>
+        [JsonPropertyName("key")]
+        public string? Key { get { return this.KeyOption.Value; } set { this.KeyOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of Secret
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> SecretOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets Secret
+        /// </summary>
+        [JsonPropertyName("secret")]
+        public string? Secret { get { return this.SecretOption.Value; } set { this.SecretOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -161,6 +191,8 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  ClaimSetName: ").Append(ClaimSetName).Append("\n");
             sb.Append("  VendorId: ").Append(VendorId).Append("\n");
             sb.Append("  OperationalContextUri: ").Append(OperationalContextUri).Append("\n");
+            sb.Append("  Key: ").Append(Key).Append("\n");
+            sb.Append("  Secret: ").Append(Secret).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -205,6 +237,8 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> claimSetName = default;
             Option<int?> vendorId = default;
             Option<string?> operationalContextUri = default;
+            Option<string?> key = default;
+            Option<string?> secret = default;
 
             while (utf8JsonReader.Read())
             {
@@ -228,8 +262,7 @@ namespace EdGraph.Platform.Client.Model
                             instanceId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "applicationId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                applicationId = new Option<int?>(utf8JsonReader.GetInt32());
+                            applicationId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "applicationName":
                             applicationName = new Option<string?>(utf8JsonReader.GetString());
@@ -238,11 +271,16 @@ namespace EdGraph.Platform.Client.Model
                             claimSetName = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "vendorId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                vendorId = new Option<int?>(utf8JsonReader.GetInt32());
+                            vendorId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "operationalContextUri":
                             operationalContextUri = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "key":
+                            key = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "secret":
+                            secret = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         default:
                             break;
@@ -256,7 +294,7 @@ namespace EdGraph.Platform.Client.Model
             if (vendorId.IsSet && vendorId.Value == null)
                 throw new ArgumentNullException(nameof(vendorId), "Property is not nullable for class EdfiAdminApiEdfiAdminV1EdFiApplicationCreatedResponse.");
 
-            return new EdfiAdminApiEdfiAdminV1EdFiApplicationCreatedResponse(tenantId, instanceId, applicationId, applicationName, claimSetName, vendorId, operationalContextUri);
+            return new EdfiAdminApiEdfiAdminV1EdFiApplicationCreatedResponse(tenantId, instanceId, applicationId, applicationName, claimSetName, vendorId, operationalContextUri, key, secret);
         }
 
         /// <summary>
@@ -318,6 +356,18 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteString("operationalContextUri", edfiAdminApiEdfiAdminV1EdFiApplicationCreatedResponse.OperationalContextUri);
                 else
                     writer.WriteNull("operationalContextUri");
+
+            if (edfiAdminApiEdfiAdminV1EdFiApplicationCreatedResponse.KeyOption.IsSet)
+                if (edfiAdminApiEdfiAdminV1EdFiApplicationCreatedResponse.KeyOption.Value != null)
+                    writer.WriteString("key", edfiAdminApiEdfiAdminV1EdFiApplicationCreatedResponse.Key);
+                else
+                    writer.WriteNull("key");
+
+            if (edfiAdminApiEdfiAdminV1EdFiApplicationCreatedResponse.SecretOption.IsSet)
+                if (edfiAdminApiEdfiAdminV1EdFiApplicationCreatedResponse.SecretOption.Value != null)
+                    writer.WriteString("secret", edfiAdminApiEdfiAdminV1EdFiApplicationCreatedResponse.Secret);
+                else
+                    writer.WriteNull("secret");
         }
     }
 }

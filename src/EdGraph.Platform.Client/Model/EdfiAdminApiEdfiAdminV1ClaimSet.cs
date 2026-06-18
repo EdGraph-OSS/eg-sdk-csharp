@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ClaimSetId
         /// </summary>
         [JsonPropertyName("claimSetId")]
-        public int? ClaimSetId { get { return this.ClaimSetIdOption; } set { this.ClaimSetIdOption = new(value); } }
+        public int? ClaimSetId { get { return this.ClaimSetIdOption.Value; } set { this.ClaimSetIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ClaimSetName
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ClaimSetName
         /// </summary>
         [JsonPropertyName("claimSetName")]
-        public string? ClaimSetName { get { return this.ClaimSetNameOption; } set { this.ClaimSetNameOption = new(value); } }
+        public string? ClaimSetName { get { return this.ClaimSetNameOption.Value; } set { this.ClaimSetNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsSystemReserved
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IsSystemReserved
         /// </summary>
         [JsonPropertyName("isSystemReserved")]
-        public bool? IsSystemReserved { get { return this.IsSystemReservedOption; } set { this.IsSystemReservedOption = new(value); } }
+        public bool? IsSystemReserved { get { return this.IsSystemReservedOption.Value; } set { this.IsSystemReservedOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApplicationsCount
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApplicationsCount
         /// </summary>
         [JsonPropertyName("applicationsCount")]
-        public int? ApplicationsCount { get { return this.ApplicationsCountOption; } set { this.ApplicationsCountOption = new(value); } }
+        public int? ApplicationsCount { get { return this.ApplicationsCountOption.Value; } set { this.ApplicationsCountOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -171,19 +171,16 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "claimSetId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                claimSetId = new Option<int?>(utf8JsonReader.GetInt32());
+                            claimSetId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "claimSetName":
                             claimSetName = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "isSystemReserved":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isSystemReserved = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isSystemReserved = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "applicationsCount":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                applicationsCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            applicationsCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

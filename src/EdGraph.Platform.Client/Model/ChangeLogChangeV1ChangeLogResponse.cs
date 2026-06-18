@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedBy
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedBy
         /// </summary>
         [JsonPropertyName("createdBy")]
-        public string? CreatedBy { get { return this.CreatedByOption; } set { this.CreatedByOption = new(value); } }
+        public string? CreatedBy { get { return this.CreatedByOption.Value; } set { this.CreatedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedDateTime
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedDateTime
         /// </summary>
         [JsonPropertyName("createdDateTime")]
-        public string? CreatedDateTime { get { return this.CreatedDateTimeOption; } set { this.CreatedDateTimeOption = new(value); } }
+        public string? CreatedDateTime { get { return this.CreatedDateTimeOption.Value; } set { this.CreatedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Source
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Source
         /// </summary>
         [JsonPropertyName("source")]
-        public string? Source { get { return this.SourceOption; } set { this.SourceOption = new(value); } }
+        public string? Source { get { return this.SourceOption.Value; } set { this.SourceOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TraceId
@@ -142,7 +142,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TraceId
         /// </summary>
         [JsonPropertyName("traceId")]
-        public string? TraceId { get { return this.TraceIdOption; } set { this.TraceIdOption = new(value); } }
+        public string? TraceId { get { return this.TraceIdOption.Value; } set { this.TraceIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CorrelationId
@@ -155,7 +155,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CorrelationId
         /// </summary>
         [JsonPropertyName("correlationId")]
-        public string? CorrelationId { get { return this.CorrelationIdOption; } set { this.CorrelationIdOption = new(value); } }
+        public string? CorrelationId { get { return this.CorrelationIdOption.Value; } set { this.CorrelationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -168,7 +168,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ProducedBy
@@ -181,7 +181,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ProducedBy
         /// </summary>
         [JsonPropertyName("producedBy")]
-        public string? ProducedBy { get { return this.ProducedByOption; } set { this.ProducedByOption = new(value); } }
+        public string? ProducedBy { get { return this.ProducedByOption.Value; } set { this.ProducedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ProducedDateTime
@@ -194,7 +194,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ProducedDateTime
         /// </summary>
         [JsonPropertyName("producedDateTime")]
-        public string? ProducedDateTime { get { return this.ProducedDateTimeOption; } set { this.ProducedDateTimeOption = new(value); } }
+        public string? ProducedDateTime { get { return this.ProducedDateTimeOption.Value; } set { this.ProducedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ProducerClientId
@@ -207,7 +207,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ProducerClientId
         /// </summary>
         [JsonPropertyName("producerClientId")]
-        public string? ProducerClientId { get { return this.ProducerClientIdOption; } set { this.ProducerClientIdOption = new(value); } }
+        public string? ProducerClientId { get { return this.ProducerClientIdOption.Value; } set { this.ProducerClientIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ProducerAddress
@@ -220,7 +220,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ProducerAddress
         /// </summary>
         [JsonPropertyName("producerAddress")]
-        public string? ProducerAddress { get { return this.ProducerAddressOption; } set { this.ProducerAddressOption = new(value); } }
+        public string? ProducerAddress { get { return this.ProducerAddressOption.Value; } set { this.ProducerAddressOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EntityType
@@ -233,7 +233,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EntityType
         /// </summary>
         [JsonPropertyName("entityType")]
-        public string? EntityType { get { return this.EntityTypeOption; } set { this.EntityTypeOption = new(value); } }
+        public string? EntityType { get { return this.EntityTypeOption.Value; } set { this.EntityTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EntityId
@@ -246,7 +246,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EntityId
         /// </summary>
         [JsonPropertyName("entityId")]
-        public string? EntityId { get { return this.EntityIdOption; } set { this.EntityIdOption = new(value); } }
+        public string? EntityId { get { return this.EntityIdOption.Value; } set { this.EntityIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EventType
@@ -259,7 +259,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EventType
         /// </summary>
         [JsonPropertyName("eventType")]
-        public string? EventType { get { return this.EventTypeOption; } set { this.EventTypeOption = new(value); } }
+        public string? EventType { get { return this.EventTypeOption.Value; } set { this.EventTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EventId
@@ -272,7 +272,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EventId
         /// </summary>
         [JsonPropertyName("eventId")]
-        public string? EventId { get { return this.EventIdOption; } set { this.EventIdOption = new(value); } }
+        public string? EventId { get { return this.EventIdOption.Value; } set { this.EventIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EventPayload
@@ -285,7 +285,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EventPayload
         /// </summary>
         [JsonPropertyName("eventPayload")]
-        public GoogleProtobufWellKnownTypesStruct? EventPayload { get { return this.EventPayloadOption; } set { this.EventPayloadOption = new(value); } }
+        public GoogleProtobufWellKnownTypesStruct? EventPayload { get { return this.EventPayloadOption.Value; } set { this.EventPayloadOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EventSchema
@@ -298,7 +298,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EventSchema
         /// </summary>
         [JsonPropertyName("eventSchema")]
-        public GoogleProtobufWellKnownTypesStruct? EventSchema { get { return this.EventSchemaOption; } set { this.EventSchemaOption = new(value); } }
+        public GoogleProtobufWellKnownTypesStruct? EventSchema { get { return this.EventSchemaOption.Value; } set { this.EventSchemaOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EventVersion
@@ -311,7 +311,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EventVersion
         /// </summary>
         [JsonPropertyName("eventVersion")]
-        public string? EventVersion { get { return this.EventVersionOption; } set { this.EventVersionOption = new(value); } }
+        public string? EventVersion { get { return this.EventVersionOption.Value; } set { this.EventVersionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Extensions
@@ -324,7 +324,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Extensions
         /// </summary>
         [JsonPropertyName("extensions")]
-        public GoogleProtobufWellKnownTypesStruct? Extensions { get { return this.ExtensionsOption; } set { this.ExtensionsOption = new(value); } }
+        public GoogleProtobufWellKnownTypesStruct? Extensions { get { return this.ExtensionsOption.Value; } set { this.ExtensionsOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -471,19 +471,16 @@ namespace EdGraph.Platform.Client.Model
                             eventId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "eventPayload":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                eventPayload = new Option<GoogleProtobufWellKnownTypesStruct?>(JsonSerializer.Deserialize<GoogleProtobufWellKnownTypesStruct>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            eventPayload = new Option<GoogleProtobufWellKnownTypesStruct?>(JsonSerializer.Deserialize<GoogleProtobufWellKnownTypesStruct>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "eventSchema":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                eventSchema = new Option<GoogleProtobufWellKnownTypesStruct?>(JsonSerializer.Deserialize<GoogleProtobufWellKnownTypesStruct>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            eventSchema = new Option<GoogleProtobufWellKnownTypesStruct?>(JsonSerializer.Deserialize<GoogleProtobufWellKnownTypesStruct>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "eventVersion":
                             eventVersion = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "extensions":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                extensions = new Option<GoogleProtobufWellKnownTypesStruct?>(JsonSerializer.Deserialize<GoogleProtobufWellKnownTypesStruct>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            extensions = new Option<GoogleProtobufWellKnownTypesStruct?>(JsonSerializer.Deserialize<GoogleProtobufWellKnownTypesStruct>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

@@ -68,7 +68,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApplicationId
         /// </summary>
         [JsonPropertyName("applicationId")]
-        public string? ApplicationId { get { return this.ApplicationIdOption; } set { this.ApplicationIdOption = new(value); } }
+        public string? ApplicationId { get { return this.ApplicationIdOption.Value; } set { this.ApplicationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApplicationName
@@ -81,7 +81,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApplicationName
         /// </summary>
         [JsonPropertyName("applicationName")]
-        public string? ApplicationName { get { return this.ApplicationNameOption; } set { this.ApplicationNameOption = new(value); } }
+        public string? ApplicationName { get { return this.ApplicationNameOption.Value; } set { this.ApplicationNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Role
@@ -94,7 +94,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Role
         /// </summary>
         [JsonPropertyName("role")]
-        public EdGraphHttpAggregatorsTenantApiControllersV2ResponsesUserLicenseRole? Role { get { return this.RoleOption; } set { this.RoleOption = new(value); } }
+        public EdGraphHttpAggregatorsTenantApiControllersV2ResponsesUserLicenseRole? Role { get { return this.RoleOption.Value; } set { this.RoleOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LicenseStatus
@@ -107,7 +107,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LicenseStatus
         /// </summary>
         [JsonPropertyName("licenseStatus")]
-        public string? LicenseStatus { get { return this.LicenseStatusOption; } set { this.LicenseStatusOption = new(value); } }
+        public string? LicenseStatus { get { return this.LicenseStatusOption.Value; } set { this.LicenseStatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LicenseSource
@@ -120,7 +120,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LicenseSource
         /// </summary>
         [JsonPropertyName("licenseSource")]
-        public string? LicenseSource { get { return this.LicenseSourceOption; } set { this.LicenseSourceOption = new(value); } }
+        public string? LicenseSource { get { return this.LicenseSourceOption.Value; } set { this.LicenseSourceOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EducationOrganizationId
@@ -133,7 +133,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EducationOrganizationId
         /// </summary>
         [JsonPropertyName("educationOrganizationId")]
-        public int? EducationOrganizationId { get { return this.EducationOrganizationIdOption; } set { this.EducationOrganizationIdOption = new(value); } }
+        public int? EducationOrganizationId { get { return this.EducationOrganizationIdOption.Value; } set { this.EducationOrganizationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EducationOrganizationSource
@@ -146,7 +146,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EducationOrganizationSource
         /// </summary>
         [JsonPropertyName("educationOrganizationSource")]
-        public string? EducationOrganizationSource { get { return this.EducationOrganizationSourceOption; } set { this.EducationOrganizationSourceOption = new(value); } }
+        public string? EducationOrganizationSource { get { return this.EducationOrganizationSourceOption.Value; } set { this.EducationOrganizationSourceOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of StaffClassification
@@ -159,7 +159,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets StaffClassification
         /// </summary>
         [JsonPropertyName("staffClassification")]
-        public string? StaffClassification { get { return this.StaffClassificationOption; } set { this.StaffClassificationOption = new(value); } }
+        public string? StaffClassification { get { return this.StaffClassificationOption.Value; } set { this.StaffClassificationOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -245,8 +245,7 @@ namespace EdGraph.Platform.Client.Model
                             applicationName = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "role":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                role = new Option<EdGraphHttpAggregatorsTenantApiControllersV2ResponsesUserLicenseRole?>(JsonSerializer.Deserialize<EdGraphHttpAggregatorsTenantApiControllersV2ResponsesUserLicenseRole>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            role = new Option<EdGraphHttpAggregatorsTenantApiControllersV2ResponsesUserLicenseRole?>(JsonSerializer.Deserialize<EdGraphHttpAggregatorsTenantApiControllersV2ResponsesUserLicenseRole>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "licenseStatus":
                             licenseStatus = new Option<string?>(utf8JsonReader.GetString());
@@ -255,8 +254,7 @@ namespace EdGraph.Platform.Client.Model
                             licenseSource = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "educationOrganizationId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                educationOrganizationId = new Option<int?>(utf8JsonReader.GetInt32());
+                            educationOrganizationId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "educationOrganizationSource":
                             educationOrganizationSource = new Option<string?>(utf8JsonReader.GetString());

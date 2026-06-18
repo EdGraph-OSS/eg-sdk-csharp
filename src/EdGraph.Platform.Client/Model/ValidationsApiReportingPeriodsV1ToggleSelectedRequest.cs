@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ReportingPeriodId
         /// </summary>
         [JsonPropertyName("reportingPeriodId")]
-        public string? ReportingPeriodId { get { return this.ReportingPeriodIdOption; } set { this.ReportingPeriodIdOption = new(value); } }
+        public string? ReportingPeriodId { get { return this.ReportingPeriodIdOption.Value; } set { this.ReportingPeriodIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Selected
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Selected
         /// </summary>
         [JsonPropertyName("selected")]
-        public bool? Selected { get { return this.SelectedOption; } set { this.SelectedOption = new(value); } }
+        public bool? Selected { get { return this.SelectedOption.Value; } set { this.SelectedOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -140,8 +140,7 @@ namespace EdGraph.Platform.Client.Model
                             reportingPeriodId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "selected":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                selected = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            selected = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

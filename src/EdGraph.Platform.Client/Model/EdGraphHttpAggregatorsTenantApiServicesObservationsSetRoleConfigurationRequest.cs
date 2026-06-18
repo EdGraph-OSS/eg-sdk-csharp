@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Role
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Role
         /// </summary>
         [JsonPropertyName("role")]
-        public string? Role { get { return this.RoleOption; } set { this.RoleOption = new(value); } }
+        public string? Role { get { return this.RoleOption.Value; } set { this.RoleOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AssignedPersonaIdentifiers
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AssignedPersonaIdentifiers
         /// </summary>
         [JsonPropertyName("assignedPersonaIdentifiers")]
-        public List<string>? AssignedPersonaIdentifiers { get { return this.AssignedPersonaIdentifiersOption; } set { this.AssignedPersonaIdentifiersOption = new(value); } }
+        public List<string>? AssignedPersonaIdentifiers { get { return this.AssignedPersonaIdentifiersOption.Value; } set { this.AssignedPersonaIdentifiersOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -160,8 +160,7 @@ namespace EdGraph.Platform.Client.Model
                             role = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "assignedPersonaIdentifiers":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                assignedPersonaIdentifiers = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            assignedPersonaIdentifiers = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

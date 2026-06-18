@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1CreateConnectionRequest> edGraphHttpAggregatorsTenantApiServicesStateReportingV1CreateConnectionRequest = default!;
             var response = await _instance.CreateStateReportingConnectionV1Async(tenantId, edGraphHttpAggregatorsTenantApiServicesStateReportingV1CreateConnectionRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1ConnectionCreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid connectionId = default!;
             var response = await _instance.DeleteStateReportingConnectionV1Async(tenantId, connectionId);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1ConnectionDeletedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> connectionType = default!;
             var response = await _instance.FindStateReportingConnectionsV1Async(tenantId, instanceType, connectionType);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1PagedConnectionsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid connectionId = default!;
             var response = await _instance.GetStateReportingConnectionV1Async(tenantId, connectionId);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1ConnectionProfileResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid connectionId = default!;
             var response = await _instance.TestStateReportingConnectionByIdV1Async(tenantId, connectionId);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1TestConnectionResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1TestConnectionByTypeRequest> edGraphHttpAggregatorsTenantApiServicesStateReportingV1TestConnectionByTypeRequest = default!;
             var response = await _instance.TestStateReportingConnectionByTypeV1Async(tenantId, edGraphHttpAggregatorsTenantApiServicesStateReportingV1TestConnectionByTypeRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1TestConnectionResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1UpdateConnectionRequest> edGraphHttpAggregatorsTenantApiServicesStateReportingV1UpdateConnectionRequest = default!;
             var response = await _instance.UpdateStateReportingConnectionV1Async(tenantId, connectionId, edGraphHttpAggregatorsTenantApiServicesStateReportingV1UpdateConnectionRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1ConnectionUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

@@ -64,7 +64,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets UserId
         /// </summary>
         [JsonPropertyName("userId")]
-        public Guid? UserId { get { return this.UserIdOption; } set { this.UserIdOption = new(value); } }
+        public Guid? UserId { get { return this.UserIdOption.Value; } set { this.UserIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of FirstName
@@ -77,7 +77,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets FirstName
         /// </summary>
         [JsonPropertyName("firstName")]
-        public string? FirstName { get { return this.FirstNameOption; } set { this.FirstNameOption = new(value); } }
+        public string? FirstName { get { return this.FirstNameOption.Value; } set { this.FirstNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastName
@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastName
         /// </summary>
         [JsonPropertyName("lastName")]
-        public string? LastName { get { return this.LastNameOption; } set { this.LastNameOption = new(value); } }
+        public string? LastName { get { return this.LastNameOption.Value; } set { this.LastNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Email
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Email
         /// </summary>
         [JsonPropertyName("email")]
-        public string? Email { get { return this.EmailOption; } set { this.EmailOption = new(value); } }
+        public string? Email { get { return this.EmailOption.Value; } set { this.EmailOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of NumberOfEvaluations
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets NumberOfEvaluations
         /// </summary>
         [JsonPropertyName("numberOfEvaluations")]
-        public int? NumberOfEvaluations { get { return this.NumberOfEvaluationsOption; } set { this.NumberOfEvaluationsOption = new(value); } }
+        public int? NumberOfEvaluations { get { return this.NumberOfEvaluationsOption.Value; } set { this.NumberOfEvaluationsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Campus
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Campus
         /// </summary>
         [JsonPropertyName("campus")]
-        public string? Campus { get { return this.CampusOption; } set { this.CampusOption = new(value); } }
+        public string? Campus { get { return this.CampusOption.Value; } set { this.CampusOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -205,8 +205,7 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "userId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                userId = new Option<Guid?>(utf8JsonReader.GetGuid());
+                            userId = new Option<Guid?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (Guid?)null : utf8JsonReader.GetGuid());
                             break;
                         case "firstName":
                             firstName = new Option<string?>(utf8JsonReader.GetString());
@@ -218,8 +217,7 @@ namespace EdGraph.Platform.Client.Model
                             email = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "numberOfEvaluations":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                numberOfEvaluations = new Option<int?>(utf8JsonReader.GetInt32());
+                            numberOfEvaluations = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "campus":
                             campus = new Option<string?>(utf8JsonReader.GetString());

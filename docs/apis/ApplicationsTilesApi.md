@@ -12,68 +12,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Retrieves a list of applications licensed to the user that is currently logged in the context of this tenant
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetTenantApplicationTilesAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ApplicationsTilesApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var pageSize = 100;  // int |  (optional)  (default to 100)
-            var orderBy = "\"applicationName ASC\"";  // string |  (optional)  (default to "applicationName ASC")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Retrieves a list of applications licensed to the user that is currently logged in the context of this tenant
-                EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesApplicationTilesResponseWithUserApplicationLicense result = apiInstance.GetTenantApplicationTilesAsync(tenantId, pageIndex, pageSize, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ApplicationsTilesApi.GetTenantApplicationTilesAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetTenantApplicationTilesAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of applications licensed to the user that is currently logged in the context of this tenant
-    ApiResponse<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesApplicationTilesResponseWithUserApplicationLicense> response = apiInstance.GetTenantApplicationTilesAsyncWithHttpInfo(tenantId, pageIndex, pageSize, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ApplicationsTilesApi.GetTenantApplicationTilesAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

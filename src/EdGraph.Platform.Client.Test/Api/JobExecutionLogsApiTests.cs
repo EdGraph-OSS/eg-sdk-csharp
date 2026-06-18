@@ -66,7 +66,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> search = default!;
             var response = await _instance.GetAllTenantDataSyncJobExecutionLogsAsync(tenantId, jobId, jobExecutionId, pageSize, pageIndex, orderBy, filter, search);
             var model = response.Unauthorized();
-            Assert.IsType<DataSyncApiJobExecutionLogV1JobExecutionLogEntryPaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

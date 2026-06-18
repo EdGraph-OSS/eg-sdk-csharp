@@ -13,65 +13,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Get Steps Status for the tenant.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetStepsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new StateReportingStepsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var schoolYear = 56;  // int | 
-
-            try
-            {
-                // Get Steps Status for the tenant.
-                ValidationsApiStateReportingStepsV1GetStateReportingStepsResponse result = apiInstance.GetSteps(tenantId, schoolYear);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling StateReportingStepsApi.GetSteps: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetStepsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Get Steps Status for the tenant.
-    ApiResponse<ValidationsApiStateReportingStepsV1GetStateReportingStepsResponse> response = apiInstance.GetStepsWithHttpInfo(tenantId, schoolYear);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling StateReportingStepsApi.GetStepsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -111,66 +52,6 @@ catch (ApiException e)
 
 Update Steps Status for the tenant.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateStepExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new StateReportingStepsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var schoolYear = 56;  // int | 
-            var validationsApiStateReportingStepsV1UpdateStateReportingStepRequest = new ValidationsApiStateReportingStepsV1UpdateStateReportingStepRequest(); // ValidationsApiStateReportingStepsV1UpdateStateReportingStepRequest |  (optional) 
-
-            try
-            {
-                // Update Steps Status for the tenant.
-                ValidationsApiStateReportingStepsV1GetStateReportingStepsResponse result = apiInstance.UpdateStep(tenantId, schoolYear, validationsApiStateReportingStepsV1UpdateStateReportingStepRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling StateReportingStepsApi.UpdateStep: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateStepWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Update Steps Status for the tenant.
-    ApiResponse<ValidationsApiStateReportingStepsV1GetStateReportingStepsResponse> response = apiInstance.UpdateStepWithHttpInfo(tenantId, schoolYear, validationsApiStateReportingStepsV1UpdateStateReportingStepRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling StateReportingStepsApi.UpdateStepWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

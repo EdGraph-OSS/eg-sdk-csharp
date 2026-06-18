@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<TenantApiTenantV1CreateSubscriptionRequest> tenantApiTenantV1CreateSubscriptionRequest = default!;
             var response = await _instance.CreateTenantSubscriptionAsyncAsync(tenantId, tenantApiTenantV1CreateSubscriptionRequest);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiTenantV1SubscriptionCreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> orderBy = default!;
             var response = await _instance.GetAllTenantSubscriptionApplicationsAsync(tenantId, pageIndex, pageSize, orderBy);
             var model = response.Unauthorized();
-            Assert.IsType<ApplicationApiApplicationV1PaginatedItemsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetAllTenantSubscriptionsAsyncAsync(tenantId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesSubscriptionListResponseDtoPaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string subscriptionId = default!;
             var response = await _instance.GetTenantSubscriptionProfileByIdAsyncAsync(tenantId, subscriptionId);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesSubscriptionProfileResponseDto>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<TenantApiTenantV1UpdateSubscriptionRequest> tenantApiTenantV1UpdateSubscriptionRequest = default!;
             var response = await _instance.UpdateTenantSubscriptionAsyncAsync(tenantId, subscriptionId, tenantApiTenantV1UpdateSubscriptionRequest);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiTenantV1SubscriptionUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

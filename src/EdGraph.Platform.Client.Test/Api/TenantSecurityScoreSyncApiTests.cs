@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncCreateSecurityScoreSyncJobRequest> edGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncCreateSecurityScoreSyncJobRequest = default!;
             var response = await _instance.CreateSecurityScoreSyncJobAsync(tenantId, edGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncCreateSecurityScoreSyncJobRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncJobCreatedResult>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -70,7 +70,9 @@ namespace EdGraph.Platform.Client.Test.Api
         public async Task ExecuteSecurityScoreSyncJobAsyncTest()
         {
             Guid tenantId = default!;
-            await _instance.ExecuteSecurityScoreSyncJobAsync(tenantId);
+            var response = await _instance.ExecuteSecurityScoreSyncJobAsync(tenantId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -82,7 +84,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid tenantId = default!;
             var response = await _instance.GetSecurityScoreSyncJobAsync(tenantId);
             var model = response.Unauthorized();
-            Assert.IsType<DataSyncApiSecurityScoreSyncV1SecurityScoreSyncProfile>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -96,7 +98,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid jobExecutionId = default!;
             var response = await _instance.GetSecurityScoreSyncJobExecutionAsync(tenantId, jobId, jobExecutionId);
             var model = response.Unauthorized();
-            Assert.IsType<DataSyncApiSecurityScoreSyncV1SecurityScoreSyncExecutionProfile>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -107,7 +109,9 @@ namespace EdGraph.Platform.Client.Test.Api
         {
             Guid tenantId = default!;
             Client.Option<EdGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncUpdateSecurityScoreSyncJobRequest> edGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncUpdateSecurityScoreSyncJobRequest = default!;
-            await _instance.UpdateSecurityScoreSyncJobAsync(tenantId, edGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncUpdateSecurityScoreSyncJobRequest);
+            var response = await _instance.UpdateSecurityScoreSyncJobAsync(tenantId, edGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncUpdateSecurityScoreSyncJobRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

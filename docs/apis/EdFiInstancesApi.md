@@ -14,68 +14,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Retrieves a list of EdFi Admin connections
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetAllEdFiAdminConnectionsFromAnalyticsAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EdFiInstancesApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Retrieves a list of EdFi Admin connections
-                AnalyticsApiReportsV1ReportPaginatedItemsResponse result = apiInstance.GetAllEdFiAdminConnectionsFromAnalyticsAsync(tenantId, pageSize, pageIndex, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EdFiInstancesApi.GetAllEdFiAdminConnectionsFromAnalyticsAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetAllEdFiAdminConnectionsFromAnalyticsAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of EdFi Admin connections
-    ApiResponse<AnalyticsApiReportsV1ReportPaginatedItemsResponse> response = apiInstance.GetAllEdFiAdminConnectionsFromAnalyticsAsyncWithHttpInfo(tenantId, pageSize, pageIndex, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EdFiInstancesApi.GetAllEdFiAdminConnectionsFromAnalyticsAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -118,68 +56,6 @@ catch (ApiException e)
 
 Retrieves a list of EdFi Admin instances
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetAllEdFiAdminInstancesFromAnalyticsAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EdFiInstancesApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Retrieves a list of EdFi Admin instances
-                AnalyticsApiReportsV1ReportPaginatedItemsResponse result = apiInstance.GetAllEdFiAdminInstancesFromAnalyticsAsync(tenantId, pageSize, pageIndex, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EdFiInstancesApi.GetAllEdFiAdminInstancesFromAnalyticsAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetAllEdFiAdminInstancesFromAnalyticsAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of EdFi Admin instances
-    ApiResponse<AnalyticsApiReportsV1ReportPaginatedItemsResponse> response = apiInstance.GetAllEdFiAdminInstancesFromAnalyticsAsyncWithHttpInfo(tenantId, pageSize, pageIndex, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EdFiInstancesApi.GetAllEdFiAdminInstancesFromAnalyticsAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -222,65 +98,6 @@ catch (ApiException e)
 
 Retrieves an Ed-Fi Admin instance by ID.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetEdFiAdminInstanceByIdFromAnalyticsAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EdFiInstancesApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-
-            try
-            {
-                // Retrieves an Ed-Fi Admin instance by ID.
-                EdfiAdminApiEdfiAdminV1Instance result = apiInstance.GetEdFiAdminInstanceByIdFromAnalyticsAsync(tenantId, instanceId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EdFiInstancesApi.GetEdFiAdminInstanceByIdFromAnalyticsAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetEdFiAdminInstanceByIdFromAnalyticsAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves an Ed-Fi Admin instance by ID.
-    ApiResponse<EdfiAdminApiEdfiAdminV1Instance> response = apiInstance.GetEdFiAdminInstanceByIdFromAnalyticsAsyncWithHttpInfo(tenantId, instanceId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EdFiInstancesApi.GetEdFiAdminInstanceByIdFromAnalyticsAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

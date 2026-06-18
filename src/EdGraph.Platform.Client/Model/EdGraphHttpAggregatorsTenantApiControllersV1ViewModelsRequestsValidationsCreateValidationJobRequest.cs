@@ -64,7 +64,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public Guid? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public Guid? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Name
@@ -77,7 +77,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Name
         /// </summary>
         [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption; } set { this.NameOption = new(value); } }
+        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Schedule
@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Schedule
         /// </summary>
         [JsonPropertyName("schedule")]
-        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsSchedule? Schedule { get { return this.ScheduleOption; } set { this.ScheduleOption = new(value); } }
+        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsSchedule? Schedule { get { return this.ScheduleOption.Value; } set { this.ScheduleOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of NotificationEmails
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets NotificationEmails
         /// </summary>
         [JsonPropertyName("notificationEmails")]
-        public List<string>? NotificationEmails { get { return this.NotificationEmailsOption; } set { this.NotificationEmailsOption = new(value); } }
+        public List<string>? NotificationEmails { get { return this.NotificationEmailsOption.Value; } set { this.NotificationEmailsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Categories
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Categories
         /// </summary>
         [JsonPropertyName("categories")]
-        public List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsJobCategory>? Categories { get { return this.CategoriesOption; } set { this.CategoriesOption = new(value); } }
+        public List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsJobCategory>? Categories { get { return this.CategoriesOption.Value; } set { this.CategoriesOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EnvironmentId
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EnvironmentId
         /// </summary>
         [JsonPropertyName("environmentId")]
-        public Guid? EnvironmentId { get { return this.EnvironmentIdOption; } set { this.EnvironmentIdOption = new(value); } }
+        public Guid? EnvironmentId { get { return this.EnvironmentIdOption.Value; } set { this.EnvironmentIdOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -205,27 +205,22 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "tenantId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                tenantId = new Option<Guid?>(utf8JsonReader.GetGuid());
+                            tenantId = new Option<Guid?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (Guid?)null : utf8JsonReader.GetGuid());
                             break;
                         case "name":
                             name = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "schedule":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                schedule = new Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsSchedule?>(JsonSerializer.Deserialize<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsSchedule>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            schedule = new Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsSchedule?>(JsonSerializer.Deserialize<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsSchedule>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "notificationEmails":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                notificationEmails = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            notificationEmails = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "categories":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                categories = new Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsJobCategory>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsJobCategory>>(ref utf8JsonReader, jsonSerializerOptions));
+                            categories = new Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsJobCategory>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsJobCategory>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "environmentId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                environmentId = new Option<Guid?>(utf8JsonReader.GetGuid());
+                            environmentId = new Option<Guid?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (Guid?)null : utf8JsonReader.GetGuid());
                             break;
                         default:
                             break;

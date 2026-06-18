@@ -64,7 +64,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InstanceId
@@ -77,7 +77,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceId
         /// </summary>
         [JsonPropertyName("instanceId")]
-        public string? InstanceId { get { return this.InstanceIdOption; } set { this.InstanceIdOption = new(value); } }
+        public string? InstanceId { get { return this.InstanceIdOption.Value; } set { this.InstanceIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Id
@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of StateEducationAgencyId
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets StateEducationAgencyId
         /// </summary>
         [JsonPropertyName("stateEducationAgencyId")]
-        public int? StateEducationAgencyId { get { return this.StateEducationAgencyIdOption; } set { this.StateEducationAgencyIdOption = new(value); } }
+        public int? StateEducationAgencyId { get { return this.StateEducationAgencyIdOption.Value; } set { this.StateEducationAgencyIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of NameOfInstitution
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets NameOfInstitution
         /// </summary>
         [JsonPropertyName("nameOfInstitution")]
-        public string? NameOfInstitution { get { return this.NameOfInstitutionOption; } set { this.NameOfInstitutionOption = new(value); } }
+        public string? NameOfInstitution { get { return this.NameOfInstitutionOption.Value; } set { this.NameOfInstitutionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EducationOrganizationCategoryDescriptors
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EducationOrganizationCategoryDescriptors
         /// </summary>
         [JsonPropertyName("educationOrganizationCategoryDescriptors")]
-        public List<string>? EducationOrganizationCategoryDescriptors { get { return this.EducationOrganizationCategoryDescriptorsOption; } }
+        public List<string>? EducationOrganizationCategoryDescriptors { get { return this.EducationOrganizationCategoryDescriptorsOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -214,15 +214,13 @@ namespace EdGraph.Platform.Client.Model
                             id = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "stateEducationAgencyId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                stateEducationAgencyId = new Option<int?>(utf8JsonReader.GetInt32());
+                            stateEducationAgencyId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "nameOfInstitution":
                             nameOfInstitution = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "educationOrganizationCategoryDescriptors":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                educationOrganizationCategoryDescriptors = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            educationOrganizationCategoryDescriptors = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

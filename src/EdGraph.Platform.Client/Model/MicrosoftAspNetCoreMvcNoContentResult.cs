@@ -54,7 +54,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets StatusCode
         /// </summary>
         [JsonPropertyName("statusCode")]
-        public int? StatusCode { get { return this.StatusCodeOption; } set { this.StatusCodeOption = new(value); } }
+        public int? StatusCode { get { return this.StatusCodeOption.Value; } set { this.StatusCodeOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -120,8 +120,7 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "statusCode":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                statusCode = new Option<int?>(utf8JsonReader.GetInt32());
+                            statusCode = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

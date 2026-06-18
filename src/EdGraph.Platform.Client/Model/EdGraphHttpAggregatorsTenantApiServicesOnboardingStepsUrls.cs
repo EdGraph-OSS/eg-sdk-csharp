@@ -68,7 +68,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Dependencies
         /// </summary>
         [JsonPropertyName("dependencies")]
-        public string? Dependencies { get { return this.DependenciesOption; } set { this.DependenciesOption = new(value); } }
+        public string? Dependencies { get { return this.DependenciesOption.Value; } set { this.DependenciesOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of OpenApiMetadata
@@ -81,7 +81,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets OpenApiMetadata
         /// </summary>
         [JsonPropertyName("openApiMetadata")]
-        public string? OpenApiMetadata { get { return this.OpenApiMetadataOption; } set { this.OpenApiMetadataOption = new(value); } }
+        public string? OpenApiMetadata { get { return this.OpenApiMetadataOption.Value; } set { this.OpenApiMetadataOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Oauth
@@ -94,7 +94,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Oauth
         /// </summary>
         [JsonPropertyName("oauth")]
-        public string? Oauth { get { return this.OauthOption; } set { this.OauthOption = new(value); } }
+        public string? Oauth { get { return this.OauthOption.Value; } set { this.OauthOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DataManagementApi
@@ -107,7 +107,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DataManagementApi
         /// </summary>
         [JsonPropertyName("dataManagementApi")]
-        public string? DataManagementApi { get { return this.DataManagementApiOption; } set { this.DataManagementApiOption = new(value); } }
+        public string? DataManagementApi { get { return this.DataManagementApiOption.Value; } set { this.DataManagementApiOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of XsdMetadata
@@ -120,7 +120,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets XsdMetadata
         /// </summary>
         [JsonPropertyName("xsdMetadata")]
-        public string? XsdMetadata { get { return this.XsdMetadataOption; } set { this.XsdMetadataOption = new(value); } }
+        public string? XsdMetadata { get { return this.XsdMetadataOption.Value; } set { this.XsdMetadataOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ChangeQueries
@@ -133,7 +133,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ChangeQueries
         /// </summary>
         [JsonPropertyName("changeQueries")]
-        public string? ChangeQueries { get { return this.ChangeQueriesOption; } set { this.ChangeQueriesOption = new(value); } }
+        public string? ChangeQueries { get { return this.ChangeQueriesOption.Value; } set { this.ChangeQueriesOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Composites
@@ -146,7 +146,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Composites
         /// </summary>
         [JsonPropertyName("composites")]
-        public string? Composites { get { return this.CompositesOption; } set { this.CompositesOption = new(value); } }
+        public string? Composites { get { return this.CompositesOption.Value; } set { this.CompositesOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Identity
@@ -159,7 +159,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Identity
         /// </summary>
         [JsonPropertyName("identity")]
-        public string? Identity { get { return this.IdentityOption; } set { this.IdentityOption = new(value); } }
+        public string? Identity { get { return this.IdentityOption.Value; } set { this.IdentityOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

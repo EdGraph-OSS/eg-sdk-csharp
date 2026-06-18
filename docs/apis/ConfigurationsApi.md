@@ -19,66 +19,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Creates a new configuration.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CreateAnalyticsConfigurationAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ConfigurationsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var workspaceName = "workspaceName_example";  // string | 
-            var analyticsApiConfigurationsV1CreateConfigurationRequest = new AnalyticsApiConfigurationsV1CreateConfigurationRequest(); // AnalyticsApiConfigurationsV1CreateConfigurationRequest |  (optional) 
-
-            try
-            {
-                // Creates a new configuration.
-                AnalyticsApiConfigurationsV1AnalyticsConfiguration result = apiInstance.CreateAnalyticsConfigurationAsync(tenantId, workspaceName, analyticsApiConfigurationsV1CreateConfigurationRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ConfigurationsApi.CreateAnalyticsConfigurationAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateAnalyticsConfigurationAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates a new configuration.
-    ApiResponse<AnalyticsApiConfigurationsV1AnalyticsConfiguration> response = apiInstance.CreateAnalyticsConfigurationAsyncWithHttpInfo(tenantId, workspaceName, analyticsApiConfigurationsV1CreateConfigurationRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ConfigurationsApi.CreateAnalyticsConfigurationAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -120,61 +60,6 @@ catch (ApiException e)
 
 Deletes a configuration.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class DeleteAnalyticsConfigurationAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ConfigurationsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var configurationId = "configurationId_example";  // string | 
-
-            try
-            {
-                // Deletes a configuration.
-                apiInstance.DeleteAnalyticsConfigurationAsync(tenantId, configurationId);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ConfigurationsApi.DeleteAnalyticsConfigurationAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeleteAnalyticsConfigurationAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Deletes a configuration.
-    apiInstance.DeleteAnalyticsConfigurationAsyncWithHttpInfo(tenantId, configurationId);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ConfigurationsApi.DeleteAnalyticsConfigurationAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -215,68 +100,6 @@ void (empty response body)
 
 Retrieves all configurations.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetAllAnalyticsConfigurationsAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ConfigurationsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Retrieves all configurations.
-                AnalyticsApiConfigurationsV1AnalyticsConfigurationPaginatedItemsViewModel result = apiInstance.GetAllAnalyticsConfigurationsAsync(tenantId, pageSize, pageIndex, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ConfigurationsApi.GetAllAnalyticsConfigurationsAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetAllAnalyticsConfigurationsAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves all configurations.
-    ApiResponse<AnalyticsApiConfigurationsV1AnalyticsConfigurationPaginatedItemsViewModel> response = apiInstance.GetAllAnalyticsConfigurationsAsyncWithHttpInfo(tenantId, pageSize, pageIndex, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ConfigurationsApi.GetAllAnalyticsConfigurationsAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -320,65 +143,6 @@ catch (ApiException e)
 
 Retrieves a configuration by ID.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetAnalyticsConfigurationByIdAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ConfigurationsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var configurationId = "configurationId_example";  // string | 
-
-            try
-            {
-                // Retrieves a configuration by ID.
-                AnalyticsApiConfigurationsV1AnalyticsConfiguration result = apiInstance.GetAnalyticsConfigurationByIdAsync(tenantId, configurationId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ConfigurationsApi.GetAnalyticsConfigurationByIdAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetAnalyticsConfigurationByIdAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a configuration by ID.
-    ApiResponse<AnalyticsApiConfigurationsV1AnalyticsConfiguration> response = apiInstance.GetAnalyticsConfigurationByIdAsyncWithHttpInfo(tenantId, configurationId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ConfigurationsApi.GetAnalyticsConfigurationByIdAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -419,64 +183,6 @@ catch (ApiException e)
 
 Retrieves current default configuration.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetAnalyticsConfigurationByTenantIdAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ConfigurationsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-
-            try
-            {
-                // Retrieves current default configuration.
-                AnalyticsApiConfigurationsV1AnalyticsConfiguration result = apiInstance.GetAnalyticsConfigurationByTenantIdAsync(tenantId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ConfigurationsApi.GetAnalyticsConfigurationByTenantIdAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetAnalyticsConfigurationByTenantIdAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves current default configuration.
-    ApiResponse<AnalyticsApiConfigurationsV1AnalyticsConfiguration> response = apiInstance.GetAnalyticsConfigurationByTenantIdAsyncWithHttpInfo(tenantId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ConfigurationsApi.GetAnalyticsConfigurationByTenantIdAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -516,64 +222,6 @@ catch (ApiException e)
 
 Verifies if current default configuration has required values for correct functionality.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class HasValidAnalyticsConfigurationAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ConfigurationsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-
-            try
-            {
-                // Verifies if current default configuration has required values for correct functionality.
-                AnalyticsApiConfigurationsV1HasValidConfigurationResponse result = apiInstance.HasValidAnalyticsConfigurationAsync(tenantId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ConfigurationsApi.HasValidAnalyticsConfigurationAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the HasValidAnalyticsConfigurationAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Verifies if current default configuration has required values for correct functionality.
-    ApiResponse<AnalyticsApiConfigurationsV1HasValidConfigurationResponse> response = apiInstance.HasValidAnalyticsConfigurationAsyncWithHttpInfo(tenantId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ConfigurationsApi.HasValidAnalyticsConfigurationAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -613,66 +261,6 @@ catch (ApiException e)
 
 Updates a configuration.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateAnalyticsConfigurationAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ConfigurationsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var configurationId = "configurationId_example";  // string | 
-            var analyticsApiConfigurationsV1UpdateConfigurationRequest = new AnalyticsApiConfigurationsV1UpdateConfigurationRequest(); // AnalyticsApiConfigurationsV1UpdateConfigurationRequest |  (optional) 
-
-            try
-            {
-                // Updates a configuration.
-                AnalyticsApiConfigurationsV1ConfigurationResponse result = apiInstance.UpdateAnalyticsConfigurationAsync(tenantId, configurationId, analyticsApiConfigurationsV1UpdateConfigurationRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ConfigurationsApi.UpdateAnalyticsConfigurationAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateAnalyticsConfigurationAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates a configuration.
-    ApiResponse<AnalyticsApiConfigurationsV1ConfigurationResponse> response = apiInstance.UpdateAnalyticsConfigurationAsyncWithHttpInfo(tenantId, configurationId, analyticsApiConfigurationsV1UpdateConfigurationRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ConfigurationsApi.UpdateAnalyticsConfigurationAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -714,65 +302,6 @@ catch (ApiException e)
 
 Verifies if AAD token generation is possible with user provided values.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class ValidateAADTokenAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ConfigurationsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var analyticsApiConfigurationsV1AnalyticsAzureAd = new AnalyticsApiConfigurationsV1AnalyticsAzureAd(); // AnalyticsApiConfigurationsV1AnalyticsAzureAd |  (optional) 
-
-            try
-            {
-                // Verifies if AAD token generation is possible with user provided values.
-                AnalyticsApiConfigurationsV1TestConnectionResponse result = apiInstance.ValidateAADTokenAsync(tenantId, analyticsApiConfigurationsV1AnalyticsAzureAd);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ConfigurationsApi.ValidateAADTokenAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the ValidateAADTokenAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Verifies if AAD token generation is possible with user provided values.
-    ApiResponse<AnalyticsApiConfigurationsV1TestConnectionResponse> response = apiInstance.ValidateAADTokenAsyncWithHttpInfo(tenantId, analyticsApiConfigurationsV1AnalyticsAzureAd);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ConfigurationsApi.ValidateAADTokenAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

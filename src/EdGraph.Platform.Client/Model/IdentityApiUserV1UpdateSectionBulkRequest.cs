@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets UserId
         /// </summary>
         [JsonPropertyName("userId")]
-        public string? UserId { get { return this.UserIdOption; } set { this.UserIdOption = new(value); } }
+        public string? UserId { get { return this.UserIdOption.Value; } set { this.UserIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Sections
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Sections
         /// </summary>
         [JsonPropertyName("sections")]
-        public List<IdentityApiUserV1UpdateSectionBulkRequestTypesSectionDto>? Sections { get { return this.SectionsOption; } }
+        public List<IdentityApiUserV1UpdateSectionBulkRequestTypesSectionDto>? Sections { get { return this.SectionsOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -160,8 +160,7 @@ namespace EdGraph.Platform.Client.Model
                             tenantId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "sections":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                sections = new Option<List<IdentityApiUserV1UpdateSectionBulkRequestTypesSectionDto>?>(JsonSerializer.Deserialize<List<IdentityApiUserV1UpdateSectionBulkRequestTypesSectionDto>>(ref utf8JsonReader, jsonSerializerOptions));
+                            sections = new Option<List<IdentityApiUserV1UpdateSectionBulkRequestTypesSectionDto>?>(JsonSerializer.Deserialize<List<IdentityApiUserV1UpdateSectionBulkRequestTypesSectionDto>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

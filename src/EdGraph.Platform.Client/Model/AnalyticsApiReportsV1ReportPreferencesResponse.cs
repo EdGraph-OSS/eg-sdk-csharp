@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of UserId
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets UserId
         /// </summary>
         [JsonPropertyName("userId")]
-        public string? UserId { get { return this.UserIdOption; } set { this.UserIdOption = new(value); } }
+        public string? UserId { get { return this.UserIdOption.Value; } set { this.UserIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ReportId
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ReportId
         /// </summary>
         [JsonPropertyName("reportId")]
-        public string? ReportId { get { return this.ReportIdOption; } set { this.ReportIdOption = new(value); } }
+        public string? ReportId { get { return this.ReportIdOption.Value; } set { this.ReportIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Preferences
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Preferences
         /// </summary>
         [JsonPropertyName("preferences")]
-        public List<AnalyticsApiReportsV1ReportPreferenceDetailsResponse>? Preferences { get { return this.PreferencesOption; } }
+        public List<AnalyticsApiReportsV1ReportPreferenceDetailsResponse>? Preferences { get { return this.PreferencesOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -180,8 +180,7 @@ namespace EdGraph.Platform.Client.Model
                             reportId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "preferences":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                preferences = new Option<List<AnalyticsApiReportsV1ReportPreferenceDetailsResponse>?>(JsonSerializer.Deserialize<List<AnalyticsApiReportsV1ReportPreferenceDetailsResponse>>(ref utf8JsonReader, jsonSerializerOptions));
+                            preferences = new Option<List<AnalyticsApiReportsV1ReportPreferenceDetailsResponse>?>(JsonSerializer.Deserialize<List<AnalyticsApiReportsV1ReportPreferenceDetailsResponse>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

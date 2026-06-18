@@ -15,66 +15,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Add User SEOAAs
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class AddUserSEOAAExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new UsersSEOAAsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var userId = "userId_example";  // Guid | 
-            var edGraphHttpAggregatorsTenantApiControllersV2RequestsAddSeoaaRequest = new EdGraphHttpAggregatorsTenantApiControllersV2RequestsAddSeoaaRequest(); // EdGraphHttpAggregatorsTenantApiControllersV2RequestsAddSeoaaRequest |  (optional) 
-
-            try
-            {
-                // Add User SEOAAs
-                IdentityApiUserV1SEOAAAddedResponse result = apiInstance.AddUserSEOAA(tenantId, userId, edGraphHttpAggregatorsTenantApiControllersV2RequestsAddSeoaaRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling UsersSEOAAsApi.AddUserSEOAA: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the AddUserSEOAAWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Add User SEOAAs
-    ApiResponse<IdentityApiUserV1SEOAAAddedResponse> response = apiInstance.AddUserSEOAAWithHttpInfo(tenantId, userId, edGraphHttpAggregatorsTenantApiControllersV2RequestsAddSeoaaRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling UsersSEOAAsApi.AddUserSEOAAWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -115,66 +55,6 @@ catch (ApiException e)
 
 Delete User SEOAAs
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class DeleteUserSEOAAExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new UsersSEOAAsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var userId = "userId_example";  // Guid | 
-            var seoaaId = "seoaaId_example";  // string | 
-
-            try
-            {
-                // Delete User SEOAAs
-                IdentityApiUserV1SEOAAUpdatedResponse result = apiInstance.DeleteUserSEOAA(tenantId, userId, seoaaId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling UsersSEOAAsApi.DeleteUserSEOAA: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeleteUserSEOAAWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Delete User SEOAAs
-    ApiResponse<IdentityApiUserV1SEOAAUpdatedResponse> response = apiInstance.DeleteUserSEOAAWithHttpInfo(tenantId, userId, seoaaId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling UsersSEOAAsApi.DeleteUserSEOAAWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -215,69 +95,6 @@ catch (ApiException e)
 
 Search User SEOAAs
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SearchUserSEOAAExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new UsersSEOAAsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var userId = "userId_example";  // Guid | 
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Search User SEOAAs
-                IdentityApiUserV1GetSEOAAsResponse result = apiInstance.SearchUserSEOAA(tenantId, userId, pageSize, pageIndex, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling UsersSEOAAsApi.SearchUserSEOAA: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SearchUserSEOAAWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Search User SEOAAs
-    ApiResponse<IdentityApiUserV1GetSEOAAsResponse> response = apiInstance.SearchUserSEOAAWithHttpInfo(tenantId, userId, pageSize, pageIndex, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling UsersSEOAAsApi.SearchUserSEOAAWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -321,67 +138,6 @@ catch (ApiException e)
 
 Update User SEOAAs
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateUserSEOAAExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new UsersSEOAAsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var userId = "userId_example";  // Guid | 
-            var seoaaId = "seoaaId_example";  // string | 
-            var edGraphHttpAggregatorsTenantApiControllersV2RequestsUpdateSeoaaRequest = new EdGraphHttpAggregatorsTenantApiControllersV2RequestsUpdateSeoaaRequest(); // EdGraphHttpAggregatorsTenantApiControllersV2RequestsUpdateSeoaaRequest |  (optional) 
-
-            try
-            {
-                // Update User SEOAAs
-                IdentityApiUserV1SEOAAUpdatedResponse result = apiInstance.UpdateUserSEOAA(tenantId, userId, seoaaId, edGraphHttpAggregatorsTenantApiControllersV2RequestsUpdateSeoaaRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling UsersSEOAAsApi.UpdateUserSEOAA: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateUserSEOAAWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Update User SEOAAs
-    ApiResponse<IdentityApiUserV1SEOAAUpdatedResponse> response = apiInstance.UpdateUserSEOAAWithHttpInfo(tenantId, userId, seoaaId, edGraphHttpAggregatorsTenantApiControllersV2RequestsUpdateSeoaaRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling UsersSEOAAsApi.UpdateUserSEOAAWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

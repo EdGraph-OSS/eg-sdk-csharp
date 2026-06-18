@@ -58,7 +58,9 @@ namespace EdGraph.Platform.Client.Test.Api
         {
             string tenantId = default!;
             Client.Option<ValidationsApiRulesV1CreateRequest> validationsApiRulesV1CreateRequest = default!;
-            await _instance.CreateRuleAsync(tenantId, validationsApiRulesV1CreateRequest);
+            var response = await _instance.CreateRuleAsync(tenantId, validationsApiRulesV1CreateRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -69,7 +71,9 @@ namespace EdGraph.Platform.Client.Test.Api
         {
             string tenantId = default!;
             string ruleId = default!;
-            await _instance.DeleteRuleAsync(tenantId, ruleId);
+            var response = await _instance.DeleteRuleAsync(tenantId, ruleId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -82,7 +86,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string ruleId = default!;
             var response = await _instance.GetRuleByIdAsync(tenantId, ruleId);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiRulesV1RuleDto>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -98,7 +102,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> orderBy = default!;
             var response = await _instance.GetRulesAsync(tenantId, pageIndex, pageSize, filter, orderBy);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiRulesV1PaginatedRules>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -110,7 +114,9 @@ namespace EdGraph.Platform.Client.Test.Api
             string tenantId = default!;
             string ruleId = default!;
             Client.Option<ValidationsApiRulesV1UpdateRequest> validationsApiRulesV1UpdateRequest = default!;
-            await _instance.UpdateRuleAsync(tenantId, ruleId, validationsApiRulesV1UpdateRequest);
+            var response = await _instance.UpdateRuleAsync(tenantId, ruleId, validationsApiRulesV1UpdateRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

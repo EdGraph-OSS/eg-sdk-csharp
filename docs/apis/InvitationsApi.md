@@ -15,61 +15,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Deletes an invitation
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class DeleteTenantInvitationAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InvitationsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var invitationId = "invitationId_example";  // string | 
-
-            try
-            {
-                // Deletes an invitation
-                apiInstance.DeleteTenantInvitationAsync(tenantId, invitationId);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InvitationsApi.DeleteTenantInvitationAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeleteTenantInvitationAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Deletes an invitation
-    apiInstance.DeleteTenantInvitationAsyncWithHttpInfo(tenantId, invitationId);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InvitationsApi.DeleteTenantInvitationAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -109,68 +54,6 @@ void (empty response body)
 
 Retrieves a list of invitations associated to this tenant
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetAllTenantInvitationsAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InvitationsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Retrieves a list of invitations associated to this tenant
-                IdentityApiInvitationV1InvitationListResponsePaginatedItemsViewModel result = apiInstance.GetAllTenantInvitationsAsync(tenantId, pageSize, pageIndex, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InvitationsApi.GetAllTenantInvitationsAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetAllTenantInvitationsAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of invitations associated to this tenant
-    ApiResponse<IdentityApiInvitationV1InvitationListResponsePaginatedItemsViewModel> response = apiInstance.GetAllTenantInvitationsAsyncWithHttpInfo(tenantId, pageSize, pageIndex, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InvitationsApi.GetAllTenantInvitationsAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -213,65 +96,6 @@ catch (ApiException e)
 
 Retrieves a specific invitation
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetTenantInvitationByIdAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InvitationsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var invitationId = "invitationId_example";  // string | 
-
-            try
-            {
-                // Retrieves a specific invitation
-                IdentityApiInvitationV1InvitationResponse result = apiInstance.GetTenantInvitationByIdAsync(tenantId, invitationId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InvitationsApi.GetTenantInvitationByIdAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetTenantInvitationByIdAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a specific invitation
-    ApiResponse<IdentityApiInvitationV1InvitationResponse> response = apiInstance.GetTenantInvitationByIdAsyncWithHttpInfo(tenantId, invitationId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InvitationsApi.GetTenantInvitationByIdAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -312,65 +136,6 @@ catch (ApiException e)
 
 Creates and sends an invitation to a user
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SendTenantInvitationAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InvitationsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsSendInvitationRequest = new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsSendInvitationRequest(); // EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsSendInvitationRequest |  (optional) 
-
-            try
-            {
-                // Creates and sends an invitation to a user
-                IdentityApiInvitationV1InvitationSentResponse result = apiInstance.SendTenantInvitationAsync(tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsSendInvitationRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InvitationsApi.SendTenantInvitationAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SendTenantInvitationAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates and sends an invitation to a user
-    ApiResponse<IdentityApiInvitationV1InvitationSentResponse> response = apiInstance.SendTenantInvitationAsyncWithHttpInfo(tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsSendInvitationRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InvitationsApi.SendTenantInvitationAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

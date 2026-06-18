@@ -64,7 +64,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Status
         /// </summary>
         [JsonPropertyName("status")]
-        public FormApiFormsV1SchemaStatus? Status { get { return this.StatusOption; } set { this.StatusOption = new(value); } }
+        public FormApiFormsV1SchemaStatus? Status { get { return this.StatusOption.Value; } set { this.StatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Id
@@ -77,7 +77,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of JsonSchema
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets JsonSchema
         /// </summary>
         [JsonPropertyName("jsonSchema")]
-        public string? JsonSchema { get { return this.JsonSchemaOption; } set { this.JsonSchemaOption = new(value); } }
+        public string? JsonSchema { get { return this.JsonSchemaOption.Value; } set { this.JsonSchemaOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of UiSchema
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets UiSchema
         /// </summary>
         [JsonPropertyName("uiSchema")]
-        public string? UiSchema { get { return this.UiSchemaOption; } set { this.UiSchemaOption = new(value); } }
+        public string? UiSchema { get { return this.UiSchemaOption.Value; } set { this.UiSchemaOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Details
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Details
         /// </summary>
         [JsonPropertyName("details")]
-        public string? Details { get { return this.DetailsOption; } set { this.DetailsOption = new(value); } }
+        public string? Details { get { return this.DetailsOption.Value; } set { this.DetailsOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

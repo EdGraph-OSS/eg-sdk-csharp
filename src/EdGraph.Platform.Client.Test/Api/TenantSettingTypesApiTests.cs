@@ -63,7 +63,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetAllSettingTypesAsync(tenantId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiTenantV1TenantSettingTypesListResponsePaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

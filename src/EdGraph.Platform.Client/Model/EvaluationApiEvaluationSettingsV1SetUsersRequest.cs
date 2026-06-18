@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Appraisers
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Appraisers
         /// </summary>
         [JsonPropertyName("appraisers")]
-        public List<string>? Appraisers { get { return this.AppraisersOption; } }
+        public List<string>? Appraisers { get { return this.AppraisersOption.Value; } }
 
         /// <summary>
         /// Used to track the state of StaffClassifications
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets StaffClassifications
         /// </summary>
         [JsonPropertyName("staffClassifications")]
-        public List<string>? StaffClassifications { get { return this.StaffClassificationsOption; } }
+        public List<string>? StaffClassifications { get { return this.StaffClassificationsOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -157,12 +157,10 @@ namespace EdGraph.Platform.Client.Model
                             tenantId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "appraisers":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                appraisers = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            appraisers = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "staffClassifications":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                staffClassifications = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            staffClassifications = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

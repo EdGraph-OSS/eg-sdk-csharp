@@ -61,7 +61,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1CreateConnectionRequest> edGraphHttpAggregatorsTenantApiServicesStateReportingV1CreateConnectionRequest = default!;
             var response = await _instance.CreateOrUpdateStateReportingConnectionByTypeV1Async(tenantId, connectionType, edGraphHttpAggregatorsTenantApiServicesStateReportingV1CreateConnectionRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1ConnectionCreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string connectionType = default!;
             var response = await _instance.DeleteStateReportingByTypeConnectionV1Async(tenantId, connectionType);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1ConnectionDeletedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string connectionType = default!;
             var response = await _instance.GetStateReportingConnectionByTypeV1Async(tenantId, connectionType);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1ConnectionProfileResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

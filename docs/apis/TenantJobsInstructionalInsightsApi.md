@@ -17,65 +17,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Creates an Instructional Insights Security Sync Job for a given tenant
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CreateInstructionalInsightsSecuritySyncJobExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new TenantJobsInstructionalInsightsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var identityApiInstructionalInsightsV1CreateInstructionalInsightsSecuritySyncJobRequest = new IdentityApiInstructionalInsightsV1CreateInstructionalInsightsSecuritySyncJobRequest(); // IdentityApiInstructionalInsightsV1CreateInstructionalInsightsSecuritySyncJobRequest |  (optional) 
-
-            try
-            {
-                // Creates an Instructional Insights Security Sync Job for a given tenant
-                IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobCreatedResponse result = apiInstance.CreateInstructionalInsightsSecuritySyncJob(tenantId, identityApiInstructionalInsightsV1CreateInstructionalInsightsSecuritySyncJobRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TenantJobsInstructionalInsightsApi.CreateInstructionalInsightsSecuritySyncJob: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateInstructionalInsightsSecuritySyncJobWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates an Instructional Insights Security Sync Job for a given tenant
-    ApiResponse<IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobCreatedResponse> response = apiInstance.CreateInstructionalInsightsSecuritySyncJobWithHttpInfo(tenantId, identityApiInstructionalInsightsV1CreateInstructionalInsightsSecuritySyncJobRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling TenantJobsInstructionalInsightsApi.CreateInstructionalInsightsSecuritySyncJobWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -115,64 +56,6 @@ catch (ApiException e)
 
 Executes an Instructional Insights Security Sync Job
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class ExecuteInstructionalInsightsSecuritySyncJobExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new TenantJobsInstructionalInsightsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-
-            try
-            {
-                // Executes an Instructional Insights Security Sync Job
-                IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobExecutedResponse result = apiInstance.ExecuteInstructionalInsightsSecuritySyncJob(tenantId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TenantJobsInstructionalInsightsApi.ExecuteInstructionalInsightsSecuritySyncJob: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the ExecuteInstructionalInsightsSecuritySyncJobWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Executes an Instructional Insights Security Sync Job
-    ApiResponse<IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobExecutedResponse> response = apiInstance.ExecuteInstructionalInsightsSecuritySyncJobWithHttpInfo(tenantId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling TenantJobsInstructionalInsightsApi.ExecuteInstructionalInsightsSecuritySyncJobWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -211,64 +94,6 @@ catch (ApiException e)
 
 Retrieves an Instructional Insights Security Sync Job for a given tenant
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetInstructionalInsightsSecuritySyncJobExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new TenantJobsInstructionalInsightsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-
-            try
-            {
-                // Retrieves an Instructional Insights Security Sync Job for a given tenant
-                IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobResponse result = apiInstance.GetInstructionalInsightsSecuritySyncJob(tenantId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TenantJobsInstructionalInsightsApi.GetInstructionalInsightsSecuritySyncJob: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetInstructionalInsightsSecuritySyncJobWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves an Instructional Insights Security Sync Job for a given tenant
-    ApiResponse<IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobResponse> response = apiInstance.GetInstructionalInsightsSecuritySyncJobWithHttpInfo(tenantId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling TenantJobsInstructionalInsightsApi.GetInstructionalInsightsSecuritySyncJobWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -307,71 +132,6 @@ catch (ApiException e)
 
 Searches Instructional Insights Security Sync Job Execution Logs for a given tenant and execution
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SearchInstructionalInsightsSecuritySyncJobExecutionLogsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new TenantJobsInstructionalInsightsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var executionId = "executionId_example";  // Guid | 
-            var jobId = "\"\"";  // string |  (optional)  (default to "")
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var level = "\"\"";  // string |  (optional)  (default to "")
-            var message = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Searches Instructional Insights Security Sync Job Execution Logs for a given tenant and execution
-                IdentityApiInstructionalInsightsV1SearchInstructionalInsightsSecuritySyncJobExecutionLogsResponse result = apiInstance.SearchInstructionalInsightsSecuritySyncJobExecutionLogs(tenantId, executionId, jobId, pageIndex, pageSize, orderBy, level, message);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TenantJobsInstructionalInsightsApi.SearchInstructionalInsightsSecuritySyncJobExecutionLogs: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SearchInstructionalInsightsSecuritySyncJobExecutionLogsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Searches Instructional Insights Security Sync Job Execution Logs for a given tenant and execution
-    ApiResponse<IdentityApiInstructionalInsightsV1SearchInstructionalInsightsSecuritySyncJobExecutionLogsResponse> response = apiInstance.SearchInstructionalInsightsSecuritySyncJobExecutionLogsWithHttpInfo(tenantId, executionId, jobId, pageIndex, pageSize, orderBy, level, message);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling TenantJobsInstructionalInsightsApi.SearchInstructionalInsightsSecuritySyncJobExecutionLogsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -417,69 +177,6 @@ catch (ApiException e)
 
 Searches Instructional Insights Security Sync Job Executions for a given tenant
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SearchInstructionalInsightsSecuritySyncJobExecutionsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new TenantJobsInstructionalInsightsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var jobId = "\"\"";  // string |  (optional)  (default to "")
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Searches Instructional Insights Security Sync Job Executions for a given tenant
-                IdentityApiInstructionalInsightsV1SearchInstructionalInsightsSecuritySyncJobExecutionsResponse result = apiInstance.SearchInstructionalInsightsSecuritySyncJobExecutions(tenantId, jobId, pageIndex, pageSize, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TenantJobsInstructionalInsightsApi.SearchInstructionalInsightsSecuritySyncJobExecutions: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SearchInstructionalInsightsSecuritySyncJobExecutionsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Searches Instructional Insights Security Sync Job Executions for a given tenant
-    ApiResponse<IdentityApiInstructionalInsightsV1SearchInstructionalInsightsSecuritySyncJobExecutionsResponse> response = apiInstance.SearchInstructionalInsightsSecuritySyncJobExecutionsWithHttpInfo(tenantId, jobId, pageIndex, pageSize, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling TenantJobsInstructionalInsightsApi.SearchInstructionalInsightsSecuritySyncJobExecutionsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -523,65 +220,6 @@ catch (ApiException e)
 
 Updates an Instructional Insights Security Sync Job for a given tenant
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateInstructionalInsightsSecuritySyncJobExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new TenantJobsInstructionalInsightsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var identityApiInstructionalInsightsV1UpdateInstructionalInsightsSecuritySyncJobRequest = new IdentityApiInstructionalInsightsV1UpdateInstructionalInsightsSecuritySyncJobRequest(); // IdentityApiInstructionalInsightsV1UpdateInstructionalInsightsSecuritySyncJobRequest |  (optional) 
-
-            try
-            {
-                // Updates an Instructional Insights Security Sync Job for a given tenant
-                MicrosoftAspNetCoreMvcNoContentResult result = apiInstance.UpdateInstructionalInsightsSecuritySyncJob(tenantId, identityApiInstructionalInsightsV1UpdateInstructionalInsightsSecuritySyncJobRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TenantJobsInstructionalInsightsApi.UpdateInstructionalInsightsSecuritySyncJob: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateInstructionalInsightsSecuritySyncJobWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates an Instructional Insights Security Sync Job for a given tenant
-    ApiResponse<MicrosoftAspNetCoreMvcNoContentResult> response = apiInstance.UpdateInstructionalInsightsSecuritySyncJobWithHttpInfo(tenantId, identityApiInstructionalInsightsV1UpdateInstructionalInsightsSecuritySyncJobRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling TenantJobsInstructionalInsightsApi.UpdateInstructionalInsightsSecuritySyncJobWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

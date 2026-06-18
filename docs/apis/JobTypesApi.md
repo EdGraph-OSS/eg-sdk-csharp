@@ -13,68 +13,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Retrieves a list of DataSync job types
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetAllTenantDataSyncJobTypesExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new JobTypesApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Retrieves a list of DataSync job types
-                DataSyncApiJobTypeV1JobTypeListResponsePaginatedItemsViewModel result = apiInstance.GetAllTenantDataSyncJobTypes(tenantId, pageSize, pageIndex, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling JobTypesApi.GetAllTenantDataSyncJobTypes: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetAllTenantDataSyncJobTypesWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of DataSync job types
-    ApiResponse<DataSyncApiJobTypeV1JobTypeListResponsePaginatedItemsViewModel> response = apiInstance.GetAllTenantDataSyncJobTypesWithHttpInfo(tenantId, pageSize, pageIndex, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling JobTypesApi.GetAllTenantDataSyncJobTypesWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -117,65 +55,6 @@ catch (ApiException e)
 
 Retrieves a specific DataSync job type using its primary key
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetTenantDataSyncJobTypeProfileByIdExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new JobTypesApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var jobTypeId = "jobTypeId_example";  // string | 
-
-            try
-            {
-                // Retrieves a specific DataSync job type using its primary key
-                DataSyncApiJobTypeV1JobTypeProfileResponse result = apiInstance.GetTenantDataSyncJobTypeProfileById(tenantId, jobTypeId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling JobTypesApi.GetTenantDataSyncJobTypeProfileById: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetTenantDataSyncJobTypeProfileByIdWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a specific DataSync job type using its primary key
-    ApiResponse<DataSyncApiJobTypeV1JobTypeProfileResponse> response = apiInstance.GetTenantDataSyncJobTypeProfileByIdWithHttpInfo(tenantId, jobTypeId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling JobTypesApi.GetTenantDataSyncJobTypeProfileByIdWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

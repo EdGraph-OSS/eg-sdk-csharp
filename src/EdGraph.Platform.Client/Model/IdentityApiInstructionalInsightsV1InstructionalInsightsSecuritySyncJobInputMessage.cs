@@ -64,7 +64,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Tenant
         /// </summary>
         [JsonPropertyName("tenant")]
-        public string? Tenant { get { return this.TenantOption; } set { this.TenantOption = new(value); } }
+        public string? Tenant { get { return this.TenantOption.Value; } set { this.TenantOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of PageSize
@@ -77,7 +77,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets PageSize
         /// </summary>
         [JsonPropertyName("pageSize")]
-        public int? PageSize { get { return this.PageSizeOption; } set { this.PageSizeOption = new(value); } }
+        public int? PageSize { get { return this.PageSizeOption.Value; } set { this.PageSizeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of OrderBy
@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets OrderBy
         /// </summary>
         [JsonPropertyName("orderBy")]
-        public string? OrderBy { get { return this.OrderByOption; } set { this.OrderByOption = new(value); } }
+        public string? OrderBy { get { return this.OrderByOption.Value; } set { this.OrderByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Filter
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Filter
         /// </summary>
         [JsonPropertyName("filter")]
-        public string? Filter { get { return this.FilterOption; } set { this.FilterOption = new(value); } }
+        public string? Filter { get { return this.FilterOption.Value; } set { this.FilterOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LoadBatchSize
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LoadBatchSize
         /// </summary>
         [JsonPropertyName("loadBatchSize")]
-        public int? LoadBatchSize { get { return this.LoadBatchSizeOption; } set { this.LoadBatchSizeOption = new(value); } }
+        public int? LoadBatchSize { get { return this.LoadBatchSizeOption.Value; } set { this.LoadBatchSizeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LoadBatchThrottle
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LoadBatchThrottle
         /// </summary>
         [JsonPropertyName("loadBatchThrottle")]
-        public string? LoadBatchThrottle { get { return this.LoadBatchThrottleOption; } set { this.LoadBatchThrottleOption = new(value); } }
+        public string? LoadBatchThrottle { get { return this.LoadBatchThrottleOption.Value; } set { this.LoadBatchThrottleOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -208,8 +208,7 @@ namespace EdGraph.Platform.Client.Model
                             tenant = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "pageSize":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pageSize = new Option<int?>(utf8JsonReader.GetInt32());
+                            pageSize = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "orderBy":
                             orderBy = new Option<string?>(utf8JsonReader.GetString());
@@ -218,8 +217,7 @@ namespace EdGraph.Platform.Client.Model
                             filter = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "loadBatchSize":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                loadBatchSize = new Option<int?>(utf8JsonReader.GetInt32());
+                            loadBatchSize = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "loadBatchThrottle":
                             loadBatchThrottle = new Option<string?>(utf8JsonReader.GetString());

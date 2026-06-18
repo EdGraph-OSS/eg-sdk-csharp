@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Token
         /// </summary>
         [JsonPropertyName("token")]
-        public string? Token { get { return this.TokenOption; } set { this.TokenOption = new(value); } }
+        public string? Token { get { return this.TokenOption.Value; } set { this.TokenOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TokenId
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TokenId
         /// </summary>
         [JsonPropertyName("tokenId")]
-        public string? TokenId { get { return this.TokenIdOption; } set { this.TokenIdOption = new(value); } }
+        public string? TokenId { get { return this.TokenIdOption.Value; } set { this.TokenIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Expiration
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Expiration
         /// </summary>
         [JsonPropertyName("expiration")]
-        public string? Expiration { get { return this.ExpirationOption; } set { this.ExpirationOption = new(value); } }
+        public string? Expiration { get { return this.ExpirationOption.Value; } set { this.ExpirationOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

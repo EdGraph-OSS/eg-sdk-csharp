@@ -12,7 +12,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Net;
+using System.IO;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using System.Net.Http;
@@ -679,7 +681,7 @@ namespace EdGraph.Platform.Client.Api
             bool suppressDefaultLog = false;
             AfterCreateLocalEducationAgencyAsync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, instanceId, year, edfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequest);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -696,33 +698,33 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
         /// </summary>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="year"></param>
         /// <param name="edfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequest"></param>
-        private void OnErrorCreateLocalEducationAgencyAsyncDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, string instanceId, int year, Option<EdfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequest> edfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequest)
+        private void OnErrorCreateLocalEducationAgencyAsyncDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, int year, Option<EdfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequest> edfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequest)
         {
-            bool suppressDefaultLog = false;
-            OnErrorCreateLocalEducationAgencyAsync(ref suppressDefaultLog, exception, pathFormat, path, tenantId, instanceId, year, edfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequest);
-            if (!suppressDefaultLog)
-                Logger.LogError(exception, "An error occurred while sending the request to the server.");
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorCreateLocalEducationAgencyAsync(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, instanceId, year, edfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequest);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
 
         /// <summary>
         /// A partial method that gives developers a way to provide customized exception handling
         /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="year"></param>
         /// <param name="edfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequest"></param>
-        partial void OnErrorCreateLocalEducationAgencyAsync(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, string instanceId, int year, Option<EdfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequest> edfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequest);
+        partial void OnErrorCreateLocalEducationAgencyAsync(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, int year, Option<EdfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequest> edfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequest);
 
         /// <summary>
         /// Creates a LocalEducationAgency. 
@@ -770,15 +772,19 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/localeducationagencies";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/localeducationagencies"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/localeducationagencies");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BinstanceId%7D", Uri.EscapeDataString(instanceId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Byear%7D", Uri.EscapeDataString(year.ToString()));
 
                     if (edfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequest.IsSet)
-                        httpRequestMessageLocalVar.Content = (edfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequest.Value as object) is System.IO.Stream stream
-                            ? httpRequestMessageLocalVar.Content = new StreamContent(stream)
-                            : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(edfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequest.Value, _jsonSerializerOptions));
+                    {
+                      httpRequestMessageLocalVar.Content = (edfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequest.Value as object) is EdGraph.Platform.Client.Client.FileParameter fileParameterLocalVar
+                        ? httpRequestMessageLocalVar.Content = new StreamContent(fileParameterLocalVar.Content)
+                        : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(edfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequest.Value, _jsonSerializerOptions));
+                    }
 
                     List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
                     httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
@@ -805,10 +811,10 @@ namespace EdGraph.Platform.Client.Api
                         "application/json"
                     };
 
-                    string? acceptLocalVar = ClientUtils.SelectHeaderAccept(acceptLocalVars);
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
 
-                    if (acceptLocalVar != null)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptLocalVar));
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
 
                     httpRequestMessageLocalVar.Method = HttpMethod.Post;
 
@@ -816,11 +822,17 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<CreateLocalEducationAgencyAsyncApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<CreateLocalEducationAgencyAsyncApiResponse>();
+                        CreateLocalEducationAgencyAsyncApiResponse apiResponseLocalVar;
 
-                        CreateLocalEducationAgencyAsyncApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/localeducationagencies", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/localeducationagencies", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterCreateLocalEducationAgencyAsyncDefaultImplementation(apiResponseLocalVar, tenantId, instanceId, year, edfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequest);
 
@@ -863,6 +875,22 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public CreateLocalEducationAgencyAsyncApiResponse(ILogger<CreateLocalEducationAgencyAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="CreateLocalEducationAgencyAsyncApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public CreateLocalEducationAgencyAsyncApiResponse(ILogger<CreateLocalEducationAgencyAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -1143,7 +1171,7 @@ namespace EdGraph.Platform.Client.Api
             bool suppressDefaultLog = false;
             AfterDeleteLocalEducationAgencyAsync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, instanceId, year, localEducationAgencyId);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -1160,33 +1188,33 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
         /// </summary>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="year"></param>
         /// <param name="localEducationAgencyId"></param>
-        private void OnErrorDeleteLocalEducationAgencyAsyncDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, string instanceId, int year, string localEducationAgencyId)
+        private void OnErrorDeleteLocalEducationAgencyAsyncDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, int year, string localEducationAgencyId)
         {
-            bool suppressDefaultLog = false;
-            OnErrorDeleteLocalEducationAgencyAsync(ref suppressDefaultLog, exception, pathFormat, path, tenantId, instanceId, year, localEducationAgencyId);
-            if (!suppressDefaultLog)
-                Logger.LogError(exception, "An error occurred while sending the request to the server.");
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorDeleteLocalEducationAgencyAsync(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, instanceId, year, localEducationAgencyId);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
 
         /// <summary>
         /// A partial method that gives developers a way to provide customized exception handling
         /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="year"></param>
         /// <param name="localEducationAgencyId"></param>
-        partial void OnErrorDeleteLocalEducationAgencyAsync(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, string instanceId, int year, string localEducationAgencyId);
+        partial void OnErrorDeleteLocalEducationAgencyAsync(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, int year, string localEducationAgencyId);
 
         /// <summary>
         /// Deletes a LocalEducationAgency. 
@@ -1234,7 +1262,9 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/localeducationagencies/{localEducationAgencyId}";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/localeducationagencies/{localEducationAgencyId}"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/localeducationagencies/{localEducationAgencyId}");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BinstanceId%7D", Uri.EscapeDataString(instanceId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Byear%7D", Uri.EscapeDataString(year.ToString()));
@@ -1253,10 +1283,10 @@ namespace EdGraph.Platform.Client.Api
                         "application/json"
                     };
 
-                    string? acceptLocalVar = ClientUtils.SelectHeaderAccept(acceptLocalVars);
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
 
-                    if (acceptLocalVar != null)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptLocalVar));
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
 
                     httpRequestMessageLocalVar.Method = HttpMethod.Delete;
 
@@ -1264,11 +1294,17 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<DeleteLocalEducationAgencyAsyncApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<DeleteLocalEducationAgencyAsyncApiResponse>();
+                        DeleteLocalEducationAgencyAsyncApiResponse apiResponseLocalVar;
 
-                        DeleteLocalEducationAgencyAsyncApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/localeducationagencies/{localEducationAgencyId}", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/localeducationagencies/{localEducationAgencyId}", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterDeleteLocalEducationAgencyAsyncDefaultImplementation(apiResponseLocalVar, tenantId, instanceId, year, localEducationAgencyId);
 
@@ -1311,6 +1347,22 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public DeleteLocalEducationAgencyAsyncApiResponse(ILogger<DeleteLocalEducationAgencyAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="DeleteLocalEducationAgencyAsyncApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public DeleteLocalEducationAgencyAsyncApiResponse(ILogger<DeleteLocalEducationAgencyAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -1559,7 +1611,7 @@ namespace EdGraph.Platform.Client.Api
             bool suppressDefaultLog = false;
             AfterGetLocalEducationAgencyByIdAsync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, instanceId, year, localEducationAgencyId);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -1576,33 +1628,33 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
         /// </summary>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="year"></param>
         /// <param name="localEducationAgencyId"></param>
-        private void OnErrorGetLocalEducationAgencyByIdAsyncDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, string instanceId, int year, string localEducationAgencyId)
+        private void OnErrorGetLocalEducationAgencyByIdAsyncDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, int year, string localEducationAgencyId)
         {
-            bool suppressDefaultLog = false;
-            OnErrorGetLocalEducationAgencyByIdAsync(ref suppressDefaultLog, exception, pathFormat, path, tenantId, instanceId, year, localEducationAgencyId);
-            if (!suppressDefaultLog)
-                Logger.LogError(exception, "An error occurred while sending the request to the server.");
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorGetLocalEducationAgencyByIdAsync(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, instanceId, year, localEducationAgencyId);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
 
         /// <summary>
         /// A partial method that gives developers a way to provide customized exception handling
         /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="year"></param>
         /// <param name="localEducationAgencyId"></param>
-        partial void OnErrorGetLocalEducationAgencyByIdAsync(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, string instanceId, int year, string localEducationAgencyId);
+        partial void OnErrorGetLocalEducationAgencyByIdAsync(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, int year, string localEducationAgencyId);
 
         /// <summary>
         /// Retrieves a LocalEducationAgency by ID. 
@@ -1650,7 +1702,9 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/localeducationagencies/{localEducationAgencyId}";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/localeducationagencies/{localEducationAgencyId}"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/localeducationagencies/{localEducationAgencyId}");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BinstanceId%7D", Uri.EscapeDataString(instanceId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Byear%7D", Uri.EscapeDataString(year.ToString()));
@@ -1669,10 +1723,10 @@ namespace EdGraph.Platform.Client.Api
                         "application/json"
                     };
 
-                    string? acceptLocalVar = ClientUtils.SelectHeaderAccept(acceptLocalVars);
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
 
-                    if (acceptLocalVar != null)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptLocalVar));
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
 
                     httpRequestMessageLocalVar.Method = HttpMethod.Get;
 
@@ -1680,11 +1734,17 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<GetLocalEducationAgencyByIdAsyncApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<GetLocalEducationAgencyByIdAsyncApiResponse>();
+                        GetLocalEducationAgencyByIdAsyncApiResponse apiResponseLocalVar;
 
-                        GetLocalEducationAgencyByIdAsyncApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/localeducationagencies/{localEducationAgencyId}", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/localeducationagencies/{localEducationAgencyId}", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterGetLocalEducationAgencyByIdAsyncDefaultImplementation(apiResponseLocalVar, tenantId, instanceId, year, localEducationAgencyId);
 
@@ -1727,6 +1787,22 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public GetLocalEducationAgencyByIdAsyncApiResponse(ILogger<GetLocalEducationAgencyByIdAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="GetLocalEducationAgencyByIdAsyncApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public GetLocalEducationAgencyByIdAsyncApiResponse(ILogger<GetLocalEducationAgencyByIdAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -2014,7 +2090,7 @@ namespace EdGraph.Platform.Client.Api
             bool suppressDefaultLog = false;
             AfterGetlLocalEducationAgenciesAsync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, instanceId, year, pageSize, pageIndex, orderBy, filter);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -2034,9 +2110,9 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
         /// </summary>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="year"></param>
@@ -2044,21 +2120,21 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pageIndex"></param>
         /// <param name="orderBy"></param>
         /// <param name="filter"></param>
-        private void OnErrorGetlLocalEducationAgenciesAsyncDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, string instanceId, int year, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter)
+        private void OnErrorGetlLocalEducationAgenciesAsyncDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, int year, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter)
         {
-            bool suppressDefaultLog = false;
-            OnErrorGetlLocalEducationAgenciesAsync(ref suppressDefaultLog, exception, pathFormat, path, tenantId, instanceId, year, pageSize, pageIndex, orderBy, filter);
-            if (!suppressDefaultLog)
-                Logger.LogError(exception, "An error occurred while sending the request to the server.");
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorGetlLocalEducationAgenciesAsync(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, instanceId, year, pageSize, pageIndex, orderBy, filter);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
 
         /// <summary>
         /// A partial method that gives developers a way to provide customized exception handling
         /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="year"></param>
@@ -2066,7 +2142,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pageIndex"></param>
         /// <param name="orderBy"></param>
         /// <param name="filter"></param>
-        partial void OnErrorGetlLocalEducationAgenciesAsync(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, string instanceId, int year, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter);
+        partial void OnErrorGetlLocalEducationAgenciesAsync(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, int year, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter);
 
         /// <summary>
         /// Retrieves a list of LocalEducationAgencies. 
@@ -2120,7 +2196,9 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/localeducationagencies";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/localeducationagencies"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/localeducationagencies");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BinstanceId%7D", Uri.EscapeDataString(instanceId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Byear%7D", Uri.EscapeDataString(year.ToString()));
@@ -2154,10 +2232,10 @@ namespace EdGraph.Platform.Client.Api
                         "application/json"
                     };
 
-                    string? acceptLocalVar = ClientUtils.SelectHeaderAccept(acceptLocalVars);
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
 
-                    if (acceptLocalVar != null)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptLocalVar));
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
 
                     httpRequestMessageLocalVar.Method = HttpMethod.Get;
 
@@ -2165,11 +2243,17 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<GetlLocalEducationAgenciesAsyncApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<GetlLocalEducationAgenciesAsyncApiResponse>();
+                        GetlLocalEducationAgenciesAsyncApiResponse apiResponseLocalVar;
 
-                        GetlLocalEducationAgenciesAsyncApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/localeducationagencies", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/localeducationagencies", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterGetlLocalEducationAgenciesAsyncDefaultImplementation(apiResponseLocalVar, tenantId, instanceId, year, pageSize, pageIndex, orderBy, filter);
 
@@ -2212,6 +2296,22 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public GetlLocalEducationAgenciesAsyncApiResponse(ILogger<GetlLocalEducationAgenciesAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="GetlLocalEducationAgenciesAsyncApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public GetlLocalEducationAgenciesAsyncApiResponse(ILogger<GetlLocalEducationAgenciesAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -2493,7 +2593,7 @@ namespace EdGraph.Platform.Client.Api
             bool suppressDefaultLog = false;
             AfterSyncLocalEducationAgencyAsync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, instanceId, year, localEducationAgencyId, edfiAdminApiEdfiAdminV1SyncLocalEducationAgencyRequest);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -2511,35 +2611,35 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
         /// </summary>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="year"></param>
         /// <param name="localEducationAgencyId"></param>
         /// <param name="edfiAdminApiEdfiAdminV1SyncLocalEducationAgencyRequest"></param>
-        private void OnErrorSyncLocalEducationAgencyAsyncDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, string instanceId, int year, int localEducationAgencyId, Option<EdfiAdminApiEdfiAdminV1SyncLocalEducationAgencyRequest> edfiAdminApiEdfiAdminV1SyncLocalEducationAgencyRequest)
+        private void OnErrorSyncLocalEducationAgencyAsyncDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, int year, int localEducationAgencyId, Option<EdfiAdminApiEdfiAdminV1SyncLocalEducationAgencyRequest> edfiAdminApiEdfiAdminV1SyncLocalEducationAgencyRequest)
         {
-            bool suppressDefaultLog = false;
-            OnErrorSyncLocalEducationAgencyAsync(ref suppressDefaultLog, exception, pathFormat, path, tenantId, instanceId, year, localEducationAgencyId, edfiAdminApiEdfiAdminV1SyncLocalEducationAgencyRequest);
-            if (!suppressDefaultLog)
-                Logger.LogError(exception, "An error occurred while sending the request to the server.");
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorSyncLocalEducationAgencyAsync(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, instanceId, year, localEducationAgencyId, edfiAdminApiEdfiAdminV1SyncLocalEducationAgencyRequest);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
 
         /// <summary>
         /// A partial method that gives developers a way to provide customized exception handling
         /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="year"></param>
         /// <param name="localEducationAgencyId"></param>
         /// <param name="edfiAdminApiEdfiAdminV1SyncLocalEducationAgencyRequest"></param>
-        partial void OnErrorSyncLocalEducationAgencyAsync(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, string instanceId, int year, int localEducationAgencyId, Option<EdfiAdminApiEdfiAdminV1SyncLocalEducationAgencyRequest> edfiAdminApiEdfiAdminV1SyncLocalEducationAgencyRequest);
+        partial void OnErrorSyncLocalEducationAgencyAsync(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, int year, int localEducationAgencyId, Option<EdfiAdminApiEdfiAdminV1SyncLocalEducationAgencyRequest> edfiAdminApiEdfiAdminV1SyncLocalEducationAgencyRequest);
 
         /// <summary>
         /// Copies a LocalEducationAgency from one instance to another/other instance(s). 
@@ -2589,16 +2689,20 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/localeducationagencies/{localEducationAgencyId}/sync";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/localeducationagencies/{localEducationAgencyId}/sync"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/localeducationagencies/{localEducationAgencyId}/sync");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BinstanceId%7D", Uri.EscapeDataString(instanceId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Byear%7D", Uri.EscapeDataString(year.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BlocalEducationAgencyId%7D", Uri.EscapeDataString(localEducationAgencyId.ToString()));
 
                     if (edfiAdminApiEdfiAdminV1SyncLocalEducationAgencyRequest.IsSet)
-                        httpRequestMessageLocalVar.Content = (edfiAdminApiEdfiAdminV1SyncLocalEducationAgencyRequest.Value as object) is System.IO.Stream stream
-                            ? httpRequestMessageLocalVar.Content = new StreamContent(stream)
-                            : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(edfiAdminApiEdfiAdminV1SyncLocalEducationAgencyRequest.Value, _jsonSerializerOptions));
+                    {
+                      httpRequestMessageLocalVar.Content = (edfiAdminApiEdfiAdminV1SyncLocalEducationAgencyRequest.Value as object) is EdGraph.Platform.Client.Client.FileParameter fileParameterLocalVar
+                        ? httpRequestMessageLocalVar.Content = new StreamContent(fileParameterLocalVar.Content)
+                        : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(edfiAdminApiEdfiAdminV1SyncLocalEducationAgencyRequest.Value, _jsonSerializerOptions));
+                    }
 
                     List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
                     httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
@@ -2625,10 +2729,10 @@ namespace EdGraph.Platform.Client.Api
                         "application/json"
                     };
 
-                    string? acceptLocalVar = ClientUtils.SelectHeaderAccept(acceptLocalVars);
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
 
-                    if (acceptLocalVar != null)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptLocalVar));
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
 
                     httpRequestMessageLocalVar.Method = HttpMethod.Post;
 
@@ -2636,11 +2740,17 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<SyncLocalEducationAgencyAsyncApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<SyncLocalEducationAgencyAsyncApiResponse>();
+                        SyncLocalEducationAgencyAsyncApiResponse apiResponseLocalVar;
 
-                        SyncLocalEducationAgencyAsyncApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/localeducationagencies/{localEducationAgencyId}/sync", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/localeducationagencies/{localEducationAgencyId}/sync", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterSyncLocalEducationAgencyAsyncDefaultImplementation(apiResponseLocalVar, tenantId, instanceId, year, localEducationAgencyId, edfiAdminApiEdfiAdminV1SyncLocalEducationAgencyRequest);
 
@@ -2683,6 +2793,22 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public SyncLocalEducationAgencyAsyncApiResponse(ILogger<SyncLocalEducationAgencyAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="SyncLocalEducationAgencyAsyncApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public SyncLocalEducationAgencyAsyncApiResponse(ILogger<SyncLocalEducationAgencyAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -2968,7 +3094,7 @@ namespace EdGraph.Platform.Client.Api
             bool suppressDefaultLog = false;
             AfterUpdateLocalEducationAgencyAsync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, instanceId, year, localEducationAgencyId, edfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequest);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -2986,35 +3112,35 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
         /// </summary>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="year"></param>
         /// <param name="localEducationAgencyId"></param>
         /// <param name="edfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequest"></param>
-        private void OnErrorUpdateLocalEducationAgencyAsyncDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, string instanceId, int year, string localEducationAgencyId, Option<EdfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequest> edfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequest)
+        private void OnErrorUpdateLocalEducationAgencyAsyncDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, int year, string localEducationAgencyId, Option<EdfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequest> edfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequest)
         {
-            bool suppressDefaultLog = false;
-            OnErrorUpdateLocalEducationAgencyAsync(ref suppressDefaultLog, exception, pathFormat, path, tenantId, instanceId, year, localEducationAgencyId, edfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequest);
-            if (!suppressDefaultLog)
-                Logger.LogError(exception, "An error occurred while sending the request to the server.");
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorUpdateLocalEducationAgencyAsync(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, instanceId, year, localEducationAgencyId, edfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequest);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
 
         /// <summary>
         /// A partial method that gives developers a way to provide customized exception handling
         /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="year"></param>
         /// <param name="localEducationAgencyId"></param>
         /// <param name="edfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequest"></param>
-        partial void OnErrorUpdateLocalEducationAgencyAsync(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, string instanceId, int year, string localEducationAgencyId, Option<EdfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequest> edfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequest);
+        partial void OnErrorUpdateLocalEducationAgencyAsync(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, int year, string localEducationAgencyId, Option<EdfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequest> edfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequest);
 
         /// <summary>
         /// Updates a LocalEducationAgency. 
@@ -3064,16 +3190,20 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/localeducationagencies/{localEducationAgencyId}";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/localeducationagencies/{localEducationAgencyId}"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/localeducationagencies/{localEducationAgencyId}");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BinstanceId%7D", Uri.EscapeDataString(instanceId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Byear%7D", Uri.EscapeDataString(year.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BlocalEducationAgencyId%7D", Uri.EscapeDataString(localEducationAgencyId.ToString()));
 
                     if (edfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequest.IsSet)
-                        httpRequestMessageLocalVar.Content = (edfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequest.Value as object) is System.IO.Stream stream
-                            ? httpRequestMessageLocalVar.Content = new StreamContent(stream)
-                            : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(edfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequest.Value, _jsonSerializerOptions));
+                    {
+                      httpRequestMessageLocalVar.Content = (edfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequest.Value as object) is EdGraph.Platform.Client.Client.FileParameter fileParameterLocalVar
+                        ? httpRequestMessageLocalVar.Content = new StreamContent(fileParameterLocalVar.Content)
+                        : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(edfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequest.Value, _jsonSerializerOptions));
+                    }
 
                     List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
                     httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
@@ -3100,10 +3230,10 @@ namespace EdGraph.Platform.Client.Api
                         "application/json"
                     };
 
-                    string? acceptLocalVar = ClientUtils.SelectHeaderAccept(acceptLocalVars);
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
 
-                    if (acceptLocalVar != null)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptLocalVar));
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
 
                     httpRequestMessageLocalVar.Method = HttpMethod.Put;
 
@@ -3111,11 +3241,17 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<UpdateLocalEducationAgencyAsyncApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<UpdateLocalEducationAgencyAsyncApiResponse>();
+                        UpdateLocalEducationAgencyAsyncApiResponse apiResponseLocalVar;
 
-                        UpdateLocalEducationAgencyAsyncApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/localeducationagencies/{localEducationAgencyId}", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/localeducationagencies/{localEducationAgencyId}", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterUpdateLocalEducationAgencyAsyncDefaultImplementation(apiResponseLocalVar, tenantId, instanceId, year, localEducationAgencyId, edfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequest);
 
@@ -3158,6 +3294,22 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public UpdateLocalEducationAgencyAsyncApiResponse(ILogger<UpdateLocalEducationAgencyAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="UpdateLocalEducationAgencyAsyncApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public UpdateLocalEducationAgencyAsyncApiResponse(ILogger<UpdateLocalEducationAgencyAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);

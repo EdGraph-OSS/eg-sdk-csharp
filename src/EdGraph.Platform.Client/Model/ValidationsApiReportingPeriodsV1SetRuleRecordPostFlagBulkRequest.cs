@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ReportingPeriodId
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ReportingPeriodId
         /// </summary>
         [JsonPropertyName("reportingPeriodId")]
-        public string? ReportingPeriodId { get { return this.ReportingPeriodIdOption; } set { this.ReportingPeriodIdOption = new(value); } }
+        public string? ReportingPeriodId { get { return this.ReportingPeriodIdOption.Value; } set { this.ReportingPeriodIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RuleId
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RuleId
         /// </summary>
         [JsonPropertyName("ruleId")]
-        public string? RuleId { get { return this.RuleIdOption; } set { this.RuleIdOption = new(value); } }
+        public string? RuleId { get { return this.RuleIdOption.Value; } set { this.RuleIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Records
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Records
         /// </summary>
         [JsonPropertyName("records")]
-        public List<ValidationsApiReportingPeriodsV1SetRuleRecordPostFlagBulkRequestTypesRecord>? Records { get { return this.RecordsOption; } }
+        public List<ValidationsApiReportingPeriodsV1SetRuleRecordPostFlagBulkRequestTypesRecord>? Records { get { return this.RecordsOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -180,8 +180,7 @@ namespace EdGraph.Platform.Client.Model
                             ruleId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "records":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                records = new Option<List<ValidationsApiReportingPeriodsV1SetRuleRecordPostFlagBulkRequestTypesRecord>?>(JsonSerializer.Deserialize<List<ValidationsApiReportingPeriodsV1SetRuleRecordPostFlagBulkRequestTypesRecord>>(ref utf8JsonReader, jsonSerializerOptions));
+                            records = new Option<List<ValidationsApiReportingPeriodsV1SetRuleRecordPostFlagBulkRequestTypesRecord>?>(JsonSerializer.Deserialize<List<ValidationsApiReportingPeriodsV1SetRuleRecordPostFlagBulkRequestTypesRecord>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

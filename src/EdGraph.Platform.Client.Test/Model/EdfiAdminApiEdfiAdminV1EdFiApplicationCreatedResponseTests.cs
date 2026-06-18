@@ -115,5 +115,23 @@ namespace EdGraph.Platform.Client.Test.Model
         {
             // TODO unit test for the property 'OperationalContextUri'
         }
+
+        /// <summary>
+        /// Test the property 'Key'
+        /// </summary>
+        [Fact]
+        public void KeyTest()
+        {
+            // TODO unit test for the property 'Key'
+        }
+
+        /// <summary>
+        /// Test the property 'Secret'
+        /// </summary>
+        [Fact]
+        public void SecretTest()
+        {
+            // TODO unit test for the property 'Secret'
+        }
     }
 }

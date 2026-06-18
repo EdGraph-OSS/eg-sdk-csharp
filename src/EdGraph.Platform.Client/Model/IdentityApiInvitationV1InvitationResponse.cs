@@ -76,7 +76,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InvitationStatus
         /// </summary>
         [JsonPropertyName("invitationStatus")]
-        public IdentityApiInvitationV1InvitationStatus? InvitationStatus { get { return this.InvitationStatusOption; } set { this.InvitationStatusOption = new(value); } }
+        public IdentityApiInvitationV1InvitationStatus? InvitationStatus { get { return this.InvitationStatusOption.Value; } set { this.InvitationStatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -89,7 +89,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InvitationId
@@ -102,7 +102,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InvitationId
         /// </summary>
         [JsonPropertyName("invitationId")]
-        public string? InvitationId { get { return this.InvitationIdOption; } set { this.InvitationIdOption = new(value); } }
+        public string? InvitationId { get { return this.InvitationIdOption.Value; } set { this.InvitationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of FirstName
@@ -115,7 +115,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets FirstName
         /// </summary>
         [JsonPropertyName("firstName")]
-        public string? FirstName { get { return this.FirstNameOption; } set { this.FirstNameOption = new(value); } }
+        public string? FirstName { get { return this.FirstNameOption.Value; } set { this.FirstNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastName
@@ -128,7 +128,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastName
         /// </summary>
         [JsonPropertyName("lastName")]
-        public string? LastName { get { return this.LastNameOption; } set { this.LastNameOption = new(value); } }
+        public string? LastName { get { return this.LastNameOption.Value; } set { this.LastNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Email
@@ -141,7 +141,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Email
         /// </summary>
         [JsonPropertyName("email")]
-        public string? Email { get { return this.EmailOption; } set { this.EmailOption = new(value); } }
+        public string? Email { get { return this.EmailOption.Value; } set { this.EmailOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Role
@@ -154,7 +154,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Role
         /// </summary>
         [JsonPropertyName("role")]
-        public string? Role { get { return this.RoleOption; } set { this.RoleOption = new(value); } }
+        public string? Role { get { return this.RoleOption.Value; } set { this.RoleOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InvitationToken
@@ -167,7 +167,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InvitationToken
         /// </summary>
         [JsonPropertyName("invitationToken")]
-        public string? InvitationToken { get { return this.InvitationTokenOption; } set { this.InvitationTokenOption = new(value); } }
+        public string? InvitationToken { get { return this.InvitationTokenOption.Value; } set { this.InvitationTokenOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InvitationSentDateTime
@@ -180,7 +180,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InvitationSentDateTime
         /// </summary>
         [JsonPropertyName("invitationSentDateTime")]
-        public string? InvitationSentDateTime { get { return this.InvitationSentDateTimeOption; } set { this.InvitationSentDateTimeOption = new(value); } }
+        public string? InvitationSentDateTime { get { return this.InvitationSentDateTimeOption.Value; } set { this.InvitationSentDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AssignLicenseRequests
@@ -193,7 +193,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AssignLicenseRequests
         /// </summary>
         [JsonPropertyName("assignLicenseRequests")]
-        public List<IdentityApiInvitationV1AssignLicenseRequest>? AssignLicenseRequests { get { return this.AssignLicenseRequestsOption; } }
+        public List<IdentityApiInvitationV1AssignLicenseRequest>? AssignLicenseRequests { get { return this.AssignLicenseRequestsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of InvitationUrl
@@ -206,7 +206,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InvitationUrl
         /// </summary>
         [JsonPropertyName("invitationUrl")]
-        public string? InvitationUrl { get { return this.InvitationUrlOption; } set { this.InvitationUrlOption = new(value); } }
+        public string? InvitationUrl { get { return this.InvitationUrlOption.Value; } set { this.InvitationUrlOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of OrganizationName
@@ -219,7 +219,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets OrganizationName
         /// </summary>
         [JsonPropertyName("organizationName")]
-        public string? OrganizationName { get { return this.OrganizationNameOption; } set { this.OrganizationNameOption = new(value); } }
+        public string? OrganizationName { get { return this.OrganizationNameOption.Value; } set { this.OrganizationNameOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -336,8 +336,7 @@ namespace EdGraph.Platform.Client.Model
                             invitationSentDateTime = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "assignLicenseRequests":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                assignLicenseRequests = new Option<List<IdentityApiInvitationV1AssignLicenseRequest>?>(JsonSerializer.Deserialize<List<IdentityApiInvitationV1AssignLicenseRequest>>(ref utf8JsonReader, jsonSerializerOptions));
+                            assignLicenseRequests = new Option<List<IdentityApiInvitationV1AssignLicenseRequest>?>(JsonSerializer.Deserialize<List<IdentityApiInvitationV1AssignLicenseRequest>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "invitationUrl":
                             invitationUrl = new Option<string?>(utf8JsonReader.GetString());

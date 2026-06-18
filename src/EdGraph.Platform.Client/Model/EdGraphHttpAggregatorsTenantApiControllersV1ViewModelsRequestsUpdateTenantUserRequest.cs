@@ -139,12 +139,10 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "userId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                userId = new Option<Guid?>(utf8JsonReader.GetGuid());
+                            userId = new Option<Guid?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (Guid?)null : utf8JsonReader.GetGuid());
                             break;
                         case "tenantId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                tenantId = new Option<Guid?>(utf8JsonReader.GetGuid());
+                            tenantId = new Option<Guid?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (Guid?)null : utf8JsonReader.GetGuid());
                             break;
                         case "role":
                             role = new Option<string?>(utf8JsonReader.GetString()!);

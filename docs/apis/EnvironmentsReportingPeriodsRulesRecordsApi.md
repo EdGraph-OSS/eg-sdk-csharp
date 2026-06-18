@@ -16,66 +16,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Deletes the Rules of a Reporting Period.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class DeleteStateReportingPeriodRulesExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsReportingPeriodsRulesRecordsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-
-            try
-            {
-                // Deletes the Rules of a Reporting Period.
-                EdGraphServicesStateReportingV1ReportingPeriodRulesDeletedResponse result = apiInstance.DeleteStateReportingPeriodRules(tenantId, environmentId, reportingPeriodId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsReportingPeriodsRulesRecordsApi.DeleteStateReportingPeriodRules: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeleteStateReportingPeriodRulesWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Deletes the Rules of a Reporting Period.
-    ApiResponse<EdGraphServicesStateReportingV1ReportingPeriodRulesDeletedResponse> response = apiInstance.DeleteStateReportingPeriodRulesWithHttpInfo(tenantId, environmentId, reportingPeriodId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsReportingPeriodsRulesRecordsApi.DeleteStateReportingPeriodRulesWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -117,69 +57,6 @@ catch (ApiException e)
 
 Retrieves the Invalid Records of all the Rules within a Reporting Period.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SearchStateReportingPeriodRecordsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsReportingPeriodsRulesRecordsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-            var pageIndex = 56;  // int |  (optional) 
-            var pageSize = 56;  // int |  (optional) 
-            var excludeFromPost = true;  // bool |  (optional) 
-
-            try
-            {
-                // Retrieves the Invalid Records of all the Rules within a Reporting Period.
-                EdGraphServicesStateReportingV1PaginatedRecords result = apiInstance.SearchStateReportingPeriodRecords(tenantId, environmentId, reportingPeriodId, pageIndex, pageSize, excludeFromPost);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsReportingPeriodsRulesRecordsApi.SearchStateReportingPeriodRecords: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SearchStateReportingPeriodRecordsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves the Invalid Records of all the Rules within a Reporting Period.
-    ApiResponse<EdGraphServicesStateReportingV1PaginatedRecords> response = apiInstance.SearchStateReportingPeriodRecordsWithHttpInfo(tenantId, environmentId, reportingPeriodId, pageIndex, pageSize, excludeFromPost);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsReportingPeriodsRulesRecordsApi.SearchStateReportingPeriodRecordsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -224,69 +101,6 @@ catch (ApiException e)
 
 Retrieves the Invalid Records of a Rule.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SearchStateReportingPeriodRuleRecordsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsReportingPeriodsRulesRecordsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-            var ruleId = "ruleId_example";  // Guid | 
-            var pageIndex = 56;  // int |  (optional) 
-            var pageSize = 56;  // int |  (optional) 
-
-            try
-            {
-                // Retrieves the Invalid Records of a Rule.
-                EdGraphServicesStateReportingV1PaginatedRuleRecords result = apiInstance.SearchStateReportingPeriodRuleRecords(tenantId, environmentId, reportingPeriodId, ruleId, pageIndex, pageSize);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsReportingPeriodsRulesRecordsApi.SearchStateReportingPeriodRuleRecords: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SearchStateReportingPeriodRuleRecordsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves the Invalid Records of a Rule.
-    ApiResponse<EdGraphServicesStateReportingV1PaginatedRuleRecords> response = apiInstance.SearchStateReportingPeriodRuleRecordsWithHttpInfo(tenantId, environmentId, reportingPeriodId, ruleId, pageIndex, pageSize);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsReportingPeriodsRulesRecordsApi.SearchStateReportingPeriodRuleRecordsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -331,69 +145,6 @@ catch (ApiException e)
 
 Toggles the \"ExcludeFromPost\" flag of a Rule's Invalid Record.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SetStateReportingPeriodRuleRecordPostFlagExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsReportingPeriodsRulesRecordsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-            var ruleId = "ruleId_example";  // Guid | 
-            var recordId = "recordId_example";  // Guid | 
-            var edGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagRequest = new EdGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagRequest(); // EdGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagRequest |  (optional) 
-
-            try
-            {
-                // Toggles the \"ExcludeFromPost\" flag of a Rule's Invalid Record.
-                EdGraphServicesStateReportingV1ReportingPeriodCreatedResponse result = apiInstance.SetStateReportingPeriodRuleRecordPostFlag(tenantId, environmentId, reportingPeriodId, ruleId, recordId, edGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsReportingPeriodsRulesRecordsApi.SetStateReportingPeriodRuleRecordPostFlag: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SetStateReportingPeriodRuleRecordPostFlagWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Toggles the \"ExcludeFromPost\" flag of a Rule's Invalid Record.
-    ApiResponse<EdGraphServicesStateReportingV1ReportingPeriodCreatedResponse> response = apiInstance.SetStateReportingPeriodRuleRecordPostFlagWithHttpInfo(tenantId, environmentId, reportingPeriodId, ruleId, recordId, edGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsReportingPeriodsRulesRecordsApi.SetStateReportingPeriodRuleRecordPostFlagWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -438,68 +189,6 @@ catch (ApiException e)
 
 Toggles the \"ExcludeFromPost\" flag of a Rule's Invalid Records in bulk.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SetStateReportingPeriodRuleRecordPostFlagBulkExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsReportingPeriodsRulesRecordsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-            var ruleId = "ruleId_example";  // Guid | 
-            var edGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagBulkRequest = new EdGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagBulkRequest(); // EdGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagBulkRequest |  (optional) 
-
-            try
-            {
-                // Toggles the \"ExcludeFromPost\" flag of a Rule's Invalid Records in bulk.
-                EdGraphServicesStateReportingV1ReportingPeriodCreatedResponse result = apiInstance.SetStateReportingPeriodRuleRecordPostFlagBulk(tenantId, environmentId, reportingPeriodId, ruleId, edGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagBulkRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsReportingPeriodsRulesRecordsApi.SetStateReportingPeriodRuleRecordPostFlagBulk: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SetStateReportingPeriodRuleRecordPostFlagBulkWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Toggles the \"ExcludeFromPost\" flag of a Rule's Invalid Records in bulk.
-    ApiResponse<EdGraphServicesStateReportingV1ReportingPeriodCreatedResponse> response = apiInstance.SetStateReportingPeriodRuleRecordPostFlagBulkWithHttpInfo(tenantId, environmentId, reportingPeriodId, ruleId, edGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagBulkRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsReportingPeriodsRulesRecordsApi.SetStateReportingPeriodRuleRecordPostFlagBulkWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

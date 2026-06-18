@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of JobId
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets JobId
         /// </summary>
         [JsonPropertyName("jobId")]
-        public string? JobId { get { return this.JobIdOption; } set { this.JobIdOption = new(value); } }
+        public string? JobId { get { return this.JobIdOption.Value; } set { this.JobIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ChildJobId
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ChildJobId
         /// </summary>
         [JsonPropertyName("childJobId")]
-        public string? ChildJobId { get { return this.ChildJobIdOption; } set { this.ChildJobIdOption = new(value); } }
+        public string? ChildJobId { get { return this.ChildJobIdOption.Value; } set { this.ChildJobIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of JobExecutionId
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets JobExecutionId
         /// </summary>
         [JsonPropertyName("jobExecutionId")]
-        public string? JobExecutionId { get { return this.JobExecutionIdOption; } set { this.JobExecutionIdOption = new(value); } }
+        public string? JobExecutionId { get { return this.JobExecutionIdOption.Value; } set { this.JobExecutionIdOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

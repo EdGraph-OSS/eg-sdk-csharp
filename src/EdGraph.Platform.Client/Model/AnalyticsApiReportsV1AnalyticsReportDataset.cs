@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DatasetId
         /// </summary>
         [JsonPropertyName("datasetId")]
-        public string? DatasetId { get { return this.DatasetIdOption; } set { this.DatasetIdOption = new(value); } }
+        public string? DatasetId { get { return this.DatasetIdOption.Value; } set { this.DatasetIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsEffectiveIdentityRequired
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IsEffectiveIdentityRequired
         /// </summary>
         [JsonPropertyName("isEffectiveIdentityRequired")]
-        public bool? IsEffectiveIdentityRequired { get { return this.IsEffectiveIdentityRequiredOption; } set { this.IsEffectiveIdentityRequiredOption = new(value); } }
+        public bool? IsEffectiveIdentityRequired { get { return this.IsEffectiveIdentityRequiredOption.Value; } set { this.IsEffectiveIdentityRequiredOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsEffectiveIdentityRolesRequired
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IsEffectiveIdentityRolesRequired
         /// </summary>
         [JsonPropertyName("isEffectiveIdentityRolesRequired")]
-        public bool? IsEffectiveIdentityRolesRequired { get { return this.IsEffectiveIdentityRolesRequiredOption; } set { this.IsEffectiveIdentityRolesRequiredOption = new(value); } }
+        public bool? IsEffectiveIdentityRolesRequired { get { return this.IsEffectiveIdentityRolesRequiredOption.Value; } set { this.IsEffectiveIdentityRolesRequiredOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -157,12 +157,10 @@ namespace EdGraph.Platform.Client.Model
                             datasetId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "isEffectiveIdentityRequired":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isEffectiveIdentityRequired = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isEffectiveIdentityRequired = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "isEffectiveIdentityRolesRequired":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isEffectiveIdentityRolesRequired = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isEffectiveIdentityRolesRequired = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

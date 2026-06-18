@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Email
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Email
         /// </summary>
         [JsonPropertyName("email")]
-        public string? Email { get { return this.EmailOption; } set { this.EmailOption = new(value); } }
+        public string? Email { get { return this.EmailOption.Value; } set { this.EmailOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of FirstName
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets FirstName
         /// </summary>
         [JsonPropertyName("firstName")]
-        public string? FirstName { get { return this.FirstNameOption; } set { this.FirstNameOption = new(value); } }
+        public string? FirstName { get { return this.FirstNameOption.Value; } set { this.FirstNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastName
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastName
         /// </summary>
         [JsonPropertyName("lastName")]
-        public string? LastName { get { return this.LastNameOption; } set { this.LastNameOption = new(value); } }
+        public string? LastName { get { return this.LastNameOption.Value; } set { this.LastNameOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

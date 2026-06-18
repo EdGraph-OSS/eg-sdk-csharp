@@ -61,7 +61,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsOneRosterCreateClientRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsOneRosterCreateClientRequestDto = default!;
             var response = await _instance.CreateClientAsync(tenantId, instanceId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsOneRosterCreateClientRequestDto);
             var model = response.Unauthorized();
-            Assert.IsType<IMSAdminApiV1ClientsClientCreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string clientId = default!;
             var response = await _instance.DeleteClientAsync(tenantId, instanceId, clientId);
             var model = response.Unauthorized();
-            Assert.IsType<IMSAdminApiV1ClientsClientDeletedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string clientId = default!;
             var response = await _instance.GetClientByIdAsync(tenantId, instanceId, clientId);
             var model = response.Unauthorized();
-            Assert.IsType<IMSAdminApiV1ClientsClientProfileResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetPagedClientsAsync(tenantId, instanceId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<IMSAdminApiV1ClientsPaginatedItemsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<IMSAdminApiV1ClientsUpdateClientRequest> iMSAdminApiV1ClientsUpdateClientRequest = default!;
             var response = await _instance.UpdateClientAsync(tenantId, instanceId, clientId, iMSAdminApiV1ClientsUpdateClientRequest);
             var model = response.Unauthorized();
-            Assert.IsType<IMSAdminApiV1ClientsClientUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

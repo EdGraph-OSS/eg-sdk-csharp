@@ -62,7 +62,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApplicationId
         /// </summary>
         [JsonPropertyName("applicationId")]
-        public string? ApplicationId { get { return this.ApplicationIdOption; } set { this.ApplicationIdOption = new(value); } }
+        public string? ApplicationId { get { return this.ApplicationIdOption.Value; } set { this.ApplicationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApplicationName
@@ -75,7 +75,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApplicationName
         /// </summary>
         [JsonPropertyName("applicationName")]
-        public string? ApplicationName { get { return this.ApplicationNameOption; } set { this.ApplicationNameOption = new(value); } }
+        public string? ApplicationName { get { return this.ApplicationNameOption.Value; } set { this.ApplicationNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of StartDateTime
@@ -88,7 +88,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets StartDateTime
         /// </summary>
         [JsonPropertyName("startDateTime")]
-        public string? StartDateTime { get { return this.StartDateTimeOption; } set { this.StartDateTimeOption = new(value); } }
+        public string? StartDateTime { get { return this.StartDateTimeOption.Value; } set { this.StartDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EndDateTime
@@ -101,7 +101,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EndDateTime
         /// </summary>
         [JsonPropertyName("endDateTime")]
-        public string? EndDateTime { get { return this.EndDateTimeOption; } set { this.EndDateTimeOption = new(value); } }
+        public string? EndDateTime { get { return this.EndDateTimeOption.Value; } set { this.EndDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Roles
@@ -114,7 +114,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Roles
         /// </summary>
         [JsonPropertyName("roles")]
-        public List<IdentityApiUserV1UserTenantProfileTypesUserTenantLicenseProfileTypesUserTenantLicenseRoleProfile>? Roles { get { return this.RolesOption; } }
+        public List<IdentityApiUserV1UserTenantProfileTypesUserTenantLicenseProfileTypesUserTenantLicenseRoleProfile>? Roles { get { return this.RolesOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -200,8 +200,7 @@ namespace EdGraph.Platform.Client.Model
                             endDateTime = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "roles":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                roles = new Option<List<IdentityApiUserV1UserTenantProfileTypesUserTenantLicenseProfileTypesUserTenantLicenseRoleProfile>?>(JsonSerializer.Deserialize<List<IdentityApiUserV1UserTenantProfileTypesUserTenantLicenseProfileTypesUserTenantLicenseRoleProfile>>(ref utf8JsonReader, jsonSerializerOptions));
+                            roles = new Option<List<IdentityApiUserV1UserTenantProfileTypesUserTenantLicenseProfileTypesUserTenantLicenseRoleProfile>?>(JsonSerializer.Deserialize<List<IdentityApiUserV1UserTenantProfileTypesUserTenantLicenseProfileTypesUserTenantLicenseRoleProfile>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

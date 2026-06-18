@@ -61,7 +61,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiControllersV2RequestsAddSeoaaRequest> edGraphHttpAggregatorsTenantApiControllersV2RequestsAddSeoaaRequest = default!;
             var response = await _instance.AddUserSEOAAAsync(tenantId, userId, edGraphHttpAggregatorsTenantApiControllersV2RequestsAddSeoaaRequest);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiUserV1SEOAAAddedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string seoaaId = default!;
             var response = await _instance.DeleteUserSEOAAAsync(tenantId, userId, seoaaId);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiUserV1SEOAAUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.SearchUserSEOAAAsync(tenantId, userId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiUserV1GetSEOAAsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiControllersV2RequestsUpdateSeoaaRequest> edGraphHttpAggregatorsTenantApiControllersV2RequestsUpdateSeoaaRequest = default!;
             var response = await _instance.UpdateUserSEOAAAsync(tenantId, userId, seoaaId, edGraphHttpAggregatorsTenantApiControllersV2RequestsUpdateSeoaaRequest);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiUserV1SEOAAUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

@@ -64,7 +64,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RunId
         /// </summary>
         [JsonPropertyName("runId")]
-        public string? RunId { get { return this.RunIdOption; } set { this.RunIdOption = new(value); } }
+        public string? RunId { get { return this.RunIdOption.Value; } set { this.RunIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RunStart
@@ -77,7 +77,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RunStart
         /// </summary>
         [JsonPropertyName("runStart")]
-        public string? RunStart { get { return this.RunStartOption; } set { this.RunStartOption = new(value); } }
+        public string? RunStart { get { return this.RunStartOption.Value; } set { this.RunStartOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RunEnd
@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RunEnd
         /// </summary>
         [JsonPropertyName("runEnd")]
-        public string? RunEnd { get { return this.RunEndOption; } set { this.RunEndOption = new(value); } }
+        public string? RunEnd { get { return this.RunEndOption.Value; } set { this.RunEndOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DurationInMs
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DurationInMs
         /// </summary>
         [JsonPropertyName("durationInMs")]
-        public int? DurationInMs { get { return this.DurationInMsOption; } set { this.DurationInMsOption = new(value); } }
+        public int? DurationInMs { get { return this.DurationInMsOption.Value; } set { this.DurationInMsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Status
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Status
         /// </summary>
         [JsonPropertyName("status")]
-        public string? Status { get { return this.StatusOption; } set { this.StatusOption = new(value); } }
+        public string? Status { get { return this.StatusOption.Value; } set { this.StatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Message
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Message
         /// </summary>
         [JsonPropertyName("message")]
-        public string? Message { get { return this.MessageOption; } set { this.MessageOption = new(value); } }
+        public string? Message { get { return this.MessageOption.Value; } set { this.MessageOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -214,8 +214,7 @@ namespace EdGraph.Platform.Client.Model
                             runEnd = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "durationInMs":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                durationInMs = new Option<int?>(utf8JsonReader.GetInt32());
+                            durationInMs = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "status":
                             status = new Option<string?>(utf8JsonReader.GetString());

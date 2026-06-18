@@ -18,66 +18,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Creates a ClaimSet.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CreateClaimSetAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesClaimSetsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var edfiAdminApiEdfiAdminV1SaveClaimSetRequest = new EdfiAdminApiEdfiAdminV1SaveClaimSetRequest(); // EdfiAdminApiEdfiAdminV1SaveClaimSetRequest |  (optional) 
-
-            try
-            {
-                // Creates a ClaimSet.
-                EdfiAdminApiEdfiAdminV1SaveClaimSetResponse result = apiInstance.CreateClaimSetAsync(tenantId, instanceId, edfiAdminApiEdfiAdminV1SaveClaimSetRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesClaimSetsApi.CreateClaimSetAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateClaimSetAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates a ClaimSet.
-    ApiResponse<EdfiAdminApiEdfiAdminV1SaveClaimSetResponse> response = apiInstance.CreateClaimSetAsyncWithHttpInfo(tenantId, instanceId, edfiAdminApiEdfiAdminV1SaveClaimSetRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesClaimSetsApi.CreateClaimSetAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -119,62 +59,6 @@ catch (ApiException e)
 
 Deletes a ClaimSet.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class DeleteClaimSetAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesClaimSetsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var claimSetId = 56;  // int | 
-
-            try
-            {
-                // Deletes a ClaimSet.
-                apiInstance.DeleteClaimSetAsync(tenantId, instanceId, claimSetId);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesClaimSetsApi.DeleteClaimSetAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeleteClaimSetAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Deletes a ClaimSet.
-    apiInstance.DeleteClaimSetAsyncWithHttpInfo(tenantId, instanceId, claimSetId);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesClaimSetsApi.DeleteClaimSetAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -216,66 +100,6 @@ void (empty response body)
 
 Retrieves a ClaimSet by ID.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetClaimSetByIdAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesClaimSetsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var claimSetId = 56;  // int | 
-
-            try
-            {
-                // Retrieves a ClaimSet by ID.
-                EdfiAdminApiEdfiAdminV1ClaimSet result = apiInstance.GetClaimSetByIdAsync(tenantId, instanceId, claimSetId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesClaimSetsApi.GetClaimSetByIdAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetClaimSetByIdAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a ClaimSet by ID.
-    ApiResponse<EdfiAdminApiEdfiAdminV1ClaimSet> response = apiInstance.GetClaimSetByIdAsyncWithHttpInfo(tenantId, instanceId, claimSetId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesClaimSetsApi.GetClaimSetByIdAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -317,69 +141,6 @@ catch (ApiException e)
 
 Retrieves a list of ClaimSets.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetClaimSetsAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesClaimSetsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Retrieves a list of ClaimSets.
-                EdfiAdminApiEdfiAdminV1ClaimSetPaginatedItemsViewModel result = apiInstance.GetClaimSetsAsync(tenantId, instanceId, pageSize, pageIndex, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesClaimSetsApi.GetClaimSetsAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetClaimSetsAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of ClaimSets.
-    ApiResponse<EdfiAdminApiEdfiAdminV1ClaimSetPaginatedItemsViewModel> response = apiInstance.GetClaimSetsAsyncWithHttpInfo(tenantId, instanceId, pageSize, pageIndex, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesClaimSetsApi.GetClaimSetsAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -424,66 +185,6 @@ catch (ApiException e)
 
 Retrieves a grid of Resource Claims.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetResourceClaimsGridAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesClaimSetsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var claimSetId = 56;  // int | 
-
-            try
-            {
-                // Retrieves a grid of Resource Claims.
-                EdfiAdminApiEdfiAdminV1GetResourceClaimsGridResponse result = apiInstance.GetResourceClaimsGridAsync(tenantId, instanceId, claimSetId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesClaimSetsApi.GetResourceClaimsGridAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetResourceClaimsGridAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a grid of Resource Claims.
-    ApiResponse<EdfiAdminApiEdfiAdminV1GetResourceClaimsGridResponse> response = apiInstance.GetResourceClaimsGridAsyncWithHttpInfo(tenantId, instanceId, claimSetId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesClaimSetsApi.GetResourceClaimsGridAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -525,63 +226,6 @@ catch (ApiException e)
 
 Copies a Claim Set from one instance to another/other instance(s)
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SyncClaimSetAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesClaimSetsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var claimSetId = 56;  // int | 
-            var edfiAdminApiEdfiAdminV1SyncClaimSetRequest = new EdfiAdminApiEdfiAdminV1SyncClaimSetRequest(); // EdfiAdminApiEdfiAdminV1SyncClaimSetRequest |  (optional) 
-
-            try
-            {
-                // Copies a Claim Set from one instance to another/other instance(s)
-                apiInstance.SyncClaimSetAsync(tenantId, instanceId, claimSetId, edfiAdminApiEdfiAdminV1SyncClaimSetRequest);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesClaimSetsApi.SyncClaimSetAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SyncClaimSetAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Copies a Claim Set from one instance to another/other instance(s)
-    apiInstance.SyncClaimSetAsyncWithHttpInfo(tenantId, instanceId, claimSetId, edfiAdminApiEdfiAdminV1SyncClaimSetRequest);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesClaimSetsApi.SyncClaimSetAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -624,67 +268,6 @@ void (empty response body)
 
 Updates a ClaimSet.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateClaimSetAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesClaimSetsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var claimSetId = 56;  // int | 
-            var edfiAdminApiEdfiAdminV1SaveClaimSetRequest = new EdfiAdminApiEdfiAdminV1SaveClaimSetRequest(); // EdfiAdminApiEdfiAdminV1SaveClaimSetRequest |  (optional) 
-
-            try
-            {
-                // Updates a ClaimSet.
-                EdfiAdminApiEdfiAdminV1SaveClaimSetResponse result = apiInstance.UpdateClaimSetAsync(tenantId, instanceId, claimSetId, edfiAdminApiEdfiAdminV1SaveClaimSetRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesClaimSetsApi.UpdateClaimSetAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateClaimSetAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates a ClaimSet.
-    ApiResponse<EdfiAdminApiEdfiAdminV1SaveClaimSetResponse> response = apiInstance.UpdateClaimSetAsyncWithHttpInfo(tenantId, instanceId, claimSetId, edfiAdminApiEdfiAdminV1SaveClaimSetRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesClaimSetsApi.UpdateClaimSetAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

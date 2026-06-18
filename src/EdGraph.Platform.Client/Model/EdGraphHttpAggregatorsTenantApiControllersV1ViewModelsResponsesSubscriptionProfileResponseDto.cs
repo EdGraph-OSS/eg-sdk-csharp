@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LicenseType
         /// </summary>
         [JsonPropertyName("licenseType")]
-        public TenantApiTenantV1LicenseType? LicenseType { get { return this.LicenseTypeOption; } set { this.LicenseTypeOption = new(value); } }
+        public TenantApiTenantV1LicenseType? LicenseType { get { return this.LicenseTypeOption.Value; } set { this.LicenseTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SubscriptionStatus
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SubscriptionStatus
         /// </summary>
         [JsonPropertyName("subscriptionStatus")]
-        public TenantApiTenantV1SubscriptionStatus? SubscriptionStatus { get { return this.SubscriptionStatusOption; } set { this.SubscriptionStatusOption = new(value); } }
+        public TenantApiTenantV1SubscriptionStatus? SubscriptionStatus { get { return this.SubscriptionStatusOption.Value; } set { this.SubscriptionStatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SubscriptionId
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SubscriptionId
         /// </summary>
         [JsonPropertyName("subscriptionId")]
-        public string? SubscriptionId { get { return this.SubscriptionIdOption; } set { this.SubscriptionIdOption = new(value); } }
+        public string? SubscriptionId { get { return this.SubscriptionIdOption.Value; } set { this.SubscriptionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApplicationId
@@ -142,7 +142,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApplicationId
         /// </summary>
         [JsonPropertyName("applicationId")]
-        public string? ApplicationId { get { return this.ApplicationIdOption; } set { this.ApplicationIdOption = new(value); } }
+        public string? ApplicationId { get { return this.ApplicationIdOption.Value; } set { this.ApplicationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApplicationName
@@ -155,7 +155,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApplicationName
         /// </summary>
         [JsonPropertyName("applicationName")]
-        public string? ApplicationName { get { return this.ApplicationNameOption; } set { this.ApplicationNameOption = new(value); } }
+        public string? ApplicationName { get { return this.ApplicationNameOption.Value; } set { this.ApplicationNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of StartDateTime
@@ -168,7 +168,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets StartDateTime
         /// </summary>
         [JsonPropertyName("startDateTime")]
-        public string? StartDateTime { get { return this.StartDateTimeOption; } set { this.StartDateTimeOption = new(value); } }
+        public string? StartDateTime { get { return this.StartDateTimeOption.Value; } set { this.StartDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EndDateTime
@@ -181,7 +181,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EndDateTime
         /// </summary>
         [JsonPropertyName("endDateTime")]
-        public string? EndDateTime { get { return this.EndDateTimeOption; } set { this.EndDateTimeOption = new(value); } }
+        public string? EndDateTime { get { return this.EndDateTimeOption.Value; } set { this.EndDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ActualEndDateTime
@@ -194,7 +194,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ActualEndDateTime
         /// </summary>
         [JsonPropertyName("actualEndDateTime")]
-        public string? ActualEndDateTime { get { return this.ActualEndDateTimeOption; } set { this.ActualEndDateTimeOption = new(value); } }
+        public string? ActualEndDateTime { get { return this.ActualEndDateTimeOption.Value; } set { this.ActualEndDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of GracePeriod
@@ -207,7 +207,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets GracePeriod
         /// </summary>
         [JsonPropertyName("gracePeriod")]
-        public int? GracePeriod { get { return this.GracePeriodOption; } set { this.GracePeriodOption = new(value); } }
+        public int? GracePeriod { get { return this.GracePeriodOption.Value; } set { this.GracePeriodOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of NumberOfLicenses
@@ -220,7 +220,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets NumberOfLicenses
         /// </summary>
         [JsonPropertyName("numberOfLicenses")]
-        public int? NumberOfLicenses { get { return this.NumberOfLicensesOption; } set { this.NumberOfLicensesOption = new(value); } }
+        public int? NumberOfLicenses { get { return this.NumberOfLicensesOption.Value; } set { this.NumberOfLicensesOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AssignedLicenses
@@ -233,7 +233,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AssignedLicenses
         /// </summary>
         [JsonPropertyName("assignedLicenses")]
-        public int? AssignedLicenses { get { return this.AssignedLicensesOption; } set { this.AssignedLicensesOption = new(value); } }
+        public int? AssignedLicenses { get { return this.AssignedLicensesOption.Value; } set { this.AssignedLicensesOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of MaxAssignedLicenses
@@ -246,7 +246,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets MaxAssignedLicenses
         /// </summary>
         [JsonPropertyName("maxAssignedLicenses")]
-        public int? MaxAssignedLicenses { get { return this.MaxAssignedLicensesOption; } set { this.MaxAssignedLicensesOption = new(value); } }
+        public int? MaxAssignedLicenses { get { return this.MaxAssignedLicensesOption.Value; } set { this.MaxAssignedLicensesOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastMaxAssignedLicensesDateTime
@@ -259,7 +259,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastMaxAssignedLicensesDateTime
         /// </summary>
         [JsonPropertyName("lastMaxAssignedLicensesDateTime")]
-        public string? LastMaxAssignedLicensesDateTime { get { return this.LastMaxAssignedLicensesDateTimeOption; } set { this.LastMaxAssignedLicensesDateTimeOption = new(value); } }
+        public string? LastMaxAssignedLicensesDateTime { get { return this.LastMaxAssignedLicensesDateTimeOption.Value; } set { this.LastMaxAssignedLicensesDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AutoAssign
@@ -272,7 +272,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AutoAssign
         /// </summary>
         [JsonPropertyName("autoAssign")]
-        public bool? AutoAssign { get { return this.AutoAssignOption; } set { this.AutoAssignOption = new(value); } }
+        public bool? AutoAssign { get { return this.AutoAssignOption.Value; } set { this.AutoAssignOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedBy
@@ -285,7 +285,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedBy
         /// </summary>
         [JsonPropertyName("createdBy")]
-        public string? CreatedBy { get { return this.CreatedByOption; } set { this.CreatedByOption = new(value); } }
+        public string? CreatedBy { get { return this.CreatedByOption.Value; } set { this.CreatedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedDateTime
@@ -298,7 +298,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedDateTime
         /// </summary>
         [JsonPropertyName("createdDateTime")]
-        public string? CreatedDateTime { get { return this.CreatedDateTimeOption; } set { this.CreatedDateTimeOption = new(value); } }
+        public string? CreatedDateTime { get { return this.CreatedDateTimeOption.Value; } set { this.CreatedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedBy
@@ -311,7 +311,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedBy
         /// </summary>
         [JsonPropertyName("lastModifiedBy")]
-        public string? LastModifiedBy { get { return this.LastModifiedByOption; } set { this.LastModifiedByOption = new(value); } }
+        public string? LastModifiedBy { get { return this.LastModifiedByOption.Value; } set { this.LastModifiedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedDateTime
@@ -324,7 +324,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedDateTime
         /// </summary>
         [JsonPropertyName("lastModifiedDateTime")]
-        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption; } set { this.LastModifiedDateTimeOption = new(value); } }
+        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption.Value; } set { this.LastModifiedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -447,20 +447,16 @@ namespace EdGraph.Platform.Client.Model
                             actualEndDateTime = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "gracePeriod":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                gracePeriod = new Option<int?>(utf8JsonReader.GetInt32());
+                            gracePeriod = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "numberOfLicenses":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                numberOfLicenses = new Option<int?>(utf8JsonReader.GetInt32());
+                            numberOfLicenses = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "assignedLicenses":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                assignedLicenses = new Option<int?>(utf8JsonReader.GetInt32());
+                            assignedLicenses = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "maxAssignedLicenses":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                maxAssignedLicenses = new Option<int?>(utf8JsonReader.GetInt32());
+                            maxAssignedLicenses = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "lastMaxAssignedLicensesDateTime":
                             lastMaxAssignedLicensesDateTime = new Option<string?>(utf8JsonReader.GetString());
@@ -476,8 +472,7 @@ namespace EdGraph.Platform.Client.Model
                                 subscriptionStatus = new Option<TenantApiTenantV1SubscriptionStatus?>(TenantApiTenantV1SubscriptionStatusValueConverter.FromStringOrDefault(subscriptionStatusRawValue));
                             break;
                         case "autoAssign":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                autoAssign = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            autoAssign = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "createdBy":
                             createdBy = new Option<string?>(utf8JsonReader.GetString());

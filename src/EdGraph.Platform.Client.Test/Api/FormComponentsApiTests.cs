@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid formComponentId = default!;
             var response = await _instance.GetFormComponentAsync(tenantId, formComponentId);
             var model = response.Unauthorized();
-            Assert.IsType<FormApiFormComponentsV1FormComponentResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.SearchFormComponentsAsync(tenantId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<FormApiFormComponentsV1FormComponentResponsePaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

@@ -62,7 +62,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ReportingPeriodId
         /// </summary>
         [JsonPropertyName("reportingPeriodId")]
-        public string? ReportingPeriodId { get { return this.ReportingPeriodIdOption; } set { this.ReportingPeriodIdOption = new(value); } }
+        public string? ReportingPeriodId { get { return this.ReportingPeriodIdOption.Value; } set { this.ReportingPeriodIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of StartDate
@@ -75,7 +75,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets StartDate
         /// </summary>
         [JsonPropertyName("startDate")]
-        public string? StartDate { get { return this.StartDateOption; } set { this.StartDateOption = new(value); } }
+        public string? StartDate { get { return this.StartDateOption.Value; } set { this.StartDateOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EndDate
@@ -88,7 +88,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EndDate
         /// </summary>
         [JsonPropertyName("endDate")]
-        public string? EndDate { get { return this.EndDateOption; } set { this.EndDateOption = new(value); } }
+        public string? EndDate { get { return this.EndDateOption.Value; } set { this.EndDateOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ReSubmissionDate
@@ -101,7 +101,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ReSubmissionDate
         /// </summary>
         [JsonPropertyName("reSubmissionDate")]
-        public string? ReSubmissionDate { get { return this.ReSubmissionDateOption; } set { this.ReSubmissionDateOption = new(value); } }
+        public string? ReSubmissionDate { get { return this.ReSubmissionDateOption.Value; } set { this.ReSubmissionDateOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AutoRunNightly
@@ -114,7 +114,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AutoRunNightly
         /// </summary>
         [JsonPropertyName("autoRunNightly")]
-        public bool? AutoRunNightly { get { return this.AutoRunNightlyOption; } set { this.AutoRunNightlyOption = new(value); } }
+        public bool? AutoRunNightly { get { return this.AutoRunNightlyOption.Value; } set { this.AutoRunNightlyOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -200,8 +200,7 @@ namespace EdGraph.Platform.Client.Model
                             reSubmissionDate = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "autoRunNightly":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                autoRunNightly = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            autoRunNightly = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

@@ -131,7 +131,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, IMSAdminApiV1ClientsTokenExpiration iMSAdminApiV1ClientsTokenExpiration, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(iMSAdminApiV1ClientsTokenExpiration.ToString());
+            writer.WriteStringValue(IMSAdminApiV1ClientsTokenExpirationValueConverter.ToJsonValue(iMSAdminApiV1ClientsTokenExpiration).ToString());
         }
     }
 
@@ -162,14 +162,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the IMSAdminApiV1ClientsTokenExpiration to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="iMSAdminApiV1ClientsTokenExpiration"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, IMSAdminApiV1ClientsTokenExpiration? iMSAdminApiV1ClientsTokenExpiration, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(iMSAdminApiV1ClientsTokenExpiration?.ToString() ?? "null");
+            writer.WriteStringValue(iMSAdminApiV1ClientsTokenExpiration.HasValue ? IMSAdminApiV1ClientsTokenExpirationValueConverter.ToJsonValue(iMSAdminApiV1ClientsTokenExpiration.Value).ToString() : "null");
         }
     }
 }

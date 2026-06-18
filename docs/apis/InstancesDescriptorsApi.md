@@ -17,67 +17,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Creates a Descriptor.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CreateDescriptorAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesDescriptorsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var year = 56;  // int | 
-            var edfiAdminApiEdfiAdminV1DescriptorType = new EdfiAdminApiEdfiAdminV1DescriptorType(); // EdfiAdminApiEdfiAdminV1DescriptorType |  (optional) 
-
-            try
-            {
-                // Creates a Descriptor.
-                EdfiAdminApiEdfiAdminV1DescriptorCreatedResponse result = apiInstance.CreateDescriptorAsync(tenantId, instanceId, year, edfiAdminApiEdfiAdminV1DescriptorType);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesDescriptorsApi.CreateDescriptorAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateDescriptorAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates a Descriptor.
-    ApiResponse<EdfiAdminApiEdfiAdminV1DescriptorCreatedResponse> response = apiInstance.CreateDescriptorAsyncWithHttpInfo(tenantId, instanceId, year, edfiAdminApiEdfiAdminV1DescriptorType);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesDescriptorsApi.CreateDescriptorAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -120,63 +59,6 @@ catch (ApiException e)
 
 Deletes a Descriptor.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class DeleteDescriptorAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesDescriptorsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var year = 56;  // int | 
-            var descriptorId = 56;  // int | 
-
-            try
-            {
-                // Deletes a Descriptor.
-                apiInstance.DeleteDescriptorAsync(tenantId, instanceId, year, descriptorId);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesDescriptorsApi.DeleteDescriptorAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeleteDescriptorAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Deletes a Descriptor.
-    apiInstance.DeleteDescriptorAsyncWithHttpInfo(tenantId, instanceId, year, descriptorId);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesDescriptorsApi.DeleteDescriptorAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -219,67 +101,6 @@ void (empty response body)
 
 Retrieves a Descriptor by ID.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetDescriptorByIdAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesDescriptorsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var year = 56;  // int | 
-            var descriptorId = 56;  // int | 
-
-            try
-            {
-                // Retrieves a Descriptor by ID.
-                EdfiAdminApiEdfiAdminV1DescriptorType result = apiInstance.GetDescriptorByIdAsync(tenantId, instanceId, year, descriptorId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesDescriptorsApi.GetDescriptorByIdAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetDescriptorByIdAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a Descriptor by ID.
-    ApiResponse<EdfiAdminApiEdfiAdminV1DescriptorType> response = apiInstance.GetDescriptorByIdAsyncWithHttpInfo(tenantId, instanceId, year, descriptorId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesDescriptorsApi.GetDescriptorByIdAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -322,68 +143,6 @@ catch (ApiException e)
 
 Retrieves a list of Descriptor Namespaces.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetDescriptorNamespacesAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesDescriptorsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var year = 56;  // int | 
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-
-            try
-            {
-                // Retrieves a list of Descriptor Namespaces.
-                EdfiAdminApiEdfiAdminV1DescriptorNamespacesPaginatedItemsResponse result = apiInstance.GetDescriptorNamespacesAsync(tenantId, instanceId, year, pageSize, pageIndex);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesDescriptorsApi.GetDescriptorNamespacesAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetDescriptorNamespacesAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of Descriptor Namespaces.
-    ApiResponse<EdfiAdminApiEdfiAdminV1DescriptorNamespacesPaginatedItemsResponse> response = apiInstance.GetDescriptorNamespacesAsyncWithHttpInfo(tenantId, instanceId, year, pageSize, pageIndex);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesDescriptorsApi.GetDescriptorNamespacesAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -427,70 +186,6 @@ catch (ApiException e)
 
 Retrieves a list of Descriptors.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetDescriptorsAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesDescriptorsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var year = 56;  // int | 
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var filter = "filter_example";  // string |  (optional) 
-            var orderBy = "orderBy_example";  // string |  (optional) 
-
-            try
-            {
-                // Retrieves a list of Descriptors.
-                EdfiAdminApiEdfiAdminV1DescriptorsPaginatedItemsResponse result = apiInstance.GetDescriptorsAsync(tenantId, instanceId, year, pageSize, pageIndex, filter, orderBy);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesDescriptorsApi.GetDescriptorsAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetDescriptorsAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of Descriptors.
-    ApiResponse<EdfiAdminApiEdfiAdminV1DescriptorsPaginatedItemsResponse> response = apiInstance.GetDescriptorsAsyncWithHttpInfo(tenantId, instanceId, year, pageSize, pageIndex, filter, orderBy);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesDescriptorsApi.GetDescriptorsAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -536,68 +231,6 @@ catch (ApiException e)
 
 Updates a Descriptor.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateDescriptorAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesDescriptorsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var year = 56;  // int | 
-            var descriptorId = 56;  // int | 
-            var edfiAdminApiEdfiAdminV1DescriptorType = new EdfiAdminApiEdfiAdminV1DescriptorType(); // EdfiAdminApiEdfiAdminV1DescriptorType |  (optional) 
-
-            try
-            {
-                // Updates a Descriptor.
-                EdfiAdminApiEdfiAdminV1DescriptorUpdatedResponse result = apiInstance.UpdateDescriptorAsync(tenantId, instanceId, year, descriptorId, edfiAdminApiEdfiAdminV1DescriptorType);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesDescriptorsApi.UpdateDescriptorAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateDescriptorAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates a Descriptor.
-    ApiResponse<EdfiAdminApiEdfiAdminV1DescriptorUpdatedResponse> response = apiInstance.UpdateDescriptorAsyncWithHttpInfo(tenantId, instanceId, year, descriptorId, edfiAdminApiEdfiAdminV1DescriptorType);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesDescriptorsApi.UpdateDescriptorAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

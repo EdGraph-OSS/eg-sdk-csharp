@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EnvironmentId
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EnvironmentId
         /// </summary>
         [JsonPropertyName("environmentId")]
-        public string? EnvironmentId { get { return this.EnvironmentIdOption; } set { this.EnvironmentIdOption = new(value); } }
+        public string? EnvironmentId { get { return this.EnvironmentIdOption.Value; } set { this.EnvironmentIdOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

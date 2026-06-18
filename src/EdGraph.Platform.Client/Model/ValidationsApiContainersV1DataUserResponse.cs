@@ -66,7 +66,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CollectionId
         /// </summary>
         [JsonPropertyName("collectionId")]
-        public string? CollectionId { get { return this.CollectionIdOption; } set { this.CollectionIdOption = new(value); } }
+        public string? CollectionId { get { return this.CollectionIdOption.Value; } set { this.CollectionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ReportingPeriodId
@@ -79,7 +79,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ReportingPeriodId
         /// </summary>
         [JsonPropertyName("reportingPeriodId")]
-        public string? ReportingPeriodId { get { return this.ReportingPeriodIdOption; } set { this.ReportingPeriodIdOption = new(value); } }
+        public string? ReportingPeriodId { get { return this.ReportingPeriodIdOption.Value; } set { this.ReportingPeriodIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -92,7 +92,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DataOwner
@@ -105,7 +105,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DataOwner
         /// </summary>
         [JsonPropertyName("dataOwner")]
-        public ValidationsApiContainersV1CollectionUser? DataOwner { get { return this.DataOwnerOption; } set { this.DataOwnerOption = new(value); } }
+        public ValidationsApiContainersV1CollectionUser? DataOwner { get { return this.DataOwnerOption.Value; } set { this.DataOwnerOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DataStewards
@@ -118,7 +118,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DataStewards
         /// </summary>
         [JsonPropertyName("dataStewards")]
-        public List<ValidationsApiContainersV1CollectionUser>? DataStewards { get { return this.DataStewardsOption; } }
+        public List<ValidationsApiContainersV1CollectionUser>? DataStewards { get { return this.DataStewardsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of Id
@@ -131,7 +131,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EnvironmentId
@@ -144,7 +144,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EnvironmentId
         /// </summary>
         [JsonPropertyName("environmentId")]
-        public string? EnvironmentId { get { return this.EnvironmentIdOption; } set { this.EnvironmentIdOption = new(value); } }
+        public string? EnvironmentId { get { return this.EnvironmentIdOption.Value; } set { this.EnvironmentIdOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -231,12 +231,10 @@ namespace EdGraph.Platform.Client.Model
                             tenantId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "dataOwner":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                dataOwner = new Option<ValidationsApiContainersV1CollectionUser?>(JsonSerializer.Deserialize<ValidationsApiContainersV1CollectionUser>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            dataOwner = new Option<ValidationsApiContainersV1CollectionUser?>(JsonSerializer.Deserialize<ValidationsApiContainersV1CollectionUser>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "dataStewards":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                dataStewards = new Option<List<ValidationsApiContainersV1CollectionUser>?>(JsonSerializer.Deserialize<List<ValidationsApiContainersV1CollectionUser>>(ref utf8JsonReader, jsonSerializerOptions));
+                            dataStewards = new Option<List<ValidationsApiContainersV1CollectionUser>?>(JsonSerializer.Deserialize<List<ValidationsApiContainersV1CollectionUser>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "id":
                             id = new Option<string?>(utf8JsonReader.GetString());

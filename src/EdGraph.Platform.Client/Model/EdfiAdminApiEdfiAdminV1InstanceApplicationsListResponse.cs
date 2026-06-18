@@ -70,7 +70,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InstanceId
@@ -83,7 +83,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceId
         /// </summary>
         [JsonPropertyName("instanceId")]
-        public string? InstanceId { get { return this.InstanceIdOption; } set { this.InstanceIdOption = new(value); } }
+        public string? InstanceId { get { return this.InstanceIdOption.Value; } set { this.InstanceIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InstanceApplicationId
@@ -96,7 +96,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceApplicationId
         /// </summary>
         [JsonPropertyName("instanceApplicationId")]
-        public string? InstanceApplicationId { get { return this.InstanceApplicationIdOption; } set { this.InstanceApplicationIdOption = new(value); } }
+        public string? InstanceApplicationId { get { return this.InstanceApplicationIdOption.Value; } set { this.InstanceApplicationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Name
@@ -109,7 +109,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Name
         /// </summary>
         [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption; } set { this.NameOption = new(value); } }
+        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApiClients
@@ -122,7 +122,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApiClients
         /// </summary>
         [JsonPropertyName("apiClients")]
-        public List<EdfiAdminApiEdfiAdminV1InstanceApiClientListResponse>? ApiClients { get { return this.ApiClientsOption; } }
+        public List<EdfiAdminApiEdfiAdminV1InstanceApiClientListResponse>? ApiClients { get { return this.ApiClientsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of CreatedBy
@@ -135,7 +135,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedBy
         /// </summary>
         [JsonPropertyName("createdBy")]
-        public string? CreatedBy { get { return this.CreatedByOption; } set { this.CreatedByOption = new(value); } }
+        public string? CreatedBy { get { return this.CreatedByOption.Value; } set { this.CreatedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedDateTime
@@ -148,7 +148,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedDateTime
         /// </summary>
         [JsonPropertyName("createdDateTime")]
-        public string? CreatedDateTime { get { return this.CreatedDateTimeOption; } set { this.CreatedDateTimeOption = new(value); } }
+        public string? CreatedDateTime { get { return this.CreatedDateTimeOption.Value; } set { this.CreatedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedBy
@@ -161,7 +161,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedBy
         /// </summary>
         [JsonPropertyName("lastModifiedBy")]
-        public string? LastModifiedBy { get { return this.LastModifiedByOption; } set { this.LastModifiedByOption = new(value); } }
+        public string? LastModifiedBy { get { return this.LastModifiedByOption.Value; } set { this.LastModifiedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedDateTime
@@ -174,7 +174,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedDateTime
         /// </summary>
         [JsonPropertyName("lastModifiedDateTime")]
-        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption; } set { this.LastModifiedDateTimeOption = new(value); } }
+        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption.Value; } set { this.LastModifiedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -268,8 +268,7 @@ namespace EdGraph.Platform.Client.Model
                             name = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "apiClients":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                apiClients = new Option<List<EdfiAdminApiEdfiAdminV1InstanceApiClientListResponse>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1InstanceApiClientListResponse>>(ref utf8JsonReader, jsonSerializerOptions));
+                            apiClients = new Option<List<EdfiAdminApiEdfiAdminV1InstanceApiClientListResponse>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1InstanceApiClientListResponse>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "createdBy":
                             createdBy = new Option<string?>(utf8JsonReader.GetString());

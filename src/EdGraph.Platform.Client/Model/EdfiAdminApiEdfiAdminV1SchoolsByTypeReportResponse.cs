@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InstanceId
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceId
         /// </summary>
         [JsonPropertyName("instanceId")]
-        public string? InstanceId { get { return this.InstanceIdOption; } set { this.InstanceIdOption = new(value); } }
+        public string? InstanceId { get { return this.InstanceIdOption.Value; } set { this.InstanceIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SchoolCountRepresentations
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SchoolCountRepresentations
         /// </summary>
         [JsonPropertyName("schoolCountRepresentations")]
-        public List<EdfiAdminApiEdfiAdminV1SchoolCountRepresentation>? SchoolCountRepresentations { get { return this.SchoolCountRepresentationsOption; } }
+        public List<EdfiAdminApiEdfiAdminV1SchoolCountRepresentation>? SchoolCountRepresentations { get { return this.SchoolCountRepresentationsOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -160,8 +160,7 @@ namespace EdGraph.Platform.Client.Model
                             instanceId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "schoolCountRepresentations":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                schoolCountRepresentations = new Option<List<EdfiAdminApiEdfiAdminV1SchoolCountRepresentation>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1SchoolCountRepresentation>>(ref utf8JsonReader, jsonSerializerOptions));
+                            schoolCountRepresentations = new Option<List<EdfiAdminApiEdfiAdminV1SchoolCountRepresentation>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1SchoolCountRepresentation>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

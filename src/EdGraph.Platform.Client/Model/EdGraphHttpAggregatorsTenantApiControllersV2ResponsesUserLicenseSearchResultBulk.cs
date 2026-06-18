@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets UserId
         /// </summary>
         [JsonPropertyName("userId")]
-        public Guid? UserId { get { return this.UserIdOption; } set { this.UserIdOption = new(value); } }
+        public Guid? UserId { get { return this.UserIdOption.Value; } set { this.UserIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Licenses
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Licenses
         /// </summary>
         [JsonPropertyName("licenses")]
-        public EdGraphHttpAggregatorsTenantApiControllersV2ResponsesUserLicenseSearchResult? Licenses { get { return this.LicensesOption; } set { this.LicensesOption = new(value); } }
+        public EdGraphHttpAggregatorsTenantApiControllersV2ResponsesUserLicenseSearchResult? Licenses { get { return this.LicensesOption.Value; } set { this.LicensesOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -137,12 +137,10 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "userId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                userId = new Option<Guid?>(utf8JsonReader.GetGuid());
+                            userId = new Option<Guid?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (Guid?)null : utf8JsonReader.GetGuid());
                             break;
                         case "licenses":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                licenses = new Option<EdGraphHttpAggregatorsTenantApiControllersV2ResponsesUserLicenseSearchResult?>(JsonSerializer.Deserialize<EdGraphHttpAggregatorsTenantApiControllersV2ResponsesUserLicenseSearchResult>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            licenses = new Option<EdGraphHttpAggregatorsTenantApiControllersV2ResponsesUserLicenseSearchResult?>(JsonSerializer.Deserialize<EdGraphHttpAggregatorsTenantApiControllersV2ResponsesUserLicenseSearchResult>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CollectionId
         /// </summary>
         [JsonPropertyName("collectionId")]
-        public string? CollectionId { get { return this.CollectionIdOption; } set { this.CollectionIdOption = new(value); } }
+        public string? CollectionId { get { return this.CollectionIdOption.Value; } set { this.CollectionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Email
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Email
         /// </summary>
         [JsonPropertyName("email")]
-        public string? Email { get { return this.EmailOption; } set { this.EmailOption = new(value); } }
+        public string? Email { get { return this.EmailOption.Value; } set { this.EmailOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of UserId
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets UserId
         /// </summary>
         [JsonPropertyName("userId")]
-        public string? UserId { get { return this.UserIdOption; } set { this.UserIdOption = new(value); } }
+        public string? UserId { get { return this.UserIdOption.Value; } set { this.UserIdOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

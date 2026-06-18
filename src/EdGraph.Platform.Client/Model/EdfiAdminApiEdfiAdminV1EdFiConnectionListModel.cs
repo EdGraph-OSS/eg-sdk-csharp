@@ -88,7 +88,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceType
         /// </summary>
         [JsonPropertyName("instanceType")]
-        public EdfiAdminApiEdfiAdminV1InstanceType? InstanceType { get { return this.InstanceTypeOption; } set { this.InstanceTypeOption = new(value); } }
+        public EdfiAdminApiEdfiAdminV1InstanceType? InstanceType { get { return this.InstanceTypeOption.Value; } set { this.InstanceTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Id
@@ -101,7 +101,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ConnectionName
@@ -114,7 +114,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ConnectionName
         /// </summary>
         [JsonPropertyName("connectionName")]
-        public string? ConnectionName { get { return this.ConnectionNameOption; } set { this.ConnectionNameOption = new(value); } }
+        public string? ConnectionName { get { return this.ConnectionNameOption.Value; } set { this.ConnectionNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DatabaseEngine
@@ -127,7 +127,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DatabaseEngine
         /// </summary>
         [JsonPropertyName("databaseEngine")]
-        public string? DatabaseEngine { get { return this.DatabaseEngineOption; } set { this.DatabaseEngineOption = new(value); } }
+        public string? DatabaseEngine { get { return this.DatabaseEngineOption.Value; } set { this.DatabaseEngineOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EdFiVersion
@@ -140,7 +140,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EdFiVersion
         /// </summary>
         [JsonPropertyName("edFiVersion")]
-        public string? EdFiVersion { get { return this.EdFiVersionOption; } set { this.EdFiVersionOption = new(value); } }
+        public string? EdFiVersion { get { return this.EdFiVersionOption.Value; } set { this.EdFiVersionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EdFiExtension
@@ -153,7 +153,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EdFiExtension
         /// </summary>
         [JsonPropertyName("edFiExtension")]
-        public string? EdFiExtension { get { return this.EdFiExtensionOption; } set { this.EdFiExtensionOption = new(value); } }
+        public string? EdFiExtension { get { return this.EdFiExtensionOption.Value; } set { this.EdFiExtensionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of HostingProvider
@@ -166,7 +166,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets HostingProvider
         /// </summary>
         [JsonPropertyName("hostingProvider")]
-        public string? HostingProvider { get { return this.HostingProviderOption; } set { this.HostingProviderOption = new(value); } }
+        public string? HostingProvider { get { return this.HostingProviderOption.Value; } set { this.HostingProviderOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AllowedTenantIds
@@ -179,7 +179,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AllowedTenantIds
         /// </summary>
         [JsonPropertyName("allowedTenantIds")]
-        public List<string>? AllowedTenantIds { get { return this.AllowedTenantIdsOption; } }
+        public List<string>? AllowedTenantIds { get { return this.AllowedTenantIdsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of Tiers
@@ -192,7 +192,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Tiers
         /// </summary>
         [JsonPropertyName("tiers")]
-        public List<EdfiAdminApiEdfiAdminV1EdFiConnectionTierListModel>? Tiers { get { return this.TiersOption; } }
+        public List<EdfiAdminApiEdfiAdminV1EdFiConnectionTierListModel>? Tiers { get { return this.TiersOption.Value; } }
 
         /// <summary>
         /// Used to track the state of CreatedBy
@@ -205,7 +205,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedBy
         /// </summary>
         [JsonPropertyName("createdBy")]
-        public string? CreatedBy { get { return this.CreatedByOption; } set { this.CreatedByOption = new(value); } }
+        public string? CreatedBy { get { return this.CreatedByOption.Value; } set { this.CreatedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedDateTime
@@ -218,7 +218,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedDateTime
         /// </summary>
         [JsonPropertyName("createdDateTime")]
-        public string? CreatedDateTime { get { return this.CreatedDateTimeOption; } set { this.CreatedDateTimeOption = new(value); } }
+        public string? CreatedDateTime { get { return this.CreatedDateTimeOption.Value; } set { this.CreatedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedBy
@@ -231,7 +231,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedBy
         /// </summary>
         [JsonPropertyName("lastModifiedBy")]
-        public string? LastModifiedBy { get { return this.LastModifiedByOption; } set { this.LastModifiedByOption = new(value); } }
+        public string? LastModifiedBy { get { return this.LastModifiedByOption.Value; } set { this.LastModifiedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedDateTime
@@ -244,7 +244,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedDateTime
         /// </summary>
         [JsonPropertyName("lastModifiedDateTime")]
-        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption; } set { this.LastModifiedDateTimeOption = new(value); } }
+        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption.Value; } set { this.LastModifiedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ConnectionType
@@ -257,7 +257,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ConnectionType
         /// </summary>
         [JsonPropertyName("connectionType")]
-        public string? ConnectionType { get { return this.ConnectionTypeOption; } set { this.ConnectionTypeOption = new(value); } }
+        public string? ConnectionType { get { return this.ConnectionTypeOption.Value; } set { this.ConnectionTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DeletedBy
@@ -270,7 +270,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DeletedBy
         /// </summary>
         [JsonPropertyName("deletedBy")]
-        public string? DeletedBy { get { return this.DeletedByOption; } set { this.DeletedByOption = new(value); } }
+        public string? DeletedBy { get { return this.DeletedByOption.Value; } set { this.DeletedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DeletedDateTime
@@ -283,7 +283,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DeletedDateTime
         /// </summary>
         [JsonPropertyName("deletedDateTime")]
-        public string? DeletedDateTime { get { return this.DeletedDateTimeOption; } set { this.DeletedDateTimeOption = new(value); } }
+        public string? DeletedDateTime { get { return this.DeletedDateTimeOption.Value; } set { this.DeletedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsDeleted
@@ -296,7 +296,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IsDeleted
         /// </summary>
         [JsonPropertyName("isDeleted")]
-        public bool? IsDeleted { get { return this.IsDeletedOption; } set { this.IsDeletedOption = new(value); } }
+        public bool? IsDeleted { get { return this.IsDeletedOption.Value; } set { this.IsDeletedOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of MetadataJson
@@ -309,7 +309,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets MetadataJson
         /// </summary>
         [JsonPropertyName("metadataJson")]
-        public string? MetadataJson { get { return this.MetadataJsonOption; } set { this.MetadataJsonOption = new(value); } }
+        public string? MetadataJson { get { return this.MetadataJsonOption.Value; } set { this.MetadataJsonOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -427,12 +427,10 @@ namespace EdGraph.Platform.Client.Model
                             hostingProvider = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "allowedTenantIds":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                allowedTenantIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            allowedTenantIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "tiers":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                tiers = new Option<List<EdfiAdminApiEdfiAdminV1EdFiConnectionTierListModel>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1EdFiConnectionTierListModel>>(ref utf8JsonReader, jsonSerializerOptions));
+                            tiers = new Option<List<EdfiAdminApiEdfiAdminV1EdFiConnectionTierListModel>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1EdFiConnectionTierListModel>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "createdBy":
                             createdBy = new Option<string?>(utf8JsonReader.GetString());
@@ -461,8 +459,7 @@ namespace EdGraph.Platform.Client.Model
                             deletedDateTime = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "isDeleted":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isDeleted = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isDeleted = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "metadataJson":
                             metadataJson = new Option<string?>(utf8JsonReader.GetString());

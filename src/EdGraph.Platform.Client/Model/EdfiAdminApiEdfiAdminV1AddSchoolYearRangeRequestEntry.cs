@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Year
         /// </summary>
         [JsonPropertyName("year")]
-        public int? Year { get { return this.YearOption; } set { this.YearOption = new(value); } }
+        public int? Year { get { return this.YearOption.Value; } set { this.YearOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SelectedTierId
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SelectedTierId
         /// </summary>
         [JsonPropertyName("selectedTierId")]
-        public string? SelectedTierId { get { return this.SelectedTierIdOption; } set { this.SelectedTierIdOption = new(value); } }
+        public string? SelectedTierId { get { return this.SelectedTierIdOption.Value; } set { this.SelectedTierIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of OdsBackupCode
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets OdsBackupCode
         /// </summary>
         [JsonPropertyName("odsBackupCode")]
-        public string? OdsBackupCode { get { return this.OdsBackupCodeOption; } set { this.OdsBackupCodeOption = new(value); } }
+        public string? OdsBackupCode { get { return this.OdsBackupCodeOption.Value; } set { this.OdsBackupCodeOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -154,8 +154,7 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "year":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                year = new Option<int?>(utf8JsonReader.GetInt32());
+                            year = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "selectedTierId":
                             selectedTierId = new Option<string?>(utf8JsonReader.GetString());

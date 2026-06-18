@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RecordId
         /// </summary>
         [JsonPropertyName("recordId")]
-        public string? RecordId { get { return this.RecordIdOption; } set { this.RecordIdOption = new(value); } }
+        public string? RecordId { get { return this.RecordIdOption.Value; } set { this.RecordIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ExcludeFromPost
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ExcludeFromPost
         /// </summary>
         [JsonPropertyName("excludeFromPost")]
-        public bool? ExcludeFromPost { get { return this.ExcludeFromPostOption; } set { this.ExcludeFromPostOption = new(value); } }
+        public bool? ExcludeFromPost { get { return this.ExcludeFromPostOption.Value; } set { this.ExcludeFromPostOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -140,8 +140,7 @@ namespace EdGraph.Platform.Client.Model
                             recordId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "excludeFromPost":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                excludeFromPost = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            excludeFromPost = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

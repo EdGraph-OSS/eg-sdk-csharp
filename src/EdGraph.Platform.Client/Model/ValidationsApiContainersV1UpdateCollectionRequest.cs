@@ -66,7 +66,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Id
@@ -79,7 +79,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Name
@@ -92,7 +92,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Name
         /// </summary>
         [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption; } set { this.NameOption = new(value); } }
+        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Description
@@ -105,7 +105,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Description
         /// </summary>
         [JsonPropertyName("description")]
-        public string? Description { get { return this.DescriptionOption; } set { this.DescriptionOption = new(value); } }
+        public string? Description { get { return this.DescriptionOption.Value; } set { this.DescriptionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EnvironmentType
@@ -118,7 +118,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EnvironmentType
         /// </summary>
         [JsonPropertyName("environmentType")]
-        public string? EnvironmentType { get { return this.EnvironmentTypeOption; } set { this.EnvironmentTypeOption = new(value); } }
+        public string? EnvironmentType { get { return this.EnvironmentTypeOption.Value; } set { this.EnvironmentTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Tags
@@ -131,7 +131,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Tags
         /// </summary>
         [JsonPropertyName("tags")]
-        public List<string>? Tags { get { return this.TagsOption; } }
+        public List<string>? Tags { get { return this.TagsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of State
@@ -144,7 +144,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets State
         /// </summary>
         [JsonPropertyName("state")]
-        public string? State { get { return this.StateOption; } set { this.StateOption = new(value); } }
+        public string? State { get { return this.StateOption.Value; } set { this.StateOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -237,8 +237,7 @@ namespace EdGraph.Platform.Client.Model
                             environmentType = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "tags":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                tags = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            tags = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "state":
                             state = new Option<string?>(utf8JsonReader.GetString());

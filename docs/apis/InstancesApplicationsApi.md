@@ -26,66 +26,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Creates an Application.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CreateApplicationAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesApplicationsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var edfiAdminApiEdfiAdminV1CreateEdFiApplicationRequest = new EdfiAdminApiEdfiAdminV1CreateEdFiApplicationRequest(); // EdfiAdminApiEdfiAdminV1CreateEdFiApplicationRequest |  (optional) 
-
-            try
-            {
-                // Creates an Application.
-                EdfiAdminApiEdfiAdminV1EdFiApplicationCreatedResponse result = apiInstance.CreateApplicationAsync(tenantId, instanceId, edfiAdminApiEdfiAdminV1CreateEdFiApplicationRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesApplicationsApi.CreateApplicationAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateApplicationAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates an Application.
-    ApiResponse<EdfiAdminApiEdfiAdminV1EdFiApplicationCreatedResponse> response = apiInstance.CreateApplicationAsyncWithHttpInfo(tenantId, instanceId, edfiAdminApiEdfiAdminV1CreateEdFiApplicationRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesApplicationsApi.CreateApplicationAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -127,64 +67,6 @@ catch (ApiException e)
 
 Creates a new application access.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CreateApplicationUserAccessAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesApplicationsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var applicationId = "applicationId_example";  // string | 
-            var apiClientId = "apiClientId_example";  // string | 
-            var edFiAdminApiApplicationAccessV1CreateApplicationAccessRequest = new EdFiAdminApiApplicationAccessV1CreateApplicationAccessRequest(); // EdFiAdminApiApplicationAccessV1CreateApplicationAccessRequest |  (optional) 
-
-            try
-            {
-                // Creates a new application access.
-                apiInstance.CreateApplicationUserAccessAsync(tenantId, instanceId, applicationId, apiClientId, edFiAdminApiApplicationAccessV1CreateApplicationAccessRequest);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesApplicationsApi.CreateApplicationUserAccessAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateApplicationUserAccessAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates a new application access.
-    apiInstance.CreateApplicationUserAccessAsyncWithHttpInfo(tenantId, instanceId, applicationId, apiClientId, edFiAdminApiApplicationAccessV1CreateApplicationAccessRequest);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesApplicationsApi.CreateApplicationUserAccessAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -228,62 +110,6 @@ void (empty response body)
 
 Deletes an Application.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class DeleteApplicationAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesApplicationsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var applicationId = 56;  // int | 
-
-            try
-            {
-                // Deletes an Application.
-                apiInstance.DeleteApplicationAsync(tenantId, instanceId, applicationId);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesApplicationsApi.DeleteApplicationAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeleteApplicationAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Deletes an Application.
-    apiInstance.DeleteApplicationAsyncWithHttpInfo(tenantId, instanceId, applicationId);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesApplicationsApi.DeleteApplicationAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -325,64 +151,6 @@ void (empty response body)
 
 Deletes an application user access.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class DeleteApplicationUserAccessAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesApplicationsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var applicationId = "applicationId_example";  // string | 
-            var apiClientId = "apiClientId_example";  // string | 
-            var accessId = "accessId_example";  // string | 
-
-            try
-            {
-                // Deletes an application user access.
-                apiInstance.DeleteApplicationUserAccessAsync(tenantId, instanceId, applicationId, apiClientId, accessId);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesApplicationsApi.DeleteApplicationUserAccessAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeleteApplicationUserAccessAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Deletes an application user access.
-    apiInstance.DeleteApplicationUserAccessAsyncWithHttpInfo(tenantId, instanceId, applicationId, apiClientId, accessId);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesApplicationsApi.DeleteApplicationUserAccessAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -426,71 +194,6 @@ void (empty response body)
 
 Retrieves a list of application accesses.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetApplicationAccessAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesApplicationsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var applicationId = "applicationId_example";  // string | 
-            var apiClientId = "apiClientId_example";  // string | 
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Retrieves a list of application accesses.
-                EdFiAdminApiApplicationAccessV1ApplicationAccessResponsePaginatedItemsViewModel result = apiInstance.GetApplicationAccessAsync(tenantId, instanceId, applicationId, apiClientId, pageSize, pageIndex, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesApplicationsApi.GetApplicationAccessAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetApplicationAccessAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of application accesses.
-    ApiResponse<EdFiAdminApiApplicationAccessV1ApplicationAccessResponsePaginatedItemsViewModel> response = apiInstance.GetApplicationAccessAsyncWithHttpInfo(tenantId, instanceId, applicationId, apiClientId, pageSize, pageIndex, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesApplicationsApi.GetApplicationAccessAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -536,68 +239,6 @@ catch (ApiException e)
 
 Retrieves an application access by ID.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetApplicationAccessByIdAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesApplicationsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var applicationId = 56;  // int | 
-            var apiClientId = 56;  // int | 
-            var accessId = "accessId_example";  // string | 
-
-            try
-            {
-                // Retrieves an application access by ID.
-                EdFiAdminApiApplicationAccessV1ApplicationAccessResponse result = apiInstance.GetApplicationAccessByIdAsync(tenantId, instanceId, applicationId, apiClientId, accessId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesApplicationsApi.GetApplicationAccessByIdAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetApplicationAccessByIdAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves an application access by ID.
-    ApiResponse<EdFiAdminApiApplicationAccessV1ApplicationAccessResponse> response = apiInstance.GetApplicationAccessByIdAsyncWithHttpInfo(tenantId, instanceId, applicationId, apiClientId, accessId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesApplicationsApi.GetApplicationAccessByIdAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -641,67 +282,6 @@ catch (ApiException e)
 
 Retrieves an API Client of an Application by ID.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetApplicationApiClientByIdAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesApplicationsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var applicationId = "applicationId_example";  // string | 
-            var apiClientId = 56;  // int | 
-
-            try
-            {
-                // Retrieves an API Client of an Application by ID.
-                EdfiAdminApiEdfiAdminV1EdFiApplicationApiClientProfileResponse result = apiInstance.GetApplicationApiClientByIdAsync(tenantId, instanceId, applicationId, apiClientId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesApplicationsApi.GetApplicationApiClientByIdAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetApplicationApiClientByIdAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves an API Client of an Application by ID.
-    ApiResponse<EdfiAdminApiEdfiAdminV1EdFiApplicationApiClientProfileResponse> response = apiInstance.GetApplicationApiClientByIdAsyncWithHttpInfo(tenantId, instanceId, applicationId, apiClientId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesApplicationsApi.GetApplicationApiClientByIdAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -744,66 +324,6 @@ catch (ApiException e)
 
 Retrieves the API Clients of an Application.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetApplicationApiClientsAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesApplicationsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var applicationId = "applicationId_example";  // string | 
-
-            try
-            {
-                // Retrieves the API Clients of an Application.
-                EdfiAdminApiEdfiAdminV1EdFiApplicationApiClientProfileResponsePaginatedItemsViewModel result = apiInstance.GetApplicationApiClientsAsync(tenantId, instanceId, applicationId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesApplicationsApi.GetApplicationApiClientsAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetApplicationApiClientsAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves the API Clients of an Application.
-    ApiResponse<EdfiAdminApiEdfiAdminV1EdFiApplicationApiClientProfileResponsePaginatedItemsViewModel> response = apiInstance.GetApplicationApiClientsAsyncWithHttpInfo(tenantId, instanceId, applicationId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesApplicationsApi.GetApplicationApiClientsAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -845,68 +365,6 @@ catch (ApiException e)
 
 Retrieves an Application by ID.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetApplicationByIdAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesApplicationsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var applicationId = 56;  // int | 
-            var year = 56;  // int |  (optional) 
-            var loadEducationOrganizations = true;  // bool |  (optional) 
-
-            try
-            {
-                // Retrieves an Application by ID.
-                EdfiAdminApiEdfiAdminV1EdFiApplicationProfileResponse result = apiInstance.GetApplicationByIdAsync(tenantId, instanceId, applicationId, year, loadEducationOrganizations);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesApplicationsApi.GetApplicationByIdAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetApplicationByIdAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves an Application by ID.
-    ApiResponse<EdfiAdminApiEdfiAdminV1EdFiApplicationProfileResponse> response = apiInstance.GetApplicationByIdAsyncWithHttpInfo(tenantId, instanceId, applicationId, year, loadEducationOrganizations);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesApplicationsApi.GetApplicationByIdAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -950,69 +408,6 @@ catch (ApiException e)
 
 Retrieves a list of Applications.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetApplicationsAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesApplicationsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Retrieves a list of Applications.
-                EdfiAdminApiEdfiAdminV1EdFiApplicationListResponsePaginatedItemsViewModel result = apiInstance.GetApplicationsAsync(tenantId, instanceId, pageSize, pageIndex, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesApplicationsApi.GetApplicationsAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetApplicationsAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of Applications.
-    ApiResponse<EdfiAdminApiEdfiAdminV1EdFiApplicationListResponsePaginatedItemsViewModel> response = apiInstance.GetApplicationsAsyncWithHttpInfo(tenantId, instanceId, pageSize, pageIndex, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesApplicationsApi.GetApplicationsAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1057,67 +452,6 @@ catch (ApiException e)
 
 Regenerates the secret of an API Client.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class RegenerateApiClientSecretAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesApplicationsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var applicationId = 56;  // int | 
-            var apiClientId = 56;  // int | 
-
-            try
-            {
-                // Regenerates the secret of an API Client.
-                EdfiAdminApiEdfiAdminV1RegenerateApiClientSecretResponse result = apiInstance.RegenerateApiClientSecretAsync(tenantId, instanceId, applicationId, apiClientId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesApplicationsApi.RegenerateApiClientSecretAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the RegenerateApiClientSecretAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Regenerates the secret of an API Client.
-    ApiResponse<EdfiAdminApiEdfiAdminV1RegenerateApiClientSecretResponse> response = apiInstance.RegenerateApiClientSecretAsyncWithHttpInfo(tenantId, instanceId, applicationId, apiClientId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesApplicationsApi.RegenerateApiClientSecretAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1160,66 +494,6 @@ catch (ApiException e)
 
 Regenerates an application's API Client Credentials
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class RegenerateApplicationApiClientCredentialsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesApplicationsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var applicationId = 56;  // int | 
-
-            try
-            {
-                // Regenerates an application's API Client Credentials
-                EdfiAdminApiEdfiAdminV1RegenerateApiClientSecretResponse result = apiInstance.RegenerateApplicationApiClientCredentials(tenantId, instanceId, applicationId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesApplicationsApi.RegenerateApplicationApiClientCredentials: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the RegenerateApplicationApiClientCredentialsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Regenerates an application's API Client Credentials
-    ApiResponse<EdfiAdminApiEdfiAdminV1RegenerateApiClientSecretResponse> response = apiInstance.RegenerateApplicationApiClientCredentialsWithHttpInfo(tenantId, instanceId, applicationId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesApplicationsApi.RegenerateApplicationApiClientCredentialsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1261,63 +535,6 @@ catch (ApiException e)
 
 Copies an Application from one instance to another/other instance(s)
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SyncApplicationAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesApplicationsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var applicationId = 56;  // int | 
-            var edfiAdminApiEdfiAdminV1SyncApplicationRequest = new EdfiAdminApiEdfiAdminV1SyncApplicationRequest(); // EdfiAdminApiEdfiAdminV1SyncApplicationRequest |  (optional) 
-
-            try
-            {
-                // Copies an Application from one instance to another/other instance(s)
-                apiInstance.SyncApplicationAsync(tenantId, instanceId, applicationId, edfiAdminApiEdfiAdminV1SyncApplicationRequest);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesApplicationsApi.SyncApplicationAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SyncApplicationAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Copies an Application from one instance to another/other instance(s)
-    apiInstance.SyncApplicationAsyncWithHttpInfo(tenantId, instanceId, applicationId, edfiAdminApiEdfiAdminV1SyncApplicationRequest);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesApplicationsApi.SyncApplicationAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1360,63 +577,6 @@ void (empty response body)
 
 Updates an Application.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateApplicationAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesApplicationsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var applicationId = "applicationId_example";  // string | 
-            var edfiAdminApiEdfiAdminV1UpdateEdFiApplicationRequest = new EdfiAdminApiEdfiAdminV1UpdateEdFiApplicationRequest(); // EdfiAdminApiEdfiAdminV1UpdateEdFiApplicationRequest |  (optional) 
-
-            try
-            {
-                // Updates an Application.
-                apiInstance.UpdateApplicationAsync(tenantId, instanceId, applicationId, edfiAdminApiEdfiAdminV1UpdateEdFiApplicationRequest);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesApplicationsApi.UpdateApplicationAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateApplicationAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates an Application.
-    apiInstance.UpdateApplicationAsyncWithHttpInfo(tenantId, instanceId, applicationId, edfiAdminApiEdfiAdminV1UpdateEdFiApplicationRequest);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesApplicationsApi.UpdateApplicationAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1459,65 +619,6 @@ void (empty response body)
 
 Updates a new application access.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateApplicationUserAccessAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesApplicationsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var applicationId = "applicationId_example";  // string | 
-            var apiClientId = "apiClientId_example";  // string | 
-            var accessId = "accessId_example";  // string | 
-            var edFiAdminApiApplicationAccessV1UpdateApplicationAccessRequest = new EdFiAdminApiApplicationAccessV1UpdateApplicationAccessRequest(); // EdFiAdminApiApplicationAccessV1UpdateApplicationAccessRequest |  (optional) 
-
-            try
-            {
-                // Updates a new application access.
-                apiInstance.UpdateApplicationUserAccessAsync(tenantId, instanceId, applicationId, apiClientId, accessId, edFiAdminApiApplicationAccessV1UpdateApplicationAccessRequest);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesApplicationsApi.UpdateApplicationUserAccessAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateApplicationUserAccessAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates a new application access.
-    apiInstance.UpdateApplicationUserAccessAsyncWithHttpInfo(tenantId, instanceId, applicationId, apiClientId, accessId, edFiAdminApiApplicationAccessV1UpdateApplicationAccessRequest);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesApplicationsApi.UpdateApplicationUserAccessAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

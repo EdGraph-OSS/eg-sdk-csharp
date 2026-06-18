@@ -66,7 +66,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Status
         /// </summary>
         [JsonPropertyName("status")]
-        public string? Status { get { return this.StatusOption; } set { this.StatusOption = new(value); } }
+        public string? Status { get { return this.StatusOption.Value; } set { this.StatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ProgressPercentage
@@ -79,7 +79,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ProgressPercentage
         /// </summary>
         [JsonPropertyName("progressPercentage")]
-        public float? ProgressPercentage { get { return this.ProgressPercentageOption; } set { this.ProgressPercentageOption = new(value); } }
+        public float? ProgressPercentage { get { return this.ProgressPercentageOption.Value; } set { this.ProgressPercentageOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TotalSteps
@@ -92,7 +92,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TotalSteps
         /// </summary>
         [JsonPropertyName("totalSteps")]
-        public int? TotalSteps { get { return this.TotalStepsOption; } set { this.TotalStepsOption = new(value); } }
+        public int? TotalSteps { get { return this.TotalStepsOption.Value; } set { this.TotalStepsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastCompletedStep
@@ -105,7 +105,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastCompletedStep
         /// </summary>
         [JsonPropertyName("lastCompletedStep")]
-        public int? LastCompletedStep { get { return this.LastCompletedStepOption; } set { this.LastCompletedStepOption = new(value); } }
+        public int? LastCompletedStep { get { return this.LastCompletedStepOption.Value; } set { this.LastCompletedStepOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of StartedAt
@@ -118,7 +118,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets StartedAt
         /// </summary>
         [JsonPropertyName("startedAt")]
-        public string? StartedAt { get { return this.StartedAtOption; } set { this.StartedAtOption = new(value); } }
+        public string? StartedAt { get { return this.StartedAtOption.Value; } set { this.StartedAtOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CompletedAt
@@ -131,7 +131,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CompletedAt
         /// </summary>
         [JsonPropertyName("completedAt")]
-        public string? CompletedAt { get { return this.CompletedAtOption; } set { this.CompletedAtOption = new(value); } }
+        public string? CompletedAt { get { return this.CompletedAtOption.Value; } set { this.CompletedAtOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Steps
@@ -144,7 +144,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Steps
         /// </summary>
         [JsonPropertyName("steps")]
-        public List<TenantApiTenantV1OnboardingStep>? Steps { get { return this.StepsOption; } }
+        public List<TenantApiTenantV1OnboardingStep>? Steps { get { return this.StepsOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -225,16 +225,13 @@ namespace EdGraph.Platform.Client.Model
                             status = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "progressPercentage":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                progressPercentage = new Option<float?>((float)utf8JsonReader.GetDouble());
+                            progressPercentage = new Option<float?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (float?)null : (float)utf8JsonReader.GetDouble());
                             break;
                         case "totalSteps":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                totalSteps = new Option<int?>(utf8JsonReader.GetInt32());
+                            totalSteps = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "lastCompletedStep":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                lastCompletedStep = new Option<int?>(utf8JsonReader.GetInt32());
+                            lastCompletedStep = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "startedAt":
                             startedAt = new Option<string?>(utf8JsonReader.GetString());
@@ -243,8 +240,7 @@ namespace EdGraph.Platform.Client.Model
                             completedAt = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "steps":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                steps = new Option<List<TenantApiTenantV1OnboardingStep>?>(JsonSerializer.Deserialize<List<TenantApiTenantV1OnboardingStep>>(ref utf8JsonReader, jsonSerializerOptions));
+                            steps = new Option<List<TenantApiTenantV1OnboardingStep>?>(JsonSerializer.Deserialize<List<TenantApiTenantV1OnboardingStep>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

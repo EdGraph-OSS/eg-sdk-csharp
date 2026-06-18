@@ -62,7 +62,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdfiAdminApiEdfiAdminV1CreateEducationServiceCenterRequest> edfiAdminApiEdfiAdminV1CreateEducationServiceCenterRequest = default!;
             var response = await _instance.CreateEducationServiceCenterAsyncAsync(tenantId, instanceId, year, edfiAdminApiEdfiAdminV1CreateEducationServiceCenterRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1EducationServiceCenterCreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -75,7 +75,9 @@ namespace EdGraph.Platform.Client.Test.Api
             string instanceId = default!;
             int year = default!;
             Guid educationServiceCenterId = default!;
-            await _instance.DeleteEducationServiceCenterAsyncAsync(tenantId, instanceId, year, educationServiceCenterId);
+            var response = await _instance.DeleteEducationServiceCenterAsyncAsync(tenantId, instanceId, year, educationServiceCenterId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -90,7 +92,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid educationServiceCenterId = default!;
             var response = await _instance.GetEducationServiceCenterByIdAsyncAsync(tenantId, instanceId, year, educationServiceCenterId);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1EducationServiceCenter>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -104,7 +106,9 @@ namespace EdGraph.Platform.Client.Test.Api
             int year = default!;
             Guid educationServiceCenterId = default!;
             Client.Option<EdfiAdminApiEdfiAdminV1UpdateEducationServiceCenterRequest> edfiAdminApiEdfiAdminV1UpdateEducationServiceCenterRequest = default!;
-            await _instance.UpdateEducationServiceCenterAsyncAsync(tenantId, instanceId, year, educationServiceCenterId, edfiAdminApiEdfiAdminV1UpdateEducationServiceCenterRequest);
+            var response = await _instance.UpdateEducationServiceCenterAsyncAsync(tenantId, instanceId, year, educationServiceCenterId, edfiAdminApiEdfiAdminV1UpdateEducationServiceCenterRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

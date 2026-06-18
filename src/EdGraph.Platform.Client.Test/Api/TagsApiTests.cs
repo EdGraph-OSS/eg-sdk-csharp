@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<ValidationsApiTagsV1CreateRequest> validationsApiTagsV1CreateRequest = default!;
             var response = await _instance.CreateTagAsync(tenantId, validationsApiTagsV1CreateRequest);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiCoreV1CreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -71,7 +71,9 @@ namespace EdGraph.Platform.Client.Test.Api
         {
             string tenantId = default!;
             string tagId = default!;
-            await _instance.DeleteTagAsync(tenantId, tagId);
+            var response = await _instance.DeleteTagAsync(tenantId, tagId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -84,7 +86,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string tagId = default!;
             var response = await _instance.GetTagByIdAsync(tenantId, tagId);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiTagsV1TagDto>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -100,7 +102,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> orderBy = default!;
             var response = await _instance.GetTagsAsync(tenantId, pageIndex, pageSize, filter, orderBy);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiTagsV1PaginatedTags>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -112,7 +114,9 @@ namespace EdGraph.Platform.Client.Test.Api
             string tenantId = default!;
             string tagId = default!;
             Client.Option<ValidationsApiTagsV1UpdateRequest> validationsApiTagsV1UpdateRequest = default!;
-            await _instance.UpdateTagAsync(tenantId, tagId, validationsApiTagsV1UpdateRequest);
+            var response = await _instance.UpdateTagAsync(tenantId, tagId, validationsApiTagsV1UpdateRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

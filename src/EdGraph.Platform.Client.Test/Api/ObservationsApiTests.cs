@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationRequest> edGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationRequest = default!;
             var response = await _instance.CreateObservationAsync(tenantId, edGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationSubmissionRequest> edGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationSubmissionRequest = default!;
             var response = await _instance.CreateObservationSubmissionAsync(tenantId, formId, observationId, edGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationSubmissionRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationSubmissionResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid observationId = default!;
             var response = await _instance.DeleteObservationAsync(tenantId, observationId);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsDeleteObservationResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> personaIdentifier = default!;
             var response = await _instance.GetDashboardAsync(tenantId, dashboardId, personaIdentifier);
             var model = response.Unauthorized();
-            Assert.IsType<AnalyticsApiReportsV1ReportResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid dashboardId = default!;
             var response = await _instance.GetDashboardPreferencesAsync(tenantId, dashboardId);
             var model = response.Unauthorized();
-            Assert.IsType<AnalyticsApiReportsV1ReportPreferencesResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filterBy = default!;
             var response = await _instance.GetEvalueeSectionsAsync(tenantId, evalueeId, pageIndex, pageSize, orderBy, filterBy);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiUserV1SectionResponseGetPaginatedItemsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<int> pageSize = default!;
             var response = await _instance.GetFormQuestionsAsync(tenantId, formId, sectionId, pageIndex, pageSize);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionResponseDtoPaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<int> pageSize = default!;
             var response = await _instance.GetFormSectionsAsync(tenantId, formId, pageIndex, pageSize);
             var model = response.Unauthorized();
-            Assert.IsType<FormApiSectionsV1SectionResponsePaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid observationId = default!;
             var response = await _instance.GetObservationByIdAsync(tenantId, observationId);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -190,7 +190,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid formId = default!;
             var response = await _instance.GetObservationDraftAsync(tenantId, observationId, formId);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsObservationDraftResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -204,7 +204,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid formId = default!;
             var response = await _instance.GetObservationSubmissionAsync(tenantId, observationId, formId);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsObservationSubmissionResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -220,7 +220,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> nameOfInstitution = default!;
             var response = await _instance.GetPaginatedAvailableCampusesAsync(tenantId, pageSize, pageIndex, orderBy, nameOfInstitution);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsCampusResponseGetPaginatedItemsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -236,7 +236,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetPaginatedAvailableFormsAsync(tenantId, pageIndex, pageSize, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -253,7 +253,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetPaginatedCampusSectionsAsync(tenantId, campusId, pageIndex, pageSize, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiSectionsV1SectionListResponseGetPaginatedItemsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -272,7 +272,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> lastName = default!;
             var response = await _instance.GetPaginatedEvalueesAsync(tenantId, pageSize, pageIndex, orderBy, campus, evalueeId, firstName, lastName);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponseGetPaginatedItemsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -294,7 +294,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> to = default!;
             var response = await _instance.GetPaginatedObservationsAsync(tenantId, pageSize, pageIndex, orderBy, campus, evalueeName, evalueeId, formId, status, from, to);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponsePaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -308,7 +308,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> campus = default!;
             var response = await _instance.GetSubmittedObservationsCountAsync(tenantId, evalueeId, campus);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsGetSubmittedObservationsCountResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -322,7 +322,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest = default!;
             var response = await _instance.SaveDashboardPreferencesAsync(tenantId, dashboardId, edGraphHttpAggregatorsTenantApiServicesObservationsUpsertDashboardPreferencesRequest);
             var model = response.Unauthorized();
-            Assert.IsType<AnalyticsApiReportsV1ReportPreferencesSavedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -339,7 +339,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> lastName = default!;
             var response = await _instance.SearchPaginatedEvalueesAsync(tenantId, pageSize, pageIndex, orderBy, firstName, lastName);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponsePaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -353,7 +353,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest = default!;
             var response = await _instance.UpdateObservationAsync(tenantId, observationId, edGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -368,7 +368,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertObservationDraftRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUpsertObservationDraftRequest = default!;
             var response = await _instance.UpsertObservationDraftAsync(tenantId, observationId, formId, edGraphHttpAggregatorsTenantApiServicesObservationsUpsertObservationDraftRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertObservationDraftResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -381,7 +381,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest = default!;
             var response = await _instance.VerifyDashboardAccessAsync(tenantId, edGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsUseCasesCommandsDashboardAccessResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

@@ -68,7 +68,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CategoryId
         /// </summary>
         [JsonPropertyName("categoryId")]
-        public string? CategoryId { get { return this.CategoryIdOption; } set { this.CategoryIdOption = new(value); } }
+        public string? CategoryId { get { return this.CategoryIdOption.Value; } set { this.CategoryIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SubCategoryId
@@ -81,7 +81,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SubCategoryId
         /// </summary>
         [JsonPropertyName("subCategoryId")]
-        public string? SubCategoryId { get { return this.SubCategoryIdOption; } set { this.SubCategoryIdOption = new(value); } }
+        public string? SubCategoryId { get { return this.SubCategoryIdOption.Value; } set { this.SubCategoryIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Name
@@ -94,7 +94,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Name
         /// </summary>
         [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption; } set { this.NameOption = new(value); } }
+        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RuleIdentification
@@ -107,7 +107,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RuleIdentification
         /// </summary>
         [JsonPropertyName("ruleIdentification")]
-        public string? RuleIdentification { get { return this.RuleIdentificationOption; } set { this.RuleIdentificationOption = new(value); } }
+        public string? RuleIdentification { get { return this.RuleIdentificationOption.Value; } set { this.RuleIdentificationOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ErrorSeverityLevel
@@ -120,7 +120,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ErrorSeverityLevel
         /// </summary>
         [JsonPropertyName("errorSeverityLevel")]
-        public string? ErrorSeverityLevel { get { return this.ErrorSeverityLevelOption; } set { this.ErrorSeverityLevelOption = new(value); } }
+        public string? ErrorSeverityLevel { get { return this.ErrorSeverityLevelOption.Value; } set { this.ErrorSeverityLevelOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastExecutionTotalResults
@@ -133,7 +133,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastExecutionTotalResults
         /// </summary>
         [JsonPropertyName("lastExecutionTotalResults")]
-        public int? LastExecutionTotalResults { get { return this.LastExecutionTotalResultsOption; } set { this.LastExecutionTotalResultsOption = new(value); } }
+        public int? LastExecutionTotalResults { get { return this.LastExecutionTotalResultsOption.Value; } set { this.LastExecutionTotalResultsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastExecutionTotalInvalidResults
@@ -146,7 +146,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastExecutionTotalInvalidResults
         /// </summary>
         [JsonPropertyName("lastExecutionTotalInvalidResults")]
-        public int? LastExecutionTotalInvalidResults { get { return this.LastExecutionTotalInvalidResultsOption; } set { this.LastExecutionTotalInvalidResultsOption = new(value); } }
+        public int? LastExecutionTotalInvalidResults { get { return this.LastExecutionTotalInvalidResultsOption.Value; } set { this.LastExecutionTotalInvalidResultsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Id
@@ -159,7 +159,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -254,12 +254,10 @@ namespace EdGraph.Platform.Client.Model
                             errorSeverityLevel = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "lastExecutionTotalResults":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                lastExecutionTotalResults = new Option<int?>(utf8JsonReader.GetInt32());
+                            lastExecutionTotalResults = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "lastExecutionTotalInvalidResults":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                lastExecutionTotalInvalidResults = new Option<int?>(utf8JsonReader.GetInt32());
+                            lastExecutionTotalInvalidResults = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "id":
                             id = new Option<string?>(utf8JsonReader.GetString());

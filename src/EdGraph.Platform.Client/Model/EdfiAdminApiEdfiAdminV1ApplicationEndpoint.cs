@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AccessType
         /// </summary>
         [JsonPropertyName("accessType")]
-        public string? AccessType { get { return this.AccessTypeOption; } set { this.AccessTypeOption = new(value); } }
+        public string? AccessType { get { return this.AccessTypeOption.Value; } set { this.AccessTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Url
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Url
         /// </summary>
         [JsonPropertyName("url")]
-        public string? Url { get { return this.UrlOption; } set { this.UrlOption = new(value); } }
+        public string? Url { get { return this.UrlOption.Value; } set { this.UrlOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

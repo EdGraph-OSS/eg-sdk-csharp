@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public Guid? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public Guid? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public Guid? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public Guid? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ConnectionName
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ConnectionName
         /// </summary>
         [JsonPropertyName("connectionName")]
-        public string? ConnectionName { get { return this.ConnectionNameOption; } set { this.ConnectionNameOption = new(value); } }
+        public string? ConnectionName { get { return this.ConnectionNameOption.Value; } set { this.ConnectionNameOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -154,12 +154,10 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "id":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                id = new Option<Guid?>(utf8JsonReader.GetGuid());
+                            id = new Option<Guid?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (Guid?)null : utf8JsonReader.GetGuid());
                             break;
                         case "tenantId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                tenantId = new Option<Guid?>(utf8JsonReader.GetGuid());
+                            tenantId = new Option<Guid?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (Guid?)null : utf8JsonReader.GetGuid());
                             break;
                         case "connectionName":
                             connectionName = new Option<string?>(utf8JsonReader.GetString());

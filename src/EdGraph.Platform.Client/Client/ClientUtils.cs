@@ -19,6 +19,7 @@ using System.Text.Json;
 using System.Text.RegularExpressions;
 using EdGraph.Platform.Client.Model;
 using System.Runtime.CompilerServices;
+using System.Net.Http.Headers;
 
 [assembly: InternalsVisibleTo("EdGraph.Platform.Client.Test")]
 
@@ -27,7 +28,7 @@ namespace EdGraph.Platform.Client.Client
     /// <summary>
     /// Utility functions providing some benefit to API client consumers.
     /// </summary>
-    public static class ClientUtils
+    public static partial class ClientUtils
     {
 
         /// <summary>
@@ -84,17 +85,6 @@ namespace EdGraph.Platform.Client.Client
         }
 
         /// <summary>
-        /// Sanitize filename by removing the path
-        /// </summary>
-        /// <param name="filename">Filename</param>
-        /// <returns>Filename</returns>
-        public static string SanitizeFilename(string filename)
-        {
-            Match match = Regex.Match(filename, @".*[/\\](.*)$");
-            return match.Success ? match.Groups[1].Value : filename;
-        }
-
-        /// <summary>
         /// If parameter is DateTime, output in a formatted string (default ISO 8601), customizable with Configuration.DateTime.
         /// If parameter is a list, join the list with ",".
         /// Otherwise just return the string.
@@ -116,6 +106,8 @@ namespace EdGraph.Platform.Client.Client
                 // https://msdn.microsoft.com/en-us/library/az4se3k1(v=vs.110).aspx#Anchor_8
                 // For example: 2009-06-15T13:45:30.0000000
                 return dateTimeOffset.ToString(format);
+            if (obj is DateOnly dateOnly)
+                return dateOnly.ToString(format);
             if (obj is bool boolean)
                 return boolean
                     ? "true"
@@ -162,10 +154,6 @@ namespace EdGraph.Platform.Client.Client
                 return EdGraphServicesStateReportingV1SubmissionStatusValueConverter.ToJsonValue(edGraphServicesStateReportingV1SubmissionStatus);
             if (obj is EdfiAdminApiEdfiAdminV1DatabaseTier edfiAdminApiEdfiAdminV1DatabaseTier)
                 return EdfiAdminApiEdfiAdminV1DatabaseTierValueConverter.ToJsonValue(edfiAdminApiEdfiAdminV1DatabaseTier);
-            if (obj is EdfiAdminApiEdfiAdminV1ExportStatus edfiAdminApiEdfiAdminV1ExportStatus)
-                return EdfiAdminApiEdfiAdminV1ExportStatusValueConverter.ToJsonValue(edfiAdminApiEdfiAdminV1ExportStatus);
-            if (obj is EdfiAdminApiEdfiAdminV1ExportType edfiAdminApiEdfiAdminV1ExportType)
-                return EdfiAdminApiEdfiAdminV1ExportTypeValueConverter.ToJsonValue(edfiAdminApiEdfiAdminV1ExportType);
             if (obj is EdfiAdminApiEdfiAdminV1InstanceType edfiAdminApiEdfiAdminV1InstanceType)
                 return EdfiAdminApiEdfiAdminV1InstanceTypeValueConverter.ToJsonValue(edfiAdminApiEdfiAdminV1InstanceType);
             if (obj is EdfiAdminApiEdfiAdminV1SecretValueType edfiAdminApiEdfiAdminV1SecretValueType)
@@ -248,6 +236,8 @@ namespace EdGraph.Platform.Client.Client
                 return TenantApiTenantV1TenantStatusValueConverter.ToJsonValue(tenantApiTenantV1TenantStatus);
             if (obj is TenantApiTenantV1TenantType tenantApiTenantV1TenantType)
                 return TenantApiTenantV1TenantTypeValueConverter.ToJsonValue(tenantApiTenantV1TenantType);
+            if (obj is TenantApiWebhookV1WebhookReRunStrategy tenantApiWebhookV1WebhookReRunStrategy)
+                return TenantApiWebhookV1WebhookReRunStrategyValueConverter.ToJsonValue(tenantApiWebhookV1WebhookReRunStrategy);
             if (obj is TenantApiWebhookV1WebhookSchema tenantApiWebhookV1WebhookSchema)
                 return TenantApiWebhookV1WebhookSchemaValueConverter.ToJsonValue(tenantApiWebhookV1WebhookSchema);
             if (obj is ValidationsApiCoreV1InstanceType validationsApiCoreV1InstanceType)
@@ -373,10 +363,31 @@ namespace EdGraph.Platform.Client.Client
             return string.Join(",", accepts);
         }
 
+        
+
+        /// <summary>
+        /// Select the Accept header's value from the given accepts array:
+        /// if JSON exists in the given array, use it;
+        /// otherwise use all of them.
+        /// </summary>
+        /// <param name="accepts">The accepts array to select from.</param>
+        /// <returns>The Accept header values to use.</returns>
+        public static IEnumerable<MediaTypeWithQualityHeaderValue> SelectHeaderAcceptArray(string[] accepts)
+        {
+            if (accepts.Length == 0)
+                    return [];
+
+            if (accepts.Contains("application/json", StringComparer.OrdinalIgnoreCase))
+                    return [MediaTypeWithQualityHeaderValue.Parse("application/json")];
+
+            return accepts.Select(MediaTypeWithQualityHeaderValue.Parse);
+        }
+
         /// <summary>
         /// Provides a case-insensitive check that a provided content type is a known JSON-like content type.
         /// </summary>
-        public static readonly Regex JsonRegex = new Regex("(?i)^(application/json|[^;/ \t]+/[^;/ \t]+[+]json)[ \t]*(;.*)?$");
+        [GeneratedRegex("(?i)^(application/json|[^;/ \t]+/[^;/ \t]+[+]json)[ \t]*(;.*)?$")]
+        private static partial Regex JsonRegex();
 
         /// <summary>
         /// Check if the given MIME is a JSON MIME.
@@ -392,7 +403,7 @@ namespace EdGraph.Platform.Client.Client
         {
             if (string.IsNullOrWhiteSpace(mime)) return false;
 
-            return JsonRegex.IsMatch(mime) || mime.Equals("application/json-patch+json");
+            return JsonRegex().IsMatch(mime) || mime.Equals("application/json-patch+json");
         }
 
         /// <summary>
@@ -431,6 +442,35 @@ namespace EdGraph.Platform.Client.Client
 
             throw new JsonException("The specified discriminator was not found.");
         }
+
+        /// <summary>
+        /// Determines if the provided header is a content header
+        /// </summary>
+        /// <param name="header">The header to check</param>
+        /// <returns>True if a content header; False otherwise</returns>
+        public static bool IsContentHeader(string header)
+        {
+            return ContentHeaders.Contains(header.ToLowerInvariant());
+        }
+
+        /// <summary>
+        /// The collection of content headers as per
+        /// https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpcontent.headers
+        /// </summary>
+        private static readonly string[] ContentHeaders = new String[] 
+        {
+            "allow",
+            "content-encoding",
+            "content-disposition",
+            "content-language",
+            "content-length",
+            "content-location",
+            "content-md5",
+            "content-range",
+            "content-type",
+            "expires",
+            "last-modified"
+        };
 
         /// <summary>
         /// The base path of the API

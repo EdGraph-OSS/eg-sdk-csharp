@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Status
         /// </summary>
         [JsonPropertyName("status")]
-        public string? Status { get { return this.StatusOption; } set { this.StatusOption = new(value); } }
+        public string? Status { get { return this.StatusOption.Value; } set { this.StatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of PreviousMappingId
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets PreviousMappingId
         /// </summary>
         [JsonPropertyName("previousMappingId")]
-        public string? PreviousMappingId { get { return this.PreviousMappingIdOption; } set { this.PreviousMappingIdOption = new(value); } }
+        public string? PreviousMappingId { get { return this.PreviousMappingIdOption.Value; } set { this.PreviousMappingIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DescriptorMapping
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DescriptorMapping
         /// </summary>
         [JsonPropertyName("descriptorMapping")]
-        public EdfiAdminApiEdfiAdminV1DescriptorMapping? DescriptorMapping { get { return this.DescriptorMappingOption; } set { this.DescriptorMappingOption = new(value); } }
+        public EdfiAdminApiEdfiAdminV1DescriptorMapping? DescriptorMapping { get { return this.DescriptorMappingOption.Value; } set { this.DescriptorMappingOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Details
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Details
         /// </summary>
         [JsonPropertyName("details")]
-        public string? Details { get { return this.DetailsOption; } set { this.DetailsOption = new(value); } }
+        public string? Details { get { return this.DetailsOption.Value; } set { this.DetailsOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -177,8 +177,7 @@ namespace EdGraph.Platform.Client.Model
                             previousMappingId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "descriptorMapping":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                descriptorMapping = new Option<EdfiAdminApiEdfiAdminV1DescriptorMapping?>(JsonSerializer.Deserialize<EdfiAdminApiEdfiAdminV1DescriptorMapping>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            descriptorMapping = new Option<EdfiAdminApiEdfiAdminV1DescriptorMapping?>(JsonSerializer.Deserialize<EdfiAdminApiEdfiAdminV1DescriptorMapping>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "details":
                             details = new Option<string?>(utf8JsonReader.GetString());

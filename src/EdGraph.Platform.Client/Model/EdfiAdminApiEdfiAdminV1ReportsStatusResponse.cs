@@ -68,7 +68,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InstanceId
@@ -81,7 +81,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceId
         /// </summary>
         [JsonPropertyName("instanceId")]
-        public string? InstanceId { get { return this.InstanceIdOption; } set { this.InstanceIdOption = new(value); } }
+        public string? InstanceId { get { return this.InstanceIdOption.Value; } set { this.InstanceIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DistrictSchoolsByTypeReport
@@ -94,7 +94,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DistrictSchoolsByTypeReport
         /// </summary>
         [JsonPropertyName("districtSchoolsByTypeReport")]
-        public bool? DistrictSchoolsByTypeReport { get { return this.DistrictSchoolsByTypeReportOption; } set { this.DistrictSchoolsByTypeReportOption = new(value); } }
+        public bool? DistrictSchoolsByTypeReport { get { return this.DistrictSchoolsByTypeReportOption.Value; } set { this.DistrictSchoolsByTypeReportOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DistrictTotalEnrollmentsReport
@@ -107,7 +107,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DistrictTotalEnrollmentsReport
         /// </summary>
         [JsonPropertyName("districtTotalEnrollmentsReport")]
-        public bool? DistrictTotalEnrollmentsReport { get { return this.DistrictTotalEnrollmentsReportOption; } set { this.DistrictTotalEnrollmentsReportOption = new(value); } }
+        public bool? DistrictTotalEnrollmentsReport { get { return this.DistrictTotalEnrollmentsReportOption.Value; } set { this.DistrictTotalEnrollmentsReportOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LocalEducationAgenciesReport
@@ -120,7 +120,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LocalEducationAgenciesReport
         /// </summary>
         [JsonPropertyName("localEducationAgenciesReport")]
-        public bool? LocalEducationAgenciesReport { get { return this.LocalEducationAgenciesReportOption; } set { this.LocalEducationAgenciesReportOption = new(value); } }
+        public bool? LocalEducationAgenciesReport { get { return this.LocalEducationAgenciesReportOption.Value; } set { this.LocalEducationAgenciesReportOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of StudentDemographicsReport
@@ -133,7 +133,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets StudentDemographicsReport
         /// </summary>
         [JsonPropertyName("studentDemographicsReport")]
-        public bool? StudentDemographicsReport { get { return this.StudentDemographicsReportOption; } set { this.StudentDemographicsReportOption = new(value); } }
+        public bool? StudentDemographicsReport { get { return this.StudentDemographicsReportOption.Value; } set { this.StudentDemographicsReportOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of StudentEconomicSituationReport
@@ -146,7 +146,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets StudentEconomicSituationReport
         /// </summary>
         [JsonPropertyName("studentEconomicSituationReport")]
-        public bool? StudentEconomicSituationReport { get { return this.StudentEconomicSituationReportOption; } set { this.StudentEconomicSituationReportOption = new(value); } }
+        public bool? StudentEconomicSituationReport { get { return this.StudentEconomicSituationReportOption.Value; } set { this.StudentEconomicSituationReportOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of StudentsByProgramReport
@@ -159,7 +159,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets StudentsByProgramReport
         /// </summary>
         [JsonPropertyName("studentsByProgramReport")]
-        public bool? StudentsByProgramReport { get { return this.StudentsByProgramReportOption; } set { this.StudentsByProgramReportOption = new(value); } }
+        public bool? StudentsByProgramReport { get { return this.StudentsByProgramReportOption.Value; } set { this.StudentsByProgramReportOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -245,28 +245,22 @@ namespace EdGraph.Platform.Client.Model
                             instanceId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "districtSchoolsByTypeReport":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                districtSchoolsByTypeReport = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            districtSchoolsByTypeReport = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "districtTotalEnrollmentsReport":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                districtTotalEnrollmentsReport = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            districtTotalEnrollmentsReport = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "localEducationAgenciesReport":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                localEducationAgenciesReport = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            localEducationAgenciesReport = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "studentDemographicsReport":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                studentDemographicsReport = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            studentDemographicsReport = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "studentEconomicSituationReport":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                studentEconomicSituationReport = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            studentEconomicSituationReport = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "studentsByProgramReport":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                studentsByProgramReport = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            studentsByProgramReport = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

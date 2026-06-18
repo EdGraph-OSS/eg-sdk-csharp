@@ -68,7 +68,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ObservationDate
@@ -81,7 +81,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ObservationDate
         /// </summary>
         [JsonPropertyName("observationDate")]
-        public string? ObservationDate { get { return this.ObservationDateOption; } set { this.ObservationDateOption = new(value); } }
+        public string? ObservationDate { get { return this.ObservationDateOption.Value; } set { this.ObservationDateOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Campus
@@ -94,7 +94,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Campus
         /// </summary>
         [JsonPropertyName("campus")]
-        public string? Campus { get { return this.CampusOption; } set { this.CampusOption = new(value); } }
+        public string? Campus { get { return this.CampusOption.Value; } set { this.CampusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ObserverId
@@ -107,7 +107,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ObserverId
         /// </summary>
         [JsonPropertyName("observerId")]
-        public string? ObserverId { get { return this.ObserverIdOption; } set { this.ObserverIdOption = new(value); } }
+        public string? ObserverId { get { return this.ObserverIdOption.Value; } set { this.ObserverIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EvalueeId
@@ -120,7 +120,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EvalueeId
         /// </summary>
         [JsonPropertyName("evalueeId")]
-        public string? EvalueeId { get { return this.EvalueeIdOption; } set { this.EvalueeIdOption = new(value); } }
+        public string? EvalueeId { get { return this.EvalueeIdOption.Value; } set { this.EvalueeIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of FormId
@@ -133,7 +133,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets FormId
         /// </summary>
         [JsonPropertyName("formId")]
-        public string? FormId { get { return this.FormIdOption; } set { this.FormIdOption = new(value); } }
+        public string? FormId { get { return this.FormIdOption.Value; } set { this.FormIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of FormVersion
@@ -146,7 +146,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets FormVersion
         /// </summary>
         [JsonPropertyName("formVersion")]
-        public string? FormVersion { get { return this.FormVersionOption; } set { this.FormVersionOption = new(value); } }
+        public string? FormVersion { get { return this.FormVersionOption.Value; } set { this.FormVersionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CampusClassId
@@ -159,7 +159,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CampusClassId
         /// </summary>
         [JsonPropertyName("campusClassId")]
-        public string? CampusClassId { get { return this.CampusClassIdOption; } set { this.CampusClassIdOption = new(value); } }
+        public string? CampusClassId { get { return this.CampusClassIdOption.Value; } set { this.CampusClassIdOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

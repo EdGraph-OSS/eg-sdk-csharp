@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<TenantApiTenantV1CreateDomainRequest> tenantApiTenantV1CreateDomainRequest = default!;
             var response = await _instance.CreateTenantDomainAsyncAsync(tenantId, tenantApiTenantV1CreateDomainRequest);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiTenantV1DomainCreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -71,7 +71,9 @@ namespace EdGraph.Platform.Client.Test.Api
         {
             string tenantId = default!;
             string domainName = default!;
-            await _instance.DeleteTenantDomainAsyncAsync(tenantId, domainName);
+            var response = await _instance.DeleteTenantDomainAsyncAsync(tenantId, domainName);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -87,7 +89,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetAllTenantDomainsAsyncAsync(tenantId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesDomainListResponseDtoPaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -100,7 +102,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string domainName = default!;
             var response = await _instance.GetTenantDomainProfileByNameAsyncAsync(tenantId, domainName);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiTenantV1DomainProfileResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -114,7 +116,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<TenantApiTenantV1UpdateDomainRequest> tenantApiTenantV1UpdateDomainRequest = default!;
             var response = await _instance.UpdateTenantDomainAsyncAsync(tenantId, domainName, tenantApiTenantV1UpdateDomainRequest);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiTenantV1DomainUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -128,7 +130,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<TenantApiTenantV1VerifyDomainRequest> tenantApiTenantV1VerifyDomainRequest = default!;
             var response = await _instance.VerifyTenantDomainAsyncAsync(tenantId, domainName, tenantApiTenantV1VerifyDomainRequest);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiTenantV1DomainVerifiedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

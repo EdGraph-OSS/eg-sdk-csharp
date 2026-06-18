@@ -15,67 +15,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Creates a StateEducationAgency.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CreateStateEducationAgencyAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesEducationOrganizationsStateEducationAgenciesApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var instanceId = "instanceId_example";  // string | 
-            var year = 56;  // int | 
-            var edfiAdminApiEdfiAdminV1CreateStateEducationAgencyRequest = new EdfiAdminApiEdfiAdminV1CreateStateEducationAgencyRequest(); // EdfiAdminApiEdfiAdminV1CreateStateEducationAgencyRequest |  (optional) 
-
-            try
-            {
-                // Creates a StateEducationAgency.
-                EdfiAdminApiEdfiAdminV1StateEducationAgencyCreatedResponse result = apiInstance.CreateStateEducationAgencyAsync(tenantId, instanceId, year, edfiAdminApiEdfiAdminV1CreateStateEducationAgencyRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesEducationOrganizationsStateEducationAgenciesApi.CreateStateEducationAgencyAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateStateEducationAgencyAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates a StateEducationAgency.
-    ApiResponse<EdfiAdminApiEdfiAdminV1StateEducationAgencyCreatedResponse> response = apiInstance.CreateStateEducationAgencyAsyncWithHttpInfo(tenantId, instanceId, year, edfiAdminApiEdfiAdminV1CreateStateEducationAgencyRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesEducationOrganizationsStateEducationAgenciesApi.CreateStateEducationAgencyAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -118,63 +57,6 @@ catch (ApiException e)
 
 Deletes a StateEducationAgency.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class DeleteStateEducationAgencyAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesEducationOrganizationsStateEducationAgenciesApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var instanceId = "instanceId_example";  // string | 
-            var year = 56;  // int | 
-            var stateEducationAgencyId = "stateEducationAgencyId_example";  // Guid | 
-
-            try
-            {
-                // Deletes a StateEducationAgency.
-                apiInstance.DeleteStateEducationAgencyAsync(tenantId, instanceId, year, stateEducationAgencyId);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesEducationOrganizationsStateEducationAgenciesApi.DeleteStateEducationAgencyAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeleteStateEducationAgencyAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Deletes a StateEducationAgency.
-    apiInstance.DeleteStateEducationAgencyAsyncWithHttpInfo(tenantId, instanceId, year, stateEducationAgencyId);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesEducationOrganizationsStateEducationAgenciesApi.DeleteStateEducationAgencyAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -217,67 +99,6 @@ void (empty response body)
 
 Retrieves a StateEducationAgency by ID.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetStateEducationAgencyByIdAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesEducationOrganizationsStateEducationAgenciesApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var instanceId = "instanceId_example";  // string | 
-            var year = 56;  // int | 
-            var stateEducationAgencyId = "stateEducationAgencyId_example";  // Guid | 
-
-            try
-            {
-                // Retrieves a StateEducationAgency by ID.
-                EdfiAdminApiEdfiAdminV1StateEducationAgency result = apiInstance.GetStateEducationAgencyByIdAsync(tenantId, instanceId, year, stateEducationAgencyId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesEducationOrganizationsStateEducationAgenciesApi.GetStateEducationAgencyByIdAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetStateEducationAgencyByIdAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a StateEducationAgency by ID.
-    ApiResponse<EdfiAdminApiEdfiAdminV1StateEducationAgency> response = apiInstance.GetStateEducationAgencyByIdAsyncWithHttpInfo(tenantId, instanceId, year, stateEducationAgencyId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesEducationOrganizationsStateEducationAgenciesApi.GetStateEducationAgencyByIdAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -320,64 +141,6 @@ catch (ApiException e)
 
 Updates a StateEducationAgency.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateStateEducationAgencyAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesEducationOrganizationsStateEducationAgenciesApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var instanceId = "instanceId_example";  // string | 
-            var year = 56;  // int | 
-            var stateEducationAgencyId = "stateEducationAgencyId_example";  // Guid | 
-            var edfiAdminApiEdfiAdminV1UpdateStateEducationAgencyRequest = new EdfiAdminApiEdfiAdminV1UpdateStateEducationAgencyRequest(); // EdfiAdminApiEdfiAdminV1UpdateStateEducationAgencyRequest |  (optional) 
-
-            try
-            {
-                // Updates a StateEducationAgency.
-                apiInstance.UpdateStateEducationAgencyAsync(tenantId, instanceId, year, stateEducationAgencyId, edfiAdminApiEdfiAdminV1UpdateStateEducationAgencyRequest);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesEducationOrganizationsStateEducationAgenciesApi.UpdateStateEducationAgencyAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateStateEducationAgencyAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates a StateEducationAgency.
-    apiInstance.UpdateStateEducationAgencyAsyncWithHttpInfo(tenantId, instanceId, year, stateEducationAgencyId, edfiAdminApiEdfiAdminV1UpdateStateEducationAgencyRequest);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesEducationOrganizationsStateEducationAgenciesApi.UpdateStateEducationAgencyAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RoleName
         /// </summary>
         [JsonPropertyName("roleName")]
-        public string? RoleName { get { return this.RoleNameOption; } set { this.RoleNameOption = new(value); } }
+        public string? RoleName { get { return this.RoleNameOption.Value; } set { this.RoleNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DisplayName
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DisplayName
         /// </summary>
         [JsonPropertyName("displayName")]
-        public string? DisplayName { get { return this.DisplayNameOption; } set { this.DisplayNameOption = new(value); } }
+        public string? DisplayName { get { return this.DisplayNameOption.Value; } set { this.DisplayNameOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

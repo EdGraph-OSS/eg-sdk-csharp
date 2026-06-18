@@ -62,7 +62,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> orderBy = default!;
             var response = await _instance.GetUserTenantsAsync(pageIndex, pageSize, filter, orderBy);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiUserV1UserTenantProfilePaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> orderBy = default!;
             var response = await _instance.SearchMyLicensesAsync(tenantId, pageIndex, pageSize, filter, orderBy);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiUserV2UserMeTenantsResponsePaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> orderBy = default!;
             var response = await _instance.SearchMyTenantsAsync(pageIndex, pageSize, filter, orderBy);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiUserV2UserMeTenantsResponsePaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

@@ -145,7 +145,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, ApplicationApiApplicationV1ApplicationStatus applicationApiApplicationV1ApplicationStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(applicationApiApplicationV1ApplicationStatus.ToString());
+            writer.WriteStringValue(ApplicationApiApplicationV1ApplicationStatusValueConverter.ToJsonValue(applicationApiApplicationV1ApplicationStatus).ToString());
         }
     }
 
@@ -176,14 +176,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the ApplicationApiApplicationV1ApplicationStatus to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="applicationApiApplicationV1ApplicationStatus"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, ApplicationApiApplicationV1ApplicationStatus? applicationApiApplicationV1ApplicationStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(applicationApiApplicationV1ApplicationStatus?.ToString() ?? "null");
+            writer.WriteStringValue(applicationApiApplicationV1ApplicationStatus.HasValue ? ApplicationApiApplicationV1ApplicationStatusValueConverter.ToJsonValue(applicationApiApplicationV1ApplicationStatus.Value).ToString() : "null");
         }
     }
 }

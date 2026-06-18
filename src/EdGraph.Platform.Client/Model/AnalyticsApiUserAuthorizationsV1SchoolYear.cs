@@ -54,7 +54,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Value
         /// </summary>
         [JsonPropertyName("value")]
-        public int? Value { get { return this.ValueOption; } set { this.ValueOption = new(value); } }
+        public int? Value { get { return this.ValueOption.Value; } set { this.ValueOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -120,8 +120,7 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "value":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                value = new Option<int?>(utf8JsonReader.GetInt32());
+                            value = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

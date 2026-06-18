@@ -169,5 +169,23 @@ namespace EdGraph.Platform.Client.Test.Model
         {
             // TODO unit test for the property 'MetadataJson'
         }
+
+        /// <summary>
+        /// Test the property 'DiscoveryDocument'
+        /// </summary>
+        [Fact]
+        public void DiscoveryDocumentTest()
+        {
+            // TODO unit test for the property 'DiscoveryDocument'
+        }
+
+        /// <summary>
+        /// Test the property 'AdminApiUrl'
+        /// </summary>
+        [Fact]
+        public void AdminApiUrlTest()
+        {
+            // TODO unit test for the property 'AdminApiUrl'
+        }
     }
 }

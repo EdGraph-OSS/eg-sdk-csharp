@@ -68,7 +68,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AddressTypeDescriptor
         /// </summary>
         [JsonPropertyName("addressTypeDescriptor")]
-        public string? AddressTypeDescriptor { get { return this.AddressTypeDescriptorOption; } set { this.AddressTypeDescriptorOption = new(value); } }
+        public string? AddressTypeDescriptor { get { return this.AddressTypeDescriptorOption.Value; } set { this.AddressTypeDescriptorOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of StateAbbreviationDescriptor
@@ -81,7 +81,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets StateAbbreviationDescriptor
         /// </summary>
         [JsonPropertyName("stateAbbreviationDescriptor")]
-        public string? StateAbbreviationDescriptor { get { return this.StateAbbreviationDescriptorOption; } set { this.StateAbbreviationDescriptorOption = new(value); } }
+        public string? StateAbbreviationDescriptor { get { return this.StateAbbreviationDescriptorOption.Value; } set { this.StateAbbreviationDescriptorOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of City
@@ -94,7 +94,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets City
         /// </summary>
         [JsonPropertyName("city")]
-        public string? City { get { return this.CityOption; } set { this.CityOption = new(value); } }
+        public string? City { get { return this.CityOption.Value; } set { this.CityOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of PostalCode
@@ -107,7 +107,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets PostalCode
         /// </summary>
         [JsonPropertyName("postalCode")]
-        public string? PostalCode { get { return this.PostalCodeOption; } set { this.PostalCodeOption = new(value); } }
+        public string? PostalCode { get { return this.PostalCodeOption.Value; } set { this.PostalCodeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of StreetNumberName
@@ -120,7 +120,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets StreetNumberName
         /// </summary>
         [JsonPropertyName("streetNumberName")]
-        public string? StreetNumberName { get { return this.StreetNumberNameOption; } set { this.StreetNumberNameOption = new(value); } }
+        public string? StreetNumberName { get { return this.StreetNumberNameOption.Value; } set { this.StreetNumberNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LocaleDescriptor
@@ -133,7 +133,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LocaleDescriptor
         /// </summary>
         [JsonPropertyName("localeDescriptor")]
-        public string? LocaleDescriptor { get { return this.LocaleDescriptorOption; } set { this.LocaleDescriptorOption = new(value); } }
+        public string? LocaleDescriptor { get { return this.LocaleDescriptorOption.Value; } set { this.LocaleDescriptorOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of BuildingSiteNumber
@@ -146,7 +146,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets BuildingSiteNumber
         /// </summary>
         [JsonPropertyName("buildingSiteNumber")]
-        public string? BuildingSiteNumber { get { return this.BuildingSiteNumberOption; } set { this.BuildingSiteNumberOption = new(value); } }
+        public string? BuildingSiteNumber { get { return this.BuildingSiteNumberOption.Value; } set { this.BuildingSiteNumberOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of NameOfCounty
@@ -159,7 +159,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets NameOfCounty
         /// </summary>
         [JsonPropertyName("nameOfCounty")]
-        public string? NameOfCounty { get { return this.NameOfCountyOption; } set { this.NameOfCountyOption = new(value); } }
+        public string? NameOfCounty { get { return this.NameOfCountyOption.Value; } set { this.NameOfCountyOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

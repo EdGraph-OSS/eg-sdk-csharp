@@ -82,7 +82,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceType
         /// </summary>
         [JsonPropertyName("instanceType")]
-        public ValidationsApiCoreV1InstanceType? InstanceType { get { return this.InstanceTypeOption; } set { this.InstanceTypeOption = new(value); } }
+        public ValidationsApiCoreV1InstanceType? InstanceType { get { return this.InstanceTypeOption.Value; } set { this.InstanceTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Provider
@@ -95,7 +95,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Provider
         /// </summary>
         [JsonPropertyName("provider")]
-        public ValidationsApiCoreV1Provider? Provider { get { return this.ProviderOption; } set { this.ProviderOption = new(value); } }
+        public ValidationsApiCoreV1Provider? Provider { get { return this.ProviderOption.Value; } set { this.ProviderOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -109,7 +109,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>Details</value>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Id
@@ -122,7 +122,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Name
@@ -135,7 +135,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Name
         /// </summary>
         [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption; } set { this.NameOption = new(value); } }
+        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ConnectionType
@@ -149,7 +149,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>Connection</value>
         [JsonPropertyName("connectionType")]
-        public string? ConnectionType { get { return this.ConnectionTypeOption; } set { this.ConnectionTypeOption = new(value); } }
+        public string? ConnectionType { get { return this.ConnectionTypeOption.Value; } set { this.ConnectionTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SqlServerConnection
@@ -162,7 +162,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SqlServerConnection
         /// </summary>
         [JsonPropertyName("sqlServerConnection")]
-        public ValidationsApiDbEnvironmentsV1SqlServerConnection? SqlServerConnection { get { return this.SqlServerConnectionOption; } set { this.SqlServerConnectionOption = new(value); } }
+        public ValidationsApiDbEnvironmentsV1SqlServerConnection? SqlServerConnection { get { return this.SqlServerConnectionOption.Value; } set { this.SqlServerConnectionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AzureSynapseSqlServerlessConnection
@@ -175,7 +175,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AzureSynapseSqlServerlessConnection
         /// </summary>
         [JsonPropertyName("azureSynapseSqlServerlessConnection")]
-        public ValidationsApiDbEnvironmentsV1AzureSynapseSqlServerlessConnection? AzureSynapseSqlServerlessConnection { get { return this.AzureSynapseSqlServerlessConnectionOption; } set { this.AzureSynapseSqlServerlessConnectionOption = new(value); } }
+        public ValidationsApiDbEnvironmentsV1AzureSynapseSqlServerlessConnection? AzureSynapseSqlServerlessConnection { get { return this.AzureSynapseSqlServerlessConnectionOption.Value; } set { this.AzureSynapseSqlServerlessConnectionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ConnectionString
@@ -188,7 +188,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ConnectionString
         /// </summary>
         [JsonPropertyName("connectionString")]
-        public string? ConnectionString { get { return this.ConnectionStringOption; } set { this.ConnectionStringOption = new(value); } }
+        public string? ConnectionString { get { return this.ConnectionStringOption.Value; } set { this.ConnectionStringOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of MaxNumberResults
@@ -202,7 +202,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>Metadata</value>
         [JsonPropertyName("maxNumberResults")]
-        public int? MaxNumberResults { get { return this.MaxNumberResultsOption; } set { this.MaxNumberResultsOption = new(value); } }
+        public int? MaxNumberResults { get { return this.MaxNumberResultsOption.Value; } set { this.MaxNumberResultsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TimeoutInMinutes
@@ -215,7 +215,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TimeoutInMinutes
         /// </summary>
         [JsonPropertyName("timeoutInMinutes")]
-        public int? TimeoutInMinutes { get { return this.TimeoutInMinutesOption; } set { this.TimeoutInMinutesOption = new(value); } }
+        public int? TimeoutInMinutes { get { return this.TimeoutInMinutesOption.Value; } set { this.TimeoutInMinutesOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of VarVersion
@@ -228,7 +228,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets VarVersion
         /// </summary>
         [JsonPropertyName("version")]
-        public int? VarVersion { get { return this.VarVersionOption; } set { this.VarVersionOption = new(value); } }
+        public int? VarVersion { get { return this.VarVersionOption.Value; } set { this.VarVersionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of MapTables
@@ -241,7 +241,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets MapTables
         /// </summary>
         [JsonPropertyName("mapTables")]
-        public string? MapTables { get { return this.MapTablesOption; } set { this.MapTablesOption = new(value); } }
+        public string? MapTables { get { return this.MapTablesOption.Value; } set { this.MapTablesOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsDefault
@@ -254,7 +254,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IsDefault
         /// </summary>
         [JsonPropertyName("isDefault")]
-        public bool? IsDefault { get { return this.IsDefaultOption; } set { this.IsDefaultOption = new(value); } }
+        public bool? IsDefault { get { return this.IsDefaultOption.Value; } set { this.IsDefaultOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of MetadataJson
@@ -267,7 +267,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets MetadataJson
         /// </summary>
         [JsonPropertyName("metadataJson")]
-        public string? MetadataJson { get { return this.MetadataJsonOption; } set { this.MetadataJsonOption = new(value); } }
+        public string? MetadataJson { get { return this.MetadataJsonOption.Value; } set { this.MetadataJsonOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -373,27 +373,22 @@ namespace EdGraph.Platform.Client.Model
                             connectionType = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "sqlServerConnection":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                sqlServerConnection = new Option<ValidationsApiDbEnvironmentsV1SqlServerConnection?>(JsonSerializer.Deserialize<ValidationsApiDbEnvironmentsV1SqlServerConnection>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            sqlServerConnection = new Option<ValidationsApiDbEnvironmentsV1SqlServerConnection?>(JsonSerializer.Deserialize<ValidationsApiDbEnvironmentsV1SqlServerConnection>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "azureSynapseSqlServerlessConnection":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                azureSynapseSqlServerlessConnection = new Option<ValidationsApiDbEnvironmentsV1AzureSynapseSqlServerlessConnection?>(JsonSerializer.Deserialize<ValidationsApiDbEnvironmentsV1AzureSynapseSqlServerlessConnection>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            azureSynapseSqlServerlessConnection = new Option<ValidationsApiDbEnvironmentsV1AzureSynapseSqlServerlessConnection?>(JsonSerializer.Deserialize<ValidationsApiDbEnvironmentsV1AzureSynapseSqlServerlessConnection>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "connectionString":
                             connectionString = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "maxNumberResults":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                maxNumberResults = new Option<int?>(utf8JsonReader.GetInt32());
+                            maxNumberResults = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "timeoutInMinutes":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                timeoutInMinutes = new Option<int?>(utf8JsonReader.GetInt32());
+                            timeoutInMinutes = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "version":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                varVersion = new Option<int?>(utf8JsonReader.GetInt32());
+                            varVersion = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "mapTables":
                             mapTables = new Option<string?>(utf8JsonReader.GetString());
@@ -409,8 +404,7 @@ namespace EdGraph.Platform.Client.Model
                                 provider = new Option<ValidationsApiCoreV1Provider?>(ValidationsApiCoreV1ProviderValueConverter.FromStringOrDefault(providerRawValue));
                             break;
                         case "isDefault":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isDefault = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isDefault = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "metadataJson":
                             metadataJson = new Option<string?>(utf8JsonReader.GetString());

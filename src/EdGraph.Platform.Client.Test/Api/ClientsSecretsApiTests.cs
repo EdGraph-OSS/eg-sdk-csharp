@@ -62,7 +62,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<IMSAdminApiV1ClientsAddClientSecretRequest> iMSAdminApiV1ClientsAddClientSecretRequest = default!;
             var response = await _instance.AddClientSecretAsync(tenantId, instanceId, clientId, iMSAdminApiV1ClientsAddClientSecretRequest);
             var model = response.Unauthorized();
-            Assert.IsType<IMSAdminApiV1ClientsClientSecretAddedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<IMSAdminApiV1ClientsRegenerateClientSecretRequest> iMSAdminApiV1ClientsRegenerateClientSecretRequest = default!;
             var response = await _instance.RegenerateOneRosterApiClientSecretAsyncAsync(tenantId, instanceId, clientId, iMSAdminApiV1ClientsRegenerateClientSecretRequest);
             var model = response.Unauthorized();
-            Assert.IsType<IMSAdminApiV1ClientsClientSecretRegeneratedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

@@ -145,7 +145,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, EvaluationApiEvaluationsV1OrganizationIdentifierType evaluationApiEvaluationsV1OrganizationIdentifierType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(evaluationApiEvaluationsV1OrganizationIdentifierType.ToString());
+            writer.WriteStringValue(EvaluationApiEvaluationsV1OrganizationIdentifierTypeValueConverter.ToJsonValue(evaluationApiEvaluationsV1OrganizationIdentifierType).ToString());
         }
     }
 
@@ -176,14 +176,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the EvaluationApiEvaluationsV1OrganizationIdentifierType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="evaluationApiEvaluationsV1OrganizationIdentifierType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, EvaluationApiEvaluationsV1OrganizationIdentifierType? evaluationApiEvaluationsV1OrganizationIdentifierType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(evaluationApiEvaluationsV1OrganizationIdentifierType?.ToString() ?? "null");
+            writer.WriteStringValue(evaluationApiEvaluationsV1OrganizationIdentifierType.HasValue ? EvaluationApiEvaluationsV1OrganizationIdentifierTypeValueConverter.ToJsonValue(evaluationApiEvaluationsV1OrganizationIdentifierType.Value).ToString() : "null");
         }
     }
 }

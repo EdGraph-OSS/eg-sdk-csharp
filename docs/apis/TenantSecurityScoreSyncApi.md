@@ -16,65 +16,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Creates an Security Score Sync Job for a given tenant
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CreateSecurityScoreSyncJobExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new TenantSecurityScoreSyncApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var edGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncCreateSecurityScoreSyncJobRequest = new EdGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncCreateSecurityScoreSyncJobRequest(); // EdGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncCreateSecurityScoreSyncJobRequest |  (optional) 
-
-            try
-            {
-                // Creates an Security Score Sync Job for a given tenant
-                EdGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncJobCreatedResult result = apiInstance.CreateSecurityScoreSyncJob(tenantId, edGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncCreateSecurityScoreSyncJobRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TenantSecurityScoreSyncApi.CreateSecurityScoreSyncJob: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateSecurityScoreSyncJobWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates an Security Score Sync Job for a given tenant
-    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncJobCreatedResult> response = apiInstance.CreateSecurityScoreSyncJobWithHttpInfo(tenantId, edGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncCreateSecurityScoreSyncJobRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling TenantSecurityScoreSyncApi.CreateSecurityScoreSyncJobWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -114,60 +55,6 @@ catch (ApiException e)
 
 Executes an Security Score Sync Job
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class ExecuteSecurityScoreSyncJobExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new TenantSecurityScoreSyncApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-
-            try
-            {
-                // Executes an Security Score Sync Job
-                apiInstance.ExecuteSecurityScoreSyncJob(tenantId);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TenantSecurityScoreSyncApi.ExecuteSecurityScoreSyncJob: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the ExecuteSecurityScoreSyncJobWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Executes an Security Score Sync Job
-    apiInstance.ExecuteSecurityScoreSyncJobWithHttpInfo(tenantId);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling TenantSecurityScoreSyncApi.ExecuteSecurityScoreSyncJobWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -207,64 +94,6 @@ void (empty response body)
 
 Retrieves a Security Score Sync Job for a given tenant
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetSecurityScoreSyncJobExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new TenantSecurityScoreSyncApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-
-            try
-            {
-                // Retrieves a Security Score Sync Job for a given tenant
-                DataSyncApiSecurityScoreSyncV1SecurityScoreSyncProfile result = apiInstance.GetSecurityScoreSyncJob(tenantId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TenantSecurityScoreSyncApi.GetSecurityScoreSyncJob: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetSecurityScoreSyncJobWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a Security Score Sync Job for a given tenant
-    ApiResponse<DataSyncApiSecurityScoreSyncV1SecurityScoreSyncProfile> response = apiInstance.GetSecurityScoreSyncJobWithHttpInfo(tenantId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling TenantSecurityScoreSyncApi.GetSecurityScoreSyncJobWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -303,66 +132,6 @@ catch (ApiException e)
 
 Retrieves a Security Score Sync Job Execution for a given tenant
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetSecurityScoreSyncJobExecutionExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new TenantSecurityScoreSyncApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var jobId = "jobId_example";  // Guid | 
-            var jobExecutionId = "jobExecutionId_example";  // Guid | 
-
-            try
-            {
-                // Retrieves a Security Score Sync Job Execution for a given tenant
-                DataSyncApiSecurityScoreSyncV1SecurityScoreSyncExecutionProfile result = apiInstance.GetSecurityScoreSyncJobExecution(tenantId, jobId, jobExecutionId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TenantSecurityScoreSyncApi.GetSecurityScoreSyncJobExecution: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetSecurityScoreSyncJobExecutionWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a Security Score Sync Job Execution for a given tenant
-    ApiResponse<DataSyncApiSecurityScoreSyncV1SecurityScoreSyncExecutionProfile> response = apiInstance.GetSecurityScoreSyncJobExecutionWithHttpInfo(tenantId, jobId, jobExecutionId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling TenantSecurityScoreSyncApi.GetSecurityScoreSyncJobExecutionWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -403,61 +172,6 @@ catch (ApiException e)
 
 Updates a Security Score Sync for a given tenant
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateSecurityScoreSyncJobExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new TenantSecurityScoreSyncApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var edGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncUpdateSecurityScoreSyncJobRequest = new EdGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncUpdateSecurityScoreSyncJobRequest(); // EdGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncUpdateSecurityScoreSyncJobRequest |  (optional) 
-
-            try
-            {
-                // Updates a Security Score Sync for a given tenant
-                apiInstance.UpdateSecurityScoreSyncJob(tenantId, edGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncUpdateSecurityScoreSyncJobRequest);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TenantSecurityScoreSyncApi.UpdateSecurityScoreSyncJob: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateSecurityScoreSyncJobWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates a Security Score Sync for a given tenant
-    apiInstance.UpdateSecurityScoreSyncJobWithHttpInfo(tenantId, edGraphHttpAggregatorsTenantApiServicesSecurityScoreSyncUpdateSecurityScoreSyncJobRequest);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling TenantSecurityScoreSyncApi.UpdateSecurityScoreSyncJobWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

@@ -64,7 +64,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InstanceId
@@ -77,7 +77,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceId
         /// </summary>
         [JsonPropertyName("instanceId")]
-        public string? InstanceId { get { return this.InstanceIdOption; } set { this.InstanceIdOption = new(value); } }
+        public string? InstanceId { get { return this.InstanceIdOption.Value; } set { this.InstanceIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Year
@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Year
         /// </summary>
         [JsonPropertyName("year")]
-        public int? Year { get { return this.YearOption; } set { this.YearOption = new(value); } }
+        public int? Year { get { return this.YearOption.Value; } set { this.YearOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApplicationId
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApplicationId
         /// </summary>
         [JsonPropertyName("applicationId")]
-        public int? ApplicationId { get { return this.ApplicationIdOption; } set { this.ApplicationIdOption = new(value); } }
+        public int? ApplicationId { get { return this.ApplicationIdOption.Value; } set { this.ApplicationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Entries
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Entries
         /// </summary>
         [JsonPropertyName("entries")]
-        public List<EdfiAdminApiEdfiAdminV1SyncEntry>? Entries { get { return this.EntriesOption; } }
+        public List<EdfiAdminApiEdfiAdminV1SyncEntry>? Entries { get { return this.EntriesOption.Value; } }
 
         /// <summary>
         /// Used to track the state of AssignToExistingLeas
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AssignToExistingLeas
         /// </summary>
         [JsonPropertyName("assignToExistingLeas")]
-        public bool? AssignToExistingLeas { get { return this.AssignToExistingLeasOption; } set { this.AssignToExistingLeasOption = new(value); } }
+        public bool? AssignToExistingLeas { get { return this.AssignToExistingLeasOption.Value; } set { this.AssignToExistingLeasOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -211,20 +211,16 @@ namespace EdGraph.Platform.Client.Model
                             instanceId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "year":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                year = new Option<int?>(utf8JsonReader.GetInt32());
+                            year = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "applicationId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                applicationId = new Option<int?>(utf8JsonReader.GetInt32());
+                            applicationId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "entries":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                entries = new Option<List<EdfiAdminApiEdfiAdminV1SyncEntry>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1SyncEntry>>(ref utf8JsonReader, jsonSerializerOptions));
+                            entries = new Option<List<EdfiAdminApiEdfiAdminV1SyncEntry>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1SyncEntry>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "assignToExistingLeas":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                assignToExistingLeas = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            assignToExistingLeas = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

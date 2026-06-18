@@ -76,7 +76,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -89,7 +89,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DbEnvironmentId
@@ -102,7 +102,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DbEnvironmentId
         /// </summary>
         [JsonPropertyName("dbEnvironmentId")]
-        public string? DbEnvironmentId { get { return this.DbEnvironmentIdOption; } set { this.DbEnvironmentIdOption = new(value); } }
+        public string? DbEnvironmentId { get { return this.DbEnvironmentIdOption.Value; } set { this.DbEnvironmentIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CollectionId
@@ -115,7 +115,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CollectionId
         /// </summary>
         [JsonPropertyName("collectionId")]
-        public string? CollectionId { get { return this.CollectionIdOption; } set { this.CollectionIdOption = new(value); } }
+        public string? CollectionId { get { return this.CollectionIdOption.Value; } set { this.CollectionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ContainerId
@@ -128,7 +128,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ContainerId
         /// </summary>
         [JsonPropertyName("containerId")]
-        public string? ContainerId { get { return this.ContainerIdOption; } set { this.ContainerIdOption = new(value); } }
+        public string? ContainerId { get { return this.ContainerIdOption.Value; } set { this.ContainerIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RuleId
@@ -141,7 +141,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RuleId
         /// </summary>
         [JsonPropertyName("ruleId")]
-        public string? RuleId { get { return this.RuleIdOption; } set { this.RuleIdOption = new(value); } }
+        public string? RuleId { get { return this.RuleIdOption.Value; } set { this.RuleIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of JobId
@@ -154,7 +154,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets JobId
         /// </summary>
         [JsonPropertyName("jobId")]
-        public string? JobId { get { return this.JobIdOption; } set { this.JobIdOption = new(value); } }
+        public string? JobId { get { return this.JobIdOption.Value; } set { this.JobIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of JobExecutionId
@@ -167,7 +167,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets JobExecutionId
         /// </summary>
         [JsonPropertyName("jobExecutionId")]
-        public string? JobExecutionId { get { return this.JobExecutionIdOption; } set { this.JobExecutionIdOption = new(value); } }
+        public string? JobExecutionId { get { return this.JobExecutionIdOption.Value; } set { this.JobExecutionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RunId
@@ -180,7 +180,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RunId
         /// </summary>
         [JsonPropertyName("runId")]
-        public string? RunId { get { return this.RunIdOption; } set { this.RunIdOption = new(value); } }
+        public string? RunId { get { return this.RunIdOption.Value; } set { this.RunIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ExcludeFromPost
@@ -193,7 +193,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ExcludeFromPost
         /// </summary>
         [JsonPropertyName("excludeFromPost")]
-        public bool? ExcludeFromPost { get { return this.ExcludeFromPostOption; } set { this.ExcludeFromPostOption = new(value); } }
+        public bool? ExcludeFromPost { get { return this.ExcludeFromPostOption.Value; } set { this.ExcludeFromPostOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Details
@@ -206,7 +206,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Details
         /// </summary>
         [JsonPropertyName("details")]
-        public string? Details { get { return this.DetailsOption; } set { this.DetailsOption = new(value); } }
+        public string? Details { get { return this.DetailsOption.Value; } set { this.DetailsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DetailsSchema
@@ -219,7 +219,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DetailsSchema
         /// </summary>
         [JsonPropertyName("detailsSchema")]
-        public string? DetailsSchema { get { return this.DetailsSchemaOption; } set { this.DetailsSchemaOption = new(value); } }
+        public string? DetailsSchema { get { return this.DetailsSchemaOption.Value; } set { this.DetailsSchemaOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -334,8 +334,7 @@ namespace EdGraph.Platform.Client.Model
                             runId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "excludeFromPost":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                excludeFromPost = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            excludeFromPost = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "details":
                             details = new Option<string?>(utf8JsonReader.GetString());

@@ -54,7 +54,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Data
         /// </summary>
         [JsonPropertyName("data")]
-        public List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesApplicationTileResponseWithUserApplicationLicense>? Data { get { return this.DataOption; } set { this.DataOption = new(value); } }
+        public List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesApplicationTileResponseWithUserApplicationLicense>? Data { get { return this.DataOption.Value; } set { this.DataOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -120,8 +120,7 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "data":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                data = new Option<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesApplicationTileResponseWithUserApplicationLicense>?>(JsonSerializer.Deserialize<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesApplicationTileResponseWithUserApplicationLicense>>(ref utf8JsonReader, jsonSerializerOptions));
+                            data = new Option<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesApplicationTileResponseWithUserApplicationLicense>?>(JsonSerializer.Deserialize<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesApplicationTileResponseWithUserApplicationLicense>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

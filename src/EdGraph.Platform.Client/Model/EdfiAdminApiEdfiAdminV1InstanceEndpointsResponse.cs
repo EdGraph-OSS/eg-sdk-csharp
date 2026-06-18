@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AuthUrl
         /// </summary>
         [JsonPropertyName("authUrl")]
-        public string? AuthUrl { get { return this.AuthUrlOption; } set { this.AuthUrlOption = new(value); } }
+        public string? AuthUrl { get { return this.AuthUrlOption.Value; } set { this.AuthUrlOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ResourcesUrls
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ResourcesUrls
         /// </summary>
         [JsonPropertyName("resourcesUrls")]
-        public List<EdfiAdminApiEdfiAdminV1ApplicationEndpoint>? ResourcesUrls { get { return this.ResourcesUrlsOption; } }
+        public List<EdfiAdminApiEdfiAdminV1ApplicationEndpoint>? ResourcesUrls { get { return this.ResourcesUrlsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of CompositesUrls
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CompositesUrls
         /// </summary>
         [JsonPropertyName("compositesUrls")]
-        public List<EdfiAdminApiEdfiAdminV1ApplicationEndpoint>? CompositesUrls { get { return this.CompositesUrlsOption; } }
+        public List<EdfiAdminApiEdfiAdminV1ApplicationEndpoint>? CompositesUrls { get { return this.CompositesUrlsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of DiscoveryUrls
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DiscoveryUrls
         /// </summary>
         [JsonPropertyName("discoveryUrls")]
-        public List<EdfiAdminApiEdfiAdminV1ApplicationEndpoint>? DiscoveryUrls { get { return this.DiscoveryUrlsOption; } }
+        public List<EdfiAdminApiEdfiAdminV1ApplicationEndpoint>? DiscoveryUrls { get { return this.DiscoveryUrlsOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -174,16 +174,13 @@ namespace EdGraph.Platform.Client.Model
                             authUrl = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "resourcesUrls":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                resourcesUrls = new Option<List<EdfiAdminApiEdfiAdminV1ApplicationEndpoint>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1ApplicationEndpoint>>(ref utf8JsonReader, jsonSerializerOptions));
+                            resourcesUrls = new Option<List<EdfiAdminApiEdfiAdminV1ApplicationEndpoint>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1ApplicationEndpoint>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "compositesUrls":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                compositesUrls = new Option<List<EdfiAdminApiEdfiAdminV1ApplicationEndpoint>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1ApplicationEndpoint>>(ref utf8JsonReader, jsonSerializerOptions));
+                            compositesUrls = new Option<List<EdfiAdminApiEdfiAdminV1ApplicationEndpoint>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1ApplicationEndpoint>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "discoveryUrls":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                discoveryUrls = new Option<List<EdfiAdminApiEdfiAdminV1ApplicationEndpoint>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1ApplicationEndpoint>>(ref utf8JsonReader, jsonSerializerOptions));
+                            discoveryUrls = new Option<List<EdfiAdminApiEdfiAdminV1ApplicationEndpoint>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1ApplicationEndpoint>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

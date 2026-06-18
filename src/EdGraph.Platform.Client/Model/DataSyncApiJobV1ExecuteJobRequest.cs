@@ -64,7 +64,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DataRefreshType
         /// </summary>
         [JsonPropertyName("dataRefreshType")]
-        public DataSyncApiJobV1DataRefreshType? DataRefreshType { get { return this.DataRefreshTypeOption; } set { this.DataRefreshTypeOption = new(value); } }
+        public DataSyncApiJobV1DataRefreshType? DataRefreshType { get { return this.DataRefreshTypeOption.Value; } set { this.DataRefreshTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -77,7 +77,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of JobId
@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets JobId
         /// </summary>
         [JsonPropertyName("jobId")]
-        public string? JobId { get { return this.JobIdOption; } set { this.JobIdOption = new(value); } }
+        public string? JobId { get { return this.JobIdOption.Value; } set { this.JobIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ChildJobId
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ChildJobId
         /// </summary>
         [JsonPropertyName("childJobId")]
-        public string? ChildJobId { get { return this.ChildJobIdOption; } set { this.ChildJobIdOption = new(value); } }
+        public string? ChildJobId { get { return this.ChildJobIdOption.Value; } set { this.ChildJobIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DataRefreshSpecificDate
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DataRefreshSpecificDate
         /// </summary>
         [JsonPropertyName("dataRefreshSpecificDate")]
-        public string? DataRefreshSpecificDate { get { return this.DataRefreshSpecificDateOption; } set { this.DataRefreshSpecificDateOption = new(value); } }
+        public string? DataRefreshSpecificDate { get { return this.DataRefreshSpecificDateOption.Value; } set { this.DataRefreshSpecificDateOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of JobExecutionMetadata
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets JobExecutionMetadata
         /// </summary>
         [JsonPropertyName("jobExecutionMetadata")]
-        public List<DataSyncApiJobV1JobExecutionMetadata>? JobExecutionMetadata { get { return this.JobExecutionMetadataOption; } }
+        public List<DataSyncApiJobV1JobExecutionMetadata>? JobExecutionMetadata { get { return this.JobExecutionMetadataOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -222,8 +222,7 @@ namespace EdGraph.Platform.Client.Model
                             dataRefreshSpecificDate = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "jobExecutionMetadata":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                jobExecutionMetadata = new Option<List<DataSyncApiJobV1JobExecutionMetadata>?>(JsonSerializer.Deserialize<List<DataSyncApiJobV1JobExecutionMetadata>>(ref utf8JsonReader, jsonSerializerOptions));
+                            jobExecutionMetadata = new Option<List<DataSyncApiJobV1JobExecutionMetadata>?>(JsonSerializer.Deserialize<List<DataSyncApiJobV1JobExecutionMetadata>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

@@ -74,7 +74,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Tab
         /// </summary>
         [JsonPropertyName("tab")]
-        public string? Tab { get { return this.TabOption; } set { this.TabOption = new(value); } }
+        public string? Tab { get { return this.TabOption.Value; } set { this.TabOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Code
@@ -87,7 +87,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Code
         /// </summary>
         [JsonPropertyName("code")]
-        public string? Code { get { return this.CodeOption; } set { this.CodeOption = new(value); } }
+        public string? Code { get { return this.CodeOption.Value; } set { this.CodeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Label
@@ -100,7 +100,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Label
         /// </summary>
         [JsonPropertyName("label")]
-        public string? Label { get { return this.LabelOption; } set { this.LabelOption = new(value); } }
+        public string? Label { get { return this.LabelOption.Value; } set { this.LabelOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Validation
@@ -113,7 +113,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Validation
         /// </summary>
         [JsonPropertyName("validation")]
-        public string? Validation { get { return this.ValidationOption; } set { this.ValidationOption = new(value); } }
+        public string? Validation { get { return this.ValidationOption.Value; } set { this.ValidationOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Order
@@ -126,7 +126,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Order
         /// </summary>
         [JsonPropertyName("order")]
-        public string? Order { get { return this.OrderOption; } set { this.OrderOption = new(value); } }
+        public string? Order { get { return this.OrderOption.Value; } set { this.OrderOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Display
@@ -139,7 +139,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Display
         /// </summary>
         [JsonPropertyName("display")]
-        public bool? Display { get { return this.DisplayOption; } set { this.DisplayOption = new(value); } }
+        public bool? Display { get { return this.DisplayOption.Value; } set { this.DisplayOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DefaultValue
@@ -152,7 +152,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DefaultValue
         /// </summary>
         [JsonPropertyName("defaultValue")]
-        public string? DefaultValue { get { return this.DefaultValueOption; } set { this.DefaultValueOption = new(value); } }
+        public string? DefaultValue { get { return this.DefaultValueOption.Value; } set { this.DefaultValueOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Type
@@ -165,7 +165,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Type
         /// </summary>
         [JsonPropertyName("type")]
-        public string? Type { get { return this.TypeOption; } set { this.TypeOption = new(value); } }
+        public string? Type { get { return this.TypeOption.Value; } set { this.TypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Values
@@ -178,7 +178,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Values
         /// </summary>
         [JsonPropertyName("values")]
-        public string? Values { get { return this.ValuesOption; } set { this.ValuesOption = new(value); } }
+        public string? Values { get { return this.ValuesOption.Value; } set { this.ValuesOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Api
@@ -191,7 +191,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Api
         /// </summary>
         [JsonPropertyName("api")]
-        public string? Api { get { return this.ApiOption; } set { this.ApiOption = new(value); } }
+        public string? Api { get { return this.ApiOption.Value; } set { this.ApiOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsSecret
@@ -204,7 +204,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IsSecret
         /// </summary>
         [JsonPropertyName("isSecret")]
-        public bool? IsSecret { get { return this.IsSecretOption; } set { this.IsSecretOption = new(value); } }
+        public bool? IsSecret { get { return this.IsSecretOption.Value; } set { this.IsSecretOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -305,8 +305,7 @@ namespace EdGraph.Platform.Client.Model
                             order = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "display":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                display = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            display = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "defaultValue":
                             defaultValue = new Option<string?>(utf8JsonReader.GetString());
@@ -321,8 +320,7 @@ namespace EdGraph.Platform.Client.Model
                             api = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "isSecret":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isSecret = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isSecret = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

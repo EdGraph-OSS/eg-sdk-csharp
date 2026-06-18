@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets JobId
         /// </summary>
         [JsonPropertyName("jobId")]
-        public string? JobId { get { return this.JobIdOption; } set { this.JobIdOption = new(value); } }
+        public string? JobId { get { return this.JobIdOption.Value; } set { this.JobIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Name
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Name
         /// </summary>
         [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption; } set { this.NameOption = new(value); } }
+        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Status
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Status
         /// </summary>
         [JsonPropertyName("status")]
-        public string? Status { get { return this.StatusOption; } set { this.StatusOption = new(value); } }
+        public string? Status { get { return this.StatusOption.Value; } set { this.StatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LatestRun
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LatestRun
         /// </summary>
         [JsonPropertyName("latestRun")]
-        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiJobsLatestRunDto? LatestRun { get { return this.LatestRunOption; } set { this.LatestRunOption = new(value); } }
+        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiJobsLatestRunDto? LatestRun { get { return this.LatestRunOption.Value; } set { this.LatestRunOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -180,8 +180,7 @@ namespace EdGraph.Platform.Client.Model
                             status = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "latestRun":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                latestRun = new Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiJobsLatestRunDto?>(JsonSerializer.Deserialize<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiJobsLatestRunDto>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            latestRun = new Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiJobsLatestRunDto?>(JsonSerializer.Deserialize<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiJobsLatestRunDto>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

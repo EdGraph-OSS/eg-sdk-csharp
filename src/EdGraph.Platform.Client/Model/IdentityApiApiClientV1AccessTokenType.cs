@@ -131,7 +131,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, IdentityApiApiClientV1AccessTokenType identityApiApiClientV1AccessTokenType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(identityApiApiClientV1AccessTokenType.ToString());
+            writer.WriteStringValue(IdentityApiApiClientV1AccessTokenTypeValueConverter.ToJsonValue(identityApiApiClientV1AccessTokenType).ToString());
         }
     }
 
@@ -162,14 +162,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the IdentityApiApiClientV1AccessTokenType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="identityApiApiClientV1AccessTokenType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, IdentityApiApiClientV1AccessTokenType? identityApiApiClientV1AccessTokenType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(identityApiApiClientV1AccessTokenType?.ToString() ?? "null");
+            writer.WriteStringValue(identityApiApiClientV1AccessTokenType.HasValue ? IdentityApiApiClientV1AccessTokenTypeValueConverter.ToJsonValue(identityApiApiClientV1AccessTokenType.Value).ToString() : "null");
         }
     }
 }

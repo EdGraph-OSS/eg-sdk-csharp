@@ -12,7 +12,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Net;
+using System.IO;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using System.Net.Http;
@@ -43,10 +45,10 @@ namespace EdGraph.Platform.Client.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest"> (optional)</param>
+        /// <param name="edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ILoadOnboardingStepEdFiApiMetadataApiResponse"/>&gt;</returns>
-        Task<ILoadOnboardingStepEdFiApiMetadataApiResponse> LoadOnboardingStepEdFiApiMetadataAsync(string tenantId, Option<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest> edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<ILoadOnboardingStepEdFiApiMetadataApiResponse> LoadOnboardingStepEdFiApiMetadataAsync(string tenantId, Option<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest> edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Loads connection metadata.
@@ -55,10 +57,10 @@ namespace EdGraph.Platform.Client.Api
         /// 
         /// </remarks>
         /// <param name="tenantId"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest"> (optional)</param>
+        /// <param name="edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ILoadOnboardingStepEdFiApiMetadataApiResponse"/>?&gt;</returns>
-        Task<ILoadOnboardingStepEdFiApiMetadataApiResponse?> LoadOnboardingStepEdFiApiMetadataOrDefaultAsync(string tenantId, Option<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest> edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<ILoadOnboardingStepEdFiApiMetadataApiResponse?> LoadOnboardingStepEdFiApiMetadataOrDefaultAsync(string tenantId, Option<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest> edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Tests availability of provided connection metadata.
@@ -251,21 +253,21 @@ namespace EdGraph.Platform.Client.Api
             OauthTokenProvider = oauthTokenProvider;
         }
 
-        partial void FormatLoadOnboardingStepEdFiApiMetadata(ref string tenantId, Option<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest> edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest);
+        partial void FormatLoadOnboardingStepEdFiApiMetadata(ref string tenantId, Option<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest> edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest);
 
         /// <summary>
         /// Validates the request parameters
         /// </summary>
         /// <param name="tenantId"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest"></param>
         /// <returns></returns>
-        private void ValidateLoadOnboardingStepEdFiApiMetadata(string tenantId, Option<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest> edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest)
+        private void ValidateLoadOnboardingStepEdFiApiMetadata(string tenantId, Option<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest> edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest)
         {
             if (tenantId == null)
                 throw new ArgumentNullException(nameof(tenantId));
 
-            if (edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest.IsSet && edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest.Value == null)
-                throw new ArgumentNullException(nameof(edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest));
+            if (edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest.IsSet && edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest.Value == null)
+                throw new ArgumentNullException(nameof(edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest));
         }
 
         /// <summary>
@@ -273,13 +275,13 @@ namespace EdGraph.Platform.Client.Api
         /// </summary>
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest"></param>
-        private void AfterLoadOnboardingStepEdFiApiMetadataDefaultImplementation(ILoadOnboardingStepEdFiApiMetadataApiResponse apiResponseLocalVar, string tenantId, Option<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest> edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest)
+        /// <param name="edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest"></param>
+        private void AfterLoadOnboardingStepEdFiApiMetadataDefaultImplementation(ILoadOnboardingStepEdFiApiMetadataApiResponse apiResponseLocalVar, string tenantId, Option<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest> edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest)
         {
             bool suppressDefaultLog = false;
-            AfterLoadOnboardingStepEdFiApiMetadata(ref suppressDefaultLog, apiResponseLocalVar, tenantId, edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest);
+            AfterLoadOnboardingStepEdFiApiMetadata(ref suppressDefaultLog, apiResponseLocalVar, tenantId, edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -288,48 +290,48 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="suppressDefaultLog"></param>
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest"></param>
-        partial void AfterLoadOnboardingStepEdFiApiMetadata(ref bool suppressDefaultLog, ILoadOnboardingStepEdFiApiMetadataApiResponse apiResponseLocalVar, string tenantId, Option<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest> edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest);
+        /// <param name="edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest"></param>
+        partial void AfterLoadOnboardingStepEdFiApiMetadata(ref bool suppressDefaultLog, ILoadOnboardingStepEdFiApiMetadataApiResponse apiResponseLocalVar, string tenantId, Option<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest> edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
         /// </summary>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest"></param>
-        private void OnErrorLoadOnboardingStepEdFiApiMetadataDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, Option<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest> edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest)
+        /// <param name="edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest"></param>
+        private void OnErrorLoadOnboardingStepEdFiApiMetadataDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest> edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest)
         {
-            bool suppressDefaultLog = false;
-            OnErrorLoadOnboardingStepEdFiApiMetadata(ref suppressDefaultLog, exception, pathFormat, path, tenantId, edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest);
-            if (!suppressDefaultLog)
-                Logger.LogError(exception, "An error occurred while sending the request to the server.");
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorLoadOnboardingStepEdFiApiMetadata(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
 
         /// <summary>
         /// A partial method that gives developers a way to provide customized exception handling
         /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest"></param>
-        partial void OnErrorLoadOnboardingStepEdFiApiMetadata(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, Option<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest> edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest);
+        /// <param name="edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest"></param>
+        partial void OnErrorLoadOnboardingStepEdFiApiMetadata(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest> edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest);
 
         /// <summary>
         /// Loads connection metadata. 
         /// </summary>
         /// <param name="tenantId"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest"> (optional)</param>
+        /// <param name="edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ILoadOnboardingStepEdFiApiMetadataApiResponse"/>&gt;</returns>
-        public async Task<ILoadOnboardingStepEdFiApiMetadataApiResponse?> LoadOnboardingStepEdFiApiMetadataOrDefaultAsync(string tenantId, Option<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest> edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<ILoadOnboardingStepEdFiApiMetadataApiResponse?> LoadOnboardingStepEdFiApiMetadataOrDefaultAsync(string tenantId, Option<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest> edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest = default, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await LoadOnboardingStepEdFiApiMetadataAsync(tenantId, edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest, cancellationToken).ConfigureAwait(false);
+                return await LoadOnboardingStepEdFiApiMetadataAsync(tenantId, edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -342,31 +344,35 @@ namespace EdGraph.Platform.Client.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest"> (optional)</param>
+        /// <param name="edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ILoadOnboardingStepEdFiApiMetadataApiResponse"/>&gt;</returns>
-        public async Task<ILoadOnboardingStepEdFiApiMetadataApiResponse> LoadOnboardingStepEdFiApiMetadataAsync(string tenantId, Option<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest> edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<ILoadOnboardingStepEdFiApiMetadataApiResponse> LoadOnboardingStepEdFiApiMetadataAsync(string tenantId, Option<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest> edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest = default, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
             try
             {
-                ValidateLoadOnboardingStepEdFiApiMetadata(tenantId, edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest);
+                ValidateLoadOnboardingStepEdFiApiMetadata(tenantId, edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest);
 
-                FormatLoadOnboardingStepEdFiApiMetadata(ref tenantId, edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest);
+                FormatLoadOnboardingStepEdFiApiMetadata(ref tenantId, edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/onboardingsteps/edfi-api-metadata";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/onboardingsteps/edfi-api-metadata"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/onboardingsteps/edfi-api-metadata");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
 
-                    if (edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest.IsSet)
-                        httpRequestMessageLocalVar.Content = (edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest.Value as object) is System.IO.Stream stream
-                            ? httpRequestMessageLocalVar.Content = new StreamContent(stream)
-                            : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest.Value, _jsonSerializerOptions));
+                    if (edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest.IsSet)
+                    {
+                      httpRequestMessageLocalVar.Content = (edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest.Value as object) is EdGraph.Platform.Client.Client.FileParameter fileParameterLocalVar
+                        ? httpRequestMessageLocalVar.Content = new StreamContent(fileParameterLocalVar.Content)
+                        : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest.Value, _jsonSerializerOptions));
+                    }
 
                     List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
                     httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
@@ -393,10 +399,10 @@ namespace EdGraph.Platform.Client.Api
                         "application/json"
                     };
 
-                    string? acceptLocalVar = ClientUtils.SelectHeaderAccept(acceptLocalVars);
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
 
-                    if (acceptLocalVar != null)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptLocalVar));
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
 
                     httpRequestMessageLocalVar.Method = HttpMethod.Post;
 
@@ -404,13 +410,19 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<LoadOnboardingStepEdFiApiMetadataApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<LoadOnboardingStepEdFiApiMetadataApiResponse>();
+                        LoadOnboardingStepEdFiApiMetadataApiResponse apiResponseLocalVar;
 
-                        LoadOnboardingStepEdFiApiMetadataApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/onboardingsteps/edfi-api-metadata", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/onboardingsteps/edfi-api-metadata", requestedAtLocalVar, _jsonSerializerOptions);
 
-                        AfterLoadOnboardingStepEdFiApiMetadataDefaultImplementation(apiResponseLocalVar, tenantId, edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest);
+                                break;
+                            }
+                        }
+
+                        AfterLoadOnboardingStepEdFiApiMetadataDefaultImplementation(apiResponseLocalVar, tenantId, edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest);
 
                         Events.ExecuteOnLoadOnboardingStepEdFiApiMetadata(apiResponseLocalVar);
 
@@ -424,7 +436,7 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorLoadOnboardingStepEdFiApiMetadataDefaultImplementation(e, "/tenants/{tenantId}/onboardingsteps/edfi-api-metadata", uriBuilderLocalVar.Path, tenantId, edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest);
+                OnErrorLoadOnboardingStepEdFiApiMetadataDefaultImplementation(e, "/tenants/{tenantId}/onboardingsteps/edfi-api-metadata", uriBuilderLocalVar.Path, tenantId, edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest);
                 Events.ExecuteOnErrorLoadOnboardingStepEdFiApiMetadata(e);
                 throw;
             }
@@ -451,6 +463,22 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public LoadOnboardingStepEdFiApiMetadataApiResponse(ILogger<LoadOnboardingStepEdFiApiMetadataApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="LoadOnboardingStepEdFiApiMetadataApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public LoadOnboardingStepEdFiApiMetadataApiResponse(ILogger<LoadOnboardingStepEdFiApiMetadataApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -683,7 +711,7 @@ namespace EdGraph.Platform.Client.Api
             bool suppressDefaultLog = false;
             AfterTestOnboardingStepConnection(ref suppressDefaultLog, apiResponseLocalVar, tenantId, body);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -698,29 +726,29 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
         /// </summary>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="body"></param>
-        private void OnErrorTestOnboardingStepConnectionDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, Option<Object?> body)
+        private void OnErrorTestOnboardingStepConnectionDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<Object?> body)
         {
-            bool suppressDefaultLog = false;
-            OnErrorTestOnboardingStepConnection(ref suppressDefaultLog, exception, pathFormat, path, tenantId, body);
-            if (!suppressDefaultLog)
-                Logger.LogError(exception, "An error occurred while sending the request to the server.");
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorTestOnboardingStepConnection(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, body);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
 
         /// <summary>
         /// A partial method that gives developers a way to provide customized exception handling
         /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="body"></param>
-        partial void OnErrorTestOnboardingStepConnection(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, Option<Object?> body);
+        partial void OnErrorTestOnboardingStepConnection(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<Object?> body);
 
         /// <summary>
         /// Tests availability of provided connection metadata. 
@@ -764,13 +792,17 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/onboardingsteps/testconnection";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/onboardingsteps/testconnection"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/onboardingsteps/testconnection");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
 
                     if (body.IsSet)
-                        httpRequestMessageLocalVar.Content = (body.Value as object) is System.IO.Stream stream
-                            ? httpRequestMessageLocalVar.Content = new StreamContent(stream)
-                            : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(body.Value, _jsonSerializerOptions));
+                    {
+                      httpRequestMessageLocalVar.Content = (body.Value as object) is EdGraph.Platform.Client.Client.FileParameter fileParameterLocalVar
+                        ? httpRequestMessageLocalVar.Content = new StreamContent(fileParameterLocalVar.Content)
+                        : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(body.Value, _jsonSerializerOptions));
+                    }
 
                     List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
                     httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
@@ -797,10 +829,10 @@ namespace EdGraph.Platform.Client.Api
                         "application/json"
                     };
 
-                    string? acceptLocalVar = ClientUtils.SelectHeaderAccept(acceptLocalVars);
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
 
-                    if (acceptLocalVar != null)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptLocalVar));
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
 
                     httpRequestMessageLocalVar.Method = HttpMethod.Post;
 
@@ -808,11 +840,17 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<TestOnboardingStepConnectionApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<TestOnboardingStepConnectionApiResponse>();
+                        TestOnboardingStepConnectionApiResponse apiResponseLocalVar;
 
-                        TestOnboardingStepConnectionApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/onboardingsteps/testconnection", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/onboardingsteps/testconnection", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterTestOnboardingStepConnectionDefaultImplementation(apiResponseLocalVar, tenantId, body);
 
@@ -855,6 +893,22 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public TestOnboardingStepConnectionApiResponse(ILogger<TestOnboardingStepConnectionApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="TestOnboardingStepConnectionApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public TestOnboardingStepConnectionApiResponse(ILogger<TestOnboardingStepConnectionApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);

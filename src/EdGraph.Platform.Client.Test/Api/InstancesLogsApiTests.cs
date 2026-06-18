@@ -67,7 +67,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<bool> order = default!;
             var response = await _instance.GetInstanceHttpLogsAsync(tenantId, instanceId, year, pageSize, pageIndex, from, to, field, order);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesEdFiAdminUseCasesInstanceLogPaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

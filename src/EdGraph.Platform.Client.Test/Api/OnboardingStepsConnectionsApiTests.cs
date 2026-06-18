@@ -61,7 +61,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<Object?> body = default!;
             var response = await _instance.CreateOnboardingStepConnectionAsync(tenantId, stepNumber, body);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsConnectionCreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string connectionId = default!;
             var response = await _instance.GetOnboardingStepConnectionByIdAsync(tenantId, stepNumber, connectionId);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsConnectionResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<Object?> body = default!;
             var response = await _instance.UpdateOnboardingStepConnectionAsync(tenantId, stepNumber, connectionId, body);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsConnectionUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

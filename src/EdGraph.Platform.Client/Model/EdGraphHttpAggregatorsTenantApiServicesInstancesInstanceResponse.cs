@@ -68,7 +68,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceId
         /// </summary>
         [JsonPropertyName("instanceId")]
-        public string? InstanceId { get { return this.InstanceIdOption; } set { this.InstanceIdOption = new(value); } }
+        public string? InstanceId { get { return this.InstanceIdOption.Value; } set { this.InstanceIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InstanceName
@@ -81,7 +81,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceName
         /// </summary>
         [JsonPropertyName("instanceName")]
-        public string? InstanceName { get { return this.InstanceNameOption; } set { this.InstanceNameOption = new(value); } }
+        public string? InstanceName { get { return this.InstanceNameOption.Value; } set { this.InstanceNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InstanceType
@@ -94,7 +94,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceType
         /// </summary>
         [JsonPropertyName("instanceType")]
-        public string? InstanceType { get { return this.InstanceTypeOption; } set { this.InstanceTypeOption = new(value); } }
+        public string? InstanceType { get { return this.InstanceTypeOption.Value; } set { this.InstanceTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ConnectionType
@@ -107,7 +107,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ConnectionType
         /// </summary>
         [JsonPropertyName("connectionType")]
-        public string? ConnectionType { get { return this.ConnectionTypeOption; } set { this.ConnectionTypeOption = new(value); } }
+        public string? ConnectionType { get { return this.ConnectionTypeOption.Value; } set { this.ConnectionTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Provider
@@ -120,7 +120,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Provider
         /// </summary>
         [JsonPropertyName("provider")]
-        public string? Provider { get { return this.ProviderOption; } set { this.ProviderOption = new(value); } }
+        public string? Provider { get { return this.ProviderOption.Value; } set { this.ProviderOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SchoolYears
@@ -133,7 +133,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SchoolYears
         /// </summary>
         [JsonPropertyName("schoolYears")]
-        public List<int>? SchoolYears { get { return this.SchoolYearsOption; } set { this.SchoolYearsOption = new(value); } }
+        public List<int>? SchoolYears { get { return this.SchoolYearsOption.Value; } set { this.SchoolYearsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -146,7 +146,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsDefault
@@ -159,7 +159,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IsDefault
         /// </summary>
         [JsonPropertyName("isDefault")]
-        public bool? IsDefault { get { return this.IsDefaultOption; } set { this.IsDefaultOption = new(value); } }
+        public bool? IsDefault { get { return this.IsDefaultOption.Value; } set { this.IsDefaultOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -254,15 +254,13 @@ namespace EdGraph.Platform.Client.Model
                             provider = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "schoolYears":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                schoolYears = new Option<List<int>?>(JsonSerializer.Deserialize<List<int>>(ref utf8JsonReader, jsonSerializerOptions));
+                            schoolYears = new Option<List<int>?>(JsonSerializer.Deserialize<List<int>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "tenantId":
                             tenantId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "isDefault":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isDefault = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isDefault = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

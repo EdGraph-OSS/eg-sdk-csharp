@@ -61,7 +61,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<FormApiSubmissionsV1CreateSubmissionRequest> formApiSubmissionsV1CreateSubmissionRequest = default!;
             var response = await _instance.CreateSubmissionAsync(tenantId, formId, formApiSubmissionsV1CreateSubmissionRequest);
             var model = response.Unauthorized();
-            Assert.IsType<FormApiSubmissionsV1SubmissionCreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid submissionId = default!;
             var response = await _instance.DeleteSubmissionAsync(tenantId, formId, submissionId);
             var model = response.Unauthorized();
-            Assert.IsType<FormApiSubmissionsV1SubmissionDeletedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<FormApiSubmissionsV1ExportType> type = default!;
             var response = await _instance.ExportSubmissionsAsync(tenantId, formId, type);
             var model = response.Unauthorized();
-            Assert.IsType<FormApiSubmissionsV1SubmissionsExportedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid submissionId = default!;
             var response = await _instance.GetSubmissionAsync(tenantId, formId, submissionId);
             var model = response.Unauthorized();
-            Assert.IsType<FormApiSubmissionsV1SubmissionResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.SearchSubmissionsAsync(tenantId, formId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<FormApiSubmissionsV1SubmissionResponsePaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<FormApiSubmissionsV1UpdateSubmissionRequest> formApiSubmissionsV1UpdateSubmissionRequest = default!;
             var response = await _instance.UpdateSubmissionAsync(tenantId, formId, submissionId, formApiSubmissionsV1UpdateSubmissionRequest);
             var model = response.Unauthorized();
-            Assert.IsType<FormApiSubmissionsV1SubmissionUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

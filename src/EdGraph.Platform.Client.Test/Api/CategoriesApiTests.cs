@@ -62,7 +62,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<ValidationsApiContainersV1AddDataStewardRequest> validationsApiContainersV1AddDataStewardRequest = default!;
             var response = await _instance.AddCategoryDataStewardAsync(tenantId, categoryId, reportingPeriodId, validationsApiContainersV1AddDataStewardRequest);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiContainersV1DataStewardAddedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<ValidationsApiContainersV1AddDataStewardBulkRequest> validationsApiContainersV1AddDataStewardBulkRequest = default!;
             var response = await _instance.AddCategoryDataStewardBulkAsync(tenantId, reportingPeriodId, validationsApiContainersV1AddDataStewardBulkRequest);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiContainersV1DataStewardAddedBulkResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid categoryId = default!;
             var response = await _instance.CertifyCategoryAsync(tenantId, categoryId);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiContainersV1CertificationStatusSetResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid reportingPeriodId = default!;
             var response = await _instance.GetDataUsersBulkAsync(tenantId, reportingPeriodId);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiContainersV1CategoriesWithDataUsersResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> orderBy = default!;
             var response = await _instance.GetStateReportingCategoriesAsync(tenantId, pageIndex, pageSize, filter, orderBy);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiContainersV1PaginatedContainers>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -130,7 +130,9 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid tenantId = default!;
             Guid reportingPeriodId = default!;
             Guid categoryId = default!;
-            await _instance.RemoveCategoryDataOwnerAsync(tenantId, reportingPeriodId, categoryId);
+            var response = await _instance.RemoveCategoryDataOwnerAsync(tenantId, reportingPeriodId, categoryId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -143,7 +145,9 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid categoryId = default!;
             Guid reportingPeriodId = default!;
             string email = default!;
-            await _instance.RemoveCategoryDataStewardAsync(tenantId, categoryId, reportingPeriodId, email);
+            var response = await _instance.RemoveCategoryDataStewardAsync(tenantId, categoryId, reportingPeriodId, email);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -157,7 +161,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid categoryId = default!;
             var response = await _instance.RequestCategoryCertificationReminderAsync(tenantId, reportingPeriodId, categoryId);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiContainersV1CertificationReminderRequestedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -172,7 +176,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<ValidationsApiContainersV1SetDataOwnerRequest> validationsApiContainersV1SetDataOwnerRequest = default!;
             var response = await _instance.SetCategoryDataOwnerAsync(tenantId, categoryId, reportingPeriodId, validationsApiContainersV1SetDataOwnerRequest);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiContainersV1DataOwnerSetResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -186,7 +190,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<ValidationsApiContainersV1SetDataOwnerBulkRequest> validationsApiContainersV1SetDataOwnerBulkRequest = default!;
             var response = await _instance.SetCategoryDataOwnerBulkAsync(tenantId, reportingPeriodId, validationsApiContainersV1SetDataOwnerBulkRequest);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiContainersV1DataOwnerSetBulkResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -204,7 +208,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> fileName = default!;
             var response = await _instance.UploadStateReportingCategoryAsync(tenantId, contentType, contentDisposition, headers, length, name, fileName);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiContainersV1CollectionUploadedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -223,7 +227,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> fileName = default!;
             var response = await _instance.UploadStateReportingPeriodsFromCategoryJsonAsync(tenantId, environmentId, contentType, contentDisposition, headers, length, name, fileName);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiContainersV1CollectionUploadedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

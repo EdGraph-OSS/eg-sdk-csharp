@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RunId
         /// </summary>
         [JsonPropertyName("runId")]
-        public string? RunId { get { return this.RunIdOption; } set { this.RunIdOption = new(value); } }
+        public string? RunId { get { return this.RunIdOption.Value; } set { this.RunIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of StartDateTime
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets StartDateTime
         /// </summary>
         [JsonPropertyName("startDateTime")]
-        public string? StartDateTime { get { return this.StartDateTimeOption; } set { this.StartDateTimeOption = new(value); } }
+        public string? StartDateTime { get { return this.StartDateTimeOption.Value; } set { this.StartDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EndDateTime
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EndDateTime
         /// </summary>
         [JsonPropertyName("endDateTime")]
-        public string? EndDateTime { get { return this.EndDateTimeOption; } set { this.EndDateTimeOption = new(value); } }
+        public string? EndDateTime { get { return this.EndDateTimeOption.Value; } set { this.EndDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Status
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Status
         /// </summary>
         [JsonPropertyName("status")]
-        public string? Status { get { return this.StatusOption; } set { this.StatusOption = new(value); } }
+        public string? Status { get { return this.StatusOption.Value; } set { this.StatusOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

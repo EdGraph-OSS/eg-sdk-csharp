@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets PageIndex
         /// </summary>
         [JsonPropertyName("pageIndex")]
-        public int? PageIndex { get { return this.PageIndexOption; } set { this.PageIndexOption = new(value); } }
+        public int? PageIndex { get { return this.PageIndexOption.Value; } set { this.PageIndexOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of PageSize
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets PageSize
         /// </summary>
         [JsonPropertyName("pageSize")]
-        public int? PageSize { get { return this.PageSizeOption; } set { this.PageSizeOption = new(value); } }
+        public int? PageSize { get { return this.PageSizeOption.Value; } set { this.PageSizeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Count
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Count
         /// </summary>
         [JsonPropertyName("count")]
-        public long? Count { get { return this.CountOption; } set { this.CountOption = new(value); } }
+        public long? Count { get { return this.CountOption.Value; } set { this.CountOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Data
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Data
         /// </summary>
         [JsonPropertyName("data")]
-        public List<EdfiAdminApiEdfiAdminV1EdFiOdsBackupDescriptor>? Data { get { return this.DataOption; } }
+        public List<EdfiAdminApiEdfiAdminV1EdFiOdsBackupDescriptor>? Data { get { return this.DataOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -171,20 +171,16 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "pageIndex":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pageIndex = new Option<int?>(utf8JsonReader.GetInt32());
+                            pageIndex = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "pageSize":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                pageSize = new Option<int?>(utf8JsonReader.GetInt32());
+                            pageSize = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "count":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                count = new Option<long?>(utf8JsonReader.GetInt64());
+                            count = new Option<long?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (long?)null : utf8JsonReader.GetInt64());
                             break;
                         case "data":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                data = new Option<List<EdfiAdminApiEdfiAdminV1EdFiOdsBackupDescriptor>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1EdFiOdsBackupDescriptor>>(ref utf8JsonReader, jsonSerializerOptions));
+                            data = new Option<List<EdfiAdminApiEdfiAdminV1EdFiOdsBackupDescriptor>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1EdFiOdsBackupDescriptor>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

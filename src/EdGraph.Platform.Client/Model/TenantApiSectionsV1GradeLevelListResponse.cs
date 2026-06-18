@@ -54,7 +54,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets GradeLevelDescriptor
         /// </summary>
         [JsonPropertyName("gradeLevelDescriptor")]
-        public string? GradeLevelDescriptor { get { return this.GradeLevelDescriptorOption; } set { this.GradeLevelDescriptorOption = new(value); } }
+        public string? GradeLevelDescriptor { get { return this.GradeLevelDescriptorOption.Value; } set { this.GradeLevelDescriptorOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

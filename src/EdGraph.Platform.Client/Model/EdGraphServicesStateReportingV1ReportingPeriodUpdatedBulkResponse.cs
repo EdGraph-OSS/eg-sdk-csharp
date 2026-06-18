@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EnvironmentId
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EnvironmentId
         /// </summary>
         [JsonPropertyName("environmentId")]
-        public string? EnvironmentId { get { return this.EnvironmentIdOption; } set { this.EnvironmentIdOption = new(value); } }
+        public string? EnvironmentId { get { return this.EnvironmentIdOption.Value; } set { this.EnvironmentIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ReportingPeriodIds
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ReportingPeriodIds
         /// </summary>
         [JsonPropertyName("reportingPeriodIds")]
-        public List<string>? ReportingPeriodIds { get { return this.ReportingPeriodIdsOption; } }
+        public List<string>? ReportingPeriodIds { get { return this.ReportingPeriodIdsOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -160,8 +160,7 @@ namespace EdGraph.Platform.Client.Model
                             environmentId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "reportingPeriodIds":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                reportingPeriodIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            reportingPeriodIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

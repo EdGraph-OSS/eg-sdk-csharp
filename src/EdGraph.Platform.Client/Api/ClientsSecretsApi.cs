@@ -12,7 +12,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Net;
+using System.IO;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using System.Net.Http;
@@ -297,7 +299,7 @@ namespace EdGraph.Platform.Client.Api
             bool suppressDefaultLog = false;
             AfterAddClientSecret(ref suppressDefaultLog, apiResponseLocalVar, tenantId, instanceId, clientId, iMSAdminApiV1ClientsAddClientSecretRequest);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -314,33 +316,33 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
         /// </summary>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="clientId"></param>
         /// <param name="iMSAdminApiV1ClientsAddClientSecretRequest"></param>
-        private void OnErrorAddClientSecretDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, string instanceId, string clientId, Option<IMSAdminApiV1ClientsAddClientSecretRequest> iMSAdminApiV1ClientsAddClientSecretRequest)
+        private void OnErrorAddClientSecretDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, string clientId, Option<IMSAdminApiV1ClientsAddClientSecretRequest> iMSAdminApiV1ClientsAddClientSecretRequest)
         {
-            bool suppressDefaultLog = false;
-            OnErrorAddClientSecret(ref suppressDefaultLog, exception, pathFormat, path, tenantId, instanceId, clientId, iMSAdminApiV1ClientsAddClientSecretRequest);
-            if (!suppressDefaultLog)
-                Logger.LogError(exception, "An error occurred while sending the request to the server.");
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorAddClientSecret(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, instanceId, clientId, iMSAdminApiV1ClientsAddClientSecretRequest);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
 
         /// <summary>
         /// A partial method that gives developers a way to provide customized exception handling
         /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="clientId"></param>
         /// <param name="iMSAdminApiV1ClientsAddClientSecretRequest"></param>
-        partial void OnErrorAddClientSecret(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, string instanceId, string clientId, Option<IMSAdminApiV1ClientsAddClientSecretRequest> iMSAdminApiV1ClientsAddClientSecretRequest);
+        partial void OnErrorAddClientSecret(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, string clientId, Option<IMSAdminApiV1ClientsAddClientSecretRequest> iMSAdminApiV1ClientsAddClientSecretRequest);
 
         /// <summary>
         /// Creates a new secret for an OpenId client 
@@ -388,15 +390,19 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/oneroster/instances/{instanceId}/clients/{clientId}/secrets";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/oneroster/instances/{instanceId}/clients/{clientId}/secrets"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/oneroster/instances/{instanceId}/clients/{clientId}/secrets");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BinstanceId%7D", Uri.EscapeDataString(instanceId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BclientId%7D", Uri.EscapeDataString(clientId.ToString()));
 
                     if (iMSAdminApiV1ClientsAddClientSecretRequest.IsSet)
-                        httpRequestMessageLocalVar.Content = (iMSAdminApiV1ClientsAddClientSecretRequest.Value as object) is System.IO.Stream stream
-                            ? httpRequestMessageLocalVar.Content = new StreamContent(stream)
-                            : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(iMSAdminApiV1ClientsAddClientSecretRequest.Value, _jsonSerializerOptions));
+                    {
+                      httpRequestMessageLocalVar.Content = (iMSAdminApiV1ClientsAddClientSecretRequest.Value as object) is EdGraph.Platform.Client.Client.FileParameter fileParameterLocalVar
+                        ? httpRequestMessageLocalVar.Content = new StreamContent(fileParameterLocalVar.Content)
+                        : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(iMSAdminApiV1ClientsAddClientSecretRequest.Value, _jsonSerializerOptions));
+                    }
 
                     List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
                     httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
@@ -423,10 +429,10 @@ namespace EdGraph.Platform.Client.Api
                         "application/json"
                     };
 
-                    string? acceptLocalVar = ClientUtils.SelectHeaderAccept(acceptLocalVars);
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
 
-                    if (acceptLocalVar != null)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptLocalVar));
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
 
                     httpRequestMessageLocalVar.Method = HttpMethod.Post;
 
@@ -434,11 +440,17 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<AddClientSecretApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<AddClientSecretApiResponse>();
+                        AddClientSecretApiResponse apiResponseLocalVar;
 
-                        AddClientSecretApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/oneroster/instances/{instanceId}/clients/{clientId}/secrets", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/oneroster/instances/{instanceId}/clients/{clientId}/secrets", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterAddClientSecretDefaultImplementation(apiResponseLocalVar, tenantId, instanceId, clientId, iMSAdminApiV1ClientsAddClientSecretRequest);
 
@@ -481,6 +493,22 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public AddClientSecretApiResponse(ILogger<AddClientSecretApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="AddClientSecretApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public AddClientSecretApiResponse(ILogger<AddClientSecretApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -727,7 +755,7 @@ namespace EdGraph.Platform.Client.Api
             bool suppressDefaultLog = false;
             AfterRegenerateOneRosterApiClientSecretAsync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, instanceId, clientId, iMSAdminApiV1ClientsRegenerateClientSecretRequest);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -744,33 +772,33 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
         /// </summary>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="clientId"></param>
         /// <param name="iMSAdminApiV1ClientsRegenerateClientSecretRequest"></param>
-        private void OnErrorRegenerateOneRosterApiClientSecretAsyncDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, string instanceId, string clientId, Option<IMSAdminApiV1ClientsRegenerateClientSecretRequest> iMSAdminApiV1ClientsRegenerateClientSecretRequest)
+        private void OnErrorRegenerateOneRosterApiClientSecretAsyncDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, string clientId, Option<IMSAdminApiV1ClientsRegenerateClientSecretRequest> iMSAdminApiV1ClientsRegenerateClientSecretRequest)
         {
-            bool suppressDefaultLog = false;
-            OnErrorRegenerateOneRosterApiClientSecretAsync(ref suppressDefaultLog, exception, pathFormat, path, tenantId, instanceId, clientId, iMSAdminApiV1ClientsRegenerateClientSecretRequest);
-            if (!suppressDefaultLog)
-                Logger.LogError(exception, "An error occurred while sending the request to the server.");
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorRegenerateOneRosterApiClientSecretAsync(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, instanceId, clientId, iMSAdminApiV1ClientsRegenerateClientSecretRequest);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
 
         /// <summary>
         /// A partial method that gives developers a way to provide customized exception handling
         /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="clientId"></param>
         /// <param name="iMSAdminApiV1ClientsRegenerateClientSecretRequest"></param>
-        partial void OnErrorRegenerateOneRosterApiClientSecretAsync(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, string instanceId, string clientId, Option<IMSAdminApiV1ClientsRegenerateClientSecretRequest> iMSAdminApiV1ClientsRegenerateClientSecretRequest);
+        partial void OnErrorRegenerateOneRosterApiClientSecretAsync(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, string clientId, Option<IMSAdminApiV1ClientsRegenerateClientSecretRequest> iMSAdminApiV1ClientsRegenerateClientSecretRequest);
 
         /// <summary>
         /// Regenerate Client Secret 
@@ -818,15 +846,19 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/oneroster/instances/{instanceId}/clients/{clientId}/regeneratesecret";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/oneroster/instances/{instanceId}/clients/{clientId}/regeneratesecret"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/oneroster/instances/{instanceId}/clients/{clientId}/regeneratesecret");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BinstanceId%7D", Uri.EscapeDataString(instanceId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BclientId%7D", Uri.EscapeDataString(clientId.ToString()));
 
                     if (iMSAdminApiV1ClientsRegenerateClientSecretRequest.IsSet)
-                        httpRequestMessageLocalVar.Content = (iMSAdminApiV1ClientsRegenerateClientSecretRequest.Value as object) is System.IO.Stream stream
-                            ? httpRequestMessageLocalVar.Content = new StreamContent(stream)
-                            : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(iMSAdminApiV1ClientsRegenerateClientSecretRequest.Value, _jsonSerializerOptions));
+                    {
+                      httpRequestMessageLocalVar.Content = (iMSAdminApiV1ClientsRegenerateClientSecretRequest.Value as object) is EdGraph.Platform.Client.Client.FileParameter fileParameterLocalVar
+                        ? httpRequestMessageLocalVar.Content = new StreamContent(fileParameterLocalVar.Content)
+                        : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(iMSAdminApiV1ClientsRegenerateClientSecretRequest.Value, _jsonSerializerOptions));
+                    }
 
                     List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
                     httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
@@ -853,10 +885,10 @@ namespace EdGraph.Platform.Client.Api
                         "application/json"
                     };
 
-                    string? acceptLocalVar = ClientUtils.SelectHeaderAccept(acceptLocalVars);
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
 
-                    if (acceptLocalVar != null)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptLocalVar));
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
 
                     httpRequestMessageLocalVar.Method = HttpMethod.Put;
 
@@ -864,11 +896,17 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<RegenerateOneRosterApiClientSecretAsyncApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<RegenerateOneRosterApiClientSecretAsyncApiResponse>();
+                        RegenerateOneRosterApiClientSecretAsyncApiResponse apiResponseLocalVar;
 
-                        RegenerateOneRosterApiClientSecretAsyncApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/oneroster/instances/{instanceId}/clients/{clientId}/regeneratesecret", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/oneroster/instances/{instanceId}/clients/{clientId}/regeneratesecret", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterRegenerateOneRosterApiClientSecretAsyncDefaultImplementation(apiResponseLocalVar, tenantId, instanceId, clientId, iMSAdminApiV1ClientsRegenerateClientSecretRequest);
 
@@ -911,6 +949,22 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public RegenerateOneRosterApiClientSecretAsyncApiResponse(ILogger<RegenerateOneRosterApiClientSecretAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="RegenerateOneRosterApiClientSecretAsyncApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public RegenerateOneRosterApiClientSecretAsyncApiResponse(ILogger<RegenerateOneRosterApiClientSecretAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);

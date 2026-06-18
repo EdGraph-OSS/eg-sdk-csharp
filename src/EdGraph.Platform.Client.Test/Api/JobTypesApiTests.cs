@@ -63,7 +63,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetAllTenantDataSyncJobTypesAsync(tenantId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<DataSyncApiJobTypeV1JobTypeListResponsePaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string jobTypeId = default!;
             var response = await _instance.GetTenantDataSyncJobTypeProfileByIdAsync(tenantId, jobTypeId);
             var model = response.Unauthorized();
-            Assert.IsType<DataSyncApiJobTypeV1JobTypeProfileResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

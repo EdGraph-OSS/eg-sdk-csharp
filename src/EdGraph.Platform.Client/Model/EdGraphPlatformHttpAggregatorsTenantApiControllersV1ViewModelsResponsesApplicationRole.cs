@@ -57,7 +57,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>The role associated with the application</value>
         [JsonPropertyName("role")]
-        public string? Role { get { return this.RoleOption; } set { this.RoleOption = new(value); } }
+        public string? Role { get { return this.RoleOption.Value; } set { this.RoleOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsAssigned
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>Indicates if the user is assigned license for this application</value>
         [JsonPropertyName("isAssigned")]
-        public bool? IsAssigned { get { return this.IsAssignedOption; } set { this.IsAssignedOption = new(value); } }
+        public bool? IsAssigned { get { return this.IsAssignedOption.Value; } set { this.IsAssignedOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -142,8 +142,7 @@ namespace EdGraph.Platform.Client.Model
                             role = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "isAssigned":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isAssigned = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isAssigned = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

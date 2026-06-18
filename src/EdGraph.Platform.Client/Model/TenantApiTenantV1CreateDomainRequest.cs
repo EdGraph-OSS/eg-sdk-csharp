@@ -62,7 +62,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DomainStatus
         /// </summary>
         [JsonPropertyName("domainStatus")]
-        public TenantApiTenantV1DomainStatus? DomainStatus { get { return this.DomainStatusOption; } set { this.DomainStatusOption = new(value); } }
+        public TenantApiTenantV1DomainStatus? DomainStatus { get { return this.DomainStatusOption.Value; } set { this.DomainStatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -75,7 +75,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DomainName
@@ -88,7 +88,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DomainName
         /// </summary>
         [JsonPropertyName("domainName")]
-        public string? DomainName { get { return this.DomainNameOption; } set { this.DomainNameOption = new(value); } }
+        public string? DomainName { get { return this.DomainNameOption.Value; } set { this.DomainNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AutoAssignUsers
@@ -101,7 +101,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AutoAssignUsers
         /// </summary>
         [JsonPropertyName("autoAssignUsers")]
-        public bool? AutoAssignUsers { get { return this.AutoAssignUsersOption; } set { this.AutoAssignUsersOption = new(value); } }
+        public bool? AutoAssignUsers { get { return this.AutoAssignUsersOption.Value; } set { this.AutoAssignUsersOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ManuallyVerified
@@ -114,7 +114,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ManuallyVerified
         /// </summary>
         [JsonPropertyName("manuallyVerified")]
-        public bool? ManuallyVerified { get { return this.ManuallyVerifiedOption; } set { this.ManuallyVerifiedOption = new(value); } }
+        public bool? ManuallyVerified { get { return this.ManuallyVerifiedOption.Value; } set { this.ManuallyVerifiedOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -199,12 +199,10 @@ namespace EdGraph.Platform.Client.Model
                                 domainStatus = new Option<TenantApiTenantV1DomainStatus?>(TenantApiTenantV1DomainStatusValueConverter.FromStringOrDefault(domainStatusRawValue));
                             break;
                         case "autoAssignUsers":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                autoAssignUsers = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            autoAssignUsers = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "manuallyVerified":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                manuallyVerified = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            manuallyVerified = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

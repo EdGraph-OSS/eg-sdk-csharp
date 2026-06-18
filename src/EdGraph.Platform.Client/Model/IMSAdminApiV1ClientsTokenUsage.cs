@@ -131,7 +131,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, IMSAdminApiV1ClientsTokenUsage iMSAdminApiV1ClientsTokenUsage, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(iMSAdminApiV1ClientsTokenUsage.ToString());
+            writer.WriteStringValue(IMSAdminApiV1ClientsTokenUsageValueConverter.ToJsonValue(iMSAdminApiV1ClientsTokenUsage).ToString());
         }
     }
 
@@ -162,14 +162,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the IMSAdminApiV1ClientsTokenUsage to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="iMSAdminApiV1ClientsTokenUsage"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, IMSAdminApiV1ClientsTokenUsage? iMSAdminApiV1ClientsTokenUsage, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(iMSAdminApiV1ClientsTokenUsage?.ToString() ?? "null");
+            writer.WriteStringValue(iMSAdminApiV1ClientsTokenUsage.HasValue ? IMSAdminApiV1ClientsTokenUsageValueConverter.ToJsonValue(iMSAdminApiV1ClientsTokenUsage.Value).ToString() : "null");
         }
     }
 }

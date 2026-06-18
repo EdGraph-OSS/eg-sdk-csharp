@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SubCategory
         /// </summary>
         [JsonPropertyName("subCategory")]
-        public ValidationsApiContainersV1ContainerDto? SubCategory { get { return this.SubCategoryOption; } set { this.SubCategoryOption = new(value); } }
+        public ValidationsApiContainersV1ContainerDto? SubCategory { get { return this.SubCategoryOption.Value; } set { this.SubCategoryOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Rules
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Rules
         /// </summary>
         [JsonPropertyName("rules")]
-        public List<ValidationsApiRulesV1RuleDto>? Rules { get { return this.RulesOption; } }
+        public List<ValidationsApiRulesV1RuleDto>? Rules { get { return this.RulesOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -137,12 +137,10 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "subCategory":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                subCategory = new Option<ValidationsApiContainersV1ContainerDto?>(JsonSerializer.Deserialize<ValidationsApiContainersV1ContainerDto>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            subCategory = new Option<ValidationsApiContainersV1ContainerDto?>(JsonSerializer.Deserialize<ValidationsApiContainersV1ContainerDto>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "rules":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                rules = new Option<List<ValidationsApiRulesV1RuleDto>?>(JsonSerializer.Deserialize<List<ValidationsApiRulesV1RuleDto>>(ref utf8JsonReader, jsonSerializerOptions));
+                            rules = new Option<List<ValidationsApiRulesV1RuleDto>?>(JsonSerializer.Deserialize<List<ValidationsApiRulesV1RuleDto>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Categories
         /// </summary>
         [JsonPropertyName("categories")]
-        public ValidationsApiContainersV1CollectionUploadedResponseTypesUploadResult? Categories { get { return this.CategoriesOption; } set { this.CategoriesOption = new(value); } }
+        public ValidationsApiContainersV1CollectionUploadedResponseTypesUploadResult? Categories { get { return this.CategoriesOption.Value; } set { this.CategoriesOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SubCategories
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SubCategories
         /// </summary>
         [JsonPropertyName("subCategories")]
-        public ValidationsApiContainersV1CollectionUploadedResponseTypesUploadResult? SubCategories { get { return this.SubCategoriesOption; } set { this.SubCategoriesOption = new(value); } }
+        public ValidationsApiContainersV1CollectionUploadedResponseTypesUploadResult? SubCategories { get { return this.SubCategoriesOption.Value; } set { this.SubCategoriesOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Rules
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Rules
         /// </summary>
         [JsonPropertyName("rules")]
-        public ValidationsApiContainersV1CollectionUploadedResponseTypesUploadResult? Rules { get { return this.RulesOption; } set { this.RulesOption = new(value); } }
+        public ValidationsApiContainersV1CollectionUploadedResponseTypesUploadResult? Rules { get { return this.RulesOption.Value; } set { this.RulesOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Tags
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Tags
         /// </summary>
         [JsonPropertyName("tags")]
-        public ValidationsApiContainersV1CollectionUploadedResponseTypesUploadResult? Tags { get { return this.TagsOption; } set { this.TagsOption = new(value); } }
+        public ValidationsApiContainersV1CollectionUploadedResponseTypesUploadResult? Tags { get { return this.TagsOption.Value; } set { this.TagsOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -171,20 +171,16 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "categories":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                categories = new Option<ValidationsApiContainersV1CollectionUploadedResponseTypesUploadResult?>(JsonSerializer.Deserialize<ValidationsApiContainersV1CollectionUploadedResponseTypesUploadResult>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            categories = new Option<ValidationsApiContainersV1CollectionUploadedResponseTypesUploadResult?>(JsonSerializer.Deserialize<ValidationsApiContainersV1CollectionUploadedResponseTypesUploadResult>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "subCategories":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                subCategories = new Option<ValidationsApiContainersV1CollectionUploadedResponseTypesUploadResult?>(JsonSerializer.Deserialize<ValidationsApiContainersV1CollectionUploadedResponseTypesUploadResult>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            subCategories = new Option<ValidationsApiContainersV1CollectionUploadedResponseTypesUploadResult?>(JsonSerializer.Deserialize<ValidationsApiContainersV1CollectionUploadedResponseTypesUploadResult>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "rules":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                rules = new Option<ValidationsApiContainersV1CollectionUploadedResponseTypesUploadResult?>(JsonSerializer.Deserialize<ValidationsApiContainersV1CollectionUploadedResponseTypesUploadResult>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            rules = new Option<ValidationsApiContainersV1CollectionUploadedResponseTypesUploadResult?>(JsonSerializer.Deserialize<ValidationsApiContainersV1CollectionUploadedResponseTypesUploadResult>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "tags":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                tags = new Option<ValidationsApiContainersV1CollectionUploadedResponseTypesUploadResult?>(JsonSerializer.Deserialize<ValidationsApiContainersV1CollectionUploadedResponseTypesUploadResult>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            tags = new Option<ValidationsApiContainersV1CollectionUploadedResponseTypesUploadResult?>(JsonSerializer.Deserialize<ValidationsApiContainersV1CollectionUploadedResponseTypesUploadResult>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

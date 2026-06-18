@@ -88,5 +88,14 @@ namespace EdGraph.Platform.Client.Test.Model
         {
             // TODO unit test for the property 'DiscoveryUrl'
         }
+
+        /// <summary>
+        /// Test the property 'DiscoveryDocument'
+        /// </summary>
+        [Fact]
+        public void DiscoveryDocumentTest()
+        {
+            // TODO unit test for the property 'DiscoveryDocument'
+        }
     }
 }

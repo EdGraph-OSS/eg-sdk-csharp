@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LoginProvider
         /// </summary>
         [JsonPropertyName("loginProvider")]
-        public string? LoginProvider { get { return this.LoginProviderOption; } set { this.LoginProviderOption = new(value); } }
+        public string? LoginProvider { get { return this.LoginProviderOption.Value; } set { this.LoginProviderOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ProviderDisplayName
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ProviderDisplayName
         /// </summary>
         [JsonPropertyName("providerDisplayName")]
-        public string? ProviderDisplayName { get { return this.ProviderDisplayNameOption; } set { this.ProviderDisplayNameOption = new(value); } }
+        public string? ProviderDisplayName { get { return this.ProviderDisplayNameOption.Value; } set { this.ProviderDisplayNameOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

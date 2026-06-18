@@ -57,13 +57,13 @@ namespace EdGraph.Platform.Client.Test.Api
         public async Task UpdateTenantBrandingAsyncTest()
         {
             Guid tenantId = default!;
-            Client.Option<System.IO.Stream> logoFile = default!;
-            Client.Option<System.IO.Stream> backgroundFile = default!;
+            Client.Option<EdGraph.Platform.Client.Client.FileParameter> logoFile = default!;
+            Client.Option<EdGraph.Platform.Client.Client.FileParameter> backgroundFile = default!;
             Client.Option<string> brandName = default!;
             Client.Option<bool> enabled = default!;
             var response = await _instance.UpdateTenantBrandingAsync(tenantId, logoFile, backgroundFile, brandName, enabled);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiTenantV1TenantUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

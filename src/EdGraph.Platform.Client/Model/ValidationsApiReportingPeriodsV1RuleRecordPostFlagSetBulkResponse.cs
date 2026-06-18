@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ReportingPeriodId
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ReportingPeriodId
         /// </summary>
         [JsonPropertyName("reportingPeriodId")]
-        public string? ReportingPeriodId { get { return this.ReportingPeriodIdOption; } set { this.ReportingPeriodIdOption = new(value); } }
+        public string? ReportingPeriodId { get { return this.ReportingPeriodIdOption.Value; } set { this.ReportingPeriodIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RuleId
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RuleId
         /// </summary>
         [JsonPropertyName("ruleId")]
-        public string? RuleId { get { return this.RuleIdOption; } set { this.RuleIdOption = new(value); } }
+        public string? RuleId { get { return this.RuleIdOption.Value; } set { this.RuleIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RecordIds
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RecordIds
         /// </summary>
         [JsonPropertyName("recordIds")]
-        public List<string>? RecordIds { get { return this.RecordIdsOption; } }
+        public List<string>? RecordIds { get { return this.RecordIdsOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -180,8 +180,7 @@ namespace EdGraph.Platform.Client.Model
                             ruleId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "recordIds":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                recordIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            recordIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

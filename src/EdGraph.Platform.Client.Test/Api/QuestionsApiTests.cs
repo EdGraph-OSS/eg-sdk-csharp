@@ -62,7 +62,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto = default!;
             var response = await _instance.CreateQuestionAsync(tenantId, formId, sectionId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsCreateQuestionRequestDto);
             var model = response.Unauthorized();
-            Assert.IsType<FormApiQuestionsV1QuestionCreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid questionId = default!;
             var response = await _instance.DeleteQuestionAsync(tenantId, formId, sectionId, questionId);
             var model = response.Unauthorized();
-            Assert.IsType<FormApiQuestionsV1QuestionDeletedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid questionId = default!;
             var response = await _instance.GetQuestionAsync(tenantId, formId, sectionId, questionId);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionResponseDto>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.SearchQuestionsAsync(tenantId, formId, sectionId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionResponseDtoPaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -126,7 +126,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsUpdateQuestionRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsUpdateQuestionRequestDto = default!;
             var response = await _instance.UpdateQuestionAsync(tenantId, formId, sectionId, questionId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsFormsUpdateQuestionRequestDto);
             var model = response.Unauthorized();
-            Assert.IsType<FormApiQuestionsV1QuestionUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

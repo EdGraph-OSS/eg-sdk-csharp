@@ -83,7 +83,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>The Tenant Id the subscription belongs to</value>
         [JsonPropertyName("subscriptionTenantId")]
-        public string? SubscriptionTenantId { get { return this.SubscriptionTenantIdOption; } set { this.SubscriptionTenantIdOption = new(value); } }
+        public string? SubscriptionTenantId { get { return this.SubscriptionTenantIdOption.Value; } set { this.SubscriptionTenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsTenantSubscribed
@@ -97,7 +97,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>The Tenant has a subscription license for this application</value>
         [JsonPropertyName("isTenantSubscribed")]
-        public bool? IsTenantSubscribed { get { return this.IsTenantSubscribedOption; } set { this.IsTenantSubscribedOption = new(value); } }
+        public bool? IsTenantSubscribed { get { return this.IsTenantSubscribedOption.Value; } set { this.IsTenantSubscribedOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantSubscriptionId
@@ -111,7 +111,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>The Tenant subscription Id</value>
         [JsonPropertyName("tenantSubscriptionId")]
-        public string? TenantSubscriptionId { get { return this.TenantSubscriptionIdOption; } set { this.TenantSubscriptionIdOption = new(value); } }
+        public string? TenantSubscriptionId { get { return this.TenantSubscriptionIdOption.Value; } set { this.TenantSubscriptionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantSubscriptionStartDateTime
@@ -125,7 +125,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>The Tenant subscription start date</value>
         [JsonPropertyName("tenantSubscriptionStartDateTime")]
-        public string? TenantSubscriptionStartDateTime { get { return this.TenantSubscriptionStartDateTimeOption; } set { this.TenantSubscriptionStartDateTimeOption = new(value); } }
+        public string? TenantSubscriptionStartDateTime { get { return this.TenantSubscriptionStartDateTimeOption.Value; } set { this.TenantSubscriptionStartDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantSubscriptionEndDateTime
@@ -139,7 +139,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>The Tenant subscription end date</value>
         [JsonPropertyName("tenantSubscriptionEndDateTime")]
-        public string? TenantSubscriptionEndDateTime { get { return this.TenantSubscriptionEndDateTimeOption; } set { this.TenantSubscriptionEndDateTimeOption = new(value); } }
+        public string? TenantSubscriptionEndDateTime { get { return this.TenantSubscriptionEndDateTimeOption.Value; } set { this.TenantSubscriptionEndDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantSubscriptionActualEndDateTime
@@ -153,7 +153,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>The Tenant subscription end date</value>
         [JsonPropertyName("tenantSubscriptionActualEndDateTime")]
-        public string? TenantSubscriptionActualEndDateTime { get { return this.TenantSubscriptionActualEndDateTimeOption; } set { this.TenantSubscriptionActualEndDateTimeOption = new(value); } }
+        public string? TenantSubscriptionActualEndDateTime { get { return this.TenantSubscriptionActualEndDateTimeOption.Value; } set { this.TenantSubscriptionActualEndDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantSubscriptionDeletedAt
@@ -167,7 +167,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>The Tenant subscription deleted date</value>
         [JsonPropertyName("tenantSubscriptionDeletedAt")]
-        public string? TenantSubscriptionDeletedAt { get { return this.TenantSubscriptionDeletedAtOption; } set { this.TenantSubscriptionDeletedAtOption = new(value); } }
+        public string? TenantSubscriptionDeletedAt { get { return this.TenantSubscriptionDeletedAtOption.Value; } set { this.TenantSubscriptionDeletedAtOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantSubscriptionGracePeriod
@@ -181,7 +181,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>The Tenant subscription grace period value</value>
         [JsonPropertyName("tenantSubscriptionGracePeriod")]
-        public int? TenantSubscriptionGracePeriod { get { return this.TenantSubscriptionGracePeriodOption; } set { this.TenantSubscriptionGracePeriodOption = new(value); } }
+        public int? TenantSubscriptionGracePeriod { get { return this.TenantSubscriptionGracePeriodOption.Value; } set { this.TenantSubscriptionGracePeriodOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of NumberOfLicenses
@@ -195,7 +195,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>The Tenant&#39;s number of licenses</value>
         [JsonPropertyName("numberOfLicenses")]
-        public int? NumberOfLicenses { get { return this.NumberOfLicensesOption; } set { this.NumberOfLicensesOption = new(value); } }
+        public int? NumberOfLicenses { get { return this.NumberOfLicensesOption.Value; } set { this.NumberOfLicensesOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AssignedLicenses
@@ -209,7 +209,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>The Tenant&#39;s assigned of licenses</value>
         [JsonPropertyName("assignedLicenses")]
-        public int? AssignedLicenses { get { return this.AssignedLicensesOption; } set { this.AssignedLicensesOption = new(value); } }
+        public int? AssignedLicenses { get { return this.AssignedLicensesOption.Value; } set { this.AssignedLicensesOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsUserLicensed
@@ -223,7 +223,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>The user is assigned license for this application</value>
         [JsonPropertyName("isUserLicensed")]
-        public bool? IsUserLicensed { get { return this.IsUserLicensedOption; } set { this.IsUserLicensedOption = new(value); } }
+        public bool? IsUserLicensed { get { return this.IsUserLicensedOption.Value; } set { this.IsUserLicensedOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApplicationTenantId
@@ -237,7 +237,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>The Tenant this application belongs to</value>
         [JsonPropertyName("applicationTenantId")]
-        public string? ApplicationTenantId { get { return this.ApplicationTenantIdOption; } set { this.ApplicationTenantIdOption = new(value); } }
+        public string? ApplicationTenantId { get { return this.ApplicationTenantIdOption.Value; } set { this.ApplicationTenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApplicationId
@@ -251,7 +251,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>The application Id of the application for license</value>
         [JsonPropertyName("applicationId")]
-        public string? ApplicationId { get { return this.ApplicationIdOption; } set { this.ApplicationIdOption = new(value); } }
+        public string? ApplicationId { get { return this.ApplicationIdOption.Value; } set { this.ApplicationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApplicationName
@@ -265,7 +265,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>The application Name of the application for license</value>
         [JsonPropertyName("applicationName")]
-        public string? ApplicationName { get { return this.ApplicationNameOption; } set { this.ApplicationNameOption = new(value); } }
+        public string? ApplicationName { get { return this.ApplicationNameOption.Value; } set { this.ApplicationNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApplicationRole
@@ -279,7 +279,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>Application role for this user.</value>
         [JsonPropertyName("applicationRole")]
-        public List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesApplicationRole>? ApplicationRole { get { return this.ApplicationRoleOption; } set { this.ApplicationRoleOption = new(value); } }
+        public List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesApplicationRole>? ApplicationRole { get { return this.ApplicationRoleOption.Value; } set { this.ApplicationRoleOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -376,8 +376,7 @@ namespace EdGraph.Platform.Client.Model
                             subscriptionTenantId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "isTenantSubscribed":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isTenantSubscribed = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isTenantSubscribed = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "tenantSubscriptionId":
                             tenantSubscriptionId = new Option<string?>(utf8JsonReader.GetString());
@@ -395,20 +394,16 @@ namespace EdGraph.Platform.Client.Model
                             tenantSubscriptionDeletedAt = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "tenantSubscriptionGracePeriod":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                tenantSubscriptionGracePeriod = new Option<int?>(utf8JsonReader.GetInt32());
+                            tenantSubscriptionGracePeriod = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "numberOfLicenses":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                numberOfLicenses = new Option<int?>(utf8JsonReader.GetInt32());
+                            numberOfLicenses = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "assignedLicenses":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                assignedLicenses = new Option<int?>(utf8JsonReader.GetInt32());
+                            assignedLicenses = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "isUserLicensed":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isUserLicensed = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isUserLicensed = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "applicationTenantId":
                             applicationTenantId = new Option<string?>(utf8JsonReader.GetString());
@@ -420,8 +415,7 @@ namespace EdGraph.Platform.Client.Model
                             applicationName = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "applicationRole":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                applicationRole = new Option<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesApplicationRole>?>(JsonSerializer.Deserialize<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesApplicationRole>>(ref utf8JsonReader, jsonSerializerOptions));
+                            applicationRole = new Option<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesApplicationRole>?>(JsonSerializer.Deserialize<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesApplicationRole>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

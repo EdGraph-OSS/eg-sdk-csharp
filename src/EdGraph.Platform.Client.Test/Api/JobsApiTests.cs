@@ -59,7 +59,9 @@ namespace EdGraph.Platform.Client.Test.Api
             string tenantId = default!;
             string jobId = default!;
             Client.Option<DataSyncApiJobV1ActivateJobRequest> dataSyncApiJobV1ActivateJobRequest = default!;
-            await _instance.ActivateTenantDataSyncJobAsync(tenantId, jobId, dataSyncApiJobV1ActivateJobRequest);
+            var response = await _instance.ActivateTenantDataSyncJobAsync(tenantId, jobId, dataSyncApiJobV1ActivateJobRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -72,7 +74,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string jobId = default!;
             var response = await _instance.CancelJobAsync(tenantId, jobId);
             var model = response.Unauthorized();
-            Assert.IsType<Object>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -84,7 +86,9 @@ namespace EdGraph.Platform.Client.Test.Api
             string tenantId = default!;
             string jobId = default!;
             Client.Option<DataSyncApiJobV1CancelJobRequest> dataSyncApiJobV1CancelJobRequest = default!;
-            await _instance.CancelTenantDataSyncJobAsync(tenantId, jobId, dataSyncApiJobV1CancelJobRequest);
+            var response = await _instance.CancelTenantDataSyncJobAsync(tenantId, jobId, dataSyncApiJobV1CancelJobRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -97,7 +101,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsValidationsCreateValidationJobRequest> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsValidationsCreateValidationJobRequest = default!;
             var response = await _instance.CreateJobAsync(tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsValidationsCreateValidationJobRequest);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiCoreV1CreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -108,7 +112,9 @@ namespace EdGraph.Platform.Client.Test.Api
         {
             string tenantId = default!;
             Client.Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsCreateJobRequest> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsCreateJobRequest = default!;
-            await _instance.CreateTenantDataSyncJobAsync(tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsCreateJobRequest);
+            var response = await _instance.CreateTenantDataSyncJobAsync(tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsCreateJobRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -120,7 +126,9 @@ namespace EdGraph.Platform.Client.Test.Api
             string tenantId = default!;
             string jobId = default!;
             Client.Option<DataSyncApiJobV1DeactivateJobRequest> dataSyncApiJobV1DeactivateJobRequest = default!;
-            await _instance.DeactivateTenantDataSyncJobAsync(tenantId, jobId, dataSyncApiJobV1DeactivateJobRequest);
+            var response = await _instance.DeactivateTenantDataSyncJobAsync(tenantId, jobId, dataSyncApiJobV1DeactivateJobRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -131,7 +139,9 @@ namespace EdGraph.Platform.Client.Test.Api
         {
             Guid tenantId = default!;
             string jobId = default!;
-            await _instance.DeleteJobAsync(tenantId, jobId);
+            var response = await _instance.DeleteJobAsync(tenantId, jobId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -142,7 +152,9 @@ namespace EdGraph.Platform.Client.Test.Api
         {
             string tenantId = default!;
             string jobId = default!;
-            await _instance.DeleteTenantDataSyncJobAsync(tenantId, jobId);
+            var response = await _instance.DeleteTenantDataSyncJobAsync(tenantId, jobId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -155,7 +167,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string jobId = default!;
             var response = await _instance.ExecuteJobAsync(tenantId, jobId);
             var model = response.Unauthorized();
-            Assert.IsType<Object>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -167,7 +179,9 @@ namespace EdGraph.Platform.Client.Test.Api
             string tenantId = default!;
             string jobId = default!;
             Client.Option<DataSyncApiJobV1ExecuteJobRequest> dataSyncApiJobV1ExecuteJobRequest = default!;
-            await _instance.ExecuteTenantDataSyncJobAsync(tenantId, jobId, dataSyncApiJobV1ExecuteJobRequest);
+            var response = await _instance.ExecuteTenantDataSyncJobAsync(tenantId, jobId, dataSyncApiJobV1ExecuteJobRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -183,7 +197,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetAllTenantDataSyncJobsAsync(tenantId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<DataSyncApiJobV1JobListResponsePaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -196,7 +210,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string jobId = default!;
             var response = await _instance.GetJobByIdAsync(tenantId, jobId);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiJobsV1JobProfileResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -212,7 +226,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> orderBy = default!;
             var response = await _instance.GetJobsAsync(tenantId, pageIndex, pageSize, filter, orderBy);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiJobsV1PaginatedItemsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -225,7 +239,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string jobId = default!;
             var response = await _instance.GetTenantDataSyncJobProfileByIdAsync(tenantId, jobId);
             var model = response.Unauthorized();
-            Assert.IsType<DataSyncApiJobV1JobProfileResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -236,7 +250,9 @@ namespace EdGraph.Platform.Client.Test.Api
         {
             string tenantId = default!;
             string jobId = default!;
-            await _instance.RestartJobScheduleAsync(tenantId, jobId);
+            var response = await _instance.RestartJobScheduleAsync(tenantId, jobId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -248,7 +264,9 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid tenantId = default!;
             Guid jobId = default!;
             Client.Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateValidationJobRequest> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateValidationJobRequest = default!;
-            await _instance.UpdateJobAsync(tenantId, jobId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateValidationJobRequest);
+            var response = await _instance.UpdateJobAsync(tenantId, jobId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateValidationJobRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -260,7 +278,9 @@ namespace EdGraph.Platform.Client.Test.Api
             string tenantId = default!;
             string jobId = default!;
             Client.Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateJobRequest> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateJobRequest = default!;
-            await _instance.UpdateTenantDataSyncJobAsync(tenantId, jobId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateJobRequest);
+            var response = await _instance.UpdateTenantDataSyncJobAsync(tenantId, jobId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateJobRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

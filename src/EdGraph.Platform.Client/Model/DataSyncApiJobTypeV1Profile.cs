@@ -62,7 +62,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets JobTypeId
         /// </summary>
         [JsonPropertyName("jobTypeId")]
-        public string? JobTypeId { get { return this.JobTypeIdOption; } set { this.JobTypeIdOption = new(value); } }
+        public string? JobTypeId { get { return this.JobTypeIdOption.Value; } set { this.JobTypeIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ProfileId
@@ -75,7 +75,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ProfileId
         /// </summary>
         [JsonPropertyName("profileId")]
-        public string? ProfileId { get { return this.ProfileIdOption; } set { this.ProfileIdOption = new(value); } }
+        public string? ProfileId { get { return this.ProfileIdOption.Value; } set { this.ProfileIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Name
@@ -88,7 +88,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Name
         /// </summary>
         [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption; } set { this.NameOption = new(value); } }
+        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Description
@@ -101,7 +101,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Description
         /// </summary>
         [JsonPropertyName("description")]
-        public string? Description { get { return this.DescriptionOption; } set { this.DescriptionOption = new(value); } }
+        public string? Description { get { return this.DescriptionOption.Value; } set { this.DescriptionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ActorType
@@ -114,7 +114,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ActorType
         /// </summary>
         [JsonPropertyName("actorType")]
-        public string? ActorType { get { return this.ActorTypeOption; } set { this.ActorTypeOption = new(value); } }
+        public string? ActorType { get { return this.ActorTypeOption.Value; } set { this.ActorTypeOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

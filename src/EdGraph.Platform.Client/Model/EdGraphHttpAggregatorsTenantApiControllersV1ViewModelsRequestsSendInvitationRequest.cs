@@ -68,7 +68,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Email
@@ -81,7 +81,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Email
         /// </summary>
         [JsonPropertyName("email")]
-        public string? Email { get { return this.EmailOption; } set { this.EmailOption = new(value); } }
+        public string? Email { get { return this.EmailOption.Value; } set { this.EmailOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of FirstName
@@ -94,7 +94,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets FirstName
         /// </summary>
         [JsonPropertyName("firstName")]
-        public string? FirstName { get { return this.FirstNameOption; } set { this.FirstNameOption = new(value); } }
+        public string? FirstName { get { return this.FirstNameOption.Value; } set { this.FirstNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastName
@@ -107,7 +107,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastName
         /// </summary>
         [JsonPropertyName("lastName")]
-        public string? LastName { get { return this.LastNameOption; } set { this.LastNameOption = new(value); } }
+        public string? LastName { get { return this.LastNameOption.Value; } set { this.LastNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Role
@@ -120,7 +120,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Role
         /// </summary>
         [JsonPropertyName("role")]
-        public string? Role { get { return this.RoleOption; } set { this.RoleOption = new(value); } }
+        public string? Role { get { return this.RoleOption.Value; } set { this.RoleOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AssignLicenseRequests
@@ -133,7 +133,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AssignLicenseRequests
         /// </summary>
         [JsonPropertyName("assignLicenseRequests")]
-        public List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsLicensesAssignLicenseRequest>? AssignLicenseRequests { get { return this.AssignLicenseRequestsOption; } set { this.AssignLicenseRequestsOption = new(value); } }
+        public List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsLicensesAssignLicenseRequest>? AssignLicenseRequests { get { return this.AssignLicenseRequestsOption.Value; } set { this.AssignLicenseRequestsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InvitingUserDisplayName
@@ -146,7 +146,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InvitingUserDisplayName
         /// </summary>
         [JsonPropertyName("invitingUserDisplayName")]
-        public string? InvitingUserDisplayName { get { return this.InvitingUserDisplayNameOption; } set { this.InvitingUserDisplayNameOption = new(value); } }
+        public string? InvitingUserDisplayName { get { return this.InvitingUserDisplayNameOption.Value; } set { this.InvitingUserDisplayNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DontSendEmail
@@ -159,7 +159,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DontSendEmail
         /// </summary>
         [JsonPropertyName("dontSendEmail")]
-        public bool? DontSendEmail { get { return this.DontSendEmailOption; } set { this.DontSendEmailOption = new(value); } }
+        public bool? DontSendEmail { get { return this.DontSendEmailOption.Value; } set { this.DontSendEmailOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -254,15 +254,13 @@ namespace EdGraph.Platform.Client.Model
                             role = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "assignLicenseRequests":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                assignLicenseRequests = new Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsLicensesAssignLicenseRequest>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsLicensesAssignLicenseRequest>>(ref utf8JsonReader, jsonSerializerOptions));
+                            assignLicenseRequests = new Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsLicensesAssignLicenseRequest>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsLicensesAssignLicenseRequest>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "invitingUserDisplayName":
                             invitingUserDisplayName = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "dontSendEmail":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                dontSendEmail = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            dontSendEmail = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

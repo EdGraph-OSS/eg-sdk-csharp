@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Name
         /// </summary>
         [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption; } set { this.NameOption = new(value); } }
+        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Parameters
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Parameters
         /// </summary>
         [JsonPropertyName("parameters")]
-        public Object? Parameters { get { return this.ParametersOption; } set { this.ParametersOption = new(value); } }
+        public Object? Parameters { get { return this.ParametersOption.Value; } set { this.ParametersOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -140,8 +140,7 @@ namespace EdGraph.Platform.Client.Model
                             name = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "parameters":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                parameters = new Option<Object?>(JsonSerializer.Deserialize<Object>(ref utf8JsonReader, jsonSerializerOptions));
+                            parameters = new Option<Object?>(JsonSerializer.Deserialize<Object>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

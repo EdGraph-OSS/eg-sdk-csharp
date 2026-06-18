@@ -24,66 +24,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Creates a new Section for a given form
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CreateSectionExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new SectionsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var formId = "formId_example";  // Guid | 
-            var formApiSectionsV1CreateSectionRequest = new FormApiSectionsV1CreateSectionRequest(); // FormApiSectionsV1CreateSectionRequest |  (optional) 
-
-            try
-            {
-                // Creates a new Section for a given form
-                FormApiSectionsV1SectionCreatedResponse result = apiInstance.CreateSection(tenantId, formId, formApiSectionsV1CreateSectionRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling SectionsApi.CreateSection: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateSectionWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates a new Section for a given form
-    ApiResponse<FormApiSectionsV1SectionCreatedResponse> response = apiInstance.CreateSectionWithHttpInfo(tenantId, formId, formApiSectionsV1CreateSectionRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling SectionsApi.CreateSectionWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -124,66 +64,6 @@ catch (ApiException e)
 
 Deletes a Section.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class DeleteSectionExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new SectionsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var formId = "formId_example";  // Guid | 
-            var sectionId = "sectionId_example";  // Guid | 
-
-            try
-            {
-                // Deletes a Section.
-                FormApiSectionsV1SectionDeletedResponse result = apiInstance.DeleteSection(tenantId, formId, sectionId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling SectionsApi.DeleteSection: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeleteSectionWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Deletes a Section.
-    ApiResponse<FormApiSectionsV1SectionDeletedResponse> response = apiInstance.DeleteSectionWithHttpInfo(tenantId, formId, sectionId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling SectionsApi.DeleteSectionWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -225,66 +105,6 @@ catch (ApiException e)
 
 Get Section.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetSectionExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new SectionsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var formId = "formId_example";  // Guid | 
-            var sectionId = "sectionId_example";  // Guid | 
-
-            try
-            {
-                // Get Section.
-                FormApiSectionsV1SectionResponse result = apiInstance.GetSection(tenantId, formId, sectionId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling SectionsApi.GetSection: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetSectionWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Get Section.
-    ApiResponse<FormApiSectionsV1SectionResponse> response = apiInstance.GetSectionWithHttpInfo(tenantId, formId, sectionId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling SectionsApi.GetSectionWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -326,68 +146,6 @@ catch (ApiException e)
 
 Retrieves a list of Section Academic Subjects.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetSectionAcademicSubjectsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new SectionsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Retrieves a list of Section Academic Subjects.
-                TenantApiSectionsV1PaginatedAcademicSubjectsResponse result = apiInstance.GetSectionAcademicSubjects(tenantId, pageIndex, pageSize, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling SectionsApi.GetSectionAcademicSubjects: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetSectionAcademicSubjectsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of Section Academic Subjects.
-    ApiResponse<TenantApiSectionsV1PaginatedAcademicSubjectsResponse> response = apiInstance.GetSectionAcademicSubjectsWithHttpInfo(tenantId, pageIndex, pageSize, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling SectionsApi.GetSectionAcademicSubjectsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -430,65 +188,6 @@ catch (ApiException e)
 
 Retrieves a Section by ID.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetSectionByIdExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new SectionsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var sectionId = "sectionId_example";  // Guid | 
-
-            try
-            {
-                // Retrieves a Section by ID.
-                TenantApiSectionsV1SectionProfileResponse result = apiInstance.GetSectionById(tenantId, sectionId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling SectionsApi.GetSectionById: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetSectionByIdWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a Section by ID.
-    ApiResponse<TenantApiSectionsV1SectionProfileResponse> response = apiInstance.GetSectionByIdWithHttpInfo(tenantId, sectionId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling SectionsApi.GetSectionByIdWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -528,68 +227,6 @@ catch (ApiException e)
 
 Retrieves a list of Section Courses.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetSectionCoursesExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new SectionsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Retrieves a list of Section Courses.
-                TenantApiSectionsV1PaginatedCoursesResponse result = apiInstance.GetSectionCourses(tenantId, pageIndex, pageSize, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling SectionsApi.GetSectionCourses: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetSectionCoursesWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of Section Courses.
-    ApiResponse<TenantApiSectionsV1PaginatedCoursesResponse> response = apiInstance.GetSectionCoursesWithHttpInfo(tenantId, pageIndex, pageSize, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling SectionsApi.GetSectionCoursesWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -632,68 +269,6 @@ catch (ApiException e)
 
 Retrieves a list of Section Grade Levels.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetSectionGradeLevelsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new SectionsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Retrieves a list of Section Grade Levels.
-                TenantApiSectionsV1PaginatedGradeLevelsResponse result = apiInstance.GetSectionGradeLevels(tenantId, pageIndex, pageSize, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling SectionsApi.GetSectionGradeLevels: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetSectionGradeLevelsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of Section Grade Levels.
-    ApiResponse<TenantApiSectionsV1PaginatedGradeLevelsResponse> response = apiInstance.GetSectionGradeLevelsWithHttpInfo(tenantId, pageIndex, pageSize, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling SectionsApi.GetSectionGradeLevelsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -736,68 +311,6 @@ catch (ApiException e)
 
 Retrieves a list of Section Schools.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetSectionSchoolsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new SectionsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Retrieves a list of Section Schools.
-                TenantApiSectionsV1PaginatedSchoolsResponse result = apiInstance.GetSectionSchools(tenantId, pageIndex, pageSize, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling SectionsApi.GetSectionSchools: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetSectionSchoolsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of Section Schools.
-    ApiResponse<TenantApiSectionsV1PaginatedSchoolsResponse> response = apiInstance.GetSectionSchoolsWithHttpInfo(tenantId, pageIndex, pageSize, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling SectionsApi.GetSectionSchoolsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -840,68 +353,6 @@ catch (ApiException e)
 
 Retrieves a list of Section Sessions.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetSectionSessionsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new SectionsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Retrieves a list of Section Sessions.
-                TenantApiSectionsV1PaginatedSessionsResponse result = apiInstance.GetSectionSessions(tenantId, pageIndex, pageSize, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling SectionsApi.GetSectionSessions: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetSectionSessionsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of Section Sessions.
-    ApiResponse<TenantApiSectionsV1PaginatedSessionsResponse> response = apiInstance.GetSectionSessionsWithHttpInfo(tenantId, pageIndex, pageSize, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling SectionsApi.GetSectionSessionsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -944,68 +395,6 @@ catch (ApiException e)
 
 Retrieves a list of Section Terms.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetSectionTermsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new SectionsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Retrieves a list of Section Terms.
-                TenantApiSectionsV1PaginatedTermsResponse result = apiInstance.GetSectionTerms(tenantId, pageIndex, pageSize, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling SectionsApi.GetSectionTerms: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetSectionTermsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of Section Terms.
-    ApiResponse<TenantApiSectionsV1PaginatedTermsResponse> response = apiInstance.GetSectionTermsWithHttpInfo(tenantId, pageIndex, pageSize, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling SectionsApi.GetSectionTermsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1048,68 +437,6 @@ catch (ApiException e)
 
 Retrieves a list of Sections.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetSectionsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new SectionsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Retrieves a list of Sections.
-                TenantApiSectionsV1PaginatedItemsResponse result = apiInstance.GetSections(tenantId, pageIndex, pageSize, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling SectionsApi.GetSections: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetSectionsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of Sections.
-    ApiResponse<TenantApiSectionsV1PaginatedItemsResponse> response = apiInstance.GetSectionsWithHttpInfo(tenantId, pageIndex, pageSize, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling SectionsApi.GetSectionsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1152,69 +479,6 @@ catch (ApiException e)
 
 Search Sections
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SearchSectionsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new SectionsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var formId = "formId_example";  // Guid | 
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Search Sections
-                FormApiSectionsV1SectionResponsePaginatedItemsViewModel result = apiInstance.SearchSections(tenantId, formId, pageSize, pageIndex, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling SectionsApi.SearchSections: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SearchSectionsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Search Sections
-    ApiResponse<FormApiSectionsV1SectionResponsePaginatedItemsViewModel> response = apiInstance.SearchSectionsWithHttpInfo(tenantId, formId, pageSize, pageIndex, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling SectionsApi.SearchSectionsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1258,67 +522,6 @@ catch (ApiException e)
 
 Updates a Section.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateSectionExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new SectionsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var formId = "formId_example";  // Guid | 
-            var sectionId = "sectionId_example";  // Guid | 
-            var formApiSectionsV1UpdateSectionRequest = new FormApiSectionsV1UpdateSectionRequest(); // FormApiSectionsV1UpdateSectionRequest |  (optional) 
-
-            try
-            {
-                // Updates a Section.
-                FormApiSectionsV1SectionUpdatedResponse result = apiInstance.UpdateSection(tenantId, formId, sectionId, formApiSectionsV1UpdateSectionRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling SectionsApi.UpdateSection: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateSectionWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates a Section.
-    ApiResponse<FormApiSectionsV1SectionUpdatedResponse> response = apiInstance.UpdateSectionWithHttpInfo(tenantId, formId, sectionId, formApiSectionsV1UpdateSectionRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling SectionsApi.UpdateSectionWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

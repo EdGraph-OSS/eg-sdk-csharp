@@ -68,7 +68,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DomainStatus
         /// </summary>
         [JsonPropertyName("domainStatus")]
-        public TenantApiTenantV1DomainStatus? DomainStatus { get { return this.DomainStatusOption; } set { this.DomainStatusOption = new(value); } }
+        public TenantApiTenantV1DomainStatus? DomainStatus { get { return this.DomainStatusOption.Value; } set { this.DomainStatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -81,7 +81,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DomainName
@@ -94,7 +94,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DomainName
         /// </summary>
         [JsonPropertyName("domainName")]
-        public string? DomainName { get { return this.DomainNameOption; } set { this.DomainNameOption = new(value); } }
+        public string? DomainName { get { return this.DomainNameOption.Value; } set { this.DomainNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AutoAssignUsers
@@ -107,7 +107,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AutoAssignUsers
         /// </summary>
         [JsonPropertyName("autoAssignUsers")]
-        public bool? AutoAssignUsers { get { return this.AutoAssignUsersOption; } set { this.AutoAssignUsersOption = new(value); } }
+        public bool? AutoAssignUsers { get { return this.AutoAssignUsersOption.Value; } set { this.AutoAssignUsersOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedBy
@@ -120,7 +120,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedBy
         /// </summary>
         [JsonPropertyName("createdBy")]
-        public string? CreatedBy { get { return this.CreatedByOption; } set { this.CreatedByOption = new(value); } }
+        public string? CreatedBy { get { return this.CreatedByOption.Value; } set { this.CreatedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedDateTime
@@ -133,7 +133,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedDateTime
         /// </summary>
         [JsonPropertyName("createdDateTime")]
-        public string? CreatedDateTime { get { return this.CreatedDateTimeOption; } set { this.CreatedDateTimeOption = new(value); } }
+        public string? CreatedDateTime { get { return this.CreatedDateTimeOption.Value; } set { this.CreatedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedBy
@@ -146,7 +146,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedBy
         /// </summary>
         [JsonPropertyName("lastModifiedBy")]
-        public string? LastModifiedBy { get { return this.LastModifiedByOption; } set { this.LastModifiedByOption = new(value); } }
+        public string? LastModifiedBy { get { return this.LastModifiedByOption.Value; } set { this.LastModifiedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedDateTime
@@ -159,7 +159,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedDateTime
         /// </summary>
         [JsonPropertyName("lastModifiedDateTime")]
-        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption; } set { this.LastModifiedDateTimeOption = new(value); } }
+        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption.Value; } set { this.LastModifiedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -250,8 +250,7 @@ namespace EdGraph.Platform.Client.Model
                                 domainStatus = new Option<TenantApiTenantV1DomainStatus?>(TenantApiTenantV1DomainStatusValueConverter.FromStringOrDefault(domainStatusRawValue));
                             break;
                         case "autoAssignUsers":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                autoAssignUsers = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            autoAssignUsers = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "createdBy":
                             createdBy = new Option<string?>(utf8JsonReader.GetString());

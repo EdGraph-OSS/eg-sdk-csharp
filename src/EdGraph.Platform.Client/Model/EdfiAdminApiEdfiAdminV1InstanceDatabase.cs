@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SelectedTierId
         /// </summary>
         [JsonPropertyName("selectedTierId")]
-        public string? SelectedTierId { get { return this.SelectedTierIdOption; } set { this.SelectedTierIdOption = new(value); } }
+        public string? SelectedTierId { get { return this.SelectedTierIdOption.Value; } set { this.SelectedTierIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SelectedTierName
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SelectedTierName
         /// </summary>
         [JsonPropertyName("selectedTierName")]
-        public string? SelectedTierName { get { return this.SelectedTierNameOption; } set { this.SelectedTierNameOption = new(value); } }
+        public string? SelectedTierName { get { return this.SelectedTierNameOption.Value; } set { this.SelectedTierNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Status
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Status
         /// </summary>
         [JsonPropertyName("status")]
-        public string? Status { get { return this.StatusOption; } set { this.StatusOption = new(value); } }
+        public string? Status { get { return this.StatusOption.Value; } set { this.StatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Jobs
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Jobs
         /// </summary>
         [JsonPropertyName("jobs")]
-        public EdfiAdminApiEdfiAdminV1InstanceDatabaseJobs? Jobs { get { return this.JobsOption; } set { this.JobsOption = new(value); } }
+        public EdfiAdminApiEdfiAdminV1InstanceDatabaseJobs? Jobs { get { return this.JobsOption.Value; } set { this.JobsOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -180,8 +180,7 @@ namespace EdGraph.Platform.Client.Model
                             status = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "jobs":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                jobs = new Option<EdfiAdminApiEdfiAdminV1InstanceDatabaseJobs?>(JsonSerializer.Deserialize<EdfiAdminApiEdfiAdminV1InstanceDatabaseJobs>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            jobs = new Option<EdfiAdminApiEdfiAdminV1InstanceDatabaseJobs?>(JsonSerializer.Deserialize<EdfiAdminApiEdfiAdminV1InstanceDatabaseJobs>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

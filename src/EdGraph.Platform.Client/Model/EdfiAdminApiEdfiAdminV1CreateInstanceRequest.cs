@@ -75,7 +75,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>Details</value>
         [JsonPropertyName("instanceName")]
-        public string? InstanceName { get { return this.InstanceNameOption; } set { this.InstanceNameOption = new(value); } }
+        public string? InstanceName { get { return this.InstanceNameOption.Value; } set { this.InstanceNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of UseCustomId
@@ -88,7 +88,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets UseCustomId
         /// </summary>
         [JsonPropertyName("useCustomId")]
-        public bool? UseCustomId { get { return this.UseCustomIdOption; } set { this.UseCustomIdOption = new(value); } }
+        public bool? UseCustomId { get { return this.UseCustomIdOption.Value; } set { this.UseCustomIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CustomId
@@ -101,7 +101,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CustomId
         /// </summary>
         [JsonPropertyName("customId")]
-        public string? CustomId { get { return this.CustomIdOption; } set { this.CustomIdOption = new(value); } }
+        public string? CustomId { get { return this.CustomIdOption.Value; } set { this.CustomIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Description
@@ -114,7 +114,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Description
         /// </summary>
         [JsonPropertyName("description")]
-        public string? Description { get { return this.DescriptionOption; } set { this.DescriptionOption = new(value); } }
+        public string? Description { get { return this.DescriptionOption.Value; } set { this.DescriptionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DatabaseEngine
@@ -128,7 +128,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>Connection</value>
         [JsonPropertyName("databaseEngine")]
-        public string? DatabaseEngine { get { return this.DatabaseEngineOption; } set { this.DatabaseEngineOption = new(value); } }
+        public string? DatabaseEngine { get { return this.DatabaseEngineOption.Value; } set { this.DatabaseEngineOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SelectedConnectionId
@@ -141,7 +141,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SelectedConnectionId
         /// </summary>
         [JsonPropertyName("selectedConnectionId")]
-        public string? SelectedConnectionId { get { return this.SelectedConnectionIdOption; } set { this.SelectedConnectionIdOption = new(value); } }
+        public string? SelectedConnectionId { get { return this.SelectedConnectionIdOption.Value; } set { this.SelectedConnectionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SchoolYears
@@ -155,7 +155,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>School Years</value>
         [JsonPropertyName("schoolYears")]
-        public List<EdfiAdminApiEdfiAdminV1CreateInstanceRequestSchoolYear>? SchoolYears { get { return this.SchoolYearsOption; } }
+        public List<EdfiAdminApiEdfiAdminV1CreateInstanceRequestSchoolYear>? SchoolYears { get { return this.SchoolYearsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -169,7 +169,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>Metadata</value>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Provider
@@ -183,7 +183,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>Provider</value>
         [JsonPropertyName("provider")]
-        public string? Provider { get { return this.ProviderOption; } set { this.ProviderOption = new(value); } }
+        public string? Provider { get { return this.ProviderOption.Value; } set { this.ProviderOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EnableAdminApi
@@ -197,7 +197,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>Enable Admin API</value>
         [JsonPropertyName("enableAdminApi")]
-        public bool? EnableAdminApi { get { return this.EnableAdminApiOption; } set { this.EnableAdminApiOption = new(value); } }
+        public bool? EnableAdminApi { get { return this.EnableAdminApiOption.Value; } set { this.EnableAdminApiOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of State
@@ -210,7 +210,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets State
         /// </summary>
         [JsonPropertyName("state")]
-        public string? State { get { return this.StateOption; } set { this.StateOption = new(value); } }
+        public string? State { get { return this.StateOption.Value; } set { this.StateOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -299,8 +299,7 @@ namespace EdGraph.Platform.Client.Model
                             instanceName = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "useCustomId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                useCustomId = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            useCustomId = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "customId":
                             customId = new Option<string?>(utf8JsonReader.GetString());
@@ -315,8 +314,7 @@ namespace EdGraph.Platform.Client.Model
                             selectedConnectionId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "schoolYears":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                schoolYears = new Option<List<EdfiAdminApiEdfiAdminV1CreateInstanceRequestSchoolYear>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1CreateInstanceRequestSchoolYear>>(ref utf8JsonReader, jsonSerializerOptions));
+                            schoolYears = new Option<List<EdfiAdminApiEdfiAdminV1CreateInstanceRequestSchoolYear>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1CreateInstanceRequestSchoolYear>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "tenantId":
                             tenantId = new Option<string?>(utf8JsonReader.GetString());
@@ -325,8 +323,7 @@ namespace EdGraph.Platform.Client.Model
                             provider = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "enableAdminApi":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                enableAdminApi = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            enableAdminApi = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "state":
                             state = new Option<string?>(utf8JsonReader.GetString());

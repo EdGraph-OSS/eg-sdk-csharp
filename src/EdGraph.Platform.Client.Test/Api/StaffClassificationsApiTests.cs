@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<IdentityApiStaffClassificationV1CreateStaffClassificationRequest> identityApiStaffClassificationV1CreateStaffClassificationRequest = default!;
             var response = await _instance.CreateStaffClassificationAsync(tenantId, identityApiStaffClassificationV1CreateStaffClassificationRequest);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiStaffClassificationV1StaffClassificationCreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid staffClassificationId = default!;
             var response = await _instance.DeleteStaffClassificationAsync(tenantId, staffClassificationId);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiStaffClassificationV1StaffClassificationDeletedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid staffClassificationId = default!;
             var response = await _instance.GetStaffClassificationByIdAsync(tenantId, staffClassificationId);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiStaffClassificationV1StaffClassificationResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetStaffClassificationsAsync(tenantId, pageIndex, pageSize, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiStaffClassificationV1GetStaffClassificationsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetStaffClassificationsNamespacesAsync(tenantId, pageIndex, pageSize, filter);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiStaffClassificationV1GetStaffClassificationsNamespacesResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<IdentityApiStaffClassificationV1UpdateStaffClassificationRequest> identityApiStaffClassificationV1UpdateStaffClassificationRequest = default!;
             var response = await _instance.UpdateStaffClassificationAsync(tenantId, staffClassificationId, identityApiStaffClassificationV1UpdateStaffClassificationRequest);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiStaffClassificationV1StaffClassificationUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DedicatedCapacityName
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DedicatedCapacityName
         /// </summary>
         [JsonPropertyName("dedicatedCapacityName")]
-        public string? DedicatedCapacityName { get { return this.DedicatedCapacityNameOption; } set { this.DedicatedCapacityNameOption = new(value); } }
+        public string? DedicatedCapacityName { get { return this.DedicatedCapacityNameOption.Value; } set { this.DedicatedCapacityNameOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

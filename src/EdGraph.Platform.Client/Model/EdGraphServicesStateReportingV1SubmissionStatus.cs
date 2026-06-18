@@ -201,7 +201,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, EdGraphServicesStateReportingV1SubmissionStatus edGraphServicesStateReportingV1SubmissionStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(edGraphServicesStateReportingV1SubmissionStatus.ToString());
+            writer.WriteStringValue(EdGraphServicesStateReportingV1SubmissionStatusValueConverter.ToJsonValue(edGraphServicesStateReportingV1SubmissionStatus).ToString());
         }
     }
 
@@ -232,14 +232,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the EdGraphServicesStateReportingV1SubmissionStatus to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="edGraphServicesStateReportingV1SubmissionStatus"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, EdGraphServicesStateReportingV1SubmissionStatus? edGraphServicesStateReportingV1SubmissionStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(edGraphServicesStateReportingV1SubmissionStatus?.ToString() ?? "null");
+            writer.WriteStringValue(edGraphServicesStateReportingV1SubmissionStatus.HasValue ? EdGraphServicesStateReportingV1SubmissionStatusValueConverter.ToJsonValue(edGraphServicesStateReportingV1SubmissionStatus.Value).ToString() : "null");
         }
     }
 }

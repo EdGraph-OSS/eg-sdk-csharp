@@ -159,7 +159,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, DataSyncApiJobV1DataRefreshType dataSyncApiJobV1DataRefreshType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(dataSyncApiJobV1DataRefreshType.ToString());
+            writer.WriteStringValue(DataSyncApiJobV1DataRefreshTypeValueConverter.ToJsonValue(dataSyncApiJobV1DataRefreshType).ToString());
         }
     }
 
@@ -190,14 +190,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the DataSyncApiJobV1DataRefreshType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="dataSyncApiJobV1DataRefreshType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, DataSyncApiJobV1DataRefreshType? dataSyncApiJobV1DataRefreshType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(dataSyncApiJobV1DataRefreshType?.ToString() ?? "null");
+            writer.WriteStringValue(dataSyncApiJobV1DataRefreshType.HasValue ? DataSyncApiJobV1DataRefreshTypeValueConverter.ToJsonValue(dataSyncApiJobV1DataRefreshType.Value).ToString() : "null");
         }
     }
 }

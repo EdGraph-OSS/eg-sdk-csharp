@@ -59,7 +59,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string tenantId = default!;
             var response = await _instance.GetTenantByIdAsyncAsync(tenantId);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiTenantV1TenantProfileResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsUpdateTenantRequest> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsUpdateTenantRequest = default!;
             var response = await _instance.UpdateTenantAsyncAsync(tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsUpdateTenantRequest);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiTenantV1TenantUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto> edGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto = default!;
             var response = await _instance.CreateEdFiSyncAsync(tenantId, edGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncJobCreatedResult>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid tenantId = default!;
             var response = await _instance.ExecuteEdFiSyncJobAsync(tenantId);
             var model = response.Unauthorized();
-            Assert.IsType<DataSyncApiJobV1JobExecutionRequestedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid tenantId = default!;
             var response = await _instance.GetEdFiSyncDataAsync(tenantId);
             var model = response.Unauthorized();
-            Assert.IsType<DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfile>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<Object?> body = default!;
             var response = await _instance.UpdateEdFiSyncAsync(tenantId, body);
             var model = response.Unauthorized();
-            Assert.IsType<MicrosoftAspNetCoreMvcNoContentResult>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

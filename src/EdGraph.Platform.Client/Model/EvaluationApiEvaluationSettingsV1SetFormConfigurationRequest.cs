@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets FormId
         /// </summary>
         [JsonPropertyName("formId")]
-        public string? FormId { get { return this.FormIdOption; } set { this.FormIdOption = new(value); } }
+        public string? FormId { get { return this.FormIdOption.Value; } set { this.FormIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Versions
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Versions
         /// </summary>
         [JsonPropertyName("versions")]
-        public List<EvaluationApiEvaluationSettingsV1SetFormVersionConfigurationRequest>? Versions { get { return this.VersionsOption; } }
+        public List<EvaluationApiEvaluationSettingsV1SetFormVersionConfigurationRequest>? Versions { get { return this.VersionsOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -140,8 +140,7 @@ namespace EdGraph.Platform.Client.Model
                             formId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "versions":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                versions = new Option<List<EvaluationApiEvaluationSettingsV1SetFormVersionConfigurationRequest>?>(JsonSerializer.Deserialize<List<EvaluationApiEvaluationSettingsV1SetFormVersionConfigurationRequest>>(ref utf8JsonReader, jsonSerializerOptions));
+                            versions = new Option<List<EvaluationApiEvaluationSettingsV1SetFormVersionConfigurationRequest>?>(JsonSerializer.Deserialize<List<EvaluationApiEvaluationSettingsV1SetFormVersionConfigurationRequest>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

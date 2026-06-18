@@ -62,7 +62,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RuleId
         /// </summary>
         [JsonPropertyName("ruleId")]
-        public string? RuleId { get { return this.RuleIdOption; } set { this.RuleIdOption = new(value); } }
+        public string? RuleId { get { return this.RuleIdOption.Value; } set { this.RuleIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RuleIdentification
@@ -75,7 +75,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RuleIdentification
         /// </summary>
         [JsonPropertyName("ruleIdentification")]
-        public string? RuleIdentification { get { return this.RuleIdentificationOption; } set { this.RuleIdentificationOption = new(value); } }
+        public string? RuleIdentification { get { return this.RuleIdentificationOption.Value; } set { this.RuleIdentificationOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SeverityLevel
@@ -88,7 +88,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SeverityLevel
         /// </summary>
         [JsonPropertyName("severityLevel")]
-        public string? SeverityLevel { get { return this.SeverityLevelOption; } set { this.SeverityLevelOption = new(value); } }
+        public string? SeverityLevel { get { return this.SeverityLevelOption.Value; } set { this.SeverityLevelOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TotalCount
@@ -101,7 +101,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TotalCount
         /// </summary>
         [JsonPropertyName("totalCount")]
-        public int? TotalCount { get { return this.TotalCountOption; } set { this.TotalCountOption = new(value); } }
+        public int? TotalCount { get { return this.TotalCountOption.Value; } set { this.TotalCountOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ExceptionCount
@@ -114,7 +114,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ExceptionCount
         /// </summary>
         [JsonPropertyName("exceptionCount")]
-        public int? ExceptionCount { get { return this.ExceptionCountOption; } set { this.ExceptionCountOption = new(value); } }
+        public int? ExceptionCount { get { return this.ExceptionCountOption.Value; } set { this.ExceptionCountOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -197,12 +197,10 @@ namespace EdGraph.Platform.Client.Model
                             severityLevel = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "totalCount":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                totalCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            totalCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "exceptionCount":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                exceptionCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            exceptionCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

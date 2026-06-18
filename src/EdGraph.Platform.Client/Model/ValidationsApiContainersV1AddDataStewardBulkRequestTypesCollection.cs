@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CollectionId
         /// </summary>
         [JsonPropertyName("collectionId")]
-        public string? CollectionId { get { return this.CollectionIdOption; } set { this.CollectionIdOption = new(value); } }
+        public string? CollectionId { get { return this.CollectionIdOption.Value; } set { this.CollectionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Stewards
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Stewards
         /// </summary>
         [JsonPropertyName("stewards")]
-        public List<ValidationsApiContainersV1CollectionUser>? Stewards { get { return this.StewardsOption; } }
+        public List<ValidationsApiContainersV1CollectionUser>? Stewards { get { return this.StewardsOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -140,8 +140,7 @@ namespace EdGraph.Platform.Client.Model
                             collectionId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "stewards":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                stewards = new Option<List<ValidationsApiContainersV1CollectionUser>?>(JsonSerializer.Deserialize<List<ValidationsApiContainersV1CollectionUser>>(ref utf8JsonReader, jsonSerializerOptions));
+                            stewards = new Option<List<ValidationsApiContainersV1CollectionUser>?>(JsonSerializer.Deserialize<List<ValidationsApiContainersV1CollectionUser>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

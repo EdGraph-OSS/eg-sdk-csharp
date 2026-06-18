@@ -54,7 +54,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ServicePrincipalAuthentication
         /// </summary>
         [JsonPropertyName("servicePrincipalAuthentication")]
-        public AnalyticsApiADLSGen2ConnectorsV1ServicePrincipalAuthentication? ServicePrincipalAuthentication { get { return this.ServicePrincipalAuthenticationOption; } set { this.ServicePrincipalAuthenticationOption = new(value); } }
+        public AnalyticsApiADLSGen2ConnectorsV1ServicePrincipalAuthentication? ServicePrincipalAuthentication { get { return this.ServicePrincipalAuthenticationOption.Value; } set { this.ServicePrincipalAuthenticationOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -120,8 +120,7 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "servicePrincipalAuthentication":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                servicePrincipalAuthentication = new Option<AnalyticsApiADLSGen2ConnectorsV1ServicePrincipalAuthentication?>(JsonSerializer.Deserialize<AnalyticsApiADLSGen2ConnectorsV1ServicePrincipalAuthentication>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            servicePrincipalAuthentication = new Option<AnalyticsApiADLSGen2ConnectorsV1ServicePrincipalAuthentication?>(JsonSerializer.Deserialize<AnalyticsApiADLSGen2ConnectorsV1ServicePrincipalAuthentication>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

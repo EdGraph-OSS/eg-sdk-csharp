@@ -62,7 +62,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EventName
         /// </summary>
         [JsonPropertyName("eventName")]
-        public string? EventName { get { return this.EventNameOption; } set { this.EventNameOption = new(value); } }
+        public string? EventName { get { return this.EventNameOption.Value; } set { this.EventNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EventVersion
@@ -75,7 +75,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EventVersion
         /// </summary>
         [JsonPropertyName("eventVersion")]
-        public string? EventVersion { get { return this.EventVersionOption; } set { this.EventVersionOption = new(value); } }
+        public string? EventVersion { get { return this.EventVersionOption.Value; } set { this.EventVersionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EventSchema
@@ -88,7 +88,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EventSchema
         /// </summary>
         [JsonPropertyName("eventSchema")]
-        public string? EventSchema { get { return this.EventSchemaOption; } set { this.EventSchemaOption = new(value); } }
+        public string? EventSchema { get { return this.EventSchemaOption.Value; } set { this.EventSchemaOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of GroupName
@@ -101,7 +101,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets GroupName
         /// </summary>
         [JsonPropertyName("groupName")]
-        public string? GroupName { get { return this.GroupNameOption; } set { this.GroupNameOption = new(value); } }
+        public string? GroupName { get { return this.GroupNameOption.Value; } set { this.GroupNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Scope
@@ -114,7 +114,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Scope
         /// </summary>
         [JsonPropertyName("scope")]
-        public List<string>? Scope { get { return this.ScopeOption; } }
+        public List<string>? Scope { get { return this.ScopeOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -200,8 +200,7 @@ namespace EdGraph.Platform.Client.Model
                             groupName = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "scope":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                scope = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            scope = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

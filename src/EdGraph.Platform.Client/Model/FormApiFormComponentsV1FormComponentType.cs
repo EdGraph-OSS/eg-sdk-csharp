@@ -145,7 +145,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, FormApiFormComponentsV1FormComponentType formApiFormComponentsV1FormComponentType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(formApiFormComponentsV1FormComponentType.ToString());
+            writer.WriteStringValue(FormApiFormComponentsV1FormComponentTypeValueConverter.ToJsonValue(formApiFormComponentsV1FormComponentType).ToString());
         }
     }
 
@@ -176,14 +176,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the FormApiFormComponentsV1FormComponentType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="formApiFormComponentsV1FormComponentType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, FormApiFormComponentsV1FormComponentType? formApiFormComponentsV1FormComponentType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(formApiFormComponentsV1FormComponentType?.ToString() ?? "null");
+            writer.WriteStringValue(formApiFormComponentsV1FormComponentType.HasValue ? FormApiFormComponentsV1FormComponentTypeValueConverter.ToJsonValue(formApiFormComponentsV1FormComponentType.Value).ToString() : "null");
         }
     }
 }

@@ -132,7 +132,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, AnalyticsApiReportsV1ReportSource analyticsApiReportsV1ReportSource, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(analyticsApiReportsV1ReportSource.ToString());
+            writer.WriteStringValue(AnalyticsApiReportsV1ReportSourceValueConverter.ToJsonValue(analyticsApiReportsV1ReportSource).ToString());
         }
     }
 
@@ -163,14 +163,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the AnalyticsApiReportsV1ReportSource to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="analyticsApiReportsV1ReportSource"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, AnalyticsApiReportsV1ReportSource? analyticsApiReportsV1ReportSource, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(analyticsApiReportsV1ReportSource?.ToString() ?? "null");
+            writer.WriteStringValue(analyticsApiReportsV1ReportSource.HasValue ? AnalyticsApiReportsV1ReportSourceValueConverter.ToJsonValue(analyticsApiReportsV1ReportSource.Value).ToString() : "null");
         }
     }
 }

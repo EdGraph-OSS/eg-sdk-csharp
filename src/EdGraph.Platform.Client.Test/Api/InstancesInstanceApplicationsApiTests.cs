@@ -61,7 +61,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiServicesInstanceApplicationsUseCasesCreateTenantInstanceApplicationRequest> edGraphHttpAggregatorsTenantApiServicesInstanceApplicationsUseCasesCreateTenantInstanceApplicationRequest = default!;
             var response = await _instance.CreateInstanceApplicationAsync(tenantId, instanceId, edGraphHttpAggregatorsTenantApiServicesInstanceApplicationsUseCasesCreateTenantInstanceApplicationRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1InstanceApplicationCreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -73,7 +73,9 @@ namespace EdGraph.Platform.Client.Test.Api
             string tenantId = default!;
             string instanceId = default!;
             string applicationId = default!;
-            await _instance.DeleteInstanceApplicationAsync(tenantId, instanceId, applicationId);
+            var response = await _instance.DeleteInstanceApplicationAsync(tenantId, instanceId, applicationId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -87,7 +89,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string applicationId = default!;
             var response = await _instance.GetInstanceApplicationByIdAsync(tenantId, instanceId, applicationId);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1InstanceApplicationProfileResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -104,7 +106,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetInstanceApplicationsAsync(tenantId, instanceId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1InstanceApplicationsListResponsePaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -119,7 +121,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdfiAdminApiEdfiAdminV1UpdateInstanceApplicationRequest> edfiAdminApiEdfiAdminV1UpdateInstanceApplicationRequest = default!;
             var response = await _instance.UpdateInstanceApplicationAsync(tenantId, instanceId, applicationId, edfiAdminApiEdfiAdminV1UpdateInstanceApplicationRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1InstanceApplicationUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

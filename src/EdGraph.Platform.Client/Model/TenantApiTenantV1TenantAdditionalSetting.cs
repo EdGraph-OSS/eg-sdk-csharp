@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ShowLocalLoginOptionToTenantAdmins
         /// </summary>
         [JsonPropertyName("showLocalLoginOptionToTenantAdmins")]
-        public bool? ShowLocalLoginOptionToTenantAdmins { get { return this.ShowLocalLoginOptionToTenantAdminsOption; } set { this.ShowLocalLoginOptionToTenantAdminsOption = new(value); } }
+        public bool? ShowLocalLoginOptionToTenantAdmins { get { return this.ShowLocalLoginOptionToTenantAdminsOption.Value; } set { this.ShowLocalLoginOptionToTenantAdminsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of GracePeriodMfaExpiryDate
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets GracePeriodMfaExpiryDate
         /// </summary>
         [JsonPropertyName("gracePeriodMfaExpiryDate")]
-        public string? GracePeriodMfaExpiryDate { get { return this.GracePeriodMfaExpiryDateOption; } set { this.GracePeriodMfaExpiryDateOption = new(value); } }
+        public string? GracePeriodMfaExpiryDate { get { return this.GracePeriodMfaExpiryDateOption.Value; } set { this.GracePeriodMfaExpiryDateOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -137,8 +137,7 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "showLocalLoginOptionToTenantAdmins":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                showLocalLoginOptionToTenantAdmins = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            showLocalLoginOptionToTenantAdmins = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "gracePeriodMfaExpiryDate":
                             gracePeriodMfaExpiryDate = new Option<string?>(utf8JsonReader.GetString());

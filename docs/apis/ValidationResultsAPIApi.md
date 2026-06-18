@@ -24,68 +24,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Retrieves a list of Job Run Records from the Validation Results API.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class FindResultsApiJobRunRecordsAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ValidationResultsAPIApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var jobId = "jobId_example";  // string | 
-            var runId = "runId_example";  // string | 
-            var offset = 0;  // int |  (optional)  (default to 0)
-            var limit = 25;  // int |  (optional)  (default to 25)
-
-            try
-            {
-                // Retrieves a list of Job Run Records from the Validation Results API.
-                List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRecordsRecordDto> result = apiInstance.FindResultsApiJobRunRecordsAsync(tenantId, jobId, runId, offset, limit);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ValidationResultsAPIApi.FindResultsApiJobRunRecordsAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the FindResultsApiJobRunRecordsAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of Job Run Records from the Validation Results API.
-    ApiResponse<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRecordsRecordDto>> response = apiInstance.FindResultsApiJobRunRecordsAsyncWithHttpInfo(tenantId, jobId, runId, offset, limit);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ValidationResultsAPIApi.FindResultsApiJobRunRecordsAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -128,69 +66,6 @@ catch (ApiException e)
 
 Retrieves a list of Job Run Rule Records from the Validation Results API.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class FindResultsApiJobRunRuleRecordsAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ValidationResultsAPIApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var jobId = "jobId_example";  // string | 
-            var runId = "runId_example";  // string | 
-            var ruleId = "ruleId_example";  // string | 
-            var offset = 0;  // int |  (optional)  (default to 0)
-            var limit = 25;  // int |  (optional)  (default to 25)
-
-            try
-            {
-                // Retrieves a list of Job Run Rule Records from the Validation Results API.
-                List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRecordsRecordDto> result = apiInstance.FindResultsApiJobRunRuleRecordsAsync(tenantId, jobId, runId, ruleId, offset, limit);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ValidationResultsAPIApi.FindResultsApiJobRunRuleRecordsAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the FindResultsApiJobRunRuleRecordsAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of Job Run Rule Records from the Validation Results API.
-    ApiResponse<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRecordsRecordDto>> response = apiInstance.FindResultsApiJobRunRuleRecordsAsyncWithHttpInfo(tenantId, jobId, runId, ruleId, offset, limit);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ValidationResultsAPIApi.FindResultsApiJobRunRuleRecordsAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -234,68 +109,6 @@ catch (ApiException e)
 
 Retrieves a list of Job Run Rules from the Validation Results API.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class FindResultsApiJobRunRulesAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ValidationResultsAPIApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var jobId = "jobId_example";  // string | 
-            var runId = "runId_example";  // string | 
-            var offset = 0;  // int |  (optional)  (default to 0)
-            var limit = 25;  // int |  (optional)  (default to 25)
-
-            try
-            {
-                // Retrieves a list of Job Run Rules from the Validation Results API.
-                List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRulesRuleDto> result = apiInstance.FindResultsApiJobRunRulesAsync(tenantId, jobId, runId, offset, limit);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ValidationResultsAPIApi.FindResultsApiJobRunRulesAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the FindResultsApiJobRunRulesAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of Job Run Rules from the Validation Results API.
-    ApiResponse<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRulesRuleDto>> response = apiInstance.FindResultsApiJobRunRulesAsyncWithHttpInfo(tenantId, jobId, runId, offset, limit);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ValidationResultsAPIApi.FindResultsApiJobRunRulesAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -338,67 +151,6 @@ catch (ApiException e)
 
 Retrieves a list of Job Runs from the Validation Results API.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class FindResultsApiJobRunsAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ValidationResultsAPIApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var jobId = "jobId_example";  // string | 
-            var offset = 0;  // int |  (optional)  (default to 0)
-            var limit = 25;  // int |  (optional)  (default to 25)
-
-            try
-            {
-                // Retrieves a list of Job Runs from the Validation Results API.
-                List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRunsRunDto> result = apiInstance.FindResultsApiJobRunsAsync(tenantId, jobId, offset, limit);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ValidationResultsAPIApi.FindResultsApiJobRunsAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the FindResultsApiJobRunsAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of Job Runs from the Validation Results API.
-    ApiResponse<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRunsRunDto>> response = apiInstance.FindResultsApiJobRunsAsyncWithHttpInfo(tenantId, jobId, offset, limit);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ValidationResultsAPIApi.FindResultsApiJobRunsAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -440,66 +192,6 @@ catch (ApiException e)
 
 Retrieves a list of Jobs from the Validation Results API.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class FindResultsApiJobsAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ValidationResultsAPIApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var offset = 0;  // int |  (optional)  (default to 0)
-            var limit = 25;  // int |  (optional)  (default to 25)
-
-            try
-            {
-                // Retrieves a list of Jobs from the Validation Results API.
-                List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiJobsJobDto> result = apiInstance.FindResultsApiJobsAsync(tenantId, offset, limit);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ValidationResultsAPIApi.FindResultsApiJobsAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the FindResultsApiJobsAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of Jobs from the Validation Results API.
-    ApiResponse<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiJobsJobDto>> response = apiInstance.FindResultsApiJobsAsyncWithHttpInfo(tenantId, offset, limit);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ValidationResultsAPIApi.FindResultsApiJobsAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -540,68 +232,6 @@ catch (ApiException e)
 
 Retrieves a list Rule Summaries from the Validation Results API.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class FindResultsApiRuleSummariesExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ValidationResultsAPIApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var jobId = "jobId_example";  // Guid | 
-            var runId = "runId_example";  // Guid | 
-            var offset = 0;  // int |  (optional)  (default to 0)
-            var limit = 25;  // int |  (optional)  (default to 25)
-
-            try
-            {
-                // Retrieves a list Rule Summaries from the Validation Results API.
-                List<ValidationsApiResultsV1RuleSummary> result = apiInstance.FindResultsApiRuleSummaries(tenantId, jobId, runId, offset, limit);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ValidationResultsAPIApi.FindResultsApiRuleSummaries: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the FindResultsApiRuleSummariesWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list Rule Summaries from the Validation Results API.
-    ApiResponse<List<ValidationsApiResultsV1RuleSummary>> response = apiInstance.FindResultsApiRuleSummariesWithHttpInfo(tenantId, jobId, runId, offset, limit);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ValidationResultsAPIApi.FindResultsApiRuleSummariesWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -644,66 +274,6 @@ catch (ApiException e)
 
 Retrieves a list of Rules from Validation Results API.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class FindResultsApiRulesAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ValidationResultsAPIApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var offset = 0;  // int |  (optional)  (default to 0)
-            var limit = 25;  // int |  (optional)  (default to 25)
-
-            try
-            {
-                // Retrieves a list of Rules from Validation Results API.
-                List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRulesRuleDto> result = apiInstance.FindResultsApiRulesAsync(tenantId, offset, limit);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ValidationResultsAPIApi.FindResultsApiRulesAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the FindResultsApiRulesAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of Rules from Validation Results API.
-    ApiResponse<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRulesRuleDto>> response = apiInstance.FindResultsApiRulesAsyncWithHttpInfo(tenantId, offset, limit);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ValidationResultsAPIApi.FindResultsApiRulesAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -744,65 +314,6 @@ catch (ApiException e)
 
 Retrieves the latest Job Run from the Validation Results API.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetLatestJobRunAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ValidationResultsAPIApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var jobId = "jobId_example";  // string | 
-
-            try
-            {
-                // Retrieves the latest Job Run from the Validation Results API.
-                EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRunsRunDto result = apiInstance.GetLatestJobRunAsync(tenantId, jobId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ValidationResultsAPIApi.GetLatestJobRunAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetLatestJobRunAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves the latest Job Run from the Validation Results API.
-    ApiResponse<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRunsRunDto> response = apiInstance.GetLatestJobRunAsyncWithHttpInfo(tenantId, jobId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ValidationResultsAPIApi.GetLatestJobRunAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -843,65 +354,6 @@ catch (ApiException e)
 
 Retrieves a Job by ID from the Validation Results API.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetResultsApiJobByIdExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ValidationResultsAPIApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var jobId = "jobId_example";  // string | 
-
-            try
-            {
-                // Retrieves a Job by ID from the Validation Results API.
-                EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiJobsJobDto result = apiInstance.GetResultsApiJobById(tenantId, jobId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ValidationResultsAPIApi.GetResultsApiJobById: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetResultsApiJobByIdWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a Job by ID from the Validation Results API.
-    ApiResponse<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiJobsJobDto> response = apiInstance.GetResultsApiJobByIdWithHttpInfo(tenantId, jobId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ValidationResultsAPIApi.GetResultsApiJobByIdWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -942,66 +394,6 @@ catch (ApiException e)
 
 Retrieves a Job Run by ID from the Validation Results API.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetResultsApiJobRunByIdAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ValidationResultsAPIApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var jobId = "jobId_example";  // string | 
-            var runId = "runId_example";  // string | 
-
-            try
-            {
-                // Retrieves a Job Run by ID from the Validation Results API.
-                EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRunsRunDto result = apiInstance.GetResultsApiJobRunByIdAsync(tenantId, jobId, runId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ValidationResultsAPIApi.GetResultsApiJobRunByIdAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetResultsApiJobRunByIdAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a Job Run by ID from the Validation Results API.
-    ApiResponse<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRunsRunDto> response = apiInstance.GetResultsApiJobRunByIdAsyncWithHttpInfo(tenantId, jobId, runId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ValidationResultsAPIApi.GetResultsApiJobRunByIdAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1043,67 +435,6 @@ catch (ApiException e)
 
 Retrieves a Job Run Rule by ID from the Validation Results API.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetResultsApiJobRunRuleByIdAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ValidationResultsAPIApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var jobId = "jobId_example";  // string | 
-            var runId = "runId_example";  // string | 
-            var ruleId = "ruleId_example";  // string | 
-
-            try
-            {
-                // Retrieves a Job Run Rule by ID from the Validation Results API.
-                EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRulesRuleDto result = apiInstance.GetResultsApiJobRunRuleByIdAsync(tenantId, jobId, runId, ruleId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ValidationResultsAPIApi.GetResultsApiJobRunRuleByIdAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetResultsApiJobRunRuleByIdAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a Job Run Rule by ID from the Validation Results API.
-    ApiResponse<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRulesRuleDto> response = apiInstance.GetResultsApiJobRunRuleByIdAsyncWithHttpInfo(tenantId, jobId, runId, ruleId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ValidationResultsAPIApi.GetResultsApiJobRunRuleByIdAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1146,65 +477,6 @@ catch (ApiException e)
 
 Retrieves a Rule by ID from the Validation Results API.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetResultsApiRuleByIdAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ValidationResultsAPIApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var ruleId = "ruleId_example";  // string | 
-
-            try
-            {
-                // Retrieves a Rule by ID from the Validation Results API.
-                EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRulesRuleDto result = apiInstance.GetResultsApiRuleByIdAsync(tenantId, ruleId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ValidationResultsAPIApi.GetResultsApiRuleByIdAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetResultsApiRuleByIdAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a Rule by ID from the Validation Results API.
-    ApiResponse<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRulesRuleDto> response = apiInstance.GetResultsApiRuleByIdAsyncWithHttpInfo(tenantId, ruleId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ValidationResultsAPIApi.GetResultsApiRuleByIdAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1245,67 +517,6 @@ catch (ApiException e)
 
 Get Rule Summary by ID from the Validation Results API.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetResultsApiRuleSummaryExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ValidationResultsAPIApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var jobId = "jobId_example";  // Guid | 
-            var runId = "runId_example";  // Guid | 
-            var ruleId = "ruleId_example";  // Guid | 
-
-            try
-            {
-                // Get Rule Summary by ID from the Validation Results API.
-                ValidationsApiResultsV1RuleSummary result = apiInstance.GetResultsApiRuleSummary(tenantId, jobId, runId, ruleId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ValidationResultsAPIApi.GetResultsApiRuleSummary: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetResultsApiRuleSummaryWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Get Rule Summary by ID from the Validation Results API.
-    ApiResponse<ValidationsApiResultsV1RuleSummary> response = apiInstance.GetResultsApiRuleSummaryWithHttpInfo(tenantId, jobId, runId, ruleId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ValidationResultsAPIApi.GetResultsApiRuleSummaryWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

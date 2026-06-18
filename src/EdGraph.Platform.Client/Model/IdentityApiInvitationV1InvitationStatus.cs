@@ -145,7 +145,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, IdentityApiInvitationV1InvitationStatus identityApiInvitationV1InvitationStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(identityApiInvitationV1InvitationStatus.ToString());
+            writer.WriteStringValue(IdentityApiInvitationV1InvitationStatusValueConverter.ToJsonValue(identityApiInvitationV1InvitationStatus).ToString());
         }
     }
 
@@ -176,14 +176,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the IdentityApiInvitationV1InvitationStatus to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="identityApiInvitationV1InvitationStatus"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, IdentityApiInvitationV1InvitationStatus? identityApiInvitationV1InvitationStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(identityApiInvitationV1InvitationStatus?.ToString() ?? "null");
+            writer.WriteStringValue(identityApiInvitationV1InvitationStatus.HasValue ? IdentityApiInvitationV1InvitationStatusValueConverter.ToJsonValue(identityApiInvitationV1InvitationStatus.Value).ToString() : "null");
         }
     }
 }

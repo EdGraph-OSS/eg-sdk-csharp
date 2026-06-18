@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<TenantApiTenantV1CreateOrganizationRequest> tenantApiTenantV1CreateOrganizationRequest = default!;
             var response = await _instance.CreateOrganizationAsyncAsync(tenantId, tenantApiTenantV1CreateOrganizationRequest);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiTenantV1OrganizationCreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string organizationIdentifier = default!;
             var response = await _instance.DeleteOrganizationAsyncAsync(tenantId, organizationIdentifier);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiTenantV1OrganizationDeletedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string organizationIdentifier = default!;
             var response = await _instance.GetOrganizationByIdAsyncAsync(tenantId, organizationIdentifier);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiTenantV1Organization>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetOrganizationsAsyncAsync(tenantId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiTenantV1GetOrganizationsPaginatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<TenantApiTenantV1UpdateOrganizationRequest> tenantApiTenantV1UpdateOrganizationRequest = default!;
             var response = await _instance.UpdateOrganizationAsyncAsync(tenantId, organizationIdentifier, tenantApiTenantV1UpdateOrganizationRequest);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiTenantV1OrganizationUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

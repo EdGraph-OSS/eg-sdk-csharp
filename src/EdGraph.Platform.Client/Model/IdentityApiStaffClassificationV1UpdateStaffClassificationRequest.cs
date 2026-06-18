@@ -64,7 +64,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Namespace
@@ -77,7 +77,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Namespace
         /// </summary>
         [JsonPropertyName("namespace")]
-        public string? Namespace { get { return this.NamespaceOption; } set { this.NamespaceOption = new(value); } }
+        public string? Namespace { get { return this.NamespaceOption.Value; } set { this.NamespaceOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CodeValue
@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CodeValue
         /// </summary>
         [JsonPropertyName("codeValue")]
-        public string? CodeValue { get { return this.CodeValueOption; } set { this.CodeValueOption = new(value); } }
+        public string? CodeValue { get { return this.CodeValueOption.Value; } set { this.CodeValueOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ShortDescription
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ShortDescription
         /// </summary>
         [JsonPropertyName("shortDescription")]
-        public string? ShortDescription { get { return this.ShortDescriptionOption; } set { this.ShortDescriptionOption = new(value); } }
+        public string? ShortDescription { get { return this.ShortDescriptionOption.Value; } set { this.ShortDescriptionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Description
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Description
         /// </summary>
         [JsonPropertyName("description")]
-        public string? Description { get { return this.DescriptionOption; } set { this.DescriptionOption = new(value); } }
+        public string? Description { get { return this.DescriptionOption.Value; } set { this.DescriptionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Licenses
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Licenses
         /// </summary>
         [JsonPropertyName("licenses")]
-        public List<IdentityApiStaffClassificationV1StaffClassificationLicenseRequest>? Licenses { get { return this.LicensesOption; } }
+        public List<IdentityApiStaffClassificationV1StaffClassificationLicenseRequest>? Licenses { get { return this.LicensesOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -220,8 +220,7 @@ namespace EdGraph.Platform.Client.Model
                             description = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "licenses":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                licenses = new Option<List<IdentityApiStaffClassificationV1StaffClassificationLicenseRequest>?>(JsonSerializer.Deserialize<List<IdentityApiStaffClassificationV1StaffClassificationLicenseRequest>>(ref utf8JsonReader, jsonSerializerOptions));
+                            licenses = new Option<List<IdentityApiStaffClassificationV1StaffClassificationLicenseRequest>?>(JsonSerializer.Deserialize<List<IdentityApiStaffClassificationV1StaffClassificationLicenseRequest>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

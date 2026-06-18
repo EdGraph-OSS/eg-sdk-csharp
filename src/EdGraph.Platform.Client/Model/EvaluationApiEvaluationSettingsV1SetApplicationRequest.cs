@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ReminderEmailSchedule
         /// </summary>
         [JsonPropertyName("reminderEmailSchedule")]
-        public EvaluationApiEvaluationSettingsV1ScheduleType? ReminderEmailSchedule { get { return this.ReminderEmailScheduleOption; } set { this.ReminderEmailScheduleOption = new(value); } }
+        public EvaluationApiEvaluationSettingsV1ScheduleType? ReminderEmailSchedule { get { return this.ReminderEmailScheduleOption.Value; } set { this.ReminderEmailScheduleOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Forms
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Forms
         /// </summary>
         [JsonPropertyName("forms")]
-        public List<EvaluationApiEvaluationSettingsV1SetFormConfigurationRequest>? Forms { get { return this.FormsOption; } }
+        public List<EvaluationApiEvaluationSettingsV1SetFormConfigurationRequest>? Forms { get { return this.FormsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of RecommendedNumberOfEvaluations
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RecommendedNumberOfEvaluations
         /// </summary>
         [JsonPropertyName("recommendedNumberOfEvaluations")]
-        public int? RecommendedNumberOfEvaluations { get { return this.RecommendedNumberOfEvaluationsOption; } set { this.RecommendedNumberOfEvaluationsOption = new(value); } }
+        public int? RecommendedNumberOfEvaluations { get { return this.RecommendedNumberOfEvaluationsOption.Value; } set { this.RecommendedNumberOfEvaluationsOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -174,12 +174,10 @@ namespace EdGraph.Platform.Client.Model
                             tenantId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "forms":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                forms = new Option<List<EvaluationApiEvaluationSettingsV1SetFormConfigurationRequest>?>(JsonSerializer.Deserialize<List<EvaluationApiEvaluationSettingsV1SetFormConfigurationRequest>>(ref utf8JsonReader, jsonSerializerOptions));
+                            forms = new Option<List<EvaluationApiEvaluationSettingsV1SetFormConfigurationRequest>?>(JsonSerializer.Deserialize<List<EvaluationApiEvaluationSettingsV1SetFormConfigurationRequest>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "recommendedNumberOfEvaluations":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                recommendedNumberOfEvaluations = new Option<int?>(utf8JsonReader.GetInt32());
+                            recommendedNumberOfEvaluations = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "reminderEmailSchedule":
                             string? reminderEmailScheduleRawValue = utf8JsonReader.GetString();

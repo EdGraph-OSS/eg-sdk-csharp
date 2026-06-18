@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SelectedTier
         /// </summary>
         [JsonPropertyName("selectedTier")]
-        public EdfiAdminApiEdfiAdminV1DatabaseTier? SelectedTier { get { return this.SelectedTierOption; } set { this.SelectedTierOption = new(value); } }
+        public EdfiAdminApiEdfiAdminV1DatabaseTier? SelectedTier { get { return this.SelectedTierOption.Value; } set { this.SelectedTierOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InstanceId
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceId
         /// </summary>
         [JsonPropertyName("instanceId")]
-        public string? InstanceId { get { return this.InstanceIdOption; } set { this.InstanceIdOption = new(value); } }
+        public string? InstanceId { get { return this.InstanceIdOption.Value; } set { this.InstanceIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Year
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Year
         /// </summary>
         [JsonPropertyName("year")]
-        public int? Year { get { return this.YearOption; } set { this.YearOption = new(value); } }
+        public int? Year { get { return this.YearOption.Value; } set { this.YearOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -177,8 +177,7 @@ namespace EdGraph.Platform.Client.Model
                             tenantId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "year":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                year = new Option<int?>(utf8JsonReader.GetInt32());
+                            year = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "selectedTier":
                             string? selectedTierRawValue = utf8JsonReader.GetString();

@@ -70,7 +70,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RecordId
         /// </summary>
         [JsonPropertyName("recordId")]
-        public string? RecordId { get { return this.RecordIdOption; } set { this.RecordIdOption = new(value); } }
+        public string? RecordId { get { return this.RecordIdOption.Value; } set { this.RecordIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RunId
@@ -83,7 +83,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RunId
         /// </summary>
         [JsonPropertyName("runId")]
-        public string? RunId { get { return this.RunIdOption; } set { this.RunIdOption = new(value); } }
+        public string? RunId { get { return this.RunIdOption.Value; } set { this.RunIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RuleId
@@ -96,7 +96,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RuleId
         /// </summary>
         [JsonPropertyName("ruleId")]
-        public string? RuleId { get { return this.RuleIdOption; } set { this.RuleIdOption = new(value); } }
+        public string? RuleId { get { return this.RuleIdOption.Value; } set { this.RuleIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ResourceId
@@ -109,7 +109,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ResourceId
         /// </summary>
         [JsonPropertyName("resourceId")]
-        public string? ResourceId { get { return this.ResourceIdOption; } set { this.ResourceIdOption = new(value); } }
+        public string? ResourceId { get { return this.ResourceIdOption.Value; } set { this.ResourceIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ResourceType
@@ -122,7 +122,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ResourceType
         /// </summary>
         [JsonPropertyName("resourceType")]
-        public string? ResourceType { get { return this.ResourceTypeOption; } set { this.ResourceTypeOption = new(value); } }
+        public string? ResourceType { get { return this.ResourceTypeOption.Value; } set { this.ResourceTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ResourceUrls
@@ -135,7 +135,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ResourceUrls
         /// </summary>
         [JsonPropertyName("resourceUrls")]
-        public List<string>? ResourceUrls { get { return this.ResourceUrlsOption; } set { this.ResourceUrlsOption = new(value); } }
+        public List<string>? ResourceUrls { get { return this.ResourceUrlsOption.Value; } set { this.ResourceUrlsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Namespace
@@ -148,7 +148,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Namespace
         /// </summary>
         [JsonPropertyName("namespace")]
-        public string? Namespace { get { return this.NamespaceOption; } set { this.NamespaceOption = new(value); } }
+        public string? Namespace { get { return this.NamespaceOption.Value; } set { this.NamespaceOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Details
@@ -161,7 +161,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Details
         /// </summary>
         [JsonPropertyName("details")]
-        public Object? Details { get { return this.DetailsOption; } set { this.DetailsOption = new(value); } }
+        public Object? Details { get { return this.DetailsOption.Value; } set { this.DetailsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DetailsSchema
@@ -174,7 +174,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DetailsSchema
         /// </summary>
         [JsonPropertyName("detailsSchema")]
-        public string? DetailsSchema { get { return this.DetailsSchemaOption; } set { this.DetailsSchemaOption = new(value); } }
+        public string? DetailsSchema { get { return this.DetailsSchemaOption.Value; } set { this.DetailsSchemaOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -271,15 +271,13 @@ namespace EdGraph.Platform.Client.Model
                             resourceType = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "resourceUrls":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                resourceUrls = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            resourceUrls = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "namespace":
                             varNamespace = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "details":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                details = new Option<Object?>(JsonSerializer.Deserialize<Object>(ref utf8JsonReader, jsonSerializerOptions));
+                            details = new Option<Object?>(JsonSerializer.Deserialize<Object>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "detailsSchema":
                             detailsSchema = new Option<string?>(utf8JsonReader.GetString());

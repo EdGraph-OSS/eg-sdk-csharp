@@ -62,7 +62,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ClientId
@@ -75,7 +75,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ClientId
         /// </summary>
         [JsonPropertyName("clientId")]
-        public string? ClientId { get { return this.ClientIdOption; } set { this.ClientIdOption = new(value); } }
+        public string? ClientId { get { return this.ClientIdOption.Value; } set { this.ClientIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ClientName
@@ -88,7 +88,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ClientName
         /// </summary>
         [JsonPropertyName("clientName")]
-        public string? ClientName { get { return this.ClientNameOption; } set { this.ClientNameOption = new(value); } }
+        public string? ClientName { get { return this.ClientNameOption.Value; } set { this.ClientNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Enabled
@@ -101,7 +101,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Enabled
         /// </summary>
         [JsonPropertyName("enabled")]
-        public bool? Enabled { get { return this.EnabledOption; } set { this.EnabledOption = new(value); } }
+        public bool? Enabled { get { return this.EnabledOption.Value; } set { this.EnabledOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApiClaims
@@ -114,7 +114,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApiClaims
         /// </summary>
         [JsonPropertyName("apiClaims")]
-        public List<IdentityApiApiClientV1ApiClaim>? ApiClaims { get { return this.ApiClaimsOption; } }
+        public List<IdentityApiApiClientV1ApiClaim>? ApiClaims { get { return this.ApiClaimsOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -197,12 +197,10 @@ namespace EdGraph.Platform.Client.Model
                             clientName = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "enabled":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                enabled = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            enabled = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "apiClaims":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                apiClaims = new Option<List<IdentityApiApiClientV1ApiClaim>?>(JsonSerializer.Deserialize<List<IdentityApiApiClientV1ApiClaim>>(ref utf8JsonReader, jsonSerializerOptions));
+                            apiClaims = new Option<List<IdentityApiApiClientV1ApiClaim>?>(JsonSerializer.Deserialize<List<IdentityApiApiClientV1ApiClaim>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

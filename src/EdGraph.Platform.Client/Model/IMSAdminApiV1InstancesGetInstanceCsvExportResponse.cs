@@ -54,7 +54,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DownloadUri
         /// </summary>
         [JsonPropertyName("downloadUri")]
-        public string? DownloadUri { get { return this.DownloadUriOption; } set { this.DownloadUriOption = new(value); } }
+        public string? DownloadUri { get { return this.DownloadUriOption.Value; } set { this.DownloadUriOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

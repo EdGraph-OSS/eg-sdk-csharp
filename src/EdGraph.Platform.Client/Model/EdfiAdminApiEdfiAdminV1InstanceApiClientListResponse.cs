@@ -80,7 +80,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SecretValueType
         /// </summary>
         [JsonPropertyName("secretValueType")]
-        public EdfiAdminApiEdfiAdminV1SecretValueType? SecretValueType { get { return this.SecretValueTypeOption; } set { this.SecretValueTypeOption = new(value); } }
+        public EdfiAdminApiEdfiAdminV1SecretValueType? SecretValueType { get { return this.SecretValueTypeOption.Value; } set { this.SecretValueTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -93,7 +93,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InstanceId
@@ -106,7 +106,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceId
         /// </summary>
         [JsonPropertyName("instanceId")]
-        public string? InstanceId { get { return this.InstanceIdOption; } set { this.InstanceIdOption = new(value); } }
+        public string? InstanceId { get { return this.InstanceIdOption.Value; } set { this.InstanceIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InstanceApplicationId
@@ -119,7 +119,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceApplicationId
         /// </summary>
         [JsonPropertyName("instanceApplicationId")]
-        public string? InstanceApplicationId { get { return this.InstanceApplicationIdOption; } set { this.InstanceApplicationIdOption = new(value); } }
+        public string? InstanceApplicationId { get { return this.InstanceApplicationIdOption.Value; } set { this.InstanceApplicationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApiClientId
@@ -132,7 +132,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApiClientId
         /// </summary>
         [JsonPropertyName("apiClientId")]
-        public string? ApiClientId { get { return this.ApiClientIdOption; } set { this.ApiClientIdOption = new(value); } }
+        public string? ApiClientId { get { return this.ApiClientIdOption.Value; } set { this.ApiClientIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Key
@@ -145,7 +145,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Key
         /// </summary>
         [JsonPropertyName("key")]
-        public string? Key { get { return this.KeyOption; } set { this.KeyOption = new(value); } }
+        public string? Key { get { return this.KeyOption.Value; } set { this.KeyOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SecretName
@@ -158,7 +158,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SecretName
         /// </summary>
         [JsonPropertyName("secretName")]
-        public string? SecretName { get { return this.SecretNameOption; } set { this.SecretNameOption = new(value); } }
+        public string? SecretName { get { return this.SecretNameOption.Value; } set { this.SecretNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SecretValue
@@ -171,7 +171,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SecretValue
         /// </summary>
         [JsonPropertyName("secretValue")]
-        public string? SecretValue { get { return this.SecretValueOption; } set { this.SecretValueOption = new(value); } }
+        public string? SecretValue { get { return this.SecretValueOption.Value; } set { this.SecretValueOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SecretValueEncryptionKey
@@ -184,7 +184,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SecretValueEncryptionKey
         /// </summary>
         [JsonPropertyName("secretValueEncryptionKey")]
-        public string? SecretValueEncryptionKey { get { return this.SecretValueEncryptionKeyOption; } set { this.SecretValueEncryptionKeyOption = new(value); } }
+        public string? SecretValueEncryptionKey { get { return this.SecretValueEncryptionKeyOption.Value; } set { this.SecretValueEncryptionKeyOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SecretEncryptionMetadata
@@ -197,7 +197,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SecretEncryptionMetadata
         /// </summary>
         [JsonPropertyName("secretEncryptionMetadata")]
-        public List<EdfiAdminApiEdfiAdminV1SecretEncryptionMetadata>? SecretEncryptionMetadata { get { return this.SecretEncryptionMetadataOption; } }
+        public List<EdfiAdminApiEdfiAdminV1SecretEncryptionMetadata>? SecretEncryptionMetadata { get { return this.SecretEncryptionMetadataOption.Value; } }
 
         /// <summary>
         /// Used to track the state of CreatedBy
@@ -210,7 +210,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedBy
         /// </summary>
         [JsonPropertyName("createdBy")]
-        public string? CreatedBy { get { return this.CreatedByOption; } set { this.CreatedByOption = new(value); } }
+        public string? CreatedBy { get { return this.CreatedByOption.Value; } set { this.CreatedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedDateTime
@@ -223,7 +223,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedDateTime
         /// </summary>
         [JsonPropertyName("createdDateTime")]
-        public string? CreatedDateTime { get { return this.CreatedDateTimeOption; } set { this.CreatedDateTimeOption = new(value); } }
+        public string? CreatedDateTime { get { return this.CreatedDateTimeOption.Value; } set { this.CreatedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedBy
@@ -236,7 +236,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedBy
         /// </summary>
         [JsonPropertyName("lastModifiedBy")]
-        public string? LastModifiedBy { get { return this.LastModifiedByOption; } set { this.LastModifiedByOption = new(value); } }
+        public string? LastModifiedBy { get { return this.LastModifiedByOption.Value; } set { this.LastModifiedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedDateTime
@@ -249,7 +249,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedDateTime
         /// </summary>
         [JsonPropertyName("lastModifiedDateTime")]
-        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption; } set { this.LastModifiedDateTimeOption = new(value); } }
+        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption.Value; } set { this.LastModifiedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -370,8 +370,7 @@ namespace EdGraph.Platform.Client.Model
                             secretValueEncryptionKey = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "secretEncryptionMetadata":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                secretEncryptionMetadata = new Option<List<EdfiAdminApiEdfiAdminV1SecretEncryptionMetadata>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1SecretEncryptionMetadata>>(ref utf8JsonReader, jsonSerializerOptions));
+                            secretEncryptionMetadata = new Option<List<EdfiAdminApiEdfiAdminV1SecretEncryptionMetadata>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1SecretEncryptionMetadata>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "createdBy":
                             createdBy = new Option<string?>(utf8JsonReader.GetString());

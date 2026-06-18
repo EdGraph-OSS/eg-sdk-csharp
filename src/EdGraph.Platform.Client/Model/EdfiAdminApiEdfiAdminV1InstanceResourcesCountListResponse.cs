@@ -68,7 +68,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InstanceId
@@ -81,7 +81,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceId
         /// </summary>
         [JsonPropertyName("instanceId")]
-        public string? InstanceId { get { return this.InstanceIdOption; } set { this.InstanceIdOption = new(value); } }
+        public string? InstanceId { get { return this.InstanceIdOption.Value; } set { this.InstanceIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Year
@@ -94,7 +94,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Year
         /// </summary>
         [JsonPropertyName("year")]
-        public int? Year { get { return this.YearOption; } set { this.YearOption = new(value); } }
+        public int? Year { get { return this.YearOption.Value; } set { this.YearOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InstanceApplicationId
@@ -107,7 +107,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceApplicationId
         /// </summary>
         [JsonPropertyName("instanceApplicationId")]
-        public int? InstanceApplicationId { get { return this.InstanceApplicationIdOption; } set { this.InstanceApplicationIdOption = new(value); } }
+        public int? InstanceApplicationId { get { return this.InstanceApplicationIdOption.Value; } set { this.InstanceApplicationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApiClientId
@@ -120,7 +120,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApiClientId
         /// </summary>
         [JsonPropertyName("apiClientId")]
-        public int? ApiClientId { get { return this.ApiClientIdOption; } set { this.ApiClientIdOption = new(value); } }
+        public int? ApiClientId { get { return this.ApiClientIdOption.Value; } set { this.ApiClientIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ResourceName
@@ -133,7 +133,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ResourceName
         /// </summary>
         [JsonPropertyName("resourceName")]
-        public string? ResourceName { get { return this.ResourceNameOption; } set { this.ResourceNameOption = new(value); } }
+        public string? ResourceName { get { return this.ResourceNameOption.Value; } set { this.ResourceNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ResourceCount
@@ -146,7 +146,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ResourceCount
         /// </summary>
         [JsonPropertyName("resourceCount")]
-        public string? ResourceCount { get { return this.ResourceCountOption; } set { this.ResourceCountOption = new(value); } }
+        public string? ResourceCount { get { return this.ResourceCountOption.Value; } set { this.ResourceCountOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ResourceDependencyOrder
@@ -159,7 +159,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ResourceDependencyOrder
         /// </summary>
         [JsonPropertyName("resourceDependencyOrder")]
-        public string? ResourceDependencyOrder { get { return this.ResourceDependencyOrderOption; } set { this.ResourceDependencyOrderOption = new(value); } }
+        public string? ResourceDependencyOrder { get { return this.ResourceDependencyOrderOption.Value; } set { this.ResourceDependencyOrderOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -245,16 +245,13 @@ namespace EdGraph.Platform.Client.Model
                             instanceId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "year":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                year = new Option<int?>(utf8JsonReader.GetInt32());
+                            year = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "instanceApplicationId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                instanceApplicationId = new Option<int?>(utf8JsonReader.GetInt32());
+                            instanceApplicationId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "apiClientId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                apiClientId = new Option<int?>(utf8JsonReader.GetInt32());
+                            apiClientId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "resourceName":
                             resourceName = new Option<string?>(utf8JsonReader.GetString());

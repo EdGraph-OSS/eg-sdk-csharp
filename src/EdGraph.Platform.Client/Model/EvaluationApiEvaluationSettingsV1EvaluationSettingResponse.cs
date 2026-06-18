@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ReminderEmailSchedule
         /// </summary>
         [JsonPropertyName("reminderEmailSchedule")]
-        public EvaluationApiEvaluationSettingsV1ScheduleType? ReminderEmailSchedule { get { return this.ReminderEmailScheduleOption; } set { this.ReminderEmailScheduleOption = new(value); } }
+        public EvaluationApiEvaluationSettingsV1ScheduleType? ReminderEmailSchedule { get { return this.ReminderEmailScheduleOption.Value; } set { this.ReminderEmailScheduleOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Id
@@ -97,7 +97,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -110,7 +110,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Forms
@@ -123,7 +123,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Forms
         /// </summary>
         [JsonPropertyName("forms")]
-        public List<EvaluationApiEvaluationSettingsV1FormConfigurationResponse>? Forms { get { return this.FormsOption; } }
+        public List<EvaluationApiEvaluationSettingsV1FormConfigurationResponse>? Forms { get { return this.FormsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of RecommendedNumberOfEvaluations
@@ -136,7 +136,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RecommendedNumberOfEvaluations
         /// </summary>
         [JsonPropertyName("recommendedNumberOfEvaluations")]
-        public int? RecommendedNumberOfEvaluations { get { return this.RecommendedNumberOfEvaluationsOption; } set { this.RecommendedNumberOfEvaluationsOption = new(value); } }
+        public int? RecommendedNumberOfEvaluations { get { return this.RecommendedNumberOfEvaluationsOption.Value; } set { this.RecommendedNumberOfEvaluationsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedBy
@@ -149,7 +149,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedBy
         /// </summary>
         [JsonPropertyName("createdBy")]
-        public string? CreatedBy { get { return this.CreatedByOption; } set { this.CreatedByOption = new(value); } }
+        public string? CreatedBy { get { return this.CreatedByOption.Value; } set { this.CreatedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedDateTime
@@ -162,7 +162,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedDateTime
         /// </summary>
         [JsonPropertyName("createdDateTime")]
-        public string? CreatedDateTime { get { return this.CreatedDateTimeOption; } set { this.CreatedDateTimeOption = new(value); } }
+        public string? CreatedDateTime { get { return this.CreatedDateTimeOption.Value; } set { this.CreatedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedBy
@@ -175,7 +175,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedBy
         /// </summary>
         [JsonPropertyName("lastModifiedBy")]
-        public string? LastModifiedBy { get { return this.LastModifiedByOption; } set { this.LastModifiedByOption = new(value); } }
+        public string? LastModifiedBy { get { return this.LastModifiedByOption.Value; } set { this.LastModifiedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedDateTime
@@ -188,7 +188,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedDateTime
         /// </summary>
         [JsonPropertyName("lastModifiedDateTime")]
-        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption; } set { this.LastModifiedDateTimeOption = new(value); } }
+        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption.Value; } set { this.LastModifiedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DeletedBy
@@ -201,7 +201,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DeletedBy
         /// </summary>
         [JsonPropertyName("deletedBy")]
-        public string? DeletedBy { get { return this.DeletedByOption; } set { this.DeletedByOption = new(value); } }
+        public string? DeletedBy { get { return this.DeletedByOption.Value; } set { this.DeletedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DeletedDateTime
@@ -214,7 +214,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DeletedDateTime
         /// </summary>
         [JsonPropertyName("deletedDateTime")]
-        public string? DeletedDateTime { get { return this.DeletedDateTimeOption; } set { this.DeletedDateTimeOption = new(value); } }
+        public string? DeletedDateTime { get { return this.DeletedDateTimeOption.Value; } set { this.DeletedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsDeleted
@@ -227,7 +227,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IsDeleted
         /// </summary>
         [JsonPropertyName("isDeleted")]
-        public bool? IsDeleted { get { return this.IsDeletedOption; } set { this.IsDeletedOption = new(value); } }
+        public bool? IsDeleted { get { return this.IsDeletedOption.Value; } set { this.IsDeletedOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Appraisers
@@ -240,7 +240,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Appraisers
         /// </summary>
         [JsonPropertyName("appraisers")]
-        public List<string>? Appraisers { get { return this.AppraisersOption; } }
+        public List<string>? Appraisers { get { return this.AppraisersOption.Value; } }
 
         /// <summary>
         /// Used to track the state of StaffClassifications
@@ -253,7 +253,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets StaffClassifications
         /// </summary>
         [JsonPropertyName("staffClassifications")]
-        public List<string>? StaffClassifications { get { return this.StaffClassificationsOption; } }
+        public List<string>? StaffClassifications { get { return this.StaffClassificationsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of AvailablePersonas
@@ -266,7 +266,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AvailablePersonas
         /// </summary>
         [JsonPropertyName("availablePersonas")]
-        public List<EvaluationApiEvaluationSettingsV1PersonaResponse>? AvailablePersonas { get { return this.AvailablePersonasOption; } }
+        public List<EvaluationApiEvaluationSettingsV1PersonaResponse>? AvailablePersonas { get { return this.AvailablePersonasOption.Value; } }
 
         /// <summary>
         /// Used to track the state of RoleConfigurations
@@ -279,7 +279,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RoleConfigurations
         /// </summary>
         [JsonPropertyName("roleConfigurations")]
-        public List<EvaluationApiEvaluationSettingsV1RoleConfigurationResponse>? RoleConfigurations { get { return this.RoleConfigurationsOption; } }
+        public List<EvaluationApiEvaluationSettingsV1RoleConfigurationResponse>? RoleConfigurations { get { return this.RoleConfigurationsOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -381,12 +381,10 @@ namespace EdGraph.Platform.Client.Model
                             tenantId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "forms":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                forms = new Option<List<EvaluationApiEvaluationSettingsV1FormConfigurationResponse>?>(JsonSerializer.Deserialize<List<EvaluationApiEvaluationSettingsV1FormConfigurationResponse>>(ref utf8JsonReader, jsonSerializerOptions));
+                            forms = new Option<List<EvaluationApiEvaluationSettingsV1FormConfigurationResponse>?>(JsonSerializer.Deserialize<List<EvaluationApiEvaluationSettingsV1FormConfigurationResponse>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "recommendedNumberOfEvaluations":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                recommendedNumberOfEvaluations = new Option<int?>(utf8JsonReader.GetInt32());
+                            recommendedNumberOfEvaluations = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "reminderEmailSchedule":
                             string? reminderEmailScheduleRawValue = utf8JsonReader.GetString();
@@ -412,24 +410,19 @@ namespace EdGraph.Platform.Client.Model
                             deletedDateTime = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "isDeleted":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isDeleted = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isDeleted = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "appraisers":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                appraisers = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            appraisers = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "staffClassifications":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                staffClassifications = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            staffClassifications = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "availablePersonas":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                availablePersonas = new Option<List<EvaluationApiEvaluationSettingsV1PersonaResponse>?>(JsonSerializer.Deserialize<List<EvaluationApiEvaluationSettingsV1PersonaResponse>>(ref utf8JsonReader, jsonSerializerOptions));
+                            availablePersonas = new Option<List<EvaluationApiEvaluationSettingsV1PersonaResponse>?>(JsonSerializer.Deserialize<List<EvaluationApiEvaluationSettingsV1PersonaResponse>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "roleConfigurations":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                roleConfigurations = new Option<List<EvaluationApiEvaluationSettingsV1RoleConfigurationResponse>?>(JsonSerializer.Deserialize<List<EvaluationApiEvaluationSettingsV1RoleConfigurationResponse>>(ref utf8JsonReader, jsonSerializerOptions));
+                            roleConfigurations = new Option<List<EvaluationApiEvaluationSettingsV1RoleConfigurationResponse>?>(JsonSerializer.Deserialize<List<EvaluationApiEvaluationSettingsV1RoleConfigurationResponse>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

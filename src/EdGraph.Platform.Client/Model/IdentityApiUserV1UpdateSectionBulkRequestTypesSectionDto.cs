@@ -68,7 +68,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets UserSectionId
         /// </summary>
         [JsonPropertyName("userSectionId")]
-        public string? UserSectionId { get { return this.UserSectionIdOption; } set { this.UserSectionIdOption = new(value); } }
+        public string? UserSectionId { get { return this.UserSectionIdOption.Value; } set { this.UserSectionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EducationOrganizationId
@@ -81,7 +81,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EducationOrganizationId
         /// </summary>
         [JsonPropertyName("educationOrganizationId")]
-        public int? EducationOrganizationId { get { return this.EducationOrganizationIdOption; } set { this.EducationOrganizationIdOption = new(value); } }
+        public int? EducationOrganizationId { get { return this.EducationOrganizationIdOption.Value; } set { this.EducationOrganizationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SectionId
@@ -94,7 +94,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SectionId
         /// </summary>
         [JsonPropertyName("sectionId")]
-        public string? SectionId { get { return this.SectionIdOption; } set { this.SectionIdOption = new(value); } }
+        public string? SectionId { get { return this.SectionIdOption.Value; } set { this.SectionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of StaffUniqueId
@@ -107,7 +107,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets StaffUniqueId
         /// </summary>
         [JsonPropertyName("staffUniqueId")]
-        public string? StaffUniqueId { get { return this.StaffUniqueIdOption; } set { this.StaffUniqueIdOption = new(value); } }
+        public string? StaffUniqueId { get { return this.StaffUniqueIdOption.Value; } set { this.StaffUniqueIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ClassroomPositionDescriptor
@@ -120,7 +120,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ClassroomPositionDescriptor
         /// </summary>
         [JsonPropertyName("classroomPositionDescriptor")]
-        public string? ClassroomPositionDescriptor { get { return this.ClassroomPositionDescriptorOption; } set { this.ClassroomPositionDescriptorOption = new(value); } }
+        public string? ClassroomPositionDescriptor { get { return this.ClassroomPositionDescriptorOption.Value; } set { this.ClassroomPositionDescriptorOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of BeginDate
@@ -133,7 +133,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets BeginDate
         /// </summary>
         [JsonPropertyName("beginDate")]
-        public string? BeginDate { get { return this.BeginDateOption; } set { this.BeginDateOption = new(value); } }
+        public string? BeginDate { get { return this.BeginDateOption.Value; } set { this.BeginDateOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EndDate
@@ -146,7 +146,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EndDate
         /// </summary>
         [JsonPropertyName("endDate")]
-        public string? EndDate { get { return this.EndDateOption; } set { this.EndDateOption = new(value); } }
+        public string? EndDate { get { return this.EndDateOption.Value; } set { this.EndDateOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Source
@@ -159,7 +159,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Source
         /// </summary>
         [JsonPropertyName("source")]
-        public string? Source { get { return this.SourceOption; } set { this.SourceOption = new(value); } }
+        public string? Source { get { return this.SourceOption.Value; } set { this.SourceOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -242,8 +242,7 @@ namespace EdGraph.Platform.Client.Model
                             userSectionId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "educationOrganizationId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                educationOrganizationId = new Option<int?>(utf8JsonReader.GetInt32());
+                            educationOrganizationId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "sectionId":
                             sectionId = new Option<string?>(utf8JsonReader.GetString());

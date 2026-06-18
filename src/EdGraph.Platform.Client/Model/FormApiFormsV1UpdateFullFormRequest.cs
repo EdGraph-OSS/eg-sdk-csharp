@@ -72,7 +72,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Source
         /// </summary>
         [JsonPropertyName("source")]
-        public FormApiFormsV1FormSource? Source { get { return this.SourceOption; } set { this.SourceOption = new(value); } }
+        public FormApiFormsV1FormSource? Source { get { return this.SourceOption.Value; } set { this.SourceOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Status
@@ -85,7 +85,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Status
         /// </summary>
         [JsonPropertyName("status")]
-        public FormApiFormsV1FormStatus? Status { get { return this.StatusOption; } set { this.StatusOption = new(value); } }
+        public FormApiFormsV1FormStatus? Status { get { return this.StatusOption.Value; } set { this.StatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Id
@@ -98,7 +98,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Name
@@ -111,7 +111,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Name
         /// </summary>
         [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption; } set { this.NameOption = new(value); } }
+        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Description
@@ -124,7 +124,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Description
         /// </summary>
         [JsonPropertyName("description")]
-        public string? Description { get { return this.DescriptionOption; } set { this.DescriptionOption = new(value); } }
+        public string? Description { get { return this.DescriptionOption.Value; } set { this.DescriptionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of VarVersion
@@ -137,7 +137,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets VarVersion
         /// </summary>
         [JsonPropertyName("version")]
-        public string? VarVersion { get { return this.VarVersionOption; } set { this.VarVersionOption = new(value); } }
+        public string? VarVersion { get { return this.VarVersionOption.Value; } set { this.VarVersionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Anonymous
@@ -150,7 +150,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Anonymous
         /// </summary>
         [JsonPropertyName("anonymous")]
-        public bool? Anonymous { get { return this.AnonymousOption; } set { this.AnonymousOption = new(value); } }
+        public bool? Anonymous { get { return this.AnonymousOption.Value; } set { this.AnonymousOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -163,7 +163,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Sections
@@ -176,7 +176,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Sections
         /// </summary>
         [JsonPropertyName("sections")]
-        public List<FormApiFormsV1UpdateFullSectionRequest>? Sections { get { return this.SectionsOption; } }
+        public List<FormApiFormsV1UpdateFullSectionRequest>? Sections { get { return this.SectionsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of Image
@@ -189,7 +189,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Image
         /// </summary>
         [JsonPropertyName("image")]
-        public string? Image { get { return this.ImageOption; } set { this.ImageOption = new(value); } }
+        public string? Image { get { return this.ImageOption.Value; } set { this.ImageOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -290,8 +290,7 @@ namespace EdGraph.Platform.Client.Model
                             varVersion = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "anonymous":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                anonymous = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            anonymous = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "tenantId":
                             tenantId = new Option<string?>(utf8JsonReader.GetString());
@@ -302,8 +301,7 @@ namespace EdGraph.Platform.Client.Model
                                 status = new Option<FormApiFormsV1FormStatus?>(FormApiFormsV1FormStatusValueConverter.FromStringOrDefault(statusRawValue));
                             break;
                         case "sections":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                sections = new Option<List<FormApiFormsV1UpdateFullSectionRequest>?>(JsonSerializer.Deserialize<List<FormApiFormsV1UpdateFullSectionRequest>>(ref utf8JsonReader, jsonSerializerOptions));
+                            sections = new Option<List<FormApiFormsV1UpdateFullSectionRequest>?>(JsonSerializer.Deserialize<List<FormApiFormsV1UpdateFullSectionRequest>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "image":
                             image = new Option<string?>(utf8JsonReader.GetString());

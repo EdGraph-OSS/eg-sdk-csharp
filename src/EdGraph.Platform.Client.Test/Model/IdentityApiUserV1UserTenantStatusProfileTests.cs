@@ -97,5 +97,14 @@ namespace EdGraph.Platform.Client.Test.Model
         {
             // TODO unit test for the property 'Status'
         }
+
+        /// <summary>
+        /// Test the property 'PlatformRole'
+        /// </summary>
+        [Fact]
+        public void PlatformRoleTest()
+        {
+            // TODO unit test for the property 'PlatformRole'
+        }
     }
 }

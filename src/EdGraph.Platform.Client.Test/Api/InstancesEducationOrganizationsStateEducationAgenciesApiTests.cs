@@ -62,7 +62,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdfiAdminApiEdfiAdminV1CreateStateEducationAgencyRequest> edfiAdminApiEdfiAdminV1CreateStateEducationAgencyRequest = default!;
             var response = await _instance.CreateStateEducationAgencyAsyncAsync(tenantId, instanceId, year, edfiAdminApiEdfiAdminV1CreateStateEducationAgencyRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1StateEducationAgencyCreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -75,7 +75,9 @@ namespace EdGraph.Platform.Client.Test.Api
             string instanceId = default!;
             int year = default!;
             Guid stateEducationAgencyId = default!;
-            await _instance.DeleteStateEducationAgencyAsyncAsync(tenantId, instanceId, year, stateEducationAgencyId);
+            var response = await _instance.DeleteStateEducationAgencyAsyncAsync(tenantId, instanceId, year, stateEducationAgencyId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -90,7 +92,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid stateEducationAgencyId = default!;
             var response = await _instance.GetStateEducationAgencyByIdAsyncAsync(tenantId, instanceId, year, stateEducationAgencyId);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1StateEducationAgency>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -104,7 +106,9 @@ namespace EdGraph.Platform.Client.Test.Api
             int year = default!;
             Guid stateEducationAgencyId = default!;
             Client.Option<EdfiAdminApiEdfiAdminV1UpdateStateEducationAgencyRequest> edfiAdminApiEdfiAdminV1UpdateStateEducationAgencyRequest = default!;
-            await _instance.UpdateStateEducationAgencyAsyncAsync(tenantId, instanceId, year, stateEducationAgencyId, edfiAdminApiEdfiAdminV1UpdateStateEducationAgencyRequest);
+            var response = await _instance.UpdateStateEducationAgencyAsyncAsync(tenantId, instanceId, year, stateEducationAgencyId, edfiAdminApiEdfiAdminV1UpdateStateEducationAgencyRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

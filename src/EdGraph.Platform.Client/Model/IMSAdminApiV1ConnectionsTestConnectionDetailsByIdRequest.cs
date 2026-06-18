@@ -54,7 +54,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ConnectionId
         /// </summary>
         [JsonPropertyName("connectionId")]
-        public string? ConnectionId { get { return this.ConnectionIdOption; } set { this.ConnectionIdOption = new(value); } }
+        public string? ConnectionId { get { return this.ConnectionIdOption.Value; } set { this.ConnectionIdOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

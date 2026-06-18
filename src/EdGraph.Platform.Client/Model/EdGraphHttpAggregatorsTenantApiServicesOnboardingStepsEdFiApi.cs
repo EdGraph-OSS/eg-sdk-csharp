@@ -66,7 +66,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets VarVersion
         /// </summary>
         [JsonPropertyName("version")]
-        public string? VarVersion { get { return this.VarVersionOption; } set { this.VarVersionOption = new(value); } }
+        public string? VarVersion { get { return this.VarVersionOption.Value; } set { this.VarVersionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InformationalVersion
@@ -79,7 +79,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InformationalVersion
         /// </summary>
         [JsonPropertyName("informationalVersion")]
-        public string? InformationalVersion { get { return this.InformationalVersionOption; } set { this.InformationalVersionOption = new(value); } }
+        public string? InformationalVersion { get { return this.InformationalVersionOption.Value; } set { this.InformationalVersionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Suite
@@ -92,7 +92,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Suite
         /// </summary>
         [JsonPropertyName("suite")]
-        public string? Suite { get { return this.SuiteOption; } set { this.SuiteOption = new(value); } }
+        public string? Suite { get { return this.SuiteOption.Value; } set { this.SuiteOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Build
@@ -105,7 +105,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Build
         /// </summary>
         [JsonPropertyName("build")]
-        public string? Build { get { return this.BuildOption; } set { this.BuildOption = new(value); } }
+        public string? Build { get { return this.BuildOption.Value; } set { this.BuildOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApiMode
@@ -118,7 +118,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApiMode
         /// </summary>
         [JsonPropertyName("apiMode")]
-        public string? ApiMode { get { return this.ApiModeOption; } set { this.ApiModeOption = new(value); } }
+        public string? ApiMode { get { return this.ApiModeOption.Value; } set { this.ApiModeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DataModels
@@ -131,7 +131,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DataModels
         /// </summary>
         [JsonPropertyName("dataModels")]
-        public List<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiDataModel>? DataModels { get { return this.DataModelsOption; } set { this.DataModelsOption = new(value); } }
+        public List<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiDataModel>? DataModels { get { return this.DataModelsOption.Value; } set { this.DataModelsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Urls
@@ -144,7 +144,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Urls
         /// </summary>
         [JsonPropertyName("urls")]
-        public EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUrls? Urls { get { return this.UrlsOption; } set { this.UrlsOption = new(value); } }
+        public EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUrls? Urls { get { return this.UrlsOption.Value; } set { this.UrlsOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -237,12 +237,10 @@ namespace EdGraph.Platform.Client.Model
                             apiMode = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "dataModels":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                dataModels = new Option<List<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiDataModel>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiDataModel>>(ref utf8JsonReader, jsonSerializerOptions));
+                            dataModels = new Option<List<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiDataModel>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiDataModel>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "urls":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                urls = new Option<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUrls?>(JsonSerializer.Deserialize<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUrls>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            urls = new Option<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUrls?>(JsonSerializer.Deserialize<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUrls>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

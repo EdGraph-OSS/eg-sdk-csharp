@@ -65,7 +65,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<bool> excludeSoftDeleted = default!;
             var response = await _instance.GetAllPartnershipsAsync(tenantId, pageIndex, pageSize, orderBy, partnerTenantId, partnershipType, excludeSoftDeleted);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiPartnershipV1PaginatedItemsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<bool> excludeSoftDeleted = default!;
             var response = await _instance.GetPartnershipByIdAsync(tenantId, partnershipId, excludeSoftDeleted);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiPartnershipV1PartnershipByIdResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

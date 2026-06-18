@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SubCategoryId
         /// </summary>
         [JsonPropertyName("subCategoryId")]
-        public string? SubCategoryId { get { return this.SubCategoryIdOption; } set { this.SubCategoryIdOption = new(value); } }
+        public string? SubCategoryId { get { return this.SubCategoryIdOption.Value; } set { this.SubCategoryIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Name
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Name
         /// </summary>
         [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption; } set { this.NameOption = new(value); } }
+        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

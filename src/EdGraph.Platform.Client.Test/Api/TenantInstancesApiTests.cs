@@ -57,10 +57,10 @@ namespace EdGraph.Platform.Client.Test.Api
         public async Task LoadOnboardingStepEdFiApiMetadataAsyncTest()
         {
             string tenantId = default!;
-            Client.Option<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest> edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest = default!;
-            var response = await _instance.LoadOnboardingStepEdFiApiMetadataAsync(tenantId, edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest);
+            Client.Option<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest> edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest = default!;
+            var response = await _instance.LoadOnboardingStepEdFiApiMetadataAsync(tenantId, edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiLoadEdFiApiMetadataResult>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<Object?> body = default!;
             var response = await _instance.TestOnboardingStepConnectionAsync(tenantId, body);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsTestConnectionResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

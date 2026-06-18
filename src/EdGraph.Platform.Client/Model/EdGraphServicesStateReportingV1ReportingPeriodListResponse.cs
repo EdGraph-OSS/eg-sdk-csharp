@@ -98,7 +98,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedBy
@@ -111,7 +111,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedBy
         /// </summary>
         [JsonPropertyName("createdBy")]
-        public string? CreatedBy { get { return this.CreatedByOption; } set { this.CreatedByOption = new(value); } }
+        public string? CreatedBy { get { return this.CreatedByOption.Value; } set { this.CreatedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedDateTime
@@ -124,7 +124,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedDateTime
         /// </summary>
         [JsonPropertyName("createdDateTime")]
-        public string? CreatedDateTime { get { return this.CreatedDateTimeOption; } set { this.CreatedDateTimeOption = new(value); } }
+        public string? CreatedDateTime { get { return this.CreatedDateTimeOption.Value; } set { this.CreatedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedBy
@@ -137,7 +137,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedBy
         /// </summary>
         [JsonPropertyName("lastModifiedBy")]
-        public string? LastModifiedBy { get { return this.LastModifiedByOption; } set { this.LastModifiedByOption = new(value); } }
+        public string? LastModifiedBy { get { return this.LastModifiedByOption.Value; } set { this.LastModifiedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedDateTime
@@ -150,7 +150,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedDateTime
         /// </summary>
         [JsonPropertyName("lastModifiedDateTime")]
-        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption; } set { this.LastModifiedDateTimeOption = new(value); } }
+        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption.Value; } set { this.LastModifiedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -163,7 +163,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EnvironmentId
@@ -176,7 +176,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EnvironmentId
         /// </summary>
         [JsonPropertyName("environmentId")]
-        public string? EnvironmentId { get { return this.EnvironmentIdOption; } set { this.EnvironmentIdOption = new(value); } }
+        public string? EnvironmentId { get { return this.EnvironmentIdOption.Value; } set { this.EnvironmentIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TagId
@@ -189,7 +189,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TagId
         /// </summary>
         [JsonPropertyName("tagId")]
-        public string? TagId { get { return this.TagIdOption; } set { this.TagIdOption = new(value); } }
+        public string? TagId { get { return this.TagIdOption.Value; } set { this.TagIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Steps
@@ -202,7 +202,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Steps
         /// </summary>
         [JsonPropertyName("steps")]
-        public List<EdGraphServicesStateReportingV1ReportingPeriodStep>? Steps { get { return this.StepsOption; } }
+        public List<EdGraphServicesStateReportingV1ReportingPeriodStep>? Steps { get { return this.StepsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of RuleIds
@@ -215,7 +215,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RuleIds
         /// </summary>
         [JsonPropertyName("ruleIds")]
-        public List<string>? RuleIds { get { return this.RuleIdsOption; } }
+        public List<string>? RuleIds { get { return this.RuleIdsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of Code
@@ -228,7 +228,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Code
         /// </summary>
         [JsonPropertyName("code")]
-        public string? Code { get { return this.CodeOption; } set { this.CodeOption = new(value); } }
+        public string? Code { get { return this.CodeOption.Value; } set { this.CodeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DisplayName
@@ -241,7 +241,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DisplayName
         /// </summary>
         [JsonPropertyName("displayName")]
-        public string? DisplayName { get { return this.DisplayNameOption; } set { this.DisplayNameOption = new(value); } }
+        public string? DisplayName { get { return this.DisplayNameOption.Value; } set { this.DisplayNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of StartDate
@@ -254,7 +254,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets StartDate
         /// </summary>
         [JsonPropertyName("startDate")]
-        public string? StartDate { get { return this.StartDateOption; } set { this.StartDateOption = new(value); } }
+        public string? StartDate { get { return this.StartDateOption.Value; } set { this.StartDateOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EndDate
@@ -267,7 +267,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EndDate
         /// </summary>
         [JsonPropertyName("endDate")]
-        public string? EndDate { get { return this.EndDateOption; } set { this.EndDateOption = new(value); } }
+        public string? EndDate { get { return this.EndDateOption.Value; } set { this.EndDateOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CloseDate
@@ -280,7 +280,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CloseDate
         /// </summary>
         [JsonPropertyName("closeDate")]
-        public string? CloseDate { get { return this.CloseDateOption; } set { this.CloseDateOption = new(value); } }
+        public string? CloseDate { get { return this.CloseDateOption.Value; } set { this.CloseDateOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsClosed
@@ -293,7 +293,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IsClosed
         /// </summary>
         [JsonPropertyName("isClosed")]
-        public bool? IsClosed { get { return this.IsClosedOption; } set { this.IsClosedOption = new(value); } }
+        public bool? IsClosed { get { return this.IsClosedOption.Value; } set { this.IsClosedOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ReSubmissionDate
@@ -306,7 +306,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ReSubmissionDate
         /// </summary>
         [JsonPropertyName("reSubmissionDate")]
-        public string? ReSubmissionDate { get { return this.ReSubmissionDateOption; } set { this.ReSubmissionDateOption = new(value); } }
+        public string? ReSubmissionDate { get { return this.ReSubmissionDateOption.Value; } set { this.ReSubmissionDateOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AutoRunNightly
@@ -319,7 +319,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AutoRunNightly
         /// </summary>
         [JsonPropertyName("autoRunNightly")]
-        public bool? AutoRunNightly { get { return this.AutoRunNightlyOption; } set { this.AutoRunNightlyOption = new(value); } }
+        public bool? AutoRunNightly { get { return this.AutoRunNightlyOption.Value; } set { this.AutoRunNightlyOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Selected
@@ -332,7 +332,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Selected
         /// </summary>
         [JsonPropertyName("selected")]
-        public bool? Selected { get { return this.SelectedOption; } set { this.SelectedOption = new(value); } }
+        public bool? Selected { get { return this.SelectedOption.Value; } set { this.SelectedOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastRun
@@ -345,7 +345,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastRun
         /// </summary>
         [JsonPropertyName("lastRun")]
-        public EdGraphServicesStateReportingV1ReportingPeriodValidationsRunDto? LastRun { get { return this.LastRunOption; } set { this.LastRunOption = new(value); } }
+        public EdGraphServicesStateReportingV1ReportingPeriodValidationsRunDto? LastRun { get { return this.LastRunOption.Value; } set { this.LastRunOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LatestSubmissionRequestDate
@@ -358,7 +358,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LatestSubmissionRequestDate
         /// </summary>
         [JsonPropertyName("latestSubmissionRequestDate")]
-        public string? LatestSubmissionRequestDate { get { return this.LatestSubmissionRequestDateOption; } set { this.LatestSubmissionRequestDateOption = new(value); } }
+        public string? LatestSubmissionRequestDate { get { return this.LatestSubmissionRequestDateOption.Value; } set { this.LatestSubmissionRequestDateOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LatestSubmissionId
@@ -371,7 +371,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LatestSubmissionId
         /// </summary>
         [JsonPropertyName("latestSubmissionId")]
-        public string? LatestSubmissionId { get { return this.LatestSubmissionIdOption; } set { this.LatestSubmissionIdOption = new(value); } }
+        public string? LatestSubmissionId { get { return this.LatestSubmissionIdOption.Value; } set { this.LatestSubmissionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CurrentStep
@@ -384,7 +384,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CurrentStep
         /// </summary>
         [JsonPropertyName("currentStep")]
-        public int? CurrentStep { get { return this.CurrentStepOption; } set { this.CurrentStepOption = new(value); } }
+        public int? CurrentStep { get { return this.CurrentStepOption.Value; } set { this.CurrentStepOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -518,12 +518,10 @@ namespace EdGraph.Platform.Client.Model
                             tagId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "steps":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                steps = new Option<List<EdGraphServicesStateReportingV1ReportingPeriodStep>?>(JsonSerializer.Deserialize<List<EdGraphServicesStateReportingV1ReportingPeriodStep>>(ref utf8JsonReader, jsonSerializerOptions));
+                            steps = new Option<List<EdGraphServicesStateReportingV1ReportingPeriodStep>?>(JsonSerializer.Deserialize<List<EdGraphServicesStateReportingV1ReportingPeriodStep>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "ruleIds":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                ruleIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            ruleIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "code":
                             code = new Option<string?>(utf8JsonReader.GetString());
@@ -541,23 +539,19 @@ namespace EdGraph.Platform.Client.Model
                             closeDate = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "isClosed":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isClosed = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isClosed = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "reSubmissionDate":
                             reSubmissionDate = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "autoRunNightly":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                autoRunNightly = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            autoRunNightly = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "selected":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                selected = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            selected = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "lastRun":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                lastRun = new Option<EdGraphServicesStateReportingV1ReportingPeriodValidationsRunDto?>(JsonSerializer.Deserialize<EdGraphServicesStateReportingV1ReportingPeriodValidationsRunDto>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            lastRun = new Option<EdGraphServicesStateReportingV1ReportingPeriodValidationsRunDto?>(JsonSerializer.Deserialize<EdGraphServicesStateReportingV1ReportingPeriodValidationsRunDto>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "latestSubmissionRequestDate":
                             latestSubmissionRequestDate = new Option<string?>(utf8JsonReader.GetString());
@@ -566,8 +560,7 @@ namespace EdGraph.Platform.Client.Model
                             latestSubmissionId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "currentStep":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                currentStep = new Option<int?>(utf8JsonReader.GetInt32());
+                            currentStep = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

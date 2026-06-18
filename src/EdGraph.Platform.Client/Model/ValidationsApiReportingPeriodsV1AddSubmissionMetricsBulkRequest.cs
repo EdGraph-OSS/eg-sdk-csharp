@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ReportingPeriodId
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ReportingPeriodId
         /// </summary>
         [JsonPropertyName("reportingPeriodId")]
-        public string? ReportingPeriodId { get { return this.ReportingPeriodIdOption; } set { this.ReportingPeriodIdOption = new(value); } }
+        public string? ReportingPeriodId { get { return this.ReportingPeriodIdOption.Value; } set { this.ReportingPeriodIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SubmissionId
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SubmissionId
         /// </summary>
         [JsonPropertyName("submissionId")]
-        public string? SubmissionId { get { return this.SubmissionIdOption; } set { this.SubmissionIdOption = new(value); } }
+        public string? SubmissionId { get { return this.SubmissionIdOption.Value; } set { this.SubmissionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Details
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Details
         /// </summary>
         [JsonPropertyName("details")]
-        public List<ValidationsApiReportingPeriodsV1SubmissionMetricsDetails>? Details { get { return this.DetailsOption; } }
+        public List<ValidationsApiReportingPeriodsV1SubmissionMetricsDetails>? Details { get { return this.DetailsOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -180,8 +180,7 @@ namespace EdGraph.Platform.Client.Model
                             submissionId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "details":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                details = new Option<List<ValidationsApiReportingPeriodsV1SubmissionMetricsDetails>?>(JsonSerializer.Deserialize<List<ValidationsApiReportingPeriodsV1SubmissionMetricsDetails>>(ref utf8JsonReader, jsonSerializerOptions));
+                            details = new Option<List<ValidationsApiReportingPeriodsV1SubmissionMetricsDetails>?>(JsonSerializer.Deserialize<List<ValidationsApiReportingPeriodsV1SubmissionMetricsDetails>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

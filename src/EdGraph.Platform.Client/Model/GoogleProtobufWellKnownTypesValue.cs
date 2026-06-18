@@ -74,7 +74,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets NullValue
         /// </summary>
         [JsonPropertyName("nullValue")]
-        public GoogleProtobufWellKnownTypesNullValue? NullValue { get { return this.NullValueOption; } set { this.NullValueOption = new(value); } }
+        public GoogleProtobufWellKnownTypesNullValue? NullValue { get { return this.NullValueOption.Value; } set { this.NullValueOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of KindCase
@@ -87,7 +87,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets KindCase
         /// </summary>
         [JsonPropertyName("kindCase")]
-        public GoogleProtobufWellKnownTypesValueKindOneofCase? KindCase { get { return this.KindCaseOption; } set { this.KindCaseOption = new(value); } }
+        public GoogleProtobufWellKnownTypesValueKindOneofCase? KindCase { get { return this.KindCaseOption.Value; } set { this.KindCaseOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of HasNullValue
@@ -100,7 +100,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets HasNullValue
         /// </summary>
         [JsonPropertyName("hasNullValue")]
-        public bool? HasNullValue { get { return this.HasNullValueOption; } }
+        public bool? HasNullValue { get { return this.HasNullValueOption.Value; } }
 
         /// <summary>
         /// Used to track the state of NumberValue
@@ -113,7 +113,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets NumberValue
         /// </summary>
         [JsonPropertyName("numberValue")]
-        public double? NumberValue { get { return this.NumberValueOption; } set { this.NumberValueOption = new(value); } }
+        public double? NumberValue { get { return this.NumberValueOption.Value; } set { this.NumberValueOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of HasNumberValue
@@ -126,7 +126,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets HasNumberValue
         /// </summary>
         [JsonPropertyName("hasNumberValue")]
-        public bool? HasNumberValue { get { return this.HasNumberValueOption; } }
+        public bool? HasNumberValue { get { return this.HasNumberValueOption.Value; } }
 
         /// <summary>
         /// Used to track the state of StringValue
@@ -139,7 +139,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets StringValue
         /// </summary>
         [JsonPropertyName("stringValue")]
-        public string? StringValue { get { return this.StringValueOption; } set { this.StringValueOption = new(value); } }
+        public string? StringValue { get { return this.StringValueOption.Value; } set { this.StringValueOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of HasStringValue
@@ -152,7 +152,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets HasStringValue
         /// </summary>
         [JsonPropertyName("hasStringValue")]
-        public bool? HasStringValue { get { return this.HasStringValueOption; } }
+        public bool? HasStringValue { get { return this.HasStringValueOption.Value; } }
 
         /// <summary>
         /// Used to track the state of BoolValue
@@ -165,7 +165,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets BoolValue
         /// </summary>
         [JsonPropertyName("boolValue")]
-        public bool? BoolValue { get { return this.BoolValueOption; } set { this.BoolValueOption = new(value); } }
+        public bool? BoolValue { get { return this.BoolValueOption.Value; } set { this.BoolValueOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of HasBoolValue
@@ -178,7 +178,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets HasBoolValue
         /// </summary>
         [JsonPropertyName("hasBoolValue")]
-        public bool? HasBoolValue { get { return this.HasBoolValueOption; } }
+        public bool? HasBoolValue { get { return this.HasBoolValueOption.Value; } }
 
         /// <summary>
         /// Used to track the state of StructValue
@@ -191,7 +191,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets StructValue
         /// </summary>
         [JsonPropertyName("structValue")]
-        public GoogleProtobufWellKnownTypesStruct? StructValue { get { return this.StructValueOption; } set { this.StructValueOption = new(value); } }
+        public GoogleProtobufWellKnownTypesStruct? StructValue { get { return this.StructValueOption.Value; } set { this.StructValueOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ListValue
@@ -204,7 +204,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ListValue
         /// </summary>
         [JsonPropertyName("listValue")]
-        public GoogleProtobufWellKnownTypesListValue? ListValue { get { return this.ListValueOption; } set { this.ListValueOption = new(value); } }
+        public GoogleProtobufWellKnownTypesListValue? ListValue { get { return this.ListValueOption.Value; } set { this.ListValueOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -295,39 +295,31 @@ namespace EdGraph.Platform.Client.Model
                                 nullValue = new Option<GoogleProtobufWellKnownTypesNullValue?>(GoogleProtobufWellKnownTypesNullValueValueConverter.FromStringOrDefault(nullValueRawValue));
                             break;
                         case "hasNullValue":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                hasNullValue = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            hasNullValue = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "numberValue":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                numberValue = new Option<double?>(utf8JsonReader.GetDouble());
+                            numberValue = new Option<double?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (double?)null : utf8JsonReader.GetDouble());
                             break;
                         case "hasNumberValue":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                hasNumberValue = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            hasNumberValue = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "stringValue":
                             stringValue = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "hasStringValue":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                hasStringValue = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            hasStringValue = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "boolValue":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                boolValue = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            boolValue = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "hasBoolValue":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                hasBoolValue = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            hasBoolValue = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "structValue":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                structValue = new Option<GoogleProtobufWellKnownTypesStruct?>(JsonSerializer.Deserialize<GoogleProtobufWellKnownTypesStruct>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            structValue = new Option<GoogleProtobufWellKnownTypesStruct?>(JsonSerializer.Deserialize<GoogleProtobufWellKnownTypesStruct>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "listValue":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                listValue = new Option<GoogleProtobufWellKnownTypesListValue?>(JsonSerializer.Deserialize<GoogleProtobufWellKnownTypesListValue>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            listValue = new Option<GoogleProtobufWellKnownTypesListValue?>(JsonSerializer.Deserialize<GoogleProtobufWellKnownTypesListValue>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "kindCase":
                             string? kindCaseRawValue = utf8JsonReader.GetString();

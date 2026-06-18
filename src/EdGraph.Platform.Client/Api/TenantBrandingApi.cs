@@ -12,7 +12,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Net;
+using System.IO;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using System.Net.Http;
@@ -49,7 +51,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="enabled"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IUpdateTenantBrandingApiResponse"/>&gt;</returns>
-        Task<IUpdateTenantBrandingApiResponse> UpdateTenantBrandingAsync(Guid tenantId, Option<System.IO.Stream> logoFile = default, Option<System.IO.Stream> backgroundFile = default, Option<string> brandName = default, Option<bool> enabled = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IUpdateTenantBrandingApiResponse> UpdateTenantBrandingAsync(Guid tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> logoFile = default, Option<EdGraph.Platform.Client.Client.FileParameter> backgroundFile = default, Option<string> brandName = default, Option<bool> enabled = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates the branding of tenant
@@ -64,7 +66,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="enabled"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IUpdateTenantBrandingApiResponse"/>?&gt;</returns>
-        Task<IUpdateTenantBrandingApiResponse?> UpdateTenantBrandingOrDefaultAsync(Guid tenantId, Option<System.IO.Stream> logoFile = default, Option<System.IO.Stream> backgroundFile = default, Option<string> brandName = default, Option<bool> enabled = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IUpdateTenantBrandingApiResponse?> UpdateTenantBrandingOrDefaultAsync(Guid tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> logoFile = default, Option<EdGraph.Platform.Client.Client.FileParameter> backgroundFile = default, Option<string> brandName = default, Option<bool> enabled = default, System.Threading.CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -176,7 +178,7 @@ namespace EdGraph.Platform.Client.Api
             OauthTokenProvider = oauthTokenProvider;
         }
 
-        partial void FormatUpdateTenantBranding(ref Guid tenantId, ref Option<System.IO.Stream> logoFile, ref Option<System.IO.Stream> backgroundFile, ref Option<string> brandName, ref Option<bool> enabled);
+        partial void FormatUpdateTenantBranding(ref Guid tenantId, ref Option<EdGraph.Platform.Client.Client.FileParameter> logoFile, ref Option<EdGraph.Platform.Client.Client.FileParameter> backgroundFile, ref Option<string> brandName, ref Option<bool> enabled);
 
         /// <summary>
         /// Validates the request parameters
@@ -185,7 +187,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="backgroundFile"></param>
         /// <param name="brandName"></param>
         /// <returns></returns>
-        private void ValidateUpdateTenantBranding(Option<System.IO.Stream> logoFile, Option<System.IO.Stream> backgroundFile, Option<string> brandName)
+        private void ValidateUpdateTenantBranding(Option<EdGraph.Platform.Client.Client.FileParameter> logoFile, Option<EdGraph.Platform.Client.Client.FileParameter> backgroundFile, Option<string> brandName)
         {
             if (logoFile.IsSet && logoFile.Value == null)
                 throw new ArgumentNullException(nameof(logoFile));
@@ -206,12 +208,12 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="backgroundFile"></param>
         /// <param name="brandName"></param>
         /// <param name="enabled"></param>
-        private void AfterUpdateTenantBrandingDefaultImplementation(IUpdateTenantBrandingApiResponse apiResponseLocalVar, Guid tenantId, Option<System.IO.Stream> logoFile, Option<System.IO.Stream> backgroundFile, Option<string> brandName, Option<bool> enabled)
+        private void AfterUpdateTenantBrandingDefaultImplementation(IUpdateTenantBrandingApiResponse apiResponseLocalVar, Guid tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> logoFile, Option<EdGraph.Platform.Client.Client.FileParameter> backgroundFile, Option<string> brandName, Option<bool> enabled)
         {
             bool suppressDefaultLog = false;
             AfterUpdateTenantBranding(ref suppressDefaultLog, apiResponseLocalVar, tenantId, logoFile, backgroundFile, brandName, enabled);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -224,40 +226,40 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="backgroundFile"></param>
         /// <param name="brandName"></param>
         /// <param name="enabled"></param>
-        partial void AfterUpdateTenantBranding(ref bool suppressDefaultLog, IUpdateTenantBrandingApiResponse apiResponseLocalVar, Guid tenantId, Option<System.IO.Stream> logoFile, Option<System.IO.Stream> backgroundFile, Option<string> brandName, Option<bool> enabled);
+        partial void AfterUpdateTenantBranding(ref bool suppressDefaultLog, IUpdateTenantBrandingApiResponse apiResponseLocalVar, Guid tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> logoFile, Option<EdGraph.Platform.Client.Client.FileParameter> backgroundFile, Option<string> brandName, Option<bool> enabled);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
         /// </summary>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="logoFile"></param>
         /// <param name="backgroundFile"></param>
         /// <param name="brandName"></param>
         /// <param name="enabled"></param>
-        private void OnErrorUpdateTenantBrandingDefaultImplementation(Exception exception, string pathFormat, string path, Guid tenantId, Option<System.IO.Stream> logoFile, Option<System.IO.Stream> backgroundFile, Option<string> brandName, Option<bool> enabled)
+        private void OnErrorUpdateTenantBrandingDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> logoFile, Option<EdGraph.Platform.Client.Client.FileParameter> backgroundFile, Option<string> brandName, Option<bool> enabled)
         {
-            bool suppressDefaultLog = false;
-            OnErrorUpdateTenantBranding(ref suppressDefaultLog, exception, pathFormat, path, tenantId, logoFile, backgroundFile, brandName, enabled);
-            if (!suppressDefaultLog)
-                Logger.LogError(exception, "An error occurred while sending the request to the server.");
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorUpdateTenantBranding(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, logoFile, backgroundFile, brandName, enabled);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
 
         /// <summary>
         /// A partial method that gives developers a way to provide customized exception handling
         /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="logoFile"></param>
         /// <param name="backgroundFile"></param>
         /// <param name="brandName"></param>
         /// <param name="enabled"></param>
-        partial void OnErrorUpdateTenantBranding(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, Guid tenantId, Option<System.IO.Stream> logoFile, Option<System.IO.Stream> backgroundFile, Option<string> brandName, Option<bool> enabled);
+        partial void OnErrorUpdateTenantBranding(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> logoFile, Option<EdGraph.Platform.Client.Client.FileParameter> backgroundFile, Option<string> brandName, Option<bool> enabled);
 
         /// <summary>
         /// Updates the branding of tenant 
@@ -269,7 +271,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="enabled"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IUpdateTenantBrandingApiResponse"/>&gt;</returns>
-        public async Task<IUpdateTenantBrandingApiResponse?> UpdateTenantBrandingOrDefaultAsync(Guid tenantId, Option<System.IO.Stream> logoFile = default, Option<System.IO.Stream> backgroundFile = default, Option<string> brandName = default, Option<bool> enabled = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IUpdateTenantBrandingApiResponse?> UpdateTenantBrandingOrDefaultAsync(Guid tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> logoFile = default, Option<EdGraph.Platform.Client.Client.FileParameter> backgroundFile = default, Option<string> brandName = default, Option<bool> enabled = default, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
@@ -292,7 +294,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="enabled"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IUpdateTenantBrandingApiResponse"/>&gt;</returns>
-        public async Task<IUpdateTenantBrandingApiResponse> UpdateTenantBrandingAsync(Guid tenantId, Option<System.IO.Stream> logoFile = default, Option<System.IO.Stream> backgroundFile = default, Option<string> brandName = default, Option<bool> enabled = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IUpdateTenantBrandingApiResponse> UpdateTenantBrandingAsync(Guid tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> logoFile = default, Option<EdGraph.Platform.Client.Client.FileParameter> backgroundFile = default, Option<string> brandName = default, Option<bool> enabled = default, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
@@ -307,26 +309,39 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/branding";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/branding"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/branding");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
 
-                    MultipartContent multipartContentLocalVar = new MultipartContent();
+                    MultipartFormDataContent multipartContentLocalVar = new MultipartFormDataContent();
 
                     httpRequestMessageLocalVar.Content = multipartContentLocalVar;
 
-                    List<KeyValuePair<string?, string?>> formParameterLocalVars = new List<KeyValuePair<string?, string?>>();
+                    List<KeyValuePair<string, string?>> formParameterLocalVars = new List<KeyValuePair<string, string?>>();
 
-                    multipartContentLocalVar.Add(new FormUrlEncodedContent(formParameterLocalVars));                    if (logoFile.IsSet)
-                        multipartContentLocalVar.Add(new StreamContent(logoFile.Value));
+                    if (logoFile.IsSet)
+                    {
+                        var streamContentLocalVar = new StreamContent(logoFile.Value.Content);
+                        streamContentLocalVar.Headers.ContentType = new MediaTypeHeaderValue(logoFile.Value.ContentType);
+                        multipartContentLocalVar.Add(streamContentLocalVar, "LogoFile", logoFile.Value.FileName ?? "LogoFile");
+                    }
 
                     if (backgroundFile.IsSet)
-                        multipartContentLocalVar.Add(new StreamContent(backgroundFile.Value));
+                    {
+                        var streamContentLocalVar = new StreamContent(backgroundFile.Value.Content);
+                        streamContentLocalVar.Headers.ContentType = new MediaTypeHeaderValue(backgroundFile.Value.ContentType);
+                        multipartContentLocalVar.Add(streamContentLocalVar, "BackgroundFile", backgroundFile.Value.FileName ?? "BackgroundFile");
+                    }
 
                     if (brandName.IsSet)
-                        formParameterLocalVars.Add(new KeyValuePair<string?, string?>("BrandName", ClientUtils.ParameterToString(brandName.Value)));
+                        formParameterLocalVars.Add(new KeyValuePair<string, string?>("BrandName", ClientUtils.ParameterToString(brandName.Value)));
 
                     if (enabled.IsSet)
-                        formParameterLocalVars.Add(new KeyValuePair<string?, string?>("Enabled", ClientUtils.ParameterToString(enabled.Value)));
+                        formParameterLocalVars.Add(new KeyValuePair<string, string?>("Enabled", ClientUtils.ParameterToString(enabled.Value)));
+
+                    foreach (var formParamLocalVar in formParameterLocalVars)
+                        multipartContentLocalVar.Add(new StringContent(formParamLocalVar.Value ?? string.Empty), formParamLocalVar.Key);
 
                     List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
                     httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
@@ -341,19 +356,14 @@ namespace EdGraph.Platform.Client.Api
                         "multipart/form-data"
                     };
 
-                    string? contentTypeLocalVar = ClientUtils.SelectHeaderContentType(contentTypes);
-
-                    if (contentTypeLocalVar != null && httpRequestMessageLocalVar.Content != null)
-                        httpRequestMessageLocalVar.Content.Headers.ContentType = new MediaTypeHeaderValue(contentTypeLocalVar);
-
                     string[] acceptLocalVars = new string[] {
                         "application/json"
                     };
 
-                    string? acceptLocalVar = ClientUtils.SelectHeaderAccept(acceptLocalVars);
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
 
-                    if (acceptLocalVar != null)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptLocalVar));
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
 
                     httpRequestMessageLocalVar.Method = HttpMethod.Put;
 
@@ -361,11 +371,17 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<UpdateTenantBrandingApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<UpdateTenantBrandingApiResponse>();
+                        UpdateTenantBrandingApiResponse apiResponseLocalVar;
 
-                        UpdateTenantBrandingApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/branding", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/branding", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterUpdateTenantBrandingDefaultImplementation(apiResponseLocalVar, tenantId, logoFile, backgroundFile, brandName, enabled);
 
@@ -408,6 +424,22 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public UpdateTenantBrandingApiResponse(ILogger<UpdateTenantBrandingApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="UpdateTenantBrandingApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public UpdateTenantBrandingApiResponse(ILogger<UpdateTenantBrandingApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);

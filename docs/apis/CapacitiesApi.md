@@ -15,61 +15,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Assigns the specified group to the specified capacity.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class AssignMyGroupToCapacityExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new CapacitiesApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var analyticsApiCapacitiesV1AssignCapacityRequest = new AnalyticsApiCapacitiesV1AssignCapacityRequest(); // AnalyticsApiCapacitiesV1AssignCapacityRequest |  (optional) 
-
-            try
-            {
-                // Assigns the specified group to the specified capacity.
-                apiInstance.AssignMyGroupToCapacity(tenantId, analyticsApiCapacitiesV1AssignCapacityRequest);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling CapacitiesApi.AssignMyGroupToCapacity: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the AssignMyGroupToCapacityWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Assigns the specified group to the specified capacity.
-    apiInstance.AssignMyGroupToCapacityWithHttpInfo(tenantId, analyticsApiCapacitiesV1AssignCapacityRequest);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling CapacitiesApi.AssignMyGroupToCapacityWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -110,64 +55,6 @@ void (empty response body)
 
 Retrieves a list of capacities in Power Bi that the user has access to.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetAllAnalyticsPowerBiCapacitiesExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new CapacitiesApi(config);
-            var tenantId = "tenantId_example";  // string | 
-
-            try
-            {
-                // Retrieves a list of capacities in Power Bi that the user has access to.
-                AnalyticsApiCapacitiesV1CapacityResponse result = apiInstance.GetAllAnalyticsPowerBiCapacities(tenantId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling CapacitiesApi.GetAllAnalyticsPowerBiCapacities: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetAllAnalyticsPowerBiCapacitiesWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of capacities in Power Bi that the user has access to.
-    ApiResponse<AnalyticsApiCapacitiesV1CapacityResponse> response = apiInstance.GetAllAnalyticsPowerBiCapacitiesWithHttpInfo(tenantId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling CapacitiesApi.GetAllAnalyticsPowerBiCapacitiesWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -206,61 +93,6 @@ catch (ApiException e)
 
 Resumes currently suspended capacity
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class ResumeCapacityAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new CapacitiesApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var analyticsApiCapacitiesV1ResumeCapacityRequest = new AnalyticsApiCapacitiesV1ResumeCapacityRequest(); // AnalyticsApiCapacitiesV1ResumeCapacityRequest |  (optional) 
-
-            try
-            {
-                // Resumes currently suspended capacity
-                apiInstance.ResumeCapacityAsync(tenantId, analyticsApiCapacitiesV1ResumeCapacityRequest);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling CapacitiesApi.ResumeCapacityAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the ResumeCapacityAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Resumes currently suspended capacity
-    apiInstance.ResumeCapacityAsyncWithHttpInfo(tenantId, analyticsApiCapacitiesV1ResumeCapacityRequest);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling CapacitiesApi.ResumeCapacityAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -301,61 +133,6 @@ void (empty response body)
 
 Suspends currently active capacity
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SuspendCapacityAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new CapacitiesApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var analyticsApiCapacitiesV1SuspendCapacityRequest = new AnalyticsApiCapacitiesV1SuspendCapacityRequest(); // AnalyticsApiCapacitiesV1SuspendCapacityRequest |  (optional) 
-
-            try
-            {
-                // Suspends currently active capacity
-                apiInstance.SuspendCapacityAsync(tenantId, analyticsApiCapacitiesV1SuspendCapacityRequest);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling CapacitiesApi.SuspendCapacityAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SuspendCapacityAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Suspends currently active capacity
-    apiInstance.SuspendCapacityAsyncWithHttpInfo(tenantId, analyticsApiCapacitiesV1SuspendCapacityRequest);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling CapacitiesApi.SuspendCapacityAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

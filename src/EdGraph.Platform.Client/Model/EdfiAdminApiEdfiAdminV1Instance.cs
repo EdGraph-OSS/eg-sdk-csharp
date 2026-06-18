@@ -113,7 +113,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>Details</value>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InstanceName
@@ -126,7 +126,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceName
         /// </summary>
         [JsonPropertyName("instanceName")]
-        public string? InstanceName { get { return this.InstanceNameOption; } set { this.InstanceNameOption = new(value); } }
+        public string? InstanceName { get { return this.InstanceNameOption.Value; } set { this.InstanceNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of UseCustomId
@@ -139,7 +139,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets UseCustomId
         /// </summary>
         [JsonPropertyName("useCustomId")]
-        public bool? UseCustomId { get { return this.UseCustomIdOption; } set { this.UseCustomIdOption = new(value); } }
+        public bool? UseCustomId { get { return this.UseCustomIdOption.Value; } set { this.UseCustomIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CustomId
@@ -152,7 +152,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CustomId
         /// </summary>
         [JsonPropertyName("customId")]
-        public string? CustomId { get { return this.CustomIdOption; } set { this.CustomIdOption = new(value); } }
+        public string? CustomId { get { return this.CustomIdOption.Value; } set { this.CustomIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Description
@@ -165,7 +165,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Description
         /// </summary>
         [JsonPropertyName("description")]
-        public string? Description { get { return this.DescriptionOption; } set { this.DescriptionOption = new(value); } }
+        public string? Description { get { return this.DescriptionOption.Value; } set { this.DescriptionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ConnectionName
@@ -178,7 +178,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ConnectionName
         /// </summary>
         [JsonPropertyName("connectionName")]
-        public string? ConnectionName { get { return this.ConnectionNameOption; } set { this.ConnectionNameOption = new(value); } }
+        public string? ConnectionName { get { return this.ConnectionNameOption.Value; } set { this.ConnectionNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SelectedConnectionId
@@ -192,7 +192,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>Connection</value>
         [JsonPropertyName("selectedConnectionId")]
-        public string? SelectedConnectionId { get { return this.SelectedConnectionIdOption; } set { this.SelectedConnectionIdOption = new(value); } }
+        public string? SelectedConnectionId { get { return this.SelectedConnectionIdOption.Value; } set { this.SelectedConnectionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SelectedConnection
@@ -205,7 +205,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SelectedConnection
         /// </summary>
         [JsonPropertyName("selectedConnection")]
-        public EdfiAdminApiEdfiAdminV1EdFiConnection? SelectedConnection { get { return this.SelectedConnectionOption; } set { this.SelectedConnectionOption = new(value); } }
+        public EdfiAdminApiEdfiAdminV1EdFiConnection? SelectedConnection { get { return this.SelectedConnectionOption.Value; } set { this.SelectedConnectionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Databases
@@ -218,7 +218,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Databases
         /// </summary>
         [JsonPropertyName("databases")]
-        public EdfiAdminApiEdfiAdminV1InstanceDatabases? Databases { get { return this.DatabasesOption; } set { this.DatabasesOption = new(value); } }
+        public EdfiAdminApiEdfiAdminV1InstanceDatabases? Databases { get { return this.DatabasesOption.Value; } set { this.DatabasesOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Password
@@ -232,7 +232,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>API Client</value>
         [JsonPropertyName("password")]
-        public string? Password { get { return this.PasswordOption; } set { this.PasswordOption = new(value); } }
+        public string? Password { get { return this.PasswordOption.Value; } set { this.PasswordOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApiClientKey
@@ -245,7 +245,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApiClientKey
         /// </summary>
         [JsonPropertyName("apiClientKey")]
-        public string? ApiClientKey { get { return this.ApiClientKeyOption; } set { this.ApiClientKeyOption = new(value); } }
+        public string? ApiClientKey { get { return this.ApiClientKeyOption.Value; } set { this.ApiClientKeyOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApiClientSecret
@@ -258,7 +258,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApiClientSecret
         /// </summary>
         [JsonPropertyName("apiClientSecret")]
-        public string? ApiClientSecret { get { return this.ApiClientSecretOption; } set { this.ApiClientSecretOption = new(value); } }
+        public string? ApiClientSecret { get { return this.ApiClientSecretOption.Value; } set { this.ApiClientSecretOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsApiClientSecretSecured
@@ -271,7 +271,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IsApiClientSecretSecured
         /// </summary>
         [JsonPropertyName("isApiClientSecretSecured")]
-        public string? IsApiClientSecretSecured { get { return this.IsApiClientSecretSecuredOption; } set { this.IsApiClientSecretSecuredOption = new(value); } }
+        public string? IsApiClientSecretSecured { get { return this.IsApiClientSecretSecuredOption.Value; } set { this.IsApiClientSecretSecuredOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -285,7 +285,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>Metadata</value>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedBy
@@ -298,7 +298,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedBy
         /// </summary>
         [JsonPropertyName("createdBy")]
-        public string? CreatedBy { get { return this.CreatedByOption; } set { this.CreatedByOption = new(value); } }
+        public string? CreatedBy { get { return this.CreatedByOption.Value; } set { this.CreatedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedDateTime
@@ -311,7 +311,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedDateTime
         /// </summary>
         [JsonPropertyName("createdDateTime")]
-        public string? CreatedDateTime { get { return this.CreatedDateTimeOption; } set { this.CreatedDateTimeOption = new(value); } }
+        public string? CreatedDateTime { get { return this.CreatedDateTimeOption.Value; } set { this.CreatedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsDeleted
@@ -324,7 +324,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IsDeleted
         /// </summary>
         [JsonPropertyName("isDeleted")]
-        public bool? IsDeleted { get { return this.IsDeletedOption; } set { this.IsDeletedOption = new(value); } }
+        public bool? IsDeleted { get { return this.IsDeletedOption.Value; } set { this.IsDeletedOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedBy
@@ -337,7 +337,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedBy
         /// </summary>
         [JsonPropertyName("lastModifiedBy")]
-        public string? LastModifiedBy { get { return this.LastModifiedByOption; } set { this.LastModifiedByOption = new(value); } }
+        public string? LastModifiedBy { get { return this.LastModifiedByOption.Value; } set { this.LastModifiedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedDateTime
@@ -350,7 +350,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedDateTime
         /// </summary>
         [JsonPropertyName("lastModifiedDateTime")]
-        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption; } set { this.LastModifiedDateTimeOption = new(value); } }
+        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption.Value; } set { this.LastModifiedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApiAuthUrl
@@ -364,7 +364,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>URLs</value>
         [JsonPropertyName("apiAuthUrl")]
-        public string? ApiAuthUrl { get { return this.ApiAuthUrlOption; } set { this.ApiAuthUrlOption = new(value); } }
+        public string? ApiAuthUrl { get { return this.ApiAuthUrlOption.Value; } set { this.ApiAuthUrlOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApiResourcesUrls
@@ -377,7 +377,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApiResourcesUrls
         /// </summary>
         [JsonPropertyName("apiResourcesUrls")]
-        public List<string>? ApiResourcesUrls { get { return this.ApiResourcesUrlsOption; } }
+        public List<string>? ApiResourcesUrls { get { return this.ApiResourcesUrlsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of ApiCompositesUrls
@@ -390,7 +390,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApiCompositesUrls
         /// </summary>
         [JsonPropertyName("apiCompositesUrls")]
-        public List<string>? ApiCompositesUrls { get { return this.ApiCompositesUrlsOption; } }
+        public List<string>? ApiCompositesUrls { get { return this.ApiCompositesUrlsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of SelectedConnectionType
@@ -404,7 +404,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>Connection</value>
         [JsonPropertyName("selectedConnectionType")]
-        public string? SelectedConnectionType { get { return this.SelectedConnectionTypeOption; } set { this.SelectedConnectionTypeOption = new(value); } }
+        public string? SelectedConnectionType { get { return this.SelectedConnectionTypeOption.Value; } set { this.SelectedConnectionTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsDefault
@@ -418,7 +418,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>IsDefault</value>
         [JsonPropertyName("isDefault")]
-        public bool? IsDefault { get { return this.IsDefaultOption; } set { this.IsDefaultOption = new(value); } }
+        public bool? IsDefault { get { return this.IsDefaultOption.Value; } set { this.IsDefaultOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Provider
@@ -432,7 +432,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>Provider</value>
         [JsonPropertyName("provider")]
-        public string? Provider { get { return this.ProviderOption; } set { this.ProviderOption = new(value); } }
+        public string? Provider { get { return this.ProviderOption.Value; } set { this.ProviderOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Onboarding
@@ -445,7 +445,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Onboarding
         /// </summary>
         [JsonPropertyName("onboarding")]
-        public EdfiAdminApiEdfiAdminV1Onboarding? Onboarding { get { return this.OnboardingOption; } set { this.OnboardingOption = new(value); } }
+        public EdfiAdminApiEdfiAdminV1Onboarding? Onboarding { get { return this.OnboardingOption.Value; } set { this.OnboardingOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Applications
@@ -459,7 +459,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>Applications</value>
         [JsonPropertyName("applications")]
-        public List<EdfiAdminApiEdfiAdminV1InstanceApplicationProfileResponse>? Applications { get { return this.ApplicationsOption; } }
+        public List<EdfiAdminApiEdfiAdminV1InstanceApplicationProfileResponse>? Applications { get { return this.ApplicationsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of RelatedInstances
@@ -472,7 +472,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RelatedInstances
         /// </summary>
         [JsonPropertyName("relatedInstances")]
-        public List<EdfiAdminApiEdfiAdminV1RelatedInstance>? RelatedInstances { get { return this.RelatedInstancesOption; } }
+        public List<EdfiAdminApiEdfiAdminV1RelatedInstance>? RelatedInstances { get { return this.RelatedInstancesOption.Value; } }
 
         /// <summary>
         /// Used to track the state of EnableAdminApi
@@ -486,7 +486,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>Enable Admin API</value>
         [JsonPropertyName("enableAdminApi")]
-        public bool? EnableAdminApi { get { return this.EnableAdminApiOption; } set { this.EnableAdminApiOption = new(value); } }
+        public bool? EnableAdminApi { get { return this.EnableAdminApiOption.Value; } set { this.EnableAdminApiOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of State
@@ -499,7 +499,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets State
         /// </summary>
         [JsonPropertyName("state")]
-        public string? State { get { return this.StateOption; } set { this.StateOption = new(value); } }
+        public string? State { get { return this.StateOption.Value; } set { this.StateOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -629,8 +629,7 @@ namespace EdGraph.Platform.Client.Model
                             instanceName = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "useCustomId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                useCustomId = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            useCustomId = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "customId":
                             customId = new Option<string?>(utf8JsonReader.GetString());
@@ -645,12 +644,10 @@ namespace EdGraph.Platform.Client.Model
                             selectedConnectionId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "selectedConnection":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                selectedConnection = new Option<EdfiAdminApiEdfiAdminV1EdFiConnection?>(JsonSerializer.Deserialize<EdfiAdminApiEdfiAdminV1EdFiConnection>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            selectedConnection = new Option<EdfiAdminApiEdfiAdminV1EdFiConnection?>(JsonSerializer.Deserialize<EdfiAdminApiEdfiAdminV1EdFiConnection>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "databases":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                databases = new Option<EdfiAdminApiEdfiAdminV1InstanceDatabases?>(JsonSerializer.Deserialize<EdfiAdminApiEdfiAdminV1InstanceDatabases>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            databases = new Option<EdfiAdminApiEdfiAdminV1InstanceDatabases?>(JsonSerializer.Deserialize<EdfiAdminApiEdfiAdminV1InstanceDatabases>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "password":
                             password = new Option<string?>(utf8JsonReader.GetString());
@@ -674,8 +671,7 @@ namespace EdGraph.Platform.Client.Model
                             createdDateTime = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "isDeleted":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isDeleted = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isDeleted = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "lastModifiedBy":
                             lastModifiedBy = new Option<string?>(utf8JsonReader.GetString());
@@ -687,38 +683,31 @@ namespace EdGraph.Platform.Client.Model
                             apiAuthUrl = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "apiResourcesUrls":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                apiResourcesUrls = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            apiResourcesUrls = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "apiCompositesUrls":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                apiCompositesUrls = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            apiCompositesUrls = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "selectedConnectionType":
                             selectedConnectionType = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "isDefault":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isDefault = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isDefault = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "provider":
                             provider = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "onboarding":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                onboarding = new Option<EdfiAdminApiEdfiAdminV1Onboarding?>(JsonSerializer.Deserialize<EdfiAdminApiEdfiAdminV1Onboarding>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            onboarding = new Option<EdfiAdminApiEdfiAdminV1Onboarding?>(JsonSerializer.Deserialize<EdfiAdminApiEdfiAdminV1Onboarding>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "applications":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                applications = new Option<List<EdfiAdminApiEdfiAdminV1InstanceApplicationProfileResponse>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1InstanceApplicationProfileResponse>>(ref utf8JsonReader, jsonSerializerOptions));
+                            applications = new Option<List<EdfiAdminApiEdfiAdminV1InstanceApplicationProfileResponse>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1InstanceApplicationProfileResponse>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "relatedInstances":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                relatedInstances = new Option<List<EdfiAdminApiEdfiAdminV1RelatedInstance>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1RelatedInstance>>(ref utf8JsonReader, jsonSerializerOptions));
+                            relatedInstances = new Option<List<EdfiAdminApiEdfiAdminV1RelatedInstance>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1RelatedInstance>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "enableAdminApi":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                enableAdminApi = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            enableAdminApi = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "state":
                             state = new Option<string?>(utf8JsonReader.GetString());

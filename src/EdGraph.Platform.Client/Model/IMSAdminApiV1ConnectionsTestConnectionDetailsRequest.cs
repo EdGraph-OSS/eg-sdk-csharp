@@ -54,7 +54,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ConnectionMetadata
         /// </summary>
         [JsonPropertyName("connectionMetadata")]
-        public List<IMSAdminApiV1ConnectionsConnectionDetailsMetadata>? ConnectionMetadata { get { return this.ConnectionMetadataOption; } }
+        public List<IMSAdminApiV1ConnectionsConnectionDetailsMetadata>? ConnectionMetadata { get { return this.ConnectionMetadataOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -120,8 +120,7 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "connectionMetadata":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                connectionMetadata = new Option<List<IMSAdminApiV1ConnectionsConnectionDetailsMetadata>?>(JsonSerializer.Deserialize<List<IMSAdminApiV1ConnectionsConnectionDetailsMetadata>>(ref utf8JsonReader, jsonSerializerOptions));
+                            connectionMetadata = new Option<List<IMSAdminApiV1ConnectionsConnectionDetailsMetadata>?>(JsonSerializer.Deserialize<List<IMSAdminApiV1ConnectionsConnectionDetailsMetadata>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

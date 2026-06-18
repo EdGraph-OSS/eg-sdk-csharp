@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CurrentStep
         /// </summary>
         [JsonPropertyName("currentStep")]
-        public int? CurrentStep { get { return this.CurrentStepOption; } set { this.CurrentStepOption = new(value); } }
+        public int? CurrentStep { get { return this.CurrentStepOption.Value; } set { this.CurrentStepOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SchoolYear
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SchoolYear
         /// </summary>
         [JsonPropertyName("schoolYear")]
-        public int? SchoolYear { get { return this.SchoolYearOption; } set { this.SchoolYearOption = new(value); } }
+        public int? SchoolYear { get { return this.SchoolYearOption.Value; } set { this.SchoolYearOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -154,15 +154,13 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "currentStep":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                currentStep = new Option<int?>(utf8JsonReader.GetInt32());
+                            currentStep = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "tenantId":
                             tenantId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "schoolYear":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                schoolYear = new Option<int?>(utf8JsonReader.GetInt32());
+                            schoolYear = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

@@ -13,67 +13,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Creates a new secret for an OpenId client
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class AddClientSecretExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ClientsSecretsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var clientId = "clientId_example";  // string | 
-            var iMSAdminApiV1ClientsAddClientSecretRequest = new IMSAdminApiV1ClientsAddClientSecretRequest(); // IMSAdminApiV1ClientsAddClientSecretRequest |  (optional) 
-
-            try
-            {
-                // Creates a new secret for an OpenId client
-                IMSAdminApiV1ClientsClientSecretAddedResponse result = apiInstance.AddClientSecret(tenantId, instanceId, clientId, iMSAdminApiV1ClientsAddClientSecretRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ClientsSecretsApi.AddClientSecret: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the AddClientSecretWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates a new secret for an OpenId client
-    ApiResponse<IMSAdminApiV1ClientsClientSecretAddedResponse> response = apiInstance.AddClientSecretWithHttpInfo(tenantId, instanceId, clientId, iMSAdminApiV1ClientsAddClientSecretRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ClientsSecretsApi.AddClientSecretWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -115,67 +54,6 @@ catch (ApiException e)
 
 Regenerate Client Secret
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class RegenerateOneRosterApiClientSecretAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ClientsSecretsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var clientId = "clientId_example";  // string | 
-            var iMSAdminApiV1ClientsRegenerateClientSecretRequest = new IMSAdminApiV1ClientsRegenerateClientSecretRequest(); // IMSAdminApiV1ClientsRegenerateClientSecretRequest |  (optional) 
-
-            try
-            {
-                // Regenerate Client Secret
-                IMSAdminApiV1ClientsClientSecretRegeneratedResponse result = apiInstance.RegenerateOneRosterApiClientSecretAsync(tenantId, instanceId, clientId, iMSAdminApiV1ClientsRegenerateClientSecretRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ClientsSecretsApi.RegenerateOneRosterApiClientSecretAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the RegenerateOneRosterApiClientSecretAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Regenerate Client Secret
-    ApiResponse<IMSAdminApiV1ClientsClientSecretRegeneratedResponse> response = apiInstance.RegenerateOneRosterApiClientSecretAsyncWithHttpInfo(tenantId, instanceId, clientId, iMSAdminApiV1ClientsRegenerateClientSecretRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ClientsSecretsApi.RegenerateOneRosterApiClientSecretAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

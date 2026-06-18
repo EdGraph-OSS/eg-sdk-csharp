@@ -61,7 +61,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1CreateConnectionRequest> edGraphHttpAggregatorsTenantApiServicesStateReportingV1CreateConnectionRequest = default!;
             var response = await _instance.CreateStateReportingConnectionAsync(tenantId, environmentId, edGraphHttpAggregatorsTenantApiServicesStateReportingV1CreateConnectionRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1ConnectionCreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid connectionId = default!;
             var response = await _instance.DeleteStateReportingConnectionAsync(tenantId, environmentId, connectionId);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1ConnectionDeletedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> connectionType = default!;
             var response = await _instance.FindStateReportingConnectionsAsync(tenantId, environmentId, instanceType, connectionType);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1PagedConnectionsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid connectionId = default!;
             var response = await _instance.GetStateReportingConnectionAsync(tenantId, environmentId, connectionId);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1ConnectionProfileResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid connectionId = default!;
             var response = await _instance.TestStateReportingConnectionByIdAsync(tenantId, environmentId, connectionId);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1TestConnectionResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1TestConnectionByTypeRequest> edGraphHttpAggregatorsTenantApiServicesStateReportingV1TestConnectionByTypeRequest = default!;
             var response = await _instance.TestStateReportingConnectionByTypeAsync(tenantId, environmentId, edGraphHttpAggregatorsTenantApiServicesStateReportingV1TestConnectionByTypeRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1TestConnectionResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1UpdateConnectionRequest> edGraphHttpAggregatorsTenantApiServicesStateReportingV1UpdateConnectionRequest = default!;
             var response = await _instance.UpdateStateReportingConnectionAsync(tenantId, environmentId, connectionId, edGraphHttpAggregatorsTenantApiServicesStateReportingV1UpdateConnectionRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1ConnectionUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

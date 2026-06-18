@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ReportingPeriods
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ReportingPeriods
         /// </summary>
         [JsonPropertyName("reportingPeriods")]
-        public List<ValidationsApiReportingPeriodsV1UpdateBulkRequestTypesReportingPeriod>? ReportingPeriods { get { return this.ReportingPeriodsOption; } }
+        public List<ValidationsApiReportingPeriodsV1UpdateBulkRequestTypesReportingPeriod>? ReportingPeriods { get { return this.ReportingPeriodsOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -140,8 +140,7 @@ namespace EdGraph.Platform.Client.Model
                             tenantId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "reportingPeriods":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                reportingPeriods = new Option<List<ValidationsApiReportingPeriodsV1UpdateBulkRequestTypesReportingPeriod>?>(JsonSerializer.Deserialize<List<ValidationsApiReportingPeriodsV1UpdateBulkRequestTypesReportingPeriod>>(ref utf8JsonReader, jsonSerializerOptions));
+                            reportingPeriods = new Option<List<ValidationsApiReportingPeriodsV1UpdateBulkRequestTypesReportingPeriod>?>(JsonSerializer.Deserialize<List<ValidationsApiReportingPeriodsV1UpdateBulkRequestTypesReportingPeriod>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

@@ -159,7 +159,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchStatus edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchStatus.ToString());
+            writer.WriteStringValue(EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchStatusValueConverter.ToJsonValue(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchStatus).ToString());
         }
     }
 
@@ -190,14 +190,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchStatus to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchStatus"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchStatus? edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchStatus?.ToString() ?? "null");
+            writer.WriteStringValue(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchStatus.HasValue ? EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchStatusValueConverter.ToJsonValue(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchStatus.Value).ToString() : "null");
         }
     }
 }

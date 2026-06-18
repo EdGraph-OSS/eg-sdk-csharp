@@ -64,7 +64,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ProviderId
         /// </summary>
         [JsonPropertyName("providerId")]
-        public string? ProviderId { get { return this.ProviderIdOption; } set { this.ProviderIdOption = new(value); } }
+        public string? ProviderId { get { return this.ProviderIdOption.Value; } set { this.ProviderIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ConnectionTypeId
@@ -77,7 +77,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ConnectionTypeId
         /// </summary>
         [JsonPropertyName("connectionTypeId")]
-        public string? ConnectionTypeId { get { return this.ConnectionTypeIdOption; } set { this.ConnectionTypeIdOption = new(value); } }
+        public string? ConnectionTypeId { get { return this.ConnectionTypeIdOption.Value; } set { this.ConnectionTypeIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Name
@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Name
         /// </summary>
         [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption; } set { this.NameOption = new(value); } }
+        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Description
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Description
         /// </summary>
         [JsonPropertyName("description")]
-        public string? Description { get { return this.DescriptionOption; } set { this.DescriptionOption = new(value); } }
+        public string? Description { get { return this.DescriptionOption.Value; } set { this.DescriptionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DocumentationUri
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DocumentationUri
         /// </summary>
         [JsonPropertyName("documentationUri")]
-        public string? DocumentationUri { get { return this.DocumentationUriOption; } set { this.DocumentationUriOption = new(value); } }
+        public string? DocumentationUri { get { return this.DocumentationUriOption.Value; } set { this.DocumentationUriOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ConnectionMetadataFields
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ConnectionMetadataFields
         /// </summary>
         [JsonPropertyName("connectionMetadataFields")]
-        public List<DataSyncApiProviderV1ConnectionMetadataField>? ConnectionMetadataFields { get { return this.ConnectionMetadataFieldsOption; } }
+        public List<DataSyncApiProviderV1ConnectionMetadataField>? ConnectionMetadataFields { get { return this.ConnectionMetadataFieldsOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -220,8 +220,7 @@ namespace EdGraph.Platform.Client.Model
                             documentationUri = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "connectionMetadataFields":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                connectionMetadataFields = new Option<List<DataSyncApiProviderV1ConnectionMetadataField>?>(JsonSerializer.Deserialize<List<DataSyncApiProviderV1ConnectionMetadataField>>(ref utf8JsonReader, jsonSerializerOptions));
+                            connectionMetadataFields = new Option<List<DataSyncApiProviderV1ConnectionMetadataField>?>(JsonSerializer.Deserialize<List<DataSyncApiProviderV1ConnectionMetadataField>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

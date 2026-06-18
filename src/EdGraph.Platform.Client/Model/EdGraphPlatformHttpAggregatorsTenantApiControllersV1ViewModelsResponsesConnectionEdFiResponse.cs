@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Value
         /// </summary>
         [JsonPropertyName("value")]
-        public string? Value { get { return this.ValueOption; } set { this.ValueOption = new(value); } }
+        public string? Value { get { return this.ValueOption.Value; } set { this.ValueOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Label
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Label
         /// </summary>
         [JsonPropertyName("label")]
-        public string? Label { get { return this.LabelOption; } set { this.LabelOption = new(value); } }
+        public string? Label { get { return this.LabelOption.Value; } set { this.LabelOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsSelected
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IsSelected
         /// </summary>
         [JsonPropertyName("isSelected")]
-        public bool? IsSelected { get { return this.IsSelectedOption; } set { this.IsSelectedOption = new(value); } }
+        public bool? IsSelected { get { return this.IsSelectedOption.Value; } set { this.IsSelectedOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -160,8 +160,7 @@ namespace EdGraph.Platform.Client.Model
                             label = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "isSelected":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isSelected = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isSelected = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

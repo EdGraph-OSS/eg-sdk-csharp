@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApplicationId
         /// </summary>
         [JsonPropertyName("applicationId")]
-        public string? ApplicationId { get { return this.ApplicationIdOption; } set { this.ApplicationIdOption = new(value); } }
+        public string? ApplicationId { get { return this.ApplicationIdOption.Value; } set { this.ApplicationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SubscriptionId
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SubscriptionId
         /// </summary>
         [JsonPropertyName("subscriptionId")]
-        public string? SubscriptionId { get { return this.SubscriptionIdOption; } set { this.SubscriptionIdOption = new(value); } }
+        public string? SubscriptionId { get { return this.SubscriptionIdOption.Value; } set { this.SubscriptionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Value
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Value
         /// </summary>
         [JsonPropertyName("value")]
-        public List<string>? Value { get { return this.ValueOption; } }
+        public List<string>? Value { get { return this.ValueOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -160,8 +160,7 @@ namespace EdGraph.Platform.Client.Model
                             subscriptionId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "value":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                value = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            value = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

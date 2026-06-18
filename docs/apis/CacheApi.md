@@ -12,59 +12,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Refreshes the user's profile cache.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class RefreshUserProfileCacheExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new CacheApi(config);
-
-            try
-            {
-                // Refreshes the user's profile cache.
-                apiInstance.RefreshUserProfileCache();
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling CacheApi.RefreshUserProfileCache: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the RefreshUserProfileCacheWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Refreshes the user's profile cache.
-    apiInstance.RefreshUserProfileCacheWithHttpInfo();
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling CacheApi.RefreshUserProfileCacheWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 This endpoint does not need any parameter.

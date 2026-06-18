@@ -173,7 +173,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, ValidationsApiJobsV1JobStatus validationsApiJobsV1JobStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(validationsApiJobsV1JobStatus.ToString());
+            writer.WriteStringValue(ValidationsApiJobsV1JobStatusValueConverter.ToJsonValue(validationsApiJobsV1JobStatus).ToString());
         }
     }
 
@@ -204,14 +204,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the ValidationsApiJobsV1JobStatus to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="validationsApiJobsV1JobStatus"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, ValidationsApiJobsV1JobStatus? validationsApiJobsV1JobStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(validationsApiJobsV1JobStatus?.ToString() ?? "null");
+            writer.WriteStringValue(validationsApiJobsV1JobStatus.HasValue ? ValidationsApiJobsV1JobStatusValueConverter.ToJsonValue(validationsApiJobsV1JobStatus.Value).ToString() : "null");
         }
     }
 }

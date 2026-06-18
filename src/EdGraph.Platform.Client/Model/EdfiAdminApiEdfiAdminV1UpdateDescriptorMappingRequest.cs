@@ -70,7 +70,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of MappedNamespace
@@ -83,7 +83,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets MappedNamespace
         /// </summary>
         [JsonPropertyName("mappedNamespace")]
-        public string? MappedNamespace { get { return this.MappedNamespaceOption; } set { this.MappedNamespaceOption = new(value); } }
+        public string? MappedNamespace { get { return this.MappedNamespaceOption.Value; } set { this.MappedNamespaceOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of MappedValue
@@ -96,7 +96,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets MappedValue
         /// </summary>
         [JsonPropertyName("mappedValue")]
-        public string? MappedValue { get { return this.MappedValueOption; } set { this.MappedValueOption = new(value); } }
+        public string? MappedValue { get { return this.MappedValueOption.Value; } set { this.MappedValueOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Namespace
@@ -109,7 +109,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Namespace
         /// </summary>
         [JsonPropertyName("namespace")]
-        public string? Namespace { get { return this.NamespaceOption; } set { this.NamespaceOption = new(value); } }
+        public string? Namespace { get { return this.NamespaceOption.Value; } set { this.NamespaceOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Value
@@ -122,7 +122,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Value
         /// </summary>
         [JsonPropertyName("value")]
-        public string? Value { get { return this.ValueOption; } set { this.ValueOption = new(value); } }
+        public string? Value { get { return this.ValueOption.Value; } set { this.ValueOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ModelEntities
@@ -135,7 +135,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ModelEntities
         /// </summary>
         [JsonPropertyName("modelEntities")]
-        public List<EdfiAdminApiEdfiAdminV1DescriptorMappingModelEntity>? ModelEntities { get { return this.ModelEntitiesOption; } }
+        public List<EdfiAdminApiEdfiAdminV1DescriptorMappingModelEntity>? ModelEntities { get { return this.ModelEntitiesOption.Value; } }
 
         /// <summary>
         /// Used to track the state of Etag
@@ -148,7 +148,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Etag
         /// </summary>
         [JsonPropertyName("etag")]
-        public string? Etag { get { return this.EtagOption; } set { this.EtagOption = new(value); } }
+        public string? Etag { get { return this.EtagOption.Value; } set { this.EtagOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InstanceId
@@ -161,7 +161,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceId
         /// </summary>
         [JsonPropertyName("instanceId")]
-        public string? InstanceId { get { return this.InstanceIdOption; } set { this.InstanceIdOption = new(value); } }
+        public string? InstanceId { get { return this.InstanceIdOption.Value; } set { this.InstanceIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Year
@@ -174,7 +174,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Year
         /// </summary>
         [JsonPropertyName("year")]
-        public int? Year { get { return this.YearOption; } set { this.YearOption = new(value); } }
+        public int? Year { get { return this.YearOption.Value; } set { this.YearOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -271,8 +271,7 @@ namespace EdGraph.Platform.Client.Model
                             value = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "modelEntities":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                modelEntities = new Option<List<EdfiAdminApiEdfiAdminV1DescriptorMappingModelEntity>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1DescriptorMappingModelEntity>>(ref utf8JsonReader, jsonSerializerOptions));
+                            modelEntities = new Option<List<EdfiAdminApiEdfiAdminV1DescriptorMappingModelEntity>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1DescriptorMappingModelEntity>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "etag":
                             etag = new Option<string?>(utf8JsonReader.GetString());
@@ -281,8 +280,7 @@ namespace EdGraph.Platform.Client.Model
                             instanceId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "year":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                year = new Option<int?>(utf8JsonReader.GetInt32());
+                            year = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

@@ -12,64 +12,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Retrieves a list of gateways in Power Bi that the user has access to.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetAllAnalyticsGatewaysAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new GatewaysApi(config);
-            var tenantId = "tenantId_example";  // string | 
-
-            try
-            {
-                // Retrieves a list of gateways in Power Bi that the user has access to.
-                EdfiAdminApiEdfiAdminV1Instance result = apiInstance.GetAllAnalyticsGatewaysAsync(tenantId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling GatewaysApi.GetAllAnalyticsGatewaysAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetAllAnalyticsGatewaysAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of gateways in Power Bi that the user has access to.
-    ApiResponse<EdfiAdminApiEdfiAdminV1Instance> response = apiInstance.GetAllAnalyticsGatewaysAsyncWithHttpInfo(tenantId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling GatewaysApi.GetAllAnalyticsGatewaysAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

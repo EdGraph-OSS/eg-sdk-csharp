@@ -80,7 +80,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Mode
         /// </summary>
         [JsonPropertyName("mode")]
-        public DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobMode? Mode { get { return this.ModeOption; } set { this.ModeOption = new(value); } }
+        public DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobMode? Mode { get { return this.ModeOption.Value; } set { this.ModeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Provider
@@ -93,7 +93,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Provider
         /// </summary>
         [JsonPropertyName("provider")]
-        public DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProvider? Provider { get { return this.ProviderOption; } set { this.ProviderOption = new(value); } }
+        public DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProvider? Provider { get { return this.ProviderOption.Value; } set { this.ProviderOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -106,7 +106,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ConnectionId
@@ -119,7 +119,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ConnectionId
         /// </summary>
         [JsonPropertyName("connectionId")]
-        public string? ConnectionId { get { return this.ConnectionIdOption; } set { this.ConnectionIdOption = new(value); } }
+        public string? ConnectionId { get { return this.ConnectionIdOption.Value; } set { this.ConnectionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of JobId
@@ -132,7 +132,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets JobId
         /// </summary>
         [JsonPropertyName("jobId")]
-        public string? JobId { get { return this.JobIdOption; } set { this.JobIdOption = new(value); } }
+        public string? JobId { get { return this.JobIdOption.Value; } set { this.JobIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ClientId
@@ -145,7 +145,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ClientId
         /// </summary>
         [JsonPropertyName("clientId")]
-        public string? ClientId { get { return this.ClientIdOption; } set { this.ClientIdOption = new(value); } }
+        public string? ClientId { get { return this.ClientIdOption.Value; } set { this.ClientIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ClientSecret
@@ -158,7 +158,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ClientSecret
         /// </summary>
         [JsonPropertyName("clientSecret")]
-        public string? ClientSecret { get { return this.ClientSecretOption; } set { this.ClientSecretOption = new(value); } }
+        public string? ClientSecret { get { return this.ClientSecretOption.Value; } set { this.ClientSecretOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of BaseUrl
@@ -171,7 +171,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets BaseUrl
         /// </summary>
         [JsonPropertyName("baseUrl")]
-        public string? BaseUrl { get { return this.BaseUrlOption; } set { this.BaseUrlOption = new(value); } }
+        public string? BaseUrl { get { return this.BaseUrlOption.Value; } set { this.BaseUrlOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AuthenticationUrl
@@ -184,7 +184,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AuthenticationUrl
         /// </summary>
         [JsonPropertyName("authenticationUrl")]
-        public string? AuthenticationUrl { get { return this.AuthenticationUrlOption; } set { this.AuthenticationUrlOption = new(value); } }
+        public string? AuthenticationUrl { get { return this.AuthenticationUrlOption.Value; } set { this.AuthenticationUrlOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ResourcesUrl
@@ -197,7 +197,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ResourcesUrl
         /// </summary>
         [JsonPropertyName("resourcesUrl")]
-        public string? ResourcesUrl { get { return this.ResourcesUrlOption; } set { this.ResourcesUrlOption = new(value); } }
+        public string? ResourcesUrl { get { return this.ResourcesUrlOption.Value; } set { this.ResourcesUrlOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Enabled
@@ -210,7 +210,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Enabled
         /// </summary>
         [JsonPropertyName("enabled")]
-        public bool? Enabled { get { return this.EnabledOption; } set { this.EnabledOption = new(value); } }
+        public bool? Enabled { get { return this.EnabledOption.Value; } set { this.EnabledOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EdFiInstanceId
@@ -223,7 +223,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EdFiInstanceId
         /// </summary>
         [JsonPropertyName("edFiInstanceId")]
-        public string? EdFiInstanceId { get { return this.EdFiInstanceIdOption; } set { this.EdFiInstanceIdOption = new(value); } }
+        public string? EdFiInstanceId { get { return this.EdFiInstanceIdOption.Value; } set { this.EdFiInstanceIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of UseSSAInsteadOfSEOAA
@@ -236,7 +236,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets UseSSAInsteadOfSEOAA
         /// </summary>
         [JsonPropertyName("useSSAInsteadOfSEOAA")]
-        public DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions? UseSSAInsteadOfSEOAA { get { return this.UseSSAInsteadOfSEOAAOption; } set { this.UseSSAInsteadOfSEOAAOption = new(value); } }
+        public DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions? UseSSAInsteadOfSEOAA { get { return this.UseSSAInsteadOfSEOAAOption.Value; } set { this.UseSSAInsteadOfSEOAAOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ImportSectionAndCourseData
@@ -249,7 +249,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ImportSectionAndCourseData
         /// </summary>
         [JsonPropertyName("importSectionAndCourseData")]
-        public bool? ImportSectionAndCourseData { get { return this.ImportSectionAndCourseDataOption; } set { this.ImportSectionAndCourseDataOption = new(value); } }
+        public bool? ImportSectionAndCourseData { get { return this.ImportSectionAndCourseDataOption.Value; } set { this.ImportSectionAndCourseDataOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -375,19 +375,16 @@ namespace EdGraph.Platform.Client.Model
                             resourcesUrl = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "enabled":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                enabled = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            enabled = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "edFiInstanceId":
                             edFiInstanceId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "useSSAInsteadOfSEOAA":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                useSSAInsteadOfSEOAA = new Option<DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions?>(JsonSerializer.Deserialize<DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            useSSAInsteadOfSEOAA = new Option<DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions?>(JsonSerializer.Deserialize<DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "importSectionAndCourseData":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                importSectionAndCourseData = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            importSectionAndCourseData = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

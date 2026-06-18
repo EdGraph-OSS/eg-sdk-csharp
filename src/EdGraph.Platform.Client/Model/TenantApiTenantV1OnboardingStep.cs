@@ -64,7 +64,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Number
         /// </summary>
         [JsonPropertyName("number")]
-        public int? Number { get { return this.NumberOption; } set { this.NumberOption = new(value); } }
+        public int? Number { get { return this.NumberOption.Value; } set { this.NumberOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Description
@@ -77,7 +77,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Description
         /// </summary>
         [JsonPropertyName("description")]
-        public string? Description { get { return this.DescriptionOption; } set { this.DescriptionOption = new(value); } }
+        public string? Description { get { return this.DescriptionOption.Value; } set { this.DescriptionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Status
@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Status
         /// </summary>
         [JsonPropertyName("status")]
-        public string? Status { get { return this.StatusOption; } set { this.StatusOption = new(value); } }
+        public string? Status { get { return this.StatusOption.Value; } set { this.StatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of StartedAt
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets StartedAt
         /// </summary>
         [JsonPropertyName("startedAt")]
-        public string? StartedAt { get { return this.StartedAtOption; } set { this.StartedAtOption = new(value); } }
+        public string? StartedAt { get { return this.StartedAtOption.Value; } set { this.StartedAtOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CompletedAt
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CompletedAt
         /// </summary>
         [JsonPropertyName("completedAt")]
-        public string? CompletedAt { get { return this.CompletedAtOption; } set { this.CompletedAtOption = new(value); } }
+        public string? CompletedAt { get { return this.CompletedAtOption.Value; } set { this.CompletedAtOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Details
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Details
         /// </summary>
         [JsonPropertyName("details")]
-        public string? Details { get { return this.DetailsOption; } set { this.DetailsOption = new(value); } }
+        public string? Details { get { return this.DetailsOption.Value; } set { this.DetailsOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -205,8 +205,7 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "number":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                number = new Option<int?>(utf8JsonReader.GetInt32());
+                            number = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "description":
                             description = new Option<string?>(utf8JsonReader.GetString());

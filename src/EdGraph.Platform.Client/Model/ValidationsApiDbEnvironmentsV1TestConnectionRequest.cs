@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ConnectionType
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ConnectionType
         /// </summary>
         [JsonPropertyName("connectionType")]
-        public string? ConnectionType { get { return this.ConnectionTypeOption; } set { this.ConnectionTypeOption = new(value); } }
+        public string? ConnectionType { get { return this.ConnectionTypeOption.Value; } set { this.ConnectionTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SqlServerConnection
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SqlServerConnection
         /// </summary>
         [JsonPropertyName("sqlServerConnection")]
-        public ValidationsApiDbEnvironmentsV1SqlServerConnection? SqlServerConnection { get { return this.SqlServerConnectionOption; } set { this.SqlServerConnectionOption = new(value); } }
+        public ValidationsApiDbEnvironmentsV1SqlServerConnection? SqlServerConnection { get { return this.SqlServerConnectionOption.Value; } set { this.SqlServerConnectionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AzureSynapseSqlServerlessConnection
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AzureSynapseSqlServerlessConnection
         /// </summary>
         [JsonPropertyName("azureSynapseSqlServerlessConnection")]
-        public ValidationsApiDbEnvironmentsV1AzureSynapseSqlServerlessConnection? AzureSynapseSqlServerlessConnection { get { return this.AzureSynapseSqlServerlessConnectionOption; } set { this.AzureSynapseSqlServerlessConnectionOption = new(value); } }
+        public ValidationsApiDbEnvironmentsV1AzureSynapseSqlServerlessConnection? AzureSynapseSqlServerlessConnection { get { return this.AzureSynapseSqlServerlessConnectionOption.Value; } set { this.AzureSynapseSqlServerlessConnectionOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -177,12 +177,10 @@ namespace EdGraph.Platform.Client.Model
                             connectionType = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "sqlServerConnection":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                sqlServerConnection = new Option<ValidationsApiDbEnvironmentsV1SqlServerConnection?>(JsonSerializer.Deserialize<ValidationsApiDbEnvironmentsV1SqlServerConnection>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            sqlServerConnection = new Option<ValidationsApiDbEnvironmentsV1SqlServerConnection?>(JsonSerializer.Deserialize<ValidationsApiDbEnvironmentsV1SqlServerConnection>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "azureSynapseSqlServerlessConnection":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                azureSynapseSqlServerlessConnection = new Option<ValidationsApiDbEnvironmentsV1AzureSynapseSqlServerlessConnection?>(JsonSerializer.Deserialize<ValidationsApiDbEnvironmentsV1AzureSynapseSqlServerlessConnection>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            azureSynapseSqlServerlessConnection = new Option<ValidationsApiDbEnvironmentsV1AzureSynapseSqlServerlessConnection?>(JsonSerializer.Deserialize<ValidationsApiDbEnvironmentsV1AzureSynapseSqlServerlessConnection>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

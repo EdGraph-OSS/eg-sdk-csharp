@@ -145,7 +145,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, IdentityApiUserV1TenantStatus identityApiUserV1TenantStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(identityApiUserV1TenantStatus.ToString());
+            writer.WriteStringValue(IdentityApiUserV1TenantStatusValueConverter.ToJsonValue(identityApiUserV1TenantStatus).ToString());
         }
     }
 
@@ -176,14 +176,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the IdentityApiUserV1TenantStatus to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="identityApiUserV1TenantStatus"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, IdentityApiUserV1TenantStatus? identityApiUserV1TenantStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(identityApiUserV1TenantStatus?.ToString() ?? "null");
+            writer.WriteStringValue(identityApiUserV1TenantStatus.HasValue ? IdentityApiUserV1TenantStatusValueConverter.ToJsonValue(identityApiUserV1TenantStatus.Value).ToString() : "null");
         }
     }
 }

@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<Object?> body = default!;
             var response = await _instance.CreateConnectorAsync(tenantId, body);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesConnectorsResponsesConnectorByTypeCreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string connectorId = default!;
             var response = await _instance.DeleteConnectorAsync(tenantId, connectorId);
             var model = response.Unauthorized();
-            Assert.IsType<AnalyticsApiConnectorsV1ConnectorDeletedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string connectorId = default!;
             var response = await _instance.GetADLSGen2ConnectorByIdAsync(tenantId, connectorId);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesConnectorsExtensionsADLSGen2ConnectorProfileDTO>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetPaginatedConnectorsAsync(tenantId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesConnectorsResponsesConnectorsPaginatedItemsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<Object?> body = default!;
             var response = await _instance.UpdateConnectorAsync(tenantId, connectorId, body);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesConnectorsResponsesConnectorByTypeUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

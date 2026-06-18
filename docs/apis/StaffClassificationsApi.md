@@ -17,65 +17,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Creates a StaffClassification.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CreateStaffClassificationExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new StaffClassificationsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var identityApiStaffClassificationV1CreateStaffClassificationRequest = new IdentityApiStaffClassificationV1CreateStaffClassificationRequest(); // IdentityApiStaffClassificationV1CreateStaffClassificationRequest |  (optional) 
-
-            try
-            {
-                // Creates a StaffClassification.
-                IdentityApiStaffClassificationV1StaffClassificationCreatedResponse result = apiInstance.CreateStaffClassification(tenantId, identityApiStaffClassificationV1CreateStaffClassificationRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling StaffClassificationsApi.CreateStaffClassification: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateStaffClassificationWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates a StaffClassification.
-    ApiResponse<IdentityApiStaffClassificationV1StaffClassificationCreatedResponse> response = apiInstance.CreateStaffClassificationWithHttpInfo(tenantId, identityApiStaffClassificationV1CreateStaffClassificationRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling StaffClassificationsApi.CreateStaffClassificationWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -115,65 +56,6 @@ catch (ApiException e)
 
 Deletes a StaffClassification.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class DeleteStaffClassificationExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new StaffClassificationsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var staffClassificationId = "staffClassificationId_example";  // Guid | 
-
-            try
-            {
-                // Deletes a StaffClassification.
-                IdentityApiStaffClassificationV1StaffClassificationDeletedResponse result = apiInstance.DeleteStaffClassification(tenantId, staffClassificationId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling StaffClassificationsApi.DeleteStaffClassification: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeleteStaffClassificationWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Deletes a StaffClassification.
-    ApiResponse<IdentityApiStaffClassificationV1StaffClassificationDeletedResponse> response = apiInstance.DeleteStaffClassificationWithHttpInfo(tenantId, staffClassificationId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling StaffClassificationsApi.DeleteStaffClassificationWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -213,65 +95,6 @@ catch (ApiException e)
 
 Retrieves a StaffClassification by ID.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetStaffClassificationByIdExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new StaffClassificationsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var staffClassificationId = "staffClassificationId_example";  // Guid | 
-
-            try
-            {
-                // Retrieves a StaffClassification by ID.
-                IdentityApiStaffClassificationV1StaffClassificationResponse result = apiInstance.GetStaffClassificationById(tenantId, staffClassificationId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling StaffClassificationsApi.GetStaffClassificationById: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetStaffClassificationByIdWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a StaffClassification by ID.
-    ApiResponse<IdentityApiStaffClassificationV1StaffClassificationResponse> response = apiInstance.GetStaffClassificationByIdWithHttpInfo(tenantId, staffClassificationId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling StaffClassificationsApi.GetStaffClassificationByIdWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -312,68 +135,6 @@ catch (ApiException e)
 
 Retrieves a list of StaffClassifications.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetStaffClassificationsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new StaffClassificationsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Retrieves a list of StaffClassifications.
-                IdentityApiStaffClassificationV1GetStaffClassificationsResponse result = apiInstance.GetStaffClassifications(tenantId, pageIndex, pageSize, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling StaffClassificationsApi.GetStaffClassifications: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetStaffClassificationsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of StaffClassifications.
-    ApiResponse<IdentityApiStaffClassificationV1GetStaffClassificationsResponse> response = apiInstance.GetStaffClassificationsWithHttpInfo(tenantId, pageIndex, pageSize, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling StaffClassificationsApi.GetStaffClassificationsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -416,67 +177,6 @@ catch (ApiException e)
 
 Retrieves a list of unique Staff Classification Namespaces.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetStaffClassificationsNamespacesExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new StaffClassificationsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Retrieves a list of unique Staff Classification Namespaces.
-                IdentityApiStaffClassificationV1GetStaffClassificationsNamespacesResponse result = apiInstance.GetStaffClassificationsNamespaces(tenantId, pageIndex, pageSize, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling StaffClassificationsApi.GetStaffClassificationsNamespaces: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetStaffClassificationsNamespacesWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of unique Staff Classification Namespaces.
-    ApiResponse<IdentityApiStaffClassificationV1GetStaffClassificationsNamespacesResponse> response = apiInstance.GetStaffClassificationsNamespacesWithHttpInfo(tenantId, pageIndex, pageSize, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling StaffClassificationsApi.GetStaffClassificationsNamespacesWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -518,66 +218,6 @@ catch (ApiException e)
 
 Updates a StaffClassification.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateStaffClassificationExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new StaffClassificationsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var staffClassificationId = "staffClassificationId_example";  // Guid | 
-            var identityApiStaffClassificationV1UpdateStaffClassificationRequest = new IdentityApiStaffClassificationV1UpdateStaffClassificationRequest(); // IdentityApiStaffClassificationV1UpdateStaffClassificationRequest |  (optional) 
-
-            try
-            {
-                // Updates a StaffClassification.
-                IdentityApiStaffClassificationV1StaffClassificationUpdatedResponse result = apiInstance.UpdateStaffClassification(tenantId, staffClassificationId, identityApiStaffClassificationV1UpdateStaffClassificationRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling StaffClassificationsApi.UpdateStaffClassification: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateStaffClassificationWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates a StaffClassification.
-    ApiResponse<IdentityApiStaffClassificationV1StaffClassificationUpdatedResponse> response = apiInstance.UpdateStaffClassificationWithHttpInfo(tenantId, staffClassificationId, identityApiStaffClassificationV1UpdateStaffClassificationRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling StaffClassificationsApi.UpdateStaffClassificationWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

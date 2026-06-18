@@ -187,7 +187,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, RegistrationApiRegistrationV2ApprovalStatus registrationApiRegistrationV2ApprovalStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(registrationApiRegistrationV2ApprovalStatus.ToString());
+            writer.WriteStringValue(RegistrationApiRegistrationV2ApprovalStatusValueConverter.ToJsonValue(registrationApiRegistrationV2ApprovalStatus).ToString());
         }
     }
 
@@ -218,14 +218,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the RegistrationApiRegistrationV2ApprovalStatus to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="registrationApiRegistrationV2ApprovalStatus"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, RegistrationApiRegistrationV2ApprovalStatus? registrationApiRegistrationV2ApprovalStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(registrationApiRegistrationV2ApprovalStatus?.ToString() ?? "null");
+            writer.WriteStringValue(registrationApiRegistrationV2ApprovalStatus.HasValue ? RegistrationApiRegistrationV2ApprovalStatusValueConverter.ToJsonValue(registrationApiRegistrationV2ApprovalStatus.Value).ToString() : "null");
         }
     }
 }

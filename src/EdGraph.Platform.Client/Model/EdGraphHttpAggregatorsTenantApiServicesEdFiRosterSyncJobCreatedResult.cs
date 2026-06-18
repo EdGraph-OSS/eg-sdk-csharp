@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public Guid? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public Guid? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DataSyncConnectionId
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DataSyncConnectionId
         /// </summary>
         [JsonPropertyName("dataSyncConnectionId")]
-        public Guid? DataSyncConnectionId { get { return this.DataSyncConnectionIdOption; } set { this.DataSyncConnectionIdOption = new(value); } }
+        public Guid? DataSyncConnectionId { get { return this.DataSyncConnectionIdOption.Value; } set { this.DataSyncConnectionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DataSyncJobId
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DataSyncJobId
         /// </summary>
         [JsonPropertyName("dataSyncJobId")]
-        public Guid? DataSyncJobId { get { return this.DataSyncJobIdOption; } set { this.DataSyncJobIdOption = new(value); } }
+        public Guid? DataSyncJobId { get { return this.DataSyncJobIdOption.Value; } set { this.DataSyncJobIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EdFiInstanceId
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EdFiInstanceId
         /// </summary>
         [JsonPropertyName("edFiInstanceId")]
-        public string? EdFiInstanceId { get { return this.EdFiInstanceIdOption; } set { this.EdFiInstanceIdOption = new(value); } }
+        public string? EdFiInstanceId { get { return this.EdFiInstanceIdOption.Value; } set { this.EdFiInstanceIdOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -171,16 +171,13 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "tenantId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                tenantId = new Option<Guid?>(utf8JsonReader.GetGuid());
+                            tenantId = new Option<Guid?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (Guid?)null : utf8JsonReader.GetGuid());
                             break;
                         case "dataSyncConnectionId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                dataSyncConnectionId = new Option<Guid?>(utf8JsonReader.GetGuid());
+                            dataSyncConnectionId = new Option<Guid?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (Guid?)null : utf8JsonReader.GetGuid());
                             break;
                         case "dataSyncJobId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                dataSyncJobId = new Option<Guid?>(utf8JsonReader.GetGuid());
+                            dataSyncJobId = new Option<Guid?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (Guid?)null : utf8JsonReader.GetGuid());
                             break;
                         case "edFiInstanceId":
                             edFiInstanceId = new Option<string?>(utf8JsonReader.GetString());

@@ -64,7 +64,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SourceInstanceId
@@ -77,7 +77,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SourceInstanceId
         /// </summary>
         [JsonPropertyName("sourceInstanceId")]
-        public string? SourceInstanceId { get { return this.SourceInstanceIdOption; } set { this.SourceInstanceIdOption = new(value); } }
+        public string? SourceInstanceId { get { return this.SourceInstanceIdOption.Value; } set { this.SourceInstanceIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CloneInstanceName
@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CloneInstanceName
         /// </summary>
         [JsonPropertyName("cloneInstanceName")]
-        public string? CloneInstanceName { get { return this.CloneInstanceNameOption; } set { this.CloneInstanceNameOption = new(value); } }
+        public string? CloneInstanceName { get { return this.CloneInstanceNameOption.Value; } set { this.CloneInstanceNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CloneInstanceUseCustomId
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CloneInstanceUseCustomId
         /// </summary>
         [JsonPropertyName("cloneInstanceUseCustomId")]
-        public bool? CloneInstanceUseCustomId { get { return this.CloneInstanceUseCustomIdOption; } set { this.CloneInstanceUseCustomIdOption = new(value); } }
+        public bool? CloneInstanceUseCustomId { get { return this.CloneInstanceUseCustomIdOption.Value; } set { this.CloneInstanceUseCustomIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CloneInstanceCustomId
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CloneInstanceCustomId
         /// </summary>
         [JsonPropertyName("cloneInstanceCustomId")]
-        public string? CloneInstanceCustomId { get { return this.CloneInstanceCustomIdOption; } set { this.CloneInstanceCustomIdOption = new(value); } }
+        public string? CloneInstanceCustomId { get { return this.CloneInstanceCustomIdOption.Value; } set { this.CloneInstanceCustomIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CloneInstanceDescription
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CloneInstanceDescription
         /// </summary>
         [JsonPropertyName("cloneInstanceDescription")]
-        public string? CloneInstanceDescription { get { return this.CloneInstanceDescriptionOption; } set { this.CloneInstanceDescriptionOption = new(value); } }
+        public string? CloneInstanceDescription { get { return this.CloneInstanceDescriptionOption.Value; } set { this.CloneInstanceDescriptionOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -214,8 +214,7 @@ namespace EdGraph.Platform.Client.Model
                             cloneInstanceName = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "cloneInstanceUseCustomId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                cloneInstanceUseCustomId = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            cloneInstanceUseCustomId = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "cloneInstanceCustomId":
                             cloneInstanceCustomId = new Option<string?>(utf8JsonReader.GetString());

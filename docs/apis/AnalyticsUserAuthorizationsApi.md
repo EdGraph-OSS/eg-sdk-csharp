@@ -13,68 +13,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Retrieves paginated user authorizations
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetPaginatedUserAuthorizationsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new AnalyticsUserAuthorizationsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Retrieves paginated user authorizations
-                AnalyticsApiUserAuthorizationsV1UserAuthorizationsPaginatedItemsResponse result = apiInstance.GetPaginatedUserAuthorizations(tenantId, pageSize, pageIndex, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling AnalyticsUserAuthorizationsApi.GetPaginatedUserAuthorizations: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetPaginatedUserAuthorizationsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves paginated user authorizations
-    ApiResponse<AnalyticsApiUserAuthorizationsV1UserAuthorizationsPaginatedItemsResponse> response = apiInstance.GetPaginatedUserAuthorizationsWithHttpInfo(tenantId, pageSize, pageIndex, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling AnalyticsUserAuthorizationsApi.GetPaginatedUserAuthorizationsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -117,65 +55,6 @@ catch (ApiException e)
 
 Soft Deletes a user authorization by Id
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SoftDeleteUserAuthorizationExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new AnalyticsUserAuthorizationsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var userAuthorizationId = "userAuthorizationId_example";  // string | 
-
-            try
-            {
-                // Soft Deletes a user authorization by Id
-                AnalyticsApiUserAuthorizationsV1UserAuthorizationSoftDeletedResponse result = apiInstance.SoftDeleteUserAuthorization(tenantId, userAuthorizationId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling AnalyticsUserAuthorizationsApi.SoftDeleteUserAuthorization: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SoftDeleteUserAuthorizationWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Soft Deletes a user authorization by Id
-    ApiResponse<AnalyticsApiUserAuthorizationsV1UserAuthorizationSoftDeletedResponse> response = apiInstance.SoftDeleteUserAuthorizationWithHttpInfo(tenantId, userAuthorizationId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling AnalyticsUserAuthorizationsApi.SoftDeleteUserAuthorizationWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

@@ -64,7 +64,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Errors
         /// </summary>
         [JsonPropertyName("errors")]
-        public Dictionary<string, List<string>>? Errors { get { return this.ErrorsOption; } set { this.ErrorsOption = new(value); } }
+        public Dictionary<string, List<string>>? Errors { get { return this.ErrorsOption.Value; } set { this.ErrorsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Type
@@ -77,7 +77,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Type
         /// </summary>
         [JsonPropertyName("type")]
-        public string? Type { get { return this.TypeOption; } set { this.TypeOption = new(value); } }
+        public string? Type { get { return this.TypeOption.Value; } set { this.TypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Title
@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Title
         /// </summary>
         [JsonPropertyName("title")]
-        public string? Title { get { return this.TitleOption; } set { this.TitleOption = new(value); } }
+        public string? Title { get { return this.TitleOption.Value; } set { this.TitleOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Status
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Status
         /// </summary>
         [JsonPropertyName("status")]
-        public int? Status { get { return this.StatusOption; } set { this.StatusOption = new(value); } }
+        public int? Status { get { return this.StatusOption.Value; } set { this.StatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Detail
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Detail
         /// </summary>
         [JsonPropertyName("detail")]
-        public string? Detail { get { return this.DetailOption; } set { this.DetailOption = new(value); } }
+        public string? Detail { get { return this.DetailOption.Value; } set { this.DetailOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Instance
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Instance
         /// </summary>
         [JsonPropertyName("instance")]
-        public string? Instance { get { return this.InstanceOption; } set { this.InstanceOption = new(value); } }
+        public string? Instance { get { return this.InstanceOption.Value; } set { this.InstanceOption = new(value); } }
 
         /// <summary>
         /// Gets or Sets additional properties
@@ -212,8 +212,7 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "errors":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                errors = new Option<Dictionary<string, List<string>>?>(JsonSerializer.Deserialize<Dictionary<string, List<string>>>(ref utf8JsonReader, jsonSerializerOptions));
+                            errors = new Option<Dictionary<string, List<string>>?>(JsonSerializer.Deserialize<Dictionary<string, List<string>>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "type":
                             type = new Option<string?>(utf8JsonReader.GetString());
@@ -222,8 +221,7 @@ namespace EdGraph.Platform.Client.Model
                             title = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "status":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                status = new Option<int?>(utf8JsonReader.GetInt32());
+                            status = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "detail":
                             detail = new Option<string?>(utf8JsonReader.GetString());

@@ -66,7 +66,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EnvironmentId
@@ -79,7 +79,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EnvironmentId
         /// </summary>
         [JsonPropertyName("environmentId")]
-        public string? EnvironmentId { get { return this.EnvironmentIdOption; } set { this.EnvironmentIdOption = new(value); } }
+        public string? EnvironmentId { get { return this.EnvironmentIdOption.Value; } set { this.EnvironmentIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ReportingPeriodId
@@ -92,7 +92,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ReportingPeriodId
         /// </summary>
         [JsonPropertyName("reportingPeriodId")]
-        public string? ReportingPeriodId { get { return this.ReportingPeriodIdOption; } set { this.ReportingPeriodIdOption = new(value); } }
+        public string? ReportingPeriodId { get { return this.ReportingPeriodIdOption.Value; } set { this.ReportingPeriodIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TagId
@@ -105,7 +105,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TagId
         /// </summary>
         [JsonPropertyName("tagId")]
-        public string? TagId { get { return this.TagIdOption; } set { this.TagIdOption = new(value); } }
+        public string? TagId { get { return this.TagIdOption.Value; } set { this.TagIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RuleIds
@@ -118,7 +118,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RuleIds
         /// </summary>
         [JsonPropertyName("ruleIds")]
-        public List<string>? RuleIds { get { return this.RuleIdsOption; } }
+        public List<string>? RuleIds { get { return this.RuleIdsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of Code
@@ -131,7 +131,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Code
         /// </summary>
         [JsonPropertyName("code")]
-        public string? Code { get { return this.CodeOption; } set { this.CodeOption = new(value); } }
+        public string? Code { get { return this.CodeOption.Value; } set { this.CodeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DisplayName
@@ -144,7 +144,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DisplayName
         /// </summary>
         [JsonPropertyName("displayName")]
-        public string? DisplayName { get { return this.DisplayNameOption; } set { this.DisplayNameOption = new(value); } }
+        public string? DisplayName { get { return this.DisplayNameOption.Value; } set { this.DisplayNameOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -234,8 +234,7 @@ namespace EdGraph.Platform.Client.Model
                             tagId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "ruleIds":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                ruleIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            ruleIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "code":
                             code = new Option<string?>(utf8JsonReader.GetString());

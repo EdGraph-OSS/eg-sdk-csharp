@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets JobTypeId
         /// </summary>
         [JsonPropertyName("jobTypeId")]
-        public string? JobTypeId { get { return this.JobTypeIdOption; } set { this.JobTypeIdOption = new(value); } }
+        public string? JobTypeId { get { return this.JobTypeIdOption.Value; } set { this.JobTypeIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Name
@@ -97,7 +97,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Name
         /// </summary>
         [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption; } set { this.NameOption = new(value); } }
+        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Description
@@ -110,7 +110,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Description
         /// </summary>
         [JsonPropertyName("description")]
-        public string? Description { get { return this.DescriptionOption; } set { this.DescriptionOption = new(value); } }
+        public string? Description { get { return this.DescriptionOption.Value; } set { this.DescriptionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of JobPoints
@@ -123,7 +123,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets JobPoints
         /// </summary>
         [JsonPropertyName("jobPoints")]
-        public int? JobPoints { get { return this.JobPointsOption; } set { this.JobPointsOption = new(value); } }
+        public int? JobPoints { get { return this.JobPointsOption.Value; } set { this.JobPointsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of HasChildJobs
@@ -136,7 +136,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets HasChildJobs
         /// </summary>
         [JsonPropertyName("hasChildJobs")]
-        public bool? HasChildJobs { get { return this.HasChildJobsOption; } set { this.HasChildJobsOption = new(value); } }
+        public bool? HasChildJobs { get { return this.HasChildJobsOption.Value; } set { this.HasChildJobsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ChildJobField
@@ -149,7 +149,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ChildJobField
         /// </summary>
         [JsonPropertyName("childJobField")]
-        public string? ChildJobField { get { return this.ChildJobFieldOption; } set { this.ChildJobFieldOption = new(value); } }
+        public string? ChildJobField { get { return this.ChildJobFieldOption.Value; } set { this.ChildJobFieldOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SourceConnectionTypeId
@@ -162,7 +162,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SourceConnectionTypeId
         /// </summary>
         [JsonPropertyName("sourceConnectionTypeId")]
-        public string? SourceConnectionTypeId { get { return this.SourceConnectionTypeIdOption; } set { this.SourceConnectionTypeIdOption = new(value); } }
+        public string? SourceConnectionTypeId { get { return this.SourceConnectionTypeIdOption.Value; } set { this.SourceConnectionTypeIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DestinationConnectionTypeId
@@ -175,7 +175,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DestinationConnectionTypeId
         /// </summary>
         [JsonPropertyName("destinationConnectionTypeId")]
-        public string? DestinationConnectionTypeId { get { return this.DestinationConnectionTypeIdOption; } set { this.DestinationConnectionTypeIdOption = new(value); } }
+        public string? DestinationConnectionTypeId { get { return this.DestinationConnectionTypeIdOption.Value; } set { this.DestinationConnectionTypeIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SourceConnectionRequired
@@ -188,7 +188,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SourceConnectionRequired
         /// </summary>
         [JsonPropertyName("sourceConnectionRequired")]
-        public bool? SourceConnectionRequired { get { return this.SourceConnectionRequiredOption; } set { this.SourceConnectionRequiredOption = new(value); } }
+        public bool? SourceConnectionRequired { get { return this.SourceConnectionRequiredOption.Value; } set { this.SourceConnectionRequiredOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DestinationConnectionRequired
@@ -201,7 +201,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DestinationConnectionRequired
         /// </summary>
         [JsonPropertyName("destinationConnectionRequired")]
-        public bool? DestinationConnectionRequired { get { return this.DestinationConnectionRequiredOption; } set { this.DestinationConnectionRequiredOption = new(value); } }
+        public bool? DestinationConnectionRequired { get { return this.DestinationConnectionRequiredOption.Value; } set { this.DestinationConnectionRequiredOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of JobMetadataFields
@@ -214,7 +214,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets JobMetadataFields
         /// </summary>
         [JsonPropertyName("jobMetadataFields")]
-        public List<DataSyncApiJobTypeV1JobMetadataField>? JobMetadataFields { get { return this.JobMetadataFieldsOption; } }
+        public List<DataSyncApiJobTypeV1JobMetadataField>? JobMetadataFields { get { return this.JobMetadataFieldsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of Profiles
@@ -227,7 +227,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Profiles
         /// </summary>
         [JsonPropertyName("profiles")]
-        public List<DataSyncApiJobTypeV1Profile>? Profiles { get { return this.ProfilesOption; } }
+        public List<DataSyncApiJobTypeV1Profile>? Profiles { get { return this.ProfilesOption.Value; } }
 
         /// <summary>
         /// Used to track the state of CreatedBy
@@ -240,7 +240,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedBy
         /// </summary>
         [JsonPropertyName("createdBy")]
-        public string? CreatedBy { get { return this.CreatedByOption; } set { this.CreatedByOption = new(value); } }
+        public string? CreatedBy { get { return this.CreatedByOption.Value; } set { this.CreatedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedDateTime
@@ -253,7 +253,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedDateTime
         /// </summary>
         [JsonPropertyName("createdDateTime")]
-        public string? CreatedDateTime { get { return this.CreatedDateTimeOption; } set { this.CreatedDateTimeOption = new(value); } }
+        public string? CreatedDateTime { get { return this.CreatedDateTimeOption.Value; } set { this.CreatedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedBy
@@ -266,7 +266,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedBy
         /// </summary>
         [JsonPropertyName("lastModifiedBy")]
-        public string? LastModifiedBy { get { return this.LastModifiedByOption; } set { this.LastModifiedByOption = new(value); } }
+        public string? LastModifiedBy { get { return this.LastModifiedByOption.Value; } set { this.LastModifiedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedDateTime
@@ -279,7 +279,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedDateTime
         /// </summary>
         [JsonPropertyName("lastModifiedDateTime")]
-        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption; } set { this.LastModifiedDateTimeOption = new(value); } }
+        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption.Value; } set { this.LastModifiedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -384,12 +384,10 @@ namespace EdGraph.Platform.Client.Model
                             description = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "jobPoints":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                jobPoints = new Option<int?>(utf8JsonReader.GetInt32());
+                            jobPoints = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "hasChildJobs":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                hasChildJobs = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            hasChildJobs = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "childJobField":
                             childJobField = new Option<string?>(utf8JsonReader.GetString());
@@ -401,20 +399,16 @@ namespace EdGraph.Platform.Client.Model
                             destinationConnectionTypeId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "sourceConnectionRequired":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                sourceConnectionRequired = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            sourceConnectionRequired = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "destinationConnectionRequired":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                destinationConnectionRequired = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            destinationConnectionRequired = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "jobMetadataFields":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                jobMetadataFields = new Option<List<DataSyncApiJobTypeV1JobMetadataField>?>(JsonSerializer.Deserialize<List<DataSyncApiJobTypeV1JobMetadataField>>(ref utf8JsonReader, jsonSerializerOptions));
+                            jobMetadataFields = new Option<List<DataSyncApiJobTypeV1JobMetadataField>?>(JsonSerializer.Deserialize<List<DataSyncApiJobTypeV1JobMetadataField>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "profiles":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                profiles = new Option<List<DataSyncApiJobTypeV1Profile>?>(JsonSerializer.Deserialize<List<DataSyncApiJobTypeV1Profile>>(ref utf8JsonReader, jsonSerializerOptions));
+                            profiles = new Option<List<DataSyncApiJobTypeV1Profile>?>(JsonSerializer.Deserialize<List<DataSyncApiJobTypeV1Profile>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "createdBy":
                             createdBy = new Option<string?>(utf8JsonReader.GetString());

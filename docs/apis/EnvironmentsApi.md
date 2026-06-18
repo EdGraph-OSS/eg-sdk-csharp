@@ -22,65 +22,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Creates an Environment.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CreateEnvironmentExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var validationsApiDbEnvironmentsV1CreateRequest = new ValidationsApiDbEnvironmentsV1CreateRequest(); // ValidationsApiDbEnvironmentsV1CreateRequest |  (optional) 
-
-            try
-            {
-                // Creates an Environment.
-                ValidationsApiCoreV1CreatedResponse result = apiInstance.CreateEnvironment(tenantId, validationsApiDbEnvironmentsV1CreateRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsApi.CreateEnvironment: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateEnvironmentWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates an Environment.
-    ApiResponse<ValidationsApiCoreV1CreatedResponse> response = apiInstance.CreateEnvironmentWithHttpInfo(tenantId, validationsApiDbEnvironmentsV1CreateRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsApi.CreateEnvironmentWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -121,65 +62,6 @@ catch (ApiException e)
 
 Creates a new Environment.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CreateStateReportingEnvironmentExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var edGraphServicesStateReportingV1CreateEnvironmentRequest = new EdGraphServicesStateReportingV1CreateEnvironmentRequest(); // EdGraphServicesStateReportingV1CreateEnvironmentRequest |  (optional) 
-
-            try
-            {
-                // Creates a new Environment.
-                EdGraphServicesStateReportingV1EnvironmentCreatedResponse result = apiInstance.CreateStateReportingEnvironment(tenantId, edGraphServicesStateReportingV1CreateEnvironmentRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsApi.CreateStateReportingEnvironment: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateStateReportingEnvironmentWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates a new Environment.
-    ApiResponse<EdGraphServicesStateReportingV1EnvironmentCreatedResponse> response = apiInstance.CreateStateReportingEnvironmentWithHttpInfo(tenantId, edGraphServicesStateReportingV1CreateEnvironmentRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsApi.CreateStateReportingEnvironmentWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -220,61 +102,6 @@ catch (ApiException e)
 
 Deletes an Environment.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class DeleteEnvironmentExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var environmentId = "environmentId_example";  // string | 
-
-            try
-            {
-                // Deletes an Environment.
-                apiInstance.DeleteEnvironment(tenantId, environmentId);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsApi.DeleteEnvironment: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeleteEnvironmentWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Deletes an Environment.
-    apiInstance.DeleteEnvironmentWithHttpInfo(tenantId, environmentId);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsApi.DeleteEnvironmentWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -315,65 +142,6 @@ void (empty response body)
 
 Deletes an Environment.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class DeleteStateReportingEnvironmentExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-
-            try
-            {
-                // Deletes an Environment.
-                EdGraphServicesStateReportingV1EnvironmentDeletedResponse result = apiInstance.DeleteStateReportingEnvironment(tenantId, environmentId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsApi.DeleteStateReportingEnvironment: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeleteStateReportingEnvironmentWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Deletes an Environment.
-    ApiResponse<EdGraphServicesStateReportingV1EnvironmentDeletedResponse> response = apiInstance.DeleteStateReportingEnvironmentWithHttpInfo(tenantId, environmentId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsApi.DeleteStateReportingEnvironmentWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -414,65 +182,6 @@ catch (ApiException e)
 
 Retrieves an Environment by ID.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetEnvironmentByIdExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var environmentId = "environmentId_example";  // string | 
-
-            try
-            {
-                // Retrieves an Environment by ID.
-                ValidationsApiDbEnvironmentsV1DbEnvironmentDto result = apiInstance.GetEnvironmentById(tenantId, environmentId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsApi.GetEnvironmentById: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetEnvironmentByIdWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves an Environment by ID.
-    ApiResponse<ValidationsApiDbEnvironmentsV1DbEnvironmentDto> response = apiInstance.GetEnvironmentByIdWithHttpInfo(tenantId, environmentId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsApi.GetEnvironmentByIdWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -513,68 +222,6 @@ catch (ApiException e)
 
 Retrieves a list of Environments.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetEnvironmentsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var filter = "filter_example";  // string |  (optional) 
-            var orderBy = "orderBy_example";  // string |  (optional) 
-
-            try
-            {
-                // Retrieves a list of Environments.
-                ValidationsApiDbEnvironmentsV1PaginatedDbEnvironments result = apiInstance.GetEnvironments(tenantId, pageIndex, pageSize, filter, orderBy);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsApi.GetEnvironments: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetEnvironmentsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of Environments.
-    ApiResponse<ValidationsApiDbEnvironmentsV1PaginatedDbEnvironments> response = apiInstance.GetEnvironmentsWithHttpInfo(tenantId, pageIndex, pageSize, filter, orderBy);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsApi.GetEnvironmentsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -617,65 +264,6 @@ catch (ApiException e)
 
 Retrieves an Environment by ID.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetStateReportingEnvironmentExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-
-            try
-            {
-                // Retrieves an Environment by ID.
-                EdGraphServicesStateReportingV1EnvironmentProfileResponse result = apiInstance.GetStateReportingEnvironment(tenantId, environmentId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsApi.GetStateReportingEnvironment: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetStateReportingEnvironmentWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves an Environment by ID.
-    ApiResponse<EdGraphServicesStateReportingV1EnvironmentProfileResponse> response = apiInstance.GetStateReportingEnvironmentWithHttpInfo(tenantId, environmentId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsApi.GetStateReportingEnvironmentWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -716,68 +304,6 @@ catch (ApiException e)
 
 Retrieves a list of Environments.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SearchStateReportingEnvironmentsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var orderBy = "orderBy_example";  // string |  (optional) 
-            var filter = "filter_example";  // string |  (optional) 
-
-            try
-            {
-                // Retrieves a list of Environments.
-                EdGraphServicesStateReportingV1PaginatedEnvironmentsResponse result = apiInstance.SearchStateReportingEnvironments(tenantId, pageIndex, pageSize, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsApi.SearchStateReportingEnvironments: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SearchStateReportingEnvironmentsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of Environments.
-    ApiResponse<EdGraphServicesStateReportingV1PaginatedEnvironmentsResponse> response = apiInstance.SearchStateReportingEnvironmentsWithHttpInfo(tenantId, pageIndex, pageSize, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsApi.SearchStateReportingEnvironmentsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -820,65 +346,6 @@ catch (ApiException e)
 
 Tests if the provided connection string can establish a valid connection.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class TestEnvironmentConnectionExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var validationsApiDbEnvironmentsV1TestConnectionRequest = new ValidationsApiDbEnvironmentsV1TestConnectionRequest(); // ValidationsApiDbEnvironmentsV1TestConnectionRequest |  (optional) 
-
-            try
-            {
-                // Tests if the provided connection string can establish a valid connection.
-                ValidationsApiDbEnvironmentsV1TestConnectionResponse result = apiInstance.TestEnvironmentConnection(tenantId, validationsApiDbEnvironmentsV1TestConnectionRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsApi.TestEnvironmentConnection: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the TestEnvironmentConnectionWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Tests if the provided connection string can establish a valid connection.
-    ApiResponse<ValidationsApiDbEnvironmentsV1TestConnectionResponse> response = apiInstance.TestEnvironmentConnectionWithHttpInfo(tenantId, validationsApiDbEnvironmentsV1TestConnectionRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsApi.TestEnvironmentConnectionWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -918,66 +385,6 @@ catch (ApiException e)
 
 Updates an Environment.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateEnvironmentExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var environmentId = "environmentId_example";  // string | 
-            var validationsApiDbEnvironmentsV1UpdateRequest = new ValidationsApiDbEnvironmentsV1UpdateRequest(); // ValidationsApiDbEnvironmentsV1UpdateRequest |  (optional) 
-
-            try
-            {
-                // Updates an Environment.
-                Object result = apiInstance.UpdateEnvironment(tenantId, environmentId, validationsApiDbEnvironmentsV1UpdateRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsApi.UpdateEnvironment: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateEnvironmentWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates an Environment.
-    ApiResponse<Object> response = apiInstance.UpdateEnvironmentWithHttpInfo(tenantId, environmentId, validationsApiDbEnvironmentsV1UpdateRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsApi.UpdateEnvironmentWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1019,66 +426,6 @@ catch (ApiException e)
 
 Updates an Environment.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateStateReportingEnvironmentExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var edGraphServicesStateReportingV1UpdateEnvironmentRequest = new EdGraphServicesStateReportingV1UpdateEnvironmentRequest(); // EdGraphServicesStateReportingV1UpdateEnvironmentRequest |  (optional) 
-
-            try
-            {
-                // Updates an Environment.
-                EdGraphServicesStateReportingV1EnvironmentUpdatedResponse result = apiInstance.UpdateStateReportingEnvironment(tenantId, environmentId, edGraphServicesStateReportingV1UpdateEnvironmentRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsApi.UpdateStateReportingEnvironment: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateStateReportingEnvironmentWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates an Environment.
-    ApiResponse<EdGraphServicesStateReportingV1EnvironmentUpdatedResponse> response = apiInstance.UpdateStateReportingEnvironmentWithHttpInfo(tenantId, environmentId, edGraphServicesStateReportingV1UpdateEnvironmentRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsApi.UpdateStateReportingEnvironmentWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

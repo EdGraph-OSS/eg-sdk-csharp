@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets FieldId
         /// </summary>
         [JsonPropertyName("fieldId")]
-        public string? FieldId { get { return this.FieldIdOption; } set { this.FieldIdOption = new(value); } }
+        public string? FieldId { get { return this.FieldIdOption.Value; } set { this.FieldIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Operator
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Operator
         /// </summary>
         [JsonPropertyName("operator")]
-        public string? Operator { get { return this.OperatorOption; } set { this.OperatorOption = new(value); } }
+        public string? Operator { get { return this.OperatorOption.Value; } set { this.OperatorOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Value
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Value
         /// </summary>
         [JsonPropertyName("value")]
-        public string? Value { get { return this.ValueOption; } set { this.ValueOption = new(value); } }
+        public string? Value { get { return this.ValueOption.Value; } set { this.ValueOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

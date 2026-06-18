@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Logic
         /// </summary>
         [JsonPropertyName("logic")]
-        public string? Logic { get { return this.LogicOption; } set { this.LogicOption = new(value); } }
+        public string? Logic { get { return this.LogicOption.Value; } set { this.LogicOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Rules
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Rules
         /// </summary>
         [JsonPropertyName("rules")]
-        public List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityRuleDto>? Rules { get { return this.RulesOption; } set { this.RulesOption = new(value); } }
+        public List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityRuleDto>? Rules { get { return this.RulesOption.Value; } set { this.RulesOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -140,8 +140,7 @@ namespace EdGraph.Platform.Client.Model
                             logic = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "rules":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                rules = new Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityRuleDto>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityRuleDto>>(ref utf8JsonReader, jsonSerializerOptions));
+                            rules = new Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityRuleDto>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesFormsQuestionVisibilityRuleDto>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

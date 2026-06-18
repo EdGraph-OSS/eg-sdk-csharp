@@ -64,7 +64,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EnvironmentId
@@ -77,7 +77,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EnvironmentId
         /// </summary>
         [JsonPropertyName("environmentId")]
-        public string? EnvironmentId { get { return this.EnvironmentIdOption; } set { this.EnvironmentIdOption = new(value); } }
+        public string? EnvironmentId { get { return this.EnvironmentIdOption.Value; } set { this.EnvironmentIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DbEnvironmentId
@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DbEnvironmentId
         /// </summary>
         [JsonPropertyName("dbEnvironmentId")]
-        public string? DbEnvironmentId { get { return this.DbEnvironmentIdOption; } set { this.DbEnvironmentIdOption = new(value); } }
+        public string? DbEnvironmentId { get { return this.DbEnvironmentIdOption.Value; } set { this.DbEnvironmentIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EdFiInstanceId
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EdFiInstanceId
         /// </summary>
         [JsonPropertyName("edFiInstanceId")]
-        public string? EdFiInstanceId { get { return this.EdFiInstanceIdOption; } set { this.EdFiInstanceIdOption = new(value); } }
+        public string? EdFiInstanceId { get { return this.EdFiInstanceIdOption.Value; } set { this.EdFiInstanceIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Mode
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Mode
         /// </summary>
         [JsonPropertyName("mode")]
-        public string? Mode { get { return this.ModeOption; } set { this.ModeOption = new(value); } }
+        public string? Mode { get { return this.ModeOption.Value; } set { this.ModeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of WorkspaceName
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets WorkspaceName
         /// </summary>
         [JsonPropertyName("workspaceName")]
-        public string? WorkspaceName { get { return this.WorkspaceNameOption; } set { this.WorkspaceNameOption = new(value); } }
+        public string? WorkspaceName { get { return this.WorkspaceNameOption.Value; } set { this.WorkspaceNameOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

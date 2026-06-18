@@ -63,7 +63,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetTenantApplicationTilesAsyncAsync(tenantId, pageIndex, pageSize, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesApplicationTilesResponseWithUserApplicationLicense>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

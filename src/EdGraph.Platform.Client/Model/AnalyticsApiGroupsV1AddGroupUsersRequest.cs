@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets GroupId
         /// </summary>
         [JsonPropertyName("groupId")]
-        public string? GroupId { get { return this.GroupIdOption; } set { this.GroupIdOption = new(value); } }
+        public string? GroupId { get { return this.GroupIdOption.Value; } set { this.GroupIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Users
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Users
         /// </summary>
         [JsonPropertyName("users")]
-        public List<AnalyticsApiGroupsV1AnalyticsGroupUser>? Users { get { return this.UsersOption; } }
+        public List<AnalyticsApiGroupsV1AnalyticsGroupUser>? Users { get { return this.UsersOption.Value; } }
 
         /// <summary>
         /// Used to track the state of AddGlobalTenantUsers
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AddGlobalTenantUsers
         /// </summary>
         [JsonPropertyName("addGlobalTenantUsers")]
-        public bool? AddGlobalTenantUsers { get { return this.AddGlobalTenantUsersOption; } set { this.AddGlobalTenantUsersOption = new(value); } }
+        public bool? AddGlobalTenantUsers { get { return this.AddGlobalTenantUsersOption.Value; } set { this.AddGlobalTenantUsersOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -174,12 +174,10 @@ namespace EdGraph.Platform.Client.Model
                             groupId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "users":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                users = new Option<List<AnalyticsApiGroupsV1AnalyticsGroupUser>?>(JsonSerializer.Deserialize<List<AnalyticsApiGroupsV1AnalyticsGroupUser>>(ref utf8JsonReader, jsonSerializerOptions));
+                            users = new Option<List<AnalyticsApiGroupsV1AnalyticsGroupUser>?>(JsonSerializer.Deserialize<List<AnalyticsApiGroupsV1AnalyticsGroupUser>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "addGlobalTenantUsers":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                addGlobalTenantUsers = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            addGlobalTenantUsers = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "tenantId":
                             tenantId = new Option<string?>(utf8JsonReader.GetString());

@@ -74,7 +74,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ExecutionId
         /// </summary>
         [JsonPropertyName("executionId")]
-        public string? ExecutionId { get { return this.ExecutionIdOption; } set { this.ExecutionIdOption = new(value); } }
+        public string? ExecutionId { get { return this.ExecutionIdOption.Value; } set { this.ExecutionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -87,7 +87,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of JobId
@@ -100,7 +100,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets JobId
         /// </summary>
         [JsonPropertyName("jobId")]
-        public string? JobId { get { return this.JobIdOption; } set { this.JobIdOption = new(value); } }
+        public string? JobId { get { return this.JobIdOption.Value; } set { this.JobIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Status
@@ -113,7 +113,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Status
         /// </summary>
         [JsonPropertyName("status")]
-        public string? Status { get { return this.StatusOption; } set { this.StatusOption = new(value); } }
+        public string? Status { get { return this.StatusOption.Value; } set { this.StatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of QueuedDateTime
@@ -126,7 +126,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets QueuedDateTime
         /// </summary>
         [JsonPropertyName("queuedDateTime")]
-        public string? QueuedDateTime { get { return this.QueuedDateTimeOption; } set { this.QueuedDateTimeOption = new(value); } }
+        public string? QueuedDateTime { get { return this.QueuedDateTimeOption.Value; } set { this.QueuedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of StartDateTime
@@ -139,7 +139,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets StartDateTime
         /// </summary>
         [JsonPropertyName("startDateTime")]
-        public string? StartDateTime { get { return this.StartDateTimeOption; } set { this.StartDateTimeOption = new(value); } }
+        public string? StartDateTime { get { return this.StartDateTimeOption.Value; } set { this.StartDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CancelDateTime
@@ -152,7 +152,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CancelDateTime
         /// </summary>
         [JsonPropertyName("cancelDateTime")]
-        public string? CancelDateTime { get { return this.CancelDateTimeOption; } set { this.CancelDateTimeOption = new(value); } }
+        public string? CancelDateTime { get { return this.CancelDateTimeOption.Value; } set { this.CancelDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EndDateTime
@@ -165,7 +165,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EndDateTime
         /// </summary>
         [JsonPropertyName("endDateTime")]
-        public string? EndDateTime { get { return this.EndDateTimeOption; } set { this.EndDateTimeOption = new(value); } }
+        public string? EndDateTime { get { return this.EndDateTimeOption.Value; } set { this.EndDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Input
@@ -178,7 +178,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Input
         /// </summary>
         [JsonPropertyName("input")]
-        public string? Input { get { return this.InputOption; } set { this.InputOption = new(value); } }
+        public string? Input { get { return this.InputOption.Value; } set { this.InputOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Output
@@ -191,7 +191,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Output
         /// </summary>
         [JsonPropertyName("output")]
-        public string? Output { get { return this.OutputOption; } set { this.OutputOption = new(value); } }
+        public string? Output { get { return this.OutputOption.Value; } set { this.OutputOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Metrics
@@ -204,7 +204,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Metrics
         /// </summary>
         [JsonPropertyName("metrics")]
-        public List<IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobExecutionMetricMessage>? Metrics { get { return this.MetricsOption; } }
+        public List<IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobExecutionMetricMessage>? Metrics { get { return this.MetricsOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -320,8 +320,7 @@ namespace EdGraph.Platform.Client.Model
                             output = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "metrics":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                metrics = new Option<List<IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobExecutionMetricMessage>?>(JsonSerializer.Deserialize<List<IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobExecutionMetricMessage>>(ref utf8JsonReader, jsonSerializerOptions));
+                            metrics = new Option<List<IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobExecutionMetricMessage>?>(JsonSerializer.Deserialize<List<IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobExecutionMetricMessage>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

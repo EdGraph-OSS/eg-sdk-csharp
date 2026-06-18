@@ -68,7 +68,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IdentifierType
@@ -81,7 +81,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IdentifierType
         /// </summary>
         [JsonPropertyName("identifierType")]
-        public string? IdentifierType { get { return this.IdentifierTypeOption; } set { this.IdentifierTypeOption = new(value); } }
+        public string? IdentifierType { get { return this.IdentifierTypeOption.Value; } set { this.IdentifierTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IdentifierValue
@@ -94,7 +94,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IdentifierValue
         /// </summary>
         [JsonPropertyName("identifierValue")]
-        public string? IdentifierValue { get { return this.IdentifierValueOption; } set { this.IdentifierValueOption = new(value); } }
+        public string? IdentifierValue { get { return this.IdentifierValueOption.Value; } set { this.IdentifierValueOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ShortNameOfInstitution
@@ -107,7 +107,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ShortNameOfInstitution
         /// </summary>
         [JsonPropertyName("shortNameOfInstitution")]
-        public string? ShortNameOfInstitution { get { return this.ShortNameOfInstitutionOption; } set { this.ShortNameOfInstitutionOption = new(value); } }
+        public string? ShortNameOfInstitution { get { return this.ShortNameOfInstitutionOption.Value; } set { this.ShortNameOfInstitutionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of NameOfInstitution
@@ -120,7 +120,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets NameOfInstitution
         /// </summary>
         [JsonPropertyName("nameOfInstitution")]
-        public string? NameOfInstitution { get { return this.NameOfInstitutionOption; } set { this.NameOfInstitutionOption = new(value); } }
+        public string? NameOfInstitution { get { return this.NameOfInstitutionOption.Value; } set { this.NameOfInstitutionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Discriminator
@@ -133,7 +133,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Discriminator
         /// </summary>
         [JsonPropertyName("discriminator")]
-        public string? Discriminator { get { return this.DiscriminatorOption; } set { this.DiscriminatorOption = new(value); } }
+        public string? Discriminator { get { return this.DiscriminatorOption.Value; } set { this.DiscriminatorOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Source
@@ -146,7 +146,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Source
         /// </summary>
         [JsonPropertyName("source")]
-        public string? Source { get { return this.SourceOption; } set { this.SourceOption = new(value); } }
+        public string? Source { get { return this.SourceOption.Value; } set { this.SourceOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IncludeInJwt
@@ -159,7 +159,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IncludeInJwt
         /// </summary>
         [JsonPropertyName("includeInJwt")]
-        public bool? IncludeInJwt { get { return this.IncludeInJwtOption; } set { this.IncludeInJwtOption = new(value); } }
+        public bool? IncludeInJwt { get { return this.IncludeInJwtOption.Value; } set { this.IncludeInJwtOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -260,8 +260,7 @@ namespace EdGraph.Platform.Client.Model
                             source = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "includeInJwt":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                includeInJwt = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            includeInJwt = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

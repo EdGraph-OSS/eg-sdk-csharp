@@ -88,7 +88,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -101,7 +101,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of UserId
@@ -114,7 +114,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets UserId
         /// </summary>
         [JsonPropertyName("userId")]
-        public string? UserId { get { return this.UserIdOption; } set { this.UserIdOption = new(value); } }
+        public string? UserId { get { return this.UserIdOption.Value; } set { this.UserIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedDateTime
@@ -127,7 +127,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedDateTime
         /// </summary>
         [JsonPropertyName("createdDateTime")]
-        public string? CreatedDateTime { get { return this.CreatedDateTimeOption; } set { this.CreatedDateTimeOption = new(value); } }
+        public string? CreatedDateTime { get { return this.CreatedDateTimeOption.Value; } set { this.CreatedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedDateTime
@@ -140,7 +140,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedDateTime
         /// </summary>
         [JsonPropertyName("lastModifiedDateTime")]
-        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption; } set { this.LastModifiedDateTimeOption = new(value); } }
+        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption.Value; } set { this.LastModifiedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of UserUniqueId
@@ -153,7 +153,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets UserUniqueId
         /// </summary>
         [JsonPropertyName("userUniqueId")]
-        public string? UserUniqueId { get { return this.UserUniqueIdOption; } set { this.UserUniqueIdOption = new(value); } }
+        public string? UserUniqueId { get { return this.UserUniqueIdOption.Value; } set { this.UserUniqueIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of UserEmail
@@ -166,7 +166,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets UserEmail
         /// </summary>
         [JsonPropertyName("userEmail")]
-        public string? UserEmail { get { return this.UserEmailOption; } set { this.UserEmailOption = new(value); } }
+        public string? UserEmail { get { return this.UserEmailOption.Value; } set { this.UserEmailOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of UserType
@@ -179,7 +179,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets UserType
         /// </summary>
         [JsonPropertyName("userType")]
-        public string? UserType { get { return this.UserTypeOption; } set { this.UserTypeOption = new(value); } }
+        public string? UserType { get { return this.UserTypeOption.Value; } set { this.UserTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of UserRole
@@ -192,7 +192,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets UserRole
         /// </summary>
         [JsonPropertyName("userRole")]
-        public string? UserRole { get { return this.UserRoleOption; } set { this.UserRoleOption = new(value); } }
+        public string? UserRole { get { return this.UserRoleOption.Value; } set { this.UserRoleOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Source
@@ -205,7 +205,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Source
         /// </summary>
         [JsonPropertyName("source")]
-        public string? Source { get { return this.SourceOption; } set { this.SourceOption = new(value); } }
+        public string? Source { get { return this.SourceOption.Value; } set { this.SourceOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AuthorizedScope
@@ -218,7 +218,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AuthorizedScope
         /// </summary>
         [JsonPropertyName("authorizedScope")]
-        public string? AuthorizedScope { get { return this.AuthorizedScopeOption; } set { this.AuthorizedScopeOption = new(value); } }
+        public string? AuthorizedScope { get { return this.AuthorizedScopeOption.Value; } set { this.AuthorizedScopeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AuthorizedId
@@ -231,7 +231,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AuthorizedId
         /// </summary>
         [JsonPropertyName("authorizedId")]
-        public string? AuthorizedId { get { return this.AuthorizedIdOption; } set { this.AuthorizedIdOption = new(value); } }
+        public string? AuthorizedId { get { return this.AuthorizedIdOption.Value; } set { this.AuthorizedIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AuthorizedBeginDate
@@ -244,7 +244,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AuthorizedBeginDate
         /// </summary>
         [JsonPropertyName("authorizedBeginDate")]
-        public string? AuthorizedBeginDate { get { return this.AuthorizedBeginDateOption; } set { this.AuthorizedBeginDateOption = new(value); } }
+        public string? AuthorizedBeginDate { get { return this.AuthorizedBeginDateOption.Value; } set { this.AuthorizedBeginDateOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AuthorizedEndDate
@@ -257,7 +257,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AuthorizedEndDate
         /// </summary>
         [JsonPropertyName("authorizedEndDate")]
-        public string? AuthorizedEndDate { get { return this.AuthorizedEndDateOption; } set { this.AuthorizedEndDateOption = new(value); } }
+        public string? AuthorizedEndDate { get { return this.AuthorizedEndDateOption.Value; } set { this.AuthorizedEndDateOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SchoolYear
@@ -270,7 +270,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SchoolYear
         /// </summary>
         [JsonPropertyName("schoolYear")]
-        public AnalyticsApiUserAuthorizationsV1SchoolYear? SchoolYear { get { return this.SchoolYearOption; } set { this.SchoolYearOption = new(value); } }
+        public AnalyticsApiUserAuthorizationsV1SchoolYear? SchoolYear { get { return this.SchoolYearOption.Value; } set { this.SchoolYearOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsDeleted
@@ -283,7 +283,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IsDeleted
         /// </summary>
         [JsonPropertyName("isDeleted")]
-        public bool? IsDeleted { get { return this.IsDeletedOption; } set { this.IsDeletedOption = new(value); } }
+        public bool? IsDeleted { get { return this.IsDeletedOption.Value; } set { this.IsDeletedOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DeletedBy
@@ -296,7 +296,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DeletedBy
         /// </summary>
         [JsonPropertyName("deletedBy")]
-        public string? DeletedBy { get { return this.DeletedByOption; } set { this.DeletedByOption = new(value); } }
+        public string? DeletedBy { get { return this.DeletedByOption.Value; } set { this.DeletedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DeletedDateTime
@@ -309,7 +309,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DeletedDateTime
         /// </summary>
         [JsonPropertyName("deletedDateTime")]
-        public string? DeletedDateTime { get { return this.DeletedDateTimeOption; } set { this.DeletedDateTimeOption = new(value); } }
+        public string? DeletedDateTime { get { return this.DeletedDateTimeOption.Value; } set { this.DeletedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -451,12 +451,10 @@ namespace EdGraph.Platform.Client.Model
                             authorizedEndDate = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "schoolYear":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                schoolYear = new Option<AnalyticsApiUserAuthorizationsV1SchoolYear?>(JsonSerializer.Deserialize<AnalyticsApiUserAuthorizationsV1SchoolYear>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            schoolYear = new Option<AnalyticsApiUserAuthorizationsV1SchoolYear?>(JsonSerializer.Deserialize<AnalyticsApiUserAuthorizationsV1SchoolYear>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "isDeleted":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isDeleted = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isDeleted = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "deletedBy":
                             deletedBy = new Option<string?>(utf8JsonReader.GetString());

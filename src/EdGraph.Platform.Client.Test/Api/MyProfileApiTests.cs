@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Test.Api
         {
             var response = await _instance.GetMyProfileAsync();
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiUserV2UserMeProfile>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid tenantId = default!;
             var response = await _instance.GetMyTenantAsync(tenantId);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiUserV2TenantMeProfile>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<int> numberOfTenants = default!;
             var response = await _instance.GetUserCacheAsyncAsync(numberOfTenants);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

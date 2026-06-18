@@ -62,7 +62,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DescriptorId
         /// </summary>
         [JsonPropertyName("descriptorId")]
-        public int? DescriptorId { get { return this.DescriptorIdOption; } set { this.DescriptorIdOption = new(value); } }
+        public int? DescriptorId { get { return this.DescriptorIdOption.Value; } set { this.DescriptorIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Namespace
@@ -75,7 +75,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Namespace
         /// </summary>
         [JsonPropertyName("namespace")]
-        public string? Namespace { get { return this.NamespaceOption; } set { this.NamespaceOption = new(value); } }
+        public string? Namespace { get { return this.NamespaceOption.Value; } set { this.NamespaceOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CodeValue
@@ -88,7 +88,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CodeValue
         /// </summary>
         [JsonPropertyName("codeValue")]
-        public string? CodeValue { get { return this.CodeValueOption; } set { this.CodeValueOption = new(value); } }
+        public string? CodeValue { get { return this.CodeValueOption.Value; } set { this.CodeValueOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ShortDescription
@@ -101,7 +101,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ShortDescription
         /// </summary>
         [JsonPropertyName("shortDescription")]
-        public string? ShortDescription { get { return this.ShortDescriptionOption; } set { this.ShortDescriptionOption = new(value); } }
+        public string? ShortDescription { get { return this.ShortDescriptionOption.Value; } set { this.ShortDescriptionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Description
@@ -114,7 +114,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Description
         /// </summary>
         [JsonPropertyName("description")]
-        public string? Description { get { return this.DescriptionOption; } set { this.DescriptionOption = new(value); } }
+        public string? Description { get { return this.DescriptionOption.Value; } set { this.DescriptionOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -188,8 +188,7 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "descriptorId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                descriptorId = new Option<int?>(utf8JsonReader.GetInt32());
+                            descriptorId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "namespace":
                             varNamespace = new Option<string?>(utf8JsonReader.GetString());

@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CourseCode
         /// </summary>
         [JsonPropertyName("courseCode")]
-        public string? CourseCode { get { return this.CourseCodeOption; } set { this.CourseCodeOption = new(value); } }
+        public string? CourseCode { get { return this.CourseCodeOption.Value; } set { this.CourseCodeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CourseTitle
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CourseTitle
         /// </summary>
         [JsonPropertyName("courseTitle")]
-        public string? CourseTitle { get { return this.CourseTitleOption; } set { this.CourseTitleOption = new(value); } }
+        public string? CourseTitle { get { return this.CourseTitleOption.Value; } set { this.CourseTitleOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

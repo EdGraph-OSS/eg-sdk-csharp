@@ -54,7 +54,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AcademicSubjectDescriptor
         /// </summary>
         [JsonPropertyName("academicSubjectDescriptor")]
-        public string? AcademicSubjectDescriptor { get { return this.AcademicSubjectDescriptorOption; } set { this.AcademicSubjectDescriptorOption = new(value); } }
+        public string? AcademicSubjectDescriptor { get { return this.AcademicSubjectDescriptorOption.Value; } set { this.AcademicSubjectDescriptorOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

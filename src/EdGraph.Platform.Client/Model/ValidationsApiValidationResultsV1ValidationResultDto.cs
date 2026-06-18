@@ -94,7 +94,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EnvironmentId
@@ -107,7 +107,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EnvironmentId
         /// </summary>
         [JsonPropertyName("environmentId")]
-        public string? EnvironmentId { get { return this.EnvironmentIdOption; } set { this.EnvironmentIdOption = new(value); } }
+        public string? EnvironmentId { get { return this.EnvironmentIdOption.Value; } set { this.EnvironmentIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CollectionId
@@ -120,7 +120,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CollectionId
         /// </summary>
         [JsonPropertyName("collectionId")]
-        public string? CollectionId { get { return this.CollectionIdOption; } set { this.CollectionIdOption = new(value); } }
+        public string? CollectionId { get { return this.CollectionIdOption.Value; } set { this.CollectionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ContainerId
@@ -133,7 +133,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ContainerId
         /// </summary>
         [JsonPropertyName("containerId")]
-        public string? ContainerId { get { return this.ContainerIdOption; } set { this.ContainerIdOption = new(value); } }
+        public string? ContainerId { get { return this.ContainerIdOption.Value; } set { this.ContainerIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RuleId
@@ -146,7 +146,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RuleId
         /// </summary>
         [JsonPropertyName("ruleId")]
-        public string? RuleId { get { return this.RuleIdOption; } set { this.RuleIdOption = new(value); } }
+        public string? RuleId { get { return this.RuleIdOption.Value; } set { this.RuleIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of JobId
@@ -159,7 +159,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets JobId
         /// </summary>
         [JsonPropertyName("jobId")]
-        public string? JobId { get { return this.JobIdOption; } set { this.JobIdOption = new(value); } }
+        public string? JobId { get { return this.JobIdOption.Value; } set { this.JobIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of JobExecutionId
@@ -172,7 +172,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets JobExecutionId
         /// </summary>
         [JsonPropertyName("jobExecutionId")]
-        public string? JobExecutionId { get { return this.JobExecutionIdOption; } set { this.JobExecutionIdOption = new(value); } }
+        public string? JobExecutionId { get { return this.JobExecutionIdOption.Value; } set { this.JobExecutionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Response
@@ -185,7 +185,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Response
         /// </summary>
         [JsonPropertyName("response")]
-        public string? Response { get { return this.ResponseOption; } set { this.ResponseOption = new(value); } }
+        public string? Response { get { return this.ResponseOption.Value; } set { this.ResponseOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Result
@@ -198,7 +198,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Result
         /// </summary>
         [JsonPropertyName("result")]
-        public int? Result { get { return this.ResultOption; } set { this.ResultOption = new(value); } }
+        public int? Result { get { return this.ResultOption.Value; } set { this.ResultOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Evaluation
@@ -211,7 +211,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Evaluation
         /// </summary>
         [JsonPropertyName("evaluation")]
-        public bool? Evaluation { get { return this.EvaluationOption; } set { this.EvaluationOption = new(value); } }
+        public bool? Evaluation { get { return this.EvaluationOption.Value; } set { this.EvaluationOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of StatusId
@@ -224,7 +224,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets StatusId
         /// </summary>
         [JsonPropertyName("statusId")]
-        public int? StatusId { get { return this.StatusIdOption; } set { this.StatusIdOption = new(value); } }
+        public int? StatusId { get { return this.StatusIdOption.Value; } set { this.StatusIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ExecutionDate
@@ -237,7 +237,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ExecutionDate
         /// </summary>
         [JsonPropertyName("executionDate")]
-        public string? ExecutionDate { get { return this.ExecutionDateOption; } set { this.ExecutionDateOption = new(value); } }
+        public string? ExecutionDate { get { return this.ExecutionDateOption.Value; } set { this.ExecutionDateOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ExecutionTimeMs
@@ -250,7 +250,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ExecutionTimeMs
         /// </summary>
         [JsonPropertyName("executionTimeMs")]
-        public long? ExecutionTimeMs { get { return this.ExecutionTimeMsOption; } set { this.ExecutionTimeMsOption = new(value); } }
+        public long? ExecutionTimeMs { get { return this.ExecutionTimeMsOption.Value; } set { this.ExecutionTimeMsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ExecutedSql
@@ -263,7 +263,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ExecutedSql
         /// </summary>
         [JsonPropertyName("executedSql")]
-        public string? ExecutedSql { get { return this.ExecutedSqlOption; } set { this.ExecutedSqlOption = new(value); } }
+        public string? ExecutedSql { get { return this.ExecutedSqlOption.Value; } set { this.ExecutedSqlOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DiagnosticSql
@@ -276,7 +276,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DiagnosticSql
         /// </summary>
         [JsonPropertyName("diagnosticSql")]
-        public string? DiagnosticSql { get { return this.DiagnosticSqlOption; } set { this.DiagnosticSqlOption = new(value); } }
+        public string? DiagnosticSql { get { return this.DiagnosticSqlOption.Value; } set { this.DiagnosticSqlOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RuleDetailsDestinationId
@@ -289,7 +289,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RuleDetailsDestinationId
         /// </summary>
         [JsonPropertyName("ruleDetailsDestinationId")]
-        public int? RuleDetailsDestinationId { get { return this.RuleDetailsDestinationIdOption; } set { this.RuleDetailsDestinationIdOption = new(value); } }
+        public int? RuleDetailsDestinationId { get { return this.RuleDetailsDestinationIdOption.Value; } set { this.RuleDetailsDestinationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DetailsSchema
@@ -302,7 +302,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DetailsSchema
         /// </summary>
         [JsonPropertyName("detailsSchema")]
-        public string? DetailsSchema { get { return this.DetailsSchemaOption; } set { this.DetailsSchemaOption = new(value); } }
+        public string? DetailsSchema { get { return this.DetailsSchemaOption.Value; } set { this.DetailsSchemaOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DetailsTableName
@@ -315,7 +315,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DetailsTableName
         /// </summary>
         [JsonPropertyName("detailsTableName")]
-        public string? DetailsTableName { get { return this.DetailsTableNameOption; } set { this.DetailsTableNameOption = new(value); } }
+        public string? DetailsTableName { get { return this.DetailsTableNameOption.Value; } set { this.DetailsTableNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastExecutionId
@@ -328,7 +328,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastExecutionId
         /// </summary>
         [JsonPropertyName("lastExecutionId")]
-        public string? LastExecutionId { get { return this.LastExecutionIdOption; } set { this.LastExecutionIdOption = new(value); } }
+        public string? LastExecutionId { get { return this.LastExecutionIdOption.Value; } set { this.LastExecutionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastExecutionTotalResults
@@ -341,7 +341,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastExecutionTotalResults
         /// </summary>
         [JsonPropertyName("lastExecutionTotalResults")]
-        public int? LastExecutionTotalResults { get { return this.LastExecutionTotalResultsOption; } set { this.LastExecutionTotalResultsOption = new(value); } }
+        public int? LastExecutionTotalResults { get { return this.LastExecutionTotalResultsOption.Value; } set { this.LastExecutionTotalResultsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastExecutionTotalInvalidResults
@@ -354,7 +354,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastExecutionTotalInvalidResults
         /// </summary>
         [JsonPropertyName("lastExecutionTotalInvalidResults")]
-        public int? LastExecutionTotalInvalidResults { get { return this.LastExecutionTotalInvalidResultsOption; } set { this.LastExecutionTotalInvalidResultsOption = new(value); } }
+        public int? LastExecutionTotalInvalidResults { get { return this.LastExecutionTotalInvalidResultsOption.Value; } set { this.LastExecutionTotalInvalidResultsOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -484,23 +484,19 @@ namespace EdGraph.Platform.Client.Model
                             response = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "result":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                result = new Option<int?>(utf8JsonReader.GetInt32());
+                            result = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "evaluation":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                evaluation = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            evaluation = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "statusId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                statusId = new Option<int?>(utf8JsonReader.GetInt32());
+                            statusId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "executionDate":
                             executionDate = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "executionTimeMs":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                executionTimeMs = new Option<long?>(utf8JsonReader.GetInt64());
+                            executionTimeMs = new Option<long?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (long?)null : utf8JsonReader.GetInt64());
                             break;
                         case "executedSql":
                             executedSql = new Option<string?>(utf8JsonReader.GetString());
@@ -509,8 +505,7 @@ namespace EdGraph.Platform.Client.Model
                             diagnosticSql = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "ruleDetailsDestinationId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                ruleDetailsDestinationId = new Option<int?>(utf8JsonReader.GetInt32());
+                            ruleDetailsDestinationId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "detailsSchema":
                             detailsSchema = new Option<string?>(utf8JsonReader.GetString());
@@ -522,12 +517,10 @@ namespace EdGraph.Platform.Client.Model
                             lastExecutionId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "lastExecutionTotalResults":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                lastExecutionTotalResults = new Option<int?>(utf8JsonReader.GetInt32());
+                            lastExecutionTotalResults = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "lastExecutionTotalInvalidResults":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                lastExecutionTotalInvalidResults = new Option<int?>(utf8JsonReader.GetInt32());
+                            lastExecutionTotalInvalidResults = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

@@ -79,5 +79,14 @@ namespace EdGraph.Platform.Client.Test.Model
         {
             // TODO unit test for the property 'OdsApiConnection'
         }
+
+        /// <summary>
+        /// Test the property 'AdminApiUrl'
+        /// </summary>
+        [Fact]
+        public void AdminApiUrlTest()
+        {
+            // TODO unit test for the property 'AdminApiUrl'
+        }
     }
 }

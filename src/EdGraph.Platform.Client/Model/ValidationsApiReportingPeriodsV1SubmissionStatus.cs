@@ -201,7 +201,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, ValidationsApiReportingPeriodsV1SubmissionStatus validationsApiReportingPeriodsV1SubmissionStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(validationsApiReportingPeriodsV1SubmissionStatus.ToString());
+            writer.WriteStringValue(ValidationsApiReportingPeriodsV1SubmissionStatusValueConverter.ToJsonValue(validationsApiReportingPeriodsV1SubmissionStatus).ToString());
         }
     }
 
@@ -232,14 +232,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the ValidationsApiReportingPeriodsV1SubmissionStatus to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="validationsApiReportingPeriodsV1SubmissionStatus"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, ValidationsApiReportingPeriodsV1SubmissionStatus? validationsApiReportingPeriodsV1SubmissionStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(validationsApiReportingPeriodsV1SubmissionStatus?.ToString() ?? "null");
+            writer.WriteStringValue(validationsApiReportingPeriodsV1SubmissionStatus.HasValue ? ValidationsApiReportingPeriodsV1SubmissionStatusValueConverter.ToJsonValue(validationsApiReportingPeriodsV1SubmissionStatus.Value).ToString() : "null");
         }
     }
 }

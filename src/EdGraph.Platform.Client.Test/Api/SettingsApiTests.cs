@@ -63,7 +63,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetTenantSettingsAsync(tenantId, pageIndex, pageSize, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiTenantV1GetAppSettingsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string code = default!;
             var response = await _instance.GetTenantSettingsByCodeAsync(tenantId, code);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiTenantV1TenantAppSettings>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<TenantApiTenantV1SetAppSettingsRequest> tenantApiTenantV1SetAppSettingsRequest = default!;
             var response = await _instance.SetTenantSettingsAsync(tenantId, code, tenantApiTenantV1SetAppSettingsRequest);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiTenantV1SetAppSettingsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

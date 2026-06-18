@@ -145,7 +145,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, TenantApiTenantV1LicenseType tenantApiTenantV1LicenseType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(tenantApiTenantV1LicenseType.ToString());
+            writer.WriteStringValue(TenantApiTenantV1LicenseTypeValueConverter.ToJsonValue(tenantApiTenantV1LicenseType).ToString());
         }
     }
 
@@ -176,14 +176,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the TenantApiTenantV1LicenseType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="tenantApiTenantV1LicenseType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, TenantApiTenantV1LicenseType? tenantApiTenantV1LicenseType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(tenantApiTenantV1LicenseType?.ToString() ?? "null");
+            writer.WriteStringValue(tenantApiTenantV1LicenseType.HasValue ? TenantApiTenantV1LicenseTypeValueConverter.ToJsonValue(tenantApiTenantV1LicenseType.Value).ToString() : "null");
         }
     }
 }

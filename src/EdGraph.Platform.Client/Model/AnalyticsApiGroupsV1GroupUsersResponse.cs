@@ -54,7 +54,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets GroupUsers
         /// </summary>
         [JsonPropertyName("groupUsers")]
-        public List<AnalyticsApiGroupsV1AnalyticsGroupUser>? GroupUsers { get { return this.GroupUsersOption; } }
+        public List<AnalyticsApiGroupsV1AnalyticsGroupUser>? GroupUsers { get { return this.GroupUsersOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -120,8 +120,7 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "groupUsers":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                groupUsers = new Option<List<AnalyticsApiGroupsV1AnalyticsGroupUser>?>(JsonSerializer.Deserialize<List<AnalyticsApiGroupsV1AnalyticsGroupUser>>(ref utf8JsonReader, jsonSerializerOptions));
+                            groupUsers = new Option<List<AnalyticsApiGroupsV1AnalyticsGroupUser>?>(JsonSerializer.Deserialize<List<AnalyticsApiGroupsV1AnalyticsGroupUser>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

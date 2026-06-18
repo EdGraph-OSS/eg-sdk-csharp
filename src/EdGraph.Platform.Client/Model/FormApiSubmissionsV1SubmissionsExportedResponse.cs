@@ -64,7 +64,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Type
         /// </summary>
         [JsonPropertyName("type")]
-        public FormApiSubmissionsV1ExportType? Type { get { return this.TypeOption; } set { this.TypeOption = new(value); } }
+        public FormApiSubmissionsV1ExportType? Type { get { return this.TypeOption.Value; } set { this.TypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Status
@@ -77,7 +77,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Status
         /// </summary>
         [JsonPropertyName("status")]
-        public FormApiSubmissionsV1ExportStatus? Status { get { return this.StatusOption; } set { this.StatusOption = new(value); } }
+        public FormApiSubmissionsV1ExportStatus? Status { get { return this.StatusOption.Value; } set { this.StatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of FormId
@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets FormId
         /// </summary>
         [JsonPropertyName("formId")]
-        public string? FormId { get { return this.FormIdOption; } set { this.FormIdOption = new(value); } }
+        public string? FormId { get { return this.FormIdOption.Value; } set { this.FormIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Details
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Details
         /// </summary>
         [JsonPropertyName("details")]
-        public string? Details { get { return this.DetailsOption; } set { this.DetailsOption = new(value); } }
+        public string? Details { get { return this.DetailsOption.Value; } set { this.DetailsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Contents
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Contents
         /// </summary>
         [JsonPropertyName("contents")]
-        public List<int>? Contents { get { return this.ContentsOption; } set { this.ContentsOption = new(value); } }
+        public List<int>? Contents { get { return this.ContentsOption.Value; } set { this.ContentsOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -224,8 +224,7 @@ namespace EdGraph.Platform.Client.Model
                             details = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "contents":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                contents = new Option<List<int>?>(JsonSerializer.Deserialize<List<int>>(ref utf8JsonReader, jsonSerializerOptions));
+                            contents = new Option<List<int>?>(JsonSerializer.Deserialize<List<int>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

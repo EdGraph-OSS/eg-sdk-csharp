@@ -62,7 +62,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Status
         /// </summary>
         [JsonPropertyName("status")]
-        public IMSAdminApiV1InstancesExportState? Status { get { return this.StatusOption; } set { this.StatusOption = new(value); } }
+        public IMSAdminApiV1InstancesExportState? Status { get { return this.StatusOption.Value; } set { this.StatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InstanceId
@@ -75,7 +75,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceId
         /// </summary>
         [JsonPropertyName("instanceId")]
-        public string? InstanceId { get { return this.InstanceIdOption; } set { this.InstanceIdOption = new(value); } }
+        public string? InstanceId { get { return this.InstanceIdOption.Value; } set { this.InstanceIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -88,7 +88,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Details
@@ -101,7 +101,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Details
         /// </summary>
         [JsonPropertyName("details")]
-        public string? Details { get { return this.DetailsOption; } set { this.DetailsOption = new(value); } }
+        public string? Details { get { return this.DetailsOption.Value; } set { this.DetailsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ZippedContents
@@ -114,7 +114,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ZippedContents
         /// </summary>
         [JsonPropertyName("zippedContents")]
-        public List<int>? ZippedContents { get { return this.ZippedContentsOption; } set { this.ZippedContentsOption = new(value); } }
+        public List<int>? ZippedContents { get { return this.ZippedContentsOption.Value; } set { this.ZippedContentsOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -202,8 +202,7 @@ namespace EdGraph.Platform.Client.Model
                             details = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "zippedContents":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                zippedContents = new Option<List<int>?>(JsonSerializer.Deserialize<List<int>>(ref utf8JsonReader, jsonSerializerOptions));
+                            zippedContents = new Option<List<int>?>(JsonSerializer.Deserialize<List<int>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

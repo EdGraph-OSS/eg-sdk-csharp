@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>Details</value>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ContainerId
@@ -112,7 +112,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ContainerId
         /// </summary>
         [JsonPropertyName("containerId")]
-        public string? ContainerId { get { return this.ContainerIdOption; } set { this.ContainerIdOption = new(value); } }
+        public string? ContainerId { get { return this.ContainerIdOption.Value; } set { this.ContainerIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Id
@@ -125,7 +125,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Name
@@ -138,7 +138,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Name
         /// </summary>
         [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption; } set { this.NameOption = new(value); } }
+        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Description
@@ -151,7 +151,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Description
         /// </summary>
         [JsonPropertyName("description")]
-        public string? Description { get { return this.DescriptionOption; } set { this.DescriptionOption = new(value); } }
+        public string? Description { get { return this.DescriptionOption.Value; } set { this.DescriptionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DiagnosticSql
@@ -165,7 +165,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>SQL</value>
         [JsonPropertyName("diagnosticSql")]
-        public string? DiagnosticSql { get { return this.DiagnosticSqlOption; } set { this.DiagnosticSqlOption = new(value); } }
+        public string? DiagnosticSql { get { return this.DiagnosticSqlOption.Value; } set { this.DiagnosticSqlOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CountSql
@@ -178,7 +178,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CountSql
         /// </summary>
         [JsonPropertyName("countSql")]
-        public string? CountSql { get { return this.CountSqlOption; } set { this.CountSqlOption = new(value); } }
+        public string? CountSql { get { return this.CountSqlOption.Value; } set { this.CountSqlOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ErrorSeverityLevel
@@ -191,7 +191,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ErrorSeverityLevel
         /// </summary>
         [JsonPropertyName("errorSeverityLevel")]
-        public int? ErrorSeverityLevel { get { return this.ErrorSeverityLevelOption; } set { this.ErrorSeverityLevelOption = new(value); } }
+        public int? ErrorSeverityLevel { get { return this.ErrorSeverityLevelOption.Value; } set { this.ErrorSeverityLevelOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ErrorMessage
@@ -204,7 +204,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ErrorMessage
         /// </summary>
         [JsonPropertyName("errorMessage")]
-        public string? ErrorMessage { get { return this.ErrorMessageOption; } set { this.ErrorMessageOption = new(value); } }
+        public string? ErrorMessage { get { return this.ErrorMessageOption.Value; } set { this.ErrorMessageOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of MaxNumberResults
@@ -217,7 +217,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets MaxNumberResults
         /// </summary>
         [JsonPropertyName("maxNumberResults")]
-        public int? MaxNumberResults { get { return this.MaxNumberResultsOption; } set { this.MaxNumberResultsOption = new(value); } }
+        public int? MaxNumberResults { get { return this.MaxNumberResultsOption.Value; } set { this.MaxNumberResultsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RuleIdentification
@@ -231,7 +231,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>Metadata</value>
         [JsonPropertyName("ruleIdentification")]
-        public string? RuleIdentification { get { return this.RuleIdentificationOption; } set { this.RuleIdentificationOption = new(value); } }
+        public string? RuleIdentification { get { return this.RuleIdentificationOption.Value; } set { this.RuleIdentificationOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Resolution
@@ -244,7 +244,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Resolution
         /// </summary>
         [JsonPropertyName("resolution")]
-        public string? Resolution { get { return this.ResolutionOption; } set { this.ResolutionOption = new(value); } }
+        public string? Resolution { get { return this.ResolutionOption.Value; } set { this.ResolutionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Tags
@@ -257,7 +257,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Tags
         /// </summary>
         [JsonPropertyName("tags")]
-        public List<string>? Tags { get { return this.TagsOption; } }
+        public List<string>? Tags { get { return this.TagsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of VarVersion
@@ -270,7 +270,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets VarVersion
         /// </summary>
         [JsonPropertyName("version")]
-        public string? VarVersion { get { return this.VarVersionOption; } set { this.VarVersionOption = new(value); } }
+        public string? VarVersion { get { return this.VarVersionOption.Value; } set { this.VarVersionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ParentCollection
@@ -283,7 +283,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ParentCollection
         /// </summary>
         [JsonPropertyName("parentCollection")]
-        public ValidationsApiContainersV1ContainerDto? ParentCollection { get { return this.ParentCollectionOption; } set { this.ParentCollectionOption = new(value); } }
+        public ValidationsApiContainersV1ContainerDto? ParentCollection { get { return this.ParentCollectionOption.Value; } set { this.ParentCollectionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ParentContainer
@@ -296,7 +296,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ParentContainer
         /// </summary>
         [JsonPropertyName("parentContainer")]
-        public ValidationsApiContainersV1ContainerDto? ParentContainer { get { return this.ParentContainerOption; } set { this.ParentContainerOption = new(value); } }
+        public ValidationsApiContainersV1ContainerDto? ParentContainer { get { return this.ParentContainerOption.Value; } set { this.ParentContainerOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastExecutionId
@@ -309,7 +309,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastExecutionId
         /// </summary>
         [JsonPropertyName("lastExecutionId")]
-        public string? LastExecutionId { get { return this.LastExecutionIdOption; } set { this.LastExecutionIdOption = new(value); } }
+        public string? LastExecutionId { get { return this.LastExecutionIdOption.Value; } set { this.LastExecutionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastExecutionStartDateTime
@@ -322,7 +322,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastExecutionStartDateTime
         /// </summary>
         [JsonPropertyName("lastExecutionStartDateTime")]
-        public string? LastExecutionStartDateTime { get { return this.LastExecutionStartDateTimeOption; } set { this.LastExecutionStartDateTimeOption = new(value); } }
+        public string? LastExecutionStartDateTime { get { return this.LastExecutionStartDateTimeOption.Value; } set { this.LastExecutionStartDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastExecutionEndDateTime
@@ -335,7 +335,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastExecutionEndDateTime
         /// </summary>
         [JsonPropertyName("lastExecutionEndDateTime")]
-        public string? LastExecutionEndDateTime { get { return this.LastExecutionEndDateTimeOption; } set { this.LastExecutionEndDateTimeOption = new(value); } }
+        public string? LastExecutionEndDateTime { get { return this.LastExecutionEndDateTimeOption.Value; } set { this.LastExecutionEndDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastExecutionTotalResults
@@ -348,7 +348,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastExecutionTotalResults
         /// </summary>
         [JsonPropertyName("lastExecutionTotalResults")]
-        public int? LastExecutionTotalResults { get { return this.LastExecutionTotalResultsOption; } set { this.LastExecutionTotalResultsOption = new(value); } }
+        public int? LastExecutionTotalResults { get { return this.LastExecutionTotalResultsOption.Value; } set { this.LastExecutionTotalResultsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastExecutionTotalInvalidResults
@@ -361,7 +361,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastExecutionTotalInvalidResults
         /// </summary>
         [JsonPropertyName("lastExecutionTotalInvalidResults")]
-        public int? LastExecutionTotalInvalidResults { get { return this.LastExecutionTotalInvalidResultsOption; } set { this.LastExecutionTotalInvalidResultsOption = new(value); } }
+        public int? LastExecutionTotalInvalidResults { get { return this.LastExecutionTotalInvalidResultsOption.Value; } set { this.LastExecutionTotalInvalidResultsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CollectionId
@@ -374,7 +374,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CollectionId
         /// </summary>
         [JsonPropertyName("collectionId")]
-        public string? CollectionId { get { return this.CollectionIdOption; } set { this.CollectionIdOption = new(value); } }
+        public string? CollectionId { get { return this.CollectionIdOption.Value; } set { this.CollectionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Urls
@@ -387,7 +387,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Urls
         /// </summary>
         [JsonPropertyName("urls")]
-        public List<ValidationsApiRulesV1Url>? Urls { get { return this.UrlsOption; } }
+        public List<ValidationsApiRulesV1Url>? Urls { get { return this.UrlsOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -518,15 +518,13 @@ namespace EdGraph.Platform.Client.Model
                             countSql = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "errorSeverityLevel":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                errorSeverityLevel = new Option<int?>(utf8JsonReader.GetInt32());
+                            errorSeverityLevel = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "errorMessage":
                             errorMessage = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "maxNumberResults":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                maxNumberResults = new Option<int?>(utf8JsonReader.GetInt32());
+                            maxNumberResults = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "ruleIdentification":
                             ruleIdentification = new Option<string?>(utf8JsonReader.GetString());
@@ -535,19 +533,16 @@ namespace EdGraph.Platform.Client.Model
                             resolution = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "tags":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                tags = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            tags = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "version":
                             varVersion = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "parentCollection":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                parentCollection = new Option<ValidationsApiContainersV1ContainerDto?>(JsonSerializer.Deserialize<ValidationsApiContainersV1ContainerDto>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            parentCollection = new Option<ValidationsApiContainersV1ContainerDto?>(JsonSerializer.Deserialize<ValidationsApiContainersV1ContainerDto>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "parentContainer":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                parentContainer = new Option<ValidationsApiContainersV1ContainerDto?>(JsonSerializer.Deserialize<ValidationsApiContainersV1ContainerDto>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            parentContainer = new Option<ValidationsApiContainersV1ContainerDto?>(JsonSerializer.Deserialize<ValidationsApiContainersV1ContainerDto>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "lastExecutionId":
                             lastExecutionId = new Option<string?>(utf8JsonReader.GetString());
@@ -559,19 +554,16 @@ namespace EdGraph.Platform.Client.Model
                             lastExecutionEndDateTime = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "lastExecutionTotalResults":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                lastExecutionTotalResults = new Option<int?>(utf8JsonReader.GetInt32());
+                            lastExecutionTotalResults = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "lastExecutionTotalInvalidResults":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                lastExecutionTotalInvalidResults = new Option<int?>(utf8JsonReader.GetInt32());
+                            lastExecutionTotalInvalidResults = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "collectionId":
                             collectionId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "urls":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                urls = new Option<List<ValidationsApiRulesV1Url>?>(JsonSerializer.Deserialize<List<ValidationsApiRulesV1Url>>(ref utf8JsonReader, jsonSerializerOptions));
+                            urls = new Option<List<ValidationsApiRulesV1Url>?>(JsonSerializer.Deserialize<List<ValidationsApiRulesV1Url>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

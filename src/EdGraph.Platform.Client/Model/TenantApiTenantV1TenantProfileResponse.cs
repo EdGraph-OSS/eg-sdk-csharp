@@ -106,7 +106,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantStatus
         /// </summary>
         [JsonPropertyName("tenantStatus")]
-        public TenantApiTenantV1TenantStatus? TenantStatus { get { return this.TenantStatusOption; } set { this.TenantStatusOption = new(value); } }
+        public TenantApiTenantV1TenantStatus? TenantStatus { get { return this.TenantStatusOption.Value; } set { this.TenantStatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DeploymentType
@@ -119,7 +119,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DeploymentType
         /// </summary>
         [JsonPropertyName("deploymentType")]
-        public TenantApiTenantV1DeploymentType? DeploymentType { get { return this.DeploymentTypeOption; } set { this.DeploymentTypeOption = new(value); } }
+        public TenantApiTenantV1DeploymentType? DeploymentType { get { return this.DeploymentTypeOption.Value; } set { this.DeploymentTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -132,7 +132,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantTypes
@@ -145,7 +145,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantTypes
         /// </summary>
         [JsonPropertyName("tenantTypes")]
-        public List<TenantApiTenantV1TenantType>? TenantTypes { get { return this.TenantTypesOption; } }
+        public List<TenantApiTenantV1TenantType>? TenantTypes { get { return this.TenantTypesOption.Value; } }
 
         /// <summary>
         /// Used to track the state of OrganizationIdentifier
@@ -158,7 +158,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets OrganizationIdentifier
         /// </summary>
         [JsonPropertyName("organizationIdentifier")]
-        public string? OrganizationIdentifier { get { return this.OrganizationIdentifierOption; } set { this.OrganizationIdentifierOption = new(value); } }
+        public string? OrganizationIdentifier { get { return this.OrganizationIdentifierOption.Value; } set { this.OrganizationIdentifierOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of OrganizationName
@@ -171,7 +171,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets OrganizationName
         /// </summary>
         [JsonPropertyName("organizationName")]
-        public string? OrganizationName { get { return this.OrganizationNameOption; } set { this.OrganizationNameOption = new(value); } }
+        public string? OrganizationName { get { return this.OrganizationNameOption.Value; } set { this.OrganizationNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of State
@@ -184,7 +184,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets State
         /// </summary>
         [JsonPropertyName("state")]
-        public string? State { get { return this.StateOption; } set { this.StateOption = new(value); } }
+        public string? State { get { return this.StateOption.Value; } set { this.StateOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsDemo
@@ -197,7 +197,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IsDemo
         /// </summary>
         [JsonPropertyName("isDemo")]
-        public bool? IsDemo { get { return this.IsDemoOption; } set { this.IsDemoOption = new(value); } }
+        public bool? IsDemo { get { return this.IsDemoOption.Value; } set { this.IsDemoOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SubscriptionsMigrated
@@ -210,7 +210,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SubscriptionsMigrated
         /// </summary>
         [JsonPropertyName("subscriptionsMigrated")]
-        public bool? SubscriptionsMigrated { get { return this.SubscriptionsMigratedOption; } set { this.SubscriptionsMigratedOption = new(value); } }
+        public bool? SubscriptionsMigrated { get { return this.SubscriptionsMigratedOption.Value; } set { this.SubscriptionsMigratedOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Subscriptions
@@ -223,7 +223,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Subscriptions
         /// </summary>
         [JsonPropertyName("subscriptions")]
-        public List<TenantApiTenantV1SubscriptionProfileResponse>? Subscriptions { get { return this.SubscriptionsOption; } }
+        public List<TenantApiTenantV1SubscriptionProfileResponse>? Subscriptions { get { return this.SubscriptionsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of Domains
@@ -236,7 +236,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Domains
         /// </summary>
         [JsonPropertyName("domains")]
-        public List<TenantApiTenantV1DomainProfileResponse>? Domains { get { return this.DomainsOption; } }
+        public List<TenantApiTenantV1DomainProfileResponse>? Domains { get { return this.DomainsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of CreatedBy
@@ -249,7 +249,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedBy
         /// </summary>
         [JsonPropertyName("createdBy")]
-        public string? CreatedBy { get { return this.CreatedByOption; } set { this.CreatedByOption = new(value); } }
+        public string? CreatedBy { get { return this.CreatedByOption.Value; } set { this.CreatedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedDateTime
@@ -262,7 +262,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedDateTime
         /// </summary>
         [JsonPropertyName("createdDateTime")]
-        public string? CreatedDateTime { get { return this.CreatedDateTimeOption; } set { this.CreatedDateTimeOption = new(value); } }
+        public string? CreatedDateTime { get { return this.CreatedDateTimeOption.Value; } set { this.CreatedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedBy
@@ -275,7 +275,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedBy
         /// </summary>
         [JsonPropertyName("lastModifiedBy")]
-        public string? LastModifiedBy { get { return this.LastModifiedByOption; } set { this.LastModifiedByOption = new(value); } }
+        public string? LastModifiedBy { get { return this.LastModifiedByOption.Value; } set { this.LastModifiedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedDateTime
@@ -288,7 +288,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedDateTime
         /// </summary>
         [JsonPropertyName("lastModifiedDateTime")]
-        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption; } set { this.LastModifiedDateTimeOption = new(value); } }
+        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption.Value; } set { this.LastModifiedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IdentityProviders
@@ -301,7 +301,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IdentityProviders
         /// </summary>
         [JsonPropertyName("identityProviders")]
-        public List<TenantApiTenantV1TenantIdentityProviders>? IdentityProviders { get { return this.IdentityProvidersOption; } }
+        public List<TenantApiTenantV1TenantIdentityProviders>? IdentityProviders { get { return this.IdentityProvidersOption.Value; } }
 
         /// <summary>
         /// Used to track the state of Onboarding
@@ -314,7 +314,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Onboarding
         /// </summary>
         [JsonPropertyName("onboarding")]
-        public TenantApiTenantV1Onboarding? Onboarding { get { return this.OnboardingOption; } set { this.OnboardingOption = new(value); } }
+        public TenantApiTenantV1Onboarding? Onboarding { get { return this.OnboardingOption.Value; } set { this.OnboardingOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Organizations
@@ -327,7 +327,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Organizations
         /// </summary>
         [JsonPropertyName("organizations")]
-        public List<TenantApiTenantV1Organization>? Organizations { get { return this.OrganizationsOption; } }
+        public List<TenantApiTenantV1Organization>? Organizations { get { return this.OrganizationsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of OrganizationIdentifierHash
@@ -340,7 +340,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets OrganizationIdentifierHash
         /// </summary>
         [JsonPropertyName("organizationIdentifierHash")]
-        public string? OrganizationIdentifierHash { get { return this.OrganizationIdentifierHashOption; } set { this.OrganizationIdentifierHashOption = new(value); } }
+        public string? OrganizationIdentifierHash { get { return this.OrganizationIdentifierHashOption.Value; } set { this.OrganizationIdentifierHashOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Settings
@@ -353,7 +353,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Settings
         /// </summary>
         [JsonPropertyName("settings")]
-        public List<TenantApiTenantV1TenantSetting>? Settings { get { return this.SettingsOption; } }
+        public List<TenantApiTenantV1TenantSetting>? Settings { get { return this.SettingsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of AdditionalSettings
@@ -366,7 +366,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AdditionalSettings
         /// </summary>
         [JsonPropertyName("additionalSettings")]
-        public TenantApiTenantV1TenantAdditionalSetting? AdditionalSettings { get { return this.AdditionalSettingsOption; } set { this.AdditionalSettingsOption = new(value); } }
+        public TenantApiTenantV1TenantAdditionalSetting? AdditionalSettings { get { return this.AdditionalSettingsOption.Value; } set { this.AdditionalSettingsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantType
@@ -379,7 +379,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantType
         /// </summary>
         [JsonPropertyName("tenantType")]
-        public string? TenantType { get { return this.TenantTypeOption; } set { this.TenantTypeOption = new(value); } }
+        public string? TenantType { get { return this.TenantTypeOption.Value; } set { this.TenantTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SecurityScore
@@ -392,7 +392,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SecurityScore
         /// </summary>
         [JsonPropertyName("securityScore")]
-        public double? SecurityScore { get { return this.SecurityScoreOption; } set { this.SecurityScoreOption = new(value); } }
+        public double? SecurityScore { get { return this.SecurityScoreOption.Value; } set { this.SecurityScoreOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of OrganizationalAccountRating
@@ -405,7 +405,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets OrganizationalAccountRating
         /// </summary>
         [JsonPropertyName("organizationalAccountRating")]
-        public double? OrganizationalAccountRating { get { return this.OrganizationalAccountRatingOption; } set { this.OrganizationalAccountRatingOption = new(value); } }
+        public double? OrganizationalAccountRating { get { return this.OrganizationalAccountRatingOption.Value; } set { this.OrganizationalAccountRatingOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of MultiFactorAuthenticationRating
@@ -418,7 +418,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets MultiFactorAuthenticationRating
         /// </summary>
         [JsonPropertyName("multiFactorAuthenticationRating")]
-        public double? MultiFactorAuthenticationRating { get { return this.MultiFactorAuthenticationRatingOption; } set { this.MultiFactorAuthenticationRatingOption = new(value); } }
+        public double? MultiFactorAuthenticationRating { get { return this.MultiFactorAuthenticationRatingOption.Value; } set { this.MultiFactorAuthenticationRatingOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DomainVerificationRating
@@ -431,7 +431,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DomainVerificationRating
         /// </summary>
         [JsonPropertyName("domainVerificationRating")]
-        public double? DomainVerificationRating { get { return this.DomainVerificationRatingOption; } set { this.DomainVerificationRatingOption = new(value); } }
+        public double? DomainVerificationRating { get { return this.DomainVerificationRatingOption.Value; } set { this.DomainVerificationRatingOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Branding
@@ -444,7 +444,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Branding
         /// </summary>
         [JsonPropertyName("branding")]
-        public TenantApiTenantV1TenantBrandingResponse? Branding { get { return this.BrandingOption; } set { this.BrandingOption = new(value); } }
+        public TenantApiTenantV1TenantBrandingResponse? Branding { get { return this.BrandingOption.Value; } set { this.BrandingOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -565,8 +565,7 @@ namespace EdGraph.Platform.Client.Model
                             tenantId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "tenantTypes":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                tenantTypes = new Option<List<TenantApiTenantV1TenantType>?>(JsonSerializer.Deserialize<List<TenantApiTenantV1TenantType>>(ref utf8JsonReader, jsonSerializerOptions));
+                            tenantTypes = new Option<List<TenantApiTenantV1TenantType>?>(JsonSerializer.Deserialize<List<TenantApiTenantV1TenantType>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "organizationIdentifier":
                             organizationIdentifier = new Option<string?>(utf8JsonReader.GetString());
@@ -583,20 +582,16 @@ namespace EdGraph.Platform.Client.Model
                                 tenantStatus = new Option<TenantApiTenantV1TenantStatus?>(TenantApiTenantV1TenantStatusValueConverter.FromStringOrDefault(tenantStatusRawValue));
                             break;
                         case "isDemo":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isDemo = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isDemo = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "subscriptionsMigrated":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                subscriptionsMigrated = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            subscriptionsMigrated = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "subscriptions":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                subscriptions = new Option<List<TenantApiTenantV1SubscriptionProfileResponse>?>(JsonSerializer.Deserialize<List<TenantApiTenantV1SubscriptionProfileResponse>>(ref utf8JsonReader, jsonSerializerOptions));
+                            subscriptions = new Option<List<TenantApiTenantV1SubscriptionProfileResponse>?>(JsonSerializer.Deserialize<List<TenantApiTenantV1SubscriptionProfileResponse>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "domains":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                domains = new Option<List<TenantApiTenantV1DomainProfileResponse>?>(JsonSerializer.Deserialize<List<TenantApiTenantV1DomainProfileResponse>>(ref utf8JsonReader, jsonSerializerOptions));
+                            domains = new Option<List<TenantApiTenantV1DomainProfileResponse>?>(JsonSerializer.Deserialize<List<TenantApiTenantV1DomainProfileResponse>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "createdBy":
                             createdBy = new Option<string?>(utf8JsonReader.GetString());
@@ -611,46 +606,37 @@ namespace EdGraph.Platform.Client.Model
                             lastModifiedDateTime = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "identityProviders":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                identityProviders = new Option<List<TenantApiTenantV1TenantIdentityProviders>?>(JsonSerializer.Deserialize<List<TenantApiTenantV1TenantIdentityProviders>>(ref utf8JsonReader, jsonSerializerOptions));
+                            identityProviders = new Option<List<TenantApiTenantV1TenantIdentityProviders>?>(JsonSerializer.Deserialize<List<TenantApiTenantV1TenantIdentityProviders>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "onboarding":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                onboarding = new Option<TenantApiTenantV1Onboarding?>(JsonSerializer.Deserialize<TenantApiTenantV1Onboarding>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            onboarding = new Option<TenantApiTenantV1Onboarding?>(JsonSerializer.Deserialize<TenantApiTenantV1Onboarding>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "organizations":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                organizations = new Option<List<TenantApiTenantV1Organization>?>(JsonSerializer.Deserialize<List<TenantApiTenantV1Organization>>(ref utf8JsonReader, jsonSerializerOptions));
+                            organizations = new Option<List<TenantApiTenantV1Organization>?>(JsonSerializer.Deserialize<List<TenantApiTenantV1Organization>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "organizationIdentifierHash":
                             organizationIdentifierHash = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "settings":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                settings = new Option<List<TenantApiTenantV1TenantSetting>?>(JsonSerializer.Deserialize<List<TenantApiTenantV1TenantSetting>>(ref utf8JsonReader, jsonSerializerOptions));
+                            settings = new Option<List<TenantApiTenantV1TenantSetting>?>(JsonSerializer.Deserialize<List<TenantApiTenantV1TenantSetting>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "additionalSettings":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                additionalSettings = new Option<TenantApiTenantV1TenantAdditionalSetting?>(JsonSerializer.Deserialize<TenantApiTenantV1TenantAdditionalSetting>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            additionalSettings = new Option<TenantApiTenantV1TenantAdditionalSetting?>(JsonSerializer.Deserialize<TenantApiTenantV1TenantAdditionalSetting>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "tenantType":
                             tenantType = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "securityScore":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                securityScore = new Option<double?>(utf8JsonReader.GetDouble());
+                            securityScore = new Option<double?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (double?)null : utf8JsonReader.GetDouble());
                             break;
                         case "organizationalAccountRating":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                organizationalAccountRating = new Option<double?>(utf8JsonReader.GetDouble());
+                            organizationalAccountRating = new Option<double?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (double?)null : utf8JsonReader.GetDouble());
                             break;
                         case "multiFactorAuthenticationRating":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                multiFactorAuthenticationRating = new Option<double?>(utf8JsonReader.GetDouble());
+                            multiFactorAuthenticationRating = new Option<double?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (double?)null : utf8JsonReader.GetDouble());
                             break;
                         case "domainVerificationRating":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                domainVerificationRating = new Option<double?>(utf8JsonReader.GetDouble());
+                            domainVerificationRating = new Option<double?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (double?)null : utf8JsonReader.GetDouble());
                             break;
                         case "deploymentType":
                             string? deploymentTypeRawValue = utf8JsonReader.GetString();
@@ -658,8 +644,7 @@ namespace EdGraph.Platform.Client.Model
                                 deploymentType = new Option<TenantApiTenantV1DeploymentType?>(TenantApiTenantV1DeploymentTypeValueConverter.FromStringOrDefault(deploymentTypeRawValue));
                             break;
                         case "branding":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                branding = new Option<TenantApiTenantV1TenantBrandingResponse?>(JsonSerializer.Deserialize<TenantApiTenantV1TenantBrandingResponse>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            branding = new Option<TenantApiTenantV1TenantBrandingResponse?>(JsonSerializer.Deserialize<TenantApiTenantV1TenantBrandingResponse>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

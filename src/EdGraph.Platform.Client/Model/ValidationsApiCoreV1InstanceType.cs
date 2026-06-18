@@ -159,7 +159,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, ValidationsApiCoreV1InstanceType validationsApiCoreV1InstanceType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(validationsApiCoreV1InstanceType.ToString());
+            writer.WriteStringValue(ValidationsApiCoreV1InstanceTypeValueConverter.ToJsonValue(validationsApiCoreV1InstanceType).ToString());
         }
     }
 
@@ -190,14 +190,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the ValidationsApiCoreV1InstanceType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="validationsApiCoreV1InstanceType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, ValidationsApiCoreV1InstanceType? validationsApiCoreV1InstanceType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(validationsApiCoreV1InstanceType?.ToString() ?? "null");
+            writer.WriteStringValue(validationsApiCoreV1InstanceType.HasValue ? ValidationsApiCoreV1InstanceTypeValueConverter.ToJsonValue(validationsApiCoreV1InstanceType.Value).ToString() : "null");
         }
     }
 }

@@ -66,7 +66,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SqlServer
         /// </summary>
         [JsonPropertyName("sqlServer")]
-        public string? SqlServer { get { return this.SqlServerOption; } set { this.SqlServerOption = new(value); } }
+        public string? SqlServer { get { return this.SqlServerOption.Value; } set { this.SqlServerOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SqlServerUserName
@@ -79,7 +79,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SqlServerUserName
         /// </summary>
         [JsonPropertyName("sqlServerUserName")]
-        public string? SqlServerUserName { get { return this.SqlServerUserNameOption; } set { this.SqlServerUserNameOption = new(value); } }
+        public string? SqlServerUserName { get { return this.SqlServerUserNameOption.Value; } set { this.SqlServerUserNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SqlServerPassword
@@ -92,7 +92,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SqlServerPassword
         /// </summary>
         [JsonPropertyName("sqlServerPassword")]
-        public string? SqlServerPassword { get { return this.SqlServerPasswordOption; } set { this.SqlServerPasswordOption = new(value); } }
+        public string? SqlServerPassword { get { return this.SqlServerPasswordOption.Value; } set { this.SqlServerPasswordOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AzureSubscriptionId
@@ -105,7 +105,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AzureSubscriptionId
         /// </summary>
         [JsonPropertyName("azureSubscriptionId")]
-        public string? AzureSubscriptionId { get { return this.AzureSubscriptionIdOption; } set { this.AzureSubscriptionIdOption = new(value); } }
+        public string? AzureSubscriptionId { get { return this.AzureSubscriptionIdOption.Value; } set { this.AzureSubscriptionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AzureResourceGroupName
@@ -118,7 +118,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AzureResourceGroupName
         /// </summary>
         [JsonPropertyName("azureResourceGroupName")]
-        public string? AzureResourceGroupName { get { return this.AzureResourceGroupNameOption; } set { this.AzureResourceGroupNameOption = new(value); } }
+        public string? AzureResourceGroupName { get { return this.AzureResourceGroupNameOption.Value; } set { this.AzureResourceGroupNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AzureServerName
@@ -131,7 +131,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AzureServerName
         /// </summary>
         [JsonPropertyName("azureServerName")]
-        public string? AzureServerName { get { return this.AzureServerNameOption; } set { this.AzureServerNameOption = new(value); } }
+        public string? AzureServerName { get { return this.AzureServerNameOption.Value; } set { this.AzureServerNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AzureServerElasticPoolName
@@ -144,7 +144,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AzureServerElasticPoolName
         /// </summary>
         [JsonPropertyName("azureServerElasticPoolName")]
-        public string? AzureServerElasticPoolName { get { return this.AzureServerElasticPoolNameOption; } set { this.AzureServerElasticPoolNameOption = new(value); } }
+        public string? AzureServerElasticPoolName { get { return this.AzureServerElasticPoolNameOption.Value; } set { this.AzureServerElasticPoolNameOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

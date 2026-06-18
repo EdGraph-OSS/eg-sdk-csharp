@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ReportingPeriodId
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ReportingPeriodId
         /// </summary>
         [JsonPropertyName("reportingPeriodId")]
-        public string? ReportingPeriodId { get { return this.ReportingPeriodIdOption; } set { this.ReportingPeriodIdOption = new(value); } }
+        public string? ReportingPeriodId { get { return this.ReportingPeriodIdOption.Value; } set { this.ReportingPeriodIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CategoryIds
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CategoryIds
         /// </summary>
         [JsonPropertyName("categoryIds")]
-        public List<string>? CategoryIds { get { return this.CategoryIdsOption; } }
+        public List<string>? CategoryIds { get { return this.CategoryIdsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of SchoolYear
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SchoolYear
         /// </summary>
         [JsonPropertyName("schoolYear")]
-        public int? SchoolYear { get { return this.SchoolYearOption; } set { this.SchoolYearOption = new(value); } }
+        public int? SchoolYear { get { return this.SchoolYearOption.Value; } set { this.SchoolYearOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -177,12 +177,10 @@ namespace EdGraph.Platform.Client.Model
                             reportingPeriodId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "categoryIds":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                categoryIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            categoryIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "schoolYear":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                schoolYear = new Option<int?>(utf8JsonReader.GetInt32());
+                            schoolYear = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

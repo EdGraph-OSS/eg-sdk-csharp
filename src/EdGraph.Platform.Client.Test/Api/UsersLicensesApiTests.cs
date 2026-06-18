@@ -61,7 +61,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsLicensesAssignLicenseRequest> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsLicensesAssignLicenseRequest = default!;
             var response = await _instance.AssignLicenseTenantUserAsyncAsync(tenantId, userId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsLicensesAssignLicenseRequest);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiUserV1LicenseAssignedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsLicensesAssignLicenseBulkRequest> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsLicensesAssignLicenseBulkRequest = default!;
             var response = await _instance.AssignLicenseTenantUserBulkAsyncAsync(tenantId, userId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsLicensesAssignLicenseBulkRequest);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiUserV1LicenseAssignedBulkResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetAllTenantUserApplicationLicensesAsyncAsync(tenantId, userId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserLicensePaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<IdentityApiUserV1RevokeLicenseRequest> identityApiUserV1RevokeLicenseRequest = default!;
             var response = await _instance.RevokeLicenseTenantUserAsyncAsync(tenantId, userId, identityApiUserV1RevokeLicenseRequest);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiUserV1LicenseRevokedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsLicensesRevokeLicenseBulkRequest> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsLicensesRevokeLicenseBulkRequest = default!;
             var response = await _instance.RevokeLicenseTenantUserBulkAsyncAsync(tenantId, userId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsLicensesRevokeLicenseBulkRequest);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiUserV1LicenseRevokedBulkResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

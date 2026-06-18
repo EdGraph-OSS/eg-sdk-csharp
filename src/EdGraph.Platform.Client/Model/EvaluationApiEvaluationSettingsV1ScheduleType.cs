@@ -159,7 +159,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, EvaluationApiEvaluationSettingsV1ScheduleType evaluationApiEvaluationSettingsV1ScheduleType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(evaluationApiEvaluationSettingsV1ScheduleType.ToString());
+            writer.WriteStringValue(EvaluationApiEvaluationSettingsV1ScheduleTypeValueConverter.ToJsonValue(evaluationApiEvaluationSettingsV1ScheduleType).ToString());
         }
     }
 
@@ -190,14 +190,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the EvaluationApiEvaluationSettingsV1ScheduleType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="evaluationApiEvaluationSettingsV1ScheduleType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, EvaluationApiEvaluationSettingsV1ScheduleType? evaluationApiEvaluationSettingsV1ScheduleType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(evaluationApiEvaluationSettingsV1ScheduleType?.ToString() ?? "null");
+            writer.WriteStringValue(evaluationApiEvaluationSettingsV1ScheduleType.HasValue ? EvaluationApiEvaluationSettingsV1ScheduleTypeValueConverter.ToJsonValue(evaluationApiEvaluationSettingsV1ScheduleType.Value).ToString() : "null");
         }
     }
 }

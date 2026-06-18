@@ -159,7 +159,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, EvaluationApiEvaluationsV1EvaluationStatus evaluationApiEvaluationsV1EvaluationStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(evaluationApiEvaluationsV1EvaluationStatus.ToString());
+            writer.WriteStringValue(EvaluationApiEvaluationsV1EvaluationStatusValueConverter.ToJsonValue(evaluationApiEvaluationsV1EvaluationStatus).ToString());
         }
     }
 
@@ -190,14 +190,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the EvaluationApiEvaluationsV1EvaluationStatus to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="evaluationApiEvaluationsV1EvaluationStatus"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, EvaluationApiEvaluationsV1EvaluationStatus? evaluationApiEvaluationsV1EvaluationStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(evaluationApiEvaluationsV1EvaluationStatus?.ToString() ?? "null");
+            writer.WriteStringValue(evaluationApiEvaluationsV1EvaluationStatus.HasValue ? EvaluationApiEvaluationsV1EvaluationStatusValueConverter.ToJsonValue(evaluationApiEvaluationsV1EvaluationStatus.Value).ToString() : "null");
         }
     }
 }

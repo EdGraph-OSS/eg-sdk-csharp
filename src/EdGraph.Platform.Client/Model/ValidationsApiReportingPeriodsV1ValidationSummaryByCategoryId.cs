@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ReportingPeriod
         /// </summary>
         [JsonPropertyName("reportingPeriod")]
-        public ValidationsApiReportingPeriodsV1ReportingPeriodDto? ReportingPeriod { get { return this.ReportingPeriodOption; } set { this.ReportingPeriodOption = new(value); } }
+        public ValidationsApiReportingPeriodsV1ReportingPeriodDto? ReportingPeriod { get { return this.ReportingPeriodOption.Value; } set { this.ReportingPeriodOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Category
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Category
         /// </summary>
         [JsonPropertyName("category")]
-        public ValidationsApiContainersV1ContainerDto? Category { get { return this.CategoryOption; } set { this.CategoryOption = new(value); } }
+        public ValidationsApiContainersV1ContainerDto? Category { get { return this.CategoryOption.Value; } set { this.CategoryOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SubCategories
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SubCategories
         /// </summary>
         [JsonPropertyName("subCategories")]
-        public List<ValidationsApiReportingPeriodsV1ValidationSummarySubCategory>? SubCategories { get { return this.SubCategoriesOption; } }
+        public List<ValidationsApiReportingPeriodsV1ValidationSummarySubCategory>? SubCategories { get { return this.SubCategoriesOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -154,16 +154,13 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "reportingPeriod":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                reportingPeriod = new Option<ValidationsApiReportingPeriodsV1ReportingPeriodDto?>(JsonSerializer.Deserialize<ValidationsApiReportingPeriodsV1ReportingPeriodDto>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            reportingPeriod = new Option<ValidationsApiReportingPeriodsV1ReportingPeriodDto?>(JsonSerializer.Deserialize<ValidationsApiReportingPeriodsV1ReportingPeriodDto>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "category":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                category = new Option<ValidationsApiContainersV1ContainerDto?>(JsonSerializer.Deserialize<ValidationsApiContainersV1ContainerDto>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            category = new Option<ValidationsApiContainersV1ContainerDto?>(JsonSerializer.Deserialize<ValidationsApiContainersV1ContainerDto>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "subCategories":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                subCategories = new Option<List<ValidationsApiReportingPeriodsV1ValidationSummarySubCategory>?>(JsonSerializer.Deserialize<List<ValidationsApiReportingPeriodsV1ValidationSummarySubCategory>>(ref utf8JsonReader, jsonSerializerOptions));
+                            subCategories = new Option<List<ValidationsApiReportingPeriodsV1ValidationSummarySubCategory>?>(JsonSerializer.Deserialize<List<ValidationsApiReportingPeriodsV1ValidationSummarySubCategory>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

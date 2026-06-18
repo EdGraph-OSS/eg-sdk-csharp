@@ -16,65 +16,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Creates a Tag.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CreateTagExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new TagsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var validationsApiTagsV1CreateRequest = new ValidationsApiTagsV1CreateRequest(); // ValidationsApiTagsV1CreateRequest |  (optional) 
-
-            try
-            {
-                // Creates a Tag.
-                ValidationsApiCoreV1CreatedResponse result = apiInstance.CreateTag(tenantId, validationsApiTagsV1CreateRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TagsApi.CreateTag: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateTagWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates a Tag.
-    ApiResponse<ValidationsApiCoreV1CreatedResponse> response = apiInstance.CreateTagWithHttpInfo(tenantId, validationsApiTagsV1CreateRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling TagsApi.CreateTagWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -114,61 +55,6 @@ catch (ApiException e)
 
 Deletes a Tag.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class DeleteTagExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new TagsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var tagId = "tagId_example";  // string | 
-
-            try
-            {
-                // Deletes a Tag.
-                apiInstance.DeleteTag(tenantId, tagId);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TagsApi.DeleteTag: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeleteTagWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Deletes a Tag.
-    apiInstance.DeleteTagWithHttpInfo(tenantId, tagId);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling TagsApi.DeleteTagWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -209,65 +95,6 @@ void (empty response body)
 
 Retrieves a Tag by ID.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetTagByIdExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new TagsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var tagId = "tagId_example";  // string | 
-
-            try
-            {
-                // Retrieves a Tag by ID.
-                ValidationsApiTagsV1TagDto result = apiInstance.GetTagById(tenantId, tagId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TagsApi.GetTagById: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetTagByIdWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a Tag by ID.
-    ApiResponse<ValidationsApiTagsV1TagDto> response = apiInstance.GetTagByIdWithHttpInfo(tenantId, tagId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling TagsApi.GetTagByIdWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -308,68 +135,6 @@ catch (ApiException e)
 
 Retrieves a list of Tags.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetTagsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new TagsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var filter = "filter_example";  // string |  (optional) 
-            var orderBy = "orderBy_example";  // string |  (optional) 
-
-            try
-            {
-                // Retrieves a list of Tags.
-                ValidationsApiTagsV1PaginatedTags result = apiInstance.GetTags(tenantId, pageIndex, pageSize, filter, orderBy);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TagsApi.GetTags: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetTagsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of Tags.
-    ApiResponse<ValidationsApiTagsV1PaginatedTags> response = apiInstance.GetTagsWithHttpInfo(tenantId, pageIndex, pageSize, filter, orderBy);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling TagsApi.GetTagsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -412,62 +177,6 @@ catch (ApiException e)
 
 Updates a Tag.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateTagExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new TagsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var tagId = "tagId_example";  // string | 
-            var validationsApiTagsV1UpdateRequest = new ValidationsApiTagsV1UpdateRequest(); // ValidationsApiTagsV1UpdateRequest |  (optional) 
-
-            try
-            {
-                // Updates a Tag.
-                apiInstance.UpdateTag(tenantId, tagId, validationsApiTagsV1UpdateRequest);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TagsApi.UpdateTag: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateTagWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates a Tag.
-    apiInstance.UpdateTagWithHttpInfo(tenantId, tagId, validationsApiTagsV1UpdateRequest);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling TagsApi.UpdateTagWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

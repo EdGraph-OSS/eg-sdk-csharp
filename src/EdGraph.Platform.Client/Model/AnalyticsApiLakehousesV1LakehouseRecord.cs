@@ -68,7 +68,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SchoolYear
@@ -81,7 +81,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SchoolYear
         /// </summary>
         [JsonPropertyName("schoolYear")]
-        public int? SchoolYear { get { return this.SchoolYearOption; } set { this.SchoolYearOption = new(value); } }
+        public int? SchoolYear { get { return this.SchoolYearOption.Value; } set { this.SchoolYearOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DataStandardName
@@ -94,7 +94,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DataStandardName
         /// </summary>
         [JsonPropertyName("dataStandardName")]
-        public string? DataStandardName { get { return this.DataStandardNameOption; } set { this.DataStandardNameOption = new(value); } }
+        public string? DataStandardName { get { return this.DataStandardNameOption.Value; } set { this.DataStandardNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DataStandardVersion
@@ -107,7 +107,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DataStandardVersion
         /// </summary>
         [JsonPropertyName("dataStandardVersion")]
-        public string? DataStandardVersion { get { return this.DataStandardVersionOption; } set { this.DataStandardVersionOption = new(value); } }
+        public string? DataStandardVersion { get { return this.DataStandardVersionOption.Value; } set { this.DataStandardVersionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EntityName
@@ -120,7 +120,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EntityName
         /// </summary>
         [JsonPropertyName("entityName")]
-        public string? EntityName { get { return this.EntityNameOption; } set { this.EntityNameOption = new(value); } }
+        public string? EntityName { get { return this.EntityNameOption.Value; } set { this.EntityNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ResourceKeyHash
@@ -133,7 +133,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ResourceKeyHash
         /// </summary>
         [JsonPropertyName("resourceKeyHash")]
-        public string? ResourceKeyHash { get { return this.ResourceKeyHashOption; } set { this.ResourceKeyHashOption = new(value); } }
+        public string? ResourceKeyHash { get { return this.ResourceKeyHashOption.Value; } set { this.ResourceKeyHashOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of JsonPayload
@@ -146,7 +146,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets JsonPayload
         /// </summary>
         [JsonPropertyName("jsonPayload")]
-        public string? JsonPayload { get { return this.JsonPayloadOption; } set { this.JsonPayloadOption = new(value); } }
+        public string? JsonPayload { get { return this.JsonPayloadOption.Value; } set { this.JsonPayloadOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedDateTime
@@ -159,7 +159,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedDateTime
         /// </summary>
         [JsonPropertyName("lastModifiedDateTime")]
-        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption; } set { this.LastModifiedDateTimeOption = new(value); } }
+        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption.Value; } set { this.LastModifiedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -242,8 +242,7 @@ namespace EdGraph.Platform.Client.Model
                             tenantId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "schoolYear":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                schoolYear = new Option<int?>(utf8JsonReader.GetInt32());
+                            schoolYear = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "dataStandardName":
                             dataStandardName = new Option<string?>(utf8JsonReader.GetString());

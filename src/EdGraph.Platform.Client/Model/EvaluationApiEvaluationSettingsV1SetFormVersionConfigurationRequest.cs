@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets VarVersion
         /// </summary>
         [JsonPropertyName("version")]
-        public string? VarVersion { get { return this.VarVersionOption; } set { this.VarVersionOption = new(value); } }
+        public string? VarVersion { get { return this.VarVersionOption.Value; } set { this.VarVersionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ActiveStartingDate
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ActiveStartingDate
         /// </summary>
         [JsonPropertyName("activeStartingDate")]
-        public string? ActiveStartingDate { get { return this.ActiveStartingDateOption; } set { this.ActiveStartingDateOption = new(value); } }
+        public string? ActiveStartingDate { get { return this.ActiveStartingDateOption.Value; } set { this.ActiveStartingDateOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ActiveUntilDate
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ActiveUntilDate
         /// </summary>
         [JsonPropertyName("activeUntilDate")]
-        public string? ActiveUntilDate { get { return this.ActiveUntilDateOption; } set { this.ActiveUntilDateOption = new(value); } }
+        public string? ActiveUntilDate { get { return this.ActiveUntilDateOption.Value; } set { this.ActiveUntilDateOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

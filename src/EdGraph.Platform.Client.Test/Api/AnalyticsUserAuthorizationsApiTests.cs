@@ -63,7 +63,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetPaginatedUserAuthorizationsAsync(tenantId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<AnalyticsApiUserAuthorizationsV1UserAuthorizationsPaginatedItemsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string userAuthorizationId = default!;
             var response = await _instance.SoftDeleteUserAuthorizationAsync(tenantId, userAuthorizationId);
             var model = response.Unauthorized();
-            Assert.IsType<AnalyticsApiUserAuthorizationsV1UserAuthorizationSoftDeletedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

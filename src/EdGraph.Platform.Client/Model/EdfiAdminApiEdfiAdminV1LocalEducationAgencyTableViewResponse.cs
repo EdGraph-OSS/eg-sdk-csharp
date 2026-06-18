@@ -64,7 +64,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InstanceId
@@ -77,7 +77,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceId
         /// </summary>
         [JsonPropertyName("instanceId")]
-        public string? InstanceId { get { return this.InstanceIdOption; } set { this.InstanceIdOption = new(value); } }
+        public string? InstanceId { get { return this.InstanceIdOption.Value; } set { this.InstanceIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EducationOrganizationId
@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EducationOrganizationId
         /// </summary>
         [JsonPropertyName("educationOrganizationId")]
-        public long? EducationOrganizationId { get { return this.EducationOrganizationIdOption; } set { this.EducationOrganizationIdOption = new(value); } }
+        public long? EducationOrganizationId { get { return this.EducationOrganizationIdOption.Value; } set { this.EducationOrganizationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Id
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of NameOfInstitution
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets NameOfInstitution
         /// </summary>
         [JsonPropertyName("nameOfInstitution")]
-        public string? NameOfInstitution { get { return this.NameOfInstitutionOption; } set { this.NameOfInstitutionOption = new(value); } }
+        public string? NameOfInstitution { get { return this.NameOfInstitutionOption.Value; } set { this.NameOfInstitutionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EducationOrganizationCategory
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EducationOrganizationCategory
         /// </summary>
         [JsonPropertyName("educationOrganizationCategory")]
-        public string? EducationOrganizationCategory { get { return this.EducationOrganizationCategoryOption; } set { this.EducationOrganizationCategoryOption = new(value); } }
+        public string? EducationOrganizationCategory { get { return this.EducationOrganizationCategoryOption.Value; } set { this.EducationOrganizationCategoryOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -211,8 +211,7 @@ namespace EdGraph.Platform.Client.Model
                             instanceId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "educationOrganizationId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                educationOrganizationId = new Option<long?>(utf8JsonReader.GetInt64());
+                            educationOrganizationId = new Option<long?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (long?)null : utf8JsonReader.GetInt64());
                             break;
                         case "id":
                             id = new Option<string?>(utf8JsonReader.GetString());

@@ -76,7 +76,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -89,7 +89,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SqlConnectionString
@@ -102,7 +102,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SqlConnectionString
         /// </summary>
         [JsonPropertyName("sqlConnectionString")]
-        public string? SqlConnectionString { get { return this.SqlConnectionStringOption; } set { this.SqlConnectionStringOption = new(value); } }
+        public string? SqlConnectionString { get { return this.SqlConnectionStringOption.Value; } set { this.SqlConnectionStringOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Status
@@ -115,7 +115,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Status
         /// </summary>
         [JsonPropertyName("status")]
-        public string? Status { get { return this.StatusOption; } set { this.StatusOption = new(value); } }
+        public string? Status { get { return this.StatusOption.Value; } set { this.StatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of UseEdGraphPowerBi
@@ -128,7 +128,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets UseEdGraphPowerBi
         /// </summary>
         [JsonPropertyName("useEdGraphPowerBi")]
-        public bool? UseEdGraphPowerBi { get { return this.UseEdGraphPowerBiOption; } set { this.UseEdGraphPowerBiOption = new(value); } }
+        public bool? UseEdGraphPowerBi { get { return this.UseEdGraphPowerBiOption.Value; } set { this.UseEdGraphPowerBiOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsGlobalConfiguration
@@ -141,7 +141,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IsGlobalConfiguration
         /// </summary>
         [JsonPropertyName("isGlobalConfiguration")]
-        public bool? IsGlobalConfiguration { get { return this.IsGlobalConfigurationOption; } set { this.IsGlobalConfigurationOption = new(value); } }
+        public bool? IsGlobalConfiguration { get { return this.IsGlobalConfigurationOption.Value; } set { this.IsGlobalConfigurationOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsDefaultTenantConfiguration
@@ -154,7 +154,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IsDefaultTenantConfiguration
         /// </summary>
         [JsonPropertyName("isDefaultTenantConfiguration")]
-        public bool? IsDefaultTenantConfiguration { get { return this.IsDefaultTenantConfigurationOption; } set { this.IsDefaultTenantConfigurationOption = new(value); } }
+        public bool? IsDefaultTenantConfiguration { get { return this.IsDefaultTenantConfigurationOption.Value; } set { this.IsDefaultTenantConfigurationOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AzureAd
@@ -167,7 +167,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AzureAd
         /// </summary>
         [JsonPropertyName("azureAd")]
-        public AnalyticsApiConfigurationsV1AnalyticsAzureAd? AzureAd { get { return this.AzureAdOption; } set { this.AzureAdOption = new(value); } }
+        public AnalyticsApiConfigurationsV1AnalyticsAzureAd? AzureAd { get { return this.AzureAdOption.Value; } set { this.AzureAdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of PowerBi
@@ -180,7 +180,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets PowerBi
         /// </summary>
         [JsonPropertyName("powerBi")]
-        public AnalyticsApiConfigurationsV1AnalyticsPowerBi? PowerBi { get { return this.PowerBiOption; } set { this.PowerBiOption = new(value); } }
+        public AnalyticsApiConfigurationsV1AnalyticsPowerBi? PowerBi { get { return this.PowerBiOption.Value; } set { this.PowerBiOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SelectedEdFiConnectionId
@@ -193,7 +193,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SelectedEdFiConnectionId
         /// </summary>
         [JsonPropertyName("selectedEdFiConnectionId")]
-        public string? SelectedEdFiConnectionId { get { return this.SelectedEdFiConnectionIdOption; } set { this.SelectedEdFiConnectionIdOption = new(value); } }
+        public string? SelectedEdFiConnectionId { get { return this.SelectedEdFiConnectionIdOption.Value; } set { this.SelectedEdFiConnectionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TriggerOptions
@@ -206,7 +206,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TriggerOptions
         /// </summary>
         [JsonPropertyName("triggerOptions")]
-        public List<AnalyticsApiConfigurationsV1AnalyticsTriggerOption>? TriggerOptions { get { return this.TriggerOptionsOption; } }
+        public List<AnalyticsApiConfigurationsV1AnalyticsTriggerOption>? TriggerOptions { get { return this.TriggerOptionsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of SchoolYears
@@ -219,7 +219,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SchoolYears
         /// </summary>
         [JsonPropertyName("schoolYears")]
-        public List<string>? SchoolYears { get { return this.SchoolYearsOption; } }
+        public List<string>? SchoolYears { get { return this.SchoolYearsOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -319,35 +319,28 @@ namespace EdGraph.Platform.Client.Model
                             status = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "useEdGraphPowerBi":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                useEdGraphPowerBi = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            useEdGraphPowerBi = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "isGlobalConfiguration":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isGlobalConfiguration = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isGlobalConfiguration = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "isDefaultTenantConfiguration":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isDefaultTenantConfiguration = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isDefaultTenantConfiguration = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "azureAd":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                azureAd = new Option<AnalyticsApiConfigurationsV1AnalyticsAzureAd?>(JsonSerializer.Deserialize<AnalyticsApiConfigurationsV1AnalyticsAzureAd>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            azureAd = new Option<AnalyticsApiConfigurationsV1AnalyticsAzureAd?>(JsonSerializer.Deserialize<AnalyticsApiConfigurationsV1AnalyticsAzureAd>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "powerBi":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                powerBi = new Option<AnalyticsApiConfigurationsV1AnalyticsPowerBi?>(JsonSerializer.Deserialize<AnalyticsApiConfigurationsV1AnalyticsPowerBi>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            powerBi = new Option<AnalyticsApiConfigurationsV1AnalyticsPowerBi?>(JsonSerializer.Deserialize<AnalyticsApiConfigurationsV1AnalyticsPowerBi>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "selectedEdFiConnectionId":
                             selectedEdFiConnectionId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "triggerOptions":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                triggerOptions = new Option<List<AnalyticsApiConfigurationsV1AnalyticsTriggerOption>?>(JsonSerializer.Deserialize<List<AnalyticsApiConfigurationsV1AnalyticsTriggerOption>>(ref utf8JsonReader, jsonSerializerOptions));
+                            triggerOptions = new Option<List<AnalyticsApiConfigurationsV1AnalyticsTriggerOption>?>(JsonSerializer.Deserialize<List<AnalyticsApiConfigurationsV1AnalyticsTriggerOption>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "schoolYears":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                schoolYears = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            schoolYears = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

@@ -76,7 +76,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InstanceId
@@ -89,7 +89,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceId
         /// </summary>
         [JsonPropertyName("instanceId")]
-        public string? InstanceId { get { return this.InstanceIdOption; } set { this.InstanceIdOption = new(value); } }
+        public string? InstanceId { get { return this.InstanceIdOption.Value; } set { this.InstanceIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApiClientId
@@ -102,7 +102,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApiClientId
         /// </summary>
         [JsonPropertyName("apiClientId")]
-        public int? ApiClientId { get { return this.ApiClientIdOption; } set { this.ApiClientIdOption = new(value); } }
+        public int? ApiClientId { get { return this.ApiClientIdOption.Value; } set { this.ApiClientIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Key
@@ -115,7 +115,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Key
         /// </summary>
         [JsonPropertyName("key")]
-        public string? Key { get { return this.KeyOption; } set { this.KeyOption = new(value); } }
+        public string? Key { get { return this.KeyOption.Value; } set { this.KeyOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Secret
@@ -128,7 +128,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Secret
         /// </summary>
         [JsonPropertyName("secret")]
-        public string? Secret { get { return this.SecretOption; } set { this.SecretOption = new(value); } }
+        public string? Secret { get { return this.SecretOption.Value; } set { this.SecretOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Name
@@ -141,7 +141,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Name
         /// </summary>
         [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption; } set { this.NameOption = new(value); } }
+        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsApproved
@@ -154,7 +154,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IsApproved
         /// </summary>
         [JsonPropertyName("isApproved")]
-        public bool? IsApproved { get { return this.IsApprovedOption; } set { this.IsApprovedOption = new(value); } }
+        public bool? IsApproved { get { return this.IsApprovedOption.Value; } set { this.IsApprovedOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of UseSandbox
@@ -167,7 +167,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets UseSandbox
         /// </summary>
         [JsonPropertyName("useSandbox")]
-        public bool? UseSandbox { get { return this.UseSandboxOption; } set { this.UseSandboxOption = new(value); } }
+        public bool? UseSandbox { get { return this.UseSandboxOption.Value; } set { this.UseSandboxOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SandboxType
@@ -180,7 +180,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SandboxType
         /// </summary>
         [JsonPropertyName("sandboxType")]
-        public int? SandboxType { get { return this.SandboxTypeOption; } set { this.SandboxTypeOption = new(value); } }
+        public int? SandboxType { get { return this.SandboxTypeOption.Value; } set { this.SandboxTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApplicationId
@@ -193,7 +193,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApplicationId
         /// </summary>
         [JsonPropertyName("applicationId")]
-        public int? ApplicationId { get { return this.ApplicationIdOption; } set { this.ApplicationIdOption = new(value); } }
+        public int? ApplicationId { get { return this.ApplicationIdOption.Value; } set { this.ApplicationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SecretIsHashed
@@ -206,7 +206,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SecretIsHashed
         /// </summary>
         [JsonPropertyName("secretIsHashed")]
-        public bool? SecretIsHashed { get { return this.SecretIsHashedOption; } set { this.SecretIsHashedOption = new(value); } }
+        public bool? SecretIsHashed { get { return this.SecretIsHashedOption.Value; } set { this.SecretIsHashedOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of KeyStatus
@@ -219,7 +219,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets KeyStatus
         /// </summary>
         [JsonPropertyName("keyStatus")]
-        public string? KeyStatus { get { return this.KeyStatusOption; } set { this.KeyStatusOption = new(value); } }
+        public string? KeyStatus { get { return this.KeyStatusOption.Value; } set { this.KeyStatusOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -313,8 +313,7 @@ namespace EdGraph.Platform.Client.Model
                             instanceId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "apiClientId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                apiClientId = new Option<int?>(utf8JsonReader.GetInt32());
+                            apiClientId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "key":
                             key = new Option<string?>(utf8JsonReader.GetString());
@@ -326,24 +325,19 @@ namespace EdGraph.Platform.Client.Model
                             name = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "isApproved":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isApproved = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isApproved = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "useSandbox":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                useSandbox = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            useSandbox = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "sandboxType":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                sandboxType = new Option<int?>(utf8JsonReader.GetInt32());
+                            sandboxType = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "applicationId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                applicationId = new Option<int?>(utf8JsonReader.GetInt32());
+                            applicationId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "secretIsHashed":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                secretIsHashed = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            secretIsHashed = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "keyStatus":
                             keyStatus = new Option<string?>(utf8JsonReader.GetString());

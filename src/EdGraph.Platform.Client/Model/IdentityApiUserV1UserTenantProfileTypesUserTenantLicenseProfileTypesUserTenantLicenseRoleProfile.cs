@@ -62,7 +62,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Role
         /// </summary>
         [JsonPropertyName("role")]
-        public string? Role { get { return this.RoleOption; } set { this.RoleOption = new(value); } }
+        public string? Role { get { return this.RoleOption.Value; } set { this.RoleOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsImplicitlyAssigned
@@ -75,7 +75,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IsImplicitlyAssigned
         /// </summary>
         [JsonPropertyName("isImplicitlyAssigned")]
-        public bool? IsImplicitlyAssigned { get { return this.IsImplicitlyAssignedOption; } set { this.IsImplicitlyAssignedOption = new(value); } }
+        public bool? IsImplicitlyAssigned { get { return this.IsImplicitlyAssignedOption.Value; } set { this.IsImplicitlyAssignedOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Status
@@ -88,7 +88,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Status
         /// </summary>
         [JsonPropertyName("status")]
-        public string? Status { get { return this.StatusOption; } set { this.StatusOption = new(value); } }
+        public string? Status { get { return this.StatusOption.Value; } set { this.StatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EducationOrganizationId
@@ -101,7 +101,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EducationOrganizationId
         /// </summary>
         [JsonPropertyName("educationOrganizationId")]
-        public int? EducationOrganizationId { get { return this.EducationOrganizationIdOption; } set { this.EducationOrganizationIdOption = new(value); } }
+        public int? EducationOrganizationId { get { return this.EducationOrganizationIdOption.Value; } set { this.EducationOrganizationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of StaffClassification
@@ -114,7 +114,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets StaffClassification
         /// </summary>
         [JsonPropertyName("staffClassification")]
-        public string? StaffClassification { get { return this.StaffClassificationOption; } set { this.StaffClassificationOption = new(value); } }
+        public string? StaffClassification { get { return this.StaffClassificationOption.Value; } set { this.StaffClassificationOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -191,15 +191,13 @@ namespace EdGraph.Platform.Client.Model
                             role = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "isImplicitlyAssigned":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isImplicitlyAssigned = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isImplicitlyAssigned = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "status":
                             status = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "educationOrganizationId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                educationOrganizationId = new Option<int?>(utf8JsonReader.GetInt32());
+                            educationOrganizationId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "staffClassification":
                             staffClassification = new Option<string?>(utf8JsonReader.GetString());

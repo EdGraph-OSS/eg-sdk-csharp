@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Direction
         /// </summary>
         [JsonPropertyName("direction")]
-        public TenantApiPartnershipV1PartnershipSyncDirection? Direction { get { return this.DirectionOption; } set { this.DirectionOption = new(value); } }
+        public TenantApiPartnershipV1PartnershipSyncDirection? Direction { get { return this.DirectionOption.Value; } set { this.DirectionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Enabled
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Enabled
         /// </summary>
         [JsonPropertyName("enabled")]
-        public bool? Enabled { get { return this.EnabledOption; } set { this.EnabledOption = new(value); } }
+        public bool? Enabled { get { return this.EnabledOption.Value; } set { this.EnabledOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SyncTypes
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SyncTypes
         /// </summary>
         [JsonPropertyName("syncTypes")]
-        public List<TenantApiPartnershipV1PartnershipSyncType>? SyncTypes { get { return this.SyncTypesOption; } }
+        public List<TenantApiPartnershipV1PartnershipSyncType>? SyncTypes { get { return this.SyncTypesOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -154,8 +154,7 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "enabled":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                enabled = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            enabled = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "direction":
                             string? directionRawValue = utf8JsonReader.GetString();
@@ -163,8 +162,7 @@ namespace EdGraph.Platform.Client.Model
                                 direction = new Option<TenantApiPartnershipV1PartnershipSyncDirection?>(TenantApiPartnershipV1PartnershipSyncDirectionValueConverter.FromStringOrDefault(directionRawValue));
                             break;
                         case "syncTypes":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                syncTypes = new Option<List<TenantApiPartnershipV1PartnershipSyncType>?>(JsonSerializer.Deserialize<List<TenantApiPartnershipV1PartnershipSyncType>>(ref utf8JsonReader, jsonSerializerOptions));
+                            syncTypes = new Option<List<TenantApiPartnershipV1PartnershipSyncType>?>(JsonSerializer.Deserialize<List<TenantApiPartnershipV1PartnershipSyncType>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

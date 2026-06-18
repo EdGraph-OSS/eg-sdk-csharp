@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets VendorId
         /// </summary>
         [JsonPropertyName("vendorId")]
-        public int? VendorId { get { return this.VendorIdOption; } set { this.VendorIdOption = new(value); } }
+        public int? VendorId { get { return this.VendorIdOption.Value; } set { this.VendorIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of VendorName
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets VendorName
         /// </summary>
         [JsonPropertyName("vendorName")]
-        public string? VendorName { get { return this.VendorNameOption; } set { this.VendorNameOption = new(value); } }
+        public string? VendorName { get { return this.VendorNameOption.Value; } set { this.VendorNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Applications
@@ -87,7 +87,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>TODO: Changed from application object to applicationId&#39;s to remove cyclic structure</value>
         [JsonPropertyName("applications")]
-        public List<int>? Applications { get { return this.ApplicationsOption; } }
+        public List<int>? Applications { get { return this.ApplicationsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of NamespacePrefixes
@@ -100,7 +100,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets NamespacePrefixes
         /// </summary>
         [JsonPropertyName("namespacePrefixes")]
-        public List<string>? NamespacePrefixes { get { return this.NamespacePrefixesOption; } }
+        public List<string>? NamespacePrefixes { get { return this.NamespacePrefixesOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -172,19 +172,16 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "vendorId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                vendorId = new Option<int?>(utf8JsonReader.GetInt32());
+                            vendorId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "vendorName":
                             vendorName = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "applications":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                applications = new Option<List<int>?>(JsonSerializer.Deserialize<List<int>>(ref utf8JsonReader, jsonSerializerOptions));
+                            applications = new Option<List<int>?>(JsonSerializer.Deserialize<List<int>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "namespacePrefixes":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                namespacePrefixes = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            namespacePrefixes = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

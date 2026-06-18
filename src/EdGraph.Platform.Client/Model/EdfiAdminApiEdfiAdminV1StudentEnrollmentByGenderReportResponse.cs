@@ -64,7 +64,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InstanceId
@@ -77,7 +77,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceId
         /// </summary>
         [JsonPropertyName("instanceId")]
-        public string? InstanceId { get { return this.InstanceIdOption; } set { this.InstanceIdOption = new(value); } }
+        public string? InstanceId { get { return this.InstanceIdOption.Value; } set { this.InstanceIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LocalEducationAgencyId
@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LocalEducationAgencyId
         /// </summary>
         [JsonPropertyName("localEducationAgencyId")]
-        public int? LocalEducationAgencyId { get { return this.LocalEducationAgencyIdOption; } set { this.LocalEducationAgencyIdOption = new(value); } }
+        public int? LocalEducationAgencyId { get { return this.LocalEducationAgencyIdOption.Value; } set { this.LocalEducationAgencyIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LocalEducationAgencyName
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LocalEducationAgencyName
         /// </summary>
         [JsonPropertyName("localEducationAgencyName")]
-        public string? LocalEducationAgencyName { get { return this.LocalEducationAgencyNameOption; } set { this.LocalEducationAgencyNameOption = new(value); } }
+        public string? LocalEducationAgencyName { get { return this.LocalEducationAgencyNameOption.Value; } set { this.LocalEducationAgencyNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TotalStudentCount
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TotalStudentCount
         /// </summary>
         [JsonPropertyName("totalStudentCount")]
-        public int? TotalStudentCount { get { return this.TotalStudentCountOption; } set { this.TotalStudentCountOption = new(value); } }
+        public int? TotalStudentCount { get { return this.TotalStudentCountOption.Value; } set { this.TotalStudentCountOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of GenderRepresentation
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets GenderRepresentation
         /// </summary>
         [JsonPropertyName("genderRepresentation")]
-        public List<EdfiAdminApiEdfiAdminV1GenderRepresentation>? GenderRepresentation { get { return this.GenderRepresentationOption; } }
+        public List<EdfiAdminApiEdfiAdminV1GenderRepresentation>? GenderRepresentation { get { return this.GenderRepresentationOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -211,19 +211,16 @@ namespace EdGraph.Platform.Client.Model
                             instanceId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "localEducationAgencyId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                localEducationAgencyId = new Option<int?>(utf8JsonReader.GetInt32());
+                            localEducationAgencyId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "localEducationAgencyName":
                             localEducationAgencyName = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "totalStudentCount":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                totalStudentCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            totalStudentCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "genderRepresentation":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                genderRepresentation = new Option<List<EdfiAdminApiEdfiAdminV1GenderRepresentation>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1GenderRepresentation>>(ref utf8JsonReader, jsonSerializerOptions));
+                            genderRepresentation = new Option<List<EdfiAdminApiEdfiAdminV1GenderRepresentation>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1GenderRepresentation>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

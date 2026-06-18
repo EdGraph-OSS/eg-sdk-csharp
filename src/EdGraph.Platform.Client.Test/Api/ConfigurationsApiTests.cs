@@ -61,7 +61,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<AnalyticsApiConfigurationsV1CreateConfigurationRequest> analyticsApiConfigurationsV1CreateConfigurationRequest = default!;
             var response = await _instance.CreateAnalyticsConfigurationAsyncAsync(tenantId, workspaceName, analyticsApiConfigurationsV1CreateConfigurationRequest);
             var model = response.Unauthorized();
-            Assert.IsType<AnalyticsApiConfigurationsV1AnalyticsConfiguration>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -72,7 +72,9 @@ namespace EdGraph.Platform.Client.Test.Api
         {
             string tenantId = default!;
             string configurationId = default!;
-            await _instance.DeleteAnalyticsConfigurationAsyncAsync(tenantId, configurationId);
+            var response = await _instance.DeleteAnalyticsConfigurationAsyncAsync(tenantId, configurationId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -88,7 +90,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetAllAnalyticsConfigurationsAsyncAsync(tenantId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<AnalyticsApiConfigurationsV1AnalyticsConfigurationPaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -101,7 +103,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string configurationId = default!;
             var response = await _instance.GetAnalyticsConfigurationByIdAsyncAsync(tenantId, configurationId);
             var model = response.Unauthorized();
-            Assert.IsType<AnalyticsApiConfigurationsV1AnalyticsConfiguration>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -113,7 +115,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string tenantId = default!;
             var response = await _instance.GetAnalyticsConfigurationByTenantIdAsyncAsync(tenantId);
             var model = response.Unauthorized();
-            Assert.IsType<AnalyticsApiConfigurationsV1AnalyticsConfiguration>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -125,7 +127,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string tenantId = default!;
             var response = await _instance.HasValidAnalyticsConfigurationAsyncAsync(tenantId);
             var model = response.Unauthorized();
-            Assert.IsType<AnalyticsApiConfigurationsV1HasValidConfigurationResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -139,7 +141,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<AnalyticsApiConfigurationsV1UpdateConfigurationRequest> analyticsApiConfigurationsV1UpdateConfigurationRequest = default!;
             var response = await _instance.UpdateAnalyticsConfigurationAsyncAsync(tenantId, configurationId, analyticsApiConfigurationsV1UpdateConfigurationRequest);
             var model = response.Unauthorized();
-            Assert.IsType<AnalyticsApiConfigurationsV1ConfigurationResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -152,7 +154,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<AnalyticsApiConfigurationsV1AnalyticsAzureAd> analyticsApiConfigurationsV1AnalyticsAzureAd = default!;
             var response = await _instance.ValidateAADTokenAsyncAsync(tenantId, analyticsApiConfigurationsV1AnalyticsAzureAd);
             var model = response.Unauthorized();
-            Assert.IsType<AnalyticsApiConfigurationsV1TestConnectionResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

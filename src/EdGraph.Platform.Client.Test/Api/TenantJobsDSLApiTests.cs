@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<DataSyncApiDslV1CreateJobRequest> dataSyncApiDslV1CreateJobRequest = default!;
             var response = await _instance.CreateDslJobAsync(tenantId, dataSyncApiDslV1CreateJobRequest);
             var model = response.Unauthorized();
-            Assert.IsType<DataSyncApiDslV1JobCreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid jobId = default!;
             var response = await _instance.ExecuteDslJobAsync(tenantId, jobId);
             var model = response.Unauthorized();
-            Assert.IsType<DataSyncApiDslV1DslJobExecutedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid jobId = default!;
             var response = await _instance.GetDslJobAsync(tenantId, jobId);
             var model = response.Unauthorized();
-            Assert.IsType<DataSyncApiDslV1DslProfile>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<DataSyncApiDslV1UpdateJobRequest> dataSyncApiDslV1UpdateJobRequest = default!;
             var response = await _instance.UpdateDslJobAsync(tenantId, jobId, dataSyncApiDslV1UpdateJobRequest);
             var model = response.Unauthorized();
-            Assert.IsType<Object>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

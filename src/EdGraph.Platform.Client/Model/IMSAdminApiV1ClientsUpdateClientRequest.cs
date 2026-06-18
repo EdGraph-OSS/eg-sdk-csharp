@@ -70,7 +70,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApplicationId
@@ -83,7 +83,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApplicationId
         /// </summary>
         [JsonPropertyName("applicationId")]
-        public string? ApplicationId { get { return this.ApplicationIdOption; } set { this.ApplicationIdOption = new(value); } }
+        public string? ApplicationId { get { return this.ApplicationIdOption.Value; } set { this.ApplicationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ClientId
@@ -96,7 +96,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ClientId
         /// </summary>
         [JsonPropertyName("clientId")]
-        public string? ClientId { get { return this.ClientIdOption; } set { this.ClientIdOption = new(value); } }
+        public string? ClientId { get { return this.ClientIdOption.Value; } set { this.ClientIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ClientName
@@ -109,7 +109,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ClientName
         /// </summary>
         [JsonPropertyName("clientName")]
-        public string? ClientName { get { return this.ClientNameOption; } set { this.ClientNameOption = new(value); } }
+        public string? ClientName { get { return this.ClientNameOption.Value; } set { this.ClientNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Description
@@ -122,7 +122,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Description
         /// </summary>
         [JsonPropertyName("description")]
-        public string? Description { get { return this.DescriptionOption; } set { this.DescriptionOption = new(value); } }
+        public string? Description { get { return this.DescriptionOption.Value; } set { this.DescriptionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Enabled
@@ -135,7 +135,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Enabled
         /// </summary>
         [JsonPropertyName("enabled")]
-        public bool? Enabled { get { return this.EnabledOption; } set { this.EnabledOption = new(value); } }
+        public bool? Enabled { get { return this.EnabledOption.Value; } set { this.EnabledOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AllowedScopes
@@ -148,7 +148,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AllowedScopes
         /// </summary>
         [JsonPropertyName("allowedScopes")]
-        public List<string>? AllowedScopes { get { return this.AllowedScopesOption; } }
+        public List<string>? AllowedScopes { get { return this.AllowedScopesOption.Value; } }
 
         /// <summary>
         /// Used to track the state of Claims
@@ -161,7 +161,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Claims
         /// </summary>
         [JsonPropertyName("claims")]
-        public List<IMSAdminApiV1ClientsClaim>? Claims { get { return this.ClaimsOption; } }
+        public List<IMSAdminApiV1ClientsClaim>? Claims { get { return this.ClaimsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of InstanceId
@@ -174,7 +174,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceId
         /// </summary>
         [JsonPropertyName("instanceId")]
-        public string? InstanceId { get { return this.InstanceIdOption; } set { this.InstanceIdOption = new(value); } }
+        public string? InstanceId { get { return this.InstanceIdOption.Value; } set { this.InstanceIdOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -271,16 +271,13 @@ namespace EdGraph.Platform.Client.Model
                             description = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "enabled":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                enabled = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            enabled = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "allowedScopes":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                allowedScopes = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            allowedScopes = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "claims":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                claims = new Option<List<IMSAdminApiV1ClientsClaim>?>(JsonSerializer.Deserialize<List<IMSAdminApiV1ClientsClaim>>(ref utf8JsonReader, jsonSerializerOptions));
+                            claims = new Option<List<IMSAdminApiV1ClientsClaim>?>(JsonSerializer.Deserialize<List<IMSAdminApiV1ClientsClaim>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "instanceId":
                             instanceId = new Option<string?>(utf8JsonReader.GetString());

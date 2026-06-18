@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ConnectionId
         /// </summary>
         [JsonPropertyName("connectionId")]
-        public string? ConnectionId { get { return this.ConnectionIdOption; } set { this.ConnectionIdOption = new(value); } }
+        public string? ConnectionId { get { return this.ConnectionIdOption.Value; } set { this.ConnectionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ProviderId
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ProviderId
         /// </summary>
         [JsonPropertyName("providerId")]
-        public string? ProviderId { get { return this.ProviderIdOption; } set { this.ProviderIdOption = new(value); } }
+        public string? ProviderId { get { return this.ProviderIdOption.Value; } set { this.ProviderIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ConnectionTypeId
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ConnectionTypeId
         /// </summary>
         [JsonPropertyName("connectionTypeId")]
-        public string? ConnectionTypeId { get { return this.ConnectionTypeIdOption; } set { this.ConnectionTypeIdOption = new(value); } }
+        public string? ConnectionTypeId { get { return this.ConnectionTypeIdOption.Value; } set { this.ConnectionTypeIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ConnectionMetadata
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ConnectionMetadata
         /// </summary>
         [JsonPropertyName("connectionMetadata")]
-        public List<DataSyncApiConnectionV1ConnectionMetadata>? ConnectionMetadata { get { return this.ConnectionMetadataOption; } }
+        public List<DataSyncApiConnectionV1ConnectionMetadata>? ConnectionMetadata { get { return this.ConnectionMetadataOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -180,8 +180,7 @@ namespace EdGraph.Platform.Client.Model
                             connectionTypeId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "connectionMetadata":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                connectionMetadata = new Option<List<DataSyncApiConnectionV1ConnectionMetadata>?>(JsonSerializer.Deserialize<List<DataSyncApiConnectionV1ConnectionMetadata>>(ref utf8JsonReader, jsonSerializerOptions));
+                            connectionMetadata = new Option<List<DataSyncApiConnectionV1ConnectionMetadata>?>(JsonSerializer.Deserialize<List<DataSyncApiConnectionV1ConnectionMetadata>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

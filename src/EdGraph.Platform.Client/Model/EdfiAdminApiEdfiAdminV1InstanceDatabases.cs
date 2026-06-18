@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Admin
         /// </summary>
         [JsonPropertyName("admin")]
-        public EdfiAdminApiEdfiAdminV1InstanceDatabase? Admin { get { return this.AdminOption; } set { this.AdminOption = new(value); } }
+        public EdfiAdminApiEdfiAdminV1InstanceDatabase? Admin { get { return this.AdminOption.Value; } set { this.AdminOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Security
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Security
         /// </summary>
         [JsonPropertyName("security")]
-        public EdfiAdminApiEdfiAdminV1InstanceDatabase? Security { get { return this.SecurityOption; } set { this.SecurityOption = new(value); } }
+        public EdfiAdminApiEdfiAdminV1InstanceDatabase? Security { get { return this.SecurityOption.Value; } set { this.SecurityOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Ods
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Ods
         /// </summary>
         [JsonPropertyName("ods")]
-        public List<EdfiAdminApiEdfiAdminV1InstanceOdsDatabase>? Ods { get { return this.OdsOption; } }
+        public List<EdfiAdminApiEdfiAdminV1InstanceOdsDatabase>? Ods { get { return this.OdsOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -154,16 +154,13 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "admin":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                admin = new Option<EdfiAdminApiEdfiAdminV1InstanceDatabase?>(JsonSerializer.Deserialize<EdfiAdminApiEdfiAdminV1InstanceDatabase>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            admin = new Option<EdfiAdminApiEdfiAdminV1InstanceDatabase?>(JsonSerializer.Deserialize<EdfiAdminApiEdfiAdminV1InstanceDatabase>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "security":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                security = new Option<EdfiAdminApiEdfiAdminV1InstanceDatabase?>(JsonSerializer.Deserialize<EdfiAdminApiEdfiAdminV1InstanceDatabase>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            security = new Option<EdfiAdminApiEdfiAdminV1InstanceDatabase?>(JsonSerializer.Deserialize<EdfiAdminApiEdfiAdminV1InstanceDatabase>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "ods":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                ods = new Option<List<EdfiAdminApiEdfiAdminV1InstanceOdsDatabase>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1InstanceOdsDatabase>>(ref utf8JsonReader, jsonSerializerOptions));
+                            ods = new Option<List<EdfiAdminApiEdfiAdminV1InstanceOdsDatabase>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1InstanceOdsDatabase>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

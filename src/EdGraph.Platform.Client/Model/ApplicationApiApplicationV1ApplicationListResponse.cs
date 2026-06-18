@@ -82,7 +82,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApplicationStatus
         /// </summary>
         [JsonPropertyName("applicationStatus")]
-        public ApplicationApiApplicationV1ApplicationStatus? ApplicationStatus { get { return this.ApplicationStatusOption; } set { this.ApplicationStatusOption = new(value); } }
+        public ApplicationApiApplicationV1ApplicationStatus? ApplicationStatus { get { return this.ApplicationStatusOption.Value; } set { this.ApplicationStatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SubscriptionType
@@ -95,7 +95,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SubscriptionType
         /// </summary>
         [JsonPropertyName("subscriptionType")]
-        public ApplicationApiApplicationV1ApplicationSubscriptionType? SubscriptionType { get { return this.SubscriptionTypeOption; } set { this.SubscriptionTypeOption = new(value); } }
+        public ApplicationApiApplicationV1ApplicationSubscriptionType? SubscriptionType { get { return this.SubscriptionTypeOption.Value; } set { this.SubscriptionTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -108,7 +108,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApplicationId
@@ -121,7 +121,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApplicationId
         /// </summary>
         [JsonPropertyName("applicationId")]
-        public string? ApplicationId { get { return this.ApplicationIdOption; } set { this.ApplicationIdOption = new(value); } }
+        public string? ApplicationId { get { return this.ApplicationIdOption.Value; } set { this.ApplicationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApplicationName
@@ -134,7 +134,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApplicationName
         /// </summary>
         [JsonPropertyName("applicationName")]
-        public string? ApplicationName { get { return this.ApplicationNameOption; } set { this.ApplicationNameOption = new(value); } }
+        public string? ApplicationName { get { return this.ApplicationNameOption.Value; } set { this.ApplicationNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of VarVersion
@@ -147,7 +147,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets VarVersion
         /// </summary>
         [JsonPropertyName("version")]
-        public string? VarVersion { get { return this.VarVersionOption; } set { this.VarVersionOption = new(value); } }
+        public string? VarVersion { get { return this.VarVersionOption.Value; } set { this.VarVersionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Tags
@@ -160,7 +160,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Tags
         /// </summary>
         [JsonPropertyName("tags")]
-        public string? Tags { get { return this.TagsOption; } set { this.TagsOption = new(value); } }
+        public string? Tags { get { return this.TagsOption.Value; } set { this.TagsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Groups
@@ -173,7 +173,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Groups
         /// </summary>
         [JsonPropertyName("groups")]
-        public string? Groups { get { return this.GroupsOption; } set { this.GroupsOption = new(value); } }
+        public string? Groups { get { return this.GroupsOption.Value; } set { this.GroupsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Roles
@@ -186,7 +186,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Roles
         /// </summary>
         [JsonPropertyName("roles")]
-        public List<ApplicationApiApplicationV1Role>? Roles { get { return this.RolesOption; } }
+        public List<ApplicationApiApplicationV1Role>? Roles { get { return this.RolesOption.Value; } }
 
         /// <summary>
         /// Used to track the state of CreatedBy
@@ -199,7 +199,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedBy
         /// </summary>
         [JsonPropertyName("createdBy")]
-        public string? CreatedBy { get { return this.CreatedByOption; } set { this.CreatedByOption = new(value); } }
+        public string? CreatedBy { get { return this.CreatedByOption.Value; } set { this.CreatedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedDateTime
@@ -212,7 +212,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedDateTime
         /// </summary>
         [JsonPropertyName("createdDateTime")]
-        public string? CreatedDateTime { get { return this.CreatedDateTimeOption; } set { this.CreatedDateTimeOption = new(value); } }
+        public string? CreatedDateTime { get { return this.CreatedDateTimeOption.Value; } set { this.CreatedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedBy
@@ -225,7 +225,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedBy
         /// </summary>
         [JsonPropertyName("lastModifiedBy")]
-        public string? LastModifiedBy { get { return this.LastModifiedByOption; } set { this.LastModifiedByOption = new(value); } }
+        public string? LastModifiedBy { get { return this.LastModifiedByOption.Value; } set { this.LastModifiedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedDateTime
@@ -238,7 +238,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedDateTime
         /// </summary>
         [JsonPropertyName("lastModifiedDateTime")]
-        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption; } set { this.LastModifiedDateTimeOption = new(value); } }
+        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption.Value; } set { this.LastModifiedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DeletedAt
@@ -251,7 +251,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DeletedAt
         /// </summary>
         [JsonPropertyName("deletedAt")]
-        public string? DeletedAt { get { return this.DeletedAtOption; } set { this.DeletedAtOption = new(value); } }
+        public string? DeletedAt { get { return this.DeletedAtOption.Value; } set { this.DeletedAtOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DocumentationUrl
@@ -264,7 +264,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DocumentationUrl
         /// </summary>
         [JsonPropertyName("documentationUrl")]
-        public string? DocumentationUrl { get { return this.DocumentationUrlOption; } set { this.DocumentationUrlOption = new(value); } }
+        public string? DocumentationUrl { get { return this.DocumentationUrlOption.Value; } set { this.DocumentationUrlOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -381,8 +381,7 @@ namespace EdGraph.Platform.Client.Model
                                 applicationStatus = new Option<ApplicationApiApplicationV1ApplicationStatus?>(ApplicationApiApplicationV1ApplicationStatusValueConverter.FromStringOrDefault(applicationStatusRawValue));
                             break;
                         case "roles":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                roles = new Option<List<ApplicationApiApplicationV1Role>?>(JsonSerializer.Deserialize<List<ApplicationApiApplicationV1Role>>(ref utf8JsonReader, jsonSerializerOptions));
+                            roles = new Option<List<ApplicationApiApplicationV1Role>?>(JsonSerializer.Deserialize<List<ApplicationApiApplicationV1Role>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "createdBy":
                             createdBy = new Option<string?>(utf8JsonReader.GetString());

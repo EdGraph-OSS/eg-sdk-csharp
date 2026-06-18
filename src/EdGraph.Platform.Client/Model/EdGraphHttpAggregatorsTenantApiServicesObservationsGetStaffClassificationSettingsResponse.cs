@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Namespaces
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Namespaces
         /// </summary>
         [JsonPropertyName("namespaces")]
-        public List<EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceConfiguration>? Namespaces { get { return this.NamespacesOption; } set { this.NamespacesOption = new(value); } }
+        public List<EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceConfiguration>? Namespaces { get { return this.NamespacesOption.Value; } set { this.NamespacesOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -140,8 +140,7 @@ namespace EdGraph.Platform.Client.Model
                             tenantId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "namespaces":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                namespaces = new Option<List<EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceConfiguration>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceConfiguration>>(ref utf8JsonReader, jsonSerializerOptions));
+                            namespaces = new Option<List<EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceConfiguration>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceConfiguration>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

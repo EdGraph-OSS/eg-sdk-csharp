@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EmbedToken
         /// </summary>
         [JsonPropertyName("embedToken")]
-        public AnalyticsApiReportsV1AnalyticsEmbedToken? EmbedToken { get { return this.EmbedTokenOption; } set { this.EmbedTokenOption = new(value); } }
+        public AnalyticsApiReportsV1AnalyticsEmbedToken? EmbedToken { get { return this.EmbedTokenOption.Value; } set { this.EmbedTokenOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Report
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Report
         /// </summary>
         [JsonPropertyName("report")]
-        public AnalyticsApiReportsV1AnalyticsReport? Report { get { return this.ReportOption; } set { this.ReportOption = new(value); } }
+        public AnalyticsApiReportsV1AnalyticsReport? Report { get { return this.ReportOption.Value; } set { this.ReportOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -137,12 +137,10 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "embedToken":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                embedToken = new Option<AnalyticsApiReportsV1AnalyticsEmbedToken?>(JsonSerializer.Deserialize<AnalyticsApiReportsV1AnalyticsEmbedToken>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            embedToken = new Option<AnalyticsApiReportsV1AnalyticsEmbedToken?>(JsonSerializer.Deserialize<AnalyticsApiReportsV1AnalyticsEmbedToken>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "report":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                report = new Option<AnalyticsApiReportsV1AnalyticsReport?>(JsonSerializer.Deserialize<AnalyticsApiReportsV1AnalyticsReport>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            report = new Option<AnalyticsApiReportsV1AnalyticsReport?>(JsonSerializer.Deserialize<AnalyticsApiReportsV1AnalyticsReport>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

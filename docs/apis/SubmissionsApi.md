@@ -17,66 +17,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Creates a new Submission for a given question
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CreateSubmissionExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new SubmissionsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var formId = "formId_example";  // Guid | 
-            var formApiSubmissionsV1CreateSubmissionRequest = new FormApiSubmissionsV1CreateSubmissionRequest(); // FormApiSubmissionsV1CreateSubmissionRequest |  (optional) 
-
-            try
-            {
-                // Creates a new Submission for a given question
-                FormApiSubmissionsV1SubmissionCreatedResponse result = apiInstance.CreateSubmission(tenantId, formId, formApiSubmissionsV1CreateSubmissionRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling SubmissionsApi.CreateSubmission: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateSubmissionWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates a new Submission for a given question
-    ApiResponse<FormApiSubmissionsV1SubmissionCreatedResponse> response = apiInstance.CreateSubmissionWithHttpInfo(tenantId, formId, formApiSubmissionsV1CreateSubmissionRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling SubmissionsApi.CreateSubmissionWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -117,66 +57,6 @@ catch (ApiException e)
 
 Deletes a Submission.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class DeleteSubmissionExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new SubmissionsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var formId = "formId_example";  // Guid | 
-            var submissionId = "submissionId_example";  // Guid | 
-
-            try
-            {
-                // Deletes a Submission.
-                FormApiSubmissionsV1SubmissionDeletedResponse result = apiInstance.DeleteSubmission(tenantId, formId, submissionId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling SubmissionsApi.DeleteSubmission: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeleteSubmissionWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Deletes a Submission.
-    ApiResponse<FormApiSubmissionsV1SubmissionDeletedResponse> response = apiInstance.DeleteSubmissionWithHttpInfo(tenantId, formId, submissionId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling SubmissionsApi.DeleteSubmissionWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -218,66 +98,6 @@ catch (ApiException e)
 
 Exports Submission data for a Form for a given tenant. (With JSON and CSV support)
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class ExportSubmissionsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new SubmissionsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var formId = "formId_example";  // Guid | 
-            var type = (FormApiSubmissionsV1ExportType) "Unknown";  // FormApiSubmissionsV1ExportType |  (optional) 
-
-            try
-            {
-                // Exports Submission data for a Form for a given tenant. (With JSON and CSV support)
-                FormApiSubmissionsV1SubmissionsExportedResponse result = apiInstance.ExportSubmissions(tenantId, formId, type);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling SubmissionsApi.ExportSubmissions: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the ExportSubmissionsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Exports Submission data for a Form for a given tenant. (With JSON and CSV support)
-    ApiResponse<FormApiSubmissionsV1SubmissionsExportedResponse> response = apiInstance.ExportSubmissionsWithHttpInfo(tenantId, formId, type);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling SubmissionsApi.ExportSubmissionsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -319,66 +139,6 @@ catch (ApiException e)
 
 Get Submission.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetSubmissionExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new SubmissionsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var formId = "formId_example";  // Guid | 
-            var submissionId = "submissionId_example";  // Guid | 
-
-            try
-            {
-                // Get Submission.
-                FormApiSubmissionsV1SubmissionResponse result = apiInstance.GetSubmission(tenantId, formId, submissionId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling SubmissionsApi.GetSubmission: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetSubmissionWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Get Submission.
-    ApiResponse<FormApiSubmissionsV1SubmissionResponse> response = apiInstance.GetSubmissionWithHttpInfo(tenantId, formId, submissionId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling SubmissionsApi.GetSubmissionWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -420,69 +180,6 @@ catch (ApiException e)
 
 Search Submissions
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SearchSubmissionsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new SubmissionsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var formId = "formId_example";  // Guid | 
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Search Submissions
-                FormApiSubmissionsV1SubmissionResponsePaginatedItemsViewModel result = apiInstance.SearchSubmissions(tenantId, formId, pageSize, pageIndex, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling SubmissionsApi.SearchSubmissions: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SearchSubmissionsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Search Submissions
-    ApiResponse<FormApiSubmissionsV1SubmissionResponsePaginatedItemsViewModel> response = apiInstance.SearchSubmissionsWithHttpInfo(tenantId, formId, pageSize, pageIndex, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling SubmissionsApi.SearchSubmissionsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -526,67 +223,6 @@ catch (ApiException e)
 
 Updates a Submission.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateSubmissionExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new SubmissionsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var formId = "formId_example";  // Guid | 
-            var submissionId = "submissionId_example";  // Guid | 
-            var formApiSubmissionsV1UpdateSubmissionRequest = new FormApiSubmissionsV1UpdateSubmissionRequest(); // FormApiSubmissionsV1UpdateSubmissionRequest |  (optional) 
-
-            try
-            {
-                // Updates a Submission.
-                FormApiSubmissionsV1SubmissionUpdatedResponse result = apiInstance.UpdateSubmission(tenantId, formId, submissionId, formApiSubmissionsV1UpdateSubmissionRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling SubmissionsApi.UpdateSubmission: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateSubmissionWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates a Submission.
-    ApiResponse<FormApiSubmissionsV1SubmissionUpdatedResponse> response = apiInstance.UpdateSubmissionWithHttpInfo(tenantId, formId, submissionId, formApiSubmissionsV1UpdateSubmissionRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling SubmissionsApi.UpdateSubmissionWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

@@ -14,66 +14,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Gets a list of applications available for registration/onboarding
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetOnboardingApplicationsAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new RegistrationsApi(config);
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Gets a list of applications available for registration/onboarding
-                ApplicationApiApplicationV1PaginatedItemsResponse result = apiInstance.GetOnboardingApplicationsAsync(pageSize, pageIndex, orderBy);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling RegistrationsApi.GetOnboardingApplicationsAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetOnboardingApplicationsAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Gets a list of applications available for registration/onboarding
-    ApiResponse<ApplicationApiApplicationV1PaginatedItemsResponse> response = apiInstance.GetOnboardingApplicationsAsyncWithHttpInfo(pageSize, pageIndex, orderBy);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling RegistrationsApi.GetOnboardingApplicationsAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -114,64 +54,6 @@ catch (ApiException e)
 
 Gets the approval status of a registration
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetRegistrationApprovalStatusAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new RegistrationsApi(config);
-            var registrationId = "registrationId_example";  // string | 
-
-            try
-            {
-                // Gets the approval status of a registration
-                RegistrationApiRegistrationV2ApprovalStatus result = apiInstance.GetRegistrationApprovalStatusAsync(registrationId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling RegistrationsApi.GetRegistrationApprovalStatusAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetRegistrationApprovalStatusAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Gets the approval status of a registration
-    ApiResponse<RegistrationApiRegistrationV2ApprovalStatus> response = apiInstance.GetRegistrationApprovalStatusAsyncWithHttpInfo(registrationId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling RegistrationsApi.GetRegistrationApprovalStatusAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -210,64 +92,6 @@ catch (ApiException e)
 
 Submits a tenant's registration request
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SubmitTenantRegistrationAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new RegistrationsApi(config);
-            var registrationApiRegistrationV2SubmitTenantRegistrationRequest = new RegistrationApiRegistrationV2SubmitTenantRegistrationRequest(); // RegistrationApiRegistrationV2SubmitTenantRegistrationRequest |  (optional) 
-
-            try
-            {
-                // Submits a tenant's registration request
-                string result = apiInstance.SubmitTenantRegistrationAsync(registrationApiRegistrationV2SubmitTenantRegistrationRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling RegistrationsApi.SubmitTenantRegistrationAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SubmitTenantRegistrationAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Submits a tenant's registration request
-    ApiResponse<string> response = apiInstance.SubmitTenantRegistrationAsyncWithHttpInfo(registrationApiRegistrationV2SubmitTenantRegistrationRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling RegistrationsApi.SubmitTenantRegistrationAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

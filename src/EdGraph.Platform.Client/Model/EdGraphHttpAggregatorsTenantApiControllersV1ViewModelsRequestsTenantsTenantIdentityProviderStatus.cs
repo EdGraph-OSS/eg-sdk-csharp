@@ -145,7 +145,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviderStatus edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviderStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviderStatus.ToString());
+            writer.WriteStringValue(EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviderStatusValueConverter.ToJsonValue(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviderStatus).ToString());
         }
     }
 
@@ -176,14 +176,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviderStatus to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviderStatus"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviderStatus? edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviderStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviderStatus?.ToString() ?? "null");
+            writer.WriteStringValue(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviderStatus.HasValue ? EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviderStatusValueConverter.ToJsonValue(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviderStatus.Value).ToString() : "null");
         }
     }
 }

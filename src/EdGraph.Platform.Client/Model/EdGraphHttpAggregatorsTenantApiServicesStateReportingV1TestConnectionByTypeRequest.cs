@@ -76,7 +76,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Type
@@ -89,7 +89,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Type
         /// </summary>
         [JsonPropertyName("type")]
-        public string? Type { get { return this.TypeOption; } set { this.TypeOption = new(value); } }
+        public string? Type { get { return this.TypeOption.Value; } set { this.TypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -102,7 +102,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EnvironmentId
@@ -115,7 +115,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EnvironmentId
         /// </summary>
         [JsonPropertyName("environmentId")]
-        public Guid? EnvironmentId { get { return this.EnvironmentIdOption; } set { this.EnvironmentIdOption = new(value); } }
+        public Guid? EnvironmentId { get { return this.EnvironmentIdOption.Value; } set { this.EnvironmentIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Server
@@ -128,7 +128,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Server
         /// </summary>
         [JsonPropertyName("server")]
-        public string? Server { get { return this.ServerOption; } set { this.ServerOption = new(value); } }
+        public string? Server { get { return this.ServerOption.Value; } set { this.ServerOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Username
@@ -141,7 +141,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Username
         /// </summary>
         [JsonPropertyName("username")]
-        public string? Username { get { return this.UsernameOption; } set { this.UsernameOption = new(value); } }
+        public string? Username { get { return this.UsernameOption.Value; } set { this.UsernameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Database
@@ -154,7 +154,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Database
         /// </summary>
         [JsonPropertyName("database")]
-        public string? Database { get { return this.DatabaseOption; } set { this.DatabaseOption = new(value); } }
+        public string? Database { get { return this.DatabaseOption.Value; } set { this.DatabaseOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Password
@@ -167,7 +167,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Password
         /// </summary>
         [JsonPropertyName("password")]
-        public string? Password { get { return this.PasswordOption; } set { this.PasswordOption = new(value); } }
+        public string? Password { get { return this.PasswordOption.Value; } set { this.PasswordOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AuthUrl
@@ -180,7 +180,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AuthUrl
         /// </summary>
         [JsonPropertyName("authUrl")]
-        public string? AuthUrl { get { return this.AuthUrlOption; } set { this.AuthUrlOption = new(value); } }
+        public string? AuthUrl { get { return this.AuthUrlOption.Value; } set { this.AuthUrlOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ResourcesUrl
@@ -193,7 +193,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ResourcesUrl
         /// </summary>
         [JsonPropertyName("resourcesUrl")]
-        public string? ResourcesUrl { get { return this.ResourcesUrlOption; } set { this.ResourcesUrlOption = new(value); } }
+        public string? ResourcesUrl { get { return this.ResourcesUrlOption.Value; } set { this.ResourcesUrlOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApiKey
@@ -206,7 +206,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApiKey
         /// </summary>
         [JsonPropertyName("apiKey")]
-        public string? ApiKey { get { return this.ApiKeyOption; } set { this.ApiKeyOption = new(value); } }
+        public string? ApiKey { get { return this.ApiKeyOption.Value; } set { this.ApiKeyOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApiSecret
@@ -219,7 +219,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApiSecret
         /// </summary>
         [JsonPropertyName("apiSecret")]
-        public string? ApiSecret { get { return this.ApiSecretOption; } set { this.ApiSecretOption = new(value); } }
+        public string? ApiSecret { get { return this.ApiSecretOption.Value; } set { this.ApiSecretOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -316,8 +316,7 @@ namespace EdGraph.Platform.Client.Model
                             tenantId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "environmentId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                environmentId = new Option<Guid?>(utf8JsonReader.GetGuid());
+                            environmentId = new Option<Guid?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (Guid?)null : utf8JsonReader.GetGuid());
                             break;
                         case "server":
                             server = new Option<string?>(utf8JsonReader.GetString());

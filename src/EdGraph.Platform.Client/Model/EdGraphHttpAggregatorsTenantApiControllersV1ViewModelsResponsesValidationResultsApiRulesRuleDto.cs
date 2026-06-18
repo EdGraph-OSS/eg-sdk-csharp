@@ -76,7 +76,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RuleId
         /// </summary>
         [JsonPropertyName("ruleId")]
-        public string? RuleId { get { return this.RuleIdOption; } set { this.RuleIdOption = new(value); } }
+        public string? RuleId { get { return this.RuleIdOption.Value; } set { this.RuleIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RunId
@@ -89,7 +89,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RunId
         /// </summary>
         [JsonPropertyName("runId")]
-        public string? RunId { get { return this.RunIdOption; } set { this.RunIdOption = new(value); } }
+        public string? RunId { get { return this.RunIdOption.Value; } set { this.RunIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Source
@@ -102,7 +102,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Source
         /// </summary>
         [JsonPropertyName("source")]
-        public string? Source { get { return this.SourceOption; } set { this.SourceOption = new(value); } }
+        public string? Source { get { return this.SourceOption.Value; } set { this.SourceOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Name
@@ -115,7 +115,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Name
         /// </summary>
         [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption; } set { this.NameOption = new(value); } }
+        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Description
@@ -128,7 +128,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Description
         /// </summary>
         [JsonPropertyName("description")]
-        public string? Description { get { return this.DescriptionOption; } set { this.DescriptionOption = new(value); } }
+        public string? Description { get { return this.DescriptionOption.Value; } set { this.DescriptionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ShortDescription
@@ -141,7 +141,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ShortDescription
         /// </summary>
         [JsonPropertyName("shortDescription")]
-        public string? ShortDescription { get { return this.ShortDescriptionOption; } set { this.ShortDescriptionOption = new(value); } }
+        public string? ShortDescription { get { return this.ShortDescriptionOption.Value; } set { this.ShortDescriptionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Resolution
@@ -154,7 +154,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Resolution
         /// </summary>
         [JsonPropertyName("resolution")]
-        public string? Resolution { get { return this.ResolutionOption; } set { this.ResolutionOption = new(value); } }
+        public string? Resolution { get { return this.ResolutionOption.Value; } set { this.ResolutionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Status
@@ -167,7 +167,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Status
         /// </summary>
         [JsonPropertyName("status")]
-        public string? Status { get { return this.StatusOption; } set { this.StatusOption = new(value); } }
+        public string? Status { get { return this.StatusOption.Value; } set { this.StatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Category
@@ -180,7 +180,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Category
         /// </summary>
         [JsonPropertyName("category")]
-        public string? Category { get { return this.CategoryOption; } set { this.CategoryOption = new(value); } }
+        public string? Category { get { return this.CategoryOption.Value; } set { this.CategoryOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TotalCount
@@ -193,7 +193,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TotalCount
         /// </summary>
         [JsonPropertyName("totalCount")]
-        public int? TotalCount { get { return this.TotalCountOption; } set { this.TotalCountOption = new(value); } }
+        public int? TotalCount { get { return this.TotalCountOption.Value; } set { this.TotalCountOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ExceptionCount
@@ -206,7 +206,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ExceptionCount
         /// </summary>
         [JsonPropertyName("exceptionCount")]
-        public int? ExceptionCount { get { return this.ExceptionCountOption; } set { this.ExceptionCountOption = new(value); } }
+        public int? ExceptionCount { get { return this.ExceptionCountOption.Value; } set { this.ExceptionCountOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RuleIdentification
@@ -219,7 +219,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RuleIdentification
         /// </summary>
         [JsonPropertyName("ruleIdentification")]
-        public string? RuleIdentification { get { return this.RuleIdentificationOption; } set { this.RuleIdentificationOption = new(value); } }
+        public string? RuleIdentification { get { return this.RuleIdentificationOption.Value; } set { this.RuleIdentificationOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -334,12 +334,10 @@ namespace EdGraph.Platform.Client.Model
                             category = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "totalCount":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                totalCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            totalCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "exceptionCount":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                exceptionCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            exceptionCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "ruleIdentification":
                             ruleIdentification = new Option<string?>(utf8JsonReader.GetString());

@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EvaluationApiEvaluationsV1CreateEvaluationRequest> evaluationApiEvaluationsV1CreateEvaluationRequest = default!;
             var response = await _instance.CreateEvaluationAsync(tenantId, evaluationApiEvaluationsV1CreateEvaluationRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EvaluationApiEvaluationsV1EvaluationCreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid evaluationId = default!;
             var response = await _instance.DeleteEvaluationAsync(tenantId, evaluationId);
             var model = response.Unauthorized();
-            Assert.IsType<EvaluationApiEvaluationsV1EvaluationDeletedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid evaluationId = default!;
             var response = await _instance.GetEvaluationAsync(tenantId, evaluationId);
             var model = response.Unauthorized();
-            Assert.IsType<EvaluationApiEvaluationsV1EvaluationResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid tenantId = default!;
             var response = await _instance.GetEvaluationCountAsync(tenantId);
             var model = response.Unauthorized();
-            Assert.IsType<EvaluationApiEvaluationsV1EvaluationCountResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.SearchEvaluationAppraisersAsync(tenantId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsAppraisersSearchedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -130,7 +130,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.SearchEvaluationCampusesAsync(tenantId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<EvaluationApiEvaluationsV1CampusResponsePaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.SearchEvaluationFormsAsync(tenantId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<EvaluationApiEvaluationsV1FormResponsePaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -162,7 +162,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.SearchEvaluationStaffAsync(tenantId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEvaluationsStaffSearchedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -178,7 +178,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.SearchEvaluationsAsync(tenantId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<EvaluationApiEvaluationsV1EvaluationResponsePaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EvaluationApiEvaluationsV1UpdateEvaluationRequest> evaluationApiEvaluationsV1UpdateEvaluationRequest = default!;
             var response = await _instance.UpdateEvaluationAsync(tenantId, evaluationId, evaluationApiEvaluationsV1UpdateEvaluationRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EvaluationApiEvaluationsV1EvaluationUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

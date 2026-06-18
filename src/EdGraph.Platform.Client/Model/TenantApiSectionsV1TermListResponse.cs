@@ -54,7 +54,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TermDescriptor
         /// </summary>
         [JsonPropertyName("termDescriptor")]
-        public string? TermDescriptor { get { return this.TermDescriptorOption; } set { this.TermDescriptorOption = new(value); } }
+        public string? TermDescriptor { get { return this.TermDescriptorOption.Value; } set { this.TermDescriptorOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

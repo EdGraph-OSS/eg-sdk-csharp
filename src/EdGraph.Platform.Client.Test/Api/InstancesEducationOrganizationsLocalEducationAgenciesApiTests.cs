@@ -62,7 +62,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequest> edfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequest = default!;
             var response = await _instance.CreateLocalEducationAgencyAsyncAsync(tenantId, instanceId, year, edfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1LocalEducationAgencyCreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -75,7 +75,9 @@ namespace EdGraph.Platform.Client.Test.Api
             string instanceId = default!;
             int year = default!;
             string localEducationAgencyId = default!;
-            await _instance.DeleteLocalEducationAgencyAsyncAsync(tenantId, instanceId, year, localEducationAgencyId);
+            var response = await _instance.DeleteLocalEducationAgencyAsyncAsync(tenantId, instanceId, year, localEducationAgencyId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -90,7 +92,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string localEducationAgencyId = default!;
             var response = await _instance.GetLocalEducationAgencyByIdAsyncAsync(tenantId, instanceId, year, localEducationAgencyId);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1GetLocalEducationAgencyProfileResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -108,7 +110,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetlLocalEducationAgenciesAsyncAsync(tenantId, instanceId, year, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1LocalEducationAgencyTableViewResponsePaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -124,7 +126,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdfiAdminApiEdfiAdminV1SyncLocalEducationAgencyRequest> edfiAdminApiEdfiAdminV1SyncLocalEducationAgencyRequest = default!;
             var response = await _instance.SyncLocalEducationAgencyAsyncAsync(tenantId, instanceId, year, localEducationAgencyId, edfiAdminApiEdfiAdminV1SyncLocalEducationAgencyRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1SyncResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -138,7 +140,9 @@ namespace EdGraph.Platform.Client.Test.Api
             int year = default!;
             string localEducationAgencyId = default!;
             Client.Option<EdfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequest> edfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequest = default!;
-            await _instance.UpdateLocalEducationAgencyAsyncAsync(tenantId, instanceId, year, localEducationAgencyId, edfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequest);
+            var response = await _instance.UpdateLocalEducationAgencyAsyncAsync(tenantId, instanceId, year, localEducationAgencyId, edfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

@@ -54,7 +54,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ModelEntityDescriptor
         /// </summary>
         [JsonPropertyName("modelEntityDescriptor")]
-        public string? ModelEntityDescriptor { get { return this.ModelEntityDescriptorOption; } set { this.ModelEntityDescriptorOption = new(value); } }
+        public string? ModelEntityDescriptor { get { return this.ModelEntityDescriptorOption.Value; } set { this.ModelEntityDescriptorOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

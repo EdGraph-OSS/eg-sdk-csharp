@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Name
         /// </summary>
         [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption; } set { this.NameOption = new(value); } }
+        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of VarVersion
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets VarVersion
         /// </summary>
         [JsonPropertyName("version")]
-        public string? VarVersion { get { return this.VarVersionOption; } set { this.VarVersionOption = new(value); } }
+        public string? VarVersion { get { return this.VarVersionOption.Value; } set { this.VarVersionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InformationalVersion
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InformationalVersion
         /// </summary>
         [JsonPropertyName("informationalVersion")]
-        public string? InformationalVersion { get { return this.InformationalVersionOption; } set { this.InformationalVersionOption = new(value); } }
+        public string? InformationalVersion { get { return this.InformationalVersionOption.Value; } set { this.InformationalVersionOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

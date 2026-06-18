@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AzureTenantId
         /// </summary>
         [JsonPropertyName("azureTenantId")]
-        public string? AzureTenantId { get { return this.AzureTenantIdOption; } set { this.AzureTenantIdOption = new(value); } }
+        public string? AzureTenantId { get { return this.AzureTenantIdOption.Value; } set { this.AzureTenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of VarClient
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets VarClient
         /// </summary>
         [JsonPropertyName("client")]
-        public string? VarClient { get { return this.VarClientOption; } set { this.VarClientOption = new(value); } }
+        public string? VarClient { get { return this.VarClientOption.Value; } set { this.VarClientOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Secret
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Secret
         /// </summary>
         [JsonPropertyName("secret")]
-        public string? Secret { get { return this.SecretOption; } set { this.SecretOption = new(value); } }
+        public string? Secret { get { return this.SecretOption.Value; } set { this.SecretOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

@@ -145,7 +145,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProvider dataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProvider, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(dataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProvider.ToString());
+            writer.WriteStringValue(DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProviderValueConverter.ToJsonValue(dataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProvider).ToString());
         }
     }
 
@@ -176,14 +176,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProvider to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="dataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProvider"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProvider? dataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProvider, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(dataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProvider?.ToString() ?? "null");
+            writer.WriteStringValue(dataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProvider.HasValue ? DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProviderValueConverter.ToJsonValue(dataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProvider.Value).ToString() : "null");
         }
     }
 }

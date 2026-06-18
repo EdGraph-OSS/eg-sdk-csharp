@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SubCategory
         /// </summary>
         [JsonPropertyName("subCategory")]
-        public EdGraphServicesStateReportingV1SubCategory? SubCategory { get { return this.SubCategoryOption; } set { this.SubCategoryOption = new(value); } }
+        public EdGraphServicesStateReportingV1SubCategory? SubCategory { get { return this.SubCategoryOption.Value; } set { this.SubCategoryOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Rules
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Rules
         /// </summary>
         [JsonPropertyName("rules")]
-        public List<EdGraphServicesStateReportingV1Rule>? Rules { get { return this.RulesOption; } }
+        public List<EdGraphServicesStateReportingV1Rule>? Rules { get { return this.RulesOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -137,12 +137,10 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "subCategory":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                subCategory = new Option<EdGraphServicesStateReportingV1SubCategory?>(JsonSerializer.Deserialize<EdGraphServicesStateReportingV1SubCategory>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            subCategory = new Option<EdGraphServicesStateReportingV1SubCategory?>(JsonSerializer.Deserialize<EdGraphServicesStateReportingV1SubCategory>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "rules":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                rules = new Option<List<EdGraphServicesStateReportingV1Rule>?>(JsonSerializer.Deserialize<List<EdGraphServicesStateReportingV1Rule>>(ref utf8JsonReader, jsonSerializerOptions));
+                            rules = new Option<List<EdGraphServicesStateReportingV1Rule>?>(JsonSerializer.Deserialize<List<EdGraphServicesStateReportingV1Rule>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

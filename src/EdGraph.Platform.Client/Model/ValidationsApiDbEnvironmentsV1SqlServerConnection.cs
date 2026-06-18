@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Server
         /// </summary>
         [JsonPropertyName("server")]
-        public string? Server { get { return this.ServerOption; } set { this.ServerOption = new(value); } }
+        public string? Server { get { return this.ServerOption.Value; } set { this.ServerOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Database
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Database
         /// </summary>
         [JsonPropertyName("database")]
-        public string? Database { get { return this.DatabaseOption; } set { this.DatabaseOption = new(value); } }
+        public string? Database { get { return this.DatabaseOption.Value; } set { this.DatabaseOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Username
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Username
         /// </summary>
         [JsonPropertyName("username")]
-        public string? Username { get { return this.UsernameOption; } set { this.UsernameOption = new(value); } }
+        public string? Username { get { return this.UsernameOption.Value; } set { this.UsernameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Password
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Password
         /// </summary>
         [JsonPropertyName("password")]
-        public string? Password { get { return this.PasswordOption; } set { this.PasswordOption = new(value); } }
+        public string? Password { get { return this.PasswordOption.Value; } set { this.PasswordOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

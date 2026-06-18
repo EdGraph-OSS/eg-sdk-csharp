@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>The user name for this user.</value>
         [JsonPropertyName("userName")]
-        public string? UserName { get { return this.UserNameOption; } set { this.UserNameOption = new(value); } }
+        public string? UserName { get { return this.UserNameOption.Value; } set { this.UserNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Email
@@ -87,7 +87,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>The email address for this user.</value>
         [JsonPropertyName("email")]
-        public string? Email { get { return this.EmailOption; } set { this.EmailOption = new(value); } }
+        public string? Email { get { return this.EmailOption.Value; } set { this.EmailOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of FirstName
@@ -101,7 +101,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>The first name for this user.</value>
         [JsonPropertyName("firstName")]
-        public string? FirstName { get { return this.FirstNameOption; } set { this.FirstNameOption = new(value); } }
+        public string? FirstName { get { return this.FirstNameOption.Value; } set { this.FirstNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastName
@@ -115,7 +115,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>The last name for this user.</value>
         [JsonPropertyName("lastName")]
-        public string? LastName { get { return this.LastNameOption; } set { this.LastNameOption = new(value); } }
+        public string? LastName { get { return this.LastNameOption.Value; } set { this.LastNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Preferences
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>List of preferences associated with this user</value>
         [JsonPropertyName("preferences")]
-        public List<IdentityApiUserV1Preference>? Preferences { get { return this.PreferencesOption; } set { this.PreferencesOption = new(value); } }
+        public List<IdentityApiUserV1Preference>? Preferences { get { return this.PreferencesOption.Value; } set { this.PreferencesOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Tenants
@@ -143,7 +143,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>List of tenants associated with this user</value>
         [JsonPropertyName("tenants")]
-        public List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse>? Tenants { get { return this.TenantsOption; } set { this.TenantsOption = new(value); } }
+        public List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse>? Tenants { get { return this.TenantsOption.Value; } set { this.TenantsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of BrowserDebugEnabled
@@ -157,7 +157,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>Flag to indicate if the debug mode for user is enabled</value>
         [JsonPropertyName("browserDebugEnabled")]
-        public bool? BrowserDebugEnabled { get { return this.BrowserDebugEnabledOption; } set { this.BrowserDebugEnabledOption = new(value); } }
+        public bool? BrowserDebugEnabled { get { return this.BrowserDebugEnabledOption.Value; } set { this.BrowserDebugEnabledOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Extensions
@@ -170,7 +170,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Extensions
         /// </summary>
         [JsonPropertyName("extensions")]
-        public List<IdentityApiUserV1UserExtension>? Extensions { get { return this.ExtensionsOption; } set { this.ExtensionsOption = new(value); } }
+        public List<IdentityApiUserV1UserExtension>? Extensions { get { return this.ExtensionsOption.Value; } set { this.ExtensionsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SelectedTenant
@@ -183,7 +183,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SelectedTenant
         /// </summary>
         [JsonPropertyName("selectedTenant")]
-        public EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse? SelectedTenant { get { return this.SelectedTenantOption; } set { this.SelectedTenantOption = new(value); } }
+        public EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse? SelectedTenant { get { return this.SelectedTenantOption.Value; } set { this.SelectedTenantOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantsTotalCount
@@ -197,7 +197,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>The total count of active tenants associated with this user</value>
         [JsonPropertyName("tenantsTotalCount")]
-        public int? TenantsTotalCount { get { return this.TenantsTotalCountOption; } set { this.TenantsTotalCountOption = new(value); } }
+        public int? TenantsTotalCount { get { return this.TenantsTotalCountOption.Value; } set { this.TenantsTotalCountOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -293,28 +293,22 @@ namespace EdGraph.Platform.Client.Model
                             lastName = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "preferences":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                preferences = new Option<List<IdentityApiUserV1Preference>?>(JsonSerializer.Deserialize<List<IdentityApiUserV1Preference>>(ref utf8JsonReader, jsonSerializerOptions));
+                            preferences = new Option<List<IdentityApiUserV1Preference>?>(JsonSerializer.Deserialize<List<IdentityApiUserV1Preference>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "tenants":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                tenants = new Option<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse>?>(JsonSerializer.Deserialize<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse>>(ref utf8JsonReader, jsonSerializerOptions));
+                            tenants = new Option<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse>?>(JsonSerializer.Deserialize<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "browserDebugEnabled":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                browserDebugEnabled = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            browserDebugEnabled = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "extensions":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                extensions = new Option<List<IdentityApiUserV1UserExtension>?>(JsonSerializer.Deserialize<List<IdentityApiUserV1UserExtension>>(ref utf8JsonReader, jsonSerializerOptions));
+                            extensions = new Option<List<IdentityApiUserV1UserExtension>?>(JsonSerializer.Deserialize<List<IdentityApiUserV1UserExtension>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "selectedTenant":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                selectedTenant = new Option<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse?>(JsonSerializer.Deserialize<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            selectedTenant = new Option<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse?>(JsonSerializer.Deserialize<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantResponse>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "tenantsTotalCount":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                tenantsTotalCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            tenantsTotalCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

@@ -74,7 +74,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantTypes
         /// </summary>
         [JsonPropertyName("tenantTypes")]
-        public List<RegistrationApiRegistrationV2TenantType>? TenantTypes { get { return this.TenantTypesOption; } }
+        public List<RegistrationApiRegistrationV2TenantType>? TenantTypes { get { return this.TenantTypesOption.Value; } }
 
         /// <summary>
         /// Used to track the state of FirstName
@@ -87,7 +87,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets FirstName
         /// </summary>
         [JsonPropertyName("firstName")]
-        public string? FirstName { get { return this.FirstNameOption; } set { this.FirstNameOption = new(value); } }
+        public string? FirstName { get { return this.FirstNameOption.Value; } set { this.FirstNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastName
@@ -100,7 +100,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastName
         /// </summary>
         [JsonPropertyName("lastName")]
-        public string? LastName { get { return this.LastNameOption; } set { this.LastNameOption = new(value); } }
+        public string? LastName { get { return this.LastNameOption.Value; } set { this.LastNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Email
@@ -113,7 +113,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Email
         /// </summary>
         [JsonPropertyName("email")]
-        public string? Email { get { return this.EmailOption; } set { this.EmailOption = new(value); } }
+        public string? Email { get { return this.EmailOption.Value; } set { this.EmailOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of State
@@ -126,7 +126,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets State
         /// </summary>
         [JsonPropertyName("state")]
-        public string? State { get { return this.StateOption; } set { this.StateOption = new(value); } }
+        public string? State { get { return this.StateOption.Value; } set { this.StateOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of OrganizationIdentifier
@@ -139,7 +139,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets OrganizationIdentifier
         /// </summary>
         [JsonPropertyName("organizationIdentifier")]
-        public string? OrganizationIdentifier { get { return this.OrganizationIdentifierOption; } set { this.OrganizationIdentifierOption = new(value); } }
+        public string? OrganizationIdentifier { get { return this.OrganizationIdentifierOption.Value; } set { this.OrganizationIdentifierOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of OrganizationName
@@ -152,7 +152,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets OrganizationName
         /// </summary>
         [JsonPropertyName("organizationName")]
-        public string? OrganizationName { get { return this.OrganizationNameOption; } set { this.OrganizationNameOption = new(value); } }
+        public string? OrganizationName { get { return this.OrganizationNameOption.Value; } set { this.OrganizationNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Password
@@ -165,7 +165,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Password
         /// </summary>
         [JsonPropertyName("password")]
-        public string? Password { get { return this.PasswordOption; } set { this.PasswordOption = new(value); } }
+        public string? Password { get { return this.PasswordOption.Value; } set { this.PasswordOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApplicationIds
@@ -178,7 +178,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApplicationIds
         /// </summary>
         [JsonPropertyName("applicationIds")]
-        public List<string>? ApplicationIds { get { return this.ApplicationIdsOption; } }
+        public List<string>? ApplicationIds { get { return this.ApplicationIdsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of AzureSubscriptionId
@@ -191,7 +191,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AzureSubscriptionId
         /// </summary>
         [JsonPropertyName("azureSubscriptionId")]
-        public string? AzureSubscriptionId { get { return this.AzureSubscriptionIdOption; } set { this.AzureSubscriptionIdOption = new(value); } }
+        public string? AzureSubscriptionId { get { return this.AzureSubscriptionIdOption.Value; } set { this.AzureSubscriptionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AzureSubscriptionStoragePath
@@ -204,7 +204,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AzureSubscriptionStoragePath
         /// </summary>
         [JsonPropertyName("azureSubscriptionStoragePath")]
-        public string? AzureSubscriptionStoragePath { get { return this.AzureSubscriptionStoragePathOption; } set { this.AzureSubscriptionStoragePathOption = new(value); } }
+        public string? AzureSubscriptionStoragePath { get { return this.AzureSubscriptionStoragePathOption.Value; } set { this.AzureSubscriptionStoragePathOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -290,8 +290,7 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "tenantTypes":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                tenantTypes = new Option<List<RegistrationApiRegistrationV2TenantType>?>(JsonSerializer.Deserialize<List<RegistrationApiRegistrationV2TenantType>>(ref utf8JsonReader, jsonSerializerOptions));
+                            tenantTypes = new Option<List<RegistrationApiRegistrationV2TenantType>?>(JsonSerializer.Deserialize<List<RegistrationApiRegistrationV2TenantType>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "firstName":
                             firstName = new Option<string?>(utf8JsonReader.GetString());
@@ -315,8 +314,7 @@ namespace EdGraph.Platform.Client.Model
                             password = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "applicationIds":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                applicationIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            applicationIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "azureSubscriptionId":
                             azureSubscriptionId = new Option<string?>(utf8JsonReader.GetString());

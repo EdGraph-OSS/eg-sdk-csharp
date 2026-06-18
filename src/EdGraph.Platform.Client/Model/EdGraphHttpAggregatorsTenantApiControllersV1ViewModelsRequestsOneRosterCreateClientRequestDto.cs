@@ -114,7 +114,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AccessTokenType
         /// </summary>
         [JsonPropertyName("accessTokenType")]
-        public IMSAdminApiV1ClientsAccessTokenType? AccessTokenType { get { return this.AccessTokenTypeOption; } set { this.AccessTokenTypeOption = new(value); } }
+        public IMSAdminApiV1ClientsAccessTokenType? AccessTokenType { get { return this.AccessTokenTypeOption.Value; } set { this.AccessTokenTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TokenUsage
@@ -127,7 +127,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TokenUsage
         /// </summary>
         [JsonPropertyName("tokenUsage")]
-        public IMSAdminApiV1ClientsTokenUsage? TokenUsage { get { return this.TokenUsageOption; } set { this.TokenUsageOption = new(value); } }
+        public IMSAdminApiV1ClientsTokenUsage? TokenUsage { get { return this.TokenUsageOption.Value; } set { this.TokenUsageOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RefreshTokenExpiration
@@ -140,7 +140,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RefreshTokenExpiration
         /// </summary>
         [JsonPropertyName("refreshTokenExpiration")]
-        public IMSAdminApiV1ClientsTokenExpiration? RefreshTokenExpiration { get { return this.RefreshTokenExpirationOption; } set { this.RefreshTokenExpirationOption = new(value); } }
+        public IMSAdminApiV1ClientsTokenExpiration? RefreshTokenExpiration { get { return this.RefreshTokenExpirationOption.Value; } set { this.RefreshTokenExpirationOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ClientName
@@ -153,7 +153,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ClientName
         /// </summary>
         [JsonPropertyName("clientName")]
-        public string? ClientName { get { return this.ClientNameOption; } set { this.ClientNameOption = new(value); } }
+        public string? ClientName { get { return this.ClientNameOption.Value; } set { this.ClientNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ClientId
@@ -166,7 +166,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ClientId
         /// </summary>
         [JsonPropertyName("clientId")]
-        public string? ClientId { get { return this.ClientIdOption; } set { this.ClientIdOption = new(value); } }
+        public string? ClientId { get { return this.ClientIdOption.Value; } set { this.ClientIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Secret
@@ -179,7 +179,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Secret
         /// </summary>
         [JsonPropertyName("secret")]
-        public string? Secret { get { return this.SecretOption; } set { this.SecretOption = new(value); } }
+        public string? Secret { get { return this.SecretOption.Value; } set { this.SecretOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AllowedScopes
@@ -192,7 +192,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AllowedScopes
         /// </summary>
         [JsonPropertyName("allowedScopes")]
-        public List<string>? AllowedScopes { get { return this.AllowedScopesOption; } set { this.AllowedScopesOption = new(value); } }
+        public List<string>? AllowedScopes { get { return this.AllowedScopesOption.Value; } set { this.AllowedScopesOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Claims
@@ -205,7 +205,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Claims
         /// </summary>
         [JsonPropertyName("claims")]
-        public List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsOneRosterClaimDto>? Claims { get { return this.ClaimsOption; } set { this.ClaimsOption = new(value); } }
+        public List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsOneRosterClaimDto>? Claims { get { return this.ClaimsOption.Value; } set { this.ClaimsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApplicationId
@@ -218,7 +218,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApplicationId
         /// </summary>
         [JsonPropertyName("applicationId")]
-        public string? ApplicationId { get { return this.ApplicationIdOption; } set { this.ApplicationIdOption = new(value); } }
+        public string? ApplicationId { get { return this.ApplicationIdOption.Value; } set { this.ApplicationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Description
@@ -231,7 +231,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Description
         /// </summary>
         [JsonPropertyName("description")]
-        public string? Description { get { return this.DescriptionOption; } set { this.DescriptionOption = new(value); } }
+        public string? Description { get { return this.DescriptionOption.Value; } set { this.DescriptionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LogoUri
@@ -244,7 +244,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LogoUri
         /// </summary>
         [JsonPropertyName("logoUri")]
-        public string? LogoUri { get { return this.LogoUriOption; } set { this.LogoUriOption = new(value); } }
+        public string? LogoUri { get { return this.LogoUriOption.Value; } set { this.LogoUriOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ClientUri
@@ -257,7 +257,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ClientUri
         /// </summary>
         [JsonPropertyName("clientUri")]
-        public string? ClientUri { get { return this.ClientUriOption; } set { this.ClientUriOption = new(value); } }
+        public string? ClientUri { get { return this.ClientUriOption.Value; } set { this.ClientUriOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Enabled
@@ -270,7 +270,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Enabled
         /// </summary>
         [JsonPropertyName("enabled")]
-        public bool? Enabled { get { return this.EnabledOption; } set { this.EnabledOption = new(value); } }
+        public bool? Enabled { get { return this.EnabledOption.Value; } set { this.EnabledOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EnableLocalLogin
@@ -283,7 +283,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EnableLocalLogin
         /// </summary>
         [JsonPropertyName("enableLocalLogin")]
-        public bool? EnableLocalLogin { get { return this.EnableLocalLoginOption; } set { this.EnableLocalLoginOption = new(value); } }
+        public bool? EnableLocalLogin { get { return this.EnableLocalLoginOption.Value; } set { this.EnableLocalLoginOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AllowOfflineAccess
@@ -296,7 +296,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AllowOfflineAccess
         /// </summary>
         [JsonPropertyName("allowOfflineAccess")]
-        public bool? AllowOfflineAccess { get { return this.AllowOfflineAccessOption; } set { this.AllowOfflineAccessOption = new(value); } }
+        public bool? AllowOfflineAccess { get { return this.AllowOfflineAccessOption.Value; } set { this.AllowOfflineAccessOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AllowAccessTokensViaBrowser
@@ -309,7 +309,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AllowAccessTokensViaBrowser
         /// </summary>
         [JsonPropertyName("allowAccessTokensViaBrowser")]
-        public bool? AllowAccessTokensViaBrowser { get { return this.AllowAccessTokensViaBrowserOption; } set { this.AllowAccessTokensViaBrowserOption = new(value); } }
+        public bool? AllowAccessTokensViaBrowser { get { return this.AllowAccessTokensViaBrowserOption.Value; } set { this.AllowAccessTokensViaBrowserOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of UpdateAccessTokenClaimsOnRefresh
@@ -322,7 +322,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets UpdateAccessTokenClaimsOnRefresh
         /// </summary>
         [JsonPropertyName("updateAccessTokenClaimsOnRefresh")]
-        public bool? UpdateAccessTokenClaimsOnRefresh { get { return this.UpdateAccessTokenClaimsOnRefreshOption; } set { this.UpdateAccessTokenClaimsOnRefreshOption = new(value); } }
+        public bool? UpdateAccessTokenClaimsOnRefresh { get { return this.UpdateAccessTokenClaimsOnRefreshOption.Value; } set { this.UpdateAccessTokenClaimsOnRefreshOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AlwaysIncludeUserClaimsInIdToken
@@ -335,7 +335,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AlwaysIncludeUserClaimsInIdToken
         /// </summary>
         [JsonPropertyName("alwaysIncludeUserClaimsInIdToken")]
-        public bool? AlwaysIncludeUserClaimsInIdToken { get { return this.AlwaysIncludeUserClaimsInIdTokenOption; } set { this.AlwaysIncludeUserClaimsInIdTokenOption = new(value); } }
+        public bool? AlwaysIncludeUserClaimsInIdToken { get { return this.AlwaysIncludeUserClaimsInIdTokenOption.Value; } set { this.AlwaysIncludeUserClaimsInIdTokenOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IdentityTokenLifetime
@@ -348,7 +348,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IdentityTokenLifetime
         /// </summary>
         [JsonPropertyName("identityTokenLifetime")]
-        public int? IdentityTokenLifetime { get { return this.IdentityTokenLifetimeOption; } set { this.IdentityTokenLifetimeOption = new(value); } }
+        public int? IdentityTokenLifetime { get { return this.IdentityTokenLifetimeOption.Value; } set { this.IdentityTokenLifetimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AccessTokenLifetime
@@ -361,7 +361,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AccessTokenLifetime
         /// </summary>
         [JsonPropertyName("accessTokenLifetime")]
-        public int? AccessTokenLifetime { get { return this.AccessTokenLifetimeOption; } set { this.AccessTokenLifetimeOption = new(value); } }
+        public int? AccessTokenLifetime { get { return this.AccessTokenLifetimeOption.Value; } set { this.AccessTokenLifetimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AuthorizationCodeLifetime
@@ -374,7 +374,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AuthorizationCodeLifetime
         /// </summary>
         [JsonPropertyName("authorizationCodeLifetime")]
-        public int? AuthorizationCodeLifetime { get { return this.AuthorizationCodeLifetimeOption; } set { this.AuthorizationCodeLifetimeOption = new(value); } }
+        public int? AuthorizationCodeLifetime { get { return this.AuthorizationCodeLifetimeOption.Value; } set { this.AuthorizationCodeLifetimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AbsoluteRefreshTokenLifetime
@@ -387,7 +387,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AbsoluteRefreshTokenLifetime
         /// </summary>
         [JsonPropertyName("absoluteRefreshTokenLifetime")]
-        public int? AbsoluteRefreshTokenLifetime { get { return this.AbsoluteRefreshTokenLifetimeOption; } set { this.AbsoluteRefreshTokenLifetimeOption = new(value); } }
+        public int? AbsoluteRefreshTokenLifetime { get { return this.AbsoluteRefreshTokenLifetimeOption.Value; } set { this.AbsoluteRefreshTokenLifetimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SlidingRefreshTokenLifetime
@@ -400,7 +400,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SlidingRefreshTokenLifetime
         /// </summary>
         [JsonPropertyName("slidingRefreshTokenLifetime")]
-        public int? SlidingRefreshTokenLifetime { get { return this.SlidingRefreshTokenLifetimeOption; } set { this.SlidingRefreshTokenLifetimeOption = new(value); } }
+        public int? SlidingRefreshTokenLifetime { get { return this.SlidingRefreshTokenLifetimeOption.Value; } set { this.SlidingRefreshTokenLifetimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RequireClientSecret
@@ -413,7 +413,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RequireClientSecret
         /// </summary>
         [JsonPropertyName("requireClientSecret")]
-        public bool? RequireClientSecret { get { return this.RequireClientSecretOption; } set { this.RequireClientSecretOption = new(value); } }
+        public bool? RequireClientSecret { get { return this.RequireClientSecretOption.Value; } set { this.RequireClientSecretOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RequireConsent
@@ -426,7 +426,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RequireConsent
         /// </summary>
         [JsonPropertyName("requireConsent")]
-        public bool? RequireConsent { get { return this.RequireConsentOption; } set { this.RequireConsentOption = new(value); } }
+        public bool? RequireConsent { get { return this.RequireConsentOption.Value; } set { this.RequireConsentOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RequirePkce
@@ -439,7 +439,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RequirePkce
         /// </summary>
         [JsonPropertyName("requirePkce")]
-        public bool? RequirePkce { get { return this.RequirePkceOption; } set { this.RequirePkceOption = new(value); } }
+        public bool? RequirePkce { get { return this.RequirePkceOption.Value; } set { this.RequirePkceOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AllowedCorsOrigins
@@ -452,7 +452,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AllowedCorsOrigins
         /// </summary>
         [JsonPropertyName("allowedCorsOrigins")]
-        public List<string>? AllowedCorsOrigins { get { return this.AllowedCorsOriginsOption; } set { this.AllowedCorsOriginsOption = new(value); } }
+        public List<string>? AllowedCorsOrigins { get { return this.AllowedCorsOriginsOption.Value; } set { this.AllowedCorsOriginsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AllowedGrantTypes
@@ -465,7 +465,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AllowedGrantTypes
         /// </summary>
         [JsonPropertyName("allowedGrantTypes")]
-        public List<string>? AllowedGrantTypes { get { return this.AllowedGrantTypesOption; } set { this.AllowedGrantTypesOption = new(value); } }
+        public List<string>? AllowedGrantTypes { get { return this.AllowedGrantTypesOption.Value; } set { this.AllowedGrantTypesOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IdentityProviderRestrictions
@@ -478,7 +478,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IdentityProviderRestrictions
         /// </summary>
         [JsonPropertyName("identityProviderRestrictions")]
-        public List<string>? IdentityProviderRestrictions { get { return this.IdentityProviderRestrictionsOption; } set { this.IdentityProviderRestrictionsOption = new(value); } }
+        public List<string>? IdentityProviderRestrictions { get { return this.IdentityProviderRestrictionsOption.Value; } set { this.IdentityProviderRestrictionsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RedirectUris
@@ -491,7 +491,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RedirectUris
         /// </summary>
         [JsonPropertyName("redirectUris")]
-        public List<string>? RedirectUris { get { return this.RedirectUrisOption; } set { this.RedirectUrisOption = new(value); } }
+        public List<string>? RedirectUris { get { return this.RedirectUrisOption.Value; } set { this.RedirectUrisOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of PostLogoutRedirectUris
@@ -504,7 +504,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets PostLogoutRedirectUris
         /// </summary>
         [JsonPropertyName("postLogoutRedirectUris")]
-        public List<string>? PostLogoutRedirectUris { get { return this.PostLogoutRedirectUrisOption; } set { this.PostLogoutRedirectUrisOption = new(value); } }
+        public List<string>? PostLogoutRedirectUris { get { return this.PostLogoutRedirectUrisOption.Value; } set { this.PostLogoutRedirectUrisOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -639,12 +639,10 @@ namespace EdGraph.Platform.Client.Model
                             secret = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "allowedScopes":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                allowedScopes = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            allowedScopes = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "claims":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                claims = new Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsOneRosterClaimDto>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsOneRosterClaimDto>>(ref utf8JsonReader, jsonSerializerOptions));
+                            claims = new Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsOneRosterClaimDto>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsOneRosterClaimDto>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "applicationId":
                             applicationId = new Option<string?>(utf8JsonReader.GetString());
@@ -659,8 +657,7 @@ namespace EdGraph.Platform.Client.Model
                             clientUri = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "enabled":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                enabled = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            enabled = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "accessTokenType":
                             string? accessTokenTypeRawValue = utf8JsonReader.GetString();
@@ -678,76 +675,58 @@ namespace EdGraph.Platform.Client.Model
                                 refreshTokenExpiration = new Option<IMSAdminApiV1ClientsTokenExpiration?>(IMSAdminApiV1ClientsTokenExpirationValueConverter.FromStringOrDefault(refreshTokenExpirationRawValue));
                             break;
                         case "enableLocalLogin":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                enableLocalLogin = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            enableLocalLogin = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "allowOfflineAccess":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                allowOfflineAccess = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            allowOfflineAccess = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "allowAccessTokensViaBrowser":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                allowAccessTokensViaBrowser = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            allowAccessTokensViaBrowser = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "updateAccessTokenClaimsOnRefresh":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                updateAccessTokenClaimsOnRefresh = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            updateAccessTokenClaimsOnRefresh = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "alwaysIncludeUserClaimsInIdToken":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                alwaysIncludeUserClaimsInIdToken = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            alwaysIncludeUserClaimsInIdToken = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "identityTokenLifetime":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                identityTokenLifetime = new Option<int?>(utf8JsonReader.GetInt32());
+                            identityTokenLifetime = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "accessTokenLifetime":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                accessTokenLifetime = new Option<int?>(utf8JsonReader.GetInt32());
+                            accessTokenLifetime = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "authorizationCodeLifetime":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                authorizationCodeLifetime = new Option<int?>(utf8JsonReader.GetInt32());
+                            authorizationCodeLifetime = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "absoluteRefreshTokenLifetime":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                absoluteRefreshTokenLifetime = new Option<int?>(utf8JsonReader.GetInt32());
+                            absoluteRefreshTokenLifetime = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "slidingRefreshTokenLifetime":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                slidingRefreshTokenLifetime = new Option<int?>(utf8JsonReader.GetInt32());
+                            slidingRefreshTokenLifetime = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "requireClientSecret":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                requireClientSecret = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            requireClientSecret = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "requireConsent":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                requireConsent = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            requireConsent = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "requirePkce":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                requirePkce = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            requirePkce = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "allowedCorsOrigins":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                allowedCorsOrigins = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            allowedCorsOrigins = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "allowedGrantTypes":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                allowedGrantTypes = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            allowedGrantTypes = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "identityProviderRestrictions":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                identityProviderRestrictions = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            identityProviderRestrictions = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "redirectUris":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                redirectUris = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            redirectUris = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "postLogoutRedirectUris":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                postLogoutRedirectUris = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            postLogoutRedirectUris = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

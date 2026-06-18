@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IsSuccess
         /// </summary>
         [JsonPropertyName("isSuccess")]
-        public bool? IsSuccess { get { return this.IsSuccessOption; } set { this.IsSuccessOption = new(value); } }
+        public bool? IsSuccess { get { return this.IsSuccessOption.Value; } set { this.IsSuccessOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Value
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Value
         /// </summary>
         [JsonPropertyName("value")]
-        public EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApi? Value { get { return this.ValueOption; } set { this.ValueOption = new(value); } }
+        public EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApi? Value { get { return this.ValueOption.Value; } set { this.ValueOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Error
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Error
         /// </summary>
         [JsonPropertyName("error")]
-        public string? Error { get { return this.ErrorOption; } set { this.ErrorOption = new(value); } }
+        public string? Error { get { return this.ErrorOption.Value; } set { this.ErrorOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -154,12 +154,10 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "isSuccess":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isSuccess = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isSuccess = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "value":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                value = new Option<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApi?>(JsonSerializer.Deserialize<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApi>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            value = new Option<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApi?>(JsonSerializer.Deserialize<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApi>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "error":
                             error = new Option<string?>(utf8JsonReader.GetString());

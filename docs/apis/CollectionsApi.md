@@ -24,65 +24,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Creates a Collection.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CreateCollectionExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new CollectionsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var validationsApiContainersV1CreateCollectionRequest = new ValidationsApiContainersV1CreateCollectionRequest(); // ValidationsApiContainersV1CreateCollectionRequest |  (optional) 
-
-            try
-            {
-                // Creates a Collection.
-                ValidationsApiCoreV1CreatedResponse result = apiInstance.CreateCollection(tenantId, validationsApiContainersV1CreateCollectionRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling CollectionsApi.CreateCollection: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateCollectionWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates a Collection.
-    ApiResponse<ValidationsApiCoreV1CreatedResponse> response = apiInstance.CreateCollectionWithHttpInfo(tenantId, validationsApiContainersV1CreateCollectionRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling CollectionsApi.CreateCollectionWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -122,66 +63,6 @@ catch (ApiException e)
 
 Creates a Container.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CreateContainerExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new CollectionsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var collectionId = "collectionId_example";  // string | 
-            var validationsApiContainersV1CreateContainerRequest = new ValidationsApiContainersV1CreateContainerRequest(); // ValidationsApiContainersV1CreateContainerRequest |  (optional) 
-
-            try
-            {
-                // Creates a Container.
-                ValidationsApiCoreV1CreatedResponse result = apiInstance.CreateContainer(tenantId, collectionId, validationsApiContainersV1CreateContainerRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling CollectionsApi.CreateContainer: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateContainerWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates a Container.
-    ApiResponse<ValidationsApiCoreV1CreatedResponse> response = apiInstance.CreateContainerWithHttpInfo(tenantId, collectionId, validationsApiContainersV1CreateContainerRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling CollectionsApi.CreateContainerWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -222,61 +103,6 @@ catch (ApiException e)
 
 Deletes a Collection.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class DeleteCollectionExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new CollectionsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var collectionId = "collectionId_example";  // string | 
-
-            try
-            {
-                // Deletes a Collection.
-                apiInstance.DeleteCollection(tenantId, collectionId);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling CollectionsApi.DeleteCollection: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeleteCollectionWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Deletes a Collection.
-    apiInstance.DeleteCollectionWithHttpInfo(tenantId, collectionId);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling CollectionsApi.DeleteCollectionWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -317,62 +143,6 @@ void (empty response body)
 
 Deletes a Container.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class DeleteContainerExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new CollectionsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var collectionId = "collectionId_example";  // string | 
-            var containerId = "containerId_example";  // string | 
-
-            try
-            {
-                // Deletes a Container.
-                apiInstance.DeleteContainer(tenantId, collectionId, containerId);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling CollectionsApi.DeleteContainer: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeleteContainerWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Deletes a Container.
-    apiInstance.DeleteContainerWithHttpInfo(tenantId, collectionId, containerId);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling CollectionsApi.DeleteContainerWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -414,65 +184,6 @@ void (empty response body)
 
 Retrieves a Collection by ID.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetCollectionByIdExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new CollectionsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var collectionId = "collectionId_example";  // string | 
-
-            try
-            {
-                // Retrieves a Collection by ID.
-                ValidationsApiContainersV1ContainerDto result = apiInstance.GetCollectionById(tenantId, collectionId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling CollectionsApi.GetCollectionById: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetCollectionByIdWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a Collection by ID.
-    ApiResponse<ValidationsApiContainersV1ContainerDto> response = apiInstance.GetCollectionByIdWithHttpInfo(tenantId, collectionId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling CollectionsApi.GetCollectionByIdWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -513,65 +224,6 @@ catch (ApiException e)
 
 Retrieves the JSON representation of a Collection. Useful for exporting into other systems.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetCollectionJsonExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new CollectionsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var collectionId = "collectionId_example";  // string | 
-
-            try
-            {
-                // Retrieves the JSON representation of a Collection. Useful for exporting into other systems.
-                ValidationsApiContainersV1GetJsonResponse result = apiInstance.GetCollectionJson(tenantId, collectionId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling CollectionsApi.GetCollectionJson: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetCollectionJsonWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves the JSON representation of a Collection. Useful for exporting into other systems.
-    ApiResponse<ValidationsApiContainersV1GetJsonResponse> response = apiInstance.GetCollectionJsonWithHttpInfo(tenantId, collectionId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling CollectionsApi.GetCollectionJsonWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -612,68 +264,6 @@ catch (ApiException e)
 
 Retrieves a list of Collections.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetCollectionsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new CollectionsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var filter = "filter_example";  // string |  (optional) 
-            var orderBy = "orderBy_example";  // string |  (optional) 
-
-            try
-            {
-                // Retrieves a list of Collections.
-                ValidationsApiContainersV1PaginatedContainers result = apiInstance.GetCollections(tenantId, pageIndex, pageSize, filter, orderBy);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling CollectionsApi.GetCollections: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetCollectionsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of Collections.
-    ApiResponse<ValidationsApiContainersV1PaginatedContainers> response = apiInstance.GetCollectionsWithHttpInfo(tenantId, pageIndex, pageSize, filter, orderBy);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling CollectionsApi.GetCollectionsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -716,71 +306,6 @@ catch (ApiException e)
 
 Retrieves a list of Collections.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetCollectionsTreeExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new CollectionsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var orderBy = "orderBy_example";  // string |  (optional) 
-            var categoryId = "categoryId_example";  // string |  (optional) 
-            var categoryName = "categoryName_example";  // string |  (optional) 
-            var subCategoryId = "subCategoryId_example";  // string |  (optional) 
-            var subCategoryName = "subCategoryName_example";  // string |  (optional) 
-
-            try
-            {
-                // Retrieves a list of Collections.
-                ValidationsApiContainersV1PaginatedCategoryTreeResponse result = apiInstance.GetCollectionsTree(tenantId, pageIndex, pageSize, orderBy, categoryId, categoryName, subCategoryId, subCategoryName);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling CollectionsApi.GetCollectionsTree: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetCollectionsTreeWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of Collections.
-    ApiResponse<ValidationsApiContainersV1PaginatedCategoryTreeResponse> response = apiInstance.GetCollectionsTreeWithHttpInfo(tenantId, pageIndex, pageSize, orderBy, categoryId, categoryName, subCategoryId, subCategoryName);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling CollectionsApi.GetCollectionsTreeWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -826,66 +351,6 @@ catch (ApiException e)
 
 Retrieves a Container by ID.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetContainerByIdExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new CollectionsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var collectionId = "collectionId_example";  // string | 
-            var containerId = "containerId_example";  // string | 
-
-            try
-            {
-                // Retrieves a Container by ID.
-                ValidationsApiContainersV1ContainerDto result = apiInstance.GetContainerById(tenantId, collectionId, containerId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling CollectionsApi.GetContainerById: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetContainerByIdWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a Container by ID.
-    ApiResponse<ValidationsApiContainersV1ContainerDto> response = apiInstance.GetContainerByIdWithHttpInfo(tenantId, collectionId, containerId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling CollectionsApi.GetContainerByIdWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -927,69 +392,6 @@ catch (ApiException e)
 
 Retrieves a list of Containers.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetContainersExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new CollectionsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var collectionId = "collectionId_example";  // string | 
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var filter = "filter_example";  // string |  (optional) 
-            var orderBy = "orderBy_example";  // string |  (optional) 
-
-            try
-            {
-                // Retrieves a list of Containers.
-                ValidationsApiContainersV1PaginatedContainers result = apiInstance.GetContainers(tenantId, collectionId, pageIndex, pageSize, filter, orderBy);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling CollectionsApi.GetContainers: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetContainersWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of Containers.
-    ApiResponse<ValidationsApiContainersV1PaginatedContainers> response = apiInstance.GetContainersWithHttpInfo(tenantId, collectionId, pageIndex, pageSize, filter, orderBy);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling CollectionsApi.GetContainersWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1033,62 +435,6 @@ catch (ApiException e)
 
 Updates a Collection.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateCollectionExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new CollectionsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var collectionId = "collectionId_example";  // string | 
-            var validationsApiContainersV1UpdateCollectionRequest = new ValidationsApiContainersV1UpdateCollectionRequest(); // ValidationsApiContainersV1UpdateCollectionRequest |  (optional) 
-
-            try
-            {
-                // Updates a Collection.
-                apiInstance.UpdateCollection(tenantId, collectionId, validationsApiContainersV1UpdateCollectionRequest);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling CollectionsApi.UpdateCollection: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateCollectionWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates a Collection.
-    apiInstance.UpdateCollectionWithHttpInfo(tenantId, collectionId, validationsApiContainersV1UpdateCollectionRequest);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling CollectionsApi.UpdateCollectionWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1130,63 +476,6 @@ void (empty response body)
 
 Updates a Container.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateContainerExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new CollectionsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var collectionId = "collectionId_example";  // string | 
-            var containerId = "containerId_example";  // string | 
-            var validationsApiContainersV1UpdateContainerRequest = new ValidationsApiContainersV1UpdateContainerRequest(); // ValidationsApiContainersV1UpdateContainerRequest |  (optional) 
-
-            try
-            {
-                // Updates a Container.
-                apiInstance.UpdateContainer(tenantId, collectionId, containerId, validationsApiContainersV1UpdateContainerRequest);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling CollectionsApi.UpdateContainer: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateContainerWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates a Container.
-    apiInstance.UpdateContainerWithHttpInfo(tenantId, collectionId, containerId, validationsApiContainersV1UpdateContainerRequest);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling CollectionsApi.UpdateContainerWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1229,65 +518,6 @@ void (empty response body)
 
 Uploads a Collection JSON. Useful for importing from another system.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UploadCollectionJsonExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new CollectionsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var validationsApiContainersV1UploadCollectionRequest = new ValidationsApiContainersV1UploadCollectionRequest(); // ValidationsApiContainersV1UploadCollectionRequest |  (optional) 
-
-            try
-            {
-                // Uploads a Collection JSON. Useful for importing from another system.
-                ValidationsApiContainersV1CollectionUploadedResponse result = apiInstance.UploadCollectionJson(tenantId, validationsApiContainersV1UploadCollectionRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling CollectionsApi.UploadCollectionJson: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UploadCollectionJsonWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Uploads a Collection JSON. Useful for importing from another system.
-    ApiResponse<ValidationsApiContainersV1CollectionUploadedResponse> response = apiInstance.UploadCollectionJsonWithHttpInfo(tenantId, validationsApiContainersV1UploadCollectionRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling CollectionsApi.UploadCollectionJsonWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

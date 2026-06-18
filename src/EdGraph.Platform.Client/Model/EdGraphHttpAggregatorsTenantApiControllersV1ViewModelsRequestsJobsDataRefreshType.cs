@@ -159,7 +159,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsDataRefreshType edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsDataRefreshType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsDataRefreshType.ToString());
+            writer.WriteStringValue(EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsDataRefreshTypeValueConverter.ToJsonValue(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsDataRefreshType).ToString());
         }
     }
 
@@ -190,14 +190,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsDataRefreshType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsDataRefreshType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsDataRefreshType? edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsDataRefreshType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsDataRefreshType?.ToString() ?? "null");
+            writer.WriteStringValue(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsDataRefreshType.HasValue ? EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsDataRefreshTypeValueConverter.ToJsonValue(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsDataRefreshType.Value).ToString() : "null");
         }
     }
 }

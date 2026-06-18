@@ -64,7 +64,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InstanceId
@@ -77,7 +77,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceId
         /// </summary>
         [JsonPropertyName("instanceId")]
-        public string? InstanceId { get { return this.InstanceIdOption; } set { this.InstanceIdOption = new(value); } }
+        public string? InstanceId { get { return this.InstanceIdOption.Value; } set { this.InstanceIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ClaimSetId
@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ClaimSetId
         /// </summary>
         [JsonPropertyName("claimSetId")]
-        public int? ClaimSetId { get { return this.ClaimSetIdOption; } set { this.ClaimSetIdOption = new(value); } }
+        public int? ClaimSetId { get { return this.ClaimSetIdOption.Value; } set { this.ClaimSetIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ClaimSetName
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ClaimSetName
         /// </summary>
         [JsonPropertyName("claimSetName")]
-        public string? ClaimSetName { get { return this.ClaimSetNameOption; } set { this.ClaimSetNameOption = new(value); } }
+        public string? ClaimSetName { get { return this.ClaimSetNameOption.Value; } set { this.ClaimSetNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApplicationId
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApplicationId
         /// </summary>
         [JsonPropertyName("applicationId")]
-        public int? ApplicationId { get { return this.ApplicationIdOption; } set { this.ApplicationIdOption = new(value); } }
+        public int? ApplicationId { get { return this.ApplicationIdOption.Value; } set { this.ApplicationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ResourceClaims
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ResourceClaims
         /// </summary>
         [JsonPropertyName("resourceClaims")]
-        public List<EdfiAdminApiEdfiAdminV1ClaimSetDetailsResourceClaim>? ResourceClaims { get { return this.ResourceClaimsOption; } }
+        public List<EdfiAdminApiEdfiAdminV1ClaimSetDetailsResourceClaim>? ResourceClaims { get { return this.ResourceClaimsOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -211,19 +211,16 @@ namespace EdGraph.Platform.Client.Model
                             instanceId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "claimSetId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                claimSetId = new Option<int?>(utf8JsonReader.GetInt32());
+                            claimSetId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "claimSetName":
                             claimSetName = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "applicationId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                applicationId = new Option<int?>(utf8JsonReader.GetInt32());
+                            applicationId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "resourceClaims":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                resourceClaims = new Option<List<EdfiAdminApiEdfiAdminV1ClaimSetDetailsResourceClaim>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1ClaimSetDetailsResourceClaim>>(ref utf8JsonReader, jsonSerializerOptions));
+                            resourceClaims = new Option<List<EdfiAdminApiEdfiAdminV1ClaimSetDetailsResourceClaim>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1ClaimSetDetailsResourceClaim>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

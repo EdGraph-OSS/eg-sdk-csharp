@@ -66,7 +66,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Timestamp
@@ -79,7 +79,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Timestamp
         /// </summary>
         [JsonPropertyName("timestamp")]
-        public long? Timestamp { get { return this.TimestampOption; } set { this.TimestampOption = new(value); } }
+        public long? Timestamp { get { return this.TimestampOption.Value; } set { this.TimestampOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TransactionId
@@ -92,7 +92,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TransactionId
         /// </summary>
         [JsonPropertyName("transactionId")]
-        public string? TransactionId { get { return this.TransactionIdOption; } set { this.TransactionIdOption = new(value); } }
+        public string? TransactionId { get { return this.TransactionIdOption.Value; } set { this.TransactionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Path
@@ -105,7 +105,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Path
         /// </summary>
         [JsonPropertyName("path")]
-        public string? Path { get { return this.PathOption; } set { this.PathOption = new(value); } }
+        public string? Path { get { return this.PathOption.Value; } set { this.PathOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Method
@@ -118,7 +118,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Method
         /// </summary>
         [JsonPropertyName("method")]
-        public string? Method { get { return this.MethodOption; } set { this.MethodOption = new(value); } }
+        public string? Method { get { return this.MethodOption.Value; } set { this.MethodOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Status
@@ -131,7 +131,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Status
         /// </summary>
         [JsonPropertyName("status")]
-        public int? Status { get { return this.StatusOption; } set { this.StatusOption = new(value); } }
+        public int? Status { get { return this.StatusOption.Value; } set { this.StatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ResponseTime
@@ -144,7 +144,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ResponseTime
         /// </summary>
         [JsonPropertyName("responseTime")]
-        public long? ResponseTime { get { return this.ResponseTimeOption; } set { this.ResponseTimeOption = new(value); } }
+        public long? ResponseTime { get { return this.ResponseTimeOption.Value; } set { this.ResponseTimeOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -225,8 +225,7 @@ namespace EdGraph.Platform.Client.Model
                             id = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "timestamp":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                timestamp = new Option<long?>(utf8JsonReader.GetInt64());
+                            timestamp = new Option<long?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (long?)null : utf8JsonReader.GetInt64());
                             break;
                         case "transactionId":
                             transactionId = new Option<string?>(utf8JsonReader.GetString());
@@ -238,12 +237,10 @@ namespace EdGraph.Platform.Client.Model
                             method = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "status":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                status = new Option<int?>(utf8JsonReader.GetInt32());
+                            status = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "responseTime":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                responseTime = new Option<long?>(utf8JsonReader.GetInt64());
+                            responseTime = new Option<long?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (long?)null : utf8JsonReader.GetInt64());
                             break;
                         default:
                             break;

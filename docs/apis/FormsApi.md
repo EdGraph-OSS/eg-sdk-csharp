@@ -23,65 +23,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Creates a new Form for a given tenant
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CreateFormExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new FormsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var formApiFormsV1CreateFormRequest = new FormApiFormsV1CreateFormRequest(); // FormApiFormsV1CreateFormRequest |  (optional) 
-
-            try
-            {
-                // Creates a new Form for a given tenant
-                FormApiFormsV1FormCreatedResponse result = apiInstance.CreateForm(tenantId, formApiFormsV1CreateFormRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling FormsApi.CreateForm: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateFormWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates a new Form for a given tenant
-    ApiResponse<FormApiFormsV1FormCreatedResponse> response = apiInstance.CreateFormWithHttpInfo(tenantId, formApiFormsV1CreateFormRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling FormsApi.CreateFormWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -121,65 +62,6 @@ catch (ApiException e)
 
 Fully creates a new Form for a given tenant (with Sections and Questions).
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CreateFullFormExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new FormsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var formApiFormsV1CreateFullFormRequest = new FormApiFormsV1CreateFullFormRequest(); // FormApiFormsV1CreateFullFormRequest |  (optional) 
-
-            try
-            {
-                // Fully creates a new Form for a given tenant (with Sections and Questions).
-                FormApiFormsV1FullFormCreatedResponse result = apiInstance.CreateFullForm(tenantId, formApiFormsV1CreateFullFormRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling FormsApi.CreateFullForm: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateFullFormWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Fully creates a new Form for a given tenant (with Sections and Questions).
-    ApiResponse<FormApiFormsV1FullFormCreatedResponse> response = apiInstance.CreateFullFormWithHttpInfo(tenantId, formApiFormsV1CreateFullFormRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling FormsApi.CreateFullFormWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -219,65 +101,6 @@ catch (ApiException e)
 
 Deletes a Form.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class DeleteFormExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new FormsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var formId = "formId_example";  // Guid | 
-
-            try
-            {
-                // Deletes a Form.
-                FormApiFormsV1FormDeletedResponse result = apiInstance.DeleteForm(tenantId, formId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling FormsApi.DeleteForm: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeleteFormWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Deletes a Form.
-    ApiResponse<FormApiFormsV1FormDeletedResponse> response = apiInstance.DeleteFormWithHttpInfo(tenantId, formId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling FormsApi.DeleteFormWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -318,65 +141,6 @@ catch (ApiException e)
 
 Duplicates all Form data for a given tenant (with Sections and Questions).
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class DuplicateFormExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new FormsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var formId = "formId_example";  // Guid | 
-
-            try
-            {
-                // Duplicates all Form data for a given tenant (with Sections and Questions).
-                FormApiFormsV1FormDuplicatedResponse result = apiInstance.DuplicateForm(tenantId, formId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling FormsApi.DuplicateForm: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DuplicateFormWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Duplicates all Form data for a given tenant (with Sections and Questions).
-    ApiResponse<FormApiFormsV1FormDuplicatedResponse> response = apiInstance.DuplicateFormWithHttpInfo(tenantId, formId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling FormsApi.DuplicateFormWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -416,65 +180,6 @@ catch (ApiException e)
 
 Get Form.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetFormExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new FormsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var formId = "formId_example";  // Guid | 
-
-            try
-            {
-                // Get Form.
-                EdGraphHttpAggregatorsTenantApiServicesFormsV1Form result = apiInstance.GetForm(tenantId, formId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling FormsApi.GetForm: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetFormWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Get Form.
-    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesFormsV1Form> response = apiInstance.GetFormWithHttpInfo(tenantId, formId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling FormsApi.GetFormWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -515,65 +220,6 @@ catch (ApiException e)
 
 Get the Access Type for a Form.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetFormAccessExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new FormsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var formId = "formId_example";  // Guid | 
-
-            try
-            {
-                // Get the Access Type for a Form.
-                FormApiFormsV1FormAccessResponse result = apiInstance.GetFormAccess(tenantId, formId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling FormsApi.GetFormAccess: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetFormAccessWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Get the Access Type for a Form.
-    ApiResponse<FormApiFormsV1FormAccessResponse> response = apiInstance.GetFormAccessWithHttpInfo(tenantId, formId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling FormsApi.GetFormAccessWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -614,65 +260,6 @@ catch (ApiException e)
 
 Get a Forms Json and UI React JSON compatible Schema.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetFullFormSchemaExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new FormsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var formId = "formId_example";  // Guid | 
-
-            try
-            {
-                // Get a Forms Json and UI React JSON compatible Schema.
-                FormApiFormsV1FullFormSchemaResponse result = apiInstance.GetFullFormSchema(tenantId, formId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling FormsApi.GetFullFormSchema: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetFullFormSchemaWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Get a Forms Json and UI React JSON compatible Schema.
-    ApiResponse<FormApiFormsV1FullFormSchemaResponse> response = apiInstance.GetFullFormSchemaWithHttpInfo(tenantId, formId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling FormsApi.GetFullFormSchemaWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -713,65 +300,6 @@ catch (ApiException e)
 
 Imports all form data for a given tenant.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class ImportFormExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new FormsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var body = null;  // Object |  (optional) 
-
-            try
-            {
-                // Imports all form data for a given tenant.
-                Object result = apiInstance.ImportForm(tenantId, body);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling FormsApi.ImportForm: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the ImportFormWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Imports all form data for a given tenant.
-    ApiResponse<Object> response = apiInstance.ImportFormWithHttpInfo(tenantId, body);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling FormsApi.ImportFormWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -811,68 +339,6 @@ catch (ApiException e)
 
 Search Forms
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SearchFormsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new FormsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Search Forms
-                EdGraphHttpAggregatorsTenantApiServicesFormsV1FormPaginatedItemsViewModel result = apiInstance.SearchForms(tenantId, pageSize, pageIndex, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling FormsApi.SearchForms: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SearchFormsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Search Forms
-    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesFormsV1FormPaginatedItemsViewModel> response = apiInstance.SearchFormsWithHttpInfo(tenantId, pageSize, pageIndex, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling FormsApi.SearchFormsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -915,66 +381,6 @@ catch (ApiException e)
 
 Sets the Access Type for a Form.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SetFormAccessExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new FormsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var formId = "formId_example";  // Guid | 
-            var formApiFormsV1SetFormAccessRequest = new FormApiFormsV1SetFormAccessRequest(); // FormApiFormsV1SetFormAccessRequest |  (optional) 
-
-            try
-            {
-                // Sets the Access Type for a Form.
-                FormApiFormsV1FormAccessSetResponse result = apiInstance.SetFormAccess(tenantId, formId, formApiFormsV1SetFormAccessRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling FormsApi.SetFormAccess: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SetFormAccessWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Sets the Access Type for a Form.
-    ApiResponse<FormApiFormsV1FormAccessSetResponse> response = apiInstance.SetFormAccessWithHttpInfo(tenantId, formId, formApiFormsV1SetFormAccessRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling FormsApi.SetFormAccessWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1015,66 +421,6 @@ catch (ApiException e)
 
 Updates a Form.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateFormExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new FormsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var formId = "formId_example";  // Guid | 
-            var formApiFormsV1UpdateFormRequest = new FormApiFormsV1UpdateFormRequest(); // FormApiFormsV1UpdateFormRequest |  (optional) 
-
-            try
-            {
-                // Updates a Form.
-                FormApiFormsV1FormUpdatedResponse result = apiInstance.UpdateForm(tenantId, formId, formApiFormsV1UpdateFormRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling FormsApi.UpdateForm: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateFormWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates a Form.
-    ApiResponse<FormApiFormsV1FormUpdatedResponse> response = apiInstance.UpdateFormWithHttpInfo(tenantId, formId, formApiFormsV1UpdateFormRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling FormsApi.UpdateFormWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1115,66 +461,6 @@ catch (ApiException e)
 
 Fully updates a Form for a given tenant (with Sections and Questions).
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateFullFormExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new FormsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var formId = "formId_example";  // Guid | 
-            var formApiFormsV1UpdateFullFormRequest = new FormApiFormsV1UpdateFullFormRequest(); // FormApiFormsV1UpdateFullFormRequest |  (optional) 
-
-            try
-            {
-                // Fully updates a Form for a given tenant (with Sections and Questions).
-                FormApiFormsV1FullFormUpdatedResponse result = apiInstance.UpdateFullForm(tenantId, formId, formApiFormsV1UpdateFullFormRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling FormsApi.UpdateFullForm: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateFullFormWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Fully updates a Form for a given tenant (with Sections and Questions).
-    ApiResponse<FormApiFormsV1FullFormUpdatedResponse> response = apiInstance.UpdateFullFormWithHttpInfo(tenantId, formId, formApiFormsV1UpdateFullFormRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling FormsApi.UpdateFullFormWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

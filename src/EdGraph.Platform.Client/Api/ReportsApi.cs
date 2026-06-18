@@ -12,7 +12,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Net;
+using System.IO;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using System.Net.Http;
@@ -55,7 +57,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="state"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ICreateReportAsyncApiResponse"/>&gt;</returns>
-        Task<ICreateReportAsyncApiResponse> CreateReportAsyncAsync(string tenantId, Option<System.IO.Stream> file = default, Option<string> name = default, Option<string> shortDescription = default, Option<string> description = default, Option<string> tags = default, Option<bool> isVisible = default, Option<string> version = default, Option<bool> identityRequired = default, Option<bool> rolesRequired = default, Option<string> state = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<ICreateReportAsyncApiResponse> CreateReportAsyncAsync(string tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> file = default, Option<string> name = default, Option<string> shortDescription = default, Option<string> description = default, Option<string> tags = default, Option<bool> isVisible = default, Option<string> version = default, Option<bool> identityRequired = default, Option<bool> rolesRequired = default, Option<string> state = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Creates a new report (Does not upload pbix file).
@@ -76,7 +78,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="state"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ICreateReportAsyncApiResponse"/>?&gt;</returns>
-        Task<ICreateReportAsyncApiResponse?> CreateReportAsyncOrDefaultAsync(string tenantId, Option<System.IO.Stream> file = default, Option<string> name = default, Option<string> shortDescription = default, Option<string> description = default, Option<string> tags = default, Option<bool> isVisible = default, Option<string> version = default, Option<bool> identityRequired = default, Option<bool> rolesRequired = default, Option<string> state = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<ICreateReportAsyncApiResponse?> CreateReportAsyncOrDefaultAsync(string tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> file = default, Option<string> name = default, Option<string> shortDescription = default, Option<string> description = default, Option<string> tags = default, Option<bool> isVisible = default, Option<string> version = default, Option<bool> identityRequired = default, Option<bool> rolesRequired = default, Option<string> state = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Removes a report.
@@ -258,7 +260,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="state"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IUpdateReportAsyncApiResponse"/>&gt;</returns>
-        Task<IUpdateReportAsyncApiResponse> UpdateReportAsyncAsync(string tenantId, string reportId, Option<System.IO.Stream> file = default, Option<string> id = default, Option<string> name = default, Option<string> shortDescription = default, Option<string> description = default, Option<string> tags = default, Option<bool> isVisible = default, Option<string> version = default, Option<bool> rolesRequired = default, Option<bool> identityRequired = default, Option<string> state = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IUpdateReportAsyncApiResponse> UpdateReportAsyncAsync(string tenantId, string reportId, Option<EdGraph.Platform.Client.Client.FileParameter> file = default, Option<string> id = default, Option<string> name = default, Option<string> shortDescription = default, Option<string> description = default, Option<string> tags = default, Option<bool> isVisible = default, Option<string> version = default, Option<bool> rolesRequired = default, Option<bool> identityRequired = default, Option<string> state = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates a report.
@@ -281,7 +283,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="state"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IUpdateReportAsyncApiResponse"/>?&gt;</returns>
-        Task<IUpdateReportAsyncApiResponse?> UpdateReportAsyncOrDefaultAsync(string tenantId, string reportId, Option<System.IO.Stream> file = default, Option<string> id = default, Option<string> name = default, Option<string> shortDescription = default, Option<string> description = default, Option<string> tags = default, Option<bool> isVisible = default, Option<string> version = default, Option<bool> rolesRequired = default, Option<bool> identityRequired = default, Option<string> state = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IUpdateReportAsyncApiResponse?> UpdateReportAsyncOrDefaultAsync(string tenantId, string reportId, Option<EdGraph.Platform.Client.Client.FileParameter> file = default, Option<string> id = default, Option<string> name = default, Option<string> shortDescription = default, Option<string> description = default, Option<string> tags = default, Option<bool> isVisible = default, Option<string> version = default, Option<bool> rolesRequired = default, Option<bool> identityRequired = default, Option<string> state = default, System.Threading.CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -821,7 +823,7 @@ namespace EdGraph.Platform.Client.Api
             OauthTokenProvider = oauthTokenProvider;
         }
 
-        partial void FormatCreateReportAsync(ref string tenantId, ref Option<System.IO.Stream> file, ref Option<string> name, ref Option<string> shortDescription, ref Option<string> description, ref Option<string> tags, ref Option<bool> isVisible, ref Option<string> version, ref Option<bool> identityRequired, ref Option<bool> rolesRequired, ref Option<string> state);
+        partial void FormatCreateReportAsync(ref string tenantId, ref Option<EdGraph.Platform.Client.Client.FileParameter> file, ref Option<string> name, ref Option<string> shortDescription, ref Option<string> description, ref Option<string> tags, ref Option<bool> isVisible, ref Option<string> version, ref Option<bool> identityRequired, ref Option<bool> rolesRequired, ref Option<string> state);
 
         /// <summary>
         /// Validates the request parameters
@@ -835,7 +837,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="version"></param>
         /// <param name="state"></param>
         /// <returns></returns>
-        private void ValidateCreateReportAsync(string tenantId, Option<System.IO.Stream> file, Option<string> name, Option<string> shortDescription, Option<string> description, Option<string> tags, Option<string> version, Option<string> state)
+        private void ValidateCreateReportAsync(string tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> file, Option<string> name, Option<string> shortDescription, Option<string> description, Option<string> tags, Option<string> version, Option<string> state)
         {
             if (tenantId == null)
                 throw new ArgumentNullException(nameof(tenantId));
@@ -877,12 +879,12 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="identityRequired"></param>
         /// <param name="rolesRequired"></param>
         /// <param name="state"></param>
-        private void AfterCreateReportAsyncDefaultImplementation(ICreateReportAsyncApiResponse apiResponseLocalVar, string tenantId, Option<System.IO.Stream> file, Option<string> name, Option<string> shortDescription, Option<string> description, Option<string> tags, Option<bool> isVisible, Option<string> version, Option<bool> identityRequired, Option<bool> rolesRequired, Option<string> state)
+        private void AfterCreateReportAsyncDefaultImplementation(ICreateReportAsyncApiResponse apiResponseLocalVar, string tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> file, Option<string> name, Option<string> shortDescription, Option<string> description, Option<string> tags, Option<bool> isVisible, Option<string> version, Option<bool> identityRequired, Option<bool> rolesRequired, Option<string> state)
         {
             bool suppressDefaultLog = false;
             AfterCreateReportAsync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, file, name, shortDescription, description, tags, isVisible, version, identityRequired, rolesRequired, state);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -901,14 +903,14 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="identityRequired"></param>
         /// <param name="rolesRequired"></param>
         /// <param name="state"></param>
-        partial void AfterCreateReportAsync(ref bool suppressDefaultLog, ICreateReportAsyncApiResponse apiResponseLocalVar, string tenantId, Option<System.IO.Stream> file, Option<string> name, Option<string> shortDescription, Option<string> description, Option<string> tags, Option<bool> isVisible, Option<string> version, Option<bool> identityRequired, Option<bool> rolesRequired, Option<string> state);
+        partial void AfterCreateReportAsync(ref bool suppressDefaultLog, ICreateReportAsyncApiResponse apiResponseLocalVar, string tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> file, Option<string> name, Option<string> shortDescription, Option<string> description, Option<string> tags, Option<bool> isVisible, Option<string> version, Option<bool> identityRequired, Option<bool> rolesRequired, Option<string> state);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
         /// </summary>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="file"></param>
         /// <param name="name"></param>
@@ -920,21 +922,21 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="identityRequired"></param>
         /// <param name="rolesRequired"></param>
         /// <param name="state"></param>
-        private void OnErrorCreateReportAsyncDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, Option<System.IO.Stream> file, Option<string> name, Option<string> shortDescription, Option<string> description, Option<string> tags, Option<bool> isVisible, Option<string> version, Option<bool> identityRequired, Option<bool> rolesRequired, Option<string> state)
+        private void OnErrorCreateReportAsyncDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> file, Option<string> name, Option<string> shortDescription, Option<string> description, Option<string> tags, Option<bool> isVisible, Option<string> version, Option<bool> identityRequired, Option<bool> rolesRequired, Option<string> state)
         {
-            bool suppressDefaultLog = false;
-            OnErrorCreateReportAsync(ref suppressDefaultLog, exception, pathFormat, path, tenantId, file, name, shortDescription, description, tags, isVisible, version, identityRequired, rolesRequired, state);
-            if (!suppressDefaultLog)
-                Logger.LogError(exception, "An error occurred while sending the request to the server.");
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorCreateReportAsync(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, file, name, shortDescription, description, tags, isVisible, version, identityRequired, rolesRequired, state);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
 
         /// <summary>
         /// A partial method that gives developers a way to provide customized exception handling
         /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="file"></param>
         /// <param name="name"></param>
@@ -946,7 +948,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="identityRequired"></param>
         /// <param name="rolesRequired"></param>
         /// <param name="state"></param>
-        partial void OnErrorCreateReportAsync(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, Option<System.IO.Stream> file, Option<string> name, Option<string> shortDescription, Option<string> description, Option<string> tags, Option<bool> isVisible, Option<string> version, Option<bool> identityRequired, Option<bool> rolesRequired, Option<string> state);
+        partial void OnErrorCreateReportAsync(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> file, Option<string> name, Option<string> shortDescription, Option<string> description, Option<string> tags, Option<bool> isVisible, Option<string> version, Option<bool> identityRequired, Option<bool> rolesRequired, Option<string> state);
 
         /// <summary>
         /// Creates a new report (Does not upload pbix file). 
@@ -964,7 +966,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="state"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ICreateReportAsyncApiResponse"/>&gt;</returns>
-        public async Task<ICreateReportAsyncApiResponse?> CreateReportAsyncOrDefaultAsync(string tenantId, Option<System.IO.Stream> file = default, Option<string> name = default, Option<string> shortDescription = default, Option<string> description = default, Option<string> tags = default, Option<bool> isVisible = default, Option<string> version = default, Option<bool> identityRequired = default, Option<bool> rolesRequired = default, Option<string> state = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<ICreateReportAsyncApiResponse?> CreateReportAsyncOrDefaultAsync(string tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> file = default, Option<string> name = default, Option<string> shortDescription = default, Option<string> description = default, Option<string> tags = default, Option<bool> isVisible = default, Option<string> version = default, Option<bool> identityRequired = default, Option<bool> rolesRequired = default, Option<string> state = default, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
@@ -993,7 +995,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="state"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ICreateReportAsyncApiResponse"/>&gt;</returns>
-        public async Task<ICreateReportAsyncApiResponse> CreateReportAsyncAsync(string tenantId, Option<System.IO.Stream> file = default, Option<string> name = default, Option<string> shortDescription = default, Option<string> description = default, Option<string> tags = default, Option<bool> isVisible = default, Option<string> version = default, Option<bool> identityRequired = default, Option<bool> rolesRequired = default, Option<string> state = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<ICreateReportAsyncApiResponse> CreateReportAsyncAsync(string tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> file = default, Option<string> name = default, Option<string> shortDescription = default, Option<string> description = default, Option<string> tags = default, Option<bool> isVisible = default, Option<string> version = default, Option<bool> identityRequired = default, Option<bool> rolesRequired = default, Option<string> state = default, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
@@ -1008,44 +1010,53 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/analytics/reports";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/analytics/reports"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/analytics/reports");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
 
-                    MultipartContent multipartContentLocalVar = new MultipartContent();
+                    MultipartFormDataContent multipartContentLocalVar = new MultipartFormDataContent();
 
                     httpRequestMessageLocalVar.Content = multipartContentLocalVar;
 
-                    List<KeyValuePair<string?, string?>> formParameterLocalVars = new List<KeyValuePair<string?, string?>>();
+                    List<KeyValuePair<string, string?>> formParameterLocalVars = new List<KeyValuePair<string, string?>>();
 
-                    multipartContentLocalVar.Add(new FormUrlEncodedContent(formParameterLocalVars));                    if (file.IsSet)
-                        multipartContentLocalVar.Add(new StreamContent(file.Value));
+                    if (file.IsSet)
+                    {
+                        var streamContentLocalVar = new StreamContent(file.Value.Content);
+                        streamContentLocalVar.Headers.ContentType = new MediaTypeHeaderValue(file.Value.ContentType);
+                        multipartContentLocalVar.Add(streamContentLocalVar, "File", file.Value.FileName ?? "File");
+                    }
 
                     if (name.IsSet)
-                        formParameterLocalVars.Add(new KeyValuePair<string?, string?>("Name", ClientUtils.ParameterToString(name.Value)));
+                        formParameterLocalVars.Add(new KeyValuePair<string, string?>("Name", ClientUtils.ParameterToString(name.Value)));
 
                     if (shortDescription.IsSet)
-                        formParameterLocalVars.Add(new KeyValuePair<string?, string?>("ShortDescription", ClientUtils.ParameterToString(shortDescription.Value)));
+                        formParameterLocalVars.Add(new KeyValuePair<string, string?>("ShortDescription", ClientUtils.ParameterToString(shortDescription.Value)));
 
                     if (description.IsSet)
-                        formParameterLocalVars.Add(new KeyValuePair<string?, string?>("Description", ClientUtils.ParameterToString(description.Value)));
+                        formParameterLocalVars.Add(new KeyValuePair<string, string?>("Description", ClientUtils.ParameterToString(description.Value)));
 
                     if (tags.IsSet)
-                        formParameterLocalVars.Add(new KeyValuePair<string?, string?>("Tags", ClientUtils.ParameterToString(tags.Value)));
+                        formParameterLocalVars.Add(new KeyValuePair<string, string?>("Tags", ClientUtils.ParameterToString(tags.Value)));
 
                     if (isVisible.IsSet)
-                        formParameterLocalVars.Add(new KeyValuePair<string?, string?>("IsVisible", ClientUtils.ParameterToString(isVisible.Value)));
+                        formParameterLocalVars.Add(new KeyValuePair<string, string?>("IsVisible", ClientUtils.ParameterToString(isVisible.Value)));
 
                     if (version.IsSet)
-                        formParameterLocalVars.Add(new KeyValuePair<string?, string?>("Version", ClientUtils.ParameterToString(version.Value)));
+                        formParameterLocalVars.Add(new KeyValuePair<string, string?>("Version", ClientUtils.ParameterToString(version.Value)));
 
                     if (identityRequired.IsSet)
-                        formParameterLocalVars.Add(new KeyValuePair<string?, string?>("IdentityRequired", ClientUtils.ParameterToString(identityRequired.Value)));
+                        formParameterLocalVars.Add(new KeyValuePair<string, string?>("IdentityRequired", ClientUtils.ParameterToString(identityRequired.Value)));
 
                     if (rolesRequired.IsSet)
-                        formParameterLocalVars.Add(new KeyValuePair<string?, string?>("RolesRequired", ClientUtils.ParameterToString(rolesRequired.Value)));
+                        formParameterLocalVars.Add(new KeyValuePair<string, string?>("RolesRequired", ClientUtils.ParameterToString(rolesRequired.Value)));
 
                     if (state.IsSet)
-                        formParameterLocalVars.Add(new KeyValuePair<string?, string?>("State", ClientUtils.ParameterToString(state.Value)));
+                        formParameterLocalVars.Add(new KeyValuePair<string, string?>("State", ClientUtils.ParameterToString(state.Value)));
+
+                    foreach (var formParamLocalVar in formParameterLocalVars)
+                        multipartContentLocalVar.Add(new StringContent(formParamLocalVar.Value ?? string.Empty), formParamLocalVar.Key);
 
                     List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
                     httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
@@ -1060,19 +1071,14 @@ namespace EdGraph.Platform.Client.Api
                         "multipart/form-data"
                     };
 
-                    string? contentTypeLocalVar = ClientUtils.SelectHeaderContentType(contentTypes);
-
-                    if (contentTypeLocalVar != null && httpRequestMessageLocalVar.Content != null)
-                        httpRequestMessageLocalVar.Content.Headers.ContentType = new MediaTypeHeaderValue(contentTypeLocalVar);
-
                     string[] acceptLocalVars = new string[] {
                         "application/json"
                     };
 
-                    string? acceptLocalVar = ClientUtils.SelectHeaderAccept(acceptLocalVars);
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
 
-                    if (acceptLocalVar != null)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptLocalVar));
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
 
                     httpRequestMessageLocalVar.Method = HttpMethod.Post;
 
@@ -1080,11 +1086,17 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<CreateReportAsyncApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<CreateReportAsyncApiResponse>();
+                        CreateReportAsyncApiResponse apiResponseLocalVar;
 
-                        CreateReportAsyncApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/analytics/reports", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/analytics/reports", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterCreateReportAsyncDefaultImplementation(apiResponseLocalVar, tenantId, file, name, shortDescription, description, tags, isVisible, version, identityRequired, rolesRequired, state);
 
@@ -1127,6 +1139,22 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public CreateReportAsyncApiResponse(ILogger<CreateReportAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="CreateReportAsyncApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public CreateReportAsyncApiResponse(ILogger<CreateReportAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -1369,7 +1397,7 @@ namespace EdGraph.Platform.Client.Api
             bool suppressDefaultLog = false;
             AfterDeleteReportAsync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, reportId);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -1384,29 +1412,29 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
         /// </summary>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="reportId"></param>
-        private void OnErrorDeleteReportAsyncDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, string reportId)
+        private void OnErrorDeleteReportAsyncDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string reportId)
         {
-            bool suppressDefaultLog = false;
-            OnErrorDeleteReportAsync(ref suppressDefaultLog, exception, pathFormat, path, tenantId, reportId);
-            if (!suppressDefaultLog)
-                Logger.LogError(exception, "An error occurred while sending the request to the server.");
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorDeleteReportAsync(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, reportId);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
 
         /// <summary>
         /// A partial method that gives developers a way to provide customized exception handling
         /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="reportId"></param>
-        partial void OnErrorDeleteReportAsync(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, string reportId);
+        partial void OnErrorDeleteReportAsync(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string reportId);
 
         /// <summary>
         /// Removes a report. 
@@ -1450,7 +1478,9 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/analytics/reports/{reportId}";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/analytics/reports/{reportId}"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/analytics/reports/{reportId}");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BreportId%7D", Uri.EscapeDataString(reportId.ToString()));
 
@@ -1467,10 +1497,10 @@ namespace EdGraph.Platform.Client.Api
                         "application/json"
                     };
 
-                    string? acceptLocalVar = ClientUtils.SelectHeaderAccept(acceptLocalVars);
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
 
-                    if (acceptLocalVar != null)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptLocalVar));
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
 
                     httpRequestMessageLocalVar.Method = HttpMethod.Delete;
 
@@ -1478,11 +1508,17 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<DeleteReportAsyncApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<DeleteReportAsyncApiResponse>();
+                        DeleteReportAsyncApiResponse apiResponseLocalVar;
 
-                        DeleteReportAsyncApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/analytics/reports/{reportId}", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/analytics/reports/{reportId}", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterDeleteReportAsyncDefaultImplementation(apiResponseLocalVar, tenantId, reportId);
 
@@ -1525,6 +1561,22 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public DeleteReportAsyncApiResponse(ILogger<DeleteReportAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="DeleteReportAsyncApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public DeleteReportAsyncApiResponse(ILogger<DeleteReportAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -1740,7 +1792,7 @@ namespace EdGraph.Platform.Client.Api
             bool suppressDefaultLog = false;
             AfterDownloadReportAsync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, reportId, groupId);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -1756,31 +1808,31 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
         /// </summary>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="reportId"></param>
         /// <param name="groupId"></param>
-        private void OnErrorDownloadReportAsyncDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, string reportId, string groupId)
+        private void OnErrorDownloadReportAsyncDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string reportId, string groupId)
         {
-            bool suppressDefaultLog = false;
-            OnErrorDownloadReportAsync(ref suppressDefaultLog, exception, pathFormat, path, tenantId, reportId, groupId);
-            if (!suppressDefaultLog)
-                Logger.LogError(exception, "An error occurred while sending the request to the server.");
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorDownloadReportAsync(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, reportId, groupId);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
 
         /// <summary>
         /// A partial method that gives developers a way to provide customized exception handling
         /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="reportId"></param>
         /// <param name="groupId"></param>
-        partial void OnErrorDownloadReportAsync(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, string reportId, string groupId);
+        partial void OnErrorDownloadReportAsync(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string reportId, string groupId);
 
         /// <summary>
         /// Retrieves the PBIX for any report in the list in order to download 
@@ -1826,7 +1878,9 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/analytics/reports/download/{reportId}/{groupId}";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/analytics/reports/download/{reportId}/{groupId}"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/analytics/reports/download/{reportId}/{groupId}");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BreportId%7D", Uri.EscapeDataString(reportId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BgroupId%7D", Uri.EscapeDataString(groupId.ToString()));
@@ -1844,10 +1898,10 @@ namespace EdGraph.Platform.Client.Api
                         "application/json"
                     };
 
-                    string? acceptLocalVar = ClientUtils.SelectHeaderAccept(acceptLocalVars);
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
 
-                    if (acceptLocalVar != null)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptLocalVar));
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
 
                     httpRequestMessageLocalVar.Method = HttpMethod.Get;
 
@@ -1855,11 +1909,17 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<DownloadReportAsyncApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<DownloadReportAsyncApiResponse>();
+                        DownloadReportAsyncApiResponse apiResponseLocalVar;
 
-                        DownloadReportAsyncApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/analytics/reports/download/{reportId}/{groupId}", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/analytics/reports/download/{reportId}/{groupId}", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterDownloadReportAsyncDefaultImplementation(apiResponseLocalVar, tenantId, reportId, groupId);
 
@@ -1902,6 +1962,22 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public DownloadReportAsyncApiResponse(ILogger<DownloadReportAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="DownloadReportAsyncApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public DownloadReportAsyncApiResponse(ILogger<DownloadReportAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -2113,7 +2189,7 @@ namespace EdGraph.Platform.Client.Api
             bool suppressDefaultLog = false;
             AfterGetAllTenantAnalyticsWorkspaceReportsAsync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, pageSize, pageIndex, orderBy, filter);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -2131,35 +2207,35 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
         /// </summary>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageIndex"></param>
         /// <param name="orderBy"></param>
         /// <param name="filter"></param>
-        private void OnErrorGetAllTenantAnalyticsWorkspaceReportsAsyncDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter)
+        private void OnErrorGetAllTenantAnalyticsWorkspaceReportsAsyncDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter)
         {
-            bool suppressDefaultLog = false;
-            OnErrorGetAllTenantAnalyticsWorkspaceReportsAsync(ref suppressDefaultLog, exception, pathFormat, path, tenantId, pageSize, pageIndex, orderBy, filter);
-            if (!suppressDefaultLog)
-                Logger.LogError(exception, "An error occurred while sending the request to the server.");
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorGetAllTenantAnalyticsWorkspaceReportsAsync(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, pageSize, pageIndex, orderBy, filter);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
 
         /// <summary>
         /// A partial method that gives developers a way to provide customized exception handling
         /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageIndex"></param>
         /// <param name="orderBy"></param>
         /// <param name="filter"></param>
-        partial void OnErrorGetAllTenantAnalyticsWorkspaceReportsAsync(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter);
+        partial void OnErrorGetAllTenantAnalyticsWorkspaceReportsAsync(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter);
 
         /// <summary>
         /// Retrieves all reports. 
@@ -2209,7 +2285,9 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/analytics/reports";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/analytics/reports"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/analytics/reports");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
 
                     System.Collections.Specialized.NameValueCollection parseQueryStringLocalVar = System.Web.HttpUtility.ParseQueryString(string.Empty);
@@ -2241,10 +2319,10 @@ namespace EdGraph.Platform.Client.Api
                         "application/json"
                     };
 
-                    string? acceptLocalVar = ClientUtils.SelectHeaderAccept(acceptLocalVars);
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
 
-                    if (acceptLocalVar != null)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptLocalVar));
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
 
                     httpRequestMessageLocalVar.Method = HttpMethod.Get;
 
@@ -2252,11 +2330,17 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<GetAllTenantAnalyticsWorkspaceReportsAsyncApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<GetAllTenantAnalyticsWorkspaceReportsAsyncApiResponse>();
+                        GetAllTenantAnalyticsWorkspaceReportsAsyncApiResponse apiResponseLocalVar;
 
-                        GetAllTenantAnalyticsWorkspaceReportsAsyncApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/analytics/reports", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/analytics/reports", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterGetAllTenantAnalyticsWorkspaceReportsAsyncDefaultImplementation(apiResponseLocalVar, tenantId, pageSize, pageIndex, orderBy, filter);
 
@@ -2299,6 +2383,22 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public GetAllTenantAnalyticsWorkspaceReportsAsyncApiResponse(ILogger<GetAllTenantAnalyticsWorkspaceReportsAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="GetAllTenantAnalyticsWorkspaceReportsAsyncApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public GetAllTenantAnalyticsWorkspaceReportsAsyncApiResponse(ILogger<GetAllTenantAnalyticsWorkspaceReportsAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -2503,7 +2603,7 @@ namespace EdGraph.Platform.Client.Api
             bool suppressDefaultLog = false;
             AfterGetReportByIdAsync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, reportId);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -2518,29 +2618,29 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
         /// </summary>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="reportId"></param>
-        private void OnErrorGetReportByIdAsyncDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, string reportId)
+        private void OnErrorGetReportByIdAsyncDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string reportId)
         {
-            bool suppressDefaultLog = false;
-            OnErrorGetReportByIdAsync(ref suppressDefaultLog, exception, pathFormat, path, tenantId, reportId);
-            if (!suppressDefaultLog)
-                Logger.LogError(exception, "An error occurred while sending the request to the server.");
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorGetReportByIdAsync(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, reportId);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
 
         /// <summary>
         /// A partial method that gives developers a way to provide customized exception handling
         /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="reportId"></param>
-        partial void OnErrorGetReportByIdAsync(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, string reportId);
+        partial void OnErrorGetReportByIdAsync(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string reportId);
 
         /// <summary>
         /// Retrieves a Report by ID. 
@@ -2584,7 +2684,9 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/analytics/reports/{reportId}";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/analytics/reports/{reportId}"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/analytics/reports/{reportId}");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BreportId%7D", Uri.EscapeDataString(reportId.ToString()));
 
@@ -2601,10 +2703,10 @@ namespace EdGraph.Platform.Client.Api
                         "application/json"
                     };
 
-                    string? acceptLocalVar = ClientUtils.SelectHeaderAccept(acceptLocalVars);
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
 
-                    if (acceptLocalVar != null)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptLocalVar));
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
 
                     httpRequestMessageLocalVar.Method = HttpMethod.Get;
 
@@ -2612,11 +2714,17 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<GetReportByIdAsyncApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<GetReportByIdAsyncApiResponse>();
+                        GetReportByIdAsyncApiResponse apiResponseLocalVar;
 
-                        GetReportByIdAsyncApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/analytics/reports/{reportId}", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/analytics/reports/{reportId}", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterGetReportByIdAsyncDefaultImplementation(apiResponseLocalVar, tenantId, reportId);
 
@@ -2659,6 +2767,22 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public GetReportByIdAsyncApiResponse(ILogger<GetReportByIdAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="GetReportByIdAsyncApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public GetReportByIdAsyncApiResponse(ILogger<GetReportByIdAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -2901,7 +3025,7 @@ namespace EdGraph.Platform.Client.Api
             bool suppressDefaultLog = false;
             AfterSyncLatestVersion(ref suppressDefaultLog, apiResponseLocalVar, tenantId, analyticsApiReportsV1SyncLatestVersionRequest);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -2916,29 +3040,29 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
         /// </summary>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="analyticsApiReportsV1SyncLatestVersionRequest"></param>
-        private void OnErrorSyncLatestVersionDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, Option<AnalyticsApiReportsV1SyncLatestVersionRequest> analyticsApiReportsV1SyncLatestVersionRequest)
+        private void OnErrorSyncLatestVersionDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<AnalyticsApiReportsV1SyncLatestVersionRequest> analyticsApiReportsV1SyncLatestVersionRequest)
         {
-            bool suppressDefaultLog = false;
-            OnErrorSyncLatestVersion(ref suppressDefaultLog, exception, pathFormat, path, tenantId, analyticsApiReportsV1SyncLatestVersionRequest);
-            if (!suppressDefaultLog)
-                Logger.LogError(exception, "An error occurred while sending the request to the server.");
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorSyncLatestVersion(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, analyticsApiReportsV1SyncLatestVersionRequest);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
 
         /// <summary>
         /// A partial method that gives developers a way to provide customized exception handling
         /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="analyticsApiReportsV1SyncLatestVersionRequest"></param>
-        partial void OnErrorSyncLatestVersion(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, Option<AnalyticsApiReportsV1SyncLatestVersionRequest> analyticsApiReportsV1SyncLatestVersionRequest);
+        partial void OnErrorSyncLatestVersion(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<AnalyticsApiReportsV1SyncLatestVersionRequest> analyticsApiReportsV1SyncLatestVersionRequest);
 
         /// <summary>
         /// Sync latest version 
@@ -2982,13 +3106,17 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/analytics/reports/synclatestversion";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/analytics/reports/synclatestversion"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/analytics/reports/synclatestversion");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
 
                     if (analyticsApiReportsV1SyncLatestVersionRequest.IsSet)
-                        httpRequestMessageLocalVar.Content = (analyticsApiReportsV1SyncLatestVersionRequest.Value as object) is System.IO.Stream stream
-                            ? httpRequestMessageLocalVar.Content = new StreamContent(stream)
-                            : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(analyticsApiReportsV1SyncLatestVersionRequest.Value, _jsonSerializerOptions));
+                    {
+                      httpRequestMessageLocalVar.Content = (analyticsApiReportsV1SyncLatestVersionRequest.Value as object) is EdGraph.Platform.Client.Client.FileParameter fileParameterLocalVar
+                        ? httpRequestMessageLocalVar.Content = new StreamContent(fileParameterLocalVar.Content)
+                        : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(analyticsApiReportsV1SyncLatestVersionRequest.Value, _jsonSerializerOptions));
+                    }
 
                     List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
                     httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
@@ -3015,10 +3143,10 @@ namespace EdGraph.Platform.Client.Api
                         "application/json"
                     };
 
-                    string? acceptLocalVar = ClientUtils.SelectHeaderAccept(acceptLocalVars);
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
 
-                    if (acceptLocalVar != null)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptLocalVar));
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
 
                     httpRequestMessageLocalVar.Method = HttpMethod.Post;
 
@@ -3026,11 +3154,17 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<SyncLatestVersionApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<SyncLatestVersionApiResponse>();
+                        SyncLatestVersionApiResponse apiResponseLocalVar;
 
-                        SyncLatestVersionApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/analytics/reports/synclatestversion", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/analytics/reports/synclatestversion", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterSyncLatestVersionDefaultImplementation(apiResponseLocalVar, tenantId, analyticsApiReportsV1SyncLatestVersionRequest);
 
@@ -3073,6 +3207,22 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public SyncLatestVersionApiResponse(ILogger<SyncLatestVersionApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="SyncLatestVersionApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public SyncLatestVersionApiResponse(ILogger<SyncLatestVersionApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -3315,7 +3465,7 @@ namespace EdGraph.Platform.Client.Api
             bool suppressDefaultLog = false;
             AfterSyncWorkspacesAsync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, analyticsApiReportsV1SyncWorkspacesRequest);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -3330,29 +3480,29 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
         /// </summary>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="analyticsApiReportsV1SyncWorkspacesRequest"></param>
-        private void OnErrorSyncWorkspacesAsyncDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, Option<AnalyticsApiReportsV1SyncWorkspacesRequest> analyticsApiReportsV1SyncWorkspacesRequest)
+        private void OnErrorSyncWorkspacesAsyncDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<AnalyticsApiReportsV1SyncWorkspacesRequest> analyticsApiReportsV1SyncWorkspacesRequest)
         {
-            bool suppressDefaultLog = false;
-            OnErrorSyncWorkspacesAsync(ref suppressDefaultLog, exception, pathFormat, path, tenantId, analyticsApiReportsV1SyncWorkspacesRequest);
-            if (!suppressDefaultLog)
-                Logger.LogError(exception, "An error occurred while sending the request to the server.");
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorSyncWorkspacesAsync(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, analyticsApiReportsV1SyncWorkspacesRequest);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
 
         /// <summary>
         /// A partial method that gives developers a way to provide customized exception handling
         /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="analyticsApiReportsV1SyncWorkspacesRequest"></param>
-        partial void OnErrorSyncWorkspacesAsync(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, Option<AnalyticsApiReportsV1SyncWorkspacesRequest> analyticsApiReportsV1SyncWorkspacesRequest);
+        partial void OnErrorSyncWorkspacesAsync(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<AnalyticsApiReportsV1SyncWorkspacesRequest> analyticsApiReportsV1SyncWorkspacesRequest);
 
         /// <summary>
         /// Triggers workspace, ODS and DW automation. 
@@ -3396,13 +3546,17 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/analytics/reports/sync";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/analytics/reports/sync"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/analytics/reports/sync");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
 
                     if (analyticsApiReportsV1SyncWorkspacesRequest.IsSet)
-                        httpRequestMessageLocalVar.Content = (analyticsApiReportsV1SyncWorkspacesRequest.Value as object) is System.IO.Stream stream
-                            ? httpRequestMessageLocalVar.Content = new StreamContent(stream)
-                            : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(analyticsApiReportsV1SyncWorkspacesRequest.Value, _jsonSerializerOptions));
+                    {
+                      httpRequestMessageLocalVar.Content = (analyticsApiReportsV1SyncWorkspacesRequest.Value as object) is EdGraph.Platform.Client.Client.FileParameter fileParameterLocalVar
+                        ? httpRequestMessageLocalVar.Content = new StreamContent(fileParameterLocalVar.Content)
+                        : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(analyticsApiReportsV1SyncWorkspacesRequest.Value, _jsonSerializerOptions));
+                    }
 
                     List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
                     httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
@@ -3429,10 +3583,10 @@ namespace EdGraph.Platform.Client.Api
                         "application/json"
                     };
 
-                    string? acceptLocalVar = ClientUtils.SelectHeaderAccept(acceptLocalVars);
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
 
-                    if (acceptLocalVar != null)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptLocalVar));
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
 
                     httpRequestMessageLocalVar.Method = HttpMethod.Post;
 
@@ -3440,11 +3594,17 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<SyncWorkspacesAsyncApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<SyncWorkspacesAsyncApiResponse>();
+                        SyncWorkspacesAsyncApiResponse apiResponseLocalVar;
 
-                        SyncWorkspacesAsyncApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/analytics/reports/sync", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/analytics/reports/sync", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterSyncWorkspacesAsyncDefaultImplementation(apiResponseLocalVar, tenantId, analyticsApiReportsV1SyncWorkspacesRequest);
 
@@ -3487,6 +3647,22 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public SyncWorkspacesAsyncApiResponse(ILogger<SyncWorkspacesAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="SyncWorkspacesAsyncApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public SyncWorkspacesAsyncApiResponse(ILogger<SyncWorkspacesAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -3701,7 +3877,7 @@ namespace EdGraph.Platform.Client.Api
             partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
         }
 
-        partial void FormatUpdateReportAsync(ref string tenantId, ref string reportId, ref Option<System.IO.Stream> file, ref Option<string> id, ref Option<string> name, ref Option<string> shortDescription, ref Option<string> description, ref Option<string> tags, ref Option<bool> isVisible, ref Option<string> version, ref Option<bool> rolesRequired, ref Option<bool> identityRequired, ref Option<string> state);
+        partial void FormatUpdateReportAsync(ref string tenantId, ref string reportId, ref Option<EdGraph.Platform.Client.Client.FileParameter> file, ref Option<string> id, ref Option<string> name, ref Option<string> shortDescription, ref Option<string> description, ref Option<string> tags, ref Option<bool> isVisible, ref Option<string> version, ref Option<bool> rolesRequired, ref Option<bool> identityRequired, ref Option<string> state);
 
         /// <summary>
         /// Validates the request parameters
@@ -3717,7 +3893,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="version"></param>
         /// <param name="state"></param>
         /// <returns></returns>
-        private void ValidateUpdateReportAsync(string tenantId, string reportId, Option<System.IO.Stream> file, Option<string> id, Option<string> name, Option<string> shortDescription, Option<string> description, Option<string> tags, Option<string> version, Option<string> state)
+        private void ValidateUpdateReportAsync(string tenantId, string reportId, Option<EdGraph.Platform.Client.Client.FileParameter> file, Option<string> id, Option<string> name, Option<string> shortDescription, Option<string> description, Option<string> tags, Option<string> version, Option<string> state)
         {
             if (tenantId == null)
                 throw new ArgumentNullException(nameof(tenantId));
@@ -3767,12 +3943,12 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="rolesRequired"></param>
         /// <param name="identityRequired"></param>
         /// <param name="state"></param>
-        private void AfterUpdateReportAsyncDefaultImplementation(IUpdateReportAsyncApiResponse apiResponseLocalVar, string tenantId, string reportId, Option<System.IO.Stream> file, Option<string> id, Option<string> name, Option<string> shortDescription, Option<string> description, Option<string> tags, Option<bool> isVisible, Option<string> version, Option<bool> rolesRequired, Option<bool> identityRequired, Option<string> state)
+        private void AfterUpdateReportAsyncDefaultImplementation(IUpdateReportAsyncApiResponse apiResponseLocalVar, string tenantId, string reportId, Option<EdGraph.Platform.Client.Client.FileParameter> file, Option<string> id, Option<string> name, Option<string> shortDescription, Option<string> description, Option<string> tags, Option<bool> isVisible, Option<string> version, Option<bool> rolesRequired, Option<bool> identityRequired, Option<string> state)
         {
             bool suppressDefaultLog = false;
             AfterUpdateReportAsync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, reportId, file, id, name, shortDescription, description, tags, isVisible, version, rolesRequired, identityRequired, state);
             if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {3}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
 
         /// <summary>
@@ -3793,14 +3969,14 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="rolesRequired"></param>
         /// <param name="identityRequired"></param>
         /// <param name="state"></param>
-        partial void AfterUpdateReportAsync(ref bool suppressDefaultLog, IUpdateReportAsyncApiResponse apiResponseLocalVar, string tenantId, string reportId, Option<System.IO.Stream> file, Option<string> id, Option<string> name, Option<string> shortDescription, Option<string> description, Option<string> tags, Option<bool> isVisible, Option<string> version, Option<bool> rolesRequired, Option<bool> identityRequired, Option<string> state);
+        partial void AfterUpdateReportAsync(ref bool suppressDefaultLog, IUpdateReportAsyncApiResponse apiResponseLocalVar, string tenantId, string reportId, Option<EdGraph.Platform.Client.Client.FileParameter> file, Option<string> id, Option<string> name, Option<string> shortDescription, Option<string> description, Option<string> tags, Option<bool> isVisible, Option<string> version, Option<bool> rolesRequired, Option<bool> identityRequired, Option<string> state);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
         /// </summary>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="reportId"></param>
         /// <param name="file"></param>
@@ -3814,21 +3990,21 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="rolesRequired"></param>
         /// <param name="identityRequired"></param>
         /// <param name="state"></param>
-        private void OnErrorUpdateReportAsyncDefaultImplementation(Exception exception, string pathFormat, string path, string tenantId, string reportId, Option<System.IO.Stream> file, Option<string> id, Option<string> name, Option<string> shortDescription, Option<string> description, Option<string> tags, Option<bool> isVisible, Option<string> version, Option<bool> rolesRequired, Option<bool> identityRequired, Option<string> state)
+        private void OnErrorUpdateReportAsyncDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string reportId, Option<EdGraph.Platform.Client.Client.FileParameter> file, Option<string> id, Option<string> name, Option<string> shortDescription, Option<string> description, Option<string> tags, Option<bool> isVisible, Option<string> version, Option<bool> rolesRequired, Option<bool> identityRequired, Option<string> state)
         {
-            bool suppressDefaultLog = false;
-            OnErrorUpdateReportAsync(ref suppressDefaultLog, exception, pathFormat, path, tenantId, reportId, file, id, name, shortDescription, description, tags, isVisible, version, rolesRequired, identityRequired, state);
-            if (!suppressDefaultLog)
-                Logger.LogError(exception, "An error occurred while sending the request to the server.");
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorUpdateReportAsync(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, reportId, file, id, name, shortDescription, description, tags, isVisible, version, rolesRequired, identityRequired, state);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
 
         /// <summary>
         /// A partial method that gives developers a way to provide customized exception handling
         /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="exception"></param>
-        /// <param name="pathFormat"></param>
-        /// <param name="path"></param>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="reportId"></param>
         /// <param name="file"></param>
@@ -3842,7 +4018,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="rolesRequired"></param>
         /// <param name="identityRequired"></param>
         /// <param name="state"></param>
-        partial void OnErrorUpdateReportAsync(ref bool suppressDefaultLog, Exception exception, string pathFormat, string path, string tenantId, string reportId, Option<System.IO.Stream> file, Option<string> id, Option<string> name, Option<string> shortDescription, Option<string> description, Option<string> tags, Option<bool> isVisible, Option<string> version, Option<bool> rolesRequired, Option<bool> identityRequired, Option<string> state);
+        partial void OnErrorUpdateReportAsync(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string reportId, Option<EdGraph.Platform.Client.Client.FileParameter> file, Option<string> id, Option<string> name, Option<string> shortDescription, Option<string> description, Option<string> tags, Option<bool> isVisible, Option<string> version, Option<bool> rolesRequired, Option<bool> identityRequired, Option<string> state);
 
         /// <summary>
         /// Updates a report. 
@@ -3862,7 +4038,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="state"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IUpdateReportAsyncApiResponse"/>&gt;</returns>
-        public async Task<IUpdateReportAsyncApiResponse?> UpdateReportAsyncOrDefaultAsync(string tenantId, string reportId, Option<System.IO.Stream> file = default, Option<string> id = default, Option<string> name = default, Option<string> shortDescription = default, Option<string> description = default, Option<string> tags = default, Option<bool> isVisible = default, Option<string> version = default, Option<bool> rolesRequired = default, Option<bool> identityRequired = default, Option<string> state = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IUpdateReportAsyncApiResponse?> UpdateReportAsyncOrDefaultAsync(string tenantId, string reportId, Option<EdGraph.Platform.Client.Client.FileParameter> file = default, Option<string> id = default, Option<string> name = default, Option<string> shortDescription = default, Option<string> description = default, Option<string> tags = default, Option<bool> isVisible = default, Option<string> version = default, Option<bool> rolesRequired = default, Option<bool> identityRequired = default, Option<string> state = default, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
@@ -3893,7 +4069,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="state"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IUpdateReportAsyncApiResponse"/>&gt;</returns>
-        public async Task<IUpdateReportAsyncApiResponse> UpdateReportAsyncAsync(string tenantId, string reportId, Option<System.IO.Stream> file = default, Option<string> id = default, Option<string> name = default, Option<string> shortDescription = default, Option<string> description = default, Option<string> tags = default, Option<bool> isVisible = default, Option<string> version = default, Option<bool> rolesRequired = default, Option<bool> identityRequired = default, Option<string> state = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IUpdateReportAsyncApiResponse> UpdateReportAsyncAsync(string tenantId, string reportId, Option<EdGraph.Platform.Client.Client.FileParameter> file = default, Option<string> id = default, Option<string> name = default, Option<string> shortDescription = default, Option<string> description = default, Option<string> tags = default, Option<bool> isVisible = default, Option<string> version = default, Option<bool> rolesRequired = default, Option<bool> identityRequired = default, Option<string> state = default, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
@@ -3908,48 +4084,57 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = ClientUtils.CONTEXT_PATH + "/tenants/{tenantId}/analytics/reports/{reportId}";
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/analytics/reports/{reportId}"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/analytics/reports/{reportId}");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BreportId%7D", Uri.EscapeDataString(reportId.ToString()));
 
-                    MultipartContent multipartContentLocalVar = new MultipartContent();
+                    MultipartFormDataContent multipartContentLocalVar = new MultipartFormDataContent();
 
                     httpRequestMessageLocalVar.Content = multipartContentLocalVar;
 
-                    List<KeyValuePair<string?, string?>> formParameterLocalVars = new List<KeyValuePair<string?, string?>>();
+                    List<KeyValuePair<string, string?>> formParameterLocalVars = new List<KeyValuePair<string, string?>>();
 
-                    multipartContentLocalVar.Add(new FormUrlEncodedContent(formParameterLocalVars));                    if (file.IsSet)
-                        multipartContentLocalVar.Add(new StreamContent(file.Value));
+                    if (file.IsSet)
+                    {
+                        var streamContentLocalVar = new StreamContent(file.Value.Content);
+                        streamContentLocalVar.Headers.ContentType = new MediaTypeHeaderValue(file.Value.ContentType);
+                        multipartContentLocalVar.Add(streamContentLocalVar, "File", file.Value.FileName ?? "File");
+                    }
 
                     if (id.IsSet)
-                        formParameterLocalVars.Add(new KeyValuePair<string?, string?>("Id", ClientUtils.ParameterToString(id.Value)));
+                        formParameterLocalVars.Add(new KeyValuePair<string, string?>("Id", ClientUtils.ParameterToString(id.Value)));
 
                     if (name.IsSet)
-                        formParameterLocalVars.Add(new KeyValuePair<string?, string?>("Name", ClientUtils.ParameterToString(name.Value)));
+                        formParameterLocalVars.Add(new KeyValuePair<string, string?>("Name", ClientUtils.ParameterToString(name.Value)));
 
                     if (shortDescription.IsSet)
-                        formParameterLocalVars.Add(new KeyValuePair<string?, string?>("ShortDescription", ClientUtils.ParameterToString(shortDescription.Value)));
+                        formParameterLocalVars.Add(new KeyValuePair<string, string?>("ShortDescription", ClientUtils.ParameterToString(shortDescription.Value)));
 
                     if (description.IsSet)
-                        formParameterLocalVars.Add(new KeyValuePair<string?, string?>("Description", ClientUtils.ParameterToString(description.Value)));
+                        formParameterLocalVars.Add(new KeyValuePair<string, string?>("Description", ClientUtils.ParameterToString(description.Value)));
 
                     if (tags.IsSet)
-                        formParameterLocalVars.Add(new KeyValuePair<string?, string?>("Tags", ClientUtils.ParameterToString(tags.Value)));
+                        formParameterLocalVars.Add(new KeyValuePair<string, string?>("Tags", ClientUtils.ParameterToString(tags.Value)));
 
                     if (isVisible.IsSet)
-                        formParameterLocalVars.Add(new KeyValuePair<string?, string?>("IsVisible", ClientUtils.ParameterToString(isVisible.Value)));
+                        formParameterLocalVars.Add(new KeyValuePair<string, string?>("IsVisible", ClientUtils.ParameterToString(isVisible.Value)));
 
                     if (version.IsSet)
-                        formParameterLocalVars.Add(new KeyValuePair<string?, string?>("Version", ClientUtils.ParameterToString(version.Value)));
+                        formParameterLocalVars.Add(new KeyValuePair<string, string?>("Version", ClientUtils.ParameterToString(version.Value)));
 
                     if (rolesRequired.IsSet)
-                        formParameterLocalVars.Add(new KeyValuePair<string?, string?>("RolesRequired", ClientUtils.ParameterToString(rolesRequired.Value)));
+                        formParameterLocalVars.Add(new KeyValuePair<string, string?>("RolesRequired", ClientUtils.ParameterToString(rolesRequired.Value)));
 
                     if (identityRequired.IsSet)
-                        formParameterLocalVars.Add(new KeyValuePair<string?, string?>("IdentityRequired", ClientUtils.ParameterToString(identityRequired.Value)));
+                        formParameterLocalVars.Add(new KeyValuePair<string, string?>("IdentityRequired", ClientUtils.ParameterToString(identityRequired.Value)));
 
                     if (state.IsSet)
-                        formParameterLocalVars.Add(new KeyValuePair<string?, string?>("State", ClientUtils.ParameterToString(state.Value)));
+                        formParameterLocalVars.Add(new KeyValuePair<string, string?>("State", ClientUtils.ParameterToString(state.Value)));
+
+                    foreach (var formParamLocalVar in formParameterLocalVars)
+                        multipartContentLocalVar.Add(new StringContent(formParamLocalVar.Value ?? string.Empty), formParamLocalVar.Key);
 
                     List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
                     httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
@@ -3964,19 +4149,14 @@ namespace EdGraph.Platform.Client.Api
                         "multipart/form-data"
                     };
 
-                    string? contentTypeLocalVar = ClientUtils.SelectHeaderContentType(contentTypes);
-
-                    if (contentTypeLocalVar != null && httpRequestMessageLocalVar.Content != null)
-                        httpRequestMessageLocalVar.Content.Headers.ContentType = new MediaTypeHeaderValue(contentTypeLocalVar);
-
                     string[] acceptLocalVars = new string[] {
                         "application/json"
                     };
 
-                    string? acceptLocalVar = ClientUtils.SelectHeaderAccept(acceptLocalVars);
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
 
-                    if (acceptLocalVar != null)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue(acceptLocalVar));
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
 
                     httpRequestMessageLocalVar.Method = HttpMethod.Put;
 
@@ -3984,11 +4164,17 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-
                         ILogger<UpdateReportAsyncApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<UpdateReportAsyncApiResponse>();
+                        UpdateReportAsyncApiResponse apiResponseLocalVar;
 
-                        UpdateReportAsyncApiResponse apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/analytics/reports/{reportId}", requestedAtLocalVar, _jsonSerializerOptions);
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/analytics/reports/{reportId}", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
 
                         AfterUpdateReportAsyncDefaultImplementation(apiResponseLocalVar, tenantId, reportId, file, id, name, shortDescription, description, tags, isVisible, version, rolesRequired, identityRequired, state);
 
@@ -4031,6 +4217,22 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
             public UpdateReportAsyncApiResponse(ILogger<UpdateReportAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="UpdateReportAsyncApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public UpdateReportAsyncApiResponse(ILogger<UpdateReportAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);

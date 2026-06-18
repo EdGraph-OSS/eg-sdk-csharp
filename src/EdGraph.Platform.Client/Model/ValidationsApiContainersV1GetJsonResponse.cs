@@ -54,7 +54,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CollectionJson
         /// </summary>
         [JsonPropertyName("collectionJson")]
-        public string? CollectionJson { get { return this.CollectionJsonOption; } set { this.CollectionJsonOption = new(value); } }
+        public string? CollectionJson { get { return this.CollectionJsonOption.Value; } set { this.CollectionJsonOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

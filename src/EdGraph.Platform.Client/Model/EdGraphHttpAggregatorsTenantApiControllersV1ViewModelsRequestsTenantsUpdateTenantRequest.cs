@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AdditionalSettings
         /// </summary>
         [JsonPropertyName("additionalSettings")]
-        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantAdditionalSetting? AdditionalSettings { get { return this.AdditionalSettingsOption; } set { this.AdditionalSettingsOption = new(value); } }
+        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantAdditionalSetting? AdditionalSettings { get { return this.AdditionalSettingsOption.Value; } set { this.AdditionalSettingsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IdentityProviders
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IdentityProviders
         /// </summary>
         [JsonPropertyName("identityProviders")]
-        public List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviders>? IdentityProviders { get { return this.IdentityProvidersOption; } set { this.IdentityProvidersOption = new(value); } }
+        public List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviders>? IdentityProviders { get { return this.IdentityProvidersOption.Value; } set { this.IdentityProvidersOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Settings
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Settings
         /// </summary>
         [JsonPropertyName("settings")]
-        public List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantSetting>? Settings { get { return this.SettingsOption; } set { this.SettingsOption = new(value); } }
+        public List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantSetting>? Settings { get { return this.SettingsOption.Value; } set { this.SettingsOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -154,16 +154,13 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "additionalSettings":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                additionalSettings = new Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantAdditionalSetting?>(JsonSerializer.Deserialize<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantAdditionalSetting>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            additionalSettings = new Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantAdditionalSetting?>(JsonSerializer.Deserialize<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantAdditionalSetting>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "identityProviders":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                identityProviders = new Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviders>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviders>>(ref utf8JsonReader, jsonSerializerOptions));
+                            identityProviders = new Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviders>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviders>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "settings":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                settings = new Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantSetting>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantSetting>>(ref utf8JsonReader, jsonSerializerOptions));
+                            settings = new Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantSetting>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantSetting>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

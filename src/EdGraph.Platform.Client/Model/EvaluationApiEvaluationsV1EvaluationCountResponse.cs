@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EvaluationCount
         /// </summary>
         [JsonPropertyName("evaluationCount")]
-        public int? EvaluationCount { get { return this.EvaluationCountOption; } set { this.EvaluationCountOption = new(value); } }
+        public int? EvaluationCount { get { return this.EvaluationCountOption.Value; } set { this.EvaluationCountOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AppraiserCount
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AppraiserCount
         /// </summary>
         [JsonPropertyName("appraiserCount")]
-        public int? AppraiserCount { get { return this.AppraiserCountOption; } set { this.AppraiserCountOption = new(value); } }
+        public int? AppraiserCount { get { return this.AppraiserCountOption.Value; } set { this.AppraiserCountOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of StaffCount
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets StaffCount
         /// </summary>
         [JsonPropertyName("staffCount")]
-        public int? StaffCount { get { return this.StaffCountOption; } set { this.StaffCountOption = new(value); } }
+        public int? StaffCount { get { return this.StaffCountOption.Value; } set { this.StaffCountOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -154,16 +154,13 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "evaluationCount":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                evaluationCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            evaluationCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "appraiserCount":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                appraiserCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            appraiserCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "staffCount":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                staffCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            staffCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

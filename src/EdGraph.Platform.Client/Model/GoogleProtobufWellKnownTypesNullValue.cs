@@ -117,7 +117,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, GoogleProtobufWellKnownTypesNullValue googleProtobufWellKnownTypesNullValue, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(googleProtobufWellKnownTypesNullValue.ToString());
+            writer.WriteStringValue(GoogleProtobufWellKnownTypesNullValueValueConverter.ToJsonValue(googleProtobufWellKnownTypesNullValue).ToString());
         }
     }
 
@@ -148,14 +148,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the GoogleProtobufWellKnownTypesNullValue to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="googleProtobufWellKnownTypesNullValue"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, GoogleProtobufWellKnownTypesNullValue? googleProtobufWellKnownTypesNullValue, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(googleProtobufWellKnownTypesNullValue?.ToString() ?? "null");
+            writer.WriteStringValue(googleProtobufWellKnownTypesNullValue.HasValue ? GoogleProtobufWellKnownTypesNullValueValueConverter.ToJsonValue(googleProtobufWellKnownTypesNullValue.Value).ToString() : "null");
         }
     }
 }

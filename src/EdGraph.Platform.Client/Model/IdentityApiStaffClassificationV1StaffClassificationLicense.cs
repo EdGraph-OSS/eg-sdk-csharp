@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApplicationId
         /// </summary>
         [JsonPropertyName("applicationId")]
-        public string? ApplicationId { get { return this.ApplicationIdOption; } set { this.ApplicationIdOption = new(value); } }
+        public string? ApplicationId { get { return this.ApplicationIdOption.Value; } set { this.ApplicationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LicenseStatus
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LicenseStatus
         /// </summary>
         [JsonPropertyName("licenseStatus")]
-        public string? LicenseStatus { get { return this.LicenseStatusOption; } set { this.LicenseStatusOption = new(value); } }
+        public string? LicenseStatus { get { return this.LicenseStatusOption.Value; } set { this.LicenseStatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Roles
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Roles
         /// </summary>
         [JsonPropertyName("roles")]
-        public List<string>? Roles { get { return this.RolesOption; } }
+        public List<string>? Roles { get { return this.RolesOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -160,8 +160,7 @@ namespace EdGraph.Platform.Client.Model
                             licenseStatus = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "roles":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                roles = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            roles = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

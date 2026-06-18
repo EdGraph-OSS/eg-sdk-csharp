@@ -59,7 +59,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<RegistrationApiRegistrationV2SubmitTenantRegistrationRequest> registrationApiRegistrationV2SubmitTenantRegistrationRequest = default!;
             var response = await _instance.SubmitTenantRegistrationAzureMonaAsyncAsync(registrationApiRegistrationV2SubmitTenantRegistrationRequest);
             var model = response.Unauthorized();
-            Assert.IsType<string>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

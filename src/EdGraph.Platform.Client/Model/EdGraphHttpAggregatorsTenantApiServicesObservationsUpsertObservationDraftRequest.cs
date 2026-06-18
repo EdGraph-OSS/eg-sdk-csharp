@@ -64,7 +64,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of FormId
@@ -77,7 +77,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets FormId
         /// </summary>
         [JsonPropertyName("formId")]
-        public string? FormId { get { return this.FormIdOption; } set { this.FormIdOption = new(value); } }
+        public string? FormId { get { return this.FormIdOption.Value; } set { this.FormIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CurrentStep
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CurrentStep
         /// </summary>
         [JsonPropertyName("currentStep")]
-        public int? CurrentStep { get { return this.CurrentStepOption; } set { this.CurrentStepOption = new(value); } }
+        public int? CurrentStep { get { return this.CurrentStepOption.Value; } set { this.CurrentStepOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Data
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Data
         /// </summary>
         [JsonPropertyName("data")]
-        public string? Data { get { return this.DataOption; } set { this.DataOption = new(value); } }
+        public string? Data { get { return this.DataOption.Value; } set { this.DataOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ObservationId
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ObservationId
         /// </summary>
         [JsonPropertyName("observationId")]
-        public string? ObservationId { get { return this.ObservationIdOption; } set { this.ObservationIdOption = new(value); } }
+        public string? ObservationId { get { return this.ObservationIdOption.Value; } set { this.ObservationIdOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -214,8 +214,7 @@ namespace EdGraph.Platform.Client.Model
                             tenantId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "currentStep":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                currentStep = new Option<int?>(utf8JsonReader.GetInt32());
+                            currentStep = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "data":
                             data = new Option<string?>(utf8JsonReader.GetString());

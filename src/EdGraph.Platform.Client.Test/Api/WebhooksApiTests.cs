@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<TenantApiWebhookV1CreateWebhookRequest> tenantApiWebhookV1CreateWebhookRequest = default!;
             var response = await _instance.CreateWebhookAsyncAsync(tenantId, tenantApiWebhookV1CreateWebhookRequest);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiWebhookV1WebhookIdResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string webhookId = default!;
             var response = await _instance.DeleteWebhookAsyncAsync(tenantId, webhookId);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiWebhookV1WebhookIdResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetAllWebhookSubscriptionsAsyncAsync(tenantId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiWebhookV1PaginatedWebhookEventItemsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetAllWebhooksAsyncAsync(tenantId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiWebhookV1PaginatedItemsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -118,7 +118,22 @@ namespace EdGraph.Platform.Client.Test.Api
             string webhookId = default!;
             var response = await _instance.GetWebhookByIdAsyncAsync(tenantId, webhookId);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiWebhookV1WebhookResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
+        /// Test RequestWebhookReRun
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task RequestWebhookReRunAsyncTest()
+        {
+            Guid tenantId = default!;
+            Guid webhookId = default!;
+            Guid dispatchId = default!;
+            Client.Option<TenantApiWebhookV1RequestReRunRequest> tenantApiWebhookV1RequestReRunRequest = default!;
+            var response = await _instance.RequestWebhookReRunAsync(tenantId, webhookId, dispatchId, tenantApiWebhookV1RequestReRunRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -132,7 +147,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<TenantApiWebhookV1UpdateWebhookRequest> tenantApiWebhookV1UpdateWebhookRequest = default!;
             var response = await _instance.UpdateWebhookAsyncAsync(tenantId, webhookId, tenantApiWebhookV1UpdateWebhookRequest);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiWebhookV1WebhookIdResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

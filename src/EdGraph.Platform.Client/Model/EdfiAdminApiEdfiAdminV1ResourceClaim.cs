@@ -74,7 +74,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ResourceClaimId
         /// </summary>
         [JsonPropertyName("resourceClaimId")]
-        public int? ResourceClaimId { get { return this.ResourceClaimIdOption; } set { this.ResourceClaimIdOption = new(value); } }
+        public int? ResourceClaimId { get { return this.ResourceClaimIdOption.Value; } set { this.ResourceClaimIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Name
@@ -87,7 +87,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Name
         /// </summary>
         [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption; } set { this.NameOption = new(value); } }
+        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Create
@@ -100,7 +100,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Create
         /// </summary>
         [JsonPropertyName("create")]
-        public bool? Create { get { return this.CreateOption; } set { this.CreateOption = new(value); } }
+        public bool? Create { get { return this.CreateOption.Value; } set { this.CreateOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreateAuthStrategy
@@ -113,7 +113,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreateAuthStrategy
         /// </summary>
         [JsonPropertyName("createAuthStrategy")]
-        public string? CreateAuthStrategy { get { return this.CreateAuthStrategyOption; } set { this.CreateAuthStrategyOption = new(value); } }
+        public string? CreateAuthStrategy { get { return this.CreateAuthStrategyOption.Value; } set { this.CreateAuthStrategyOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Read
@@ -126,7 +126,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Read
         /// </summary>
         [JsonPropertyName("read")]
-        public bool? Read { get { return this.ReadOption; } set { this.ReadOption = new(value); } }
+        public bool? Read { get { return this.ReadOption.Value; } set { this.ReadOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ReadAuthStrategy
@@ -139,7 +139,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ReadAuthStrategy
         /// </summary>
         [JsonPropertyName("readAuthStrategy")]
-        public string? ReadAuthStrategy { get { return this.ReadAuthStrategyOption; } set { this.ReadAuthStrategyOption = new(value); } }
+        public string? ReadAuthStrategy { get { return this.ReadAuthStrategyOption.Value; } set { this.ReadAuthStrategyOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Update
@@ -152,7 +152,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Update
         /// </summary>
         [JsonPropertyName("update")]
-        public bool? Update { get { return this.UpdateOption; } set { this.UpdateOption = new(value); } }
+        public bool? Update { get { return this.UpdateOption.Value; } set { this.UpdateOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of UpdateAuthStrategy
@@ -165,7 +165,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets UpdateAuthStrategy
         /// </summary>
         [JsonPropertyName("updateAuthStrategy")]
-        public string? UpdateAuthStrategy { get { return this.UpdateAuthStrategyOption; } set { this.UpdateAuthStrategyOption = new(value); } }
+        public string? UpdateAuthStrategy { get { return this.UpdateAuthStrategyOption.Value; } set { this.UpdateAuthStrategyOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Delete
@@ -178,7 +178,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Delete
         /// </summary>
         [JsonPropertyName("delete")]
-        public bool? Delete { get { return this.DeleteOption; } set { this.DeleteOption = new(value); } }
+        public bool? Delete { get { return this.DeleteOption.Value; } set { this.DeleteOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DeleteAuthStrategy
@@ -191,7 +191,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DeleteAuthStrategy
         /// </summary>
         [JsonPropertyName("deleteAuthStrategy")]
-        public string? DeleteAuthStrategy { get { return this.DeleteAuthStrategyOption; } set { this.DeleteAuthStrategyOption = new(value); } }
+        public string? DeleteAuthStrategy { get { return this.DeleteAuthStrategyOption.Value; } set { this.DeleteAuthStrategyOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Children
@@ -204,7 +204,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Children
         /// </summary>
         [JsonPropertyName("children")]
-        public List<EdfiAdminApiEdfiAdminV1ResourceClaim>? Children { get { return this.ChildrenOption; } }
+        public List<EdfiAdminApiEdfiAdminV1ResourceClaim>? Children { get { return this.ChildrenOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -290,43 +290,37 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "resourceClaimId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                resourceClaimId = new Option<int?>(utf8JsonReader.GetInt32());
+                            resourceClaimId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "name":
                             name = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "create":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                create = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            create = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "createAuthStrategy":
                             createAuthStrategy = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "read":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                read = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            read = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "readAuthStrategy":
                             readAuthStrategy = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "update":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                update = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            update = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "updateAuthStrategy":
                             updateAuthStrategy = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "delete":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                delete = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            delete = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "deleteAuthStrategy":
                             deleteAuthStrategy = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "children":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                children = new Option<List<EdfiAdminApiEdfiAdminV1ResourceClaim>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1ResourceClaim>>(ref utf8JsonReader, jsonSerializerOptions));
+                            children = new Option<List<EdfiAdminApiEdfiAdminV1ResourceClaim>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1ResourceClaim>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

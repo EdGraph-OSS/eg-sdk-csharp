@@ -66,7 +66,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets JobId
         /// </summary>
         [JsonPropertyName("jobId")]
-        public string? JobId { get { return this.JobIdOption; } set { this.JobIdOption = new(value); } }
+        public string? JobId { get { return this.JobIdOption.Value; } set { this.JobIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -79,7 +79,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Name
@@ -92,7 +92,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Name
         /// </summary>
         [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption; } set { this.NameOption = new(value); } }
+        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Input
@@ -105,7 +105,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Input
         /// </summary>
         [JsonPropertyName("input")]
-        public IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobInputMessage? Input { get { return this.InputOption; } set { this.InputOption = new(value); } }
+        public IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobInputMessage? Input { get { return this.InputOption.Value; } set { this.InputOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Schedule
@@ -118,7 +118,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Schedule
         /// </summary>
         [JsonPropertyName("schedule")]
-        public IdentityApiInstructionalInsightsV1ScheduleMessage? Schedule { get { return this.ScheduleOption; } set { this.ScheduleOption = new(value); } }
+        public IdentityApiInstructionalInsightsV1ScheduleMessage? Schedule { get { return this.ScheduleOption.Value; } set { this.ScheduleOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RetryPolicy
@@ -131,7 +131,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RetryPolicy
         /// </summary>
         [JsonPropertyName("retryPolicy")]
-        public IdentityApiInstructionalInsightsV1RetryPolicyMessage? RetryPolicy { get { return this.RetryPolicyOption; } set { this.RetryPolicyOption = new(value); } }
+        public IdentityApiInstructionalInsightsV1RetryPolicyMessage? RetryPolicy { get { return this.RetryPolicyOption.Value; } set { this.RetryPolicyOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CallbackNotifications
@@ -144,7 +144,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CallbackNotifications
         /// </summary>
         [JsonPropertyName("callbackNotifications")]
-        public List<IdentityApiInstructionalInsightsV1CallbackNotificationMessage>? CallbackNotifications { get { return this.CallbackNotificationsOption; } }
+        public List<IdentityApiInstructionalInsightsV1CallbackNotificationMessage>? CallbackNotifications { get { return this.CallbackNotificationsOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -231,20 +231,16 @@ namespace EdGraph.Platform.Client.Model
                             name = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "input":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                input = new Option<IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobInputMessage?>(JsonSerializer.Deserialize<IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobInputMessage>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            input = new Option<IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobInputMessage?>(JsonSerializer.Deserialize<IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobInputMessage>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "schedule":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                schedule = new Option<IdentityApiInstructionalInsightsV1ScheduleMessage?>(JsonSerializer.Deserialize<IdentityApiInstructionalInsightsV1ScheduleMessage>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            schedule = new Option<IdentityApiInstructionalInsightsV1ScheduleMessage?>(JsonSerializer.Deserialize<IdentityApiInstructionalInsightsV1ScheduleMessage>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "retryPolicy":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                retryPolicy = new Option<IdentityApiInstructionalInsightsV1RetryPolicyMessage?>(JsonSerializer.Deserialize<IdentityApiInstructionalInsightsV1RetryPolicyMessage>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            retryPolicy = new Option<IdentityApiInstructionalInsightsV1RetryPolicyMessage?>(JsonSerializer.Deserialize<IdentityApiInstructionalInsightsV1RetryPolicyMessage>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "callbackNotifications":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                callbackNotifications = new Option<List<IdentityApiInstructionalInsightsV1CallbackNotificationMessage>?>(JsonSerializer.Deserialize<List<IdentityApiInstructionalInsightsV1CallbackNotificationMessage>>(ref utf8JsonReader, jsonSerializerOptions));
+                            callbackNotifications = new Option<List<IdentityApiInstructionalInsightsV1CallbackNotificationMessage>?>(JsonSerializer.Deserialize<List<IdentityApiInstructionalInsightsV1CallbackNotificationMessage>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

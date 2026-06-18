@@ -12,68 +12,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Updates the branding of tenant
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateTenantBrandingExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new TenantBrandingApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var logoFile = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream |  (optional) 
-            var backgroundFile = new System.IO.MemoryStream(System.IO.File.ReadAllBytes("/path/to/file.txt"));  // System.IO.Stream |  (optional) 
-            var brandName = "brandName_example";  // string |  (optional) 
-            var enabled = true;  // bool |  (optional) 
-
-            try
-            {
-                // Updates the branding of tenant
-                TenantApiTenantV1TenantUpdatedResponse result = apiInstance.UpdateTenantBranding(tenantId, logoFile, backgroundFile, brandName, enabled);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TenantBrandingApi.UpdateTenantBranding: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateTenantBrandingWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates the branding of tenant
-    ApiResponse<TenantApiTenantV1TenantUpdatedResponse> response = apiInstance.UpdateTenantBrandingWithHttpInfo(tenantId, logoFile, backgroundFile, brandName, enabled);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling TenantBrandingApi.UpdateTenantBrandingWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

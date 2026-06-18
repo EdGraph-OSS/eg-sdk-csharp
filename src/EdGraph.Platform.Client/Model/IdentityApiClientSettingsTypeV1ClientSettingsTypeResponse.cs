@@ -88,7 +88,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ClientId
@@ -101,7 +101,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ClientId
         /// </summary>
         [JsonPropertyName("clientId")]
-        public string? ClientId { get { return this.ClientIdOption; } set { this.ClientIdOption = new(value); } }
+        public string? ClientId { get { return this.ClientIdOption.Value; } set { this.ClientIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Code
@@ -114,7 +114,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Code
         /// </summary>
         [JsonPropertyName("code")]
-        public string? Code { get { return this.CodeOption; } set { this.CodeOption = new(value); } }
+        public string? Code { get { return this.CodeOption.Value; } set { this.CodeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DataType
@@ -127,7 +127,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DataType
         /// </summary>
         [JsonPropertyName("dataType")]
-        public string? DataType { get { return this.DataTypeOption; } set { this.DataTypeOption = new(value); } }
+        public string? DataType { get { return this.DataTypeOption.Value; } set { this.DataTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Order
@@ -140,7 +140,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Order
         /// </summary>
         [JsonPropertyName("order")]
-        public int? Order { get { return this.OrderOption; } set { this.OrderOption = new(value); } }
+        public int? Order { get { return this.OrderOption.Value; } set { this.OrderOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Hidden
@@ -153,7 +153,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Hidden
         /// </summary>
         [JsonPropertyName("hidden")]
-        public bool? Hidden { get { return this.HiddenOption; } set { this.HiddenOption = new(value); } }
+        public bool? Hidden { get { return this.HiddenOption.Value; } set { this.HiddenOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of HtmlElement
@@ -167,7 +167,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>Html attributes</value>
         [JsonPropertyName("htmlElement")]
-        public string? HtmlElement { get { return this.HtmlElementOption; } set { this.HtmlElementOption = new(value); } }
+        public string? HtmlElement { get { return this.HtmlElementOption.Value; } set { this.HtmlElementOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Label
@@ -180,7 +180,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Label
         /// </summary>
         [JsonPropertyName("label")]
-        public string? Label { get { return this.LabelOption; } set { this.LabelOption = new(value); } }
+        public string? Label { get { return this.LabelOption.Value; } set { this.LabelOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InputType
@@ -193,7 +193,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InputType
         /// </summary>
         [JsonPropertyName("inputType")]
-        public string? InputType { get { return this.InputTypeOption; } set { this.InputTypeOption = new(value); } }
+        public string? InputType { get { return this.InputTypeOption.Value; } set { this.InputTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DefaultValue
@@ -206,7 +206,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DefaultValue
         /// </summary>
         [JsonPropertyName("defaultValue")]
-        public string? DefaultValue { get { return this.DefaultValueOption; } set { this.DefaultValueOption = new(value); } }
+        public string? DefaultValue { get { return this.DefaultValueOption.Value; } set { this.DefaultValueOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of MinValue
@@ -219,7 +219,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets MinValue
         /// </summary>
         [JsonPropertyName("minValue")]
-        public int? MinValue { get { return this.MinValueOption; } set { this.MinValueOption = new(value); } }
+        public int? MinValue { get { return this.MinValueOption.Value; } set { this.MinValueOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of MaxValue
@@ -232,7 +232,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets MaxValue
         /// </summary>
         [JsonPropertyName("maxValue")]
-        public int? MaxValue { get { return this.MaxValueOption; } set { this.MaxValueOption = new(value); } }
+        public int? MaxValue { get { return this.MaxValueOption.Value; } set { this.MaxValueOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of MaxLength
@@ -245,7 +245,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets MaxLength
         /// </summary>
         [JsonPropertyName("maxLength")]
-        public int? MaxLength { get { return this.MaxLengthOption; } set { this.MaxLengthOption = new(value); } }
+        public int? MaxLength { get { return this.MaxLengthOption.Value; } set { this.MaxLengthOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Options
@@ -258,7 +258,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Options
         /// </summary>
         [JsonPropertyName("options")]
-        public List<string>? Options { get { return this.OptionsOption; } }
+        public List<string>? Options { get { return this.OptionsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of CreatedBy
@@ -271,7 +271,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedBy
         /// </summary>
         [JsonPropertyName("createdBy")]
-        public string? CreatedBy { get { return this.CreatedByOption; } set { this.CreatedByOption = new(value); } }
+        public string? CreatedBy { get { return this.CreatedByOption.Value; } set { this.CreatedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedDateTime
@@ -284,7 +284,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedDateTime
         /// </summary>
         [JsonPropertyName("createdDateTime")]
-        public string? CreatedDateTime { get { return this.CreatedDateTimeOption; } set { this.CreatedDateTimeOption = new(value); } }
+        public string? CreatedDateTime { get { return this.CreatedDateTimeOption.Value; } set { this.CreatedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedBy
@@ -297,7 +297,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedBy
         /// </summary>
         [JsonPropertyName("lastModifiedBy")]
-        public string? LastModifiedBy { get { return this.LastModifiedByOption; } set { this.LastModifiedByOption = new(value); } }
+        public string? LastModifiedBy { get { return this.LastModifiedByOption.Value; } set { this.LastModifiedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedDateTime
@@ -310,7 +310,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedDateTime
         /// </summary>
         [JsonPropertyName("lastModifiedDateTime")]
-        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption; } set { this.LastModifiedDateTimeOption = new(value); } }
+        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption.Value; } set { this.LastModifiedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -422,12 +422,10 @@ namespace EdGraph.Platform.Client.Model
                             dataType = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "order":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                order = new Option<int?>(utf8JsonReader.GetInt32());
+                            order = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "hidden":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                hidden = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            hidden = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "htmlElement":
                             htmlElement = new Option<string?>(utf8JsonReader.GetString());
@@ -442,20 +440,16 @@ namespace EdGraph.Platform.Client.Model
                             defaultValue = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "minValue":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                minValue = new Option<int?>(utf8JsonReader.GetInt32());
+                            minValue = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "maxValue":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                maxValue = new Option<int?>(utf8JsonReader.GetInt32());
+                            maxValue = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "maxLength":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                maxLength = new Option<int?>(utf8JsonReader.GetInt32());
+                            maxLength = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "options":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                options = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            options = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "createdBy":
                             createdBy = new Option<string?>(utf8JsonReader.GetString());

@@ -21,65 +21,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Adds a persona for a given Tenant
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class AddAvailablePersonaExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ObservationSettingsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var edGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaRequest = new EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaRequest(); // EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaRequest |  (optional) 
-
-            try
-            {
-                // Adds a persona for a given Tenant
-                EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaResponse result = apiInstance.AddAvailablePersona(tenantId, edGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ObservationSettingsApi.AddAvailablePersona: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the AddAvailablePersonaWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Adds a persona for a given Tenant
-    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaResponse> response = apiInstance.AddAvailablePersonaWithHttpInfo(tenantId, edGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ObservationSettingsApi.AddAvailablePersonaWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -119,64 +60,6 @@ catch (ApiException e)
 
 Gets the application settings for the tenant
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetApplicationSettingsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ObservationSettingsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-
-            try
-            {
-                // Gets the application settings for the tenant
-                EdGraphHttpAggregatorsTenantApiServicesObservationsGetApplicationSettingsResponse result = apiInstance.GetApplicationSettings(tenantId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ObservationSettingsApi.GetApplicationSettings: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetApplicationSettingsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Gets the application settings for the tenant
-    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesObservationsGetApplicationSettingsResponse> response = apiInstance.GetApplicationSettingsWithHttpInfo(tenantId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ObservationSettingsApi.GetApplicationSettingsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -215,68 +98,6 @@ catch (ApiException e)
 
 Get Paginated Forms
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetPaginatedFormsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ObservationSettingsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Get Paginated Forms
-                EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse result = apiInstance.GetPaginatedForms(tenantId, pageSize, pageIndex, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ObservationSettingsApi.GetPaginatedForms: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetPaginatedFormsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Get Paginated Forms
-    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse> response = apiInstance.GetPaginatedFormsWithHttpInfo(tenantId, pageSize, pageIndex, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ObservationSettingsApi.GetPaginatedFormsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -319,64 +140,6 @@ catch (ApiException e)
 
 Gets available personas
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetPaginatedPersonasExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ObservationSettingsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-
-            try
-            {
-                // Gets available personas
-                EdGraphHttpAggregatorsTenantApiServicesObservationsPersonaResponseGetPaginatedItemsResponse result = apiInstance.GetPaginatedPersonas(tenantId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ObservationSettingsApi.GetPaginatedPersonas: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetPaginatedPersonasWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Gets available personas
-    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesObservationsPersonaResponseGetPaginatedItemsResponse> response = apiInstance.GetPaginatedPersonasWithHttpInfo(tenantId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ObservationSettingsApi.GetPaginatedPersonasWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -415,68 +178,6 @@ catch (ApiException e)
 
 Get Paginated Available StaffClassifications
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetPaginatedStaffClassificationsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ObservationSettingsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Get Paginated Available StaffClassifications
-                IdentityApiStaffClassificationV1GetStaffClassificationsResponse result = apiInstance.GetPaginatedStaffClassifications(tenantId, pageIndex, pageSize, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ObservationSettingsApi.GetPaginatedStaffClassifications: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetPaginatedStaffClassificationsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Get Paginated Available StaffClassifications
-    ApiResponse<IdentityApiStaffClassificationV1GetStaffClassificationsResponse> response = apiInstance.GetPaginatedStaffClassificationsWithHttpInfo(tenantId, pageIndex, pageSize, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ObservationSettingsApi.GetPaginatedStaffClassificationsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -519,64 +220,6 @@ catch (ApiException e)
 
 Gets the staffClassification settings for the tenant
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetStaffClassificationsSettingsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ObservationSettingsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-
-            try
-            {
-                // Gets the staffClassification settings for the tenant
-                EdGraphHttpAggregatorsTenantApiServicesObservationsGetStaffClassificationSettingsResponse result = apiInstance.GetStaffClassificationsSettings(tenantId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ObservationSettingsApi.GetStaffClassificationsSettings: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetStaffClassificationsSettingsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Gets the staffClassification settings for the tenant
-    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesObservationsGetStaffClassificationSettingsResponse> response = apiInstance.GetStaffClassificationsSettingsWithHttpInfo(tenantId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ObservationSettingsApi.GetStaffClassificationsSettingsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -615,69 +258,6 @@ catch (ApiException e)
 
 Get TEA tenant organizations
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetTEATenantOrganizationsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ObservationSettingsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var teaTenantId = "\"\"";  // string |  (optional)  (default to "")
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Get TEA tenant organizations
-                TenantApiTenantV1OrganizationGetPaginatedItemsResponse result = apiInstance.GetTEATenantOrganizations(tenantId, teaTenantId, pageSize, pageIndex, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ObservationSettingsApi.GetTEATenantOrganizations: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetTEATenantOrganizationsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Get TEA tenant organizations
-    ApiResponse<TenantApiTenantV1OrganizationGetPaginatedItemsResponse> response = apiInstance.GetTEATenantOrganizationsWithHttpInfo(tenantId, teaTenantId, pageSize, pageIndex, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ObservationSettingsApi.GetTEATenantOrganizationsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -721,65 +301,6 @@ catch (ApiException e)
 
 Sets the Application Settings of an Observation for a given Tenant
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SetApplicationSettingsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ObservationSettingsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var edGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsRequest = new EdGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsRequest(); // EdGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsRequest |  (optional) 
-
-            try
-            {
-                // Sets the Application Settings of an Observation for a given Tenant
-                EdGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsResponse result = apiInstance.SetApplicationSettings(tenantId, edGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ObservationSettingsApi.SetApplicationSettings: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SetApplicationSettingsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Sets the Application Settings of an Observation for a given Tenant
-    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsResponse> response = apiInstance.SetApplicationSettingsWithHttpInfo(tenantId, edGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ObservationSettingsApi.SetApplicationSettingsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -819,65 +340,6 @@ catch (ApiException e)
 
 Updates personas assigned to a role configuration of the tenants setting
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SetRolePersonasSettingsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ObservationSettingsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var edGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationRequest = new EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationRequest(); // EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationRequest |  (optional) 
-
-            try
-            {
-                // Updates personas assigned to a role configuration of the tenants setting
-                EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationResponse result = apiInstance.SetRolePersonasSettings(tenantId, edGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ObservationSettingsApi.SetRolePersonasSettings: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SetRolePersonasSettingsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates personas assigned to a role configuration of the tenants setting
-    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationResponse> response = apiInstance.SetRolePersonasSettingsWithHttpInfo(tenantId, edGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ObservationSettingsApi.SetRolePersonasSettingsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -917,64 +379,6 @@ catch (ApiException e)
 
 Gets the staffClassification settings for the tenant
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class VerifySysAdminCredentialsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new ObservationSettingsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-
-            try
-            {
-                // Gets the staffClassification settings for the tenant
-                Object result = apiInstance.VerifySysAdminCredentials(tenantId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling ObservationSettingsApi.VerifySysAdminCredentials: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the VerifySysAdminCredentialsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Gets the staffClassification settings for the tenant
-    ApiResponse<Object> response = apiInstance.VerifySysAdminCredentialsWithHttpInfo(tenantId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling ObservationSettingsApi.VerifySysAdminCredentialsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

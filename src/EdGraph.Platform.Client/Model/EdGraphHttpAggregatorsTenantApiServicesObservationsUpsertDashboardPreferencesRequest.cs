@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DashboardId
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DashboardId
         /// </summary>
         [JsonPropertyName("dashboardId")]
-        public string? DashboardId { get { return this.DashboardIdOption; } set { this.DashboardIdOption = new(value); } }
+        public string? DashboardId { get { return this.DashboardIdOption.Value; } set { this.DashboardIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Preferences
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Preferences
         /// </summary>
         [JsonPropertyName("preferences")]
-        public List<EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertReportPreferenceDetails>? Preferences { get { return this.PreferencesOption; } set { this.PreferencesOption = new(value); } }
+        public List<EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertReportPreferenceDetails>? Preferences { get { return this.PreferencesOption.Value; } set { this.PreferencesOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -160,8 +160,7 @@ namespace EdGraph.Platform.Client.Model
                             dashboardId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "preferences":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                preferences = new Option<List<EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertReportPreferenceDetails>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertReportPreferenceDetails>>(ref utf8JsonReader, jsonSerializerOptions));
+                            preferences = new Option<List<EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertReportPreferenceDetails>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiServicesObservationsUpsertReportPreferenceDetails>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Type
         /// </summary>
         [JsonPropertyName("type")]
-        public string? Type { get { return this.TypeOption; } set { this.TypeOption = new(value); } }
+        public string? Type { get { return this.TypeOption.Value; } set { this.TypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Metadata
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Metadata
         /// </summary>
         [JsonPropertyName("metadata")]
-        public List<IMSAdminApiV1ConnectionsConnectionDetailsMetadata>? Metadata { get { return this.MetadataOption; } }
+        public List<IMSAdminApiV1ConnectionsConnectionDetailsMetadata>? Metadata { get { return this.MetadataOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -140,8 +140,7 @@ namespace EdGraph.Platform.Client.Model
                             type = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "metadata":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                metadata = new Option<List<IMSAdminApiV1ConnectionsConnectionDetailsMetadata>?>(JsonSerializer.Deserialize<List<IMSAdminApiV1ConnectionsConnectionDetailsMetadata>>(ref utf8JsonReader, jsonSerializerOptions));
+                            metadata = new Option<List<IMSAdminApiV1ConnectionsConnectionDetailsMetadata>?>(JsonSerializer.Deserialize<List<IMSAdminApiV1ConnectionsConnectionDetailsMetadata>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

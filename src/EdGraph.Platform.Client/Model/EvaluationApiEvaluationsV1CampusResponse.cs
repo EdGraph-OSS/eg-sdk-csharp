@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IdentifierType
         /// </summary>
         [JsonPropertyName("identifierType")]
-        public EvaluationApiEvaluationsV1OrganizationIdentifierType? IdentifierType { get { return this.IdentifierTypeOption; } set { this.IdentifierTypeOption = new(value); } }
+        public EvaluationApiEvaluationsV1OrganizationIdentifierType? IdentifierType { get { return this.IdentifierTypeOption.Value; } set { this.IdentifierTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Discriminator
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Discriminator
         /// </summary>
         [JsonPropertyName("discriminator")]
-        public EvaluationApiEvaluationsV1OrganizationDiscriminator? Discriminator { get { return this.DiscriminatorOption; } set { this.DiscriminatorOption = new(value); } }
+        public EvaluationApiEvaluationsV1OrganizationDiscriminator? Discriminator { get { return this.DiscriminatorOption.Value; } set { this.DiscriminatorOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Campus
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Campus
         /// </summary>
         [JsonPropertyName("campus")]
-        public string? Campus { get { return this.CampusOption; } set { this.CampusOption = new(value); } }
+        public string? Campus { get { return this.CampusOption.Value; } set { this.CampusOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

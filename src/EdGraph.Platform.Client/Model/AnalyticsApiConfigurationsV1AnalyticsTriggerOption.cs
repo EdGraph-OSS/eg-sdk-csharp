@@ -62,7 +62,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets StartTime
         /// </summary>
         [JsonPropertyName("startTime")]
-        public string? StartTime { get { return this.StartTimeOption; } set { this.StartTimeOption = new(value); } }
+        public string? StartTime { get { return this.StartTimeOption.Value; } set { this.StartTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EndTime
@@ -75,7 +75,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EndTime
         /// </summary>
         [JsonPropertyName("endTime")]
-        public string? EndTime { get { return this.EndTimeOption; } set { this.EndTimeOption = new(value); } }
+        public string? EndTime { get { return this.EndTimeOption.Value; } set { this.EndTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Recurrence
@@ -88,7 +88,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Recurrence
         /// </summary>
         [JsonPropertyName("recurrence")]
-        public string? Recurrence { get { return this.RecurrenceOption; } set { this.RecurrenceOption = new(value); } }
+        public string? Recurrence { get { return this.RecurrenceOption.Value; } set { this.RecurrenceOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of VarTimeZone
@@ -101,7 +101,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets VarTimeZone
         /// </summary>
         [JsonPropertyName("timeZone")]
-        public string? VarTimeZone { get { return this.VarTimeZoneOption; } set { this.VarTimeZoneOption = new(value); } }
+        public string? VarTimeZone { get { return this.VarTimeZoneOption.Value; } set { this.VarTimeZoneOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Interval
@@ -114,7 +114,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Interval
         /// </summary>
         [JsonPropertyName("interval")]
-        public int? Interval { get { return this.IntervalOption; } set { this.IntervalOption = new(value); } }
+        public int? Interval { get { return this.IntervalOption.Value; } set { this.IntervalOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -200,8 +200,7 @@ namespace EdGraph.Platform.Client.Model
                             varTimeZone = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "interval":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                interval = new Option<int?>(utf8JsonReader.GetInt32());
+                            interval = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

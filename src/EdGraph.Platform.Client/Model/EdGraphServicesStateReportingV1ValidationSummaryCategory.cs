@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Category
         /// </summary>
         [JsonPropertyName("category")]
-        public EdGraphServicesStateReportingV1Category? Category { get { return this.CategoryOption; } set { this.CategoryOption = new(value); } }
+        public EdGraphServicesStateReportingV1Category? Category { get { return this.CategoryOption.Value; } set { this.CategoryOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SubCategories
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SubCategories
         /// </summary>
         [JsonPropertyName("subCategories")]
-        public List<EdGraphServicesStateReportingV1ValidationSummarySubCategory>? SubCategories { get { return this.SubCategoriesOption; } }
+        public List<EdGraphServicesStateReportingV1ValidationSummarySubCategory>? SubCategories { get { return this.SubCategoriesOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -137,12 +137,10 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "category":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                category = new Option<EdGraphServicesStateReportingV1Category?>(JsonSerializer.Deserialize<EdGraphServicesStateReportingV1Category>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            category = new Option<EdGraphServicesStateReportingV1Category?>(JsonSerializer.Deserialize<EdGraphServicesStateReportingV1Category>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "subCategories":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                subCategories = new Option<List<EdGraphServicesStateReportingV1ValidationSummarySubCategory>?>(JsonSerializer.Deserialize<List<EdGraphServicesStateReportingV1ValidationSummarySubCategory>>(ref utf8JsonReader, jsonSerializerOptions));
+                            subCategories = new Option<List<EdGraphServicesStateReportingV1ValidationSummarySubCategory>?>(JsonSerializer.Deserialize<List<EdGraphServicesStateReportingV1ValidationSummarySubCategory>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

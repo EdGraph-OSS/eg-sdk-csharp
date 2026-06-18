@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaRequest> edGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaRequest = default!;
             var response = await _instance.AddAvailablePersonaAsync(tenantId, edGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid tenantId = default!;
             var response = await _instance.GetApplicationSettingsAsync(tenantId);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsGetApplicationSettingsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetPaginatedFormsAsync(tenantId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesFormsV1FormGetPaginatedItemsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid tenantId = default!;
             var response = await _instance.GetPaginatedPersonasAsync(tenantId);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsPersonaResponseGetPaginatedItemsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetPaginatedStaffClassificationsAsync(tenantId, pageIndex, pageSize, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiStaffClassificationV1GetStaffClassificationsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid tenantId = default!;
             var response = await _instance.GetStaffClassificationsSettingsAsync(tenantId);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsGetStaffClassificationSettingsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetTEATenantOrganizationsAsync(tenantId, teaTenantId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiTenantV1OrganizationGetPaginatedItemsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsRequest> edGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsRequest = default!;
             var response = await _instance.SetApplicationSettingsAsync(tenantId, edGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsSetApplicationSettingsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationRequest> edGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationRequest = default!;
             var response = await _instance.SetRolePersonasSettingsAsync(tenantId, edGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesObservationsSetRoleConfigurationResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -183,7 +183,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid tenantId = default!;
             var response = await _instance.VerifySysAdminCredentialsAsync(tenantId);
             var model = response.Unauthorized();
-            Assert.IsType<Object>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

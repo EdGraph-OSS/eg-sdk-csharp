@@ -54,7 +54,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Values
         /// </summary>
         [JsonPropertyName("values")]
-        public List<GoogleProtobufWellKnownTypesValue>? Values { get { return this.ValuesOption; } }
+        public List<GoogleProtobufWellKnownTypesValue>? Values { get { return this.ValuesOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -120,8 +120,7 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "values":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                values = new Option<List<GoogleProtobufWellKnownTypesValue>?>(JsonSerializer.Deserialize<List<GoogleProtobufWellKnownTypesValue>>(ref utf8JsonReader, jsonSerializerOptions));
+                            values = new Option<List<GoogleProtobufWellKnownTypesValue>?>(JsonSerializer.Deserialize<List<GoogleProtobufWellKnownTypesValue>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

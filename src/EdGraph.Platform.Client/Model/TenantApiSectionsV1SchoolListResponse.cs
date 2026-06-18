@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SchoolId
         /// </summary>
         [JsonPropertyName("schoolId")]
-        public int? SchoolId { get { return this.SchoolIdOption; } set { this.SchoolIdOption = new(value); } }
+        public int? SchoolId { get { return this.SchoolIdOption.Value; } set { this.SchoolIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SchoolYear
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SchoolYear
         /// </summary>
         [JsonPropertyName("schoolYear")]
-        public int? SchoolYear { get { return this.SchoolYearOption; } set { this.SchoolYearOption = new(value); } }
+        public int? SchoolYear { get { return this.SchoolYearOption.Value; } set { this.SchoolYearOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SchoolName
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SchoolName
         /// </summary>
         [JsonPropertyName("schoolName")]
-        public string? SchoolName { get { return this.SchoolNameOption; } set { this.SchoolNameOption = new(value); } }
+        public string? SchoolName { get { return this.SchoolNameOption.Value; } set { this.SchoolNameOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -154,12 +154,10 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "schoolId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                schoolId = new Option<int?>(utf8JsonReader.GetInt32());
+                            schoolId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "schoolYear":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                schoolYear = new Option<int?>(utf8JsonReader.GetInt32());
+                            schoolYear = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "schoolName":
                             schoolName = new Option<string?>(utf8JsonReader.GetString());

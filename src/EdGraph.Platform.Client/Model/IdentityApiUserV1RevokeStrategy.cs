@@ -159,7 +159,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, IdentityApiUserV1RevokeStrategy identityApiUserV1RevokeStrategy, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(identityApiUserV1RevokeStrategy.ToString());
+            writer.WriteStringValue(IdentityApiUserV1RevokeStrategyValueConverter.ToJsonValue(identityApiUserV1RevokeStrategy).ToString());
         }
     }
 
@@ -190,14 +190,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the IdentityApiUserV1RevokeStrategy to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="identityApiUserV1RevokeStrategy"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, IdentityApiUserV1RevokeStrategy? identityApiUserV1RevokeStrategy, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(identityApiUserV1RevokeStrategy?.ToString() ?? "null");
+            writer.WriteStringValue(identityApiUserV1RevokeStrategy.HasValue ? IdentityApiUserV1RevokeStrategyValueConverter.ToJsonValue(identityApiUserV1RevokeStrategy.Value).ToString() : "null");
         }
     }
 }

@@ -67,7 +67,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetAllInstanceResourcesCountAsyncAsync(tenantId, instanceId, year, applicationId, apiClientId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1InstanceResourcesCountListResponsePaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetAllInstanceResourcesCountJsonAsync(tenantId, instanceId, year, applicationId, apiClientId, filter);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1InstanceResourcesCountJsonResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

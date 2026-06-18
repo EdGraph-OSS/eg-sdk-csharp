@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Status
         /// </summary>
         [JsonPropertyName("status")]
-        public EdGraphServicesStateReportingV1ReportingPeriodStepStatus? Status { get { return this.StatusOption; } set { this.StatusOption = new(value); } }
+        public EdGraphServicesStateReportingV1ReportingPeriodStepStatus? Status { get { return this.StatusOption.Value; } set { this.StatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Number
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Number
         /// </summary>
         [JsonPropertyName("number")]
-        public int? Number { get { return this.NumberOption; } set { this.NumberOption = new(value); } }
+        public int? Number { get { return this.NumberOption.Value; } set { this.NumberOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -137,8 +137,7 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "number":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                number = new Option<int?>(utf8JsonReader.GetInt32());
+                            number = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "status":
                             string? statusRawValue = utf8JsonReader.GetString();

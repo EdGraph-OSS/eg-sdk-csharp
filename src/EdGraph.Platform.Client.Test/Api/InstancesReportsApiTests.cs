@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string instanceId = default!;
             var response = await _instance.GenerateReportsAsyncAsync(tenantId, instanceId);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1GenerateReportsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string instanceId = default!;
             var response = await _instance.GetReportsStatusAsyncAsync(tenantId, instanceId);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1ReportsStatusResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace EdGraph.Platform.Client.Test.Api
             int localEducationAgencyId = default!;
             var response = await _instance.GetSchoolsByTypeReportAsyncAsync(tenantId, instanceId, localEducationAgencyId);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1SchoolsByTypeReportResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace EdGraph.Platform.Client.Test.Api
             int localEducationAgencyId = default!;
             var response = await _instance.GetStudentEconomicSituationReportAsyncAsync(tenantId, instanceId, localEducationAgencyId);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1StudentEconomicSituationReportResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace EdGraph.Platform.Client.Test.Api
             int localEducationAgencyId = default!;
             var response = await _instance.GetStudentEnrollmentByEthnicityReportAsync(tenantId, instanceId, localEducationAgencyId);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1StudentEnrollmentByEthnicityReportResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Test.Api
             int localEducationAgencyId = default!;
             var response = await _instance.GetStudentEnrollmentByGenderReportAsyncAsync(tenantId, instanceId, localEducationAgencyId);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1StudentEnrollmentByGenderReportResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace EdGraph.Platform.Client.Test.Api
             int localEducationAgencyId = default!;
             var response = await _instance.GetStudentEnrollmentByRaceReportAsyncAsync(tenantId, instanceId, localEducationAgencyId);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1StudentEnrollmentByRaceReportResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace EdGraph.Platform.Client.Test.Api
             int localEducationAgencyId = default!;
             var response = await _instance.GetStudentsByProgramReportAsyncAsync(tenantId, instanceId, localEducationAgencyId);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1StudentsByProgramReportResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -171,7 +171,7 @@ namespace EdGraph.Platform.Client.Test.Api
             int localEducationAgencyId = default!;
             var response = await _instance.GetTotalEnrollmentsReportAsyncAsync(tenantId, instanceId, localEducationAgencyId);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1TotalEnrollmentsReportResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

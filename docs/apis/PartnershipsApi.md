@@ -13,70 +13,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Retrieves a list of Partnerships.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetAllPartnershipsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new PartnershipsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var orderBy = "orderBy_example";  // string |  (optional) 
-            var partnerTenantId = "partnerTenantId_example";  // string |  (optional) 
-            var partnershipType = new List<string>(); // List<string> |  (optional) 
-            var excludeSoftDeleted = true;  // bool |  (optional)  (default to true)
-
-            try
-            {
-                // Retrieves a list of Partnerships.
-                TenantApiPartnershipV1PaginatedItemsResponse result = apiInstance.GetAllPartnerships(tenantId, pageIndex, pageSize, orderBy, partnerTenantId, partnershipType, excludeSoftDeleted);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling PartnershipsApi.GetAllPartnerships: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetAllPartnershipsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of Partnerships.
-    ApiResponse<TenantApiPartnershipV1PaginatedItemsResponse> response = apiInstance.GetAllPartnershipsWithHttpInfo(tenantId, pageIndex, pageSize, orderBy, partnerTenantId, partnershipType, excludeSoftDeleted);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling PartnershipsApi.GetAllPartnershipsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -121,66 +57,6 @@ catch (ApiException e)
 
 Retrieves a Partnership by ID.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetPartnershipByIdExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new PartnershipsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var partnershipId = "partnershipId_example";  // Guid | 
-            var excludeSoftDeleted = true;  // bool |  (optional)  (default to true)
-
-            try
-            {
-                // Retrieves a Partnership by ID.
-                TenantApiPartnershipV1PartnershipByIdResponse result = apiInstance.GetPartnershipById(tenantId, partnershipId, excludeSoftDeleted);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling PartnershipsApi.GetPartnershipById: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetPartnershipByIdWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a Partnership by ID.
-    ApiResponse<TenantApiPartnershipV1PartnershipByIdResponse> response = apiInstance.GetPartnershipByIdWithHttpInfo(tenantId, partnershipId, excludeSoftDeleted);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling PartnershipsApi.GetPartnershipByIdWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

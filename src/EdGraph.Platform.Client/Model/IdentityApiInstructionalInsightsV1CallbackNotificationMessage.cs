@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets NotificationType
         /// </summary>
         [JsonPropertyName("notificationType")]
-        public string? NotificationType { get { return this.NotificationTypeOption; } set { this.NotificationTypeOption = new(value); } }
+        public string? NotificationType { get { return this.NotificationTypeOption.Value; } set { this.NotificationTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Value
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Value
         /// </summary>
         [JsonPropertyName("value")]
-        public string? Value { get { return this.ValueOption; } set { this.ValueOption = new(value); } }
+        public string? Value { get { return this.ValueOption.Value; } set { this.ValueOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

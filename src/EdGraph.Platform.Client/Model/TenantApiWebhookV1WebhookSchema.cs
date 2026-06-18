@@ -145,7 +145,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, TenantApiWebhookV1WebhookSchema tenantApiWebhookV1WebhookSchema, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(tenantApiWebhookV1WebhookSchema.ToString());
+            writer.WriteStringValue(TenantApiWebhookV1WebhookSchemaValueConverter.ToJsonValue(tenantApiWebhookV1WebhookSchema).ToString());
         }
     }
 
@@ -176,14 +176,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the TenantApiWebhookV1WebhookSchema to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="tenantApiWebhookV1WebhookSchema"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, TenantApiWebhookV1WebhookSchema? tenantApiWebhookV1WebhookSchema, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(tenantApiWebhookV1WebhookSchema?.ToString() ?? "null");
+            writer.WriteStringValue(tenantApiWebhookV1WebhookSchema.HasValue ? TenantApiWebhookV1WebhookSchemaValueConverter.ToJsonValue(tenantApiWebhookV1WebhookSchema.Value).ToString() : "null");
         }
     }
 }

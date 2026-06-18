@@ -64,7 +64,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Category
         /// </summary>
         [JsonPropertyName("category")]
-        public ValidationsApiContainersV1ContainerDto? Category { get { return this.CategoryOption; } set { this.CategoryOption = new(value); } }
+        public ValidationsApiContainersV1ContainerDto? Category { get { return this.CategoryOption.Value; } set { this.CategoryOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RecordCount
@@ -77,7 +77,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RecordCount
         /// </summary>
         [JsonPropertyName("recordCount")]
-        public int? RecordCount { get { return this.RecordCountOption; } set { this.RecordCountOption = new(value); } }
+        public int? RecordCount { get { return this.RecordCountOption.Value; } set { this.RecordCountOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of FatalCount
@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets FatalCount
         /// </summary>
         [JsonPropertyName("fatalCount")]
-        public int? FatalCount { get { return this.FatalCountOption; } set { this.FatalCountOption = new(value); } }
+        public int? FatalCount { get { return this.FatalCountOption.Value; } set { this.FatalCountOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of WarningCount
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets WarningCount
         /// </summary>
         [JsonPropertyName("warningCount")]
-        public int? WarningCount { get { return this.WarningCountOption; } set { this.WarningCountOption = new(value); } }
+        public int? WarningCount { get { return this.WarningCountOption.Value; } set { this.WarningCountOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ExcludedCount
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ExcludedCount
         /// </summary>
         [JsonPropertyName("excludedCount")]
-        public int? ExcludedCount { get { return this.ExcludedCountOption; } set { this.ExcludedCountOption = new(value); } }
+        public int? ExcludedCount { get { return this.ExcludedCountOption.Value; } set { this.ExcludedCountOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Status
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Status
         /// </summary>
         [JsonPropertyName("status")]
-        public string? Status { get { return this.StatusOption; } set { this.StatusOption = new(value); } }
+        public string? Status { get { return this.StatusOption.Value; } set { this.StatusOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -205,24 +205,19 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "category":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                category = new Option<ValidationsApiContainersV1ContainerDto?>(JsonSerializer.Deserialize<ValidationsApiContainersV1ContainerDto>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            category = new Option<ValidationsApiContainersV1ContainerDto?>(JsonSerializer.Deserialize<ValidationsApiContainersV1ContainerDto>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "recordCount":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                recordCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            recordCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "fatalCount":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                fatalCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            fatalCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "warningCount":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                warningCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            warningCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "excludedCount":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                excludedCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            excludedCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "status":
                             status = new Option<string?>(utf8JsonReader.GetString());

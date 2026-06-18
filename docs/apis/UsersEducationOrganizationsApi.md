@@ -15,66 +15,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Adds an Education Organization to a user.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class AddUserEducationOrganizationExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new UsersEducationOrganizationsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var userId = "userId_example";  // Guid | 
-            var edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsAddEducationOrganizationRequest = new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsAddEducationOrganizationRequest(); // EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsAddEducationOrganizationRequest |  (optional) 
-
-            try
-            {
-                // Adds an Education Organization to a user.
-                IdentityApiUserV1EducationOrganizationAddedResponse result = apiInstance.AddUserEducationOrganization(tenantId, userId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsAddEducationOrganizationRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling UsersEducationOrganizationsApi.AddUserEducationOrganization: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the AddUserEducationOrganizationWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Adds an Education Organization to a user.
-    ApiResponse<IdentityApiUserV1EducationOrganizationAddedResponse> response = apiInstance.AddUserEducationOrganizationWithHttpInfo(tenantId, userId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsAddEducationOrganizationRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling UsersEducationOrganizationsApi.AddUserEducationOrganizationWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -115,65 +55,6 @@ catch (ApiException e)
 
 Gets the Education Organizations of a user.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetUserEducationOrganizationsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new UsersEducationOrganizationsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var userId = "userId_example";  // Guid | 
-
-            try
-            {
-                // Gets the Education Organizations of a user.
-                IdentityApiUserV1EducationOrganizationPaginatedItemsResponse result = apiInstance.GetUserEducationOrganizations(tenantId, userId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling UsersEducationOrganizationsApi.GetUserEducationOrganizations: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetUserEducationOrganizationsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Gets the Education Organizations of a user.
-    ApiResponse<IdentityApiUserV1EducationOrganizationPaginatedItemsResponse> response = apiInstance.GetUserEducationOrganizationsWithHttpInfo(tenantId, userId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling UsersEducationOrganizationsApi.GetUserEducationOrganizationsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -214,66 +95,6 @@ catch (ApiException e)
 
 Removes an Education Organization from a user.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class RemoveUserEducationOrganizationExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new UsersEducationOrganizationsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var userId = "userId_example";  // Guid | 
-            var educationOrganizationId = 56;  // int | 
-
-            try
-            {
-                // Removes an Education Organization from a user.
-                IdentityApiUserV1EducationOrganizationRemovedResponse result = apiInstance.RemoveUserEducationOrganization(tenantId, userId, educationOrganizationId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling UsersEducationOrganizationsApi.RemoveUserEducationOrganization: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the RemoveUserEducationOrganizationWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Removes an Education Organization from a user.
-    ApiResponse<IdentityApiUserV1EducationOrganizationRemovedResponse> response = apiInstance.RemoveUserEducationOrganizationWithHttpInfo(tenantId, userId, educationOrganizationId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling UsersEducationOrganizationsApi.RemoveUserEducationOrganizationWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -315,67 +136,6 @@ catch (ApiException e)
 
 Updates the Education Organization of a user.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateUserEducationOrganizationExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new UsersEducationOrganizationsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var userId = "userId_example";  // Guid | 
-            var educationOrganizationId = 56;  // int | 
-            var edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsUpdateEducationOrganizationRequest = new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsUpdateEducationOrganizationRequest(); // EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsUpdateEducationOrganizationRequest |  (optional) 
-
-            try
-            {
-                // Updates the Education Organization of a user.
-                IdentityApiUserV1EducationOrganizationUpdatedResponse result = apiInstance.UpdateUserEducationOrganization(tenantId, userId, educationOrganizationId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsUpdateEducationOrganizationRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling UsersEducationOrganizationsApi.UpdateUserEducationOrganization: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateUserEducationOrganizationWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates the Education Organization of a user.
-    ApiResponse<IdentityApiUserV1EducationOrganizationUpdatedResponse> response = apiInstance.UpdateUserEducationOrganizationWithHttpInfo(tenantId, userId, educationOrganizationId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsUpdateEducationOrganizationRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling UsersEducationOrganizationsApi.UpdateUserEducationOrganizationWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

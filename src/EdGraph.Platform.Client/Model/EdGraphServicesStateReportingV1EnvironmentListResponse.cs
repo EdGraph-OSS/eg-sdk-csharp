@@ -72,7 +72,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedBy
@@ -85,7 +85,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedBy
         /// </summary>
         [JsonPropertyName("createdBy")]
-        public string? CreatedBy { get { return this.CreatedByOption; } set { this.CreatedByOption = new(value); } }
+        public string? CreatedBy { get { return this.CreatedByOption.Value; } set { this.CreatedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedDateTime
@@ -98,7 +98,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedDateTime
         /// </summary>
         [JsonPropertyName("createdDateTime")]
-        public string? CreatedDateTime { get { return this.CreatedDateTimeOption; } set { this.CreatedDateTimeOption = new(value); } }
+        public string? CreatedDateTime { get { return this.CreatedDateTimeOption.Value; } set { this.CreatedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedBy
@@ -111,7 +111,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedBy
         /// </summary>
         [JsonPropertyName("lastModifiedBy")]
-        public string? LastModifiedBy { get { return this.LastModifiedByOption; } set { this.LastModifiedByOption = new(value); } }
+        public string? LastModifiedBy { get { return this.LastModifiedByOption.Value; } set { this.LastModifiedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedDateTime
@@ -124,7 +124,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedDateTime
         /// </summary>
         [JsonPropertyName("lastModifiedDateTime")]
-        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption; } set { this.LastModifiedDateTimeOption = new(value); } }
+        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption.Value; } set { this.LastModifiedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -137,7 +137,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Year
@@ -150,7 +150,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Year
         /// </summary>
         [JsonPropertyName("year")]
-        public int? Year { get { return this.YearOption; } set { this.YearOption = new(value); } }
+        public int? Year { get { return this.YearOption.Value; } set { this.YearOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DbEnvironmentId
@@ -163,7 +163,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DbEnvironmentId
         /// </summary>
         [JsonPropertyName("dbEnvironmentId")]
-        public string? DbEnvironmentId { get { return this.DbEnvironmentIdOption; } set { this.DbEnvironmentIdOption = new(value); } }
+        public string? DbEnvironmentId { get { return this.DbEnvironmentIdOption.Value; } set { this.DbEnvironmentIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EdFiInstanceId
@@ -176,7 +176,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EdFiInstanceId
         /// </summary>
         [JsonPropertyName("edFiInstanceId")]
-        public string? EdFiInstanceId { get { return this.EdFiInstanceIdOption; } set { this.EdFiInstanceIdOption = new(value); } }
+        public string? EdFiInstanceId { get { return this.EdFiInstanceIdOption.Value; } set { this.EdFiInstanceIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Mode
@@ -189,7 +189,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Mode
         /// </summary>
         [JsonPropertyName("mode")]
-        public string? Mode { get { return this.ModeOption; } set { this.ModeOption = new(value); } }
+        public string? Mode { get { return this.ModeOption.Value; } set { this.ModeOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -291,8 +291,7 @@ namespace EdGraph.Platform.Client.Model
                             tenantId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "year":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                year = new Option<int?>(utf8JsonReader.GetInt32());
+                            year = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "dbEnvironmentId":
                             dbEnvironmentId = new Option<string?>(utf8JsonReader.GetString());

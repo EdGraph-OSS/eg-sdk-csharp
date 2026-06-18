@@ -201,7 +201,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, GoogleProtobufWellKnownTypesValueKindOneofCase googleProtobufWellKnownTypesValueKindOneofCase, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(googleProtobufWellKnownTypesValueKindOneofCase.ToString());
+            writer.WriteStringValue(GoogleProtobufWellKnownTypesValueKindOneofCaseValueConverter.ToJsonValue(googleProtobufWellKnownTypesValueKindOneofCase).ToString());
         }
     }
 
@@ -232,14 +232,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the GoogleProtobufWellKnownTypesValueKindOneofCase to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="googleProtobufWellKnownTypesValueKindOneofCase"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, GoogleProtobufWellKnownTypesValueKindOneofCase? googleProtobufWellKnownTypesValueKindOneofCase, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(googleProtobufWellKnownTypesValueKindOneofCase?.ToString() ?? "null");
+            writer.WriteStringValue(googleProtobufWellKnownTypesValueKindOneofCase.HasValue ? GoogleProtobufWellKnownTypesValueKindOneofCaseValueConverter.ToJsonValue(googleProtobufWellKnownTypesValueKindOneofCase.Value).ToString() : "null");
         }
     }
 }

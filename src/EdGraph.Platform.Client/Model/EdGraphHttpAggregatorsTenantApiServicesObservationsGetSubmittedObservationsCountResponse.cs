@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Campus
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Campus
         /// </summary>
         [JsonPropertyName("campus")]
-        public string? Campus { get { return this.CampusOption; } set { this.CampusOption = new(value); } }
+        public string? Campus { get { return this.CampusOption.Value; } set { this.CampusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EvalueeId
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EvalueeId
         /// </summary>
         [JsonPropertyName("evalueeId")]
-        public string? EvalueeId { get { return this.EvalueeIdOption; } set { this.EvalueeIdOption = new(value); } }
+        public string? EvalueeId { get { return this.EvalueeIdOption.Value; } set { this.EvalueeIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Count
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Count
         /// </summary>
         [JsonPropertyName("count")]
-        public long? Count { get { return this.CountOption; } set { this.CountOption = new(value); } }
+        public long? Count { get { return this.CountOption.Value; } set { this.CountOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -180,8 +180,7 @@ namespace EdGraph.Platform.Client.Model
                             evalueeId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "count":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                count = new Option<long?>(utf8JsonReader.GetInt64());
+                            count = new Option<long?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (long?)null : utf8JsonReader.GetInt64());
                             break;
                         default:
                             break;

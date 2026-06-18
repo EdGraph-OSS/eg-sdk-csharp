@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DomainStatus
         /// </summary>
         [JsonPropertyName("domainStatus")]
-        public TenantApiTenantV1DomainStatus? DomainStatus { get { return this.DomainStatusOption; } set { this.DomainStatusOption = new(value); } }
+        public TenantApiTenantV1DomainStatus? DomainStatus { get { return this.DomainStatusOption.Value; } set { this.DomainStatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of OldDomainName
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets OldDomainName
         /// </summary>
         [JsonPropertyName("oldDomainName")]
-        public string? OldDomainName { get { return this.OldDomainNameOption; } set { this.OldDomainNameOption = new(value); } }
+        public string? OldDomainName { get { return this.OldDomainNameOption.Value; } set { this.OldDomainNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of NewDomainName
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets NewDomainName
         /// </summary>
         [JsonPropertyName("newDomainName")]
-        public string? NewDomainName { get { return this.NewDomainNameOption; } set { this.NewDomainNameOption = new(value); } }
+        public string? NewDomainName { get { return this.NewDomainNameOption.Value; } set { this.NewDomainNameOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

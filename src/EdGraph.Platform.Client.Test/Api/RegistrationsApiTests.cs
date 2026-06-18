@@ -61,7 +61,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> orderBy = default!;
             var response = await _instance.GetOnboardingApplicationsAsyncAsync(pageSize, pageIndex, orderBy);
             var model = response.Unauthorized();
-            Assert.IsType<ApplicationApiApplicationV1PaginatedItemsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string registrationId = default!;
             var response = await _instance.GetRegistrationApprovalStatusAsyncAsync(registrationId);
             var model = response.Unauthorized();
-            Assert.IsType<RegistrationApiRegistrationV2ApprovalStatus>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<RegistrationApiRegistrationV2SubmitTenantRegistrationRequest> registrationApiRegistrationV2SubmitTenantRegistrationRequest = default!;
             var response = await _instance.SubmitTenantRegistrationAsyncAsync(registrationApiRegistrationV2SubmitTenantRegistrationRequest);
             var model = response.Unauthorized();
-            Assert.IsType<string>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

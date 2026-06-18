@@ -62,7 +62,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -75,7 +75,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApplicationId
@@ -88,7 +88,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApplicationId
         /// </summary>
         [JsonPropertyName("applicationId")]
-        public int? ApplicationId { get { return this.ApplicationIdOption; } set { this.ApplicationIdOption = new(value); } }
+        public int? ApplicationId { get { return this.ApplicationIdOption.Value; } set { this.ApplicationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApiClientId
@@ -101,7 +101,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApiClientId
         /// </summary>
         [JsonPropertyName("apiClientId")]
-        public int? ApiClientId { get { return this.ApiClientIdOption; } set { this.ApiClientIdOption = new(value); } }
+        public int? ApiClientId { get { return this.ApiClientIdOption.Value; } set { this.ApiClientIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Users
@@ -114,7 +114,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Users
         /// </summary>
         [JsonPropertyName("users")]
-        public List<EdFiAdminApiApplicationAccessV1ApplicationUserAccessResponse>? Users { get { return this.UsersOption; } }
+        public List<EdFiAdminApiApplicationAccessV1ApplicationUserAccessResponse>? Users { get { return this.UsersOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -194,16 +194,13 @@ namespace EdGraph.Platform.Client.Model
                             tenantId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "applicationId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                applicationId = new Option<int?>(utf8JsonReader.GetInt32());
+                            applicationId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "apiClientId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                apiClientId = new Option<int?>(utf8JsonReader.GetInt32());
+                            apiClientId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "users":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                users = new Option<List<EdFiAdminApiApplicationAccessV1ApplicationUserAccessResponse>?>(JsonSerializer.Deserialize<List<EdFiAdminApiApplicationAccessV1ApplicationUserAccessResponse>>(ref utf8JsonReader, jsonSerializerOptions));
+                            users = new Option<List<EdFiAdminApiApplicationAccessV1ApplicationUserAccessResponse>?>(JsonSerializer.Deserialize<List<EdFiAdminApiApplicationAccessV1ApplicationUserAccessResponse>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

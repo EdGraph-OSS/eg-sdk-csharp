@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<IdentityApiApiClientV1CreateApiClientRequest> identityApiApiClientV1CreateApiClientRequest = default!;
             var response = await _instance.CreateTenantApiClientAsyncAsync(tenantId, identityApiApiClientV1CreateApiClientRequest);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiApiClientV1ApiClientCreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -71,7 +71,9 @@ namespace EdGraph.Platform.Client.Test.Api
         {
             string tenantId = default!;
             string clientId = default!;
-            await _instance.DeleteTenantApiClientAsyncAsync(tenantId, clientId);
+            var response = await _instance.DeleteTenantApiClientAsyncAsync(tenantId, clientId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -87,7 +89,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetAllTenantApiClientsAsyncAsync(tenantId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiApiClientV1ApiClientPaginatedItemsResponsePaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -100,7 +102,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string clientId = default!;
             var response = await _instance.GetTenantApiClientByIdAsyncAsync(tenantId, clientId);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiApiClientV1ApiClientProfileResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -114,7 +116,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<IdentityApiApiClientV1RegenerateApiClientSecretRequest> identityApiApiClientV1RegenerateApiClientSecretRequest = default!;
             var response = await _instance.RegenerateTenantApiClientSecretAsyncAsync(tenantId, clientId, identityApiApiClientV1RegenerateApiClientSecretRequest);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiApiClientV1ApiClientSecretRegeneratedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -128,7 +130,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<IdentityApiApiClientV1UpdateApiClientRequest> identityApiApiClientV1UpdateApiClientRequest = default!;
             var response = await _instance.UpdateTenantApiClientAsyncAsync(tenantId, clientId, identityApiApiClientV1UpdateApiClientRequest);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiApiClientV1ApiClientUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

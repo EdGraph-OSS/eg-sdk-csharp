@@ -66,7 +66,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InstanceId
@@ -79,7 +79,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceId
         /// </summary>
         [JsonPropertyName("instanceId")]
-        public string? InstanceId { get { return this.InstanceIdOption; } set { this.InstanceIdOption = new(value); } }
+        public string? InstanceId { get { return this.InstanceIdOption.Value; } set { this.InstanceIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Year
@@ -92,7 +92,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Year
         /// </summary>
         [JsonPropertyName("year")]
-        public int? Year { get { return this.YearOption; } set { this.YearOption = new(value); } }
+        public int? Year { get { return this.YearOption.Value; } set { this.YearOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EdOrgId
@@ -105,7 +105,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EdOrgId
         /// </summary>
         [JsonPropertyName("edOrgId")]
-        public int? EdOrgId { get { return this.EdOrgIdOption; } set { this.EdOrgIdOption = new(value); } }
+        public int? EdOrgId { get { return this.EdOrgIdOption.Value; } set { this.EdOrgIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EdOrgGuid
@@ -118,7 +118,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EdOrgGuid
         /// </summary>
         [JsonPropertyName("edOrgGuid")]
-        public string? EdOrgGuid { get { return this.EdOrgGuidOption; } set { this.EdOrgGuidOption = new(value); } }
+        public string? EdOrgGuid { get { return this.EdOrgGuidOption.Value; } set { this.EdOrgGuidOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Entries
@@ -131,7 +131,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Entries
         /// </summary>
         [JsonPropertyName("entries")]
-        public List<EdfiAdminApiEdfiAdminV1SyncEntry>? Entries { get { return this.EntriesOption; } }
+        public List<EdfiAdminApiEdfiAdminV1SyncEntry>? Entries { get { return this.EntriesOption.Value; } }
 
         /// <summary>
         /// Used to track the state of AssignToExistingApplications
@@ -144,7 +144,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AssignToExistingApplications
         /// </summary>
         [JsonPropertyName("assignToExistingApplications")]
-        public bool? AssignToExistingApplications { get { return this.AssignToExistingApplicationsOption; } set { this.AssignToExistingApplicationsOption = new(value); } }
+        public bool? AssignToExistingApplications { get { return this.AssignToExistingApplicationsOption.Value; } set { this.AssignToExistingApplicationsOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -228,23 +228,19 @@ namespace EdGraph.Platform.Client.Model
                             instanceId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "year":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                year = new Option<int?>(utf8JsonReader.GetInt32());
+                            year = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "edOrgId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                edOrgId = new Option<int?>(utf8JsonReader.GetInt32());
+                            edOrgId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "edOrgGuid":
                             edOrgGuid = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "entries":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                entries = new Option<List<EdfiAdminApiEdfiAdminV1SyncEntry>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1SyncEntry>>(ref utf8JsonReader, jsonSerializerOptions));
+                            entries = new Option<List<EdfiAdminApiEdfiAdminV1SyncEntry>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1SyncEntry>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "assignToExistingApplications":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                assignToExistingApplications = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            assignToExistingApplications = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

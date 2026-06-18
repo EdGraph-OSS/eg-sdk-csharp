@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Rule
         /// </summary>
         [JsonPropertyName("rule")]
-        public ValidationsApiReportingPeriodsV1PaginatedRecordsTypesReportingPeriodRecordsTypesRule? Rule { get { return this.RuleOption; } set { this.RuleOption = new(value); } }
+        public ValidationsApiReportingPeriodsV1PaginatedRecordsTypesReportingPeriodRecordsTypesRule? Rule { get { return this.RuleOption.Value; } set { this.RuleOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Records
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Records
         /// </summary>
         [JsonPropertyName("records")]
-        public List<ValidationsApiReportingPeriodsV1ValidationResultRecord>? Records { get { return this.RecordsOption; } }
+        public List<ValidationsApiReportingPeriodsV1ValidationResultRecord>? Records { get { return this.RecordsOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -137,12 +137,10 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "rule":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                rule = new Option<ValidationsApiReportingPeriodsV1PaginatedRecordsTypesReportingPeriodRecordsTypesRule?>(JsonSerializer.Deserialize<ValidationsApiReportingPeriodsV1PaginatedRecordsTypesReportingPeriodRecordsTypesRule>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            rule = new Option<ValidationsApiReportingPeriodsV1PaginatedRecordsTypesReportingPeriodRecordsTypesRule?>(JsonSerializer.Deserialize<ValidationsApiReportingPeriodsV1PaginatedRecordsTypesReportingPeriodRecordsTypesRule>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "records":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                records = new Option<List<ValidationsApiReportingPeriodsV1ValidationResultRecord>?>(JsonSerializer.Deserialize<List<ValidationsApiReportingPeriodsV1ValidationResultRecord>>(ref utf8JsonReader, jsonSerializerOptions));
+                            records = new Option<List<ValidationsApiReportingPeriodsV1ValidationResultRecord>?>(JsonSerializer.Deserialize<List<ValidationsApiReportingPeriodsV1ValidationResultRecord>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

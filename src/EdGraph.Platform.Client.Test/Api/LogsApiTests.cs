@@ -68,7 +68,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> jobExecutionId = default!;
             var response = await _instance.GetLogsAsync(tenantId, pageIndex, pageSize, orderBy, environmentId, collectionId, containerId, ruleId, jobId, jobExecutionId);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiValidationResultsV1FindResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

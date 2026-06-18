@@ -37,13 +37,15 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="compositesUrl">compositesUrl</param>
         /// <param name="resourcesUrl">resourcesUrl</param>
         /// <param name="discoveryUrl">discoveryUrl</param>
+        /// <param name="discoveryDocument">discoveryDocument</param>
         [JsonConstructor]
-        public EdfiAdminApiEdfiAdminV1OdsApiConnectionEndpoint(Option<string?> accessTypeId = default, Option<string?> compositesUrl = default, Option<string?> resourcesUrl = default, Option<string?> discoveryUrl = default)
+        public EdfiAdminApiEdfiAdminV1OdsApiConnectionEndpoint(Option<string?> accessTypeId = default, Option<string?> compositesUrl = default, Option<string?> resourcesUrl = default, Option<string?> discoveryUrl = default, Option<EdfiAdminApiEdfiAdminV1OdsApiDiscoveryApi?> discoveryDocument = default)
         {
             AccessTypeIdOption = accessTypeId;
             CompositesUrlOption = compositesUrl;
             ResourcesUrlOption = resourcesUrl;
             DiscoveryUrlOption = discoveryUrl;
+            DiscoveryDocumentOption = discoveryDocument;
             OnCreated();
         }
 
@@ -60,7 +62,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AccessTypeId
         /// </summary>
         [JsonPropertyName("accessTypeId")]
-        public string? AccessTypeId { get { return this.AccessTypeIdOption; } set { this.AccessTypeIdOption = new(value); } }
+        public string? AccessTypeId { get { return this.AccessTypeIdOption.Value; } set { this.AccessTypeIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CompositesUrl
@@ -73,7 +75,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CompositesUrl
         /// </summary>
         [JsonPropertyName("compositesUrl")]
-        public string? CompositesUrl { get { return this.CompositesUrlOption; } set { this.CompositesUrlOption = new(value); } }
+        public string? CompositesUrl { get { return this.CompositesUrlOption.Value; } set { this.CompositesUrlOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ResourcesUrl
@@ -86,7 +88,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ResourcesUrl
         /// </summary>
         [JsonPropertyName("resourcesUrl")]
-        public string? ResourcesUrl { get { return this.ResourcesUrlOption; } set { this.ResourcesUrlOption = new(value); } }
+        public string? ResourcesUrl { get { return this.ResourcesUrlOption.Value; } set { this.ResourcesUrlOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DiscoveryUrl
@@ -99,7 +101,20 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DiscoveryUrl
         /// </summary>
         [JsonPropertyName("discoveryUrl")]
-        public string? DiscoveryUrl { get { return this.DiscoveryUrlOption; } set { this.DiscoveryUrlOption = new(value); } }
+        public string? DiscoveryUrl { get { return this.DiscoveryUrlOption.Value; } set { this.DiscoveryUrlOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of DiscoveryDocument
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<EdfiAdminApiEdfiAdminV1OdsApiDiscoveryApi?> DiscoveryDocumentOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets DiscoveryDocument
+        /// </summary>
+        [JsonPropertyName("discoveryDocument")]
+        public EdfiAdminApiEdfiAdminV1OdsApiDiscoveryApi? DiscoveryDocument { get { return this.DiscoveryDocumentOption.Value; } set { this.DiscoveryDocumentOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -113,6 +128,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  CompositesUrl: ").Append(CompositesUrl).Append("\n");
             sb.Append("  ResourcesUrl: ").Append(ResourcesUrl).Append("\n");
             sb.Append("  DiscoveryUrl: ").Append(DiscoveryUrl).Append("\n");
+            sb.Append("  DiscoveryDocument: ").Append(DiscoveryDocument).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -154,6 +170,7 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> compositesUrl = default;
             Option<string?> resourcesUrl = default;
             Option<string?> discoveryUrl = default;
+            Option<EdfiAdminApiEdfiAdminV1OdsApiDiscoveryApi?> discoveryDocument = default;
 
             while (utf8JsonReader.Read())
             {
@@ -182,13 +199,19 @@ namespace EdGraph.Platform.Client.Model
                         case "discoveryUrl":
                             discoveryUrl = new Option<string?>(utf8JsonReader.GetString());
                             break;
+                        case "discoveryDocument":
+                            discoveryDocument = new Option<EdfiAdminApiEdfiAdminV1OdsApiDiscoveryApi?>(JsonSerializer.Deserialize<EdfiAdminApiEdfiAdminV1OdsApiDiscoveryApi>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            break;
                         default:
                             break;
                     }
                 }
             }
 
-            return new EdfiAdminApiEdfiAdminV1OdsApiConnectionEndpoint(accessTypeId, compositesUrl, resourcesUrl, discoveryUrl);
+            if (discoveryDocument.IsSet && discoveryDocument.Value == null)
+                throw new ArgumentNullException(nameof(discoveryDocument), "Property is not nullable for class EdfiAdminApiEdfiAdminV1OdsApiConnectionEndpoint.");
+
+            return new EdfiAdminApiEdfiAdminV1OdsApiConnectionEndpoint(accessTypeId, compositesUrl, resourcesUrl, discoveryUrl, discoveryDocument);
         }
 
         /// <summary>
@@ -215,6 +238,9 @@ namespace EdGraph.Platform.Client.Model
         /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, EdfiAdminApiEdfiAdminV1OdsApiConnectionEndpoint edfiAdminApiEdfiAdminV1OdsApiConnectionEndpoint, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (edfiAdminApiEdfiAdminV1OdsApiConnectionEndpoint.DiscoveryDocumentOption.IsSet && edfiAdminApiEdfiAdminV1OdsApiConnectionEndpoint.DiscoveryDocument == null)
+                throw new ArgumentNullException(nameof(edfiAdminApiEdfiAdminV1OdsApiConnectionEndpoint.DiscoveryDocument), "Property is required for class EdfiAdminApiEdfiAdminV1OdsApiConnectionEndpoint.");
+
             if (edfiAdminApiEdfiAdminV1OdsApiConnectionEndpoint.AccessTypeIdOption.IsSet)
                 if (edfiAdminApiEdfiAdminV1OdsApiConnectionEndpoint.AccessTypeIdOption.Value != null)
                     writer.WriteString("accessTypeId", edfiAdminApiEdfiAdminV1OdsApiConnectionEndpoint.AccessTypeId);
@@ -238,6 +264,12 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteString("discoveryUrl", edfiAdminApiEdfiAdminV1OdsApiConnectionEndpoint.DiscoveryUrl);
                 else
                     writer.WriteNull("discoveryUrl");
+
+            if (edfiAdminApiEdfiAdminV1OdsApiConnectionEndpoint.DiscoveryDocumentOption.IsSet)
+            {
+                writer.WritePropertyName("discoveryDocument");
+                JsonSerializer.Serialize(writer, edfiAdminApiEdfiAdminV1OdsApiConnectionEndpoint.DiscoveryDocument, jsonSerializerOptions);
+            }
         }
     }
 }

@@ -159,7 +159,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, EdfiAdminApiEdfiAdminV1InstanceType edfiAdminApiEdfiAdminV1InstanceType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(edfiAdminApiEdfiAdminV1InstanceType.ToString());
+            writer.WriteStringValue(EdfiAdminApiEdfiAdminV1InstanceTypeValueConverter.ToJsonValue(edfiAdminApiEdfiAdminV1InstanceType).ToString());
         }
     }
 
@@ -190,14 +190,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the EdfiAdminApiEdfiAdminV1InstanceType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="edfiAdminApiEdfiAdminV1InstanceType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, EdfiAdminApiEdfiAdminV1InstanceType? edfiAdminApiEdfiAdminV1InstanceType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(edfiAdminApiEdfiAdminV1InstanceType?.ToString() ?? "null");
+            writer.WriteStringValue(edfiAdminApiEdfiAdminV1InstanceType.HasValue ? EdfiAdminApiEdfiAdminV1InstanceTypeValueConverter.ToJsonValue(edfiAdminApiEdfiAdminV1InstanceType.Value).ToString() : "null");
         }
     }
 }

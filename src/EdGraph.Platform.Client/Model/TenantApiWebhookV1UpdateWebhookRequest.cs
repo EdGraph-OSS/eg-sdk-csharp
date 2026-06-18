@@ -74,7 +74,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets WebhookSchema
         /// </summary>
         [JsonPropertyName("webhookSchema")]
-        public TenantApiWebhookV1WebhookSchema? WebhookSchema { get { return this.WebhookSchemaOption; } set { this.WebhookSchemaOption = new(value); } }
+        public TenantApiWebhookV1WebhookSchema? WebhookSchema { get { return this.WebhookSchemaOption.Value; } set { this.WebhookSchemaOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Id
@@ -87,7 +87,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -100,7 +100,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Name
@@ -113,7 +113,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Name
         /// </summary>
         [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption; } set { this.NameOption = new(value); } }
+        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Url
@@ -126,7 +126,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Url
         /// </summary>
         [JsonPropertyName("url")]
-        public string? Url { get { return this.UrlOption; } set { this.UrlOption = new(value); } }
+        public string? Url { get { return this.UrlOption.Value; } set { this.UrlOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SecretHeader
@@ -139,7 +139,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SecretHeader
         /// </summary>
         [JsonPropertyName("secretHeader")]
-        public string? SecretHeader { get { return this.SecretHeaderOption; } set { this.SecretHeaderOption = new(value); } }
+        public string? SecretHeader { get { return this.SecretHeaderOption.Value; } set { this.SecretHeaderOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SecretValue
@@ -152,7 +152,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SecretValue
         /// </summary>
         [JsonPropertyName("secretValue")]
-        public string? SecretValue { get { return this.SecretValueOption; } set { this.SecretValueOption = new(value); } }
+        public string? SecretValue { get { return this.SecretValueOption.Value; } set { this.SecretValueOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ContentType
@@ -165,7 +165,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ContentType
         /// </summary>
         [JsonPropertyName("contentType")]
-        public string? ContentType { get { return this.ContentTypeOption; } set { this.ContentTypeOption = new(value); } }
+        public string? ContentType { get { return this.ContentTypeOption.Value; } set { this.ContentTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Status
@@ -178,7 +178,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Status
         /// </summary>
         [JsonPropertyName("status")]
-        public string? Status { get { return this.StatusOption; } set { this.StatusOption = new(value); } }
+        public string? Status { get { return this.StatusOption.Value; } set { this.StatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EventSubscriptions
@@ -191,7 +191,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EventSubscriptions
         /// </summary>
         [JsonPropertyName("eventSubscriptions")]
-        public List<TenantApiWebhookV1WebhookSubscriberResponse>? EventSubscriptions { get { return this.EventSubscriptionsOption; } }
+        public List<TenantApiWebhookV1WebhookSubscriberResponse>? EventSubscriptions { get { return this.EventSubscriptionsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of Subscriptions
@@ -204,7 +204,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Subscriptions
         /// </summary>
         [JsonPropertyName("subscriptions")]
-        public List<string>? Subscriptions { get { return this.SubscriptionsOption; } }
+        public List<string>? Subscriptions { get { return this.SubscriptionsOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -314,12 +314,10 @@ namespace EdGraph.Platform.Client.Model
                             status = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "eventSubscriptions":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                eventSubscriptions = new Option<List<TenantApiWebhookV1WebhookSubscriberResponse>?>(JsonSerializer.Deserialize<List<TenantApiWebhookV1WebhookSubscriberResponse>>(ref utf8JsonReader, jsonSerializerOptions));
+                            eventSubscriptions = new Option<List<TenantApiWebhookV1WebhookSubscriberResponse>?>(JsonSerializer.Deserialize<List<TenantApiWebhookV1WebhookSubscriberResponse>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "subscriptions":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                subscriptions = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            subscriptions = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "webhookSchema":
                             string? webhookSchemaRawValue = utf8JsonReader.GetString();

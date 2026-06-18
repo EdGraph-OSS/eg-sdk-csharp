@@ -54,7 +54,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceResourcesJson
         /// </summary>
         [JsonPropertyName("instanceResourcesJson")]
-        public string? InstanceResourcesJson { get { return this.InstanceResourcesJsonOption; } set { this.InstanceResourcesJsonOption = new(value); } }
+        public string? InstanceResourcesJson { get { return this.InstanceResourcesJsonOption.Value; } set { this.InstanceResourcesJsonOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

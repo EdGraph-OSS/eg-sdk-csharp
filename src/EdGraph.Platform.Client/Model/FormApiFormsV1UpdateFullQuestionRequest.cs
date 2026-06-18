@@ -78,7 +78,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Type
         /// </summary>
         [JsonPropertyName("type")]
-        public FormApiQuestionsV1QuestionType? Type { get { return this.TypeOption; } set { this.TypeOption = new(value); } }
+        public FormApiQuestionsV1QuestionType? Type { get { return this.TypeOption.Value; } set { this.TypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Id
@@ -91,7 +91,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Title
@@ -104,7 +104,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Title
         /// </summary>
         [JsonPropertyName("title")]
-        public string? Title { get { return this.TitleOption; } set { this.TitleOption = new(value); } }
+        public string? Title { get { return this.TitleOption.Value; } set { this.TitleOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Description
@@ -117,7 +117,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Description
         /// </summary>
         [JsonPropertyName("description")]
-        public string? Description { get { return this.DescriptionOption; } set { this.DescriptionOption = new(value); } }
+        public string? Description { get { return this.DescriptionOption.Value; } set { this.DescriptionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Required
@@ -130,7 +130,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Required
         /// </summary>
         [JsonPropertyName("required")]
-        public bool? Required { get { return this.RequiredOption; } set { this.RequiredOption = new(value); } }
+        public bool? Required { get { return this.RequiredOption.Value; } set { this.RequiredOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DefaultValue
@@ -143,7 +143,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DefaultValue
         /// </summary>
         [JsonPropertyName("defaultValue")]
-        public string? DefaultValue { get { return this.DefaultValueOption; } set { this.DefaultValueOption = new(value); } }
+        public string? DefaultValue { get { return this.DefaultValueOption.Value; } set { this.DefaultValueOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Validation
@@ -156,7 +156,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Validation
         /// </summary>
         [JsonPropertyName("validation")]
-        public FormApiFormsV1UpdateFullQuestionValidationRequest? Validation { get { return this.ValidationOption; } set { this.ValidationOption = new(value); } }
+        public FormApiFormsV1UpdateFullQuestionValidationRequest? Validation { get { return this.ValidationOption.Value; } set { this.ValidationOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Options
@@ -169,7 +169,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Options
         /// </summary>
         [JsonPropertyName("options")]
-        public List<string>? Options { get { return this.OptionsOption; } }
+        public List<string>? Options { get { return this.OptionsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of Order
@@ -182,7 +182,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Order
         /// </summary>
         [JsonPropertyName("order")]
-        public int? Order { get { return this.OrderOption; } set { this.OrderOption = new(value); } }
+        public int? Order { get { return this.OrderOption.Value; } set { this.OrderOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Component
@@ -195,7 +195,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Component
         /// </summary>
         [JsonPropertyName("component")]
-        public string? Component { get { return this.ComponentOption; } set { this.ComponentOption = new(value); } }
+        public string? Component { get { return this.ComponentOption.Value; } set { this.ComponentOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CustomId
@@ -208,7 +208,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CustomId
         /// </summary>
         [JsonPropertyName("customId")]
-        public string? CustomId { get { return this.CustomIdOption; } set { this.CustomIdOption = new(value); } }
+        public string? CustomId { get { return this.CustomIdOption.Value; } set { this.CustomIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of VisibilityCondition
@@ -221,7 +221,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets VisibilityCondition
         /// </summary>
         [JsonPropertyName("visibilityCondition")]
-        public FormApiQuestionsV1QuestionVisibilityCondition? VisibilityCondition { get { return this.VisibilityConditionOption; } set { this.VisibilityConditionOption = new(value); } }
+        public FormApiQuestionsV1QuestionVisibilityCondition? VisibilityCondition { get { return this.VisibilityConditionOption.Value; } set { this.VisibilityConditionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Multiline
@@ -234,7 +234,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Multiline
         /// </summary>
         [JsonPropertyName("multiline")]
-        public bool? Multiline { get { return this.MultilineOption; } set { this.MultilineOption = new(value); } }
+        public bool? Multiline { get { return this.MultilineOption.Value; } set { this.MultilineOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -338,23 +338,19 @@ namespace EdGraph.Platform.Client.Model
                                 type = new Option<FormApiQuestionsV1QuestionType?>(FormApiQuestionsV1QuestionTypeValueConverter.FromStringOrDefault(typeRawValue));
                             break;
                         case "required":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                required = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            required = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "defaultValue":
                             defaultValue = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "validation":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                validation = new Option<FormApiFormsV1UpdateFullQuestionValidationRequest?>(JsonSerializer.Deserialize<FormApiFormsV1UpdateFullQuestionValidationRequest>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            validation = new Option<FormApiFormsV1UpdateFullQuestionValidationRequest?>(JsonSerializer.Deserialize<FormApiFormsV1UpdateFullQuestionValidationRequest>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "options":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                options = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            options = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "order":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                order = new Option<int?>(utf8JsonReader.GetInt32());
+                            order = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "component":
                             component = new Option<string?>(utf8JsonReader.GetString());
@@ -363,12 +359,10 @@ namespace EdGraph.Platform.Client.Model
                             customId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "visibilityCondition":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                visibilityCondition = new Option<FormApiQuestionsV1QuestionVisibilityCondition?>(JsonSerializer.Deserialize<FormApiQuestionsV1QuestionVisibilityCondition>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            visibilityCondition = new Option<FormApiQuestionsV1QuestionVisibilityCondition?>(JsonSerializer.Deserialize<FormApiQuestionsV1QuestionVisibilityCondition>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "multiline":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                multiline = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            multiline = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

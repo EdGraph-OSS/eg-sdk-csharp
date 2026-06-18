@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsCreateOnboardingStepRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsCreateOnboardingStepRequestDto = default!;
             var response = await _instance.CreateOnboardingStepAsync(tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsCreateOnboardingStepRequestDto);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiTenantV1TenantUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string tenantId = default!;
             var response = await _instance.GetOnboardingStepsAsync(tenantId);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiTenantV1OnboardingStepsReponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateOnboardingStepRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateOnboardingStepRequestDto = default!;
             var response = await _instance.UpdateOnboardingStepAsync(tenantId, stepNumber, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateOnboardingStepRequestDto);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiTenantV1TenantUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

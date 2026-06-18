@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InstanceId
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceId
         /// </summary>
         [JsonPropertyName("instanceId")]
-        public string? InstanceId { get { return this.InstanceIdOption; } set { this.InstanceIdOption = new(value); } }
+        public string? InstanceId { get { return this.InstanceIdOption.Value; } set { this.InstanceIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Year
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Year
         /// </summary>
         [JsonPropertyName("year")]
-        public int? Year { get { return this.YearOption; } set { this.YearOption = new(value); } }
+        public int? Year { get { return this.YearOption.Value; } set { this.YearOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LocalEducationAgency
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LocalEducationAgency
         /// </summary>
         [JsonPropertyName("localEducationAgency")]
-        public EdfiAdminApiEdfiAdminV1LocalEducationAgency? LocalEducationAgency { get { return this.LocalEducationAgencyOption; } set { this.LocalEducationAgencyOption = new(value); } }
+        public EdfiAdminApiEdfiAdminV1LocalEducationAgency? LocalEducationAgency { get { return this.LocalEducationAgencyOption.Value; } set { this.LocalEducationAgencyOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -177,12 +177,10 @@ namespace EdGraph.Platform.Client.Model
                             instanceId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "year":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                year = new Option<int?>(utf8JsonReader.GetInt32());
+                            year = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "localEducationAgency":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                localEducationAgency = new Option<EdfiAdminApiEdfiAdminV1LocalEducationAgency?>(JsonSerializer.Deserialize<EdfiAdminApiEdfiAdminV1LocalEducationAgency>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            localEducationAgency = new Option<EdfiAdminApiEdfiAdminV1LocalEducationAgency?>(JsonSerializer.Deserialize<EdfiAdminApiEdfiAdminV1LocalEducationAgency>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

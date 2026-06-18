@@ -28,62 +28,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Activate a DataSync job matching the primary key
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class ActivateTenantDataSyncJobExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new JobsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var jobId = "jobId_example";  // string | 
-            var dataSyncApiJobV1ActivateJobRequest = new DataSyncApiJobV1ActivateJobRequest(); // DataSyncApiJobV1ActivateJobRequest |  (optional) 
-
-            try
-            {
-                // Activate a DataSync job matching the primary key
-                apiInstance.ActivateTenantDataSyncJob(tenantId, jobId, dataSyncApiJobV1ActivateJobRequest);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling JobsApi.ActivateTenantDataSyncJob: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the ActivateTenantDataSyncJobWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Activate a DataSync job matching the primary key
-    apiInstance.ActivateTenantDataSyncJobWithHttpInfo(tenantId, jobId, dataSyncApiJobV1ActivateJobRequest);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling JobsApi.ActivateTenantDataSyncJobWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -125,65 +69,6 @@ void (empty response body)
 
 Requests a Job cancellation.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CancelJobExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new JobsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var jobId = "jobId_example";  // string | 
-
-            try
-            {
-                // Requests a Job cancellation.
-                Object result = apiInstance.CancelJob(tenantId, jobId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling JobsApi.CancelJob: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CancelJobWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Requests a Job cancellation.
-    ApiResponse<Object> response = apiInstance.CancelJobWithHttpInfo(tenantId, jobId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling JobsApi.CancelJobWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -224,62 +109,6 @@ catch (ApiException e)
 
 Cancel a DataSync job matching the primary key
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CancelTenantDataSyncJobExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new JobsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var jobId = "jobId_example";  // string | 
-            var dataSyncApiJobV1CancelJobRequest = new DataSyncApiJobV1CancelJobRequest(); // DataSyncApiJobV1CancelJobRequest |  (optional) 
-
-            try
-            {
-                // Cancel a DataSync job matching the primary key
-                apiInstance.CancelTenantDataSyncJob(tenantId, jobId, dataSyncApiJobV1CancelJobRequest);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling JobsApi.CancelTenantDataSyncJob: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CancelTenantDataSyncJobWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Cancel a DataSync job matching the primary key
-    apiInstance.CancelTenantDataSyncJobWithHttpInfo(tenantId, jobId, dataSyncApiJobV1CancelJobRequest);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling JobsApi.CancelTenantDataSyncJobWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -321,65 +150,6 @@ void (empty response body)
 
 Creates a Job.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CreateJobExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new JobsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsValidationsCreateValidationJobRequest = new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsValidationsCreateValidationJobRequest(); // EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsValidationsCreateValidationJobRequest |  (optional) 
-
-            try
-            {
-                // Creates a Job.
-                ValidationsApiCoreV1CreatedResponse result = apiInstance.CreateJob(tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsValidationsCreateValidationJobRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling JobsApi.CreateJob: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateJobWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates a Job.
-    ApiResponse<ValidationsApiCoreV1CreatedResponse> response = apiInstance.CreateJobWithHttpInfo(tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsValidationsCreateValidationJobRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling JobsApi.CreateJobWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -419,61 +189,6 @@ catch (ApiException e)
 
 Creates a new DataSync job
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CreateTenantDataSyncJobExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new JobsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsCreateJobRequest = new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsCreateJobRequest(); // EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsCreateJobRequest |  (optional) 
-
-            try
-            {
-                // Creates a new DataSync job
-                apiInstance.CreateTenantDataSyncJob(tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsCreateJobRequest);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling JobsApi.CreateTenantDataSyncJob: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateTenantDataSyncJobWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates a new DataSync job
-    apiInstance.CreateTenantDataSyncJobWithHttpInfo(tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsCreateJobRequest);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling JobsApi.CreateTenantDataSyncJobWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -513,62 +228,6 @@ void (empty response body)
 
 Deactivate a DataSync job matching the primary key
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class DeactivateTenantDataSyncJobExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new JobsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var jobId = "jobId_example";  // string | 
-            var dataSyncApiJobV1DeactivateJobRequest = new DataSyncApiJobV1DeactivateJobRequest(); // DataSyncApiJobV1DeactivateJobRequest |  (optional) 
-
-            try
-            {
-                // Deactivate a DataSync job matching the primary key
-                apiInstance.DeactivateTenantDataSyncJob(tenantId, jobId, dataSyncApiJobV1DeactivateJobRequest);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling JobsApi.DeactivateTenantDataSyncJob: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeactivateTenantDataSyncJobWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Deactivate a DataSync job matching the primary key
-    apiInstance.DeactivateTenantDataSyncJobWithHttpInfo(tenantId, jobId, dataSyncApiJobV1DeactivateJobRequest);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling JobsApi.DeactivateTenantDataSyncJobWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -610,61 +269,6 @@ void (empty response body)
 
 Deletes a Job.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class DeleteJobExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new JobsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var jobId = "jobId_example";  // string | 
-
-            try
-            {
-                // Deletes a Job.
-                apiInstance.DeleteJob(tenantId, jobId);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling JobsApi.DeleteJob: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeleteJobWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Deletes a Job.
-    apiInstance.DeleteJobWithHttpInfo(tenantId, jobId);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling JobsApi.DeleteJobWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -705,61 +309,6 @@ void (empty response body)
 
 Delete a DataSync job matching the primary key
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class DeleteTenantDataSyncJobExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new JobsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var jobId = "jobId_example";  // string | 
-
-            try
-            {
-                // Delete a DataSync job matching the primary key
-                apiInstance.DeleteTenantDataSyncJob(tenantId, jobId);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling JobsApi.DeleteTenantDataSyncJob: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeleteTenantDataSyncJobWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Delete a DataSync job matching the primary key
-    apiInstance.DeleteTenantDataSyncJobWithHttpInfo(tenantId, jobId);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling JobsApi.DeleteTenantDataSyncJobWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -800,65 +349,6 @@ void (empty response body)
 
 Requests a Job execution.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class ExecuteJobExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new JobsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var jobId = "jobId_example";  // string | 
-
-            try
-            {
-                // Requests a Job execution.
-                Object result = apiInstance.ExecuteJob(tenantId, jobId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling JobsApi.ExecuteJob: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the ExecuteJobWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Requests a Job execution.
-    ApiResponse<Object> response = apiInstance.ExecuteJobWithHttpInfo(tenantId, jobId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling JobsApi.ExecuteJobWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -899,62 +389,6 @@ catch (ApiException e)
 
 Execute a DataSync job matching the primary key
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class ExecuteTenantDataSyncJobExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new JobsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var jobId = "jobId_example";  // string | 
-            var dataSyncApiJobV1ExecuteJobRequest = new DataSyncApiJobV1ExecuteJobRequest(); // DataSyncApiJobV1ExecuteJobRequest |  (optional) 
-
-            try
-            {
-                // Execute a DataSync job matching the primary key
-                apiInstance.ExecuteTenantDataSyncJob(tenantId, jobId, dataSyncApiJobV1ExecuteJobRequest);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling JobsApi.ExecuteTenantDataSyncJob: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the ExecuteTenantDataSyncJobWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Execute a DataSync job matching the primary key
-    apiInstance.ExecuteTenantDataSyncJobWithHttpInfo(tenantId, jobId, dataSyncApiJobV1ExecuteJobRequest);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling JobsApi.ExecuteTenantDataSyncJobWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -996,68 +430,6 @@ void (empty response body)
 
 Retrieves a list of DataSync Jobs
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetAllTenantDataSyncJobsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new JobsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Retrieves a list of DataSync Jobs
-                DataSyncApiJobV1JobListResponsePaginatedItemsViewModel result = apiInstance.GetAllTenantDataSyncJobs(tenantId, pageSize, pageIndex, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling JobsApi.GetAllTenantDataSyncJobs: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetAllTenantDataSyncJobsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of DataSync Jobs
-    ApiResponse<DataSyncApiJobV1JobListResponsePaginatedItemsViewModel> response = apiInstance.GetAllTenantDataSyncJobsWithHttpInfo(tenantId, pageSize, pageIndex, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling JobsApi.GetAllTenantDataSyncJobsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1100,65 +472,6 @@ catch (ApiException e)
 
 Retrieves a Job by ID.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetJobByIdExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new JobsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var jobId = "jobId_example";  // string | 
-
-            try
-            {
-                // Retrieves a Job by ID.
-                ValidationsApiJobsV1JobProfileResponse result = apiInstance.GetJobById(tenantId, jobId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling JobsApi.GetJobById: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetJobByIdWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a Job by ID.
-    ApiResponse<ValidationsApiJobsV1JobProfileResponse> response = apiInstance.GetJobByIdWithHttpInfo(tenantId, jobId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling JobsApi.GetJobByIdWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1199,68 +512,6 @@ catch (ApiException e)
 
 Retrieves a list of Jobs.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetJobsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new JobsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var filter = "filter_example";  // string |  (optional) 
-            var orderBy = "orderBy_example";  // string |  (optional) 
-
-            try
-            {
-                // Retrieves a list of Jobs.
-                ValidationsApiJobsV1PaginatedItemsResponse result = apiInstance.GetJobs(tenantId, pageIndex, pageSize, filter, orderBy);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling JobsApi.GetJobs: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetJobsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of Jobs.
-    ApiResponse<ValidationsApiJobsV1PaginatedItemsResponse> response = apiInstance.GetJobsWithHttpInfo(tenantId, pageIndex, pageSize, filter, orderBy);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling JobsApi.GetJobsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1303,65 +554,6 @@ catch (ApiException e)
 
 Retrieves a specific DataSync job using its primary key
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetTenantDataSyncJobProfileByIdExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new JobsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var jobId = "jobId_example";  // string | 
-
-            try
-            {
-                // Retrieves a specific DataSync job using its primary key
-                DataSyncApiJobV1JobProfileResponse result = apiInstance.GetTenantDataSyncJobProfileById(tenantId, jobId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling JobsApi.GetTenantDataSyncJobProfileById: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetTenantDataSyncJobProfileByIdWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a specific DataSync job using its primary key
-    ApiResponse<DataSyncApiJobV1JobProfileResponse> response = apiInstance.GetTenantDataSyncJobProfileByIdWithHttpInfo(tenantId, jobId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling JobsApi.GetTenantDataSyncJobProfileByIdWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1401,61 +593,6 @@ catch (ApiException e)
 
 Requests a Job schedule restart.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class RestartJobScheduleExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new JobsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var jobId = "jobId_example";  // string | 
-
-            try
-            {
-                // Requests a Job schedule restart.
-                apiInstance.RestartJobSchedule(tenantId, jobId);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling JobsApi.RestartJobSchedule: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the RestartJobScheduleWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Requests a Job schedule restart.
-    apiInstance.RestartJobScheduleWithHttpInfo(tenantId, jobId);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling JobsApi.RestartJobScheduleWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1496,62 +633,6 @@ void (empty response body)
 
 Updates a Job.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateJobExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new JobsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var jobId = "jobId_example";  // Guid | 
-            var edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateValidationJobRequest = new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateValidationJobRequest(); // EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateValidationJobRequest |  (optional) 
-
-            try
-            {
-                // Updates a Job.
-                apiInstance.UpdateJob(tenantId, jobId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateValidationJobRequest);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling JobsApi.UpdateJob: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateJobWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates a Job.
-    apiInstance.UpdateJobWithHttpInfo(tenantId, jobId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateValidationJobRequest);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling JobsApi.UpdateJobWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1593,62 +674,6 @@ void (empty response body)
 
 Updates a DataSync job matching the primary key
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateTenantDataSyncJobExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new JobsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var jobId = "jobId_example";  // string | 
-            var edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateJobRequest = new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateJobRequest(); // EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateJobRequest |  (optional) 
-
-            try
-            {
-                // Updates a DataSync job matching the primary key
-                apiInstance.UpdateTenantDataSyncJob(tenantId, jobId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateJobRequest);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling JobsApi.UpdateTenantDataSyncJob: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateTenantDataSyncJobWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates a DataSync job matching the primary key
-    apiInstance.UpdateTenantDataSyncJobWithHttpInfo(tenantId, jobId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsUpdateJobRequest);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling JobsApi.UpdateTenantDataSyncJobWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

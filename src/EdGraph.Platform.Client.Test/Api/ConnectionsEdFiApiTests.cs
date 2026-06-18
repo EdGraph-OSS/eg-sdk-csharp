@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string connectionId = default!;
             var response = await _instance.GetTenantDataSyncConnectionEdFiDistrictsAsync(tenantId, connectionId);
             var model = response.Unauthorized();
-            Assert.IsType<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesConnectionEdFiResponse>>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string connectionId = default!;
             var response = await _instance.GetTenantDataSyncConnectionEdFiEducationOrganizationIdDescriptorsAsync(tenantId, connectionId);
             var model = response.Unauthorized();
-            Assert.IsType<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesConnectionEdFiResponse>>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string connectionId = default!;
             var response = await _instance.GetTenantDataSyncConnectionEdFiSchoolYearsAsync(tenantId, connectionId);
             var model = response.Unauthorized();
-            Assert.IsType<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesConnectionEdFiResponse>>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string connectionId = default!;
             var response = await _instance.GetTenantDataSyncConnectionEdFiStaffIdDescriptorsAsync(tenantId, connectionId);
             var model = response.Unauthorized();
-            Assert.IsType<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesConnectionEdFiResponse>>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string connectionId = default!;
             var response = await _instance.GetTenantDataSyncConnectionEdFiStudentIdDescriptorsAsync(tenantId, connectionId);
             var model = response.Unauthorized();
-            Assert.IsType<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesConnectionEdFiResponse>>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string connectionId = default!;
             var response = await _instance.GetTenantDataSyncConnectionEdFiTermDescriptorsAsync(tenantId, connectionId);
             var model = response.Unauthorized();
-            Assert.IsType<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesConnectionEdFiResponse>>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

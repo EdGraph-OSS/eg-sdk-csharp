@@ -173,7 +173,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, TenantApiTenantV1DomainStatus tenantApiTenantV1DomainStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(tenantApiTenantV1DomainStatus.ToString());
+            writer.WriteStringValue(TenantApiTenantV1DomainStatusValueConverter.ToJsonValue(tenantApiTenantV1DomainStatus).ToString());
         }
     }
 
@@ -204,14 +204,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the TenantApiTenantV1DomainStatus to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="tenantApiTenantV1DomainStatus"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, TenantApiTenantV1DomainStatus? tenantApiTenantV1DomainStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(tenantApiTenantV1DomainStatus?.ToString() ?? "null");
+            writer.WriteStringValue(tenantApiTenantV1DomainStatus.HasValue ? TenantApiTenantV1DomainStatusValueConverter.ToJsonValue(tenantApiTenantV1DomainStatus.Value).ToString() : "null");
         }
     }
 }

@@ -131,7 +131,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, ValidationsApiRulesV1UrlType validationsApiRulesV1UrlType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(validationsApiRulesV1UrlType.ToString());
+            writer.WriteStringValue(ValidationsApiRulesV1UrlTypeValueConverter.ToJsonValue(validationsApiRulesV1UrlType).ToString());
         }
     }
 
@@ -162,14 +162,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the ValidationsApiRulesV1UrlType to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="validationsApiRulesV1UrlType"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, ValidationsApiRulesV1UrlType? validationsApiRulesV1UrlType, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(validationsApiRulesV1UrlType?.ToString() ?? "null");
+            writer.WriteStringValue(validationsApiRulesV1UrlType.HasValue ? ValidationsApiRulesV1UrlTypeValueConverter.ToJsonValue(validationsApiRulesV1UrlType.Value).ToString() : "null");
         }
     }
 }

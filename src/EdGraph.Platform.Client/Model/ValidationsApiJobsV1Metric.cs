@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Entity
         /// </summary>
         [JsonPropertyName("entity")]
-        public string? Entity { get { return this.EntityOption; } set { this.EntityOption = new(value); } }
+        public string? Entity { get { return this.EntityOption.Value; } set { this.EntityOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Processed
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Processed
         /// </summary>
         [JsonPropertyName("processed")]
-        public int? Processed { get { return this.ProcessedOption; } set { this.ProcessedOption = new(value); } }
+        public int? Processed { get { return this.ProcessedOption.Value; } set { this.ProcessedOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Success
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Success
         /// </summary>
         [JsonPropertyName("success")]
-        public int? Success { get { return this.SuccessOption; } set { this.SuccessOption = new(value); } }
+        public int? Success { get { return this.SuccessOption.Value; } set { this.SuccessOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Errors
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Errors
         /// </summary>
         [JsonPropertyName("errors")]
-        public int? Errors { get { return this.ErrorsOption; } set { this.ErrorsOption = new(value); } }
+        public int? Errors { get { return this.ErrorsOption.Value; } set { this.ErrorsOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -174,16 +174,13 @@ namespace EdGraph.Platform.Client.Model
                             entity = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "processed":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                processed = new Option<int?>(utf8JsonReader.GetInt32());
+                            processed = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "success":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                success = new Option<int?>(utf8JsonReader.GetInt32());
+                            success = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "errors":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                errors = new Option<int?>(utf8JsonReader.GetInt32());
+                            errors = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

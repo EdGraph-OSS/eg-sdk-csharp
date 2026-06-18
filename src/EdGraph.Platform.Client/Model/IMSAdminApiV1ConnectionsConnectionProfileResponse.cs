@@ -72,7 +72,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ConnectionId
         /// </summary>
         [JsonPropertyName("connectionId")]
-        public string? ConnectionId { get { return this.ConnectionIdOption; } set { this.ConnectionIdOption = new(value); } }
+        public string? ConnectionId { get { return this.ConnectionIdOption.Value; } set { this.ConnectionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedBy
@@ -85,7 +85,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedBy
         /// </summary>
         [JsonPropertyName("createdBy")]
-        public string? CreatedBy { get { return this.CreatedByOption; } set { this.CreatedByOption = new(value); } }
+        public string? CreatedBy { get { return this.CreatedByOption.Value; } set { this.CreatedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedDateTime
@@ -98,7 +98,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedDateTime
         /// </summary>
         [JsonPropertyName("createdDateTime")]
-        public string? CreatedDateTime { get { return this.CreatedDateTimeOption; } set { this.CreatedDateTimeOption = new(value); } }
+        public string? CreatedDateTime { get { return this.CreatedDateTimeOption.Value; } set { this.CreatedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedBy
@@ -111,7 +111,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedBy
         /// </summary>
         [JsonPropertyName("lastModifiedBy")]
-        public string? LastModifiedBy { get { return this.LastModifiedByOption; } set { this.LastModifiedByOption = new(value); } }
+        public string? LastModifiedBy { get { return this.LastModifiedByOption.Value; } set { this.LastModifiedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedDateTime
@@ -124,7 +124,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedDateTime
         /// </summary>
         [JsonPropertyName("lastModifiedDateTime")]
-        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption; } set { this.LastModifiedDateTimeOption = new(value); } }
+        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption.Value; } set { this.LastModifiedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AllowedTenants
@@ -137,7 +137,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AllowedTenants
         /// </summary>
         [JsonPropertyName("allowedTenants")]
-        public List<string>? AllowedTenants { get { return this.AllowedTenantsOption; } }
+        public List<string>? AllowedTenants { get { return this.AllowedTenantsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of Name
@@ -150,7 +150,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Name
         /// </summary>
         [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption; } set { this.NameOption = new(value); } }
+        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Details
@@ -163,7 +163,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Details
         /// </summary>
         [JsonPropertyName("details")]
-        public List<IMSAdminApiV1ConnectionsConnectionDetails>? Details { get { return this.DetailsOption; } }
+        public List<IMSAdminApiV1ConnectionsConnectionDetails>? Details { get { return this.DetailsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of Tiers
@@ -176,7 +176,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Tiers
         /// </summary>
         [JsonPropertyName("tiers")]
-        public List<IMSAdminApiV1TiersTier>? Tiers { get { return this.TiersOption; } }
+        public List<IMSAdminApiV1TiersTier>? Tiers { get { return this.TiersOption.Value; } }
 
         /// <summary>
         /// Used to track the state of BackupCodes
@@ -189,7 +189,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets BackupCodes
         /// </summary>
         [JsonPropertyName("backupCodes")]
-        public List<IMSAdminApiV1DbBackupCodesDbBackupCode>? BackupCodes { get { return this.BackupCodesOption; } }
+        public List<IMSAdminApiV1DbBackupCodesDbBackupCode>? BackupCodes { get { return this.BackupCodesOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -288,23 +288,19 @@ namespace EdGraph.Platform.Client.Model
                             lastModifiedDateTime = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "allowedTenants":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                allowedTenants = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            allowedTenants = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "name":
                             name = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "details":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                details = new Option<List<IMSAdminApiV1ConnectionsConnectionDetails>?>(JsonSerializer.Deserialize<List<IMSAdminApiV1ConnectionsConnectionDetails>>(ref utf8JsonReader, jsonSerializerOptions));
+                            details = new Option<List<IMSAdminApiV1ConnectionsConnectionDetails>?>(JsonSerializer.Deserialize<List<IMSAdminApiV1ConnectionsConnectionDetails>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "tiers":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                tiers = new Option<List<IMSAdminApiV1TiersTier>?>(JsonSerializer.Deserialize<List<IMSAdminApiV1TiersTier>>(ref utf8JsonReader, jsonSerializerOptions));
+                            tiers = new Option<List<IMSAdminApiV1TiersTier>?>(JsonSerializer.Deserialize<List<IMSAdminApiV1TiersTier>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "backupCodes":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                backupCodes = new Option<List<IMSAdminApiV1DbBackupCodesDbBackupCode>?>(JsonSerializer.Deserialize<List<IMSAdminApiV1DbBackupCodesDbBackupCode>>(ref utf8JsonReader, jsonSerializerOptions));
+                            backupCodes = new Option<List<IMSAdminApiV1DbBackupCodesDbBackupCode>?>(JsonSerializer.Deserialize<List<IMSAdminApiV1DbBackupCodesDbBackupCode>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

@@ -62,7 +62,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DisplayName
         /// </summary>
         [JsonPropertyName("displayName")]
-        public string? DisplayName { get { return this.DisplayNameOption; } set { this.DisplayNameOption = new(value); } }
+        public string? DisplayName { get { return this.DisplayNameOption.Value; } set { this.DisplayNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EmailAddress
@@ -75,7 +75,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EmailAddress
         /// </summary>
         [JsonPropertyName("emailAddress")]
-        public string? EmailAddress { get { return this.EmailAddressOption; } set { this.EmailAddressOption = new(value); } }
+        public string? EmailAddress { get { return this.EmailAddressOption.Value; } set { this.EmailAddressOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of GroupUserAccessRight
@@ -88,7 +88,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets GroupUserAccessRight
         /// </summary>
         [JsonPropertyName("groupUserAccessRight")]
-        public string? GroupUserAccessRight { get { return this.GroupUserAccessRightOption; } set { this.GroupUserAccessRightOption = new(value); } }
+        public string? GroupUserAccessRight { get { return this.GroupUserAccessRightOption.Value; } set { this.GroupUserAccessRightOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Identifier
@@ -101,7 +101,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Identifier
         /// </summary>
         [JsonPropertyName("identifier")]
-        public string? Identifier { get { return this.IdentifierOption; } set { this.IdentifierOption = new(value); } }
+        public string? Identifier { get { return this.IdentifierOption.Value; } set { this.IdentifierOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of PrincipalType
@@ -114,7 +114,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets PrincipalType
         /// </summary>
         [JsonPropertyName("principalType")]
-        public string? PrincipalType { get { return this.PrincipalTypeOption; } set { this.PrincipalTypeOption = new(value); } }
+        public string? PrincipalType { get { return this.PrincipalTypeOption.Value; } set { this.PrincipalTypeOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

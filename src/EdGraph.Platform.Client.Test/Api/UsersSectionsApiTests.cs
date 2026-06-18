@@ -61,7 +61,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<IdentityApiUserV1AddSectionRequest> identityApiUserV1AddSectionRequest = default!;
             var response = await _instance.AddUserSectionAsync(tenantId, userId, identityApiUserV1AddSectionRequest);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiUserV1SectionAddedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<IdentityApiUserV1AddSectionBulkRequest> identityApiUserV1AddSectionBulkRequest = default!;
             var response = await _instance.AddUserSectionBulkAsync(tenantId, userId, identityApiUserV1AddSectionBulkRequest);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiUserV1SectionAddedBulkResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid userId = default!;
             var response = await _instance.GetUserSectionsAsync(tenantId, userId);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiUserV1GetSectionsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid userSectionId = default!;
             var response = await _instance.RemoveUserSectionAsync(tenantId, userId, userSectionId);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiUserV1SectionRemovedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<IdentityApiUserV1RemoveSectionBulkRequest> identityApiUserV1RemoveSectionBulkRequest = default!;
             var response = await _instance.RemoveUserSectionBulkAsync(tenantId, userId, identityApiUserV1RemoveSectionBulkRequest);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiUserV1SectionRemovedBulkResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<IdentityApiUserV1UpdateSectionRequest> identityApiUserV1UpdateSectionRequest = default!;
             var response = await _instance.UpdateUserSectionAsync(tenantId, userId, userSectionId, identityApiUserV1UpdateSectionRequest);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiUserV1SectionUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<IdentityApiUserV1UpdateSectionBulkRequest> identityApiUserV1UpdateSectionBulkRequest = default!;
             var response = await _instance.UpdateUserSectionBulkAsync(tenantId, userId, identityApiUserV1UpdateSectionBulkRequest);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiUserV1SectionUpdatedBulkResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

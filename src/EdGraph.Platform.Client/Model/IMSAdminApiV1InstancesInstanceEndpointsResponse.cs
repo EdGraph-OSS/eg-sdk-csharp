@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TokenUrl
         /// </summary>
         [JsonPropertyName("tokenUrl")]
-        public string? TokenUrl { get { return this.TokenUrlOption; } set { this.TokenUrlOption = new(value); } }
+        public string? TokenUrl { get { return this.TokenUrlOption.Value; } set { this.TokenUrlOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ResourcesUrl
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ResourcesUrl
         /// </summary>
         [JsonPropertyName("resourcesUrl")]
-        public string? ResourcesUrl { get { return this.ResourcesUrlOption; } set { this.ResourcesUrlOption = new(value); } }
+        public string? ResourcesUrl { get { return this.ResourcesUrlOption.Value; } set { this.ResourcesUrlOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ClientId
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ClientId
         /// </summary>
         [JsonPropertyName("clientId")]
-        public string? ClientId { get { return this.ClientIdOption; } set { this.ClientIdOption = new(value); } }
+        public string? ClientId { get { return this.ClientIdOption.Value; } set { this.ClientIdOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

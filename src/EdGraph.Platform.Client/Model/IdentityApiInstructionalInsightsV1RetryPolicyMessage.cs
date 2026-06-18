@@ -62,7 +62,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets BackoffMultiplier
         /// </summary>
         [JsonPropertyName("backoffMultiplier")]
-        public float? BackoffMultiplier { get { return this.BackoffMultiplierOption; } set { this.BackoffMultiplierOption = new(value); } }
+        public float? BackoffMultiplier { get { return this.BackoffMultiplierOption.Value; } set { this.BackoffMultiplierOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InitialDelay
@@ -75,7 +75,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InitialDelay
         /// </summary>
         [JsonPropertyName("initialDelay")]
-        public string? InitialDelay { get { return this.InitialDelayOption; } set { this.InitialDelayOption = new(value); } }
+        public string? InitialDelay { get { return this.InitialDelayOption.Value; } set { this.InitialDelayOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of MaxAttempts
@@ -88,7 +88,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets MaxAttempts
         /// </summary>
         [JsonPropertyName("maxAttempts")]
-        public int? MaxAttempts { get { return this.MaxAttemptsOption; } set { this.MaxAttemptsOption = new(value); } }
+        public int? MaxAttempts { get { return this.MaxAttemptsOption.Value; } set { this.MaxAttemptsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of MaxBackoff
@@ -101,7 +101,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets MaxBackoff
         /// </summary>
         [JsonPropertyName("maxBackoff")]
-        public string? MaxBackoff { get { return this.MaxBackoffOption; } set { this.MaxBackoffOption = new(value); } }
+        public string? MaxBackoff { get { return this.MaxBackoffOption.Value; } set { this.MaxBackoffOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Timeout
@@ -114,7 +114,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Timeout
         /// </summary>
         [JsonPropertyName("timeout")]
-        public string? Timeout { get { return this.TimeoutOption; } set { this.TimeoutOption = new(value); } }
+        public string? Timeout { get { return this.TimeoutOption.Value; } set { this.TimeoutOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -188,15 +188,13 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "backoffMultiplier":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                backoffMultiplier = new Option<float?>((float)utf8JsonReader.GetDouble());
+                            backoffMultiplier = new Option<float?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (float?)null : (float)utf8JsonReader.GetDouble());
                             break;
                         case "initialDelay":
                             initialDelay = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "maxAttempts":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                maxAttempts = new Option<int?>(utf8JsonReader.GetInt32());
+                            maxAttempts = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "maxBackoff":
                             maxBackoff = new Option<string?>(utf8JsonReader.GetString());

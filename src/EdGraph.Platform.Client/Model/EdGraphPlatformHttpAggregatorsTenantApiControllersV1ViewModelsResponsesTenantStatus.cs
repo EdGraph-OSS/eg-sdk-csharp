@@ -145,7 +145,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesTenantStatus edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesTenantStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesTenantStatus.ToString());
+            writer.WriteStringValue(EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesTenantStatusValueConverter.ToJsonValue(edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesTenantStatus).ToString());
         }
     }
 
@@ -176,14 +176,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesTenantStatus to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesTenantStatus"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesTenantStatus? edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesTenantStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesTenantStatus?.ToString() ?? "null");
+            writer.WriteStringValue(edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesTenantStatus.HasValue ? EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesTenantStatusValueConverter.ToJsonValue(edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesTenantStatus.Value).ToString() : "null");
         }
     }
 }

@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Url
         /// </summary>
         [JsonPropertyName("url")]
-        public string? Url { get { return this.UrlOption; } set { this.UrlOption = new(value); } }
+        public string? Url { get { return this.UrlOption.Value; } set { this.UrlOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of BlobName
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets BlobName
         /// </summary>
         [JsonPropertyName("blobName")]
-        public string? BlobName { get { return this.BlobNameOption; } set { this.BlobNameOption = new(value); } }
+        public string? BlobName { get { return this.BlobNameOption.Value; } set { this.BlobNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ContainerName
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ContainerName
         /// </summary>
         [JsonPropertyName("containerName")]
-        public string? ContainerName { get { return this.ContainerNameOption; } set { this.ContainerNameOption = new(value); } }
+        public string? ContainerName { get { return this.ContainerNameOption.Value; } set { this.ContainerNameOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

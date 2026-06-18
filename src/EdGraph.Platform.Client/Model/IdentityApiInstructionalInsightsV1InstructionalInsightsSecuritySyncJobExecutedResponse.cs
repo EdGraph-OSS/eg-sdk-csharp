@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets JobId
         /// </summary>
         [JsonPropertyName("jobId")]
-        public string? JobId { get { return this.JobIdOption; } set { this.JobIdOption = new(value); } }
+        public string? JobId { get { return this.JobIdOption.Value; } set { this.JobIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ExecutionId
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ExecutionId
         /// </summary>
         [JsonPropertyName("executionId")]
-        public string? ExecutionId { get { return this.ExecutionIdOption; } set { this.ExecutionIdOption = new(value); } }
+        public string? ExecutionId { get { return this.ExecutionIdOption.Value; } set { this.ExecutionIdOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

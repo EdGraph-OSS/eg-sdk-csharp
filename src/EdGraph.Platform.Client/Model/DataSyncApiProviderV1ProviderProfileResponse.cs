@@ -70,7 +70,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ProviderId
         /// </summary>
         [JsonPropertyName("providerId")]
-        public string? ProviderId { get { return this.ProviderIdOption; } set { this.ProviderIdOption = new(value); } }
+        public string? ProviderId { get { return this.ProviderIdOption.Value; } set { this.ProviderIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Name
@@ -83,7 +83,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Name
         /// </summary>
         [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption; } set { this.NameOption = new(value); } }
+        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Description
@@ -96,7 +96,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Description
         /// </summary>
         [JsonPropertyName("description")]
-        public string? Description { get { return this.DescriptionOption; } set { this.DescriptionOption = new(value); } }
+        public string? Description { get { return this.DescriptionOption.Value; } set { this.DescriptionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IconUri
@@ -109,7 +109,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IconUri
         /// </summary>
         [JsonPropertyName("iconUri")]
-        public string? IconUri { get { return this.IconUriOption; } set { this.IconUriOption = new(value); } }
+        public string? IconUri { get { return this.IconUriOption.Value; } set { this.IconUriOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ConnectionTypes
@@ -122,7 +122,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ConnectionTypes
         /// </summary>
         [JsonPropertyName("connectionTypes")]
-        public List<DataSyncApiProviderV1ConnectionType>? ConnectionTypes { get { return this.ConnectionTypesOption; } }
+        public List<DataSyncApiProviderV1ConnectionType>? ConnectionTypes { get { return this.ConnectionTypesOption.Value; } }
 
         /// <summary>
         /// Used to track the state of CreatedBy
@@ -135,7 +135,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedBy
         /// </summary>
         [JsonPropertyName("createdBy")]
-        public string? CreatedBy { get { return this.CreatedByOption; } set { this.CreatedByOption = new(value); } }
+        public string? CreatedBy { get { return this.CreatedByOption.Value; } set { this.CreatedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedDateTime
@@ -148,7 +148,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedDateTime
         /// </summary>
         [JsonPropertyName("createdDateTime")]
-        public string? CreatedDateTime { get { return this.CreatedDateTimeOption; } set { this.CreatedDateTimeOption = new(value); } }
+        public string? CreatedDateTime { get { return this.CreatedDateTimeOption.Value; } set { this.CreatedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedBy
@@ -161,7 +161,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedBy
         /// </summary>
         [JsonPropertyName("lastModifiedBy")]
-        public string? LastModifiedBy { get { return this.LastModifiedByOption; } set { this.LastModifiedByOption = new(value); } }
+        public string? LastModifiedBy { get { return this.LastModifiedByOption.Value; } set { this.LastModifiedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedDateTime
@@ -174,7 +174,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedDateTime
         /// </summary>
         [JsonPropertyName("lastModifiedDateTime")]
-        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption; } set { this.LastModifiedDateTimeOption = new(value); } }
+        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption.Value; } set { this.LastModifiedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -268,8 +268,7 @@ namespace EdGraph.Platform.Client.Model
                             iconUri = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "connectionTypes":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                connectionTypes = new Option<List<DataSyncApiProviderV1ConnectionType>?>(JsonSerializer.Deserialize<List<DataSyncApiProviderV1ConnectionType>>(ref utf8JsonReader, jsonSerializerOptions));
+                            connectionTypes = new Option<List<DataSyncApiProviderV1ConnectionType>?>(JsonSerializer.Deserialize<List<DataSyncApiProviderV1ConnectionType>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "createdBy":
                             createdBy = new Option<string?>(utf8JsonReader.GetString());

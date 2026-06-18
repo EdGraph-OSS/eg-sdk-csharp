@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<FormApiFormsV1CreateFormRequest> formApiFormsV1CreateFormRequest = default!;
             var response = await _instance.CreateFormAsync(tenantId, formApiFormsV1CreateFormRequest);
             var model = response.Unauthorized();
-            Assert.IsType<FormApiFormsV1FormCreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<FormApiFormsV1CreateFullFormRequest> formApiFormsV1CreateFullFormRequest = default!;
             var response = await _instance.CreateFullFormAsync(tenantId, formApiFormsV1CreateFullFormRequest);
             var model = response.Unauthorized();
-            Assert.IsType<FormApiFormsV1FullFormCreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid formId = default!;
             var response = await _instance.DeleteFormAsync(tenantId, formId);
             var model = response.Unauthorized();
-            Assert.IsType<FormApiFormsV1FormDeletedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid formId = default!;
             var response = await _instance.DuplicateFormAsync(tenantId, formId);
             var model = response.Unauthorized();
-            Assert.IsType<FormApiFormsV1FormDuplicatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid formId = default!;
             var response = await _instance.GetFormAsync(tenantId, formId);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesFormsV1Form>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid formId = default!;
             var response = await _instance.GetFormAccessAsync(tenantId, formId);
             var model = response.Unauthorized();
-            Assert.IsType<FormApiFormsV1FormAccessResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid formId = default!;
             var response = await _instance.GetFullFormSchemaAsync(tenantId, formId);
             var model = response.Unauthorized();
-            Assert.IsType<FormApiFormsV1FullFormSchemaResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<Object> body = default!;
             var response = await _instance.ImportFormAsync(tenantId, body);
             var model = response.Unauthorized();
-            Assert.IsType<Object>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.SearchFormsAsync(tenantId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiServicesFormsV1FormPaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -181,7 +181,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<FormApiFormsV1SetFormAccessRequest> formApiFormsV1SetFormAccessRequest = default!;
             var response = await _instance.SetFormAccessAsync(tenantId, formId, formApiFormsV1SetFormAccessRequest);
             var model = response.Unauthorized();
-            Assert.IsType<FormApiFormsV1FormAccessSetResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<FormApiFormsV1UpdateFormRequest> formApiFormsV1UpdateFormRequest = default!;
             var response = await _instance.UpdateFormAsync(tenantId, formId, formApiFormsV1UpdateFormRequest);
             var model = response.Unauthorized();
-            Assert.IsType<FormApiFormsV1FormUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -209,7 +209,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<FormApiFormsV1UpdateFullFormRequest> formApiFormsV1UpdateFullFormRequest = default!;
             var response = await _instance.UpdateFullFormAsync(tenantId, formId, formApiFormsV1UpdateFullFormRequest);
             var model = response.Unauthorized();
-            Assert.IsType<FormApiFormsV1FullFormUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

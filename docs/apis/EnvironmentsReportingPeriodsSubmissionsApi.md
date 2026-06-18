@@ -20,68 +20,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Adds Metrics to a Submission in bulk.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class AddReportingPeriodSubmissionMetricsBulkV2Example
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsReportingPeriodsSubmissionsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-            var submissionId = "submissionId_example";  // Guid | 
-            var edGraphServicesStateReportingV1AddSubmissionMetricsBulkRequest = new EdGraphServicesStateReportingV1AddSubmissionMetricsBulkRequest(); // EdGraphServicesStateReportingV1AddSubmissionMetricsBulkRequest |  (optional) 
-
-            try
-            {
-                // Adds Metrics to a Submission in bulk.
-                EdGraphServicesStateReportingV1SubmissionMetricsAddedBulkResponse result = apiInstance.AddReportingPeriodSubmissionMetricsBulkV2(tenantId, environmentId, reportingPeriodId, submissionId, edGraphServicesStateReportingV1AddSubmissionMetricsBulkRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsReportingPeriodsSubmissionsApi.AddReportingPeriodSubmissionMetricsBulkV2: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the AddReportingPeriodSubmissionMetricsBulkV2WithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Adds Metrics to a Submission in bulk.
-    ApiResponse<EdGraphServicesStateReportingV1SubmissionMetricsAddedBulkResponse> response = apiInstance.AddReportingPeriodSubmissionMetricsBulkV2WithHttpInfo(tenantId, environmentId, reportingPeriodId, submissionId, edGraphServicesStateReportingV1AddSubmissionMetricsBulkRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsReportingPeriodsSubmissionsApi.AddReportingPeriodSubmissionMetricsBulkV2WithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -125,68 +63,6 @@ catch (ApiException e)
 
 Adds Metrics to a Submission.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class AddReportingPeriodSubmissionMetricsV2Example
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsReportingPeriodsSubmissionsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-            var submissionId = "submissionId_example";  // Guid | 
-            var edGraphServicesStateReportingV1AddSubmissionMetricsRequest = new EdGraphServicesStateReportingV1AddSubmissionMetricsRequest(); // EdGraphServicesStateReportingV1AddSubmissionMetricsRequest |  (optional) 
-
-            try
-            {
-                // Adds Metrics to a Submission.
-                EdGraphServicesStateReportingV1SubmissionMetricsAddedResponse result = apiInstance.AddReportingPeriodSubmissionMetricsV2(tenantId, environmentId, reportingPeriodId, submissionId, edGraphServicesStateReportingV1AddSubmissionMetricsRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsReportingPeriodsSubmissionsApi.AddReportingPeriodSubmissionMetricsV2: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the AddReportingPeriodSubmissionMetricsV2WithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Adds Metrics to a Submission.
-    ApiResponse<EdGraphServicesStateReportingV1SubmissionMetricsAddedResponse> response = apiInstance.AddReportingPeriodSubmissionMetricsV2WithHttpInfo(tenantId, environmentId, reportingPeriodId, submissionId, edGraphServicesStateReportingV1AddSubmissionMetricsRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsReportingPeriodsSubmissionsApi.AddReportingPeriodSubmissionMetricsV2WithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -230,67 +106,6 @@ catch (ApiException e)
 
 Cancels a Submission.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CancelReportingPeriodSubmissionV2Example
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsReportingPeriodsSubmissionsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-            var submissionId = "submissionId_example";  // Guid | 
-
-            try
-            {
-                // Cancels a Submission.
-                EdGraphServicesStateReportingV1SubmissionCancelledResponse result = apiInstance.CancelReportingPeriodSubmissionV2(tenantId, environmentId, reportingPeriodId, submissionId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsReportingPeriodsSubmissionsApi.CancelReportingPeriodSubmissionV2: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CancelReportingPeriodSubmissionV2WithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Cancels a Submission.
-    ApiResponse<EdGraphServicesStateReportingV1SubmissionCancelledResponse> response = apiInstance.CancelReportingPeriodSubmissionV2WithHttpInfo(tenantId, environmentId, reportingPeriodId, submissionId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsReportingPeriodsSubmissionsApi.CancelReportingPeriodSubmissionV2WithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -332,66 +147,6 @@ catch (ApiException e)
 
 Retrieves the latest Submission of a Reporting Period.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetReportingPeriodSubmissionLatestV2Example
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsReportingPeriodsSubmissionsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-
-            try
-            {
-                // Retrieves the latest Submission of a Reporting Period.
-                EdGraphServicesStateReportingV1SubmissionProfile result = apiInstance.GetReportingPeriodSubmissionLatestV2(tenantId, environmentId, reportingPeriodId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsReportingPeriodsSubmissionsApi.GetReportingPeriodSubmissionLatestV2: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetReportingPeriodSubmissionLatestV2WithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves the latest Submission of a Reporting Period.
-    ApiResponse<EdGraphServicesStateReportingV1SubmissionProfile> response = apiInstance.GetReportingPeriodSubmissionLatestV2WithHttpInfo(tenantId, environmentId, reportingPeriodId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsReportingPeriodsSubmissionsApi.GetReportingPeriodSubmissionLatestV2WithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -432,71 +187,6 @@ catch (ApiException e)
 
 Retrieves a list of Submission Logs of a Reporting Period.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetReportingPeriodSubmissionLogsV2Example
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsReportingPeriodsSubmissionsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-            var submissionId = "submissionId_example";  // Guid | 
-            var pageIndex = 56;  // int |  (optional) 
-            var pageSize = 56;  // int |  (optional) 
-            var filter = "filter_example";  // string |  (optional) 
-            var orderBy = "orderBy_example";  // string |  (optional) 
-
-            try
-            {
-                // Retrieves a list of Submission Logs of a Reporting Period.
-                EdGraphServicesStateReportingV1PaginatedSubmissionLogs result = apiInstance.GetReportingPeriodSubmissionLogsV2(tenantId, environmentId, reportingPeriodId, submissionId, pageIndex, pageSize, filter, orderBy);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsReportingPeriodsSubmissionsApi.GetReportingPeriodSubmissionLogsV2: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetReportingPeriodSubmissionLogsV2WithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of Submission Logs of a Reporting Period.
-    ApiResponse<EdGraphServicesStateReportingV1PaginatedSubmissionLogs> response = apiInstance.GetReportingPeriodSubmissionLogsV2WithHttpInfo(tenantId, environmentId, reportingPeriodId, submissionId, pageIndex, pageSize, filter, orderBy);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsReportingPeriodsSubmissionsApi.GetReportingPeriodSubmissionLogsV2WithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -542,67 +232,6 @@ catch (ApiException e)
 
 Retrieves the Metrics of a Submission.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetReportingPeriodSubmissionMetricsV2Example
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsReportingPeriodsSubmissionsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-            var submissionId = "submissionId_example";  // Guid | 
-
-            try
-            {
-                // Retrieves the Metrics of a Submission.
-                EdGraphServicesStateReportingV1SubmissionMetricsResponse result = apiInstance.GetReportingPeriodSubmissionMetricsV2(tenantId, environmentId, reportingPeriodId, submissionId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsReportingPeriodsSubmissionsApi.GetReportingPeriodSubmissionMetricsV2: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetReportingPeriodSubmissionMetricsV2WithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves the Metrics of a Submission.
-    ApiResponse<EdGraphServicesStateReportingV1SubmissionMetricsResponse> response = apiInstance.GetReportingPeriodSubmissionMetricsV2WithHttpInfo(tenantId, environmentId, reportingPeriodId, submissionId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsReportingPeriodsSubmissionsApi.GetReportingPeriodSubmissionMetricsV2WithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -644,67 +273,6 @@ catch (ApiException e)
 
 Retrieves the Submission of a Reporting Period.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetReportingPeriodSubmissionV2Example
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsReportingPeriodsSubmissionsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-            var submissionId = "submissionId_example";  // Guid | 
-
-            try
-            {
-                // Retrieves the Submission of a Reporting Period.
-                EdGraphServicesStateReportingV1SubmissionProfile result = apiInstance.GetReportingPeriodSubmissionV2(tenantId, environmentId, reportingPeriodId, submissionId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsReportingPeriodsSubmissionsApi.GetReportingPeriodSubmissionV2: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetReportingPeriodSubmissionV2WithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves the Submission of a Reporting Period.
-    ApiResponse<EdGraphServicesStateReportingV1SubmissionProfile> response = apiInstance.GetReportingPeriodSubmissionV2WithHttpInfo(tenantId, environmentId, reportingPeriodId, submissionId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsReportingPeriodsSubmissionsApi.GetReportingPeriodSubmissionV2WithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -746,70 +314,6 @@ catch (ApiException e)
 
 Retrieves a list of Submissions of a Reporting Period.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetStateReportingPeriodSubmissionsV2Example
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsReportingPeriodsSubmissionsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Retrieves a list of Submissions of a Reporting Period.
-                EdGraphServicesStateReportingV1PaginatedSubmissions result = apiInstance.GetStateReportingPeriodSubmissionsV2(tenantId, environmentId, reportingPeriodId, pageIndex, pageSize, filter, orderBy);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsReportingPeriodsSubmissionsApi.GetStateReportingPeriodSubmissionsV2: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetStateReportingPeriodSubmissionsV2WithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of Submissions of a Reporting Period.
-    ApiResponse<EdGraphServicesStateReportingV1PaginatedSubmissions> response = apiInstance.GetStateReportingPeriodSubmissionsV2WithHttpInfo(tenantId, environmentId, reportingPeriodId, pageIndex, pageSize, filter, orderBy);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsReportingPeriodsSubmissionsApi.GetStateReportingPeriodSubmissionsV2WithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -854,68 +358,6 @@ catch (ApiException e)
 
 Sets the Status of a Submission.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SetReportingPeriodSubmissionStatusV2Example
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsReportingPeriodsSubmissionsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-            var submissionId = "submissionId_example";  // Guid | 
-            var edGraphServicesStateReportingV1SetSubmissionStatusRequest = new EdGraphServicesStateReportingV1SetSubmissionStatusRequest(); // EdGraphServicesStateReportingV1SetSubmissionStatusRequest |  (optional) 
-
-            try
-            {
-                // Sets the Status of a Submission.
-                EdGraphServicesStateReportingV1SubmissionStatusSetResponse result = apiInstance.SetReportingPeriodSubmissionStatusV2(tenantId, environmentId, reportingPeriodId, submissionId, edGraphServicesStateReportingV1SetSubmissionStatusRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsReportingPeriodsSubmissionsApi.SetReportingPeriodSubmissionStatusV2: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SetReportingPeriodSubmissionStatusV2WithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Sets the Status of a Submission.
-    ApiResponse<EdGraphServicesStateReportingV1SubmissionStatusSetResponse> response = apiInstance.SetReportingPeriodSubmissionStatusV2WithHttpInfo(tenantId, environmentId, reportingPeriodId, submissionId, edGraphServicesStateReportingV1SetSubmissionStatusRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsReportingPeriodsSubmissionsApi.SetReportingPeriodSubmissionStatusV2WithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

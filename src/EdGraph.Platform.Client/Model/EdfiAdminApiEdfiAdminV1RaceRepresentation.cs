@@ -62,7 +62,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InstanceId
@@ -75,7 +75,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceId
         /// </summary>
         [JsonPropertyName("instanceId")]
-        public string? InstanceId { get { return this.InstanceIdOption; } set { this.InstanceIdOption = new(value); } }
+        public string? InstanceId { get { return this.InstanceIdOption.Value; } set { this.InstanceIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Value
@@ -88,7 +88,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Value
         /// </summary>
         [JsonPropertyName("value")]
-        public string? Value { get { return this.ValueOption; } set { this.ValueOption = new(value); } }
+        public string? Value { get { return this.ValueOption.Value; } set { this.ValueOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of PercentOfTotal
@@ -101,7 +101,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets PercentOfTotal
         /// </summary>
         [JsonPropertyName("percentOfTotal")]
-        public double? PercentOfTotal { get { return this.PercentOfTotalOption; } set { this.PercentOfTotalOption = new(value); } }
+        public double? PercentOfTotal { get { return this.PercentOfTotalOption.Value; } set { this.PercentOfTotalOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DisplayName
@@ -114,7 +114,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DisplayName
         /// </summary>
         [JsonPropertyName("displayName")]
-        public string? DisplayName { get { return this.DisplayNameOption; } set { this.DisplayNameOption = new(value); } }
+        public string? DisplayName { get { return this.DisplayNameOption.Value; } set { this.DisplayNameOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -197,8 +197,7 @@ namespace EdGraph.Platform.Client.Model
                             value = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "percentOfTotal":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                percentOfTotal = new Option<double?>(utf8JsonReader.GetDouble());
+                            percentOfTotal = new Option<double?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (double?)null : utf8JsonReader.GetDouble());
                             break;
                         case "displayName":
                             displayName = new Option<string?>(utf8JsonReader.GetString());

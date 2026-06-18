@@ -80,7 +80,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Id
@@ -93,7 +93,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Name
@@ -106,7 +106,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Name
         /// </summary>
         [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption; } set { this.NameOption = new(value); } }
+        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Description
@@ -119,7 +119,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Description
         /// </summary>
         [JsonPropertyName("description")]
-        public string? Description { get { return this.DescriptionOption; } set { this.DescriptionOption = new(value); } }
+        public string? Description { get { return this.DescriptionOption.Value; } set { this.DescriptionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ContainerType
@@ -132,7 +132,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ContainerType
         /// </summary>
         [JsonPropertyName("containerType")]
-        public string? ContainerType { get { return this.ContainerTypeOption; } set { this.ContainerTypeOption = new(value); } }
+        public string? ContainerType { get { return this.ContainerTypeOption.Value; } set { this.ContainerTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ParentContainerId
@@ -145,7 +145,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ParentContainerId
         /// </summary>
         [JsonPropertyName("parentContainerId")]
-        public string? ParentContainerId { get { return this.ParentContainerIdOption; } set { this.ParentContainerIdOption = new(value); } }
+        public string? ParentContainerId { get { return this.ParentContainerIdOption.Value; } set { this.ParentContainerIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsDefault
@@ -158,7 +158,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IsDefault
         /// </summary>
         [JsonPropertyName("isDefault")]
-        public bool? IsDefault { get { return this.IsDefaultOption; } set { this.IsDefaultOption = new(value); } }
+        public bool? IsDefault { get { return this.IsDefaultOption.Value; } set { this.IsDefaultOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EnvironmentType
@@ -171,7 +171,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EnvironmentType
         /// </summary>
         [JsonPropertyName("environmentType")]
-        public string? EnvironmentType { get { return this.EnvironmentTypeOption; } set { this.EnvironmentTypeOption = new(value); } }
+        public string? EnvironmentType { get { return this.EnvironmentTypeOption.Value; } set { this.EnvironmentTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ChildContainers
@@ -184,7 +184,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ChildContainers
         /// </summary>
         [JsonPropertyName("childContainers")]
-        public List<ValidationsApiContainersV1ContainerDto>? ChildContainers { get { return this.ChildContainersOption; } }
+        public List<ValidationsApiContainersV1ContainerDto>? ChildContainers { get { return this.ChildContainersOption.Value; } }
 
         /// <summary>
         /// Used to track the state of ChildContainersCount
@@ -197,7 +197,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ChildContainersCount
         /// </summary>
         [JsonPropertyName("childContainersCount")]
-        public int? ChildContainersCount { get { return this.ChildContainersCountOption; } set { this.ChildContainersCountOption = new(value); } }
+        public int? ChildContainersCount { get { return this.ChildContainersCountOption.Value; } set { this.ChildContainersCountOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Tags
@@ -210,7 +210,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Tags
         /// </summary>
         [JsonPropertyName("tags")]
-        public List<ValidationsApiContainersV1ContainerDtoTypesTagDto>? Tags { get { return this.TagsOption; } }
+        public List<ValidationsApiContainersV1ContainerDtoTypesTagDto>? Tags { get { return this.TagsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of RulesCount
@@ -223,7 +223,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RulesCount
         /// </summary>
         [JsonPropertyName("rulesCount")]
-        public int? RulesCount { get { return this.RulesCountOption; } set { this.RulesCountOption = new(value); } }
+        public int? RulesCount { get { return this.RulesCountOption.Value; } set { this.RulesCountOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CertificationStatus
@@ -236,7 +236,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CertificationStatus
         /// </summary>
         [JsonPropertyName("certificationStatus")]
-        public string? CertificationStatus { get { return this.CertificationStatusOption; } set { this.CertificationStatusOption = new(value); } }
+        public string? CertificationStatus { get { return this.CertificationStatusOption.Value; } set { this.CertificationStatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of State
@@ -249,7 +249,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets State
         /// </summary>
         [JsonPropertyName("state")]
-        public string? State { get { return this.StateOption; } set { this.StateOption = new(value); } }
+        public string? State { get { return this.StateOption.Value; } set { this.StateOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -359,27 +359,22 @@ namespace EdGraph.Platform.Client.Model
                             parentContainerId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "isDefault":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isDefault = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isDefault = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "environmentType":
                             environmentType = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "childContainers":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                childContainers = new Option<List<ValidationsApiContainersV1ContainerDto>?>(JsonSerializer.Deserialize<List<ValidationsApiContainersV1ContainerDto>>(ref utf8JsonReader, jsonSerializerOptions));
+                            childContainers = new Option<List<ValidationsApiContainersV1ContainerDto>?>(JsonSerializer.Deserialize<List<ValidationsApiContainersV1ContainerDto>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "childContainersCount":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                childContainersCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            childContainersCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "tags":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                tags = new Option<List<ValidationsApiContainersV1ContainerDtoTypesTagDto>?>(JsonSerializer.Deserialize<List<ValidationsApiContainersV1ContainerDtoTypesTagDto>>(ref utf8JsonReader, jsonSerializerOptions));
+                            tags = new Option<List<ValidationsApiContainersV1ContainerDtoTypesTagDto>?>(JsonSerializer.Deserialize<List<ValidationsApiContainersV1ContainerDtoTypesTagDto>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "rulesCount":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                rulesCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            rulesCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "certificationStatus":
                             certificationStatus = new Option<string?>(utf8JsonReader.GetString());

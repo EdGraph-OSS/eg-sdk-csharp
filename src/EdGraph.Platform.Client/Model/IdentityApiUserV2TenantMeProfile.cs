@@ -72,7 +72,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantTypes
@@ -85,7 +85,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantTypes
         /// </summary>
         [JsonPropertyName("tenantTypes")]
-        public List<string>? TenantTypes { get { return this.TenantTypesOption; } }
+        public List<string>? TenantTypes { get { return this.TenantTypesOption.Value; } }
 
         /// <summary>
         /// Used to track the state of Status
@@ -98,7 +98,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Status
         /// </summary>
         [JsonPropertyName("status")]
-        public string? Status { get { return this.StatusOption; } set { this.StatusOption = new(value); } }
+        public string? Status { get { return this.StatusOption.Value; } set { this.StatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of OrganizationIdentifier
@@ -111,7 +111,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets OrganizationIdentifier
         /// </summary>
         [JsonPropertyName("organizationIdentifier")]
-        public string? OrganizationIdentifier { get { return this.OrganizationIdentifierOption; } set { this.OrganizationIdentifierOption = new(value); } }
+        public string? OrganizationIdentifier { get { return this.OrganizationIdentifierOption.Value; } set { this.OrganizationIdentifierOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of OrganizationName
@@ -124,7 +124,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets OrganizationName
         /// </summary>
         [JsonPropertyName("organizationName")]
-        public string? OrganizationName { get { return this.OrganizationNameOption; } set { this.OrganizationNameOption = new(value); } }
+        public string? OrganizationName { get { return this.OrganizationNameOption.Value; } set { this.OrganizationNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Roles
@@ -137,7 +137,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Roles
         /// </summary>
         [JsonPropertyName("roles")]
-        public List<string>? Roles { get { return this.RolesOption; } }
+        public List<string>? Roles { get { return this.RolesOption.Value; } }
 
         /// <summary>
         /// Used to track the state of LicenseCount
@@ -150,7 +150,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LicenseCount
         /// </summary>
         [JsonPropertyName("licenseCount")]
-        public int? LicenseCount { get { return this.LicenseCountOption; } set { this.LicenseCountOption = new(value); } }
+        public int? LicenseCount { get { return this.LicenseCountOption.Value; } set { this.LicenseCountOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SeoaaCount
@@ -163,7 +163,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SeoaaCount
         /// </summary>
         [JsonPropertyName("seoaaCount")]
-        public int? SeoaaCount { get { return this.SeoaaCountOption; } set { this.SeoaaCountOption = new(value); } }
+        public int? SeoaaCount { get { return this.SeoaaCountOption.Value; } set { this.SeoaaCountOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SectionCount
@@ -176,7 +176,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SectionCount
         /// </summary>
         [JsonPropertyName("sectionCount")]
-        public int? SectionCount { get { return this.SectionCountOption; } set { this.SectionCountOption = new(value); } }
+        public int? SectionCount { get { return this.SectionCountOption.Value; } set { this.SectionCountOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Branding
@@ -189,7 +189,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Branding
         /// </summary>
         [JsonPropertyName("branding")]
-        public TenantApiTenantV1TenantBrandingResponse? Branding { get { return this.BrandingOption; } set { this.BrandingOption = new(value); } }
+        public TenantApiTenantV1TenantBrandingResponse? Branding { get { return this.BrandingOption.Value; } set { this.BrandingOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -276,8 +276,7 @@ namespace EdGraph.Platform.Client.Model
                             tenantId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "tenantTypes":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                tenantTypes = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            tenantTypes = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "status":
                             status = new Option<string?>(utf8JsonReader.GetString());
@@ -289,24 +288,19 @@ namespace EdGraph.Platform.Client.Model
                             organizationName = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "roles":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                roles = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            roles = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "licenseCount":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                licenseCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            licenseCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "seoaaCount":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                seoaaCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            seoaaCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "sectionCount":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                sectionCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            sectionCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "branding":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                branding = new Option<TenantApiTenantV1TenantBrandingResponse?>(JsonSerializer.Deserialize<TenantApiTenantV1TenantBrandingResponse>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            branding = new Option<TenantApiTenantV1TenantBrandingResponse?>(JsonSerializer.Deserialize<TenantApiTenantV1TenantBrandingResponse>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

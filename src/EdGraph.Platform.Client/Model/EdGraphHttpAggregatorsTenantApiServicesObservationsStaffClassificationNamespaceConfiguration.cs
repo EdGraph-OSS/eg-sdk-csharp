@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Namespace
         /// </summary>
         [JsonPropertyName("namespace")]
-        public string? Namespace { get { return this.NamespaceOption; } set { this.NamespaceOption = new(value); } }
+        public string? Namespace { get { return this.NamespaceOption.Value; } set { this.NamespaceOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Roles
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Roles
         /// </summary>
         [JsonPropertyName("roles")]
-        public List<EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRole>? Roles { get { return this.RolesOption; } set { this.RolesOption = new(value); } }
+        public List<EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRole>? Roles { get { return this.RolesOption.Value; } set { this.RolesOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -140,8 +140,7 @@ namespace EdGraph.Platform.Client.Model
                             varNamespace = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "roles":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                roles = new Option<List<EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRole>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRole>>(ref utf8JsonReader, jsonSerializerOptions));
+                            roles = new Option<List<EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRole>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRole>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

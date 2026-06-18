@@ -62,7 +62,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreateJobId
         /// </summary>
         [JsonPropertyName("createJobId")]
-        public string? CreateJobId { get { return this.CreateJobIdOption; } set { this.CreateJobIdOption = new(value); } }
+        public string? CreateJobId { get { return this.CreateJobIdOption.Value; } set { this.CreateJobIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DeleteJobId
@@ -75,7 +75,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DeleteJobId
         /// </summary>
         [JsonPropertyName("deleteJobId")]
-        public string? DeleteJobId { get { return this.DeleteJobIdOption; } set { this.DeleteJobIdOption = new(value); } }
+        public string? DeleteJobId { get { return this.DeleteJobIdOption.Value; } set { this.DeleteJobIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ResetDeleteJobId
@@ -88,7 +88,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ResetDeleteJobId
         /// </summary>
         [JsonPropertyName("resetDeleteJobId")]
-        public string? ResetDeleteJobId { get { return this.ResetDeleteJobIdOption; } set { this.ResetDeleteJobIdOption = new(value); } }
+        public string? ResetDeleteJobId { get { return this.ResetDeleteJobIdOption.Value; } set { this.ResetDeleteJobIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ResetCreateJobId
@@ -101,7 +101,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ResetCreateJobId
         /// </summary>
         [JsonPropertyName("resetCreateJobId")]
-        public string? ResetCreateJobId { get { return this.ResetCreateJobIdOption; } set { this.ResetCreateJobIdOption = new(value); } }
+        public string? ResetCreateJobId { get { return this.ResetCreateJobIdOption.Value; } set { this.ResetCreateJobIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of GenerateReportsJobId
@@ -114,7 +114,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets GenerateReportsJobId
         /// </summary>
         [JsonPropertyName("generateReportsJobId")]
-        public string? GenerateReportsJobId { get { return this.GenerateReportsJobIdOption; } set { this.GenerateReportsJobIdOption = new(value); } }
+        public string? GenerateReportsJobId { get { return this.GenerateReportsJobIdOption.Value; } set { this.GenerateReportsJobIdOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

@@ -62,7 +62,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EnvironmentId
@@ -75,7 +75,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EnvironmentId
         /// </summary>
         [JsonPropertyName("environmentId")]
-        public string? EnvironmentId { get { return this.EnvironmentIdOption; } set { this.EnvironmentIdOption = new(value); } }
+        public string? EnvironmentId { get { return this.EnvironmentIdOption.Value; } set { this.EnvironmentIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ReportingPeriod
@@ -88,7 +88,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ReportingPeriod
         /// </summary>
         [JsonPropertyName("reportingPeriod")]
-        public EdGraphServicesStateReportingV1ReportingPeriodListResponse? ReportingPeriod { get { return this.ReportingPeriodOption; } set { this.ReportingPeriodOption = new(value); } }
+        public EdGraphServicesStateReportingV1ReportingPeriodListResponse? ReportingPeriod { get { return this.ReportingPeriodOption.Value; } set { this.ReportingPeriodOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CertificationPercentage
@@ -101,7 +101,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CertificationPercentage
         /// </summary>
         [JsonPropertyName("certificationPercentage")]
-        public double? CertificationPercentage { get { return this.CertificationPercentageOption; } set { this.CertificationPercentageOption = new(value); } }
+        public double? CertificationPercentage { get { return this.CertificationPercentageOption.Value; } set { this.CertificationPercentageOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Categories
@@ -114,7 +114,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Categories
         /// </summary>
         [JsonPropertyName("categories")]
-        public List<EdGraphServicesStateReportingV1ReportingPeriodCertificationStatusCategory>? Categories { get { return this.CategoriesOption; } }
+        public List<EdGraphServicesStateReportingV1ReportingPeriodCertificationStatusCategory>? Categories { get { return this.CategoriesOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -194,16 +194,13 @@ namespace EdGraph.Platform.Client.Model
                             environmentId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "reportingPeriod":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                reportingPeriod = new Option<EdGraphServicesStateReportingV1ReportingPeriodListResponse?>(JsonSerializer.Deserialize<EdGraphServicesStateReportingV1ReportingPeriodListResponse>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            reportingPeriod = new Option<EdGraphServicesStateReportingV1ReportingPeriodListResponse?>(JsonSerializer.Deserialize<EdGraphServicesStateReportingV1ReportingPeriodListResponse>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "certificationPercentage":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                certificationPercentage = new Option<double?>(utf8JsonReader.GetDouble());
+                            certificationPercentage = new Option<double?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (double?)null : utf8JsonReader.GetDouble());
                             break;
                         case "categories":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                categories = new Option<List<EdGraphServicesStateReportingV1ReportingPeriodCertificationStatusCategory>?>(JsonSerializer.Deserialize<List<EdGraphServicesStateReportingV1ReportingPeriodCertificationStatusCategory>>(ref utf8JsonReader, jsonSerializerOptions));
+                            categories = new Option<List<EdGraphServicesStateReportingV1ReportingPeriodCertificationStatusCategory>?>(JsonSerializer.Deserialize<List<EdGraphServicesStateReportingV1ReportingPeriodCertificationStatusCategory>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

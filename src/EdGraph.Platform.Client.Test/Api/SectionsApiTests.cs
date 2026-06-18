@@ -61,7 +61,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<FormApiSectionsV1CreateSectionRequest> formApiSectionsV1CreateSectionRequest = default!;
             var response = await _instance.CreateSectionAsync(tenantId, formId, formApiSectionsV1CreateSectionRequest);
             var model = response.Unauthorized();
-            Assert.IsType<FormApiSectionsV1SectionCreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid sectionId = default!;
             var response = await _instance.DeleteSectionAsync(tenantId, formId, sectionId);
             var model = response.Unauthorized();
-            Assert.IsType<FormApiSectionsV1SectionDeletedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid sectionId = default!;
             var response = await _instance.GetSectionAsync(tenantId, formId, sectionId);
             var model = response.Unauthorized();
-            Assert.IsType<FormApiSectionsV1SectionResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetSectionAcademicSubjectsAsync(tenantId, pageIndex, pageSize, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiSectionsV1PaginatedAcademicSubjectsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid sectionId = default!;
             var response = await _instance.GetSectionByIdAsync(tenantId, sectionId);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiSectionsV1SectionProfileResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetSectionCoursesAsync(tenantId, pageIndex, pageSize, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiSectionsV1PaginatedCoursesResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -150,7 +150,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetSectionGradeLevelsAsync(tenantId, pageIndex, pageSize, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiSectionsV1PaginatedGradeLevelsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetSectionSchoolsAsync(tenantId, pageIndex, pageSize, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiSectionsV1PaginatedSchoolsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetSectionSessionsAsync(tenantId, pageIndex, pageSize, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiSectionsV1PaginatedSessionsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -198,7 +198,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetSectionTermsAsync(tenantId, pageIndex, pageSize, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiSectionsV1PaginatedTermsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -214,7 +214,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetSectionsAsync(tenantId, pageIndex, pageSize, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<TenantApiSectionsV1PaginatedItemsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -231,7 +231,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.SearchSectionsAsync(tenantId, formId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<FormApiSectionsV1SectionResponsePaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -246,7 +246,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<FormApiSectionsV1UpdateSectionRequest> formApiSectionsV1UpdateSectionRequest = default!;
             var response = await _instance.UpdateSectionAsync(tenantId, formId, sectionId, formApiSectionsV1UpdateSectionRequest);
             var model = response.Unauthorized();
-            Assert.IsType<FormApiSectionsV1SectionUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

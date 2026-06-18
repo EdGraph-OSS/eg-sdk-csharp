@@ -112,7 +112,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets PipelineExecutionId
         /// </summary>
         [JsonPropertyName("pipelineExecutionId")]
-        public string? PipelineExecutionId { get { return this.PipelineExecutionIdOption; } set { this.PipelineExecutionIdOption = new(value); } }
+        public string? PipelineExecutionId { get { return this.PipelineExecutionIdOption.Value; } set { this.PipelineExecutionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of PipelineExecutionIdComputed
@@ -125,7 +125,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets PipelineExecutionIdComputed
         /// </summary>
         [JsonPropertyName("pipelineExecutionIdComputed")]
-        public string? PipelineExecutionIdComputed { get { return this.PipelineExecutionIdComputedOption; } set { this.PipelineExecutionIdComputedOption = new(value); } }
+        public string? PipelineExecutionIdComputed { get { return this.PipelineExecutionIdComputedOption.Value; } set { this.PipelineExecutionIdComputedOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RunId
@@ -138,7 +138,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RunId
         /// </summary>
         [JsonPropertyName("runId")]
-        public string? RunId { get { return this.RunIdOption; } set { this.RunIdOption = new(value); } }
+        public string? RunId { get { return this.RunIdOption.Value; } set { this.RunIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of OperationType
@@ -151,7 +151,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets OperationType
         /// </summary>
         [JsonPropertyName("operationType")]
-        public string? OperationType { get { return this.OperationTypeOption; } set { this.OperationTypeOption = new(value); } }
+        public string? OperationType { get { return this.OperationTypeOption.Value; } set { this.OperationTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RequestPayload
@@ -164,7 +164,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RequestPayload
         /// </summary>
         [JsonPropertyName("requestPayload")]
-        public string? RequestPayload { get { return this.RequestPayloadOption; } set { this.RequestPayloadOption = new(value); } }
+        public string? RequestPayload { get { return this.RequestPayloadOption.Value; } set { this.RequestPayloadOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RequestUrl
@@ -177,7 +177,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RequestUrl
         /// </summary>
         [JsonPropertyName("requestUrl")]
-        public string? RequestUrl { get { return this.RequestUrlOption; } set { this.RequestUrlOption = new(value); } }
+        public string? RequestUrl { get { return this.RequestUrlOption.Value; } set { this.RequestUrlOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Resource
@@ -190,7 +190,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Resource
         /// </summary>
         [JsonPropertyName("resource")]
-        public string? Resource { get { return this.ResourceOption; } set { this.ResourceOption = new(value); } }
+        public string? Resource { get { return this.ResourceOption.Value; } set { this.ResourceOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EntityName
@@ -203,7 +203,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EntityName
         /// </summary>
         [JsonPropertyName("entityName")]
-        public string? EntityName { get { return this.EntityNameOption; } set { this.EntityNameOption = new(value); } }
+        public string? EntityName { get { return this.EntityNameOption.Value; } set { this.EntityNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ResponseHeaders
@@ -216,7 +216,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ResponseHeaders
         /// </summary>
         [JsonPropertyName("responseHeaders")]
-        public string? ResponseHeaders { get { return this.ResponseHeadersOption; } set { this.ResponseHeadersOption = new(value); } }
+        public string? ResponseHeaders { get { return this.ResponseHeadersOption.Value; } set { this.ResponseHeadersOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ResponseStatusCode
@@ -229,7 +229,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ResponseStatusCode
         /// </summary>
         [JsonPropertyName("responseStatusCode")]
-        public string? ResponseStatusCode { get { return this.ResponseStatusCodeOption; } set { this.ResponseStatusCodeOption = new(value); } }
+        public string? ResponseStatusCode { get { return this.ResponseStatusCodeOption.Value; } set { this.ResponseStatusCodeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ResponseText
@@ -242,7 +242,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ResponseText
         /// </summary>
         [JsonPropertyName("responseText")]
-        public string? ResponseText { get { return this.ResponseTextOption; } set { this.ResponseTextOption = new(value); } }
+        public string? ResponseText { get { return this.ResponseTextOption.Value; } set { this.ResponseTextOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RunDateTime
@@ -255,7 +255,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RunDateTime
         /// </summary>
         [JsonPropertyName("runDateTime")]
-        public string? RunDateTime { get { return this.RunDateTimeOption; } set { this.RunDateTimeOption = new(value); } }
+        public string? RunDateTime { get { return this.RunDateTimeOption.Value; } set { this.RunDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of StartTime
@@ -268,7 +268,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets StartTime
         /// </summary>
         [JsonPropertyName("startTime")]
-        public string? StartTime { get { return this.StartTimeOption; } set { this.StartTimeOption = new(value); } }
+        public string? StartTime { get { return this.StartTimeOption.Value; } set { this.StartTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EndTime
@@ -281,7 +281,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EndTime
         /// </summary>
         [JsonPropertyName("endTime")]
-        public string? EndTime { get { return this.EndTimeOption; } set { this.EndTimeOption = new(value); } }
+        public string? EndTime { get { return this.EndTimeOption.Value; } set { this.EndTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RecordId
@@ -294,7 +294,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RecordId
         /// </summary>
         [JsonPropertyName("recordId")]
-        public string? RecordId { get { return this.RecordIdOption; } set { this.RecordIdOption = new(value); } }
+        public string? RecordId { get { return this.RecordIdOption.Value; } set { this.RecordIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LakeId
@@ -307,7 +307,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LakeId
         /// </summary>
         [JsonPropertyName("lakeId")]
-        public string? LakeId { get { return this.LakeIdOption; } set { this.LakeIdOption = new(value); } }
+        public string? LakeId { get { return this.LakeIdOption.Value; } set { this.LakeIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EdFiLocation
@@ -320,7 +320,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EdFiLocation
         /// </summary>
         [JsonPropertyName("edFiLocation")]
-        public string? EdFiLocation { get { return this.EdFiLocationOption; } set { this.EdFiLocationOption = new(value); } }
+        public string? EdFiLocation { get { return this.EdFiLocationOption.Value; } set { this.EdFiLocationOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EdFi
@@ -333,7 +333,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EdFi
         /// </summary>
         [JsonPropertyName("edFi")]
-        public string? EdFi { get { return this.EdFiOption; } set { this.EdFiOption = new(value); } }
+        public string? EdFi { get { return this.EdFiOption.Value; } set { this.EdFiOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EdFiIdModified
@@ -346,7 +346,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EdFiIdModified
         /// </summary>
         [JsonPropertyName("edFiIdModified")]
-        public string? EdFiIdModified { get { return this.EdFiIdModifiedOption; } set { this.EdFiIdModifiedOption = new(value); } }
+        public string? EdFiIdModified { get { return this.EdFiIdModifiedOption.Value; } set { this.EdFiIdModifiedOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SapPipeline
@@ -359,7 +359,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SapPipeline
         /// </summary>
         [JsonPropertyName("sapPipeline")]
-        public string? SapPipeline { get { return this.SapPipelineOption; } set { this.SapPipelineOption = new(value); } }
+        public string? SapPipeline { get { return this.SapPipelineOption.Value; } set { this.SapPipelineOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SapPipelineType
@@ -372,7 +372,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SapPipelineType
         /// </summary>
         [JsonPropertyName("sapPipelineType")]
-        public string? SapPipelineType { get { return this.SapPipelineTypeOption; } set { this.SapPipelineTypeOption = new(value); } }
+        public string? SapPipelineType { get { return this.SapPipelineTypeOption.Value; } set { this.SapPipelineTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Stage1SourceUrl
@@ -385,7 +385,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Stage1SourceUrl
         /// </summary>
         [JsonPropertyName("stage1SourceUrl")]
-        public string? Stage1SourceUrl { get { return this.Stage1SourceUrlOption; } set { this.Stage1SourceUrlOption = new(value); } }
+        public string? Stage1SourceUrl { get { return this.Stage1SourceUrlOption.Value; } set { this.Stage1SourceUrlOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of NaturalKeyHash
@@ -398,7 +398,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets NaturalKeyHash
         /// </summary>
         [JsonPropertyName("naturalKeyHash")]
-        public string? NaturalKeyHash { get { return this.NaturalKeyHashOption; } set { this.NaturalKeyHashOption = new(value); } }
+        public string? NaturalKeyHash { get { return this.NaturalKeyHashOption.Value; } set { this.NaturalKeyHashOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsPostSuccess
@@ -411,7 +411,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IsPostSuccess
         /// </summary>
         [JsonPropertyName("isPostSuccess")]
-        public bool? IsPostSuccess { get { return this.IsPostSuccessOption; } set { this.IsPostSuccessOption = new(value); } }
+        public bool? IsPostSuccess { get { return this.IsPostSuccessOption.Value; } set { this.IsPostSuccessOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of RunDate
@@ -424,7 +424,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RunDate
         /// </summary>
         [JsonPropertyName("runDate")]
-        public string? RunDate { get { return this.RunDateOption; } set { this.RunDateOption = new(value); } }
+        public string? RunDate { get { return this.RunDateOption.Value; } set { this.RunDateOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EntityType
@@ -437,7 +437,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EntityType
         /// </summary>
         [JsonPropertyName("entityType")]
-        public string? EntityType { get { return this.EntityTypeOption; } set { this.EntityTypeOption = new(value); } }
+        public string? EntityType { get { return this.EntityTypeOption.Value; } set { this.EntityTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EntityNameComputed
@@ -450,7 +450,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EntityNameComputed
         /// </summary>
         [JsonPropertyName("entityNameComputed")]
-        public string? EntityNameComputed { get { return this.EntityNameComputedOption; } set { this.EntityNameComputedOption = new(value); } }
+        public string? EntityNameComputed { get { return this.EntityNameComputedOption.Value; } set { this.EntityNameComputedOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LogType
@@ -463,7 +463,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LogType
         /// </summary>
         [JsonPropertyName("logType")]
-        public string? LogType { get { return this.LogTypeOption; } set { this.LogTypeOption = new(value); } }
+        public string? LogType { get { return this.LogTypeOption.Value; } set { this.LogTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SchoolYear
@@ -476,7 +476,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SchoolYear
         /// </summary>
         [JsonPropertyName("schoolYear")]
-        public string? SchoolYear { get { return this.SchoolYearOption; } set { this.SchoolYearOption = new(value); } }
+        public string? SchoolYear { get { return this.SchoolYearOption.Value; } set { this.SchoolYearOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DistrictId
@@ -489,7 +489,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DistrictId
         /// </summary>
         [JsonPropertyName("districtId")]
-        public string? DistrictId { get { return this.DistrictIdOption; } set { this.DistrictIdOption = new(value); } }
+        public string? DistrictId { get { return this.DistrictIdOption.Value; } set { this.DistrictIdOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -682,8 +682,7 @@ namespace EdGraph.Platform.Client.Model
                             naturalKeyHash = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "isPostSuccess":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isPostSuccess = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isPostSuccess = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "runDate":
                             runDate = new Option<string?>(utf8JsonReader.GetString());

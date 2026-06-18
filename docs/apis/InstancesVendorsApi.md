@@ -17,66 +17,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Creates a new Vendor.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CreateVendorAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesVendorsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var edfiAdminApiEdfiAdminV1CreateVendorRequest = new EdfiAdminApiEdfiAdminV1CreateVendorRequest(); // EdfiAdminApiEdfiAdminV1CreateVendorRequest |  (optional) 
-
-            try
-            {
-                // Creates a new Vendor.
-                EdfiAdminApiEdfiAdminV1VendorCreatedResponse result = apiInstance.CreateVendorAsync(tenantId, instanceId, edfiAdminApiEdfiAdminV1CreateVendorRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesVendorsApi.CreateVendorAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateVendorAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates a new Vendor.
-    ApiResponse<EdfiAdminApiEdfiAdminV1VendorCreatedResponse> response = apiInstance.CreateVendorAsyncWithHttpInfo(tenantId, instanceId, edfiAdminApiEdfiAdminV1CreateVendorRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesVendorsApi.CreateVendorAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -118,62 +58,6 @@ catch (ApiException e)
 
 Deletes a Vendor.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class DeleteVendorAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesVendorsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var vendorId = 56;  // int | 
-
-            try
-            {
-                // Deletes a Vendor.
-                apiInstance.DeleteVendorAsync(tenantId, instanceId, vendorId);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesVendorsApi.DeleteVendorAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeleteVendorAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Deletes a Vendor.
-    apiInstance.DeleteVendorAsyncWithHttpInfo(tenantId, instanceId, vendorId);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesVendorsApi.DeleteVendorAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -215,66 +99,6 @@ void (empty response body)
 
 Retrieves a Vendor by ID.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetVendorByIdAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesVendorsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var vendorId = "vendorId_example";  // string | 
-
-            try
-            {
-                // Retrieves a Vendor by ID.
-                EdfiAdminApiEdfiAdminV1VendorProfileResponse result = apiInstance.GetVendorByIdAsync(tenantId, instanceId, vendorId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesVendorsApi.GetVendorByIdAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetVendorByIdAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a Vendor by ID.
-    ApiResponse<EdfiAdminApiEdfiAdminV1VendorProfileResponse> response = apiInstance.GetVendorByIdAsyncWithHttpInfo(tenantId, instanceId, vendorId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesVendorsApi.GetVendorByIdAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -316,69 +140,6 @@ catch (ApiException e)
 
 Retrieves a list of Vendors.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetVendorsAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesVendorsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Retrieves a list of Vendors.
-                EdfiAdminApiEdfiAdminV1VendorListResponsePaginatedItemsViewModel result = apiInstance.GetVendorsAsync(tenantId, instanceId, pageSize, pageIndex, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesVendorsApi.GetVendorsAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetVendorsAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of Vendors.
-    ApiResponse<EdfiAdminApiEdfiAdminV1VendorListResponsePaginatedItemsViewModel> response = apiInstance.GetVendorsAsyncWithHttpInfo(tenantId, instanceId, pageSize, pageIndex, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesVendorsApi.GetVendorsAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -423,63 +184,6 @@ catch (ApiException e)
 
 Copies a Vendor from one instance to another/other instance(s).
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SyncVendorAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesVendorsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var vendorId = 56;  // int | 
-            var edfiAdminApiEdfiAdminV1SyncVendorRequest = new EdfiAdminApiEdfiAdminV1SyncVendorRequest(); // EdfiAdminApiEdfiAdminV1SyncVendorRequest |  (optional) 
-
-            try
-            {
-                // Copies a Vendor from one instance to another/other instance(s).
-                apiInstance.SyncVendorAsync(tenantId, instanceId, vendorId, edfiAdminApiEdfiAdminV1SyncVendorRequest);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesVendorsApi.SyncVendorAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SyncVendorAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Copies a Vendor from one instance to another/other instance(s).
-    apiInstance.SyncVendorAsyncWithHttpInfo(tenantId, instanceId, vendorId, edfiAdminApiEdfiAdminV1SyncVendorRequest);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesVendorsApi.SyncVendorAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -522,67 +226,6 @@ void (empty response body)
 
 Updates a Vendor.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateVendorAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesVendorsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var vendorId = "vendorId_example";  // string | 
-            var edfiAdminApiEdfiAdminV1UpdateVendorRequest = new EdfiAdminApiEdfiAdminV1UpdateVendorRequest(); // EdfiAdminApiEdfiAdminV1UpdateVendorRequest |  (optional) 
-
-            try
-            {
-                // Updates a Vendor.
-                EdfiAdminApiEdfiAdminV1VendorUpdatedResponse result = apiInstance.UpdateVendorAsync(tenantId, instanceId, vendorId, edfiAdminApiEdfiAdminV1UpdateVendorRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesVendorsApi.UpdateVendorAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateVendorAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates a Vendor.
-    ApiResponse<EdfiAdminApiEdfiAdminV1VendorUpdatedResponse> response = apiInstance.UpdateVendorAsyncWithHttpInfo(tenantId, instanceId, vendorId, edfiAdminApiEdfiAdminV1UpdateVendorRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesVendorsApi.UpdateVendorAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

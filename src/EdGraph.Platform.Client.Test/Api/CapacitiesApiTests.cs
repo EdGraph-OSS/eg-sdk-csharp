@@ -58,7 +58,9 @@ namespace EdGraph.Platform.Client.Test.Api
         {
             string tenantId = default!;
             Client.Option<AnalyticsApiCapacitiesV1AssignCapacityRequest> analyticsApiCapacitiesV1AssignCapacityRequest = default!;
-            await _instance.AssignMyGroupToCapacityAsync(tenantId, analyticsApiCapacitiesV1AssignCapacityRequest);
+            var response = await _instance.AssignMyGroupToCapacityAsync(tenantId, analyticsApiCapacitiesV1AssignCapacityRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -70,7 +72,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string tenantId = default!;
             var response = await _instance.GetAllAnalyticsPowerBiCapacitiesAsync(tenantId);
             var model = response.Unauthorized();
-            Assert.IsType<AnalyticsApiCapacitiesV1CapacityResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -81,7 +83,9 @@ namespace EdGraph.Platform.Client.Test.Api
         {
             string tenantId = default!;
             Client.Option<AnalyticsApiCapacitiesV1ResumeCapacityRequest> analyticsApiCapacitiesV1ResumeCapacityRequest = default!;
-            await _instance.ResumeCapacityAsyncAsync(tenantId, analyticsApiCapacitiesV1ResumeCapacityRequest);
+            var response = await _instance.ResumeCapacityAsyncAsync(tenantId, analyticsApiCapacitiesV1ResumeCapacityRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -92,7 +96,9 @@ namespace EdGraph.Platform.Client.Test.Api
         {
             string tenantId = default!;
             Client.Option<AnalyticsApiCapacitiesV1SuspendCapacityRequest> analyticsApiCapacitiesV1SuspendCapacityRequest = default!;
-            await _instance.SuspendCapacityAsyncAsync(tenantId, analyticsApiCapacitiesV1SuspendCapacityRequest);
+            var response = await _instance.SuspendCapacityAsyncAsync(tenantId, analyticsApiCapacitiesV1SuspendCapacityRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

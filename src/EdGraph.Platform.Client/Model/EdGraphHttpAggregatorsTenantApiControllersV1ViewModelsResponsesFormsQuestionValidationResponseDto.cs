@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets MinLength
         /// </summary>
         [JsonPropertyName("minLength")]
-        public int? MinLength { get { return this.MinLengthOption; } set { this.MinLengthOption = new(value); } }
+        public int? MinLength { get { return this.MinLengthOption.Value; } set { this.MinLengthOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of MaxLength
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets MaxLength
         /// </summary>
         [JsonPropertyName("maxLength")]
-        public int? MaxLength { get { return this.MaxLengthOption; } set { this.MaxLengthOption = new(value); } }
+        public int? MaxLength { get { return this.MaxLengthOption.Value; } set { this.MaxLengthOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -137,12 +137,10 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "minLength":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                minLength = new Option<int?>(utf8JsonReader.GetInt32());
+                            minLength = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "maxLength":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                maxLength = new Option<int?>(utf8JsonReader.GetInt32());
+                            maxLength = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

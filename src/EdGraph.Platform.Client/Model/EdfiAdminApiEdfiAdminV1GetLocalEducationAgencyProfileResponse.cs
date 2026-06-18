@@ -54,7 +54,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LocalEducationAgency
         /// </summary>
         [JsonPropertyName("localEducationAgency")]
-        public EdfiAdminApiEdfiAdminV1LocalEducationAgency? LocalEducationAgency { get { return this.LocalEducationAgencyOption; } set { this.LocalEducationAgencyOption = new(value); } }
+        public EdfiAdminApiEdfiAdminV1LocalEducationAgency? LocalEducationAgency { get { return this.LocalEducationAgencyOption.Value; } set { this.LocalEducationAgencyOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -120,8 +120,7 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "localEducationAgency":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                localEducationAgency = new Option<EdfiAdminApiEdfiAdminV1LocalEducationAgency?>(JsonSerializer.Deserialize<EdfiAdminApiEdfiAdminV1LocalEducationAgency>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            localEducationAgency = new Option<EdfiAdminApiEdfiAdminV1LocalEducationAgency?>(JsonSerializer.Deserialize<EdfiAdminApiEdfiAdminV1LocalEducationAgency>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

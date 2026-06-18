@@ -54,7 +54,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Data
         /// </summary>
         [JsonPropertyName("data")]
-        public List<ValidationsApiContainersV1DataUserResponse>? Data { get { return this.DataOption; } }
+        public List<ValidationsApiContainersV1DataUserResponse>? Data { get { return this.DataOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -120,8 +120,7 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "data":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                data = new Option<List<ValidationsApiContainersV1DataUserResponse>?>(JsonSerializer.Deserialize<List<ValidationsApiContainersV1DataUserResponse>>(ref utf8JsonReader, jsonSerializerOptions));
+                            data = new Option<List<ValidationsApiContainersV1DataUserResponse>?>(JsonSerializer.Deserialize<List<ValidationsApiContainersV1DataUserResponse>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

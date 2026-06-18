@@ -54,7 +54,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Data
         /// </summary>
         [JsonPropertyName("data")]
-        public List<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1ConnectionProfileResponse>? Data { get { return this.DataOption; } set { this.DataOption = new(value); } }
+        public List<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1ConnectionProfileResponse>? Data { get { return this.DataOption.Value; } set { this.DataOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -120,8 +120,7 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "data":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                data = new Option<List<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1ConnectionProfileResponse>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1ConnectionProfileResponse>>(ref utf8JsonReader, jsonSerializerOptions));
+                            data = new Option<List<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1ConnectionProfileResponse>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1ConnectionProfileResponse>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

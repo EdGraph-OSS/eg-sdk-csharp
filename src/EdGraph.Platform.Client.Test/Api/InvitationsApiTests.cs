@@ -58,7 +58,9 @@ namespace EdGraph.Platform.Client.Test.Api
         {
             string tenantId = default!;
             string invitationId = default!;
-            await _instance.DeleteTenantInvitationAsyncAsync(tenantId, invitationId);
+            var response = await _instance.DeleteTenantInvitationAsyncAsync(tenantId, invitationId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -74,7 +76,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetAllTenantInvitationsAsyncAsync(tenantId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiInvitationV1InvitationListResponsePaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -87,7 +89,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string invitationId = default!;
             var response = await _instance.GetTenantInvitationByIdAsyncAsync(tenantId, invitationId);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiInvitationV1InvitationResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -100,7 +102,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsSendInvitationRequest> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsSendInvitationRequest = default!;
             var response = await _instance.SendTenantInvitationAsyncAsync(tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsSendInvitationRequest);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiInvitationV1InvitationSentResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

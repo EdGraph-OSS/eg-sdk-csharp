@@ -56,7 +56,9 @@ namespace EdGraph.Platform.Client.Test.Api
         [Fact (Skip = "not implemented")]
         public async Task RefreshUserProfileCacheAsyncTest()
         {
-            await _instance.RefreshUserProfileCacheAsync();
+            var response = await _instance.RefreshUserProfileCacheAsync();
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

@@ -64,7 +64,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of JobId
@@ -77,7 +77,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets JobId
         /// </summary>
         [JsonPropertyName("jobId")]
-        public string? JobId { get { return this.JobIdOption; } set { this.JobIdOption = new(value); } }
+        public string? JobId { get { return this.JobIdOption.Value; } set { this.JobIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ExecutionId
@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ExecutionId
         /// </summary>
         [JsonPropertyName("executionId")]
-        public string? ExecutionId { get { return this.ExecutionIdOption; } set { this.ExecutionIdOption = new(value); } }
+        public string? ExecutionId { get { return this.ExecutionIdOption.Value; } set { this.ExecutionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LoggedDateTime
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LoggedDateTime
         /// </summary>
         [JsonPropertyName("loggedDateTime")]
-        public string? LoggedDateTime { get { return this.LoggedDateTimeOption; } set { this.LoggedDateTimeOption = new(value); } }
+        public string? LoggedDateTime { get { return this.LoggedDateTimeOption.Value; } set { this.LoggedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Level
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Level
         /// </summary>
         [JsonPropertyName("level")]
-        public string? Level { get { return this.LevelOption; } set { this.LevelOption = new(value); } }
+        public string? Level { get { return this.LevelOption.Value; } set { this.LevelOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Message
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Message
         /// </summary>
         [JsonPropertyName("message")]
-        public string? Message { get { return this.MessageOption; } set { this.MessageOption = new(value); } }
+        public string? Message { get { return this.MessageOption.Value; } set { this.MessageOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

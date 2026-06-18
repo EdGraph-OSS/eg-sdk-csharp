@@ -14,67 +14,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Creates or Update a Connection by ConnectionType.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CreateOrUpdateStateReportingConnectionByTypeExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsConnectionsByTypeApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var connectionType = "connectionType_example";  // string | 
-            var edGraphHttpAggregatorsTenantApiServicesStateReportingV1CreateConnectionRequest = new EdGraphHttpAggregatorsTenantApiServicesStateReportingV1CreateConnectionRequest(); // EdGraphHttpAggregatorsTenantApiServicesStateReportingV1CreateConnectionRequest |  (optional) 
-
-            try
-            {
-                // Creates or Update a Connection by ConnectionType.
-                EdGraphHttpAggregatorsTenantApiServicesStateReportingV1ConnectionCreatedResponse result = apiInstance.CreateOrUpdateStateReportingConnectionByType(tenantId, environmentId, connectionType, edGraphHttpAggregatorsTenantApiServicesStateReportingV1CreateConnectionRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsConnectionsByTypeApi.CreateOrUpdateStateReportingConnectionByType: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateOrUpdateStateReportingConnectionByTypeWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates or Update a Connection by ConnectionType.
-    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1ConnectionCreatedResponse> response = apiInstance.CreateOrUpdateStateReportingConnectionByTypeWithHttpInfo(tenantId, environmentId, connectionType, edGraphHttpAggregatorsTenantApiServicesStateReportingV1CreateConnectionRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsConnectionsByTypeApi.CreateOrUpdateStateReportingConnectionByTypeWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -117,66 +56,6 @@ catch (ApiException e)
 
 Deletes a Connection by Type
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class DeleteStateReportingByTypeConnectionExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsConnectionsByTypeApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var connectionType = "connectionType_example";  // string | 
-
-            try
-            {
-                // Deletes a Connection by Type
-                EdGraphHttpAggregatorsTenantApiServicesStateReportingV1ConnectionDeletedResponse result = apiInstance.DeleteStateReportingByTypeConnection(tenantId, environmentId, connectionType);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsConnectionsByTypeApi.DeleteStateReportingByTypeConnection: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeleteStateReportingByTypeConnectionWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Deletes a Connection by Type
-    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1ConnectionDeletedResponse> response = apiInstance.DeleteStateReportingByTypeConnectionWithHttpInfo(tenantId, environmentId, connectionType);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsConnectionsByTypeApi.DeleteStateReportingByTypeConnectionWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -218,66 +97,6 @@ catch (ApiException e)
 
 Retrieves a Connection by Type.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetStateReportingConnectionByTypeExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsConnectionsByTypeApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var connectionType = "connectionType_example";  // string | 
-
-            try
-            {
-                // Retrieves a Connection by Type.
-                EdGraphHttpAggregatorsTenantApiServicesStateReportingV1ConnectionProfileResponse result = apiInstance.GetStateReportingConnectionByType(tenantId, environmentId, connectionType);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsConnectionsByTypeApi.GetStateReportingConnectionByType: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetStateReportingConnectionByTypeWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a Connection by Type.
-    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesStateReportingV1ConnectionProfileResponse> response = apiInstance.GetStateReportingConnectionByTypeWithHttpInfo(tenantId, environmentId, connectionType);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsConnectionsByTypeApi.GetStateReportingConnectionByTypeWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

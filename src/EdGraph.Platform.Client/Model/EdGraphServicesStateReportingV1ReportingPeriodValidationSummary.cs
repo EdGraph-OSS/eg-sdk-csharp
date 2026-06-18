@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ReportingPeriod
         /// </summary>
         [JsonPropertyName("reportingPeriod")]
-        public EdGraphServicesStateReportingV1ReportingPeriodListResponse? ReportingPeriod { get { return this.ReportingPeriodOption; } set { this.ReportingPeriodOption = new(value); } }
+        public EdGraphServicesStateReportingV1ReportingPeriodListResponse? ReportingPeriod { get { return this.ReportingPeriodOption.Value; } set { this.ReportingPeriodOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Categories
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Categories
         /// </summary>
         [JsonPropertyName("categories")]
-        public List<EdGraphServicesStateReportingV1ValidationSummaryCategory>? Categories { get { return this.CategoriesOption; } }
+        public List<EdGraphServicesStateReportingV1ValidationSummaryCategory>? Categories { get { return this.CategoriesOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -137,12 +137,10 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "reportingPeriod":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                reportingPeriod = new Option<EdGraphServicesStateReportingV1ReportingPeriodListResponse?>(JsonSerializer.Deserialize<EdGraphServicesStateReportingV1ReportingPeriodListResponse>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            reportingPeriod = new Option<EdGraphServicesStateReportingV1ReportingPeriodListResponse?>(JsonSerializer.Deserialize<EdGraphServicesStateReportingV1ReportingPeriodListResponse>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "categories":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                categories = new Option<List<EdGraphServicesStateReportingV1ValidationSummaryCategory>?>(JsonSerializer.Deserialize<List<EdGraphServicesStateReportingV1ValidationSummaryCategory>>(ref utf8JsonReader, jsonSerializerOptions));
+                            categories = new Option<List<EdGraphServicesStateReportingV1ValidationSummaryCategory>?>(JsonSerializer.Deserialize<List<EdGraphServicesStateReportingV1ValidationSummaryCategory>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

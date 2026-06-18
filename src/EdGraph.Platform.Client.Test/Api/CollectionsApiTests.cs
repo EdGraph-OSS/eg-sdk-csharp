@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<ValidationsApiContainersV1CreateCollectionRequest> validationsApiContainersV1CreateCollectionRequest = default!;
             var response = await _instance.CreateCollectionAsync(tenantId, validationsApiContainersV1CreateCollectionRequest);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiCoreV1CreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<ValidationsApiContainersV1CreateContainerRequest> validationsApiContainersV1CreateContainerRequest = default!;
             var response = await _instance.CreateContainerAsync(tenantId, collectionId, validationsApiContainersV1CreateContainerRequest);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiCoreV1CreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -85,7 +85,9 @@ namespace EdGraph.Platform.Client.Test.Api
         {
             string tenantId = default!;
             string collectionId = default!;
-            await _instance.DeleteCollectionAsync(tenantId, collectionId);
+            var response = await _instance.DeleteCollectionAsync(tenantId, collectionId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -97,7 +99,9 @@ namespace EdGraph.Platform.Client.Test.Api
             string tenantId = default!;
             string collectionId = default!;
             string containerId = default!;
-            await _instance.DeleteContainerAsync(tenantId, collectionId, containerId);
+            var response = await _instance.DeleteContainerAsync(tenantId, collectionId, containerId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -110,7 +114,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string collectionId = default!;
             var response = await _instance.GetCollectionByIdAsync(tenantId, collectionId);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiContainersV1ContainerDto>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -123,7 +127,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string collectionId = default!;
             var response = await _instance.GetCollectionJsonAsync(tenantId, collectionId);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiContainersV1GetJsonResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -139,7 +143,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> orderBy = default!;
             var response = await _instance.GetCollectionsAsync(tenantId, pageIndex, pageSize, filter, orderBy);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiContainersV1PaginatedContainers>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -158,7 +162,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> subCategoryName = default!;
             var response = await _instance.GetCollectionsTreeAsync(tenantId, pageIndex, pageSize, orderBy, categoryId, categoryName, subCategoryId, subCategoryName);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiContainersV1PaginatedCategoryTreeResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -172,7 +176,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string containerId = default!;
             var response = await _instance.GetContainerByIdAsync(tenantId, collectionId, containerId);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiContainersV1ContainerDto>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -189,7 +193,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> orderBy = default!;
             var response = await _instance.GetContainersAsync(tenantId, collectionId, pageIndex, pageSize, filter, orderBy);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiContainersV1PaginatedContainers>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -201,7 +205,9 @@ namespace EdGraph.Platform.Client.Test.Api
             string tenantId = default!;
             string collectionId = default!;
             Client.Option<ValidationsApiContainersV1UpdateCollectionRequest> validationsApiContainersV1UpdateCollectionRequest = default!;
-            await _instance.UpdateCollectionAsync(tenantId, collectionId, validationsApiContainersV1UpdateCollectionRequest);
+            var response = await _instance.UpdateCollectionAsync(tenantId, collectionId, validationsApiContainersV1UpdateCollectionRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -214,7 +220,9 @@ namespace EdGraph.Platform.Client.Test.Api
             string collectionId = default!;
             string containerId = default!;
             Client.Option<ValidationsApiContainersV1UpdateContainerRequest> validationsApiContainersV1UpdateContainerRequest = default!;
-            await _instance.UpdateContainerAsync(tenantId, collectionId, containerId, validationsApiContainersV1UpdateContainerRequest);
+            var response = await _instance.UpdateContainerAsync(tenantId, collectionId, containerId, validationsApiContainersV1UpdateContainerRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -227,7 +235,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<ValidationsApiContainersV1UploadCollectionRequest> validationsApiContainersV1UploadCollectionRequest = default!;
             var response = await _instance.UploadCollectionJsonAsync(tenantId, validationsApiContainersV1UploadCollectionRequest);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiContainersV1CollectionUploadedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

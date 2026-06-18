@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Status
         /// </summary>
         [JsonPropertyName("status")]
-        public EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesTenantStatus? Status { get { return this.StatusOption; } set { this.StatusOption = new(value); } }
+        public EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesTenantStatus? Status { get { return this.StatusOption.Value; } set { this.StatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Roles
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Roles
         /// </summary>
         [JsonPropertyName("roles")]
-        public List<string>? Roles { get { return this.RolesOption; } set { this.RolesOption = new(value); } }
+        public List<string>? Roles { get { return this.RolesOption.Value; } set { this.RolesOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Licenses
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Licenses
         /// </summary>
         [JsonPropertyName("licenses")]
-        public List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserTenantLicense>? Licenses { get { return this.LicensesOption; } set { this.LicensesOption = new(value); } }
+        public List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserTenantLicense>? Licenses { get { return this.LicensesOption.Value; } set { this.LicensesOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -179,12 +179,10 @@ namespace EdGraph.Platform.Client.Model
                                 status = new Option<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesTenantStatus?>(EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesTenantStatusValueConverter.FromStringOrDefault(statusRawValue));
                             break;
                         case "roles":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                roles = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            roles = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "licenses":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                licenses = new Option<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserTenantLicense>?>(JsonSerializer.Deserialize<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserTenantLicense>>(ref utf8JsonReader, jsonSerializerOptions));
+                            licenses = new Option<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserTenantLicense>?>(JsonSerializer.Deserialize<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserTenantLicense>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

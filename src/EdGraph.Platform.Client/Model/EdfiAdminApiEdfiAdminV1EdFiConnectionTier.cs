@@ -37,13 +37,15 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="tierName">tierName</param>
         /// <param name="odsApiConnection">odsApiConnection</param>
         /// <param name="sqlConnection">sqlConnection</param>
+        /// <param name="adminApiUrl">adminApiUrl</param>
         [JsonConstructor]
-        public EdfiAdminApiEdfiAdminV1EdFiConnectionTier(Option<string?> tierId = default, Option<string?> tierName = default, Option<EdfiAdminApiEdfiAdminV1TierOdsApiConnection?> odsApiConnection = default, Option<EdfiAdminApiEdfiAdminV1TierSqlConnection?> sqlConnection = default)
+        public EdfiAdminApiEdfiAdminV1EdFiConnectionTier(Option<string?> tierId = default, Option<string?> tierName = default, Option<EdfiAdminApiEdfiAdminV1TierOdsApiConnection?> odsApiConnection = default, Option<EdfiAdminApiEdfiAdminV1TierSqlConnection?> sqlConnection = default, Option<string?> adminApiUrl = default)
         {
             TierIdOption = tierId;
             TierNameOption = tierName;
             OdsApiConnectionOption = odsApiConnection;
             SqlConnectionOption = sqlConnection;
+            AdminApiUrlOption = adminApiUrl;
             OnCreated();
         }
 
@@ -60,7 +62,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TierId
         /// </summary>
         [JsonPropertyName("tierId")]
-        public string? TierId { get { return this.TierIdOption; } set { this.TierIdOption = new(value); } }
+        public string? TierId { get { return this.TierIdOption.Value; } set { this.TierIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TierName
@@ -73,7 +75,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TierName
         /// </summary>
         [JsonPropertyName("tierName")]
-        public string? TierName { get { return this.TierNameOption; } set { this.TierNameOption = new(value); } }
+        public string? TierName { get { return this.TierNameOption.Value; } set { this.TierNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of OdsApiConnection
@@ -86,7 +88,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets OdsApiConnection
         /// </summary>
         [JsonPropertyName("odsApiConnection")]
-        public EdfiAdminApiEdfiAdminV1TierOdsApiConnection? OdsApiConnection { get { return this.OdsApiConnectionOption; } set { this.OdsApiConnectionOption = new(value); } }
+        public EdfiAdminApiEdfiAdminV1TierOdsApiConnection? OdsApiConnection { get { return this.OdsApiConnectionOption.Value; } set { this.OdsApiConnectionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SqlConnection
@@ -99,7 +101,20 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SqlConnection
         /// </summary>
         [JsonPropertyName("sqlConnection")]
-        public EdfiAdminApiEdfiAdminV1TierSqlConnection? SqlConnection { get { return this.SqlConnectionOption; } set { this.SqlConnectionOption = new(value); } }
+        public EdfiAdminApiEdfiAdminV1TierSqlConnection? SqlConnection { get { return this.SqlConnectionOption.Value; } set { this.SqlConnectionOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of AdminApiUrl
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> AdminApiUrlOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets AdminApiUrl
+        /// </summary>
+        [JsonPropertyName("adminApiUrl")]
+        public string? AdminApiUrl { get { return this.AdminApiUrlOption.Value; } set { this.AdminApiUrlOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -113,6 +128,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  TierName: ").Append(TierName).Append("\n");
             sb.Append("  OdsApiConnection: ").Append(OdsApiConnection).Append("\n");
             sb.Append("  SqlConnection: ").Append(SqlConnection).Append("\n");
+            sb.Append("  AdminApiUrl: ").Append(AdminApiUrl).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -154,6 +170,7 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> tierName = default;
             Option<EdfiAdminApiEdfiAdminV1TierOdsApiConnection?> odsApiConnection = default;
             Option<EdfiAdminApiEdfiAdminV1TierSqlConnection?> sqlConnection = default;
+            Option<string?> adminApiUrl = default;
 
             while (utf8JsonReader.Read())
             {
@@ -177,12 +194,13 @@ namespace EdGraph.Platform.Client.Model
                             tierName = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "odsApiConnection":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                odsApiConnection = new Option<EdfiAdminApiEdfiAdminV1TierOdsApiConnection?>(JsonSerializer.Deserialize<EdfiAdminApiEdfiAdminV1TierOdsApiConnection>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            odsApiConnection = new Option<EdfiAdminApiEdfiAdminV1TierOdsApiConnection?>(JsonSerializer.Deserialize<EdfiAdminApiEdfiAdminV1TierOdsApiConnection>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "sqlConnection":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                sqlConnection = new Option<EdfiAdminApiEdfiAdminV1TierSqlConnection?>(JsonSerializer.Deserialize<EdfiAdminApiEdfiAdminV1TierSqlConnection>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            sqlConnection = new Option<EdfiAdminApiEdfiAdminV1TierSqlConnection?>(JsonSerializer.Deserialize<EdfiAdminApiEdfiAdminV1TierSqlConnection>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            break;
+                        case "adminApiUrl":
+                            adminApiUrl = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         default:
                             break;
@@ -196,7 +214,7 @@ namespace EdGraph.Platform.Client.Model
             if (sqlConnection.IsSet && sqlConnection.Value == null)
                 throw new ArgumentNullException(nameof(sqlConnection), "Property is not nullable for class EdfiAdminApiEdfiAdminV1EdFiConnectionTier.");
 
-            return new EdfiAdminApiEdfiAdminV1EdFiConnectionTier(tierId, tierName, odsApiConnection, sqlConnection);
+            return new EdfiAdminApiEdfiAdminV1EdFiConnectionTier(tierId, tierName, odsApiConnection, sqlConnection, adminApiUrl);
         }
 
         /// <summary>
@@ -251,6 +269,11 @@ namespace EdGraph.Platform.Client.Model
                 writer.WritePropertyName("sqlConnection");
                 JsonSerializer.Serialize(writer, edfiAdminApiEdfiAdminV1EdFiConnectionTier.SqlConnection, jsonSerializerOptions);
             }
+            if (edfiAdminApiEdfiAdminV1EdFiConnectionTier.AdminApiUrlOption.IsSet)
+                if (edfiAdminApiEdfiAdminV1EdFiConnectionTier.AdminApiUrlOption.Value != null)
+                    writer.WriteString("adminApiUrl", edfiAdminApiEdfiAdminV1EdFiConnectionTier.AdminApiUrl);
+                else
+                    writer.WriteNull("adminApiUrl");
         }
     }
 }

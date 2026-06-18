@@ -59,7 +59,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string code = default!;
             var response = await _instance.RemoveUserExtensionAsync(code);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiUserV1UserExtensionRemovedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<IdentityApiUserV1SetUserExtensionRequest> identityApiUserV1SetUserExtensionRequest = default!;
             var response = await _instance.SetUserExtensionAsync(identityApiUserV1SetUserExtensionRequest);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiUserV1UserExtensionSetResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

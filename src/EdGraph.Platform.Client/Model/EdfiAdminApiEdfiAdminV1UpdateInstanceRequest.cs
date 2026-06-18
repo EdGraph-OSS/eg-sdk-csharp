@@ -65,7 +65,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>The Instance ID or Custom ID</value>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of InstanceName
@@ -79,7 +79,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>Details</value>
         [JsonPropertyName("instanceName")]
-        public string? InstanceName { get { return this.InstanceNameOption; } set { this.InstanceNameOption = new(value); } }
+        public string? InstanceName { get { return this.InstanceNameOption.Value; } set { this.InstanceNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Description
@@ -92,7 +92,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Description
         /// </summary>
         [JsonPropertyName("description")]
-        public string? Description { get { return this.DescriptionOption; } set { this.DescriptionOption = new(value); } }
+        public string? Description { get { return this.DescriptionOption.Value; } set { this.DescriptionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -106,7 +106,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>Metadata</value>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Provider
@@ -119,7 +119,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Provider
         /// </summary>
         [JsonPropertyName("provider")]
-        public string? Provider { get { return this.ProviderOption; } set { this.ProviderOption = new(value); } }
+        public string? Provider { get { return this.ProviderOption.Value; } set { this.ProviderOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of State
@@ -132,7 +132,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets State
         /// </summary>
         [JsonPropertyName("state")]
-        public string? State { get { return this.StateOption; } set { this.StateOption = new(value); } }
+        public string? State { get { return this.StateOption.Value; } set { this.StateOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

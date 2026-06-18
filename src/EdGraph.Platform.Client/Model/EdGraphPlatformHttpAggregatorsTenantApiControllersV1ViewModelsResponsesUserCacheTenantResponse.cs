@@ -72,7 +72,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public Guid? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public Guid? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantType
@@ -85,7 +85,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantType
         /// </summary>
         [JsonPropertyName("tenantType")]
-        public string? TenantType { get { return this.TenantTypeOption; } set { this.TenantTypeOption = new(value); } }
+        public string? TenantType { get { return this.TenantTypeOption.Value; } set { this.TenantTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantTypes
@@ -98,7 +98,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantTypes
         /// </summary>
         [JsonPropertyName("tenantTypes")]
-        public List<string>? TenantTypes { get { return this.TenantTypesOption; } set { this.TenantTypesOption = new(value); } }
+        public List<string>? TenantTypes { get { return this.TenantTypesOption.Value; } set { this.TenantTypesOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of OrganizationIdentifier
@@ -111,7 +111,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets OrganizationIdentifier
         /// </summary>
         [JsonPropertyName("organizationIdentifier")]
-        public string? OrganizationIdentifier { get { return this.OrganizationIdentifierOption; } set { this.OrganizationIdentifierOption = new(value); } }
+        public string? OrganizationIdentifier { get { return this.OrganizationIdentifierOption.Value; } set { this.OrganizationIdentifierOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of OrganizationName
@@ -124,7 +124,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets OrganizationName
         /// </summary>
         [JsonPropertyName("organizationName")]
-        public string? OrganizationName { get { return this.OrganizationNameOption; } set { this.OrganizationNameOption = new(value); } }
+        public string? OrganizationName { get { return this.OrganizationNameOption.Value; } set { this.OrganizationNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of State
@@ -137,7 +137,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets State
         /// </summary>
         [JsonPropertyName("state")]
-        public string? State { get { return this.StateOption; } set { this.StateOption = new(value); } }
+        public string? State { get { return this.StateOption.Value; } set { this.StateOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantStatus
@@ -150,7 +150,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantStatus
         /// </summary>
         [JsonPropertyName("tenantStatus")]
-        public string? TenantStatus { get { return this.TenantStatusOption; } set { this.TenantStatusOption = new(value); } }
+        public string? TenantStatus { get { return this.TenantStatusOption.Value; } set { this.TenantStatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsDemo
@@ -163,7 +163,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IsDemo
         /// </summary>
         [JsonPropertyName("isDemo")]
-        public bool? IsDemo { get { return this.IsDemoOption; } set { this.IsDemoOption = new(value); } }
+        public bool? IsDemo { get { return this.IsDemoOption.Value; } set { this.IsDemoOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EducationOrganizations
@@ -176,7 +176,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EducationOrganizations
         /// </summary>
         [JsonPropertyName("educationOrganizations")]
-        public List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantEducationOrganizationResponse>? EducationOrganizations { get { return this.EducationOrganizationsOption; } set { this.EducationOrganizationsOption = new(value); } }
+        public List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantEducationOrganizationResponse>? EducationOrganizations { get { return this.EducationOrganizationsOption.Value; } set { this.EducationOrganizationsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Licenses
@@ -189,7 +189,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Licenses
         /// </summary>
         [JsonPropertyName("licenses")]
-        public List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserTenantLicense>? Licenses { get { return this.LicensesOption; } set { this.LicensesOption = new(value); } }
+        public List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserTenantLicense>? Licenses { get { return this.LicensesOption.Value; } set { this.LicensesOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -273,15 +273,13 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "tenantId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                tenantId = new Option<Guid?>(utf8JsonReader.GetGuid());
+                            tenantId = new Option<Guid?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (Guid?)null : utf8JsonReader.GetGuid());
                             break;
                         case "tenantType":
                             tenantType = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "tenantTypes":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                tenantTypes = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            tenantTypes = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "organizationIdentifier":
                             organizationIdentifier = new Option<string?>(utf8JsonReader.GetString());
@@ -296,16 +294,13 @@ namespace EdGraph.Platform.Client.Model
                             tenantStatus = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "isDemo":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isDemo = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isDemo = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "educationOrganizations":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                educationOrganizations = new Option<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantEducationOrganizationResponse>?>(JsonSerializer.Deserialize<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantEducationOrganizationResponse>>(ref utf8JsonReader, jsonSerializerOptions));
+                            educationOrganizations = new Option<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantEducationOrganizationResponse>?>(JsonSerializer.Deserialize<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheTenantEducationOrganizationResponse>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "licenses":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                licenses = new Option<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserTenantLicense>?>(JsonSerializer.Deserialize<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserTenantLicense>>(ref utf8JsonReader, jsonSerializerOptions));
+                            licenses = new Option<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserTenantLicense>?>(JsonSerializer.Deserialize<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserTenantLicense>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

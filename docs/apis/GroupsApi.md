@@ -16,62 +16,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Adds users to group.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class AddUsersToGroupAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new GroupsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var groupId = "groupId_example";  // string | 
-            var analyticsApiGroupsV1AddGroupUsersRequest = new AnalyticsApiGroupsV1AddGroupUsersRequest(); // AnalyticsApiGroupsV1AddGroupUsersRequest |  (optional) 
-
-            try
-            {
-                // Adds users to group.
-                apiInstance.AddUsersToGroupAsync(tenantId, groupId, analyticsApiGroupsV1AddGroupUsersRequest);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling GroupsApi.AddUsersToGroupAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the AddUsersToGroupAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Adds users to group.
-    apiInstance.AddUsersToGroupAsyncWithHttpInfo(tenantId, groupId, analyticsApiGroupsV1AddGroupUsersRequest);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling GroupsApi.AddUsersToGroupAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -113,65 +57,6 @@ void (empty response body)
 
 Creates a group.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CreateAnalyticsPowerBiGroupExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new GroupsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var analyticsApiGroupsV1CreateGroupRequest = new AnalyticsApiGroupsV1CreateGroupRequest(); // AnalyticsApiGroupsV1CreateGroupRequest |  (optional) 
-
-            try
-            {
-                // Creates a group.
-                AnalyticsApiGroupsV1GroupResponse result = apiInstance.CreateAnalyticsPowerBiGroup(tenantId, analyticsApiGroupsV1CreateGroupRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling GroupsApi.CreateAnalyticsPowerBiGroup: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateAnalyticsPowerBiGroupWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates a group.
-    ApiResponse<AnalyticsApiGroupsV1GroupResponse> response = apiInstance.CreateAnalyticsPowerBiGroupWithHttpInfo(tenantId, analyticsApiGroupsV1CreateGroupRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling GroupsApi.CreateAnalyticsPowerBiGroupWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -212,61 +97,6 @@ catch (ApiException e)
 
 Deletes a group.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class DeleteAnalyticsPowerBiGroupExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new GroupsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var groupId = "groupId_example";  // string | 
-
-            try
-            {
-                // Deletes a group.
-                apiInstance.DeleteAnalyticsPowerBiGroup(tenantId, groupId);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling GroupsApi.DeleteAnalyticsPowerBiGroup: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeleteAnalyticsPowerBiGroupWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Deletes a group.
-    apiInstance.DeleteAnalyticsPowerBiGroupWithHttpInfo(tenantId, groupId);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling GroupsApi.DeleteAnalyticsPowerBiGroupWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -307,67 +137,6 @@ void (empty response body)
 
 Retrieves all users for a specific group.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetAnalyticsPowerBiGroupUsersExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new GroupsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var groupId = "groupId_example";  // string | 
-            var skipFirstN = 56;  // int |  (optional) 
-            var topFirstN = 56;  // int |  (optional) 
-
-            try
-            {
-                // Retrieves all users for a specific group.
-                AnalyticsApiGroupsV1GroupUsersResponse result = apiInstance.GetAnalyticsPowerBiGroupUsers(tenantId, groupId, skipFirstN, topFirstN);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling GroupsApi.GetAnalyticsPowerBiGroupUsers: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetAnalyticsPowerBiGroupUsersWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves all users for a specific group.
-    ApiResponse<AnalyticsApiGroupsV1GroupUsersResponse> response = apiInstance.GetAnalyticsPowerBiGroupUsersWithHttpInfo(tenantId, groupId, skipFirstN, topFirstN);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling GroupsApi.GetAnalyticsPowerBiGroupUsersWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -410,65 +179,6 @@ catch (ApiException e)
 
 Retrieves a list of groups.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetGroupsAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new GroupsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var filter = "filter_example";  // string |  (optional) 
-
-            try
-            {
-                // Retrieves a list of groups.
-                AnalyticsApiGroupsV1GroupsResponse result = apiInstance.GetGroupsAsync(tenantId, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling GroupsApi.GetGroupsAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetGroupsAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of groups.
-    ApiResponse<AnalyticsApiGroupsV1GroupsResponse> response = apiInstance.GetGroupsAsyncWithHttpInfo(tenantId, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling GroupsApi.GetGroupsAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

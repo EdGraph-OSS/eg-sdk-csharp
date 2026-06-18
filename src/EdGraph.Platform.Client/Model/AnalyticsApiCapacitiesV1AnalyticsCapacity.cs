@@ -64,7 +64,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CapacityId
         /// </summary>
         [JsonPropertyName("capacityId")]
-        public string? CapacityId { get { return this.CapacityIdOption; } set { this.CapacityIdOption = new(value); } }
+        public string? CapacityId { get { return this.CapacityIdOption.Value; } set { this.CapacityIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DisplayName
@@ -77,7 +77,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DisplayName
         /// </summary>
         [JsonPropertyName("displayName")]
-        public string? DisplayName { get { return this.DisplayNameOption; } set { this.DisplayNameOption = new(value); } }
+        public string? DisplayName { get { return this.DisplayNameOption.Value; } set { this.DisplayNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Sku
@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Sku
         /// </summary>
         [JsonPropertyName("sku")]
-        public string? Sku { get { return this.SkuOption; } set { this.SkuOption = new(value); } }
+        public string? Sku { get { return this.SkuOption.Value; } set { this.SkuOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of State
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets State
         /// </summary>
         [JsonPropertyName("state")]
-        public string? State { get { return this.StateOption; } set { this.StateOption = new(value); } }
+        public string? State { get { return this.StateOption.Value; } set { this.StateOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Region
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Region
         /// </summary>
         [JsonPropertyName("region")]
-        public string? Region { get { return this.RegionOption; } set { this.RegionOption = new(value); } }
+        public string? Region { get { return this.RegionOption.Value; } set { this.RegionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CapacityUserAccessRight
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CapacityUserAccessRight
         /// </summary>
         [JsonPropertyName("capacityUserAccessRight")]
-        public string? CapacityUserAccessRight { get { return this.CapacityUserAccessRightOption; } set { this.CapacityUserAccessRightOption = new(value); } }
+        public string? CapacityUserAccessRight { get { return this.CapacityUserAccessRightOption.Value; } set { this.CapacityUserAccessRightOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IdentityProviderId
         /// </summary>
         [JsonPropertyName("identityProviderId")]
-        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviderId? IdentityProviderId { get { return this.IdentityProviderIdOption; } set { this.IdentityProviderIdOption = new(value); } }
+        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviderId? IdentityProviderId { get { return this.IdentityProviderIdOption.Value; } set { this.IdentityProviderIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IdentityProviderStatus
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IdentityProviderStatus
         /// </summary>
         [JsonPropertyName("identityProviderStatus")]
-        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviderStatus? IdentityProviderStatus { get { return this.IdentityProviderStatusOption; } set { this.IdentityProviderStatusOption = new(value); } }
+        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviderStatus? IdentityProviderStatus { get { return this.IdentityProviderStatusOption.Value; } set { this.IdentityProviderStatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EnableMfa
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EnableMfa
         /// </summary>
         [JsonPropertyName("enableMfa")]
-        public bool? EnableMfa { get { return this.EnableMfaOption; } set { this.EnableMfaOption = new(value); } }
+        public bool? EnableMfa { get { return this.EnableMfaOption.Value; } set { this.EnableMfaOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EnforceMfa
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EnforceMfa
         /// </summary>
         [JsonPropertyName("enforceMfa")]
-        public string? EnforceMfa { get { return this.EnforceMfaOption; } set { this.EnforceMfaOption = new(value); } }
+        public string? EnforceMfa { get { return this.EnforceMfaOption.Value; } set { this.EnforceMfaOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -181,8 +181,7 @@ namespace EdGraph.Platform.Client.Model
                                 identityProviderStatus = new Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviderStatus?>(EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantIdentityProviderStatusValueConverter.FromStringOrDefault(identityProviderStatusRawValue));
                             break;
                         case "enableMfa":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                enableMfa = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            enableMfa = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "enforceMfa":
                             enforceMfa = new Option<string?>(utf8JsonReader.GetString());

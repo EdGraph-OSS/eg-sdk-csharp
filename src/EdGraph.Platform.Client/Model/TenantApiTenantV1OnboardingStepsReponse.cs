@@ -54,7 +54,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Steps
         /// </summary>
         [JsonPropertyName("steps")]
-        public List<TenantApiTenantV1OnboardingStep>? Steps { get { return this.StepsOption; } }
+        public List<TenantApiTenantV1OnboardingStep>? Steps { get { return this.StepsOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -120,8 +120,7 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "steps":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                steps = new Option<List<TenantApiTenantV1OnboardingStep>?>(JsonSerializer.Deserialize<List<TenantApiTenantV1OnboardingStep>>(ref utf8JsonReader, jsonSerializerOptions));
+                            steps = new Option<List<TenantApiTenantV1OnboardingStep>?>(JsonSerializer.Deserialize<List<TenantApiTenantV1OnboardingStep>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

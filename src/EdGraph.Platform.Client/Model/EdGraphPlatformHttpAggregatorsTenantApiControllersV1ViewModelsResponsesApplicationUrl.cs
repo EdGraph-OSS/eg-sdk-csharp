@@ -64,7 +64,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Type
         /// </summary>
         [JsonPropertyName("type")]
-        public ApplicationApiApplicationV1UrlType? Type { get { return this.TypeOption; } set { this.TypeOption = new(value); } }
+        public ApplicationApiApplicationV1UrlType? Type { get { return this.TypeOption.Value; } set { this.TypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Code
@@ -77,7 +77,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Code
         /// </summary>
         [JsonPropertyName("code")]
-        public string? Code { get { return this.CodeOption; } set { this.CodeOption = new(value); } }
+        public string? Code { get { return this.CodeOption.Value; } set { this.CodeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Label
@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Label
         /// </summary>
         [JsonPropertyName("label")]
-        public string? Label { get { return this.LabelOption; } set { this.LabelOption = new(value); } }
+        public string? Label { get { return this.LabelOption.Value; } set { this.LabelOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Value
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Value
         /// </summary>
         [JsonPropertyName("value")]
-        public string? Value { get { return this.ValueOption; } set { this.ValueOption = new(value); } }
+        public string? Value { get { return this.ValueOption.Value; } set { this.ValueOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of OpenInNewTab
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets OpenInNewTab
         /// </summary>
         [JsonPropertyName("openInNewTab")]
-        public bool? OpenInNewTab { get { return this.OpenInNewTabOption; } set { this.OpenInNewTabOption = new(value); } }
+        public bool? OpenInNewTab { get { return this.OpenInNewTabOption.Value; } set { this.OpenInNewTabOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Readonly
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Readonly
         /// </summary>
         [JsonPropertyName("readonly")]
-        public bool? Readonly { get { return this.ReadonlyOption; } set { this.ReadonlyOption = new(value); } }
+        public bool? Readonly { get { return this.ReadonlyOption.Value; } set { this.ReadonlyOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -214,12 +214,10 @@ namespace EdGraph.Platform.Client.Model
                             value = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "openInNewTab":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                openInNewTab = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            openInNewTab = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "readonly":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                varReadonly = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            varReadonly = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "type":
                             string? typeRawValue = utf8JsonReader.GetString();

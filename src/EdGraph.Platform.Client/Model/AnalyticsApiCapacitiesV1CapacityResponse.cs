@@ -54,7 +54,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Capacities
         /// </summary>
         [JsonPropertyName("capacities")]
-        public List<AnalyticsApiCapacitiesV1AnalyticsCapacity>? Capacities { get { return this.CapacitiesOption; } }
+        public List<AnalyticsApiCapacitiesV1AnalyticsCapacity>? Capacities { get { return this.CapacitiesOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -120,8 +120,7 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "capacities":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                capacities = new Option<List<AnalyticsApiCapacitiesV1AnalyticsCapacity>?>(JsonSerializer.Deserialize<List<AnalyticsApiCapacitiesV1AnalyticsCapacity>>(ref utf8JsonReader, jsonSerializerOptions));
+                            capacities = new Option<List<AnalyticsApiCapacitiesV1AnalyticsCapacity>?>(JsonSerializer.Deserialize<List<AnalyticsApiCapacitiesV1AnalyticsCapacity>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

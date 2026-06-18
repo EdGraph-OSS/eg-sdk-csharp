@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Enabled
         /// </summary>
         [JsonPropertyName("enabled")]
-        public bool? Enabled { get { return this.EnabledOption; } set { this.EnabledOption = new(value); } }
+        public bool? Enabled { get { return this.EnabledOption.Value; } set { this.EnabledOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IgnoredStaffClassificationDescriptors
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IgnoredStaffClassificationDescriptors
         /// </summary>
         [JsonPropertyName("ignoredStaffClassificationDescriptors")]
-        public List<string>? IgnoredStaffClassificationDescriptors { get { return this.IgnoredStaffClassificationDescriptorsOption; } }
+        public List<string>? IgnoredStaffClassificationDescriptors { get { return this.IgnoredStaffClassificationDescriptorsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of SearchedClassroomPositionDescriptor
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SearchedClassroomPositionDescriptor
         /// </summary>
         [JsonPropertyName("searchedClassroomPositionDescriptor")]
-        public string? SearchedClassroomPositionDescriptor { get { return this.SearchedClassroomPositionDescriptorOption; } set { this.SearchedClassroomPositionDescriptorOption = new(value); } }
+        public string? SearchedClassroomPositionDescriptor { get { return this.SearchedClassroomPositionDescriptorOption.Value; } set { this.SearchedClassroomPositionDescriptorOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AssignedStaffClassificationDescriptor
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AssignedStaffClassificationDescriptor
         /// </summary>
         [JsonPropertyName("assignedStaffClassificationDescriptor")]
-        public string? AssignedStaffClassificationDescriptor { get { return this.AssignedStaffClassificationDescriptorOption; } set { this.AssignedStaffClassificationDescriptorOption = new(value); } }
+        public string? AssignedStaffClassificationDescriptor { get { return this.AssignedStaffClassificationDescriptorOption.Value; } set { this.AssignedStaffClassificationDescriptorOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -171,12 +171,10 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "enabled":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                enabled = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            enabled = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "ignoredStaffClassificationDescriptors":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                ignoredStaffClassificationDescriptors = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            ignoredStaffClassificationDescriptors = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "searchedClassroomPositionDescriptor":
                             searchedClassroomPositionDescriptor = new Option<string?>(utf8JsonReader.GetString());

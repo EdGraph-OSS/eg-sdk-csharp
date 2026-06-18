@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of GroupName
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets GroupName
         /// </summary>
         [JsonPropertyName("groupName")]
-        public string? GroupName { get { return this.GroupNameOption; } set { this.GroupNameOption = new(value); } }
+        public string? GroupName { get { return this.GroupNameOption.Value; } set { this.GroupNameOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

@@ -15,67 +15,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Creates an EducationServiceCenter.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CreateEducationServiceCenterAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesEducationOrganizationsEducationServiceCentersApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var instanceId = "instanceId_example";  // string | 
-            var year = 56;  // int | 
-            var edfiAdminApiEdfiAdminV1CreateEducationServiceCenterRequest = new EdfiAdminApiEdfiAdminV1CreateEducationServiceCenterRequest(); // EdfiAdminApiEdfiAdminV1CreateEducationServiceCenterRequest |  (optional) 
-
-            try
-            {
-                // Creates an EducationServiceCenter.
-                EdfiAdminApiEdfiAdminV1EducationServiceCenterCreatedResponse result = apiInstance.CreateEducationServiceCenterAsync(tenantId, instanceId, year, edfiAdminApiEdfiAdminV1CreateEducationServiceCenterRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesEducationOrganizationsEducationServiceCentersApi.CreateEducationServiceCenterAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateEducationServiceCenterAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates an EducationServiceCenter.
-    ApiResponse<EdfiAdminApiEdfiAdminV1EducationServiceCenterCreatedResponse> response = apiInstance.CreateEducationServiceCenterAsyncWithHttpInfo(tenantId, instanceId, year, edfiAdminApiEdfiAdminV1CreateEducationServiceCenterRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesEducationOrganizationsEducationServiceCentersApi.CreateEducationServiceCenterAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -118,63 +57,6 @@ catch (ApiException e)
 
 Deletes an EducationServiceCenter.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class DeleteEducationServiceCenterAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesEducationOrganizationsEducationServiceCentersApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var instanceId = "instanceId_example";  // string | 
-            var year = 56;  // int | 
-            var educationServiceCenterId = "educationServiceCenterId_example";  // Guid | 
-
-            try
-            {
-                // Deletes an EducationServiceCenter.
-                apiInstance.DeleteEducationServiceCenterAsync(tenantId, instanceId, year, educationServiceCenterId);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesEducationOrganizationsEducationServiceCentersApi.DeleteEducationServiceCenterAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeleteEducationServiceCenterAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Deletes an EducationServiceCenter.
-    apiInstance.DeleteEducationServiceCenterAsyncWithHttpInfo(tenantId, instanceId, year, educationServiceCenterId);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesEducationOrganizationsEducationServiceCentersApi.DeleteEducationServiceCenterAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -217,67 +99,6 @@ void (empty response body)
 
 Retrieves an EducationServiceCenter by ID.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetEducationServiceCenterByIdAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesEducationOrganizationsEducationServiceCentersApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var instanceId = "instanceId_example";  // string | 
-            var year = 56;  // int | 
-            var educationServiceCenterId = "educationServiceCenterId_example";  // Guid | 
-
-            try
-            {
-                // Retrieves an EducationServiceCenter by ID.
-                EdfiAdminApiEdfiAdminV1EducationServiceCenter result = apiInstance.GetEducationServiceCenterByIdAsync(tenantId, instanceId, year, educationServiceCenterId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesEducationOrganizationsEducationServiceCentersApi.GetEducationServiceCenterByIdAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetEducationServiceCenterByIdAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves an EducationServiceCenter by ID.
-    ApiResponse<EdfiAdminApiEdfiAdminV1EducationServiceCenter> response = apiInstance.GetEducationServiceCenterByIdAsyncWithHttpInfo(tenantId, instanceId, year, educationServiceCenterId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesEducationOrganizationsEducationServiceCentersApi.GetEducationServiceCenterByIdAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -320,64 +141,6 @@ catch (ApiException e)
 
 Updates an EducationServiceCenter.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateEducationServiceCenterAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesEducationOrganizationsEducationServiceCentersApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var instanceId = "instanceId_example";  // string | 
-            var year = 56;  // int | 
-            var educationServiceCenterId = "educationServiceCenterId_example";  // Guid | 
-            var edfiAdminApiEdfiAdminV1UpdateEducationServiceCenterRequest = new EdfiAdminApiEdfiAdminV1UpdateEducationServiceCenterRequest(); // EdfiAdminApiEdfiAdminV1UpdateEducationServiceCenterRequest |  (optional) 
-
-            try
-            {
-                // Updates an EducationServiceCenter.
-                apiInstance.UpdateEducationServiceCenterAsync(tenantId, instanceId, year, educationServiceCenterId, edfiAdminApiEdfiAdminV1UpdateEducationServiceCenterRequest);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesEducationOrganizationsEducationServiceCentersApi.UpdateEducationServiceCenterAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateEducationServiceCenterAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates an EducationServiceCenter.
-    apiInstance.UpdateEducationServiceCenterAsyncWithHttpInfo(tenantId, instanceId, year, educationServiceCenterId, edfiAdminApiEdfiAdminV1UpdateEducationServiceCenterRequest);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesEducationOrganizationsEducationServiceCentersApi.UpdateEducationServiceCenterAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

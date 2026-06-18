@@ -14,64 +14,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Gets the Evaluation Settings for a given tenant
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetEvaluationSettingExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EvaluationSettingsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-
-            try
-            {
-                // Gets the Evaluation Settings for a given tenant
-                EvaluationApiEvaluationSettingsV1EvaluationSettingResponse result = apiInstance.GetEvaluationSetting(tenantId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EvaluationSettingsApi.GetEvaluationSetting: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetEvaluationSettingWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Gets the Evaluation Settings for a given tenant
-    ApiResponse<EvaluationApiEvaluationSettingsV1EvaluationSettingResponse> response = apiInstance.GetEvaluationSettingWithHttpInfo(tenantId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EvaluationSettingsApi.GetEvaluationSettingWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -110,65 +52,6 @@ catch (ApiException e)
 
 Sets the Application Settings of an Evaluation for a given Tenant
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SetEvaluationSettingApplicationSettingExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EvaluationSettingsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var evaluationApiEvaluationSettingsV1SetApplicationRequest = new EvaluationApiEvaluationSettingsV1SetApplicationRequest(); // EvaluationApiEvaluationSettingsV1SetApplicationRequest |  (optional) 
-
-            try
-            {
-                // Sets the Application Settings of an Evaluation for a given Tenant
-                EvaluationApiEvaluationSettingsV1ApplicationSetResponse result = apiInstance.SetEvaluationSettingApplicationSetting(tenantId, evaluationApiEvaluationSettingsV1SetApplicationRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EvaluationSettingsApi.SetEvaluationSettingApplicationSetting: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SetEvaluationSettingApplicationSettingWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Sets the Application Settings of an Evaluation for a given Tenant
-    ApiResponse<EvaluationApiEvaluationSettingsV1ApplicationSetResponse> response = apiInstance.SetEvaluationSettingApplicationSettingWithHttpInfo(tenantId, evaluationApiEvaluationSettingsV1SetApplicationRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EvaluationSettingsApi.SetEvaluationSettingApplicationSettingWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -208,65 +91,6 @@ catch (ApiException e)
 
 Sets the User Settings of an Evaluation for a given Tenant
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SetEvaluationSettingUserSettingExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EvaluationSettingsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var evaluationApiEvaluationSettingsV1SetUsersRequest = new EvaluationApiEvaluationSettingsV1SetUsersRequest(); // EvaluationApiEvaluationSettingsV1SetUsersRequest |  (optional) 
-
-            try
-            {
-                // Sets the User Settings of an Evaluation for a given Tenant
-                EvaluationApiEvaluationSettingsV1UsersSetResponse result = apiInstance.SetEvaluationSettingUserSetting(tenantId, evaluationApiEvaluationSettingsV1SetUsersRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EvaluationSettingsApi.SetEvaluationSettingUserSetting: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SetEvaluationSettingUserSettingWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Sets the User Settings of an Evaluation for a given Tenant
-    ApiResponse<EvaluationApiEvaluationSettingsV1UsersSetResponse> response = apiInstance.SetEvaluationSettingUserSettingWithHttpInfo(tenantId, evaluationApiEvaluationSettingsV1SetUsersRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EvaluationSettingsApi.SetEvaluationSettingUserSettingWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

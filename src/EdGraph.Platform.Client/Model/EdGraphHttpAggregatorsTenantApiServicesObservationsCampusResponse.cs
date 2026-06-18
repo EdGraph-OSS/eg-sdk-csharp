@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Name
         /// </summary>
         [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption; } set { this.NameOption = new(value); } }
+        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IdentifierType
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IdentifierType
         /// </summary>
         [JsonPropertyName("identifierType")]
-        public string? IdentifierType { get { return this.IdentifierTypeOption; } set { this.IdentifierTypeOption = new(value); } }
+        public string? IdentifierType { get { return this.IdentifierTypeOption.Value; } set { this.IdentifierTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Discriminator
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Discriminator
         /// </summary>
         [JsonPropertyName("discriminator")]
-        public string? Discriminator { get { return this.DiscriminatorOption; } set { this.DiscriminatorOption = new(value); } }
+        public string? Discriminator { get { return this.DiscriminatorOption.Value; } set { this.DiscriminatorOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CampusId
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CampusId
         /// </summary>
         [JsonPropertyName("campusId")]
-        public string? CampusId { get { return this.CampusIdOption; } set { this.CampusIdOption = new(value); } }
+        public string? CampusId { get { return this.CampusIdOption.Value; } set { this.CampusIdOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

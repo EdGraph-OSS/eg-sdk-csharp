@@ -59,7 +59,9 @@ namespace EdGraph.Platform.Client.Test.Api
             string tenantId = default!;
             string groupId = default!;
             Client.Option<AnalyticsApiGroupsV1AddGroupUsersRequest> analyticsApiGroupsV1AddGroupUsersRequest = default!;
-            await _instance.AddUsersToGroupAsyncAsync(tenantId, groupId, analyticsApiGroupsV1AddGroupUsersRequest);
+            var response = await _instance.AddUsersToGroupAsyncAsync(tenantId, groupId, analyticsApiGroupsV1AddGroupUsersRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -72,7 +74,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<AnalyticsApiGroupsV1CreateGroupRequest> analyticsApiGroupsV1CreateGroupRequest = default!;
             var response = await _instance.CreateAnalyticsPowerBiGroupAsync(tenantId, analyticsApiGroupsV1CreateGroupRequest);
             var model = response.Unauthorized();
-            Assert.IsType<AnalyticsApiGroupsV1GroupResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -83,7 +85,9 @@ namespace EdGraph.Platform.Client.Test.Api
         {
             string tenantId = default!;
             string groupId = default!;
-            await _instance.DeleteAnalyticsPowerBiGroupAsync(tenantId, groupId);
+            var response = await _instance.DeleteAnalyticsPowerBiGroupAsync(tenantId, groupId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -98,7 +102,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<int> topFirstN = default!;
             var response = await _instance.GetAnalyticsPowerBiGroupUsersAsync(tenantId, groupId, skipFirstN, topFirstN);
             var model = response.Unauthorized();
-            Assert.IsType<AnalyticsApiGroupsV1GroupUsersResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -111,7 +115,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetGroupsAsyncAsync(tenantId, filter);
             var model = response.Unauthorized();
-            Assert.IsType<AnalyticsApiGroupsV1GroupsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

@@ -61,7 +61,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdfiAdminApiEdfiAdminV1CreateOnboardingStepRequest> edfiAdminApiEdfiAdminV1CreateOnboardingStepRequest = default!;
             var response = await _instance.CreateInstanceOnboardingStepAsyncAsync(tenantId, instanceId, edfiAdminApiEdfiAdminV1CreateOnboardingStepRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1InstanceUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdfiAdminApiEdfiAdminV1UpdateOnboardingStepRequest> edfiAdminApiEdfiAdminV1UpdateOnboardingStepRequest = default!;
             var response = await _instance.UpdateInstanceOnboardingStepAsyncAsync(tenantId, instanceId, stepNumber, edfiAdminApiEdfiAdminV1UpdateOnboardingStepRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1InstanceUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

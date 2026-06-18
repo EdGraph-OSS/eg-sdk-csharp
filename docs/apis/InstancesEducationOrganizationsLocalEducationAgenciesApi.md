@@ -17,67 +17,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Creates a LocalEducationAgency.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CreateLocalEducationAgencyAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesEducationOrganizationsLocalEducationAgenciesApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var year = 56;  // int | 
-            var edfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequest = new EdfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequest(); // EdfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequest |  (optional) 
-
-            try
-            {
-                // Creates a LocalEducationAgency.
-                EdfiAdminApiEdfiAdminV1LocalEducationAgencyCreatedResponse result = apiInstance.CreateLocalEducationAgencyAsync(tenantId, instanceId, year, edfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesEducationOrganizationsLocalEducationAgenciesApi.CreateLocalEducationAgencyAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateLocalEducationAgencyAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates a LocalEducationAgency.
-    ApiResponse<EdfiAdminApiEdfiAdminV1LocalEducationAgencyCreatedResponse> response = apiInstance.CreateLocalEducationAgencyAsyncWithHttpInfo(tenantId, instanceId, year, edfiAdminApiEdfiAdminV1CreateLocalEducationAgencyRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesEducationOrganizationsLocalEducationAgenciesApi.CreateLocalEducationAgencyAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -120,63 +59,6 @@ catch (ApiException e)
 
 Deletes a LocalEducationAgency.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class DeleteLocalEducationAgencyAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesEducationOrganizationsLocalEducationAgenciesApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var year = 56;  // int | 
-            var localEducationAgencyId = "localEducationAgencyId_example";  // string | 
-
-            try
-            {
-                // Deletes a LocalEducationAgency.
-                apiInstance.DeleteLocalEducationAgencyAsync(tenantId, instanceId, year, localEducationAgencyId);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesEducationOrganizationsLocalEducationAgenciesApi.DeleteLocalEducationAgencyAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeleteLocalEducationAgencyAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Deletes a LocalEducationAgency.
-    apiInstance.DeleteLocalEducationAgencyAsyncWithHttpInfo(tenantId, instanceId, year, localEducationAgencyId);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesEducationOrganizationsLocalEducationAgenciesApi.DeleteLocalEducationAgencyAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -219,67 +101,6 @@ void (empty response body)
 
 Retrieves a LocalEducationAgency by ID.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetLocalEducationAgencyByIdAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesEducationOrganizationsLocalEducationAgenciesApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var year = 56;  // int | 
-            var localEducationAgencyId = "localEducationAgencyId_example";  // string | 
-
-            try
-            {
-                // Retrieves a LocalEducationAgency by ID.
-                EdfiAdminApiEdfiAdminV1GetLocalEducationAgencyProfileResponse result = apiInstance.GetLocalEducationAgencyByIdAsync(tenantId, instanceId, year, localEducationAgencyId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesEducationOrganizationsLocalEducationAgenciesApi.GetLocalEducationAgencyByIdAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetLocalEducationAgencyByIdAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a LocalEducationAgency by ID.
-    ApiResponse<EdfiAdminApiEdfiAdminV1GetLocalEducationAgencyProfileResponse> response = apiInstance.GetLocalEducationAgencyByIdAsyncWithHttpInfo(tenantId, instanceId, year, localEducationAgencyId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesEducationOrganizationsLocalEducationAgenciesApi.GetLocalEducationAgencyByIdAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -322,70 +143,6 @@ catch (ApiException e)
 
 Retrieves a list of LocalEducationAgencies.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetlLocalEducationAgenciesAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesEducationOrganizationsLocalEducationAgenciesApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var year = 56;  // int | 
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Retrieves a list of LocalEducationAgencies.
-                EdfiAdminApiEdfiAdminV1LocalEducationAgencyTableViewResponsePaginatedItemsViewModel result = apiInstance.GetlLocalEducationAgenciesAsync(tenantId, instanceId, year, pageSize, pageIndex, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesEducationOrganizationsLocalEducationAgenciesApi.GetlLocalEducationAgenciesAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetlLocalEducationAgenciesAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of LocalEducationAgencies.
-    ApiResponse<EdfiAdminApiEdfiAdminV1LocalEducationAgencyTableViewResponsePaginatedItemsViewModel> response = apiInstance.GetlLocalEducationAgenciesAsyncWithHttpInfo(tenantId, instanceId, year, pageSize, pageIndex, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesEducationOrganizationsLocalEducationAgenciesApi.GetlLocalEducationAgenciesAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -431,68 +188,6 @@ catch (ApiException e)
 
 Copies a LocalEducationAgency from one instance to another/other instance(s).
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SyncLocalEducationAgencyAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesEducationOrganizationsLocalEducationAgenciesApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var year = 56;  // int | 
-            var localEducationAgencyId = 56;  // int | 
-            var edfiAdminApiEdfiAdminV1SyncLocalEducationAgencyRequest = new EdfiAdminApiEdfiAdminV1SyncLocalEducationAgencyRequest(); // EdfiAdminApiEdfiAdminV1SyncLocalEducationAgencyRequest |  (optional) 
-
-            try
-            {
-                // Copies a LocalEducationAgency from one instance to another/other instance(s).
-                EdfiAdminApiEdfiAdminV1SyncResponse result = apiInstance.SyncLocalEducationAgencyAsync(tenantId, instanceId, year, localEducationAgencyId, edfiAdminApiEdfiAdminV1SyncLocalEducationAgencyRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesEducationOrganizationsLocalEducationAgenciesApi.SyncLocalEducationAgencyAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SyncLocalEducationAgencyAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Copies a LocalEducationAgency from one instance to another/other instance(s).
-    ApiResponse<EdfiAdminApiEdfiAdminV1SyncResponse> response = apiInstance.SyncLocalEducationAgencyAsyncWithHttpInfo(tenantId, instanceId, year, localEducationAgencyId, edfiAdminApiEdfiAdminV1SyncLocalEducationAgencyRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesEducationOrganizationsLocalEducationAgenciesApi.SyncLocalEducationAgencyAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -536,64 +231,6 @@ catch (ApiException e)
 
 Updates a LocalEducationAgency.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateLocalEducationAgencyAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesEducationOrganizationsLocalEducationAgenciesApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var year = 56;  // int | 
-            var localEducationAgencyId = "localEducationAgencyId_example";  // string | 
-            var edfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequest = new EdfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequest(); // EdfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequest |  (optional) 
-
-            try
-            {
-                // Updates a LocalEducationAgency.
-                apiInstance.UpdateLocalEducationAgencyAsync(tenantId, instanceId, year, localEducationAgencyId, edfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequest);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesEducationOrganizationsLocalEducationAgenciesApi.UpdateLocalEducationAgencyAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateLocalEducationAgencyAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates a LocalEducationAgency.
-    apiInstance.UpdateLocalEducationAgencyAsyncWithHttpInfo(tenantId, instanceId, year, localEducationAgencyId, edfiAdminApiEdfiAdminV1UpdateLocalEducationAgencyRequest);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesEducationOrganizationsLocalEducationAgenciesApi.UpdateLocalEducationAgencyAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

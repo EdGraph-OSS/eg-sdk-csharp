@@ -54,7 +54,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IsConfigurationValid
         /// </summary>
         [JsonPropertyName("isConfigurationValid")]
-        public bool? IsConfigurationValid { get { return this.IsConfigurationValidOption; } set { this.IsConfigurationValidOption = new(value); } }
+        public bool? IsConfigurationValid { get { return this.IsConfigurationValidOption.Value; } set { this.IsConfigurationValidOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -120,8 +120,7 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "isConfigurationValid":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isConfigurationValid = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isConfigurationValid = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

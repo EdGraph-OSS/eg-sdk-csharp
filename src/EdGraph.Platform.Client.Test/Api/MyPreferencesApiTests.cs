@@ -62,7 +62,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetUserPreferencesAsync(pageIndex, pageSize, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiUserV1GetUserPreferencesResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string code = default!;
             var response = await _instance.PreferenceAsync(code);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest = default!;
             var response = await _instance.UpdateUserPreferenceAsyncAsync(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiUserV1UserPreferenceUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

@@ -63,7 +63,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<int> limit = default!;
             var response = await _instance.FindResultsApiJobRunRecordsAsyncAsync(tenantId, jobId, runId, offset, limit);
             var model = response.Unauthorized();
-            Assert.IsType<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRecordsRecordDto>>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<int> limit = default!;
             var response = await _instance.FindResultsApiJobRunRuleRecordsAsyncAsync(tenantId, jobId, runId, ruleId, offset, limit);
             var model = response.Unauthorized();
-            Assert.IsType<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRecordsRecordDto>>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<int> limit = default!;
             var response = await _instance.FindResultsApiJobRunRulesAsyncAsync(tenantId, jobId, runId, offset, limit);
             var model = response.Unauthorized();
-            Assert.IsType<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRulesRuleDto>>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<int> limit = default!;
             var response = await _instance.FindResultsApiJobRunsAsyncAsync(tenantId, jobId, offset, limit);
             var model = response.Unauthorized();
-            Assert.IsType<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRunsRunDto>>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<int> limit = default!;
             var response = await _instance.FindResultsApiJobsAsyncAsync(tenantId, offset, limit);
             var model = response.Unauthorized();
-            Assert.IsType<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiJobsJobDto>>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<int> limit = default!;
             var response = await _instance.FindResultsApiRuleSummariesAsync(tenantId, jobId, runId, offset, limit);
             var model = response.Unauthorized();
-            Assert.IsType<List<ValidationsApiResultsV1RuleSummary>>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -155,7 +155,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<int> limit = default!;
             var response = await _instance.FindResultsApiRulesAsyncAsync(tenantId, offset, limit);
             var model = response.Unauthorized();
-            Assert.IsType<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRulesRuleDto>>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string jobId = default!;
             var response = await _instance.GetLatestJobRunAsyncAsync(tenantId, jobId);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRunsRunDto>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -181,7 +181,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string jobId = default!;
             var response = await _instance.GetResultsApiJobByIdAsync(tenantId, jobId);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiJobsJobDto>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string runId = default!;
             var response = await _instance.GetResultsApiJobRunByIdAsyncAsync(tenantId, jobId, runId);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRunsRunDto>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -210,7 +210,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string ruleId = default!;
             var response = await _instance.GetResultsApiJobRunRuleByIdAsyncAsync(tenantId, jobId, runId, ruleId);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRulesRuleDto>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -223,7 +223,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string ruleId = default!;
             var response = await _instance.GetResultsApiRuleByIdAsyncAsync(tenantId, ruleId);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesValidationResultsApiRulesRuleDto>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -238,7 +238,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid ruleId = default!;
             var response = await _instance.GetResultsApiRuleSummaryAsync(tenantId, jobId, runId, ruleId);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiResultsV1RuleSummary>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

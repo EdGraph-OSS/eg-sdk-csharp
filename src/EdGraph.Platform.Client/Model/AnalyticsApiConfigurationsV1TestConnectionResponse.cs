@@ -54,7 +54,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IsConnectionSuccessful
         /// </summary>
         [JsonPropertyName("isConnectionSuccessful")]
-        public bool? IsConnectionSuccessful { get { return this.IsConnectionSuccessfulOption; } set { this.IsConnectionSuccessfulOption = new(value); } }
+        public bool? IsConnectionSuccessful { get { return this.IsConnectionSuccessfulOption.Value; } set { this.IsConnectionSuccessfulOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -120,8 +120,7 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "isConnectionSuccessful":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isConnectionSuccessful = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isConnectionSuccessful = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

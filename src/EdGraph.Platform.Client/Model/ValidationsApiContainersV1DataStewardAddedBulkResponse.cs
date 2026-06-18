@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Collections
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Collections
         /// </summary>
         [JsonPropertyName("collections")]
-        public List<ValidationsApiContainersV1DataStewardAddedBulkResponseTypesCollection>? Collections { get { return this.CollectionsOption; } }
+        public List<ValidationsApiContainersV1DataStewardAddedBulkResponseTypesCollection>? Collections { get { return this.CollectionsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of ReportingPeriodId
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ReportingPeriodId
         /// </summary>
         [JsonPropertyName("reportingPeriodId")]
-        public string? ReportingPeriodId { get { return this.ReportingPeriodIdOption; } set { this.ReportingPeriodIdOption = new(value); } }
+        public string? ReportingPeriodId { get { return this.ReportingPeriodIdOption.Value; } set { this.ReportingPeriodIdOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -157,8 +157,7 @@ namespace EdGraph.Platform.Client.Model
                             tenantId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "collections":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                collections = new Option<List<ValidationsApiContainersV1DataStewardAddedBulkResponseTypesCollection>?>(JsonSerializer.Deserialize<List<ValidationsApiContainersV1DataStewardAddedBulkResponseTypesCollection>>(ref utf8JsonReader, jsonSerializerOptions));
+                            collections = new Option<List<ValidationsApiContainersV1DataStewardAddedBulkResponseTypesCollection>?>(JsonSerializer.Deserialize<List<ValidationsApiContainersV1DataStewardAddedBulkResponseTypesCollection>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "reportingPeriodId":
                             reportingPeriodId = new Option<string?>(utf8JsonReader.GetString());

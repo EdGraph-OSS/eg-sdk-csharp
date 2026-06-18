@@ -62,7 +62,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ClientId
         /// </summary>
         [JsonPropertyName("clientId")]
-        public string? ClientId { get { return this.ClientIdOption; } set { this.ClientIdOption = new(value); } }
+        public string? ClientId { get { return this.ClientIdOption.Value; } set { this.ClientIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of AzureTenantId
@@ -75,7 +75,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets AzureTenantId
         /// </summary>
         [JsonPropertyName("azureTenantId")]
-        public string? AzureTenantId { get { return this.AzureTenantIdOption; } set { this.AzureTenantIdOption = new(value); } }
+        public string? AzureTenantId { get { return this.AzureTenantIdOption.Value; } set { this.AzureTenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ClientSecret
@@ -88,7 +88,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ClientSecret
         /// </summary>
         [JsonPropertyName("clientSecret")]
-        public string? ClientSecret { get { return this.ClientSecretOption; } set { this.ClientSecretOption = new(value); } }
+        public string? ClientSecret { get { return this.ClientSecretOption.Value; } set { this.ClientSecretOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Scopes
@@ -101,7 +101,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Scopes
         /// </summary>
         [JsonPropertyName("scopes")]
-        public List<string>? Scopes { get { return this.ScopesOption; } }
+        public List<string>? Scopes { get { return this.ScopesOption.Value; } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -114,7 +114,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -197,8 +197,7 @@ namespace EdGraph.Platform.Client.Model
                             clientSecret = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "scopes":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                scopes = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            scopes = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "tenantId":
                             tenantId = new Option<string?>(utf8JsonReader.GetString());

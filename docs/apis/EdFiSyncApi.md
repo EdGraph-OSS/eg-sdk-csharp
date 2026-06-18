@@ -15,65 +15,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Creates an Ed-Fi Sync Job for a given tenant
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CreateEdFiSyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EdFiSyncApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var edGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto = new EdGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto(); // EdGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto |  (optional) 
-
-            try
-            {
-                // Creates an Ed-Fi Sync Job for a given tenant
-                EdGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncJobCreatedResult result = apiInstance.CreateEdFiSync(tenantId, edGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EdFiSyncApi.CreateEdFiSync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateEdFiSyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates an Ed-Fi Sync Job for a given tenant
-    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncJobCreatedResult> response = apiInstance.CreateEdFiSyncWithHttpInfo(tenantId, edGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EdFiSyncApi.CreateEdFiSyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -113,64 +54,6 @@ catch (ApiException e)
 
 Executes an Ed-Fi Sync Job
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class ExecuteEdFiSyncJobExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EdFiSyncApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-
-            try
-            {
-                // Executes an Ed-Fi Sync Job
-                DataSyncApiJobV1JobExecutionRequestedResponse result = apiInstance.ExecuteEdFiSyncJob(tenantId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EdFiSyncApi.ExecuteEdFiSyncJob: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the ExecuteEdFiSyncJobWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Executes an Ed-Fi Sync Job
-    ApiResponse<DataSyncApiJobV1JobExecutionRequestedResponse> response = apiInstance.ExecuteEdFiSyncJobWithHttpInfo(tenantId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EdFiSyncApi.ExecuteEdFiSyncJobWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -209,64 +92,6 @@ catch (ApiException e)
 
 Retrieves Ed-Fi Sync Connection Data for a given tenant
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetEdFiSyncDataExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EdFiSyncApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-
-            try
-            {
-                // Retrieves Ed-Fi Sync Connection Data for a given tenant
-                DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfile result = apiInstance.GetEdFiSyncData(tenantId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EdFiSyncApi.GetEdFiSyncData: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetEdFiSyncDataWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves Ed-Fi Sync Connection Data for a given tenant
-    ApiResponse<DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfile> response = apiInstance.GetEdFiSyncDataWithHttpInfo(tenantId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EdFiSyncApi.GetEdFiSyncDataWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -305,65 +130,6 @@ catch (ApiException e)
 
 Updates an Ed-Fi Sync for a given tenant
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateEdFiSyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EdFiSyncApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var body = null;  // Object |  (optional) 
-
-            try
-            {
-                // Updates an Ed-Fi Sync for a given tenant
-                MicrosoftAspNetCoreMvcNoContentResult result = apiInstance.UpdateEdFiSync(tenantId, body);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EdFiSyncApi.UpdateEdFiSync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateEdFiSyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates an Ed-Fi Sync for a given tenant
-    ApiResponse<MicrosoftAspNetCoreMvcNoContentResult> response = apiInstance.UpdateEdFiSyncWithHttpInfo(tenantId, body);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EdFiSyncApi.UpdateEdFiSyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

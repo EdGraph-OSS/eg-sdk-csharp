@@ -61,7 +61,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsAddEducationOrganizationRequest> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsAddEducationOrganizationRequest = default!;
             var response = await _instance.AddUserEducationOrganizationAsync(tenantId, userId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsAddEducationOrganizationRequest);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiUserV1EducationOrganizationAddedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid userId = default!;
             var response = await _instance.GetUserEducationOrganizationsAsync(tenantId, userId);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiUserV1EducationOrganizationPaginatedItemsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace EdGraph.Platform.Client.Test.Api
             int educationOrganizationId = default!;
             var response = await _instance.RemoveUserEducationOrganizationAsync(tenantId, userId, educationOrganizationId);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiUserV1EducationOrganizationRemovedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsUpdateEducationOrganizationRequest> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsUpdateEducationOrganizationRequest = default!;
             var response = await _instance.UpdateUserEducationOrganizationAsync(tenantId, userId, educationOrganizationId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEducationOrganizationsUpdateEducationOrganizationRequest);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiUserV1EducationOrganizationUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

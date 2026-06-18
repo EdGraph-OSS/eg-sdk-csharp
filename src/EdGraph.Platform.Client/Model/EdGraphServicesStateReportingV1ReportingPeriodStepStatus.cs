@@ -159,7 +159,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, EdGraphServicesStateReportingV1ReportingPeriodStepStatus edGraphServicesStateReportingV1ReportingPeriodStepStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(edGraphServicesStateReportingV1ReportingPeriodStepStatus.ToString());
+            writer.WriteStringValue(EdGraphServicesStateReportingV1ReportingPeriodStepStatusValueConverter.ToJsonValue(edGraphServicesStateReportingV1ReportingPeriodStepStatus).ToString());
         }
     }
 
@@ -190,14 +190,14 @@ namespace EdGraph.Platform.Client.Model
         }
 
         /// <summary>
-        /// Writes the DateTime to the json writer
+        /// Writes the EdGraphServicesStateReportingV1ReportingPeriodStepStatus to the json writer
         /// </summary>
         /// <param name="writer"></param>
         /// <param name="edGraphServicesStateReportingV1ReportingPeriodStepStatus"></param>
         /// <param name="options"></param>
         public override void Write(Utf8JsonWriter writer, EdGraphServicesStateReportingV1ReportingPeriodStepStatus? edGraphServicesStateReportingV1ReportingPeriodStepStatus, JsonSerializerOptions options)
         {
-            writer.WriteStringValue(edGraphServicesStateReportingV1ReportingPeriodStepStatus?.ToString() ?? "null");
+            writer.WriteStringValue(edGraphServicesStateReportingV1ReportingPeriodStepStatus.HasValue ? EdGraphServicesStateReportingV1ReportingPeriodStepStatusValueConverter.ToJsonValue(edGraphServicesStateReportingV1ReportingPeriodStepStatus.Value).ToString() : "null");
         }
     }
 }

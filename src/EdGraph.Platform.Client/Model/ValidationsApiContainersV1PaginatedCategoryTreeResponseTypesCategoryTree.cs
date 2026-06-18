@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CategoryId
         /// </summary>
         [JsonPropertyName("categoryId")]
-        public string? CategoryId { get { return this.CategoryIdOption; } set { this.CategoryIdOption = new(value); } }
+        public string? CategoryId { get { return this.CategoryIdOption.Value; } set { this.CategoryIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Name
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Name
         /// </summary>
         [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption; } set { this.NameOption = new(value); } }
+        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SubCategories
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SubCategories
         /// </summary>
         [JsonPropertyName("subCategories")]
-        public List<ValidationsApiContainersV1PaginatedCategoryTreeResponseTypesSubCategoryTree>? SubCategories { get { return this.SubCategoriesOption; } }
+        public List<ValidationsApiContainersV1PaginatedCategoryTreeResponseTypesSubCategoryTree>? SubCategories { get { return this.SubCategoriesOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -160,8 +160,7 @@ namespace EdGraph.Platform.Client.Model
                             name = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "subCategories":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                subCategories = new Option<List<ValidationsApiContainersV1PaginatedCategoryTreeResponseTypesSubCategoryTree>?>(JsonSerializer.Deserialize<List<ValidationsApiContainersV1PaginatedCategoryTreeResponseTypesSubCategoryTree>>(ref utf8JsonReader, jsonSerializerOptions));
+                            subCategories = new Option<List<ValidationsApiContainersV1PaginatedCategoryTreeResponseTypesSubCategoryTree>?>(JsonSerializer.Deserialize<List<ValidationsApiContainersV1PaginatedCategoryTreeResponseTypesSubCategoryTree>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

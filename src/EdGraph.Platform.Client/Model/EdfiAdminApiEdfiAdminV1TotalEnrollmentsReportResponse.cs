@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EnrollmentCount
         /// </summary>
         [JsonPropertyName("enrollmentCount")]
-        public int? EnrollmentCount { get { return this.EnrollmentCountOption; } set { this.EnrollmentCountOption = new(value); } }
+        public int? EnrollmentCount { get { return this.EnrollmentCountOption.Value; } set { this.EnrollmentCountOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EducationOrganizationId
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EducationOrganizationId
         /// </summary>
         [JsonPropertyName("educationOrganizationId")]
-        public int? EducationOrganizationId { get { return this.EducationOrganizationIdOption; } set { this.EducationOrganizationIdOption = new(value); } }
+        public int? EducationOrganizationId { get { return this.EducationOrganizationIdOption.Value; } set { this.EducationOrganizationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Id
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of NameOfInstitution
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets NameOfInstitution
         /// </summary>
         [JsonPropertyName("nameOfInstitution")]
-        public string? NameOfInstitution { get { return this.NameOfInstitutionOption; } set { this.NameOfInstitutionOption = new(value); } }
+        public string? NameOfInstitution { get { return this.NameOfInstitutionOption.Value; } set { this.NameOfInstitutionOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -171,12 +171,10 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "enrollmentCount":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                enrollmentCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            enrollmentCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "educationOrganizationId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                educationOrganizationId = new Option<int?>(utf8JsonReader.GetInt32());
+                            educationOrganizationId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "id":
                             id = new Option<string?>(utf8JsonReader.GetString());

@@ -66,7 +66,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Title
@@ -79,7 +79,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Title
         /// </summary>
         [JsonPropertyName("title")]
-        public string? Title { get { return this.TitleOption; } set { this.TitleOption = new(value); } }
+        public string? Title { get { return this.TitleOption.Value; } set { this.TitleOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Description
@@ -92,7 +92,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Description
         /// </summary>
         [JsonPropertyName("description")]
-        public string? Description { get { return this.DescriptionOption; } set { this.DescriptionOption = new(value); } }
+        public string? Description { get { return this.DescriptionOption.Value; } set { this.DescriptionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Questions
@@ -105,7 +105,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Questions
         /// </summary>
         [JsonPropertyName("questions")]
-        public List<FormApiFormsV1UpdateFullQuestionRequest>? Questions { get { return this.QuestionsOption; } }
+        public List<FormApiFormsV1UpdateFullQuestionRequest>? Questions { get { return this.QuestionsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of Order
@@ -118,7 +118,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Order
         /// </summary>
         [JsonPropertyName("order")]
-        public int? Order { get { return this.OrderOption; } set { this.OrderOption = new(value); } }
+        public int? Order { get { return this.OrderOption.Value; } set { this.OrderOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SubHeading
@@ -131,7 +131,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SubHeading
         /// </summary>
         [JsonPropertyName("subHeading")]
-        public string? SubHeading { get { return this.SubHeadingOption; } set { this.SubHeadingOption = new(value); } }
+        public string? SubHeading { get { return this.SubHeadingOption.Value; } set { this.SubHeadingOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CustomId
@@ -144,7 +144,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CustomId
         /// </summary>
         [JsonPropertyName("customId")]
-        public string? CustomId { get { return this.CustomIdOption; } set { this.CustomIdOption = new(value); } }
+        public string? CustomId { get { return this.CustomIdOption.Value; } set { this.CustomIdOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -231,12 +231,10 @@ namespace EdGraph.Platform.Client.Model
                             description = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "questions":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                questions = new Option<List<FormApiFormsV1UpdateFullQuestionRequest>?>(JsonSerializer.Deserialize<List<FormApiFormsV1UpdateFullQuestionRequest>>(ref utf8JsonReader, jsonSerializerOptions));
+                            questions = new Option<List<FormApiFormsV1UpdateFullQuestionRequest>?>(JsonSerializer.Deserialize<List<FormApiFormsV1UpdateFullQuestionRequest>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "order":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                order = new Option<int?>(utf8JsonReader.GetInt32());
+                            order = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "subHeading":
                             subHeading = new Option<string?>(utf8JsonReader.GetString());

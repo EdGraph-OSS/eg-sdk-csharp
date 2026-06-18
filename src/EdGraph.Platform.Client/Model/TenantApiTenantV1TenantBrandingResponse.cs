@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Enabled
         /// </summary>
         [JsonPropertyName("enabled")]
-        public bool? Enabled { get { return this.EnabledOption; } set { this.EnabledOption = new(value); } }
+        public bool? Enabled { get { return this.EnabledOption.Value; } set { this.EnabledOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of BrandName
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets BrandName
         /// </summary>
         [JsonPropertyName("brandName")]
-        public string? BrandName { get { return this.BrandNameOption; } set { this.BrandNameOption = new(value); } }
+        public string? BrandName { get { return this.BrandNameOption.Value; } set { this.BrandNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Logo
@@ -86,7 +86,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Logo
         /// </summary>
         [JsonPropertyName("logo")]
-        public TenantApiTenantV1TenantBrandingLogo? Logo { get { return this.LogoOption; } set { this.LogoOption = new(value); } }
+        public TenantApiTenantV1TenantBrandingLogo? Logo { get { return this.LogoOption.Value; } set { this.LogoOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Background
@@ -99,7 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Background
         /// </summary>
         [JsonPropertyName("background")]
-        public TenantApiTenantV1TenantBrandingBackground? Background { get { return this.BackgroundOption; } set { this.BackgroundOption = new(value); } }
+        public TenantApiTenantV1TenantBrandingBackground? Background { get { return this.BackgroundOption.Value; } set { this.BackgroundOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -171,19 +171,16 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "enabled":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                enabled = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            enabled = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "brandName":
                             brandName = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "logo":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                logo = new Option<TenantApiTenantV1TenantBrandingLogo?>(JsonSerializer.Deserialize<TenantApiTenantV1TenantBrandingLogo>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            logo = new Option<TenantApiTenantV1TenantBrandingLogo?>(JsonSerializer.Deserialize<TenantApiTenantV1TenantBrandingLogo>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "background":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                background = new Option<TenantApiTenantV1TenantBrandingBackground?>(JsonSerializer.Deserialize<TenantApiTenantV1TenantBrandingBackground>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            background = new Option<TenantApiTenantV1TenantBrandingBackground?>(JsonSerializer.Deserialize<TenantApiTenantV1TenantBrandingBackground>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         default:
                             break;

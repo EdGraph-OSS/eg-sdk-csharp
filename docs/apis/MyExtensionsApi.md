@@ -13,64 +13,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Removes a user's profile extension.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class RemoveUserExtensionExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new MyExtensionsApi(config);
-            var code = "code_example";  // string | 
-
-            try
-            {
-                // Removes a user's profile extension.
-                IdentityApiUserV1UserExtensionRemovedResponse result = apiInstance.RemoveUserExtension(code);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling MyExtensionsApi.RemoveUserExtension: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the RemoveUserExtensionWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Removes a user's profile extension.
-    ApiResponse<IdentityApiUserV1UserExtensionRemovedResponse> response = apiInstance.RemoveUserExtensionWithHttpInfo(code);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling MyExtensionsApi.RemoveUserExtensionWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -109,64 +51,6 @@ catch (ApiException e)
 
 Creates or update a user's profile extension.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SetUserExtensionExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new MyExtensionsApi(config);
-            var identityApiUserV1SetUserExtensionRequest = new IdentityApiUserV1SetUserExtensionRequest(); // IdentityApiUserV1SetUserExtensionRequest |  (optional) 
-
-            try
-            {
-                // Creates or update a user's profile extension.
-                IdentityApiUserV1UserExtensionSetResponse result = apiInstance.SetUserExtension(identityApiUserV1SetUserExtensionRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling MyExtensionsApi.SetUserExtension: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SetUserExtensionWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates or update a user's profile extension.
-    ApiResponse<IdentityApiUserV1UserExtensionSetResponse> response = apiInstance.SetUserExtensionWithHttpInfo(identityApiUserV1SetUserExtensionRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling MyExtensionsApi.SetUserExtensionWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

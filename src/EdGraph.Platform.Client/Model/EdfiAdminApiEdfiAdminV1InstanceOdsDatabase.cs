@@ -66,7 +66,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SelectedTierId
         /// </summary>
         [JsonPropertyName("selectedTierId")]
-        public string? SelectedTierId { get { return this.SelectedTierIdOption; } set { this.SelectedTierIdOption = new(value); } }
+        public string? SelectedTierId { get { return this.SelectedTierIdOption.Value; } set { this.SelectedTierIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SelectedTierName
@@ -79,7 +79,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SelectedTierName
         /// </summary>
         [JsonPropertyName("selectedTierName")]
-        public string? SelectedTierName { get { return this.SelectedTierNameOption; } set { this.SelectedTierNameOption = new(value); } }
+        public string? SelectedTierName { get { return this.SelectedTierNameOption.Value; } set { this.SelectedTierNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Status
@@ -92,7 +92,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Status
         /// </summary>
         [JsonPropertyName("status")]
-        public string? Status { get { return this.StatusOption; } set { this.StatusOption = new(value); } }
+        public string? Status { get { return this.StatusOption.Value; } set { this.StatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Jobs
@@ -105,7 +105,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Jobs
         /// </summary>
         [JsonPropertyName("jobs")]
-        public EdfiAdminApiEdfiAdminV1InstanceDatabaseJobs? Jobs { get { return this.JobsOption; } set { this.JobsOption = new(value); } }
+        public EdfiAdminApiEdfiAdminV1InstanceDatabaseJobs? Jobs { get { return this.JobsOption.Value; } set { this.JobsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Year
@@ -118,7 +118,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Year
         /// </summary>
         [JsonPropertyName("year")]
-        public int? Year { get { return this.YearOption; } set { this.YearOption = new(value); } }
+        public int? Year { get { return this.YearOption.Value; } set { this.YearOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of OdsBackupCode
@@ -131,7 +131,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets OdsBackupCode
         /// </summary>
         [JsonPropertyName("odsBackupCode")]
-        public string? OdsBackupCode { get { return this.OdsBackupCodeOption; } set { this.OdsBackupCodeOption = new(value); } }
+        public string? OdsBackupCode { get { return this.OdsBackupCodeOption.Value; } set { this.OdsBackupCodeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of OdsBackupDescription
@@ -144,7 +144,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets OdsBackupDescription
         /// </summary>
         [JsonPropertyName("odsBackupDescription")]
-        public string? OdsBackupDescription { get { return this.OdsBackupDescriptionOption; } set { this.OdsBackupDescriptionOption = new(value); } }
+        public string? OdsBackupDescription { get { return this.OdsBackupDescriptionOption.Value; } set { this.OdsBackupDescriptionOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -231,12 +231,10 @@ namespace EdGraph.Platform.Client.Model
                             status = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "jobs":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                jobs = new Option<EdfiAdminApiEdfiAdminV1InstanceDatabaseJobs?>(JsonSerializer.Deserialize<EdfiAdminApiEdfiAdminV1InstanceDatabaseJobs>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            jobs = new Option<EdfiAdminApiEdfiAdminV1InstanceDatabaseJobs?>(JsonSerializer.Deserialize<EdfiAdminApiEdfiAdminV1InstanceDatabaseJobs>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "year":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                year = new Option<int?>(utf8JsonReader.GetInt32());
+                            year = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "odsBackupCode":
                             odsBackupCode = new Option<string?>(utf8JsonReader.GetString());

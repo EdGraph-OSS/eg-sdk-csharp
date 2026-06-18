@@ -20,65 +20,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Queues a job to generate the report views in the ODS Database.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GenerateReportsAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesReportsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-
-            try
-            {
-                // Queues a job to generate the report views in the ODS Database.
-                EdfiAdminApiEdfiAdminV1GenerateReportsResponse result = apiInstance.GenerateReportsAsync(tenantId, instanceId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesReportsApi.GenerateReportsAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GenerateReportsAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Queues a job to generate the report views in the ODS Database.
-    ApiResponse<EdfiAdminApiEdfiAdminV1GenerateReportsResponse> response = apiInstance.GenerateReportsAsyncWithHttpInfo(tenantId, instanceId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesReportsApi.GenerateReportsAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -119,65 +60,6 @@ catch (ApiException e)
 
 Retrieves the status of the report views in Instance.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetReportsStatusAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesReportsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-
-            try
-            {
-                // Retrieves the status of the report views in Instance.
-                EdfiAdminApiEdfiAdminV1ReportsStatusResponse result = apiInstance.GetReportsStatusAsync(tenantId, instanceId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesReportsApi.GetReportsStatusAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetReportsStatusAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves the status of the report views in Instance.
-    ApiResponse<EdfiAdminApiEdfiAdminV1ReportsStatusResponse> response = apiInstance.GetReportsStatusAsyncWithHttpInfo(tenantId, instanceId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesReportsApi.GetReportsStatusAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -218,66 +100,6 @@ catch (ApiException e)
 
 Retrieves a \"Schools By Type\" report.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetSchoolsByTypeReportAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesReportsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var localEducationAgencyId = 56;  // int | 
-
-            try
-            {
-                // Retrieves a \"Schools By Type\" report.
-                EdfiAdminApiEdfiAdminV1SchoolsByTypeReportResponse result = apiInstance.GetSchoolsByTypeReportAsync(tenantId, instanceId, localEducationAgencyId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesReportsApi.GetSchoolsByTypeReportAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetSchoolsByTypeReportAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a \"Schools By Type\" report.
-    ApiResponse<EdfiAdminApiEdfiAdminV1SchoolsByTypeReportResponse> response = apiInstance.GetSchoolsByTypeReportAsyncWithHttpInfo(tenantId, instanceId, localEducationAgencyId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesReportsApi.GetSchoolsByTypeReportAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -319,66 +141,6 @@ catch (ApiException e)
 
 Retrieves a \"Students Economic Situation\" report.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetStudentEconomicSituationReportAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesReportsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var localEducationAgencyId = 56;  // int | 
-
-            try
-            {
-                // Retrieves a \"Students Economic Situation\" report.
-                EdfiAdminApiEdfiAdminV1StudentEconomicSituationReportResponse result = apiInstance.GetStudentEconomicSituationReportAsync(tenantId, instanceId, localEducationAgencyId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesReportsApi.GetStudentEconomicSituationReportAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetStudentEconomicSituationReportAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a \"Students Economic Situation\" report.
-    ApiResponse<EdfiAdminApiEdfiAdminV1StudentEconomicSituationReportResponse> response = apiInstance.GetStudentEconomicSituationReportAsyncWithHttpInfo(tenantId, instanceId, localEducationAgencyId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesReportsApi.GetStudentEconomicSituationReportAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -420,66 +182,6 @@ catch (ApiException e)
 
 Retrieves a \"Student Enrollment By Ethnicity\" report.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetStudentEnrollmentByEthnicityReportExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesReportsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var localEducationAgencyId = 56;  // int | 
-
-            try
-            {
-                // Retrieves a \"Student Enrollment By Ethnicity\" report.
-                EdfiAdminApiEdfiAdminV1StudentEnrollmentByEthnicityReportResponse result = apiInstance.GetStudentEnrollmentByEthnicityReport(tenantId, instanceId, localEducationAgencyId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesReportsApi.GetStudentEnrollmentByEthnicityReport: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetStudentEnrollmentByEthnicityReportWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a \"Student Enrollment By Ethnicity\" report.
-    ApiResponse<EdfiAdminApiEdfiAdminV1StudentEnrollmentByEthnicityReportResponse> response = apiInstance.GetStudentEnrollmentByEthnicityReportWithHttpInfo(tenantId, instanceId, localEducationAgencyId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesReportsApi.GetStudentEnrollmentByEthnicityReportWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -521,66 +223,6 @@ catch (ApiException e)
 
 Retrieves a \"Student Enrollment By Gender\" report.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetStudentEnrollmentByGenderReportAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesReportsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var localEducationAgencyId = 56;  // int | 
-
-            try
-            {
-                // Retrieves a \"Student Enrollment By Gender\" report.
-                EdfiAdminApiEdfiAdminV1StudentEnrollmentByGenderReportResponse result = apiInstance.GetStudentEnrollmentByGenderReportAsync(tenantId, instanceId, localEducationAgencyId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesReportsApi.GetStudentEnrollmentByGenderReportAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetStudentEnrollmentByGenderReportAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a \"Student Enrollment By Gender\" report.
-    ApiResponse<EdfiAdminApiEdfiAdminV1StudentEnrollmentByGenderReportResponse> response = apiInstance.GetStudentEnrollmentByGenderReportAsyncWithHttpInfo(tenantId, instanceId, localEducationAgencyId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesReportsApi.GetStudentEnrollmentByGenderReportAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -622,66 +264,6 @@ catch (ApiException e)
 
 Retrieves a \"Student Enrollment By Race\" report.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetStudentEnrollmentByRaceReportAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesReportsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var localEducationAgencyId = 56;  // int | 
-
-            try
-            {
-                // Retrieves a \"Student Enrollment By Race\" report.
-                EdfiAdminApiEdfiAdminV1StudentEnrollmentByRaceReportResponse result = apiInstance.GetStudentEnrollmentByRaceReportAsync(tenantId, instanceId, localEducationAgencyId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesReportsApi.GetStudentEnrollmentByRaceReportAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetStudentEnrollmentByRaceReportAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a \"Student Enrollment By Race\" report.
-    ApiResponse<EdfiAdminApiEdfiAdminV1StudentEnrollmentByRaceReportResponse> response = apiInstance.GetStudentEnrollmentByRaceReportAsyncWithHttpInfo(tenantId, instanceId, localEducationAgencyId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesReportsApi.GetStudentEnrollmentByRaceReportAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -723,66 +305,6 @@ catch (ApiException e)
 
 Retrieves a \"Students By Program\" report.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetStudentsByProgramReportAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesReportsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var localEducationAgencyId = 56;  // int | 
-
-            try
-            {
-                // Retrieves a \"Students By Program\" report.
-                EdfiAdminApiEdfiAdminV1StudentsByProgramReportResponse result = apiInstance.GetStudentsByProgramReportAsync(tenantId, instanceId, localEducationAgencyId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesReportsApi.GetStudentsByProgramReportAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetStudentsByProgramReportAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a \"Students By Program\" report.
-    ApiResponse<EdfiAdminApiEdfiAdminV1StudentsByProgramReportResponse> response = apiInstance.GetStudentsByProgramReportAsyncWithHttpInfo(tenantId, instanceId, localEducationAgencyId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesReportsApi.GetStudentsByProgramReportAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -824,66 +346,6 @@ catch (ApiException e)
 
 Retrieves a \"Total Enrollments\" report.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetTotalEnrollmentsReportAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new InstancesReportsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var instanceId = "instanceId_example";  // string | 
-            var localEducationAgencyId = 56;  // int | 
-
-            try
-            {
-                // Retrieves a \"Total Enrollments\" report.
-                EdfiAdminApiEdfiAdminV1TotalEnrollmentsReportResponse result = apiInstance.GetTotalEnrollmentsReportAsync(tenantId, instanceId, localEducationAgencyId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling InstancesReportsApi.GetTotalEnrollmentsReportAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetTotalEnrollmentsReportAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a \"Total Enrollments\" report.
-    ApiResponse<EdfiAdminApiEdfiAdminV1TotalEnrollmentsReportResponse> response = apiInstance.GetTotalEnrollmentsReportAsyncWithHttpInfo(tenantId, instanceId, localEducationAgencyId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling InstancesReportsApi.GetTotalEnrollmentsReportAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

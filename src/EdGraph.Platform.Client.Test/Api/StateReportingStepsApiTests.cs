@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Test.Api
             int schoolYear = default!;
             var response = await _instance.GetStepsAsync(tenantId, schoolYear);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiStateReportingStepsV1GetStateReportingStepsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<ValidationsApiStateReportingStepsV1UpdateStateReportingStepRequest> validationsApiStateReportingStepsV1UpdateStateReportingStepRequest = default!;
             var response = await _instance.UpdateStepAsync(tenantId, schoolYear, validationsApiStateReportingStepsV1UpdateStateReportingStepRequest);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiStateReportingStepsV1GetStateReportingStepsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

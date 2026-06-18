@@ -38,14 +38,16 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="firstName">firstName</param>
         /// <param name="lastName">lastName</param>
         /// <param name="status">status</param>
+        /// <param name="platformRole">platformRole</param>
         [JsonConstructor]
-        public IdentityApiUserV1UserTenantStatusProfile(Option<string?> email = default, Option<string?> username = default, Option<string?> firstName = default, Option<string?> lastName = default, Option<string?> status = default)
+        public IdentityApiUserV1UserTenantStatusProfile(Option<string?> email = default, Option<string?> username = default, Option<string?> firstName = default, Option<string?> lastName = default, Option<string?> status = default, Option<string?> platformRole = default)
         {
             EmailOption = email;
             UsernameOption = username;
             FirstNameOption = firstName;
             LastNameOption = lastName;
             StatusOption = status;
+            PlatformRoleOption = platformRole;
             OnCreated();
         }
 
@@ -62,7 +64,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Email
         /// </summary>
         [JsonPropertyName("email")]
-        public string? Email { get { return this.EmailOption; } set { this.EmailOption = new(value); } }
+        public string? Email { get { return this.EmailOption.Value; } set { this.EmailOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Username
@@ -75,7 +77,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Username
         /// </summary>
         [JsonPropertyName("username")]
-        public string? Username { get { return this.UsernameOption; } set { this.UsernameOption = new(value); } }
+        public string? Username { get { return this.UsernameOption.Value; } set { this.UsernameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of FirstName
@@ -88,7 +90,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets FirstName
         /// </summary>
         [JsonPropertyName("firstName")]
-        public string? FirstName { get { return this.FirstNameOption; } set { this.FirstNameOption = new(value); } }
+        public string? FirstName { get { return this.FirstNameOption.Value; } set { this.FirstNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastName
@@ -101,7 +103,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastName
         /// </summary>
         [JsonPropertyName("lastName")]
-        public string? LastName { get { return this.LastNameOption; } set { this.LastNameOption = new(value); } }
+        public string? LastName { get { return this.LastNameOption.Value; } set { this.LastNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Status
@@ -114,7 +116,20 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Status
         /// </summary>
         [JsonPropertyName("status")]
-        public string? Status { get { return this.StatusOption; } set { this.StatusOption = new(value); } }
+        public string? Status { get { return this.StatusOption.Value; } set { this.StatusOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of PlatformRole
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> PlatformRoleOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets PlatformRole
+        /// </summary>
+        [JsonPropertyName("platformRole")]
+        public string? PlatformRole { get { return this.PlatformRoleOption.Value; } set { this.PlatformRoleOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -129,6 +144,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  FirstName: ").Append(FirstName).Append("\n");
             sb.Append("  LastName: ").Append(LastName).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  PlatformRole: ").Append(PlatformRole).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -171,6 +187,7 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> firstName = default;
             Option<string?> lastName = default;
             Option<string?> status = default;
+            Option<string?> platformRole = default;
 
             while (utf8JsonReader.Read())
             {
@@ -202,13 +219,16 @@ namespace EdGraph.Platform.Client.Model
                         case "status":
                             status = new Option<string?>(utf8JsonReader.GetString());
                             break;
+                        case "platformRole":
+                            platformRole = new Option<string?>(utf8JsonReader.GetString());
+                            break;
                         default:
                             break;
                     }
                 }
             }
 
-            return new IdentityApiUserV1UserTenantStatusProfile(email, username, firstName, lastName, status);
+            return new IdentityApiUserV1UserTenantStatusProfile(email, username, firstName, lastName, status, platformRole);
         }
 
         /// <summary>
@@ -264,6 +284,12 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteString("status", identityApiUserV1UserTenantStatusProfile.Status);
                 else
                     writer.WriteNull("status");
+
+            if (identityApiUserV1UserTenantStatusProfile.PlatformRoleOption.IsSet)
+                if (identityApiUserV1UserTenantStatusProfile.PlatformRoleOption.Value != null)
+                    writer.WriteString("platformRole", identityApiUserV1UserTenantStatusProfile.PlatformRole);
+                else
+                    writer.WriteNull("platformRole");
         }
     }
 }

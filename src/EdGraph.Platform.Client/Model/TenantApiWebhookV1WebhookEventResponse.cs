@@ -74,7 +74,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedAt
@@ -87,7 +87,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedAt
         /// </summary>
         [JsonPropertyName("createdAt")]
-        public string? CreatedAt { get { return this.CreatedAtOption; } set { this.CreatedAtOption = new(value); } }
+        public string? CreatedAt { get { return this.CreatedAtOption.Value; } set { this.CreatedAtOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedBy
@@ -100,7 +100,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedBy
         /// </summary>
         [JsonPropertyName("createdBy")]
-        public string? CreatedBy { get { return this.CreatedByOption; } set { this.CreatedByOption = new(value); } }
+        public string? CreatedBy { get { return this.CreatedByOption.Value; } set { this.CreatedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of UpdatedAt
@@ -113,7 +113,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets UpdatedAt
         /// </summary>
         [JsonPropertyName("updatedAt")]
-        public string? UpdatedAt { get { return this.UpdatedAtOption; } set { this.UpdatedAtOption = new(value); } }
+        public string? UpdatedAt { get { return this.UpdatedAtOption.Value; } set { this.UpdatedAtOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of UpdatedBy
@@ -126,7 +126,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets UpdatedBy
         /// </summary>
         [JsonPropertyName("updatedBy")]
-        public string? UpdatedBy { get { return this.UpdatedByOption; } set { this.UpdatedByOption = new(value); } }
+        public string? UpdatedBy { get { return this.UpdatedByOption.Value; } set { this.UpdatedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsDeleted
@@ -139,7 +139,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IsDeleted
         /// </summary>
         [JsonPropertyName("isDeleted")]
-        public bool? IsDeleted { get { return this.IsDeletedOption; } set { this.IsDeletedOption = new(value); } }
+        public bool? IsDeleted { get { return this.IsDeletedOption.Value; } set { this.IsDeletedOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Provider
@@ -152,7 +152,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Provider
         /// </summary>
         [JsonPropertyName("provider")]
-        public string? Provider { get { return this.ProviderOption; } set { this.ProviderOption = new(value); } }
+        public string? Provider { get { return this.ProviderOption.Value; } set { this.ProviderOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Group
@@ -165,7 +165,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Group
         /// </summary>
         [JsonPropertyName("group")]
-        public string? Group { get { return this.GroupOption; } set { this.GroupOption = new(value); } }
+        public string? Group { get { return this.GroupOption.Value; } set { this.GroupOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Name
@@ -178,7 +178,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Name
         /// </summary>
         [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption; } set { this.NameOption = new(value); } }
+        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DisplayName
@@ -191,7 +191,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DisplayName
         /// </summary>
         [JsonPropertyName("displayName")]
-        public string? DisplayName { get { return this.DisplayNameOption; } set { this.DisplayNameOption = new(value); } }
+        public string? DisplayName { get { return this.DisplayNameOption.Value; } set { this.DisplayNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Scope
@@ -204,7 +204,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Scope
         /// </summary>
         [JsonPropertyName("scope")]
-        public List<string>? Scope { get { return this.ScopeOption; } }
+        public List<string>? Scope { get { return this.ScopeOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -305,8 +305,7 @@ namespace EdGraph.Platform.Client.Model
                             updatedBy = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "isDeleted":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isDeleted = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isDeleted = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "provider":
                             provider = new Option<string?>(utf8JsonReader.GetString());
@@ -321,8 +320,7 @@ namespace EdGraph.Platform.Client.Model
                             displayName = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "scope":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                scope = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            scope = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

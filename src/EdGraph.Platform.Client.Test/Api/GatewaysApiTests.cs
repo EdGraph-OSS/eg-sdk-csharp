@@ -59,7 +59,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string tenantId = default!;
             var response = await _instance.GetAllAnalyticsGatewaysAsyncAsync(tenantId);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1Instance>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

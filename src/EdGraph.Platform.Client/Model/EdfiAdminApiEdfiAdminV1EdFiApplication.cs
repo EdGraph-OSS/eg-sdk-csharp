@@ -64,7 +64,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApplicationId
@@ -77,7 +77,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApplicationId
         /// </summary>
         [JsonPropertyName("applicationId")]
-        public int? ApplicationId { get { return this.ApplicationIdOption; } set { this.ApplicationIdOption = new(value); } }
+        public int? ApplicationId { get { return this.ApplicationIdOption.Value; } set { this.ApplicationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApplicationName
@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApplicationName
         /// </summary>
         [JsonPropertyName("applicationName")]
-        public string? ApplicationName { get { return this.ApplicationNameOption; } set { this.ApplicationNameOption = new(value); } }
+        public string? ApplicationName { get { return this.ApplicationNameOption.Value; } set { this.ApplicationNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ClaimSetName
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ClaimSetName
         /// </summary>
         [JsonPropertyName("claimSetName")]
-        public string? ClaimSetName { get { return this.ClaimSetNameOption; } set { this.ClaimSetNameOption = new(value); } }
+        public string? ClaimSetName { get { return this.ClaimSetNameOption.Value; } set { this.ClaimSetNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of VendorId
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets VendorId
         /// </summary>
         [JsonPropertyName("vendorId")]
-        public int? VendorId { get { return this.VendorIdOption; } set { this.VendorIdOption = new(value); } }
+        public int? VendorId { get { return this.VendorIdOption.Value; } set { this.VendorIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of OperationalContextUri
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets OperationalContextUri
         /// </summary>
         [JsonPropertyName("operationalContextUri")]
-        public string? OperationalContextUri { get { return this.OperationalContextUriOption; } set { this.OperationalContextUriOption = new(value); } }
+        public string? OperationalContextUri { get { return this.OperationalContextUriOption.Value; } set { this.OperationalContextUriOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -208,8 +208,7 @@ namespace EdGraph.Platform.Client.Model
                             tenantId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "applicationId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                applicationId = new Option<int?>(utf8JsonReader.GetInt32());
+                            applicationId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "applicationName":
                             applicationName = new Option<string?>(utf8JsonReader.GetString());
@@ -218,8 +217,7 @@ namespace EdGraph.Platform.Client.Model
                             claimSetName = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "vendorId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                vendorId = new Option<int?>(utf8JsonReader.GetInt32());
+                            vendorId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "operationalContextUri":
                             operationalContextUri = new Option<string?>(utf8JsonReader.GetString());

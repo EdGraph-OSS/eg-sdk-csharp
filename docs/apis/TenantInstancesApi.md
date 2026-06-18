@@ -9,76 +9,17 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 <a id="loadonboardingstepedfiapimetadata"></a>
 # **LoadOnboardingStepEdFiApiMetadata**
-> EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiLoadEdFiApiMetadataResult LoadOnboardingStepEdFiApiMetadata (string tenantId, EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest = null)
+> EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiLoadEdFiApiMetadataResult LoadOnboardingStepEdFiApiMetadata (string tenantId, EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest = null)
 
 Loads connection metadata.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class LoadOnboardingStepEdFiApiMetadataExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new TenantInstancesApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest = new EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest(); // EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest |  (optional) 
-
-            try
-            {
-                // Loads connection metadata.
-                EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiLoadEdFiApiMetadataResult result = apiInstance.LoadOnboardingStepEdFiApiMetadata(tenantId, edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TenantInstancesApi.LoadOnboardingStepEdFiApiMetadata: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the LoadOnboardingStepEdFiApiMetadataWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Loads connection metadata.
-    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiLoadEdFiApiMetadataResult> response = apiInstance.LoadOnboardingStepEdFiApiMetadataWithHttpInfo(tenantId, edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling TenantInstancesApi.LoadOnboardingStepEdFiApiMetadataWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **tenantId** | **string** |  |  |
-| **edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest** | [**EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest**](EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiMetadataRequest.md) |  | [optional]  |
+| **edGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest** | [**EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest**](EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsUseCasesEdFiApiMetadataRequest.md) |  | [optional]  |
 
 ### Return type
 
@@ -111,65 +52,6 @@ catch (ApiException e)
 
 Tests availability of provided connection metadata.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class TestOnboardingStepConnectionExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new TenantInstancesApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var body = null;  // Object |  (optional) 
-
-            try
-            {
-                // Tests availability of provided connection metadata.
-                EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsTestConnectionResponse result = apiInstance.TestOnboardingStepConnection(tenantId, body);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TenantInstancesApi.TestOnboardingStepConnection: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the TestOnboardingStepConnectionWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Tests availability of provided connection metadata.
-    ApiResponse<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsTestConnectionResponse> response = apiInstance.TestOnboardingStepConnectionWithHttpInfo(tenantId, body);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling TenantInstancesApi.TestOnboardingStepConnectionWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

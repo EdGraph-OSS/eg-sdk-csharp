@@ -17,65 +17,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Creates a new domain
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CreateTenantDomainAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new DomainsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var tenantApiTenantV1CreateDomainRequest = new TenantApiTenantV1CreateDomainRequest(); // TenantApiTenantV1CreateDomainRequest |  (optional) 
-
-            try
-            {
-                // Creates a new domain
-                TenantApiTenantV1DomainCreatedResponse result = apiInstance.CreateTenantDomainAsync(tenantId, tenantApiTenantV1CreateDomainRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling DomainsApi.CreateTenantDomainAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateTenantDomainAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates a new domain
-    ApiResponse<TenantApiTenantV1DomainCreatedResponse> response = apiInstance.CreateTenantDomainAsyncWithHttpInfo(tenantId, tenantApiTenantV1CreateDomainRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling DomainsApi.CreateTenantDomainAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -115,61 +56,6 @@ catch (ApiException e)
 
 Deletes a user
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class DeleteTenantDomainAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new DomainsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var domainName = "domainName_example";  // string | 
-
-            try
-            {
-                // Deletes a user
-                apiInstance.DeleteTenantDomainAsync(tenantId, domainName);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling DomainsApi.DeleteTenantDomainAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeleteTenantDomainAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Deletes a user
-    apiInstance.DeleteTenantDomainAsyncWithHttpInfo(tenantId, domainName);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling DomainsApi.DeleteTenantDomainAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -209,68 +95,6 @@ void (empty response body)
 
 Retrieves a list of domains associated to this tenant
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetAllTenantDomainsAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new DomainsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Retrieves a list of domains associated to this tenant
-                EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesDomainListResponseDtoPaginatedItemsViewModel result = apiInstance.GetAllTenantDomainsAsync(tenantId, pageSize, pageIndex, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling DomainsApi.GetAllTenantDomainsAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetAllTenantDomainsAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of domains associated to this tenant
-    ApiResponse<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesDomainListResponseDtoPaginatedItemsViewModel> response = apiInstance.GetAllTenantDomainsAsyncWithHttpInfo(tenantId, pageSize, pageIndex, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling DomainsApi.GetAllTenantDomainsAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -313,65 +137,6 @@ catch (ApiException e)
 
 Retrieves a domain
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetTenantDomainProfileByNameAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new DomainsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var domainName = "domainName_example";  // string | 
-
-            try
-            {
-                // Retrieves a domain
-                TenantApiTenantV1DomainProfileResponse result = apiInstance.GetTenantDomainProfileByNameAsync(tenantId, domainName);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling DomainsApi.GetTenantDomainProfileByNameAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetTenantDomainProfileByNameAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a domain
-    ApiResponse<TenantApiTenantV1DomainProfileResponse> response = apiInstance.GetTenantDomainProfileByNameAsyncWithHttpInfo(tenantId, domainName);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling DomainsApi.GetTenantDomainProfileByNameAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -412,66 +177,6 @@ catch (ApiException e)
 
 Updates a domain
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateTenantDomainAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new DomainsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var domainName = "domainName_example";  // string | 
-            var tenantApiTenantV1UpdateDomainRequest = new TenantApiTenantV1UpdateDomainRequest(); // TenantApiTenantV1UpdateDomainRequest |  (optional) 
-
-            try
-            {
-                // Updates a domain
-                TenantApiTenantV1DomainUpdatedResponse result = apiInstance.UpdateTenantDomainAsync(tenantId, domainName, tenantApiTenantV1UpdateDomainRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling DomainsApi.UpdateTenantDomainAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateTenantDomainAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates a domain
-    ApiResponse<TenantApiTenantV1DomainUpdatedResponse> response = apiInstance.UpdateTenantDomainAsyncWithHttpInfo(tenantId, domainName, tenantApiTenantV1UpdateDomainRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling DomainsApi.UpdateTenantDomainAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -512,66 +217,6 @@ catch (ApiException e)
 
 Verify a  tenant's domain
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class VerifyTenantDomainAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new DomainsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var domainName = "domainName_example";  // string | 
-            var tenantApiTenantV1VerifyDomainRequest = new TenantApiTenantV1VerifyDomainRequest(); // TenantApiTenantV1VerifyDomainRequest |  (optional) 
-
-            try
-            {
-                // Verify a  tenant's domain
-                TenantApiTenantV1DomainVerifiedResponse result = apiInstance.VerifyTenantDomainAsync(tenantId, domainName, tenantApiTenantV1VerifyDomainRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling DomainsApi.VerifyTenantDomainAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the VerifyTenantDomainAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Verify a  tenant's domain
-    ApiResponse<TenantApiTenantV1DomainVerifiedResponse> response = apiInstance.VerifyTenantDomainAsyncWithHttpInfo(tenantId, domainName, tenantApiTenantV1VerifyDomainRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling DomainsApi.VerifyTenantDomainAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

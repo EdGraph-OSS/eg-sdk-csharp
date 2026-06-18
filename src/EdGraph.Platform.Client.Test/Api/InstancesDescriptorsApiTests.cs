@@ -62,7 +62,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdfiAdminApiEdfiAdminV1DescriptorType> edfiAdminApiEdfiAdminV1DescriptorType = default!;
             var response = await _instance.CreateDescriptorAsyncAsync(tenantId, instanceId, year, edfiAdminApiEdfiAdminV1DescriptorType);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1DescriptorCreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -75,7 +75,9 @@ namespace EdGraph.Platform.Client.Test.Api
             string instanceId = default!;
             int year = default!;
             int descriptorId = default!;
-            await _instance.DeleteDescriptorAsyncAsync(tenantId, instanceId, year, descriptorId);
+            var response = await _instance.DeleteDescriptorAsyncAsync(tenantId, instanceId, year, descriptorId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -90,7 +92,7 @@ namespace EdGraph.Platform.Client.Test.Api
             int descriptorId = default!;
             var response = await _instance.GetDescriptorByIdAsyncAsync(tenantId, instanceId, year, descriptorId);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1DescriptorType>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -106,7 +108,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<int> pageIndex = default!;
             var response = await _instance.GetDescriptorNamespacesAsyncAsync(tenantId, instanceId, year, pageSize, pageIndex);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1DescriptorNamespacesPaginatedItemsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -124,7 +126,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> orderBy = default!;
             var response = await _instance.GetDescriptorsAsyncAsync(tenantId, instanceId, year, pageSize, pageIndex, filter, orderBy);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1DescriptorsPaginatedItemsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -140,7 +142,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdfiAdminApiEdfiAdminV1DescriptorType> edfiAdminApiEdfiAdminV1DescriptorType = default!;
             var response = await _instance.UpdateDescriptorAsyncAsync(tenantId, instanceId, year, descriptorId, edfiAdminApiEdfiAdminV1DescriptorType);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1DescriptorUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

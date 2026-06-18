@@ -66,7 +66,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets MessageType
         /// </summary>
         [JsonPropertyName("messageType")]
-        public DataSyncApiJobExecutionLogV1MessageType? MessageType { get { return this.MessageTypeOption; } set { this.MessageTypeOption = new(value); } }
+        public DataSyncApiJobExecutionLogV1MessageType? MessageType { get { return this.MessageTypeOption.Value; } set { this.MessageTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -79,7 +79,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of JobId
@@ -92,7 +92,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets JobId
         /// </summary>
         [JsonPropertyName("jobId")]
-        public string? JobId { get { return this.JobIdOption; } set { this.JobIdOption = new(value); } }
+        public string? JobId { get { return this.JobIdOption.Value; } set { this.JobIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of JobExecutionId
@@ -105,7 +105,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets JobExecutionId
         /// </summary>
         [JsonPropertyName("jobExecutionId")]
-        public string? JobExecutionId { get { return this.JobExecutionIdOption; } set { this.JobExecutionIdOption = new(value); } }
+        public string? JobExecutionId { get { return this.JobExecutionIdOption.Value; } set { this.JobExecutionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Message
@@ -118,7 +118,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Message
         /// </summary>
         [JsonPropertyName("message")]
-        public string? Message { get { return this.MessageOption; } set { this.MessageOption = new(value); } }
+        public string? Message { get { return this.MessageOption.Value; } set { this.MessageOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LoggedDateTime
@@ -131,7 +131,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LoggedDateTime
         /// </summary>
         [JsonPropertyName("loggedDateTime")]
-        public string? LoggedDateTime { get { return this.LoggedDateTimeOption; } set { this.LoggedDateTimeOption = new(value); } }
+        public string? LoggedDateTime { get { return this.LoggedDateTimeOption.Value; } set { this.LoggedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ErrorCode
@@ -144,7 +144,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ErrorCode
         /// </summary>
         [JsonPropertyName("errorCode")]
-        public string? ErrorCode { get { return this.ErrorCodeOption; } set { this.ErrorCodeOption = new(value); } }
+        public string? ErrorCode { get { return this.ErrorCodeOption.Value; } set { this.ErrorCodeOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

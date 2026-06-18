@@ -82,7 +82,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets InstanceId
         /// </summary>
         [JsonPropertyName("instanceId")]
-        public string? InstanceId { get { return this.InstanceIdOption; } set { this.InstanceIdOption = new(value); } }
+        public string? InstanceId { get { return this.InstanceIdOption.Value; } set { this.InstanceIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedBy
@@ -95,7 +95,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedBy
         /// </summary>
         [JsonPropertyName("createdBy")]
-        public string? CreatedBy { get { return this.CreatedByOption; } set { this.CreatedByOption = new(value); } }
+        public string? CreatedBy { get { return this.CreatedByOption.Value; } set { this.CreatedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedDateTime
@@ -108,7 +108,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedDateTime
         /// </summary>
         [JsonPropertyName("createdDateTime")]
-        public string? CreatedDateTime { get { return this.CreatedDateTimeOption; } set { this.CreatedDateTimeOption = new(value); } }
+        public string? CreatedDateTime { get { return this.CreatedDateTimeOption.Value; } set { this.CreatedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedBy
@@ -121,7 +121,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedBy
         /// </summary>
         [JsonPropertyName("lastModifiedBy")]
-        public string? LastModifiedBy { get { return this.LastModifiedByOption; } set { this.LastModifiedByOption = new(value); } }
+        public string? LastModifiedBy { get { return this.LastModifiedByOption.Value; } set { this.LastModifiedByOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedDateTime
@@ -134,7 +134,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedDateTime
         /// </summary>
         [JsonPropertyName("lastModifiedDateTime")]
-        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption; } set { this.LastModifiedDateTimeOption = new(value); } }
+        public string? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption.Value; } set { this.LastModifiedDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -147,7 +147,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Name
@@ -160,7 +160,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Name
         /// </summary>
         [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption; } set { this.NameOption = new(value); } }
+        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of UseCustomId
@@ -173,7 +173,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets UseCustomId
         /// </summary>
         [JsonPropertyName("useCustomId")]
-        public bool? UseCustomId { get { return this.UseCustomIdOption; } set { this.UseCustomIdOption = new(value); } }
+        public bool? UseCustomId { get { return this.UseCustomIdOption.Value; } set { this.UseCustomIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CustomId
@@ -186,7 +186,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CustomId
         /// </summary>
         [JsonPropertyName("customId")]
-        public string? CustomId { get { return this.CustomIdOption; } set { this.CustomIdOption = new(value); } }
+        public string? CustomId { get { return this.CustomIdOption.Value; } set { this.CustomIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Description
@@ -199,7 +199,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Description
         /// </summary>
         [JsonPropertyName("description")]
-        public string? Description { get { return this.DescriptionOption; } set { this.DescriptionOption = new(value); } }
+        public string? Description { get { return this.DescriptionOption.Value; } set { this.DescriptionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Connection
@@ -212,7 +212,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Connection
         /// </summary>
         [JsonPropertyName("connection")]
-        public IMSAdminApiV1ConnectionsConnectionProfileResponse? Connection { get { return this.ConnectionOption; } set { this.ConnectionOption = new(value); } }
+        public IMSAdminApiV1ConnectionsConnectionProfileResponse? Connection { get { return this.ConnectionOption.Value; } set { this.ConnectionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Tier
@@ -225,7 +225,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Tier
         /// </summary>
         [JsonPropertyName("tier")]
-        public IMSAdminApiV1TiersTier? Tier { get { return this.TierOption; } set { this.TierOption = new(value); } }
+        public IMSAdminApiV1TiersTier? Tier { get { return this.TierOption.Value; } set { this.TierOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of BackupCode
@@ -238,7 +238,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets BackupCode
         /// </summary>
         [JsonPropertyName("backupCode")]
-        public IMSAdminApiV1DbBackupCodesDbBackupCode? BackupCode { get { return this.BackupCodeOption; } set { this.BackupCodeOption = new(value); } }
+        public IMSAdminApiV1DbBackupCodesDbBackupCode? BackupCode { get { return this.BackupCodeOption.Value; } set { this.BackupCodeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Status
@@ -251,7 +251,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Status
         /// </summary>
         [JsonPropertyName("status")]
-        public string? Status { get { return this.StatusOption; } set { this.StatusOption = new(value); } }
+        public string? Status { get { return this.StatusOption.Value; } set { this.StatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SchoolYear
@@ -264,7 +264,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SchoolYear
         /// </summary>
         [JsonPropertyName("schoolYear")]
-        public int? SchoolYear { get { return this.SchoolYearOption; } set { this.SchoolYearOption = new(value); } }
+        public int? SchoolYear { get { return this.SchoolYearOption.Value; } set { this.SchoolYearOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -379,8 +379,7 @@ namespace EdGraph.Platform.Client.Model
                             name = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "useCustomId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                useCustomId = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            useCustomId = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "customId":
                             customId = new Option<string?>(utf8JsonReader.GetString());
@@ -389,23 +388,19 @@ namespace EdGraph.Platform.Client.Model
                             description = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "connection":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                connection = new Option<IMSAdminApiV1ConnectionsConnectionProfileResponse?>(JsonSerializer.Deserialize<IMSAdminApiV1ConnectionsConnectionProfileResponse>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            connection = new Option<IMSAdminApiV1ConnectionsConnectionProfileResponse?>(JsonSerializer.Deserialize<IMSAdminApiV1ConnectionsConnectionProfileResponse>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "tier":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                tier = new Option<IMSAdminApiV1TiersTier?>(JsonSerializer.Deserialize<IMSAdminApiV1TiersTier>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            tier = new Option<IMSAdminApiV1TiersTier?>(JsonSerializer.Deserialize<IMSAdminApiV1TiersTier>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "backupCode":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                backupCode = new Option<IMSAdminApiV1DbBackupCodesDbBackupCode?>(JsonSerializer.Deserialize<IMSAdminApiV1DbBackupCodesDbBackupCode>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            backupCode = new Option<IMSAdminApiV1DbBackupCodesDbBackupCode?>(JsonSerializer.Deserialize<IMSAdminApiV1DbBackupCodesDbBackupCode>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "status":
                             status = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "schoolYear":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                schoolYear = new Option<int?>(utf8JsonReader.GetInt32());
+                            schoolYear = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

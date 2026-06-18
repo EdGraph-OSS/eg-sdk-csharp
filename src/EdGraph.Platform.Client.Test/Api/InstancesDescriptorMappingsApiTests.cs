@@ -62,7 +62,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdfiAdminApiEdfiAdminV1CreateDescriptorMappingRequest> edfiAdminApiEdfiAdminV1CreateDescriptorMappingRequest = default!;
             var response = await _instance.CreateDescriptorMappingAsync(tenantId, instanceId, year, edfiAdminApiEdfiAdminV1CreateDescriptorMappingRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1DescriptorMappingCreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -75,7 +75,24 @@ namespace EdGraph.Platform.Client.Test.Api
             string instanceId = default!;
             int year = default!;
             string descriptorMappingId = default!;
-            await _instance.DeleteDescriptorMappingAsync(tenantId, instanceId, year, descriptorMappingId);
+            var response = await _instance.DeleteDescriptorMappingAsync(tenantId, instanceId, year, descriptorMappingId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
+        /// Test ExportDescriptorMappings
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task ExportDescriptorMappingsAsyncTest()
+        {
+            string tenantId = default!;
+            string instanceId = default!;
+            int year = default!;
+            Client.Option<string> varNamespace = default!;
+            var response = await _instance.ExportDescriptorMappingsAsync(tenantId, instanceId, year, varNamespace);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -90,7 +107,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string descriptorMappingId = default!;
             var response = await _instance.GetDescriptorMappingByIdAsync(tenantId, instanceId, year, descriptorMappingId);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1DescriptorMapping>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -107,7 +124,22 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> varNamespace = default!;
             var response = await _instance.GetDescriptorMappingsAsync(tenantId, instanceId, year, pageSize, pageIndex, varNamespace);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1DescriptorMappingsPaginatedItemsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
+        /// Test ImportDescriptorMappings
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task ImportDescriptorMappingsAsyncTest()
+        {
+            string tenantId = default!;
+            string instanceId = default!;
+            int year = default!;
+            Client.Option<EdGraph.Platform.Client.Client.FileParameter> file = default!;
+            var response = await _instance.ImportDescriptorMappingsAsync(tenantId, instanceId, year, file);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -123,7 +155,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdfiAdminApiEdfiAdminV1UpdateDescriptorMappingRequest> edfiAdminApiEdfiAdminV1UpdateDescriptorMappingRequest = default!;
             var response = await _instance.UpdateDescriptorMappingAsync(tenantId, instanceId, year, descriptorMappingId, edfiAdminApiEdfiAdminV1UpdateDescriptorMappingRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1DescriptorMappingUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

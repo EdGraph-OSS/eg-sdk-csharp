@@ -62,7 +62,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ClientId
         /// </summary>
         [JsonPropertyName("clientId")]
-        public string? ClientId { get { return this.ClientIdOption; } set { this.ClientIdOption = new(value); } }
+        public string? ClientId { get { return this.ClientIdOption.Value; } set { this.ClientIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ClientSecret
@@ -75,7 +75,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ClientSecret
         /// </summary>
         [JsonPropertyName("clientSecret")]
-        public string? ClientSecret { get { return this.ClientSecretOption; } set { this.ClientSecretOption = new(value); } }
+        public string? ClientSecret { get { return this.ClientSecretOption.Value; } set { this.ClientSecretOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TokenUrl
@@ -88,7 +88,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TokenUrl
         /// </summary>
         [JsonPropertyName("tokenUrl")]
-        public string? TokenUrl { get { return this.TokenUrlOption; } set { this.TokenUrlOption = new(value); } }
+        public string? TokenUrl { get { return this.TokenUrlOption.Value; } set { this.TokenUrlOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Endpoints
@@ -101,7 +101,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Endpoints
         /// </summary>
         [JsonPropertyName("endpoints")]
-        public List<EdfiAdminApiEdfiAdminV1OdsApiConnectionEndpoint>? Endpoints { get { return this.EndpointsOption; } }
+        public List<EdfiAdminApiEdfiAdminV1OdsApiConnectionEndpoint>? Endpoints { get { return this.EndpointsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of MetadataUrl
@@ -114,7 +114,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets MetadataUrl
         /// </summary>
         [JsonPropertyName("metadataUrl")]
-        public string? MetadataUrl { get { return this.MetadataUrlOption; } set { this.MetadataUrlOption = new(value); } }
+        public string? MetadataUrl { get { return this.MetadataUrlOption.Value; } set { this.MetadataUrlOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -197,8 +197,7 @@ namespace EdGraph.Platform.Client.Model
                             tokenUrl = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "endpoints":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                endpoints = new Option<List<EdfiAdminApiEdfiAdminV1OdsApiConnectionEndpoint>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1OdsApiConnectionEndpoint>>(ref utf8JsonReader, jsonSerializerOptions));
+                            endpoints = new Option<List<EdfiAdminApiEdfiAdminV1OdsApiConnectionEndpoint>?>(JsonSerializer.Deserialize<List<EdfiAdminApiEdfiAdminV1OdsApiConnectionEndpoint>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "metadataUrl":
                             metadataUrl = new Option<string?>(utf8JsonReader.GetString());

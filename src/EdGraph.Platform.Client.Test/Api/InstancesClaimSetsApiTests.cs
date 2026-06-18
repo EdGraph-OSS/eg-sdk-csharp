@@ -61,7 +61,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdfiAdminApiEdfiAdminV1SaveClaimSetRequest> edfiAdminApiEdfiAdminV1SaveClaimSetRequest = default!;
             var response = await _instance.CreateClaimSetAsyncAsync(tenantId, instanceId, edfiAdminApiEdfiAdminV1SaveClaimSetRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1SaveClaimSetResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -73,7 +73,9 @@ namespace EdGraph.Platform.Client.Test.Api
             string tenantId = default!;
             string instanceId = default!;
             int claimSetId = default!;
-            await _instance.DeleteClaimSetAsyncAsync(tenantId, instanceId, claimSetId);
+            var response = await _instance.DeleteClaimSetAsyncAsync(tenantId, instanceId, claimSetId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -87,7 +89,7 @@ namespace EdGraph.Platform.Client.Test.Api
             int claimSetId = default!;
             var response = await _instance.GetClaimSetByIdAsyncAsync(tenantId, instanceId, claimSetId);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1ClaimSet>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -104,7 +106,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetClaimSetsAsyncAsync(tenantId, instanceId, pageSize, pageIndex, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1ClaimSetPaginatedItemsViewModel>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -118,7 +120,7 @@ namespace EdGraph.Platform.Client.Test.Api
             int claimSetId = default!;
             var response = await _instance.GetResourceClaimsGridAsyncAsync(tenantId, instanceId, claimSetId);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1GetResourceClaimsGridResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -131,7 +133,9 @@ namespace EdGraph.Platform.Client.Test.Api
             string instanceId = default!;
             int claimSetId = default!;
             Client.Option<EdfiAdminApiEdfiAdminV1SyncClaimSetRequest> edfiAdminApiEdfiAdminV1SyncClaimSetRequest = default!;
-            await _instance.SyncClaimSetAsyncAsync(tenantId, instanceId, claimSetId, edfiAdminApiEdfiAdminV1SyncClaimSetRequest);
+            var response = await _instance.SyncClaimSetAsyncAsync(tenantId, instanceId, claimSetId, edfiAdminApiEdfiAdminV1SyncClaimSetRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -146,7 +150,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdfiAdminApiEdfiAdminV1SaveClaimSetRequest> edfiAdminApiEdfiAdminV1SaveClaimSetRequest = default!;
             var response = await _instance.UpdateClaimSetAsyncAsync(tenantId, instanceId, claimSetId, edfiAdminApiEdfiAdminV1SaveClaimSetRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdfiAdminApiEdfiAdminV1SaveClaimSetResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

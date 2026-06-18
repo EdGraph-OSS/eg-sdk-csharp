@@ -64,7 +64,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets RoleName
         /// </summary>
         [JsonPropertyName("roleName")]
-        public string? RoleName { get { return this.RoleNameOption; } set { this.RoleNameOption = new(value); } }
+        public string? RoleName { get { return this.RoleNameOption.Value; } set { this.RoleNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsDefault
@@ -77,7 +77,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IsDefault
         /// </summary>
         [JsonPropertyName("isDefault")]
-        public bool? IsDefault { get { return this.IsDefaultOption; } set { this.IsDefaultOption = new(value); } }
+        public bool? IsDefault { get { return this.IsDefaultOption.Value; } set { this.IsDefaultOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsAvailableForTenants
@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IsAvailableForTenants
         /// </summary>
         [JsonPropertyName("isAvailableForTenants")]
-        public bool? IsAvailableForTenants { get { return this.IsAvailableForTenantsOption; } set { this.IsAvailableForTenantsOption = new(value); } }
+        public bool? IsAvailableForTenants { get { return this.IsAvailableForTenantsOption.Value; } set { this.IsAvailableForTenantsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DisplayName
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DisplayName
         /// </summary>
         [JsonPropertyName("displayName")]
-        public string? DisplayName { get { return this.DisplayNameOption; } set { this.DisplayNameOption = new(value); } }
+        public string? DisplayName { get { return this.DisplayNameOption.Value; } set { this.DisplayNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Description
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Description
         /// </summary>
         [JsonPropertyName("description")]
-        public string? Description { get { return this.DescriptionOption; } set { this.DescriptionOption = new(value); } }
+        public string? Description { get { return this.DescriptionOption.Value; } set { this.DescriptionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SortOrder
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SortOrder
         /// </summary>
         [JsonPropertyName("sortOrder")]
-        public int? SortOrder { get { return this.SortOrderOption; } set { this.SortOrderOption = new(value); } }
+        public int? SortOrder { get { return this.SortOrderOption.Value; } set { this.SortOrderOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -208,12 +208,10 @@ namespace EdGraph.Platform.Client.Model
                             roleName = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "isDefault":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isDefault = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isDefault = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "isAvailableForTenants":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isAvailableForTenants = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isAvailableForTenants = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "displayName":
                             displayName = new Option<string?>(utf8JsonReader.GetString());
@@ -222,8 +220,7 @@ namespace EdGraph.Platform.Client.Model
                             description = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "sortOrder":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                sortOrder = new Option<int?>(utf8JsonReader.GetInt32());
+                            sortOrder = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

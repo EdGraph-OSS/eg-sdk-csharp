@@ -54,7 +54,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets PersonaIdentifier
         /// </summary>
         [JsonPropertyName("personaIdentifier")]
-        public string? PersonaIdentifier { get { return this.PersonaIdentifierOption; } set { this.PersonaIdentifierOption = new(value); } }
+        public string? PersonaIdentifier { get { return this.PersonaIdentifierOption.Value; } set { this.PersonaIdentifierOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object

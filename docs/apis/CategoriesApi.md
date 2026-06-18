@@ -23,67 +23,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Adds a Data Steward to a Category.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class AddCategoryDataStewardExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new CategoriesApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var categoryId = "categoryId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-            var validationsApiContainersV1AddDataStewardRequest = new ValidationsApiContainersV1AddDataStewardRequest(); // ValidationsApiContainersV1AddDataStewardRequest |  (optional) 
-
-            try
-            {
-                // Adds a Data Steward to a Category.
-                ValidationsApiContainersV1DataStewardAddedResponse result = apiInstance.AddCategoryDataSteward(tenantId, categoryId, reportingPeriodId, validationsApiContainersV1AddDataStewardRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling CategoriesApi.AddCategoryDataSteward: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the AddCategoryDataStewardWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Adds a Data Steward to a Category.
-    ApiResponse<ValidationsApiContainersV1DataStewardAddedResponse> response = apiInstance.AddCategoryDataStewardWithHttpInfo(tenantId, categoryId, reportingPeriodId, validationsApiContainersV1AddDataStewardRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling CategoriesApi.AddCategoryDataStewardWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -126,66 +65,6 @@ catch (ApiException e)
 
 Adds a Data Steward to Categories.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class AddCategoryDataStewardBulkExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new CategoriesApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-            var validationsApiContainersV1AddDataStewardBulkRequest = new ValidationsApiContainersV1AddDataStewardBulkRequest(); // ValidationsApiContainersV1AddDataStewardBulkRequest |  (optional) 
-
-            try
-            {
-                // Adds a Data Steward to Categories.
-                ValidationsApiContainersV1DataStewardAddedBulkResponse result = apiInstance.AddCategoryDataStewardBulk(tenantId, reportingPeriodId, validationsApiContainersV1AddDataStewardBulkRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling CategoriesApi.AddCategoryDataStewardBulk: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the AddCategoryDataStewardBulkWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Adds a Data Steward to Categories.
-    ApiResponse<ValidationsApiContainersV1DataStewardAddedBulkResponse> response = apiInstance.AddCategoryDataStewardBulkWithHttpInfo(tenantId, reportingPeriodId, validationsApiContainersV1AddDataStewardBulkRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling CategoriesApi.AddCategoryDataStewardBulkWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -227,65 +106,6 @@ catch (ApiException e)
 
 Certifies a Category.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CertifyCategoryExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new CategoriesApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var categoryId = "categoryId_example";  // Guid | 
-
-            try
-            {
-                // Certifies a Category.
-                ValidationsApiContainersV1CertificationStatusSetResponse result = apiInstance.CertifyCategory(tenantId, categoryId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling CategoriesApi.CertifyCategory: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CertifyCategoryWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Certifies a Category.
-    ApiResponse<ValidationsApiContainersV1CertificationStatusSetResponse> response = apiInstance.CertifyCategoryWithHttpInfo(tenantId, categoryId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling CategoriesApi.CertifyCategoryWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -326,65 +146,6 @@ catch (ApiException e)
 
 Get all Data Users
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetDataUsersBulkExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new CategoriesApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-
-            try
-            {
-                // Get all Data Users
-                ValidationsApiContainersV1CategoriesWithDataUsersResponse result = apiInstance.GetDataUsersBulk(tenantId, reportingPeriodId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling CategoriesApi.GetDataUsersBulk: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetDataUsersBulkWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Get all Data Users
-    ApiResponse<ValidationsApiContainersV1CategoriesWithDataUsersResponse> response = apiInstance.GetDataUsersBulkWithHttpInfo(tenantId, reportingPeriodId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling CategoriesApi.GetDataUsersBulkWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -425,68 +186,6 @@ catch (ApiException e)
 
 Retrieves a list of Categories.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetStateReportingCategoriesExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new CategoriesApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Retrieves a list of Categories.
-                ValidationsApiContainersV1PaginatedContainers result = apiInstance.GetStateReportingCategories(tenantId, pageIndex, pageSize, filter, orderBy);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling CategoriesApi.GetStateReportingCategories: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetStateReportingCategoriesWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of Categories.
-    ApiResponse<ValidationsApiContainersV1PaginatedContainers> response = apiInstance.GetStateReportingCategoriesWithHttpInfo(tenantId, pageIndex, pageSize, filter, orderBy);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling CategoriesApi.GetStateReportingCategoriesWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -529,62 +228,6 @@ catch (ApiException e)
 
 Removes the Data Owner of a Category.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class RemoveCategoryDataOwnerExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new CategoriesApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-            var categoryId = "categoryId_example";  // Guid | 
-
-            try
-            {
-                // Removes the Data Owner of a Category.
-                apiInstance.RemoveCategoryDataOwner(tenantId, reportingPeriodId, categoryId);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling CategoriesApi.RemoveCategoryDataOwner: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the RemoveCategoryDataOwnerWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Removes the Data Owner of a Category.
-    apiInstance.RemoveCategoryDataOwnerWithHttpInfo(tenantId, reportingPeriodId, categoryId);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling CategoriesApi.RemoveCategoryDataOwnerWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -625,63 +268,6 @@ void (empty response body)
 
 Removes a Data Steward from a Category.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class RemoveCategoryDataStewardExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new CategoriesApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var categoryId = "categoryId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-            var email = "email_example";  // string | 
-
-            try
-            {
-                // Removes a Data Steward from a Category.
-                apiInstance.RemoveCategoryDataSteward(tenantId, categoryId, reportingPeriodId, email);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling CategoriesApi.RemoveCategoryDataSteward: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the RemoveCategoryDataStewardWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Removes a Data Steward from a Category.
-    apiInstance.RemoveCategoryDataStewardWithHttpInfo(tenantId, categoryId, reportingPeriodId, email);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling CategoriesApi.RemoveCategoryDataStewardWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -723,66 +309,6 @@ void (empty response body)
 
 Requests a Certification Reminder to be sent.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class RequestCategoryCertificationReminderExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new CategoriesApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-            var categoryId = "categoryId_example";  // Guid | 
-
-            try
-            {
-                // Requests a Certification Reminder to be sent.
-                ValidationsApiContainersV1CertificationReminderRequestedResponse result = apiInstance.RequestCategoryCertificationReminder(tenantId, reportingPeriodId, categoryId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling CategoriesApi.RequestCategoryCertificationReminder: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the RequestCategoryCertificationReminderWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Requests a Certification Reminder to be sent.
-    ApiResponse<ValidationsApiContainersV1CertificationReminderRequestedResponse> response = apiInstance.RequestCategoryCertificationReminderWithHttpInfo(tenantId, reportingPeriodId, categoryId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling CategoriesApi.RequestCategoryCertificationReminderWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -824,67 +350,6 @@ catch (ApiException e)
 
 Sets the Data Owner of a Category.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SetCategoryDataOwnerExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new CategoriesApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var categoryId = "categoryId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-            var validationsApiContainersV1SetDataOwnerRequest = new ValidationsApiContainersV1SetDataOwnerRequest(); // ValidationsApiContainersV1SetDataOwnerRequest |  (optional) 
-
-            try
-            {
-                // Sets the Data Owner of a Category.
-                ValidationsApiContainersV1DataOwnerSetResponse result = apiInstance.SetCategoryDataOwner(tenantId, categoryId, reportingPeriodId, validationsApiContainersV1SetDataOwnerRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling CategoriesApi.SetCategoryDataOwner: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SetCategoryDataOwnerWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Sets the Data Owner of a Category.
-    ApiResponse<ValidationsApiContainersV1DataOwnerSetResponse> response = apiInstance.SetCategoryDataOwnerWithHttpInfo(tenantId, categoryId, reportingPeriodId, validationsApiContainersV1SetDataOwnerRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling CategoriesApi.SetCategoryDataOwnerWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -927,66 +392,6 @@ catch (ApiException e)
 
 Sets the Data Owner of Categories.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SetCategoryDataOwnerBulkExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new CategoriesApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-            var validationsApiContainersV1SetDataOwnerBulkRequest = new ValidationsApiContainersV1SetDataOwnerBulkRequest(); // ValidationsApiContainersV1SetDataOwnerBulkRequest |  (optional) 
-
-            try
-            {
-                // Sets the Data Owner of Categories.
-                ValidationsApiContainersV1DataOwnerSetBulkResponse result = apiInstance.SetCategoryDataOwnerBulk(tenantId, reportingPeriodId, validationsApiContainersV1SetDataOwnerBulkRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling CategoriesApi.SetCategoryDataOwnerBulk: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SetCategoryDataOwnerBulkWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Sets the Data Owner of Categories.
-    ApiResponse<ValidationsApiContainersV1DataOwnerSetBulkResponse> response = apiInstance.SetCategoryDataOwnerBulkWithHttpInfo(tenantId, reportingPeriodId, validationsApiContainersV1SetDataOwnerBulkRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling CategoriesApi.SetCategoryDataOwnerBulkWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1028,70 +433,6 @@ catch (ApiException e)
 
 Upload a Category via a JSON file.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UploadStateReportingCategoryExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new CategoriesApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var contentType = "contentType_example";  // string |  (optional) 
-            var contentDisposition = "contentDisposition_example";  // string |  (optional) 
-            var headers = new Dictionary<string, List<string>>(); // Dictionary<string, List<string>> |  (optional) 
-            var length = 789L;  // long |  (optional) 
-            var name = "name_example";  // string |  (optional) 
-            var fileName = "fileName_example";  // string |  (optional) 
-
-            try
-            {
-                // Upload a Category via a JSON file.
-                ValidationsApiContainersV1CollectionUploadedResponse result = apiInstance.UploadStateReportingCategory(tenantId, contentType, contentDisposition, headers, length, name, fileName);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling CategoriesApi.UploadStateReportingCategory: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UploadStateReportingCategoryWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Upload a Category via a JSON file.
-    ApiResponse<ValidationsApiContainersV1CollectionUploadedResponse> response = apiInstance.UploadStateReportingCategoryWithHttpInfo(tenantId, contentType, contentDisposition, headers, length, name, fileName);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling CategoriesApi.UploadStateReportingCategoryWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1137,71 +478,6 @@ catch (ApiException e)
 
 Upload a Category via a JSON file.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UploadStateReportingPeriodsFromCategoryJsonExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new CategoriesApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var contentType = "contentType_example";  // string |  (optional) 
-            var contentDisposition = "contentDisposition_example";  // string |  (optional) 
-            var headers = new Dictionary<string, List<string>>(); // Dictionary<string, List<string>> |  (optional) 
-            var length = 789L;  // long |  (optional) 
-            var name = "name_example";  // string |  (optional) 
-            var fileName = "fileName_example";  // string |  (optional) 
-
-            try
-            {
-                // Upload a Category via a JSON file.
-                ValidationsApiContainersV1CollectionUploadedResponse result = apiInstance.UploadStateReportingPeriodsFromCategoryJson(tenantId, environmentId, contentType, contentDisposition, headers, length, name, fileName);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling CategoriesApi.UploadStateReportingPeriodsFromCategoryJson: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UploadStateReportingPeriodsFromCategoryJsonWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Upload a Category via a JSON file.
-    ApiResponse<ValidationsApiContainersV1CollectionUploadedResponse> response = apiInstance.UploadStateReportingPeriodsFromCategoryJsonWithHttpInfo(tenantId, environmentId, contentType, contentDisposition, headers, length, name, fileName);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling CategoriesApi.UploadStateReportingPeriodsFromCategoryJsonWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

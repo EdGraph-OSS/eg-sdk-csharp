@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string applicationId = default!;
             var response = await _instance.GetTenantApplicationProfileByIdAsyncAsync(tenantId, applicationId);
             var model = response.Unauthorized();
-            Assert.IsType<ApplicationApiApplicationV1ApplicationProfileResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.GetTenantApplicationsAsyncAsync(tenantId, pageIndex, pageSize, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<ApplicationApiApplicationV1ApplicationListResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

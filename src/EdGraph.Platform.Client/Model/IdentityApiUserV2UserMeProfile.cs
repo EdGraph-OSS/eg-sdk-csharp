@@ -70,7 +70,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets UserId
         /// </summary>
         [JsonPropertyName("userId")]
-        public string? UserId { get { return this.UserIdOption; } set { this.UserIdOption = new(value); } }
+        public string? UserId { get { return this.UserIdOption.Value; } set { this.UserIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of UserName
@@ -83,7 +83,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets UserName
         /// </summary>
         [JsonPropertyName("userName")]
-        public string? UserName { get { return this.UserNameOption; } set { this.UserNameOption = new(value); } }
+        public string? UserName { get { return this.UserNameOption.Value; } set { this.UserNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Email
@@ -96,7 +96,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Email
         /// </summary>
         [JsonPropertyName("email")]
-        public string? Email { get { return this.EmailOption; } set { this.EmailOption = new(value); } }
+        public string? Email { get { return this.EmailOption.Value; } set { this.EmailOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of FirstName
@@ -109,7 +109,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets FirstName
         /// </summary>
         [JsonPropertyName("firstName")]
-        public string? FirstName { get { return this.FirstNameOption; } set { this.FirstNameOption = new(value); } }
+        public string? FirstName { get { return this.FirstNameOption.Value; } set { this.FirstNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastName
@@ -122,7 +122,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastName
         /// </summary>
         [JsonPropertyName("lastName")]
-        public string? LastName { get { return this.LastNameOption; } set { this.LastNameOption = new(value); } }
+        public string? LastName { get { return this.LastNameOption.Value; } set { this.LastNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantCount
@@ -135,7 +135,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantCount
         /// </summary>
         [JsonPropertyName("tenantCount")]
-        public int? TenantCount { get { return this.TenantCountOption; } set { this.TenantCountOption = new(value); } }
+        public int? TenantCount { get { return this.TenantCountOption.Value; } set { this.TenantCountOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Extensions
@@ -148,7 +148,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Extensions
         /// </summary>
         [JsonPropertyName("extensions")]
-        public List<IdentityApiUserV2UserExtension>? Extensions { get { return this.ExtensionsOption; } }
+        public List<IdentityApiUserV2UserExtension>? Extensions { get { return this.ExtensionsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of SelectedTenant
@@ -161,7 +161,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SelectedTenant
         /// </summary>
         [JsonPropertyName("selectedTenant")]
-        public IdentityApiUserV2TenantMeProfile? SelectedTenant { get { return this.SelectedTenantOption; } set { this.SelectedTenantOption = new(value); } }
+        public IdentityApiUserV2TenantMeProfile? SelectedTenant { get { return this.SelectedTenantOption.Value; } set { this.SelectedTenantOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of PlatformRole
@@ -174,7 +174,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets PlatformRole
         /// </summary>
         [JsonPropertyName("platformRole")]
-        public string? PlatformRole { get { return this.PlatformRoleOption; } set { this.PlatformRoleOption = new(value); } }
+        public string? PlatformRole { get { return this.PlatformRoleOption.Value; } set { this.PlatformRoleOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -271,16 +271,13 @@ namespace EdGraph.Platform.Client.Model
                             lastName = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "tenantCount":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                tenantCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            tenantCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "extensions":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                extensions = new Option<List<IdentityApiUserV2UserExtension>?>(JsonSerializer.Deserialize<List<IdentityApiUserV2UserExtension>>(ref utf8JsonReader, jsonSerializerOptions));
+                            extensions = new Option<List<IdentityApiUserV2UserExtension>?>(JsonSerializer.Deserialize<List<IdentityApiUserV2UserExtension>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "selectedTenant":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                selectedTenant = new Option<IdentityApiUserV2TenantMeProfile?>(JsonSerializer.Deserialize<IdentityApiUserV2TenantMeProfile>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            selectedTenant = new Option<IdentityApiUserV2TenantMeProfile?>(JsonSerializer.Deserialize<IdentityApiUserV2TenantMeProfile>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "platformRole":
                             platformRole = new Option<string?>(utf8JsonReader.GetString());

@@ -15,65 +15,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Creates a DSL Sync Job for a given tenant
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CreateDslJobExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new TenantJobsDSLApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var dataSyncApiDslV1CreateJobRequest = new DataSyncApiDslV1CreateJobRequest(); // DataSyncApiDslV1CreateJobRequest |  (optional) 
-
-            try
-            {
-                // Creates a DSL Sync Job for a given tenant
-                DataSyncApiDslV1JobCreatedResponse result = apiInstance.CreateDslJob(tenantId, dataSyncApiDslV1CreateJobRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TenantJobsDSLApi.CreateDslJob: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateDslJobWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates a DSL Sync Job for a given tenant
-    ApiResponse<DataSyncApiDslV1JobCreatedResponse> response = apiInstance.CreateDslJobWithHttpInfo(tenantId, dataSyncApiDslV1CreateJobRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling TenantJobsDSLApi.CreateDslJobWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -113,65 +54,6 @@ catch (ApiException e)
 
 Executes a DSL Sync Job for a given tenant
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class ExecuteDslJobExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new TenantJobsDSLApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var jobId = "jobId_example";  // Guid | 
-
-            try
-            {
-                // Executes a DSL Sync Job for a given tenant
-                DataSyncApiDslV1DslJobExecutedResponse result = apiInstance.ExecuteDslJob(tenantId, jobId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TenantJobsDSLApi.ExecuteDslJob: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the ExecuteDslJobWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Executes a DSL Sync Job for a given tenant
-    ApiResponse<DataSyncApiDslV1DslJobExecutedResponse> response = apiInstance.ExecuteDslJobWithHttpInfo(tenantId, jobId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling TenantJobsDSLApi.ExecuteDslJobWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -211,65 +93,6 @@ catch (ApiException e)
 
 Retrieves a DSL jobs profile for a given tenant
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetDslJobExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new TenantJobsDSLApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var jobId = "jobId_example";  // Guid | 
-
-            try
-            {
-                // Retrieves a DSL jobs profile for a given tenant
-                DataSyncApiDslV1DslProfile result = apiInstance.GetDslJob(tenantId, jobId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TenantJobsDSLApi.GetDslJob: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetDslJobWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a DSL jobs profile for a given tenant
-    ApiResponse<DataSyncApiDslV1DslProfile> response = apiInstance.GetDslJobWithHttpInfo(tenantId, jobId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling TenantJobsDSLApi.GetDslJobWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -309,66 +132,6 @@ catch (ApiException e)
 
 Updates a DSL Sync Job for a given tenant
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateDslJobExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new TenantJobsDSLApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var jobId = "jobId_example";  // Guid | 
-            var dataSyncApiDslV1UpdateJobRequest = new DataSyncApiDslV1UpdateJobRequest(); // DataSyncApiDslV1UpdateJobRequest |  (optional) 
-
-            try
-            {
-                // Updates a DSL Sync Job for a given tenant
-                Object result = apiInstance.UpdateDslJob(tenantId, jobId, dataSyncApiDslV1UpdateJobRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling TenantJobsDSLApi.UpdateDslJob: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateDslJobWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates a DSL Sync Job for a given tenant
-    ApiResponse<Object> response = apiInstance.UpdateDslJobWithHttpInfo(tenantId, jobId, dataSyncApiDslV1UpdateJobRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling TenantJobsDSLApi.UpdateDslJobWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

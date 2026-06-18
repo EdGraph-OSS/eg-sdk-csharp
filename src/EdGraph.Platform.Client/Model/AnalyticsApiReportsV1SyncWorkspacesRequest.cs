@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ConfigurationId
         /// </summary>
         [JsonPropertyName("configurationId")]
-        public string? ConfigurationId { get { return this.ConfigurationIdOption; } set { this.ConfigurationIdOption = new(value); } }
+        public string? ConfigurationId { get { return this.ConfigurationIdOption.Value; } set { this.ConfigurationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ResetInstance
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ResetInstance
         /// </summary>
         [JsonPropertyName("resetInstance")]
-        public bool? ResetInstance { get { return this.ResetInstanceOption; } set { this.ResetInstanceOption = new(value); } }
+        public bool? ResetInstance { get { return this.ResetInstanceOption.Value; } set { this.ResetInstanceOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -160,8 +160,7 @@ namespace EdGraph.Platform.Client.Model
                             tenantId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "resetInstance":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                resetInstance = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            resetInstance = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

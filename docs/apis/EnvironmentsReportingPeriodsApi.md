@@ -27,66 +27,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Cancel the Validation Run of a Reporting Period.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CancelStateReportingPeriodRunExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsReportingPeriodsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-
-            try
-            {
-                // Cancel the Validation Run of a Reporting Period.
-                EdGraphServicesStateReportingV1ReportingPeriodValidationsCancelledResponse result = apiInstance.CancelStateReportingPeriodRun(tenantId, environmentId, reportingPeriodId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.CancelStateReportingPeriodRun: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CancelStateReportingPeriodRunWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Cancel the Validation Run of a Reporting Period.
-    ApiResponse<EdGraphServicesStateReportingV1ReportingPeriodValidationsCancelledResponse> response = apiInstance.CancelStateReportingPeriodRunWithHttpInfo(tenantId, environmentId, reportingPeriodId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.CancelStateReportingPeriodRunWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -128,66 +68,6 @@ catch (ApiException e)
 
 Closes a Reporting Period.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CloseStateReportingPeriodExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsReportingPeriodsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-
-            try
-            {
-                // Closes a Reporting Period.
-                EdGraphServicesStateReportingV1ReportingPeriodCreatedResponse result = apiInstance.CloseStateReportingPeriod(tenantId, environmentId, reportingPeriodId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.CloseStateReportingPeriod: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CloseStateReportingPeriodWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Closes a Reporting Period.
-    ApiResponse<EdGraphServicesStateReportingV1ReportingPeriodCreatedResponse> response = apiInstance.CloseStateReportingPeriodWithHttpInfo(tenantId, environmentId, reportingPeriodId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.CloseStateReportingPeriodWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -229,66 +109,6 @@ catch (ApiException e)
 
 Creates a new Reporting Period.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CreateStateReportingPeriodExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsReportingPeriodsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var edGraphServicesStateReportingV1CreateReportingPeriodRequest = new EdGraphServicesStateReportingV1CreateReportingPeriodRequest(); // EdGraphServicesStateReportingV1CreateReportingPeriodRequest |  (optional) 
-
-            try
-            {
-                // Creates a new Reporting Period.
-                EdGraphServicesStateReportingV1ReportingPeriodCreatedResponse result = apiInstance.CreateStateReportingPeriod(tenantId, environmentId, edGraphServicesStateReportingV1CreateReportingPeriodRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.CreateStateReportingPeriod: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateStateReportingPeriodWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates a new Reporting Period.
-    ApiResponse<EdGraphServicesStateReportingV1ReportingPeriodCreatedResponse> response = apiInstance.CreateStateReportingPeriodWithHttpInfo(tenantId, environmentId, edGraphServicesStateReportingV1CreateReportingPeriodRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.CreateStateReportingPeriodWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -330,66 +150,6 @@ catch (ApiException e)
 
 Deletes a Reporting Period.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class DeleteStateReportingPeriodExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsReportingPeriodsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-
-            try
-            {
-                // Deletes a Reporting Period.
-                EdGraphServicesStateReportingV1ReportingPeriodDeletedResponse result = apiInstance.DeleteStateReportingPeriod(tenantId, environmentId, reportingPeriodId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.DeleteStateReportingPeriod: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeleteStateReportingPeriodWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Deletes a Reporting Period.
-    ApiResponse<EdGraphServicesStateReportingV1ReportingPeriodDeletedResponse> response = apiInstance.DeleteStateReportingPeriodWithHttpInfo(tenantId, environmentId, reportingPeriodId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.DeleteStateReportingPeriodWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -431,66 +191,6 @@ catch (ApiException e)
 
 Retrieves a Reporting Period by ID.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetStateReportingPeriodExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsReportingPeriodsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-
-            try
-            {
-                // Retrieves a Reporting Period by ID.
-                EdGraphServicesStateReportingV1ReportingPeriodProfileResponse result = apiInstance.GetStateReportingPeriod(tenantId, environmentId, reportingPeriodId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.GetStateReportingPeriod: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetStateReportingPeriodWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a Reporting Period by ID.
-    ApiResponse<EdGraphServicesStateReportingV1ReportingPeriodProfileResponse> response = apiInstance.GetStateReportingPeriodWithHttpInfo(tenantId, environmentId, reportingPeriodId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.GetStateReportingPeriodWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -532,66 +232,6 @@ catch (ApiException e)
 
 Retrieves the Certification Status of Reporting Period.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetStateReportingPeriodCertificationStatusExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsReportingPeriodsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-
-            try
-            {
-                // Retrieves the Certification Status of Reporting Period.
-                EdGraphServicesStateReportingV1ReportingPeriodCertificationStatus result = apiInstance.GetStateReportingPeriodCertificationStatus(tenantId, environmentId, reportingPeriodId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.GetStateReportingPeriodCertificationStatus: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetStateReportingPeriodCertificationStatusWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves the Certification Status of Reporting Period.
-    ApiResponse<EdGraphServicesStateReportingV1ReportingPeriodCertificationStatus> response = apiInstance.GetStateReportingPeriodCertificationStatusWithHttpInfo(tenantId, environmentId, reportingPeriodId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.GetStateReportingPeriodCertificationStatusWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -633,66 +273,6 @@ catch (ApiException e)
 
 Retrieves the Validation Summary of Reporting Period.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetStateReportingPeriodValidationSummaryExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsReportingPeriodsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-
-            try
-            {
-                // Retrieves the Validation Summary of Reporting Period.
-                EdGraphServicesStateReportingV1ReportingPeriodValidationSummary result = apiInstance.GetStateReportingPeriodValidationSummary(tenantId, environmentId, reportingPeriodId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.GetStateReportingPeriodValidationSummary: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetStateReportingPeriodValidationSummaryWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves the Validation Summary of Reporting Period.
-    ApiResponse<EdGraphServicesStateReportingV1ReportingPeriodValidationSummary> response = apiInstance.GetStateReportingPeriodValidationSummaryWithHttpInfo(tenantId, environmentId, reportingPeriodId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.GetStateReportingPeriodValidationSummaryWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -734,67 +314,6 @@ catch (ApiException e)
 
 Retrieves the Validation Summary of Reporting Period by Category.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetStateReportingPeriodValidationSummaryByCategoryExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsReportingPeriodsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-            var categoryId = "categoryId_example";  // Guid | 
-
-            try
-            {
-                // Retrieves the Validation Summary of Reporting Period by Category.
-                EdGraphServicesStateReportingV1ReportingPeriodValidationSummaryByCategoryId result = apiInstance.GetStateReportingPeriodValidationSummaryByCategory(tenantId, environmentId, reportingPeriodId, categoryId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.GetStateReportingPeriodValidationSummaryByCategory: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetStateReportingPeriodValidationSummaryByCategoryWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves the Validation Summary of Reporting Period by Category.
-    ApiResponse<EdGraphServicesStateReportingV1ReportingPeriodValidationSummaryByCategoryId> response = apiInstance.GetStateReportingPeriodValidationSummaryByCategoryWithHttpInfo(tenantId, environmentId, reportingPeriodId, categoryId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.GetStateReportingPeriodValidationSummaryByCategoryWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -837,67 +356,6 @@ catch (ApiException e)
 
 Posts a Reporting Period.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class PostStateReportingPeriodExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsReportingPeriodsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-            var edGraphServicesStateReportingV1PostReportingPeriodRequest = new EdGraphServicesStateReportingV1PostReportingPeriodRequest(); // EdGraphServicesStateReportingV1PostReportingPeriodRequest |  (optional) 
-
-            try
-            {
-                // Posts a Reporting Period.
-                EdGraphServicesStateReportingV1ReportingPeriodPostedResponse result = apiInstance.PostStateReportingPeriod(tenantId, environmentId, reportingPeriodId, edGraphServicesStateReportingV1PostReportingPeriodRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.PostStateReportingPeriod: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the PostStateReportingPeriodWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Posts a Reporting Period.
-    ApiResponse<EdGraphServicesStateReportingV1ReportingPeriodPostedResponse> response = apiInstance.PostStateReportingPeriodWithHttpInfo(tenantId, environmentId, reportingPeriodId, edGraphServicesStateReportingV1PostReportingPeriodRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.PostStateReportingPeriodWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -940,67 +398,6 @@ catch (ApiException e)
 
 Run a Reporting Period.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class RunStateReportingPeriodExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsReportingPeriodsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-            var edGraphServicesStateReportingV1RunReportingPeriodRequest = new EdGraphServicesStateReportingV1RunReportingPeriodRequest(); // EdGraphServicesStateReportingV1RunReportingPeriodRequest |  (optional) 
-
-            try
-            {
-                // Run a Reporting Period.
-                EdGraphServicesStateReportingV1ReportingPeriodRunResponse result = apiInstance.RunStateReportingPeriod(tenantId, environmentId, reportingPeriodId, edGraphServicesStateReportingV1RunReportingPeriodRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.RunStateReportingPeriod: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the RunStateReportingPeriodWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Run a Reporting Period.
-    ApiResponse<EdGraphServicesStateReportingV1ReportingPeriodRunResponse> response = apiInstance.RunStateReportingPeriodWithHttpInfo(tenantId, environmentId, reportingPeriodId, edGraphServicesStateReportingV1RunReportingPeriodRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.RunStateReportingPeriodWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1043,69 +440,6 @@ catch (ApiException e)
 
 Retrieves a list of Reporting Periods.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SearchStateReportingPeriodsExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsReportingPeriodsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var orderBy = "orderBy_example";  // string |  (optional) 
-            var filter = "filter_example";  // string |  (optional) 
-
-            try
-            {
-                // Retrieves a list of Reporting Periods.
-                EdGraphServicesStateReportingV1PaginatedReportingPeriods result = apiInstance.SearchStateReportingPeriods(tenantId, environmentId, pageIndex, pageSize, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.SearchStateReportingPeriods: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SearchStateReportingPeriodsWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of Reporting Periods.
-    ApiResponse<EdGraphServicesStateReportingV1PaginatedReportingPeriods> response = apiInstance.SearchStateReportingPeriodsWithHttpInfo(tenantId, environmentId, pageIndex, pageSize, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.SearchStateReportingPeriodsWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1149,67 +483,6 @@ catch (ApiException e)
 
 Sets the current step of a Reporting Period.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SetStateReportingPeriodCurrentStepExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsReportingPeriodsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-            var edGraphServicesStateReportingV1SetReportingPeriodCurrentStepRequest = new EdGraphServicesStateReportingV1SetReportingPeriodCurrentStepRequest(); // EdGraphServicesStateReportingV1SetReportingPeriodCurrentStepRequest |  (optional) 
-
-            try
-            {
-                // Sets the current step of a Reporting Period.
-                EdGraphServicesStateReportingV1ReportingPeriodCurrentStepSetResponse result = apiInstance.SetStateReportingPeriodCurrentStep(tenantId, environmentId, reportingPeriodId, edGraphServicesStateReportingV1SetReportingPeriodCurrentStepRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.SetStateReportingPeriodCurrentStep: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SetStateReportingPeriodCurrentStepWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Sets the current step of a Reporting Period.
-    ApiResponse<EdGraphServicesStateReportingV1ReportingPeriodCurrentStepSetResponse> response = apiInstance.SetStateReportingPeriodCurrentStepWithHttpInfo(tenantId, environmentId, reportingPeriodId, edGraphServicesStateReportingV1SetReportingPeriodCurrentStepRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.SetStateReportingPeriodCurrentStepWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1252,68 +525,6 @@ catch (ApiException e)
 
 Sets the status of a Reporting Period step.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class SetStateReportingPeriodStepStatusExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsReportingPeriodsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-            var stepNumber = 56;  // int | 
-            var edGraphServicesStateReportingV1SetReportingPeriodStepStatusRequest = new EdGraphServicesStateReportingV1SetReportingPeriodStepStatusRequest(); // EdGraphServicesStateReportingV1SetReportingPeriodStepStatusRequest |  (optional) 
-
-            try
-            {
-                // Sets the status of a Reporting Period step.
-                EdGraphServicesStateReportingV1ReportingPeriodCreatedResponse result = apiInstance.SetStateReportingPeriodStepStatus(tenantId, environmentId, reportingPeriodId, stepNumber, edGraphServicesStateReportingV1SetReportingPeriodStepStatusRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.SetStateReportingPeriodStepStatus: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the SetStateReportingPeriodStepStatusWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Sets the status of a Reporting Period step.
-    ApiResponse<EdGraphServicesStateReportingV1ReportingPeriodCreatedResponse> response = apiInstance.SetStateReportingPeriodStepStatusWithHttpInfo(tenantId, environmentId, reportingPeriodId, stepNumber, edGraphServicesStateReportingV1SetReportingPeriodStepStatusRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.SetStateReportingPeriodStepStatusWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1357,67 +568,6 @@ catch (ApiException e)
 
 Toggles the Selected state of a Reporting Period.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class ToggleStateReportingPeriodSelectedExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsReportingPeriodsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-            var edGraphServicesStateReportingV1ToggleReportingPeriodSelectedRequest = new EdGraphServicesStateReportingV1ToggleReportingPeriodSelectedRequest(); // EdGraphServicesStateReportingV1ToggleReportingPeriodSelectedRequest |  (optional) 
-
-            try
-            {
-                // Toggles the Selected state of a Reporting Period.
-                EdGraphServicesStateReportingV1ReportingPeriodToggledResponse result = apiInstance.ToggleStateReportingPeriodSelected(tenantId, environmentId, reportingPeriodId, edGraphServicesStateReportingV1ToggleReportingPeriodSelectedRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.ToggleStateReportingPeriodSelected: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the ToggleStateReportingPeriodSelectedWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Toggles the Selected state of a Reporting Period.
-    ApiResponse<EdGraphServicesStateReportingV1ReportingPeriodToggledResponse> response = apiInstance.ToggleStateReportingPeriodSelectedWithHttpInfo(tenantId, environmentId, reportingPeriodId, edGraphServicesStateReportingV1ToggleReportingPeriodSelectedRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.ToggleStateReportingPeriodSelectedWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1460,67 +610,6 @@ catch (ApiException e)
 
 Updates a Reporting Period.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateStateReportingPeriodExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsReportingPeriodsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var reportingPeriodId = "reportingPeriodId_example";  // Guid | 
-            var edGraphServicesStateReportingV1UpdateReportingPeriodRequest = new EdGraphServicesStateReportingV1UpdateReportingPeriodRequest(); // EdGraphServicesStateReportingV1UpdateReportingPeriodRequest |  (optional) 
-
-            try
-            {
-                // Updates a Reporting Period.
-                EdGraphServicesStateReportingV1ReportingPeriodUpdatedResponse result = apiInstance.UpdateStateReportingPeriod(tenantId, environmentId, reportingPeriodId, edGraphServicesStateReportingV1UpdateReportingPeriodRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.UpdateStateReportingPeriod: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateStateReportingPeriodWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates a Reporting Period.
-    ApiResponse<EdGraphServicesStateReportingV1ReportingPeriodUpdatedResponse> response = apiInstance.UpdateStateReportingPeriodWithHttpInfo(tenantId, environmentId, reportingPeriodId, edGraphServicesStateReportingV1UpdateReportingPeriodRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.UpdateStateReportingPeriodWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -1563,66 +652,6 @@ catch (ApiException e)
 
 Updates Reporting Periods in bulk.
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateStateReportingPeriodBulkExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new EnvironmentsReportingPeriodsApi(config);
-            var tenantId = "tenantId_example";  // Guid | 
-            var environmentId = "environmentId_example";  // Guid | 
-            var edGraphServicesStateReportingV1UpdateReportingPeriodBulkRequest = new EdGraphServicesStateReportingV1UpdateReportingPeriodBulkRequest(); // EdGraphServicesStateReportingV1UpdateReportingPeriodBulkRequest |  (optional) 
-
-            try
-            {
-                // Updates Reporting Periods in bulk.
-                EdGraphServicesStateReportingV1ReportingPeriodUpdatedBulkResponse result = apiInstance.UpdateStateReportingPeriodBulk(tenantId, environmentId, edGraphServicesStateReportingV1UpdateReportingPeriodBulkRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.UpdateStateReportingPeriodBulk: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateStateReportingPeriodBulkWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates Reporting Periods in bulk.
-    ApiResponse<EdGraphServicesStateReportingV1ReportingPeriodUpdatedBulkResponse> response = apiInstance.UpdateStateReportingPeriodBulkWithHttpInfo(tenantId, environmentId, edGraphServicesStateReportingV1UpdateReportingPeriodBulkRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling EnvironmentsReportingPeriodsApi.UpdateStateReportingPeriodBulkWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

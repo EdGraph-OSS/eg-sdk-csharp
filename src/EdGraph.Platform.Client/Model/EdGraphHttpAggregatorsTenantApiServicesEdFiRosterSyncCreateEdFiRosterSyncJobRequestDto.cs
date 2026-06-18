@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Mode
         /// </summary>
         [JsonPropertyName("mode")]
-        public string? Mode { get { return this.ModeOption; } set { this.ModeOption = new(value); } }
+        public string? Mode { get { return this.ModeOption.Value; } set { this.ModeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of UseSSAInsteadOfSEOAA
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets UseSSAInsteadOfSEOAA
         /// </summary>
         [JsonPropertyName("use_SSA_InsteadOf_SEOAA")]
-        public DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions? UseSSAInsteadOfSEOAA { get { return this.UseSSAInsteadOfSEOAAOption; } set { this.UseSSAInsteadOfSEOAAOption = new(value); } }
+        public DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions? UseSSAInsteadOfSEOAA { get { return this.UseSSAInsteadOfSEOAAOption.Value; } set { this.UseSSAInsteadOfSEOAAOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ImportSectionAndCourseData
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ImportSectionAndCourseData
         /// </summary>
         [JsonPropertyName("importSectionAndCourseData")]
-        public bool? ImportSectionAndCourseData { get { return this.ImportSectionAndCourseDataOption; } set { this.ImportSectionAndCourseDataOption = new(value); } }
+        public bool? ImportSectionAndCourseData { get { return this.ImportSectionAndCourseDataOption.Value; } set { this.ImportSectionAndCourseDataOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -157,12 +157,10 @@ namespace EdGraph.Platform.Client.Model
                             mode = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "use_SSA_InsteadOf_SEOAA":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                useSSAInsteadOfSEOAA = new Option<DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions?>(JsonSerializer.Deserialize<DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            useSSAInsteadOfSEOAA = new Option<DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions?>(JsonSerializer.Deserialize<DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "importSectionAndCourseData":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                importSectionAndCourseData = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            importSectionAndCourseData = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;

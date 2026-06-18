@@ -66,7 +66,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EnvironmentId
@@ -79,7 +79,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EnvironmentId
         /// </summary>
         [JsonPropertyName("environmentId")]
-        public string? EnvironmentId { get { return this.EnvironmentIdOption; } set { this.EnvironmentIdOption = new(value); } }
+        public string? EnvironmentId { get { return this.EnvironmentIdOption.Value; } set { this.EnvironmentIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ReportingPeriodId
@@ -92,7 +92,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ReportingPeriodId
         /// </summary>
         [JsonPropertyName("reportingPeriodId")]
-        public string? ReportingPeriodId { get { return this.ReportingPeriodIdOption; } set { this.ReportingPeriodIdOption = new(value); } }
+        public string? ReportingPeriodId { get { return this.ReportingPeriodIdOption.Value; } set { this.ReportingPeriodIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SubmissionId
@@ -105,7 +105,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SubmissionId
         /// </summary>
         [JsonPropertyName("submissionId")]
-        public string? SubmissionId { get { return this.SubmissionIdOption; } set { this.SubmissionIdOption = new(value); } }
+        public string? SubmissionId { get { return this.SubmissionIdOption.Value; } set { this.SubmissionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EdFiResource
@@ -118,7 +118,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EdFiResource
         /// </summary>
         [JsonPropertyName("edFiResource")]
-        public string? EdFiResource { get { return this.EdFiResourceOption; } set { this.EdFiResourceOption = new(value); } }
+        public string? EdFiResource { get { return this.EdFiResourceOption.Value; } set { this.EdFiResourceOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SucceededCount
@@ -131,7 +131,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SucceededCount
         /// </summary>
         [JsonPropertyName("succeededCount")]
-        public int? SucceededCount { get { return this.SucceededCountOption; } set { this.SucceededCountOption = new(value); } }
+        public int? SucceededCount { get { return this.SucceededCountOption.Value; } set { this.SucceededCountOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of FailedCount
@@ -144,7 +144,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets FailedCount
         /// </summary>
         [JsonPropertyName("failedCount")]
-        public int? FailedCount { get { return this.FailedCountOption; } set { this.FailedCountOption = new(value); } }
+        public int? FailedCount { get { return this.FailedCountOption.Value; } set { this.FailedCountOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -237,12 +237,10 @@ namespace EdGraph.Platform.Client.Model
                             edFiResource = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "succeededCount":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                succeededCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            succeededCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "failedCount":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                failedCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            failedCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

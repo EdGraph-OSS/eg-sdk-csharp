@@ -17,65 +17,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 Creates a new OpenId API Client
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class CreateTenantApiClientAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new APIClientsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var identityApiApiClientV1CreateApiClientRequest = new IdentityApiApiClientV1CreateApiClientRequest(); // IdentityApiApiClientV1CreateApiClientRequest |  (optional) 
-
-            try
-            {
-                // Creates a new OpenId API Client
-                IdentityApiApiClientV1ApiClientCreatedResponse result = apiInstance.CreateTenantApiClientAsync(tenantId, identityApiApiClientV1CreateApiClientRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling APIClientsApi.CreateTenantApiClientAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the CreateTenantApiClientAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Creates a new OpenId API Client
-    ApiResponse<IdentityApiApiClientV1ApiClientCreatedResponse> response = apiInstance.CreateTenantApiClientAsyncWithHttpInfo(tenantId, identityApiApiClientV1CreateApiClientRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling APIClientsApi.CreateTenantApiClientAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -115,61 +56,6 @@ catch (ApiException e)
 
 Deletes an OpenId API Client
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class DeleteTenantApiClientAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new APIClientsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var clientId = "clientId_example";  // string | 
-
-            try
-            {
-                // Deletes an OpenId API Client
-                apiInstance.DeleteTenantApiClientAsync(tenantId, clientId);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling APIClientsApi.DeleteTenantApiClientAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the DeleteTenantApiClientAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Deletes an OpenId API Client
-    apiInstance.DeleteTenantApiClientAsyncWithHttpInfo(tenantId, clientId);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling APIClientsApi.DeleteTenantApiClientAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -209,68 +95,6 @@ void (empty response body)
 
 Retrieves a list of OpenId API Clients associated to this tenant
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetAllTenantApiClientsAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new APIClientsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var pageSize = 10;  // int |  (optional)  (default to 10)
-            var pageIndex = 0;  // int |  (optional)  (default to 0)
-            var orderBy = "\"\"";  // string |  (optional)  (default to "")
-            var filter = "\"\"";  // string |  (optional)  (default to "")
-
-            try
-            {
-                // Retrieves a list of OpenId API Clients associated to this tenant
-                IdentityApiApiClientV1ApiClientPaginatedItemsResponsePaginatedItemsViewModel result = apiInstance.GetAllTenantApiClientsAsync(tenantId, pageSize, pageIndex, orderBy, filter);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling APIClientsApi.GetAllTenantApiClientsAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetAllTenantApiClientsAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves a list of OpenId API Clients associated to this tenant
-    ApiResponse<IdentityApiApiClientV1ApiClientPaginatedItemsResponsePaginatedItemsViewModel> response = apiInstance.GetAllTenantApiClientsAsyncWithHttpInfo(tenantId, pageSize, pageIndex, orderBy, filter);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling APIClientsApi.GetAllTenantApiClientsAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -313,65 +137,6 @@ catch (ApiException e)
 
 Retrieves an OpenId API Client
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class GetTenantApiClientByIdAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new APIClientsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var clientId = "clientId_example";  // string | 
-
-            try
-            {
-                // Retrieves an OpenId API Client
-                IdentityApiApiClientV1ApiClientProfileResponse result = apiInstance.GetTenantApiClientByIdAsync(tenantId, clientId);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling APIClientsApi.GetTenantApiClientByIdAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the GetTenantApiClientByIdAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Retrieves an OpenId API Client
-    ApiResponse<IdentityApiApiClientV1ApiClientProfileResponse> response = apiInstance.GetTenantApiClientByIdAsyncWithHttpInfo(tenantId, clientId);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling APIClientsApi.GetTenantApiClientByIdAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -412,66 +177,6 @@ catch (ApiException e)
 
 Regenerates an OpenId API Client's secret
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class RegenerateTenantApiClientSecretAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new APIClientsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var clientId = "clientId_example";  // string | 
-            var identityApiApiClientV1RegenerateApiClientSecretRequest = new IdentityApiApiClientV1RegenerateApiClientSecretRequest(); // IdentityApiApiClientV1RegenerateApiClientSecretRequest |  (optional) 
-
-            try
-            {
-                // Regenerates an OpenId API Client's secret
-                IdentityApiApiClientV1ApiClientSecretRegeneratedResponse result = apiInstance.RegenerateTenantApiClientSecretAsync(tenantId, clientId, identityApiApiClientV1RegenerateApiClientSecretRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling APIClientsApi.RegenerateTenantApiClientSecretAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the RegenerateTenantApiClientSecretAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Regenerates an OpenId API Client's secret
-    ApiResponse<IdentityApiApiClientV1ApiClientSecretRegeneratedResponse> response = apiInstance.RegenerateTenantApiClientSecretAsyncWithHttpInfo(tenantId, clientId, identityApiApiClientV1RegenerateApiClientSecretRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling APIClientsApi.RegenerateTenantApiClientSecretAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 
@@ -512,66 +217,6 @@ catch (ApiException e)
 
 Updates an OpenId API Client
 
-### Example
-```csharp
-using System.Collections.Generic;
-using System.Diagnostics;
-using EdGraph.Platform.Client.Api;
-using EdGraph.Platform.Client.Client;
-using EdGraph.Platform.Client.Model;
-
-namespace Example
-{
-    public class UpdateTenantApiClientAsyncExample
-    {
-        public static void Main()
-        {
-            Configuration config = new Configuration();
-            config.BasePath = "https://api.dev.edgraph.com/tenant";
-            // Configure OAuth2 access token for authorization: oauth2
-            config.AccessToken = "YOUR_ACCESS_TOKEN";
-
-            var apiInstance = new APIClientsApi(config);
-            var tenantId = "tenantId_example";  // string | 
-            var clientId = "clientId_example";  // string | 
-            var identityApiApiClientV1UpdateApiClientRequest = new IdentityApiApiClientV1UpdateApiClientRequest(); // IdentityApiApiClientV1UpdateApiClientRequest |  (optional) 
-
-            try
-            {
-                // Updates an OpenId API Client
-                IdentityApiApiClientV1ApiClientUpdatedResponse result = apiInstance.UpdateTenantApiClientAsync(tenantId, clientId, identityApiApiClientV1UpdateApiClientRequest);
-                Debug.WriteLine(result);
-            }
-            catch (ApiException  e)
-            {
-                Debug.Print("Exception when calling APIClientsApi.UpdateTenantApiClientAsync: " + e.Message);
-                Debug.Print("Status Code: " + e.ErrorCode);
-                Debug.Print(e.StackTrace);
-            }
-        }
-    }
-}
-```
-
-#### Using the UpdateTenantApiClientAsyncWithHttpInfo variant
-This returns an ApiResponse object which contains the response data, status code and headers.
-
-```csharp
-try
-{
-    // Updates an OpenId API Client
-    ApiResponse<IdentityApiApiClientV1ApiClientUpdatedResponse> response = apiInstance.UpdateTenantApiClientAsyncWithHttpInfo(tenantId, clientId, identityApiApiClientV1UpdateApiClientRequest);
-    Debug.Write("Status Code: " + response.StatusCode);
-    Debug.Write("Response Headers: " + response.Headers);
-    Debug.Write("Response Body: " + response.Data);
-}
-catch (ApiException e)
-{
-    Debug.Print("Exception when calling APIClientsApi.UpdateTenantApiClientAsyncWithHttpInfo: " + e.Message);
-    Debug.Print("Status Code: " + e.ErrorCode);
-    Debug.Print(e.StackTrace);
-}
-```
 
 ### Parameters
 

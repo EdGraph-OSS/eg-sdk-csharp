@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<IdentityApiInstructionalInsightsV1CreateInstructionalInsightsSecuritySyncJobRequest> identityApiInstructionalInsightsV1CreateInstructionalInsightsSecuritySyncJobRequest = default!;
             var response = await _instance.CreateInstructionalInsightsSecuritySyncJobAsync(tenantId, identityApiInstructionalInsightsV1CreateInstructionalInsightsSecuritySyncJobRequest);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobCreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid tenantId = default!;
             var response = await _instance.ExecuteInstructionalInsightsSecuritySyncJobAsync(tenantId);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobExecutedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid tenantId = default!;
             var response = await _instance.GetInstructionalInsightsSecuritySyncJobAsync(tenantId);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiInstructionalInsightsV1InstructionalInsightsSecuritySyncJobResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> message = default!;
             var response = await _instance.SearchInstructionalInsightsSecuritySyncJobExecutionLogsAsync(tenantId, executionId, jobId, pageIndex, pageSize, orderBy, level, message);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiInstructionalInsightsV1SearchInstructionalInsightsSecuritySyncJobExecutionLogsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.SearchInstructionalInsightsSecuritySyncJobExecutionsAsync(tenantId, jobId, pageIndex, pageSize, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<IdentityApiInstructionalInsightsV1SearchInstructionalInsightsSecuritySyncJobExecutionsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<IdentityApiInstructionalInsightsV1UpdateInstructionalInsightsSecuritySyncJobRequest> identityApiInstructionalInsightsV1UpdateInstructionalInsightsSecuritySyncJobRequest = default!;
             var response = await _instance.UpdateInstructionalInsightsSecuritySyncJobAsync(tenantId, identityApiInstructionalInsightsV1UpdateInstructionalInsightsSecuritySyncJobRequest);
             var model = response.Unauthorized();
-            Assert.IsType<MicrosoftAspNetCoreMvcNoContentResult>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

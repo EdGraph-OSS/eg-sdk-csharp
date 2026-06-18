@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CanConnect
         /// </summary>
         [JsonPropertyName("canConnect")]
-        public bool? CanConnect { get { return this.CanConnectOption; } set { this.CanConnectOption = new(value); } }
+        public bool? CanConnect { get { return this.CanConnectOption.Value; } set { this.CanConnectOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ReasonFailed
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ReasonFailed
         /// </summary>
         [JsonPropertyName("reasonFailed")]
-        public string? ReasonFailed { get { return this.ReasonFailedOption; } set { this.ReasonFailedOption = new(value); } }
+        public string? ReasonFailed { get { return this.ReasonFailedOption.Value; } set { this.ReasonFailedOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -137,8 +137,7 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "canConnect":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                canConnect = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            canConnect = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "reasonFailed":
                             reasonFailed = new Option<string?>(utf8JsonReader.GetString());

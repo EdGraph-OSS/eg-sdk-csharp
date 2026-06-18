@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DataRefreshType
         /// </summary>
         [JsonPropertyName("dataRefreshType")]
-        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsDataRefreshType? DataRefreshType { get { return this.DataRefreshTypeOption; } set { this.DataRefreshTypeOption = new(value); } }
+        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsDataRefreshType? DataRefreshType { get { return this.DataRefreshTypeOption.Value; } set { this.DataRefreshTypeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -97,7 +97,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of JobId
@@ -110,7 +110,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets JobId
         /// </summary>
         [JsonPropertyName("jobId")]
-        public string? JobId { get { return this.JobIdOption; } set { this.JobIdOption = new(value); } }
+        public string? JobId { get { return this.JobIdOption.Value; } set { this.JobIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Name
@@ -123,7 +123,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Name
         /// </summary>
         [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption; } set { this.NameOption = new(value); } }
+        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SourceConnectionId
@@ -136,7 +136,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SourceConnectionId
         /// </summary>
         [JsonPropertyName("sourceConnectionId")]
-        public string? SourceConnectionId { get { return this.SourceConnectionIdOption; } set { this.SourceConnectionIdOption = new(value); } }
+        public string? SourceConnectionId { get { return this.SourceConnectionIdOption.Value; } set { this.SourceConnectionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DestinationConnectionId
@@ -149,7 +149,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DestinationConnectionId
         /// </summary>
         [JsonPropertyName("destinationConnectionId")]
-        public string? DestinationConnectionId { get { return this.DestinationConnectionIdOption; } set { this.DestinationConnectionIdOption = new(value); } }
+        public string? DestinationConnectionId { get { return this.DestinationConnectionIdOption.Value; } set { this.DestinationConnectionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ProfileId
@@ -162,7 +162,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ProfileId
         /// </summary>
         [JsonPropertyName("profileId")]
-        public string? ProfileId { get { return this.ProfileIdOption; } set { this.ProfileIdOption = new(value); } }
+        public string? ProfileId { get { return this.ProfileIdOption.Value; } set { this.ProfileIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of JobPoints
@@ -175,7 +175,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets JobPoints
         /// </summary>
         [JsonPropertyName("jobPoints")]
-        public int? JobPoints { get { return this.JobPointsOption; } set { this.JobPointsOption = new(value); } }
+        public int? JobPoints { get { return this.JobPointsOption.Value; } set { this.JobPointsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApplicationId
@@ -188,7 +188,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApplicationId
         /// </summary>
         [JsonPropertyName("applicationId")]
-        public string? ApplicationId { get { return this.ApplicationIdOption; } set { this.ApplicationIdOption = new(value); } }
+        public string? ApplicationId { get { return this.ApplicationIdOption.Value; } set { this.ApplicationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DataRefreshSpecificDate
@@ -201,7 +201,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DataRefreshSpecificDate
         /// </summary>
         [JsonPropertyName("dataRefreshSpecificDate")]
-        public string? DataRefreshSpecificDate { get { return this.DataRefreshSpecificDateOption; } set { this.DataRefreshSpecificDateOption = new(value); } }
+        public string? DataRefreshSpecificDate { get { return this.DataRefreshSpecificDateOption.Value; } set { this.DataRefreshSpecificDateOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of MaxApiFailure
@@ -214,7 +214,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets MaxApiFailure
         /// </summary>
         [JsonPropertyName("maxApiFailure")]
-        public int? MaxApiFailure { get { return this.MaxApiFailureOption; } set { this.MaxApiFailureOption = new(value); } }
+        public int? MaxApiFailure { get { return this.MaxApiFailureOption.Value; } set { this.MaxApiFailureOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of MaxApiRetry
@@ -227,7 +227,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets MaxApiRetry
         /// </summary>
         [JsonPropertyName("maxApiRetry")]
-        public int? MaxApiRetry { get { return this.MaxApiRetryOption; } set { this.MaxApiRetryOption = new(value); } }
+        public int? MaxApiRetry { get { return this.MaxApiRetryOption.Value; } set { this.MaxApiRetryOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of JobCompleteCallbackUrl
@@ -240,7 +240,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets JobCompleteCallbackUrl
         /// </summary>
         [JsonPropertyName("jobCompleteCallbackUrl")]
-        public string? JobCompleteCallbackUrl { get { return this.JobCompleteCallbackUrlOption; } set { this.JobCompleteCallbackUrlOption = new(value); } }
+        public string? JobCompleteCallbackUrl { get { return this.JobCompleteCallbackUrlOption.Value; } set { this.JobCompleteCallbackUrlOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of JobMetadata
@@ -253,7 +253,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets JobMetadata
         /// </summary>
         [JsonPropertyName("jobMetadata")]
-        public List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsJobMetadata>? JobMetadata { get { return this.JobMetadataOption; } set { this.JobMetadataOption = new(value); } }
+        public List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsJobMetadata>? JobMetadata { get { return this.JobMetadataOption.Value; } set { this.JobMetadataOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Schedule
@@ -266,7 +266,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Schedule
         /// </summary>
         [JsonPropertyName("schedule")]
-        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsSchedule? Schedule { get { return this.ScheduleOption; } set { this.ScheduleOption = new(value); } }
+        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsSchedule? Schedule { get { return this.ScheduleOption.Value; } set { this.ScheduleOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of NotificationEmails
@@ -279,7 +279,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets NotificationEmails
         /// </summary>
         [JsonPropertyName("notificationEmails")]
-        public List<string>? NotificationEmails { get { return this.NotificationEmailsOption; } set { this.NotificationEmailsOption = new(value); } }
+        public List<string>? NotificationEmails { get { return this.NotificationEmailsOption.Value; } set { this.NotificationEmailsOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -393,8 +393,7 @@ namespace EdGraph.Platform.Client.Model
                             profileId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "jobPoints":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                jobPoints = new Option<int?>(utf8JsonReader.GetInt32());
+                            jobPoints = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "applicationId":
                             applicationId = new Option<string?>(utf8JsonReader.GetString());
@@ -408,27 +407,22 @@ namespace EdGraph.Platform.Client.Model
                             dataRefreshSpecificDate = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "maxApiFailure":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                maxApiFailure = new Option<int?>(utf8JsonReader.GetInt32());
+                            maxApiFailure = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "maxApiRetry":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                maxApiRetry = new Option<int?>(utf8JsonReader.GetInt32());
+                            maxApiRetry = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "jobCompleteCallbackUrl":
                             jobCompleteCallbackUrl = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "jobMetadata":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                jobMetadata = new Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsJobMetadata>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsJobMetadata>>(ref utf8JsonReader, jsonSerializerOptions));
+                            jobMetadata = new Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsJobMetadata>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsJobMetadata>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "schedule":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                schedule = new Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsSchedule?>(JsonSerializer.Deserialize<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsSchedule>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            schedule = new Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsSchedule?>(JsonSerializer.Deserialize<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsJobsSchedule>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "notificationEmails":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                notificationEmails = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            notificationEmails = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

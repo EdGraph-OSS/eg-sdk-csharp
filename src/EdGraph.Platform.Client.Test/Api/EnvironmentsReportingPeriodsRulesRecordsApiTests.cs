@@ -61,7 +61,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid reportingPeriodId = default!;
             var response = await _instance.DeleteStateReportingPeriodRulesAsync(tenantId, environmentId, reportingPeriodId);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphServicesStateReportingV1ReportingPeriodRulesDeletedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<bool> excludeFromPost = default!;
             var response = await _instance.SearchStateReportingPeriodRecordsAsync(tenantId, environmentId, reportingPeriodId, pageIndex, pageSize, excludeFromPost);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphServicesStateReportingV1PaginatedRecords>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<int> pageSize = default!;
             var response = await _instance.SearchStateReportingPeriodRuleRecordsAsync(tenantId, environmentId, reportingPeriodId, ruleId, pageIndex, pageSize);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphServicesStateReportingV1PaginatedRuleRecords>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagRequest> edGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagRequest = default!;
             var response = await _instance.SetStateReportingPeriodRuleRecordPostFlagAsync(tenantId, environmentId, reportingPeriodId, ruleId, recordId, edGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphServicesStateReportingV1ReportingPeriodCreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagBulkRequest> edGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagBulkRequest = default!;
             var response = await _instance.SetStateReportingPeriodRuleRecordPostFlagBulkAsync(tenantId, environmentId, reportingPeriodId, ruleId, edGraphServicesStateReportingV1SetReportingPeriodRuleRecordPostFlagBulkRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphServicesStateReportingV1ReportingPeriodCreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

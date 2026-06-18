@@ -64,7 +64,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TargetAudience
         /// </summary>
         [JsonPropertyName("targetAudience")]
-        public FormApiFormsV1AudienceType? TargetAudience { get { return this.TargetAudienceOption; } set { this.TargetAudienceOption = new(value); } }
+        public FormApiFormsV1AudienceType? TargetAudience { get { return this.TargetAudienceOption.Value; } set { this.TargetAudienceOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Id
@@ -77,7 +77,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantId
@@ -90,7 +90,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SingleResponsePerIndividual
@@ -103,7 +103,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SingleResponsePerIndividual
         /// </summary>
         [JsonPropertyName("singleResponsePerIndividual")]
-        public bool? SingleResponsePerIndividual { get { return this.SingleResponsePerIndividualOption; } set { this.SingleResponsePerIndividualOption = new(value); } }
+        public bool? SingleResponsePerIndividual { get { return this.SingleResponsePerIndividualOption.Value; } set { this.SingleResponsePerIndividualOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of StaffClassifications
@@ -116,7 +116,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets StaffClassifications
         /// </summary>
         [JsonPropertyName("staffClassifications")]
-        public List<string>? StaffClassifications { get { return this.StaffClassificationsOption; } }
+        public List<string>? StaffClassifications { get { return this.StaffClassificationsOption.Value; } }
 
         /// <summary>
         /// Used to track the state of Users
@@ -129,7 +129,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Users
         /// </summary>
         [JsonPropertyName("users")]
-        public List<string>? Users { get { return this.UsersOption; } }
+        public List<string>? Users { get { return this.UsersOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -216,16 +216,13 @@ namespace EdGraph.Platform.Client.Model
                                 targetAudience = new Option<FormApiFormsV1AudienceType?>(FormApiFormsV1AudienceTypeValueConverter.FromStringOrDefault(targetAudienceRawValue));
                             break;
                         case "singleResponsePerIndividual":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                singleResponsePerIndividual = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            singleResponsePerIndividual = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "staffClassifications":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                staffClassifications = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            staffClassifications = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "users":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                users = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            users = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

@@ -60,7 +60,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<ValidationsApiDbEnvironmentsV1CreateRequest> validationsApiDbEnvironmentsV1CreateRequest = default!;
             var response = await _instance.CreateEnvironmentAsync(tenantId, validationsApiDbEnvironmentsV1CreateRequest);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiCoreV1CreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphServicesStateReportingV1CreateEnvironmentRequest> edGraphServicesStateReportingV1CreateEnvironmentRequest = default!;
             var response = await _instance.CreateStateReportingEnvironmentAsync(tenantId, edGraphServicesStateReportingV1CreateEnvironmentRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphServicesStateReportingV1EnvironmentCreatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -84,7 +84,9 @@ namespace EdGraph.Platform.Client.Test.Api
         {
             string tenantId = default!;
             string environmentId = default!;
-            await _instance.DeleteEnvironmentAsync(tenantId, environmentId);
+            var response = await _instance.DeleteEnvironmentAsync(tenantId, environmentId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -97,7 +99,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid environmentId = default!;
             var response = await _instance.DeleteStateReportingEnvironmentAsync(tenantId, environmentId);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphServicesStateReportingV1EnvironmentDeletedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -110,7 +112,7 @@ namespace EdGraph.Platform.Client.Test.Api
             string environmentId = default!;
             var response = await _instance.GetEnvironmentByIdAsync(tenantId, environmentId);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiDbEnvironmentsV1DbEnvironmentDto>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -126,7 +128,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> orderBy = default!;
             var response = await _instance.GetEnvironmentsAsync(tenantId, pageIndex, pageSize, filter, orderBy);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiDbEnvironmentsV1PaginatedDbEnvironments>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -139,7 +141,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid environmentId = default!;
             var response = await _instance.GetStateReportingEnvironmentAsync(tenantId, environmentId);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphServicesStateReportingV1EnvironmentProfileResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -155,7 +157,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> filter = default!;
             var response = await _instance.SearchStateReportingEnvironmentsAsync(tenantId, pageIndex, pageSize, orderBy, filter);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphServicesStateReportingV1PaginatedEnvironmentsResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -168,7 +170,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<ValidationsApiDbEnvironmentsV1TestConnectionRequest> validationsApiDbEnvironmentsV1TestConnectionRequest = default!;
             var response = await _instance.TestEnvironmentConnectionAsync(tenantId, validationsApiDbEnvironmentsV1TestConnectionRequest);
             var model = response.Unauthorized();
-            Assert.IsType<ValidationsApiDbEnvironmentsV1TestConnectionResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -182,7 +184,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<ValidationsApiDbEnvironmentsV1UpdateRequest> validationsApiDbEnvironmentsV1UpdateRequest = default!;
             var response = await _instance.UpdateEnvironmentAsync(tenantId, environmentId, validationsApiDbEnvironmentsV1UpdateRequest);
             var model = response.Unauthorized();
-            Assert.IsType<Object>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -196,7 +198,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraphServicesStateReportingV1UpdateEnvironmentRequest> edGraphServicesStateReportingV1UpdateEnvironmentRequest = default!;
             var response = await _instance.UpdateStateReportingEnvironmentAsync(tenantId, environmentId, edGraphServicesStateReportingV1UpdateEnvironmentRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphServicesStateReportingV1EnvironmentUpdatedResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

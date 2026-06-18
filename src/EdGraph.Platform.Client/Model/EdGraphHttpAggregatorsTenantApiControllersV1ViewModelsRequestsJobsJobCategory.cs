@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public Guid? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public Guid? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SubCategories
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SubCategories
         /// </summary>
         [JsonPropertyName("subCategories")]
-        public List<Guid>? SubCategories { get { return this.SubCategoriesOption; } set { this.SubCategoriesOption = new(value); } }
+        public List<Guid>? SubCategories { get { return this.SubCategoriesOption.Value; } set { this.SubCategoriesOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -137,12 +137,10 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "id":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                id = new Option<Guid?>(utf8JsonReader.GetGuid());
+                            id = new Option<Guid?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (Guid?)null : utf8JsonReader.GetGuid());
                             break;
                         case "subCategories":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                subCategories = new Option<List<Guid>?>(JsonSerializer.Deserialize<List<Guid>>(ref utf8JsonReader, jsonSerializerOptions));
+                            subCategories = new Option<List<Guid>?>(JsonSerializer.Deserialize<List<Guid>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

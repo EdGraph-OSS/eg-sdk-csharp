@@ -56,7 +56,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedCount
         /// </summary>
         [JsonPropertyName("createdCount")]
-        public int? CreatedCount { get { return this.CreatedCountOption; } set { this.CreatedCountOption = new(value); } }
+        public int? CreatedCount { get { return this.CreatedCountOption.Value; } set { this.CreatedCountOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of UpdatedCount
@@ -69,7 +69,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets UpdatedCount
         /// </summary>
         [JsonPropertyName("updatedCount")]
-        public int? UpdatedCount { get { return this.UpdatedCountOption; } set { this.UpdatedCountOption = new(value); } }
+        public int? UpdatedCount { get { return this.UpdatedCountOption.Value; } set { this.UpdatedCountOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -137,12 +137,10 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "createdCount":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                createdCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            createdCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "updatedCount":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                updatedCount = new Option<int?>(utf8JsonReader.GetInt32());
+                            updatedCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         default:
                             break;

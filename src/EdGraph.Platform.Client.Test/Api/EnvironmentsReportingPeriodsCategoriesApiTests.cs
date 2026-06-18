@@ -64,7 +64,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> orderBy = default!;
             var response = await _instance.SearchStateReportingPeriodCategoriesAsync(tenantId, environmentId, reportingPeriodId, pageIndex, pageSize, orderBy);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphServicesStateReportingV1PaginatedCategories>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> orderBy = default!;
             var response = await _instance.SearchStateReportingPeriodSubCategoriesAsync(tenantId, environmentId, reportingPeriodId, categoryId, pageIndex, pageSize, orderBy);
             var model = response.Unauthorized();
-            Assert.IsType<EdGraphServicesStateReportingV1PaginatedSubCategories>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

@@ -111,7 +111,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>The Tenant this application belongs to</value>
         [JsonPropertyName("applicationTenantId")]
-        public string? ApplicationTenantId { get { return this.ApplicationTenantIdOption; } set { this.ApplicationTenantIdOption = new(value); } }
+        public string? ApplicationTenantId { get { return this.ApplicationTenantIdOption.Value; } set { this.ApplicationTenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApplicationId
@@ -124,7 +124,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApplicationId
         /// </summary>
         [JsonPropertyName("applicationId")]
-        public string? ApplicationId { get { return this.ApplicationIdOption; } set { this.ApplicationIdOption = new(value); } }
+        public string? ApplicationId { get { return this.ApplicationIdOption.Value; } set { this.ApplicationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApplicationName
@@ -137,7 +137,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApplicationName
         /// </summary>
         [JsonPropertyName("applicationName")]
-        public string? ApplicationName { get { return this.ApplicationNameOption; } set { this.ApplicationNameOption = new(value); } }
+        public string? ApplicationName { get { return this.ApplicationNameOption.Value; } set { this.ApplicationNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApplicationDescription
@@ -150,7 +150,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApplicationDescription
         /// </summary>
         [JsonPropertyName("applicationDescription")]
-        public string? ApplicationDescription { get { return this.ApplicationDescriptionOption; } set { this.ApplicationDescriptionOption = new(value); } }
+        public string? ApplicationDescription { get { return this.ApplicationDescriptionOption.Value; } set { this.ApplicationDescriptionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DocumentationUrl
@@ -163,7 +163,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DocumentationUrl
         /// </summary>
         [JsonPropertyName("documentationUrl")]
-        public string? DocumentationUrl { get { return this.DocumentationUrlOption; } set { this.DocumentationUrlOption = new(value); } }
+        public string? DocumentationUrl { get { return this.DocumentationUrlOption.Value; } set { this.DocumentationUrlOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ApplicationUri
@@ -176,7 +176,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ApplicationUri
         /// </summary>
         [JsonPropertyName("applicationUri")]
-        public string? ApplicationUri { get { return this.ApplicationUriOption; } set { this.ApplicationUriOption = new(value); } }
+        public string? ApplicationUri { get { return this.ApplicationUriOption.Value; } set { this.ApplicationUriOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of VarVersion
@@ -189,7 +189,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets VarVersion
         /// </summary>
         [JsonPropertyName("version")]
-        public string? VarVersion { get { return this.VarVersionOption; } set { this.VarVersionOption = new(value); } }
+        public string? VarVersion { get { return this.VarVersionOption.Value; } set { this.VarVersionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TooltipText
@@ -202,7 +202,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TooltipText
         /// </summary>
         [JsonPropertyName("tooltipText")]
-        public string? TooltipText { get { return this.TooltipTextOption; } set { this.TooltipTextOption = new(value); } }
+        public string? TooltipText { get { return this.TooltipTextOption.Value; } set { this.TooltipTextOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Tags
@@ -215,7 +215,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Tags
         /// </summary>
         [JsonPropertyName("tags")]
-        public string? Tags { get { return this.TagsOption; } set { this.TagsOption = new(value); } }
+        public string? Tags { get { return this.TagsOption.Value; } set { this.TagsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Groups
@@ -228,7 +228,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Groups
         /// </summary>
         [JsonPropertyName("groups")]
-        public string? Groups { get { return this.GroupsOption; } set { this.GroupsOption = new(value); } }
+        public string? Groups { get { return this.GroupsOption.Value; } set { this.GroupsOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LightIconUrl
@@ -241,7 +241,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LightIconUrl
         /// </summary>
         [JsonPropertyName("lightIconUrl")]
-        public string? LightIconUrl { get { return this.LightIconUrlOption; } set { this.LightIconUrlOption = new(value); } }
+        public string? LightIconUrl { get { return this.LightIconUrlOption.Value; } set { this.LightIconUrlOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DarkIconUrl
@@ -254,7 +254,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DarkIconUrl
         /// </summary>
         [JsonPropertyName("darkIconUrl")]
-        public string? DarkIconUrl { get { return this.DarkIconUrlOption; } set { this.DarkIconUrlOption = new(value); } }
+        public string? DarkIconUrl { get { return this.DarkIconUrlOption.Value; } set { this.DarkIconUrlOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LightBackgroundTileUrl
@@ -267,7 +267,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LightBackgroundTileUrl
         /// </summary>
         [JsonPropertyName("lightBackgroundTileUrl")]
-        public string? LightBackgroundTileUrl { get { return this.LightBackgroundTileUrlOption; } set { this.LightBackgroundTileUrlOption = new(value); } }
+        public string? LightBackgroundTileUrl { get { return this.LightBackgroundTileUrlOption.Value; } set { this.LightBackgroundTileUrlOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DarkBackgroundTileUrl
@@ -280,7 +280,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DarkBackgroundTileUrl
         /// </summary>
         [JsonPropertyName("darkBackgroundTileUrl")]
-        public string? DarkBackgroundTileUrl { get { return this.DarkBackgroundTileUrlOption; } set { this.DarkBackgroundTileUrlOption = new(value); } }
+        public string? DarkBackgroundTileUrl { get { return this.DarkBackgroundTileUrlOption.Value; } set { this.DarkBackgroundTileUrlOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LightOverlayTileUrl
@@ -293,7 +293,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LightOverlayTileUrl
         /// </summary>
         [JsonPropertyName("lightOverlayTileUrl")]
-        public string? LightOverlayTileUrl { get { return this.LightOverlayTileUrlOption; } set { this.LightOverlayTileUrlOption = new(value); } }
+        public string? LightOverlayTileUrl { get { return this.LightOverlayTileUrlOption.Value; } set { this.LightOverlayTileUrlOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DarkOverlayTileUrl
@@ -306,7 +306,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DarkOverlayTileUrl
         /// </summary>
         [JsonPropertyName("darkOverlayTileUrl")]
-        public string? DarkOverlayTileUrl { get { return this.DarkOverlayTileUrlOption; } set { this.DarkOverlayTileUrlOption = new(value); } }
+        public string? DarkOverlayTileUrl { get { return this.DarkOverlayTileUrlOption.Value; } set { this.DarkOverlayTileUrlOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ShowInAppLauncher
@@ -319,7 +319,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ShowInAppLauncher
         /// </summary>
         [JsonPropertyName("showInAppLauncher")]
-        public bool? ShowInAppLauncher { get { return this.ShowInAppLauncherOption; } set { this.ShowInAppLauncherOption = new(value); } }
+        public bool? ShowInAppLauncher { get { return this.ShowInAppLauncherOption.Value; } set { this.ShowInAppLauncherOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ShowInQuickLauncher
@@ -332,7 +332,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ShowInQuickLauncher
         /// </summary>
         [JsonPropertyName("showInQuickLauncher")]
-        public bool? ShowInQuickLauncher { get { return this.ShowInQuickLauncherOption; } set { this.ShowInQuickLauncherOption = new(value); } }
+        public bool? ShowInQuickLauncher { get { return this.ShowInQuickLauncherOption.Value; } set { this.ShowInQuickLauncherOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of OpenInNewWindow
@@ -345,7 +345,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets OpenInNewWindow
         /// </summary>
         [JsonPropertyName("openInNewWindow")]
-        public bool? OpenInNewWindow { get { return this.OpenInNewWindowOption; } set { this.OpenInNewWindowOption = new(value); } }
+        public bool? OpenInNewWindow { get { return this.OpenInNewWindowOption.Value; } set { this.OpenInNewWindowOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsTenantSubscribed
@@ -358,7 +358,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IsTenantSubscribed
         /// </summary>
         [JsonPropertyName("isTenantSubscribed")]
-        public bool? IsTenantSubscribed { get { return this.IsTenantSubscribedOption; } set { this.IsTenantSubscribedOption = new(value); } }
+        public bool? IsTenantSubscribed { get { return this.IsTenantSubscribedOption.Value; } set { this.IsTenantSubscribedOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SubscriptionTenantId
@@ -372,7 +372,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>The Tenant Id the subscription belongs to</value>
         [JsonPropertyName("subscriptionTenantId")]
-        public string? SubscriptionTenantId { get { return this.SubscriptionTenantIdOption; } set { this.SubscriptionTenantIdOption = new(value); } }
+        public string? SubscriptionTenantId { get { return this.SubscriptionTenantIdOption.Value; } set { this.SubscriptionTenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantSubscriptionId
@@ -386,7 +386,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>The Tenant subscription Id</value>
         [JsonPropertyName("tenantSubscriptionId")]
-        public string? TenantSubscriptionId { get { return this.TenantSubscriptionIdOption; } set { this.TenantSubscriptionIdOption = new(value); } }
+        public string? TenantSubscriptionId { get { return this.TenantSubscriptionIdOption.Value; } set { this.TenantSubscriptionIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantSubscriptionStartDateTime
@@ -400,7 +400,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>The Tenant subscription start date</value>
         [JsonPropertyName("tenantSubscriptionStartDateTime")]
-        public string? TenantSubscriptionStartDateTime { get { return this.TenantSubscriptionStartDateTimeOption; } set { this.TenantSubscriptionStartDateTimeOption = new(value); } }
+        public string? TenantSubscriptionStartDateTime { get { return this.TenantSubscriptionStartDateTimeOption.Value; } set { this.TenantSubscriptionStartDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantSubscriptionEndDateTime
@@ -414,7 +414,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>The Tenant subscription end date</value>
         [JsonPropertyName("tenantSubscriptionEndDateTime")]
-        public string? TenantSubscriptionEndDateTime { get { return this.TenantSubscriptionEndDateTimeOption; } set { this.TenantSubscriptionEndDateTimeOption = new(value); } }
+        public string? TenantSubscriptionEndDateTime { get { return this.TenantSubscriptionEndDateTimeOption.Value; } set { this.TenantSubscriptionEndDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantSubscriptionActualEndDateTime
@@ -428,7 +428,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>The Tenant subscription end date</value>
         [JsonPropertyName("tenantSubscriptionActualEndDateTime")]
-        public string? TenantSubscriptionActualEndDateTime { get { return this.TenantSubscriptionActualEndDateTimeOption; } set { this.TenantSubscriptionActualEndDateTimeOption = new(value); } }
+        public string? TenantSubscriptionActualEndDateTime { get { return this.TenantSubscriptionActualEndDateTimeOption.Value; } set { this.TenantSubscriptionActualEndDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantSubscriptionDeletedAt
@@ -442,7 +442,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>The Tenant subscription deleted date</value>
         [JsonPropertyName("tenantSubscriptionDeletedAt")]
-        public string? TenantSubscriptionDeletedAt { get { return this.TenantSubscriptionDeletedAtOption; } set { this.TenantSubscriptionDeletedAtOption = new(value); } }
+        public string? TenantSubscriptionDeletedAt { get { return this.TenantSubscriptionDeletedAtOption.Value; } set { this.TenantSubscriptionDeletedAtOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of TenantSubscriptionGracePeriod
@@ -456,7 +456,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <value>The Tenant subscription grace period value</value>
         [JsonPropertyName("tenantSubscriptionGracePeriod")]
-        public int? TenantSubscriptionGracePeriod { get { return this.TenantSubscriptionGracePeriodOption; } set { this.TenantSubscriptionGracePeriodOption = new(value); } }
+        public int? TenantSubscriptionGracePeriod { get { return this.TenantSubscriptionGracePeriodOption.Value; } set { this.TenantSubscriptionGracePeriodOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsUserLicensed
@@ -469,7 +469,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IsUserLicensed
         /// </summary>
         [JsonPropertyName("isUserLicensed")]
-        public bool? IsUserLicensed { get { return this.IsUserLicensedOption; } set { this.IsUserLicensedOption = new(value); } }
+        public bool? IsUserLicensed { get { return this.IsUserLicensedOption.Value; } set { this.IsUserLicensedOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Urls
@@ -482,7 +482,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Urls
         /// </summary>
         [JsonPropertyName("urls")]
-        public List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesApplicationUrl>? Urls { get { return this.UrlsOption; } set { this.UrlsOption = new(value); } }
+        public List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesApplicationUrl>? Urls { get { return this.UrlsOption.Value; } set { this.UrlsOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -652,20 +652,16 @@ namespace EdGraph.Platform.Client.Model
                             darkOverlayTileUrl = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "showInAppLauncher":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                showInAppLauncher = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            showInAppLauncher = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "showInQuickLauncher":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                showInQuickLauncher = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            showInQuickLauncher = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "openInNewWindow":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                openInNewWindow = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            openInNewWindow = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "isTenantSubscribed":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isTenantSubscribed = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isTenantSubscribed = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "subscriptionTenantId":
                             subscriptionTenantId = new Option<string?>(utf8JsonReader.GetString());
@@ -686,16 +682,13 @@ namespace EdGraph.Platform.Client.Model
                             tenantSubscriptionDeletedAt = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "tenantSubscriptionGracePeriod":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                tenantSubscriptionGracePeriod = new Option<int?>(utf8JsonReader.GetInt32());
+                            tenantSubscriptionGracePeriod = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "isUserLicensed":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isUserLicensed = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isUserLicensed = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         case "urls":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                urls = new Option<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesApplicationUrl>?>(JsonSerializer.Deserialize<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesApplicationUrl>>(ref utf8JsonReader, jsonSerializerOptions));
+                            urls = new Option<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesApplicationUrl>?>(JsonSerializer.Deserialize<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesApplicationUrl>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

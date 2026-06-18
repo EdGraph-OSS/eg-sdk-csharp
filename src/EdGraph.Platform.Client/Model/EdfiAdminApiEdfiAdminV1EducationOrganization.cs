@@ -78,7 +78,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EducationOrganizationId
         /// </summary>
         [JsonPropertyName("educationOrganizationId")]
-        public long? EducationOrganizationId { get { return this.EducationOrganizationIdOption; } set { this.EducationOrganizationIdOption = new(value); } }
+        public long? EducationOrganizationId { get { return this.EducationOrganizationIdOption.Value; } set { this.EducationOrganizationIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of NameOfInstitution
@@ -91,7 +91,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets NameOfInstitution
         /// </summary>
         [JsonPropertyName("nameOfInstitution")]
-        public string? NameOfInstitution { get { return this.NameOfInstitutionOption; } set { this.NameOfInstitutionOption = new(value); } }
+        public string? NameOfInstitution { get { return this.NameOfInstitutionOption.Value; } set { this.NameOfInstitutionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ShortnameOfInstitution
@@ -104,7 +104,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ShortnameOfInstitution
         /// </summary>
         [JsonPropertyName("shortnameOfInstitution")]
-        public string? ShortnameOfInstitution { get { return this.ShortnameOfInstitutionOption; } set { this.ShortnameOfInstitutionOption = new(value); } }
+        public string? ShortnameOfInstitution { get { return this.ShortnameOfInstitutionOption.Value; } set { this.ShortnameOfInstitutionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of WebSite
@@ -117,7 +117,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets WebSite
         /// </summary>
         [JsonPropertyName("webSite")]
-        public string? WebSite { get { return this.WebSiteOption; } set { this.WebSiteOption = new(value); } }
+        public string? WebSite { get { return this.WebSiteOption.Value; } set { this.WebSiteOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of OperationalStatusDescriptorId
@@ -130,7 +130,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets OperationalStatusDescriptorId
         /// </summary>
         [JsonPropertyName("operationalStatusDescriptorId")]
-        public int? OperationalStatusDescriptorId { get { return this.OperationalStatusDescriptorIdOption; } set { this.OperationalStatusDescriptorIdOption = new(value); } }
+        public int? OperationalStatusDescriptorId { get { return this.OperationalStatusDescriptorIdOption.Value; } set { this.OperationalStatusDescriptorIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Discriminator
@@ -143,7 +143,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Discriminator
         /// </summary>
         [JsonPropertyName("discriminator")]
-        public string? Discriminator { get { return this.DiscriminatorOption; } set { this.DiscriminatorOption = new(value); } }
+        public string? Discriminator { get { return this.DiscriminatorOption.Value; } set { this.DiscriminatorOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreateDate
@@ -156,7 +156,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreateDate
         /// </summary>
         [JsonPropertyName("createDate")]
-        public string? CreateDate { get { return this.CreateDateOption; } set { this.CreateDateOption = new(value); } }
+        public string? CreateDate { get { return this.CreateDateOption.Value; } set { this.CreateDateOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LastModifiedDate
@@ -169,7 +169,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LastModifiedDate
         /// </summary>
         [JsonPropertyName("lastModifiedDate")]
-        public string? LastModifiedDate { get { return this.LastModifiedDateOption; } set { this.LastModifiedDateOption = new(value); } }
+        public string? LastModifiedDate { get { return this.LastModifiedDateOption.Value; } set { this.LastModifiedDateOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Id
@@ -182,7 +182,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Id
         /// </summary>
         [JsonPropertyName("id")]
-        public string? Id { get { return this.IdOption; } set { this.IdOption = new(value); } }
+        public string? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ChangeVersion
@@ -195,7 +195,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ChangeVersion
         /// </summary>
         [JsonPropertyName("changeVersion")]
-        public long? ChangeVersion { get { return this.ChangeVersionOption; } set { this.ChangeVersionOption = new(value); } }
+        public long? ChangeVersion { get { return this.ChangeVersionOption.Value; } set { this.ChangeVersionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedByOwnershipTokenId
@@ -208,7 +208,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CreatedByOwnershipTokenId
         /// </summary>
         [JsonPropertyName("createdByOwnershipTokenId")]
-        public int? CreatedByOwnershipTokenId { get { return this.CreatedByOwnershipTokenIdOption; } set { this.CreatedByOwnershipTokenIdOption = new(value); } }
+        public int? CreatedByOwnershipTokenId { get { return this.CreatedByOwnershipTokenIdOption.Value; } set { this.CreatedByOwnershipTokenIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of LocalEducationAgencyId
@@ -221,7 +221,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets LocalEducationAgencyId
         /// </summary>
         [JsonPropertyName("localEducationAgencyId")]
-        public int? LocalEducationAgencyId { get { return this.LocalEducationAgencyIdOption; } set { this.LocalEducationAgencyIdOption = new(value); } }
+        public int? LocalEducationAgencyId { get { return this.LocalEducationAgencyIdOption.Value; } set { this.LocalEducationAgencyIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SchoolId
@@ -234,7 +234,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets SchoolId
         /// </summary>
         [JsonPropertyName("schoolId")]
-        public string? SchoolId { get { return this.SchoolIdOption; } set { this.SchoolIdOption = new(value); } }
+        public string? SchoolId { get { return this.SchoolIdOption.Value; } set { this.SchoolIdOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -324,8 +324,7 @@ namespace EdGraph.Platform.Client.Model
                     switch (localVarJsonPropertyName)
                     {
                         case "educationOrganizationId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                educationOrganizationId = new Option<long?>(utf8JsonReader.GetInt64());
+                            educationOrganizationId = new Option<long?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (long?)null : utf8JsonReader.GetInt64());
                             break;
                         case "nameOfInstitution":
                             nameOfInstitution = new Option<string?>(utf8JsonReader.GetString());
@@ -337,8 +336,7 @@ namespace EdGraph.Platform.Client.Model
                             webSite = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "operationalStatusDescriptorId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                operationalStatusDescriptorId = new Option<int?>(utf8JsonReader.GetInt32());
+                            operationalStatusDescriptorId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "discriminator":
                             discriminator = new Option<string?>(utf8JsonReader.GetString());
@@ -353,16 +351,13 @@ namespace EdGraph.Platform.Client.Model
                             id = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "changeVersion":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                changeVersion = new Option<long?>(utf8JsonReader.GetInt64());
+                            changeVersion = new Option<long?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (long?)null : utf8JsonReader.GetInt64());
                             break;
                         case "createdByOwnershipTokenId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                createdByOwnershipTokenId = new Option<int?>(utf8JsonReader.GetInt32());
+                            createdByOwnershipTokenId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "localEducationAgencyId":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                localEducationAgencyId = new Option<int?>(utf8JsonReader.GetInt32());
+                            localEducationAgencyId = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
                         case "schoolId":
                             schoolId = new Option<string?>(utf8JsonReader.GetString());

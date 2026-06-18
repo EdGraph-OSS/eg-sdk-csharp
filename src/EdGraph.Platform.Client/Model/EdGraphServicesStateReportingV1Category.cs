@@ -70,7 +70,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets TenantId
         /// </summary>
         [JsonPropertyName("tenantId")]
-        public string? TenantId { get { return this.TenantIdOption; } set { this.TenantIdOption = new(value); } }
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EnvironmentId
@@ -83,7 +83,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets EnvironmentId
         /// </summary>
         [JsonPropertyName("environmentId")]
-        public string? EnvironmentId { get { return this.EnvironmentIdOption; } set { this.EnvironmentIdOption = new(value); } }
+        public string? EnvironmentId { get { return this.EnvironmentIdOption.Value; } set { this.EnvironmentIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ReportingPeriodId
@@ -96,7 +96,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets ReportingPeriodId
         /// </summary>
         [JsonPropertyName("reportingPeriodId")]
-        public string? ReportingPeriodId { get { return this.ReportingPeriodIdOption; } set { this.ReportingPeriodIdOption = new(value); } }
+        public string? ReportingPeriodId { get { return this.ReportingPeriodIdOption.Value; } set { this.ReportingPeriodIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CategoryId
@@ -109,7 +109,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CategoryId
         /// </summary>
         [JsonPropertyName("categoryId")]
-        public string? CategoryId { get { return this.CategoryIdOption; } set { this.CategoryIdOption = new(value); } }
+        public string? CategoryId { get { return this.CategoryIdOption.Value; } set { this.CategoryIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Name
@@ -122,7 +122,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Name
         /// </summary>
         [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption; } set { this.NameOption = new(value); } }
+        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Description
@@ -135,7 +135,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Description
         /// </summary>
         [JsonPropertyName("description")]
-        public string? Description { get { return this.DescriptionOption; } set { this.DescriptionOption = new(value); } }
+        public string? Description { get { return this.DescriptionOption.Value; } set { this.DescriptionOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CertificationStatus
@@ -148,7 +148,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets CertificationStatus
         /// </summary>
         [JsonPropertyName("certificationStatus")]
-        public string? CertificationStatus { get { return this.CertificationStatusOption; } set { this.CertificationStatusOption = new(value); } }
+        public string? CertificationStatus { get { return this.CertificationStatusOption.Value; } set { this.CertificationStatusOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DataOwner
@@ -161,7 +161,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DataOwner
         /// </summary>
         [JsonPropertyName("dataOwner")]
-        public EdGraphServicesStateReportingV1DataUser? DataOwner { get { return this.DataOwnerOption; } set { this.DataOwnerOption = new(value); } }
+        public EdGraphServicesStateReportingV1DataUser? DataOwner { get { return this.DataOwnerOption.Value; } set { this.DataOwnerOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of DataStewards
@@ -174,7 +174,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets DataStewards
         /// </summary>
         [JsonPropertyName("dataStewards")]
-        public List<EdGraphServicesStateReportingV1DataUser>? DataStewards { get { return this.DataStewardsOption; } }
+        public List<EdGraphServicesStateReportingV1DataUser>? DataStewards { get { return this.DataStewardsOption.Value; } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -277,12 +277,10 @@ namespace EdGraph.Platform.Client.Model
                             certificationStatus = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "dataOwner":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                dataOwner = new Option<EdGraphServicesStateReportingV1DataUser?>(JsonSerializer.Deserialize<EdGraphServicesStateReportingV1DataUser>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            dataOwner = new Option<EdGraphServicesStateReportingV1DataUser?>(JsonSerializer.Deserialize<EdGraphServicesStateReportingV1DataUser>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "dataStewards":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                dataStewards = new Option<List<EdGraphServicesStateReportingV1DataUser>?>(JsonSerializer.Deserialize<List<EdGraphServicesStateReportingV1DataUser>>(ref utf8JsonReader, jsonSerializerOptions));
+                            dataStewards = new Option<List<EdGraphServicesStateReportingV1DataUser>?>(JsonSerializer.Deserialize<List<EdGraphServicesStateReportingV1DataUser>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         default:
                             break;

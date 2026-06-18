@@ -59,7 +59,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid tenantId = default!;
             var response = await _instance.GetEvaluationSettingAsync(tenantId);
             var model = response.Unauthorized();
-            Assert.IsType<EvaluationApiEvaluationSettingsV1EvaluationSettingResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EvaluationApiEvaluationSettingsV1SetApplicationRequest> evaluationApiEvaluationSettingsV1SetApplicationRequest = default!;
             var response = await _instance.SetEvaluationSettingApplicationSettingAsync(tenantId, evaluationApiEvaluationSettingsV1SetApplicationRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EvaluationApiEvaluationSettingsV1ApplicationSetResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EvaluationApiEvaluationSettingsV1SetUsersRequest> evaluationApiEvaluationSettingsV1SetUsersRequest = default!;
             var response = await _instance.SetEvaluationSettingUserSettingAsync(tenantId, evaluationApiEvaluationSettingsV1SetUsersRequest);
             var model = response.Unauthorized();
-            Assert.IsType<EvaluationApiEvaluationSettingsV1UsersSetResponse>(model);
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
     }
 }

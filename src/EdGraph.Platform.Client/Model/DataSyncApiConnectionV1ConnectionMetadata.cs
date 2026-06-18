@@ -58,7 +58,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Code
         /// </summary>
         [JsonPropertyName("code")]
-        public string? Code { get { return this.CodeOption; } set { this.CodeOption = new(value); } }
+        public string? Code { get { return this.CodeOption.Value; } set { this.CodeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Value
@@ -71,7 +71,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Value
         /// </summary>
         [JsonPropertyName("value")]
-        public string? Value { get { return this.ValueOption; } set { this.ValueOption = new(value); } }
+        public string? Value { get { return this.ValueOption.Value; } set { this.ValueOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsSecret
@@ -84,7 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets IsSecret
         /// </summary>
         [JsonPropertyName("isSecret")]
-        public bool? IsSecret { get { return this.IsSecretOption; } set { this.IsSecretOption = new(value); } }
+        public bool? IsSecret { get { return this.IsSecretOption.Value; } set { this.IsSecretOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -160,8 +160,7 @@ namespace EdGraph.Platform.Client.Model
                             value = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "isSecret":
-                            if (utf8JsonReader.TokenType != JsonTokenType.Null)
-                                isSecret = new Option<bool?>(utf8JsonReader.GetBoolean());
+                            isSecret = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
                         default:
                             break;
