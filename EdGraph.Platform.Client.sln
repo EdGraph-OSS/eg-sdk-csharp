@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 VisualStudioVersion = 12.0.0.0
 MinimumVisualStudioVersion = 10.0.0.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EdGraph.Platform.Client", "src\EdGraph.Platform.Client\EdGraph.Platform.Client.csproj", "{D13D57F9-B22C-4FB7-87BD-93429F8623AD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EdGraph.Platform.Client", "src\EdGraph.Platform.Client\EdGraph.Platform.Client.csproj", "{A9FFD7AA-1EE5-44D5-8A6C-46A1E6460809}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EdGraph.Platform.Client.Test", "src\EdGraph.Platform.Client.Test\EdGraph.Platform.Client.Test.csproj", "{19F1DEBC-DE5E-4517-8062-F000CD499087}"
 EndProject
@@ -12,10 +12,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D13D57F9-B22C-4FB7-87BD-93429F8623AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D13D57F9-B22C-4FB7-87BD-93429F8623AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D13D57F9-B22C-4FB7-87BD-93429F8623AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D13D57F9-B22C-4FB7-87BD-93429F8623AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A9FFD7AA-1EE5-44D5-8A6C-46A1E6460809}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A9FFD7AA-1EE5-44D5-8A6C-46A1E6460809}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A9FFD7AA-1EE5-44D5-8A6C-46A1E6460809}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A9FFD7AA-1EE5-44D5-8A6C-46A1E6460809}.Release|Any CPU.Build.0 = Release|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19F1DEBC-DE5E-4517-8062-F000CD499087}.Release|Any CPU.ActiveCfg = Release|Any CPU

@@ -37099,6 +37099,68 @@ paths:
       summary: Retrieves a list of the Tenant's settings.
       tags:
       - Settings
+  /tenants/{tenantId}/tenantsettings/{code}:
+    get:
+      operationId: GetTenantSettingByCode
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TenantApi.Tenant.V1.TenantSetting"
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails"
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Retrieves a Tenant's settings by code.
+      tags:
+      - Settings
   /tenants/{tenantId}/staffclassifications/{staffClassificationId}:
     delete:
       operationId: DeleteStaffClassification

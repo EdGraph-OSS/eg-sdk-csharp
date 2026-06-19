@@ -51,6 +51,19 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
+        /// Test GetTenantSettingByCode
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetTenantSettingByCodeAsyncTest()
+        {
+            Guid tenantId = default!;
+            string code = default!;
+            var response = await _instance.GetTenantSettingByCodeAsync(tenantId, code);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
         /// Test GetTenantSettings
         /// </summary>
         [Fact (Skip = "not implemented")]
