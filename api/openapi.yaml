@@ -30877,6 +30877,60 @@ paths:
       summary: Search paginated evaluees
       tags:
       - Observations
+  /tenants/{tenantId}/observations/total-evaluees:
+    get:
+      operationId: GetAvailableCampusesTotalEvaluees
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.GetAvailableCampusesTotalEvalueesResponse"
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails"
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Get the total number of evaluees across all available campuses
+      tags:
+      - Observations
   /tenants/{tenantId}/observations:
     get:
       operationId: GetPaginatedObservations
@@ -52643,6 +52697,19 @@ components:
           nullable: true
           type: array
       type: object
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.GetAvailableCampusesTotalEvalueesResponse:
+      additionalProperties: false
+      example:
+        tenantId: tenantId
+        totalEvaluees: 0
+      properties:
+        tenantId:
+          nullable: true
+          type: string
+        totalEvaluees:
+          format: int64
+          type: integer
+      type: object
     EdGraph.HttpAggregators.Tenant.Api.Services.Observations.GetStaffClassificationSettingsResponse:
       additionalProperties: false
       example:
@@ -65515,6 +65582,7 @@ components:
       - Scoring
       - Html
       - Image
+      - Checkbox
       type: string
     FormApi.Questions.V1.QuestionUpdatedResponse:
       additionalProperties: false

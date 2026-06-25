@@ -73,7 +73,12 @@ namespace EdGraph.Platform.Client.Model
         /// <summary>
         /// Enum Image for value: Image
         /// </summary>
-        Image
+        Image,
+
+        /// <summary>
+        /// Enum Checkbox for value: Checkbox
+        /// </summary>
+        Checkbox
     }
 
     /// <summary>
@@ -115,6 +120,9 @@ namespace EdGraph.Platform.Client.Model
             if (value.Equals("Image"))
                 return FormApiQuestionsV1QuestionType.Image;
 
+            if (value.Equals("Checkbox"))
+                return FormApiQuestionsV1QuestionType.Checkbox;
+
             throw new NotImplementedException($"Could not convert value to type FormApiQuestionsV1QuestionType: '{value}'");
         }
 
@@ -151,6 +159,9 @@ namespace EdGraph.Platform.Client.Model
 
             if (value.Equals("Image"))
                 return FormApiQuestionsV1QuestionType.Image;
+
+            if (value.Equals("Checkbox"))
+                return FormApiQuestionsV1QuestionType.Checkbox;
 
             return null;
         }
@@ -189,6 +200,9 @@ namespace EdGraph.Platform.Client.Model
 
             if (value == FormApiQuestionsV1QuestionType.Image)
                 return "Image";
+
+            if (value == FormApiQuestionsV1QuestionType.Checkbox)
+                return "Checkbox";
 
             throw new NotImplementedException($"Value could not be handled: '{value}'");
         }

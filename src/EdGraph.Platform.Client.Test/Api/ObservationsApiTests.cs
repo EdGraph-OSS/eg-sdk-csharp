@@ -92,6 +92,18 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
+        /// Test GetAvailableCampusesTotalEvaluees
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetAvailableCampusesTotalEvalueesAsyncTest()
+        {
+            Guid tenantId = default!;
+            var response = await _instance.GetAvailableCampusesTotalEvalueesAsync(tenantId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
         /// Test GetDashboard
         /// </summary>
         [Fact (Skip = "not implemented")]
