@@ -632,9 +632,7 @@ docs/models/FormApiFormsV1FormSource.md
 docs/models/FormApiFormsV1FormStatus.md
 docs/models/FormApiFormsV1FormUpdatedResponse.md
 docs/models/FormApiFormsV1FullFormCreatedResponse.md
-docs/models/FormApiFormsV1FullFormSchemaResponse.md
 docs/models/FormApiFormsV1FullFormUpdatedResponse.md
-docs/models/FormApiFormsV1SchemaStatus.md
 docs/models/FormApiFormsV1SetFormAccessRequest.md
 docs/models/FormApiFormsV1UpdateFormRequest.md
 docs/models/FormApiFormsV1UpdateFullFormRequest.md
@@ -1682,9 +1680,7 @@ src/EdGraph.Platform.Client.Test/Model/FormApiFormsV1FormSourceTests.cs
 src/EdGraph.Platform.Client.Test/Model/FormApiFormsV1FormStatusTests.cs
 src/EdGraph.Platform.Client.Test/Model/FormApiFormsV1FormUpdatedResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/FormApiFormsV1FullFormCreatedResponseTests.cs
-src/EdGraph.Platform.Client.Test/Model/FormApiFormsV1FullFormSchemaResponseTests.cs
 src/EdGraph.Platform.Client.Test/Model/FormApiFormsV1FullFormUpdatedResponseTests.cs
-src/EdGraph.Platform.Client.Test/Model/FormApiFormsV1SchemaStatusTests.cs
 src/EdGraph.Platform.Client.Test/Model/FormApiFormsV1SetFormAccessRequestTests.cs
 src/EdGraph.Platform.Client.Test/Model/FormApiFormsV1UpdateFormRequestTests.cs
 src/EdGraph.Platform.Client.Test/Model/FormApiFormsV1UpdateFullFormRequestTests.cs
@@ -2753,9 +2749,7 @@ src/EdGraph.Platform.Client/Model/FormApiFormsV1FormSource.cs
 src/EdGraph.Platform.Client/Model/FormApiFormsV1FormStatus.cs
 src/EdGraph.Platform.Client/Model/FormApiFormsV1FormUpdatedResponse.cs
 src/EdGraph.Platform.Client/Model/FormApiFormsV1FullFormCreatedResponse.cs
-src/EdGraph.Platform.Client/Model/FormApiFormsV1FullFormSchemaResponse.cs
 src/EdGraph.Platform.Client/Model/FormApiFormsV1FullFormUpdatedResponse.cs
-src/EdGraph.Platform.Client/Model/FormApiFormsV1SchemaStatus.cs
 src/EdGraph.Platform.Client/Model/FormApiFormsV1SetFormAccessRequest.cs
 src/EdGraph.Platform.Client/Model/FormApiFormsV1UpdateFormRequest.cs
 src/EdGraph.Platform.Client/Model/FormApiFormsV1UpdateFullFormRequest.cs

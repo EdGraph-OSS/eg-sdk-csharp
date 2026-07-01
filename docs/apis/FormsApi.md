@@ -10,7 +10,6 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 | [**DuplicateForm**](FormsApi.md#duplicateform) | **POST** /tenants/{tenantId}/forms/{formId}/duplicate | Duplicates all Form data for a given tenant (with Sections and Questions). |
 | [**GetForm**](FormsApi.md#getform) | **GET** /tenants/{tenantId}/forms/{formId} | Get Form. |
 | [**GetFormAccess**](FormsApi.md#getformaccess) | **GET** /tenants/{tenantId}/forms/{formId}/access | Get the Access Type for a Form. |
-| [**GetFullFormSchema**](FormsApi.md#getfullformschema) | **GET** /tenants/{tenantId}/forms/{formId}/full/schemas | Get a Forms Json and UI React JSON compatible Schema. |
 | [**ImportForm**](FormsApi.md#importform) | **POST** /tenants/{tenantId}/forms/import | Imports all form data for a given tenant. |
 | [**SearchForms**](FormsApi.md#searchforms) | **GET** /tenants/{tenantId}/forms | Search Forms |
 | [**SetFormAccess**](FormsApi.md#setformaccess) | **PUT** /tenants/{tenantId}/forms/{formId}/access | Sets the Access Type for a Form. |
@@ -231,46 +230,6 @@ Get the Access Type for a Form.
 ### Return type
 
 [**FormApiFormsV1FormAccessResponse**](FormApiFormsV1FormAccessResponse.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
-| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
-| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
-| **200** | The requested resource was successfully retrieved. |  -  |
-| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
-| **404** | Not Found |  -  |
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-<a id="getfullformschema"></a>
-# **GetFullFormSchema**
-> FormApiFormsV1FullFormSchemaResponse GetFullFormSchema (Guid tenantId, Guid formId)
-
-Get a Forms Json and UI React JSON compatible Schema.
-
-
-### Parameters
-
-| Name | Type | Description | Notes |
-|------|------|-------------|-------|
-| **tenantId** | **Guid** |  |  |
-| **formId** | **Guid** |  |  |
-
-### Return type
-
-[**FormApiFormsV1FullFormSchemaResponse**](FormApiFormsV1FullFormSchemaResponse.md)
 
 ### Authorization
 

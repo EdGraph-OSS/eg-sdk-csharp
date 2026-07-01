@@ -79,5 +79,14 @@ namespace EdGraph.Platform.Client.Test.Model
         {
             // TODO unit test for the property 'ImportSectionAndCourseData'
         }
+
+        /// <summary>
+        /// Test the property 'UseStaffEdOrgContactAssociationForEmails'
+        /// </summary>
+        [Fact]
+        public void UseStaffEdOrgContactAssociationForEmailsTest()
+        {
+            // TODO unit test for the property 'UseStaffEdOrgContactAssociationForEmails'
+        }
     }
 }

@@ -603,10 +603,7 @@ namespace EdGraph.Platform.Client.Client
             _jsonOptions.Converters.Add(new FormApiFormsV1FormStatusNullableJsonConverter());
             _jsonOptions.Converters.Add(new FormApiFormsV1FormUpdatedResponseJsonConverter());
             _jsonOptions.Converters.Add(new FormApiFormsV1FullFormCreatedResponseJsonConverter());
-            _jsonOptions.Converters.Add(new FormApiFormsV1FullFormSchemaResponseJsonConverter());
             _jsonOptions.Converters.Add(new FormApiFormsV1FullFormUpdatedResponseJsonConverter());
-            _jsonOptions.Converters.Add(new FormApiFormsV1SchemaStatusJsonConverter());
-            _jsonOptions.Converters.Add(new FormApiFormsV1SchemaStatusNullableJsonConverter());
             _jsonOptions.Converters.Add(new FormApiFormsV1SetFormAccessRequestJsonConverter());
             _jsonOptions.Converters.Add(new FormApiFormsV1UpdateFormRequestJsonConverter());
             _jsonOptions.Converters.Add(new FormApiFormsV1UpdateFullFormRequestJsonConverter());

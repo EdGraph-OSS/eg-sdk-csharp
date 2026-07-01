@@ -49,11 +49,8 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="source">source</param>
         /// <param name="lastLoginDateTime">lastLoginDateTime</param>
         /// <param name="mfaCompleted">mfaCompleted</param>
-        /// <param name="isDeleted">isDeleted</param>
-        /// <param name="deletedDateTime">deletedDateTime</param>
-        /// <param name="deletedBy">deletedBy</param>
         [JsonConstructor]
-        public EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserListResponseWithApplicationLicense(Option<string?> userId = default, Option<string?> userName = default, Option<string?> email = default, Option<string?> firstName = default, Option<string?> lastName = default, Option<int?> tenantCount = default, Option<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserTenant>?> tenants = default, Option<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserLicense>?> licenses = default, Option<string?> createdBy = default, Option<string?> createdDateTime = default, Option<string?> lastModifiedBy = default, Option<string?> lastModifiedDateTime = default, Option<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserLogin>?> logins = default, Option<string?> source = default, Option<string?> lastLoginDateTime = default, Option<bool?> mfaCompleted = default, Option<bool?> isDeleted = default, Option<string?> deletedDateTime = default, Option<string?> deletedBy = default)
+        public EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserListResponseWithApplicationLicense(Option<string?> userId = default, Option<string?> userName = default, Option<string?> email = default, Option<string?> firstName = default, Option<string?> lastName = default, Option<int?> tenantCount = default, Option<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserTenant>?> tenants = default, Option<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserLicense>?> licenses = default, Option<string?> createdBy = default, Option<string?> createdDateTime = default, Option<string?> lastModifiedBy = default, Option<string?> lastModifiedDateTime = default, Option<List<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserLogin>?> logins = default, Option<string?> source = default, Option<string?> lastLoginDateTime = default, Option<bool?> mfaCompleted = default)
         {
             UserIdOption = userId;
             UserNameOption = userName;
@@ -71,9 +68,6 @@ namespace EdGraph.Platform.Client.Model
             SourceOption = source;
             LastLoginDateTimeOption = lastLoginDateTime;
             MfaCompletedOption = mfaCompleted;
-            IsDeletedOption = isDeleted;
-            DeletedDateTimeOption = deletedDateTime;
-            DeletedByOption = deletedBy;
             OnCreated();
         }
 
@@ -288,45 +282,6 @@ namespace EdGraph.Platform.Client.Model
         public bool? MfaCompleted { get { return this.MfaCompletedOption.Value; } set { this.MfaCompletedOption = new(value); } }
 
         /// <summary>
-        /// Used to track the state of IsDeleted
-        /// </summary>
-        [JsonIgnore]
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<bool?> IsDeletedOption { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets IsDeleted
-        /// </summary>
-        [JsonPropertyName("isDeleted")]
-        public bool? IsDeleted { get { return this.IsDeletedOption.Value; } set { this.IsDeletedOption = new(value); } }
-
-        /// <summary>
-        /// Used to track the state of DeletedDateTime
-        /// </summary>
-        [JsonIgnore]
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<string?> DeletedDateTimeOption { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets DeletedDateTime
-        /// </summary>
-        [JsonPropertyName("deletedDateTime")]
-        public string? DeletedDateTime { get { return this.DeletedDateTimeOption.Value; } set { this.DeletedDateTimeOption = new(value); } }
-
-        /// <summary>
-        /// Used to track the state of DeletedBy
-        /// </summary>
-        [JsonIgnore]
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<string?> DeletedByOption { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets DeletedBy
-        /// </summary>
-        [JsonPropertyName("deletedBy")]
-        public string? DeletedBy { get { return this.DeletedByOption.Value; } set { this.DeletedByOption = new(value); } }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -350,9 +305,6 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  Source: ").Append(Source).Append("\n");
             sb.Append("  LastLoginDateTime: ").Append(LastLoginDateTime).Append("\n");
             sb.Append("  MfaCompleted: ").Append(MfaCompleted).Append("\n");
-            sb.Append("  IsDeleted: ").Append(IsDeleted).Append("\n");
-            sb.Append("  DeletedDateTime: ").Append(DeletedDateTime).Append("\n");
-            sb.Append("  DeletedBy: ").Append(DeletedBy).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -406,9 +358,6 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> source = default;
             Option<string?> lastLoginDateTime = default;
             Option<bool?> mfaCompleted = default;
-            Option<bool?> isDeleted = default;
-            Option<string?> deletedDateTime = default;
-            Option<string?> deletedBy = default;
 
             while (utf8JsonReader.Read())
             {
@@ -473,15 +422,6 @@ namespace EdGraph.Platform.Client.Model
                         case "mfaCompleted":
                             mfaCompleted = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
-                        case "isDeleted":
-                            isDeleted = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
-                            break;
-                        case "deletedDateTime":
-                            deletedDateTime = new Option<string?>(utf8JsonReader.GetString());
-                            break;
-                        case "deletedBy":
-                            deletedBy = new Option<string?>(utf8JsonReader.GetString());
-                            break;
                         default:
                             break;
                     }
@@ -494,10 +434,7 @@ namespace EdGraph.Platform.Client.Model
             if (mfaCompleted.IsSet && mfaCompleted.Value == null)
                 throw new ArgumentNullException(nameof(mfaCompleted), "Property is not nullable for class EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserListResponseWithApplicationLicense.");
 
-            if (isDeleted.IsSet && isDeleted.Value == null)
-                throw new ArgumentNullException(nameof(isDeleted), "Property is not nullable for class EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserListResponseWithApplicationLicense.");
-
-            return new EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserListResponseWithApplicationLicense(userId, userName, email, firstName, lastName, tenantCount, tenants, licenses, createdBy, createdDateTime, lastModifiedBy, lastModifiedDateTime, logins, source, lastLoginDateTime, mfaCompleted, isDeleted, deletedDateTime, deletedBy);
+            return new EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserListResponseWithApplicationLicense(userId, userName, email, firstName, lastName, tenantCount, tenants, licenses, createdBy, createdDateTime, lastModifiedBy, lastModifiedDateTime, logins, source, lastLoginDateTime, mfaCompleted);
         }
 
         /// <summary>
@@ -619,21 +556,6 @@ namespace EdGraph.Platform.Client.Model
 
             if (edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserListResponseWithApplicationLicense.MfaCompletedOption.IsSet)
                 writer.WriteBoolean("mfaCompleted", edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserListResponseWithApplicationLicense.MfaCompletedOption.Value!.Value);
-
-            if (edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserListResponseWithApplicationLicense.IsDeletedOption.IsSet)
-                writer.WriteBoolean("isDeleted", edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserListResponseWithApplicationLicense.IsDeletedOption.Value!.Value);
-
-            if (edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserListResponseWithApplicationLicense.DeletedDateTimeOption.IsSet)
-                if (edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserListResponseWithApplicationLicense.DeletedDateTimeOption.Value != null)
-                    writer.WriteString("deletedDateTime", edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserListResponseWithApplicationLicense.DeletedDateTime);
-                else
-                    writer.WriteNull("deletedDateTime");
-
-            if (edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserListResponseWithApplicationLicense.DeletedByOption.IsSet)
-                if (edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserListResponseWithApplicationLicense.DeletedByOption.Value != null)
-                    writer.WriteString("deletedBy", edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserListResponseWithApplicationLicense.DeletedBy);
-                else
-                    writer.WriteNull("deletedBy");
         }
     }
 }

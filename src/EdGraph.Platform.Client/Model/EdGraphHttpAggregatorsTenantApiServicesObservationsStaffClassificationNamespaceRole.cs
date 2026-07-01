@@ -35,11 +35,13 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <param name="role">role</param>
         /// <param name="assignedPersonaIdentifiers">assignedPersonaIdentifiers</param>
+        /// <param name="ignoreOrganization">ignoreOrganization</param>
         [JsonConstructor]
-        public EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRole(Option<string?> role = default, Option<List<string>?> assignedPersonaIdentifiers = default)
+        public EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRole(Option<string?> role = default, Option<List<string>?> assignedPersonaIdentifiers = default, Option<bool?> ignoreOrganization = default)
         {
             RoleOption = role;
             AssignedPersonaIdentifiersOption = assignedPersonaIdentifiers;
+            IgnoreOrganizationOption = ignoreOrganization;
             OnCreated();
         }
 
@@ -72,6 +74,19 @@ namespace EdGraph.Platform.Client.Model
         public List<string>? AssignedPersonaIdentifiers { get { return this.AssignedPersonaIdentifiersOption.Value; } set { this.AssignedPersonaIdentifiersOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of IgnoreOrganization
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<bool?> IgnoreOrganizationOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets IgnoreOrganization
+        /// </summary>
+        [JsonPropertyName("ignoreOrganization")]
+        public bool? IgnoreOrganization { get { return this.IgnoreOrganizationOption.Value; } set { this.IgnoreOrganizationOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -81,6 +96,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("class EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRole {\n");
             sb.Append("  Role: ").Append(Role).Append("\n");
             sb.Append("  AssignedPersonaIdentifiers: ").Append(AssignedPersonaIdentifiers).Append("\n");
+            sb.Append("  IgnoreOrganization: ").Append(IgnoreOrganization).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -120,6 +136,7 @@ namespace EdGraph.Platform.Client.Model
 
             Option<string?> role = default;
             Option<List<string>?> assignedPersonaIdentifiers = default;
+            Option<bool?> ignoreOrganization = default;
 
             while (utf8JsonReader.Read())
             {
@@ -142,13 +159,19 @@ namespace EdGraph.Platform.Client.Model
                         case "assignedPersonaIdentifiers":
                             assignedPersonaIdentifiers = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
+                        case "ignoreOrganization":
+                            ignoreOrganization = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
+                            break;
                         default:
                             break;
                     }
                 }
             }
 
-            return new EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRole(role, assignedPersonaIdentifiers);
+            if (ignoreOrganization.IsSet && ignoreOrganization.Value == null)
+                throw new ArgumentNullException(nameof(ignoreOrganization), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRole.");
+
+            return new EdGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRole(role, assignedPersonaIdentifiers, ignoreOrganization);
         }
 
         /// <summary>
@@ -189,6 +212,8 @@ namespace EdGraph.Platform.Client.Model
                 }
                 else
                     writer.WriteNull("assignedPersonaIdentifiers");
+            if (edGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRole.IgnoreOrganizationOption.IsSet)
+                writer.WriteBoolean("ignoreOrganization", edGraphHttpAggregatorsTenantApiServicesObservationsStaffClassificationNamespaceRole.IgnoreOrganizationOption.Value!.Value);
         }
     }
 }

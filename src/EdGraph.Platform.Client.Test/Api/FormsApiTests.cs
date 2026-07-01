@@ -129,19 +129,6 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
-        /// Test GetFullFormSchema
-        /// </summary>
-        [Fact (Skip = "not implemented")]
-        public async Task GetFullFormSchemaAsyncTest()
-        {
-            Guid tenantId = default!;
-            Guid formId = default!;
-            var response = await _instance.GetFullFormSchemaAsync(tenantId, formId);
-            var model = response.Unauthorized();
-            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
-        }
-
-        /// <summary>
         /// Test ImportForm
         /// </summary>
         [Fact (Skip = "not implemented")]

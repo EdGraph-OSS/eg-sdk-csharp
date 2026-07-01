@@ -70,5 +70,14 @@ namespace EdGraph.Platform.Client.Test.Model
         {
             // TODO unit test for the property 'AssignedPersonaIdentifiers'
         }
+
+        /// <summary>
+        /// Test the property 'IgnoreOrganization'
+        /// </summary>
+        [Fact]
+        public void IgnoreOrganizationTest()
+        {
+            // TODO unit test for the property 'IgnoreOrganization'
+        }
     }
 }

@@ -23,9 +23,6 @@ Name | Type | Description | Notes
 **PlatformRole** | **string** |  | [optional] 
 **TenantStatus** | **string** |  | [optional] 
 **TenantAdmin** | **bool** |  | [optional] 
-**IsDeleted** | **bool** |  | [optional] 
-**DeletedDateTime** | **string** |  | [optional] 
-**DeletedBy** | **string** |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

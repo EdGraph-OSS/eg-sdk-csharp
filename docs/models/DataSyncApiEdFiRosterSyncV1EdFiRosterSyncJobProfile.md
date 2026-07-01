@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **EdFiInstanceId** | **string** |  | [optional] 
 **UseSSAInsteadOfSEOAA** | [**DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions**](DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions.md) |  | [optional] 
 **ImportSectionAndCourseData** | **bool** |  | [optional] 
+**UseStaffEdOrgContactAssociationForEmails** | **bool** |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

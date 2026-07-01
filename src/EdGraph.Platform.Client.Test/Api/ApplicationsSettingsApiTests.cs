@@ -58,25 +58,7 @@ namespace EdGraph.Platform.Client.Test.Api
         {
             Guid tenantId = default!;
             string clientId = default!;
-            Client.Option<int> pageIndex = default!;
-            Client.Option<int> pageSize = default!;
-            Client.Option<string> orderBy = default!;
-            Client.Option<string> filter = default!;
-            var response = await _instance.GetClientSettingsAsyncAsync(tenantId, clientId, pageIndex, pageSize, orderBy, filter);
-            var model = response.Unauthorized();
-            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
-        }
-
-        /// <summary>
-        /// Test GetClientSettingsByCodeAsync
-        /// </summary>
-        [Fact (Skip = "not implemented")]
-        public async Task GetClientSettingsByCodeAsyncAsyncTest()
-        {
-            Guid tenantId = default!;
-            string clientId = default!;
-            string code = default!;
-            var response = await _instance.GetClientSettingsByCodeAsyncAsync(tenantId, clientId, code);
+            var response = await _instance.GetClientSettingsAsyncAsync(tenantId, clientId);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
@@ -108,21 +90,6 @@ namespace EdGraph.Platform.Client.Test.Api
             string clientId = default!;
             Client.Option<TenantApiTenantV1SetAppSettingsRequest> tenantApiTenantV1SetAppSettingsRequest = default!;
             var response = await _instance.SetClientSettingsAsyncAsync(tenantId, clientId, tenantApiTenantV1SetAppSettingsRequest);
-            var model = response.Unauthorized();
-            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
-        }
-
-        /// <summary>
-        /// Test SetClientSettingsByCodeAsync
-        /// </summary>
-        [Fact (Skip = "not implemented")]
-        public async Task SetClientSettingsByCodeAsyncAsyncTest()
-        {
-            Guid tenantId = default!;
-            string clientId = default!;
-            string code = default!;
-            Client.Option<TenantApiTenantV1SetAppSettingsRequest> tenantApiTenantV1SetAppSettingsRequest = default!;
-            var response = await _instance.SetClientSettingsByCodeAsyncAsync(tenantId, clientId, code, tenantApiTenantV1SetAppSettingsRequest);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }

@@ -990,172 +990,6 @@ paths:
       summary: Creates a new OpenId API Client
       tags:
       - API Clients
-  /tenants/{tenantId}/clients/{clientId}/settings/{code}:
-    get:
-      operationId: GetClientSettingsByCodeAsync
-      parameters:
-      - description: ""
-        explode: false
-        in: path
-        name: tenantId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: ""
-        explode: false
-        in: path
-        name: clientId
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: ""
-        explode: false
-        in: path
-        name: code
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
-          description: Unauthorized. The request requires authentication. The OAuth
-            bearer token was either not provided or is invalid. The operation may
-            succeed once authentication has been successfully completed.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
-          description: Forbidden. The request cannot be completed in the current authorization
-            context. Contact your administrator if you believe this operation should
-            be allowed.
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
-          description: An unhandled error occurred on the server.See the response
-            body for details.
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TenantApi.Tenant.V1.TenantAppSettings"
-          description: The requested resource was successfully retrieved.
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails"
-          description: Bad Request. The request was invalid and cannot be completed.
-            See the response body for specific validation errors. This will typically
-            be an issue with the query parameters or the request body values.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
-          description: The resource could not be found.
-      summary: Retrieves a Tenant's ClientSetting by code.
-      tags:
-      - Applications / Settings
-    post:
-      operationId: SetClientSettingsByCodeAsync
-      parameters:
-      - description: ""
-        explode: false
-        in: path
-        name: tenantId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: ""
-        explode: false
-        in: path
-        name: clientId
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: ""
-        explode: false
-        in: path
-        name: code
-        required: true
-        schema:
-          type: string
-        style: simple
-      requestBody:
-        content:
-          application/json-patch+json:
-            schema:
-              $ref: "#/components/schemas/TenantApi.Tenant.V1.SetAppSettingsRequest"
-          application/json:
-            schema:
-              $ref: "#/components/schemas/TenantApi.Tenant.V1.SetAppSettingsRequest"
-          text/json:
-            schema:
-              $ref: "#/components/schemas/TenantApi.Tenant.V1.SetAppSettingsRequest"
-          application/*+json:
-            schema:
-              $ref: "#/components/schemas/TenantApi.Tenant.V1.SetAppSettingsRequest"
-        description: ""
-      responses:
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
-          description: Unauthorized. The request requires authentication. The OAuth
-            bearer token was either not provided or is invalid. The operation may
-            succeed once authentication has been successfully completed.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
-          description: Forbidden. The request cannot be completed in the current authorization
-            context. Contact your administrator if you believe this operation should
-            be allowed.
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
-          description: An unhandled error occurred on the server.See the response
-            body for details.
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TenantApi.Tenant.V1.SetAppSettingsResponse"
-          description: The requested resource was successfully retrieved.
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails"
-          description: Bad Request. The request was invalid and cannot be completed.
-            See the response body for specific validation errors. This will typically
-            be an issue with the query parameters or the request body values.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
-          description: The resource could not be found.
-      summary: Creates/updates a Tenant's ClientSetting by code.
-      tags:
-      - Applications / Settings
   /tenants/{tenantId}/clients/{clientId}/settings:
     get:
       operationId: GetClientSettingsAsync
@@ -1177,44 +1011,6 @@ paths:
         schema:
           type: string
         style: simple
-      - description: ""
-        explode: true
-        in: query
-        name: pageIndex
-        required: false
-        schema:
-          default: 0
-          format: int32
-          type: integer
-        style: form
-      - description: ""
-        explode: true
-        in: query
-        name: pageSize
-        required: false
-        schema:
-          default: 100
-          format: int32
-          type: integer
-        style: form
-      - description: ""
-        explode: true
-        in: query
-        name: orderBy
-        required: false
-        schema:
-          default: ""
-          type: string
-        style: form
-      - description: ""
-        explode: true
-        in: query
-        name: filter
-        required: false
-        schema:
-          default: ""
-          type: string
-        style: form
       responses:
         "401":
           content:
@@ -13848,75 +13644,6 @@ paths:
             See the response body for specific validation errors. This will typically
             be an issue with the query parameters or the request body values.
       summary: Duplicates all Form data for a given tenant (with Sections and Questions).
-      tags:
-      - Forms
-  /tenants/{tenantId}/forms/{formId}/full/schemas:
-    get:
-      operationId: GetFullFormSchema
-      parameters:
-      - description: ""
-        explode: false
-        in: path
-        name: tenantId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: ""
-        explode: false
-        in: path
-        name: formId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      responses:
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
-          description: Unauthorized. The request requires authentication. The OAuth
-            bearer token was either not provided or is invalid. The operation may
-            succeed once authentication has been successfully completed.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
-          description: Forbidden. The request cannot be completed in the current authorization
-            context. Contact your administrator if you believe this operation should
-            be allowed.
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
-          description: An unhandled error occurred on the server.See the response
-            body for details.
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/FormApi.Forms.V1.FullFormSchemaResponse"
-          description: The requested resource was successfully retrieved.
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails"
-          description: Bad Request. The request was invalid and cannot be completed.
-            See the response body for specific validation errors. This will typically
-            be an issue with the query parameters or the request body values.
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Microsoft.AspNetCore.Mvc.ProblemDetails"
-          description: Not Found
-      summary: Get a Forms Json and UI React JSON compatible Schema.
       tags:
       - Forms
   /tenants/{tenantId}/forms/{formId}/full:
@@ -37153,68 +36880,6 @@ paths:
       summary: Retrieves a list of the Tenant's settings.
       tags:
       - Settings
-  /tenants/{tenantId}/tenantsettings/{code}:
-    get:
-      operationId: GetTenantSettingByCode
-      parameters:
-      - description: ""
-        explode: false
-        in: path
-        name: tenantId
-        required: true
-        schema:
-          format: uuid
-          type: string
-        style: simple
-      - description: ""
-        explode: false
-        in: path
-        name: code
-        required: true
-        schema:
-          type: string
-        style: simple
-      responses:
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
-          description: Unauthorized. The request requires authentication. The OAuth
-            bearer token was either not provided or is invalid. The operation may
-            succeed once authentication has been successfully completed.
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
-          description: Forbidden. The request cannot be completed in the current authorization
-            context. Contact your administrator if you believe this operation should
-            be allowed.
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
-          description: An unhandled error occurred on the server.See the response
-            body for details.
-        "200":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/TenantApi.Tenant.V1.TenantSetting"
-          description: The requested resource was successfully retrieved.
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails"
-          description: Bad Request. The request was invalid and cannot be completed.
-            See the response body for specific validation errors. This will typically
-            be an issue with the query parameters or the request body values.
-      summary: Retrieves a Tenant's settings by code.
-      tags:
-      - Settings
   /tenants/{tenantId}/staffclassifications/{staffClassificationId}:
     delete:
       operationId: DeleteStaffClassification
@@ -43829,6 +43494,192 @@ paths:
       summary: Search Users
       tags:
       - Users
+  /students/{tenantId}/{studentId}/contacts:
+    put:
+      operationId: UpdateStudentContacts
+      parameters:
+      - explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: studentId
+        required: true
+        schema:
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema: {}
+          application/json:
+            schema: {}
+          text/json:
+            schema: {}
+          application/*+json:
+            schema: {}
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "204":
+          description: The resource was successfully updated.
+      summary: Updates the contact overrides for a student.
+      tags:
+      - v1
+  /students/{tenantId}/students/{id}:
+    get:
+      operationId: GetStudentProfile
+      parameters:
+      - explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        style: simple
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          description: The requested resource was successfully retrieved.
+      summary: Returns the admin profile for a single student.
+      tags:
+      - v1
+  /students/{tenantId}:
+    get:
+      operationId: GetStudents
+      parameters:
+      - explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - explode: true
+        in: query
+        name: campus
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: pathway
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: status
+        required: false
+        schema:
+          type: string
+        style: form
+      - explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 10
+          format: int32
+          type: integer
+        style: form
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          description: The requested resource was successfully retrieved.
+      summary: Returns a paginated list of students for the given tenant.
+      tags:
+      - v1
   /tenants/{tenantId}/users/{userId}/releaselockout:
     put:
       operationId: ReleaseUserLockout
@@ -47634,6 +47485,7 @@ components:
           searchedClassroomPositionDescriptor: searchedClassroomPositionDescriptor
           assignedStaffClassificationDescriptor: assignedStaffClassificationDescriptor
         importSectionAndCourseData: true
+        useStaffEdOrgContactAssociationForEmails: true
       properties:
         tenantId:
           nullable: true
@@ -47672,6 +47524,9 @@ components:
         useSSAInsteadOfSEOAA:
           $ref: "#/components/schemas/DataSyncApi.EdFiRosterSync.V1.Use_SSA_InsteadOf_SEOAA_Options"
         importSectionAndCourseData:
+          nullable: true
+          type: boolean
+        useStaffEdOrgContactAssociationForEmails:
           nullable: true
           type: boolean
       type: object
@@ -52036,6 +51891,8 @@ components:
           $ref: "#/components/schemas/DataSyncApi.EdFiRosterSync.V1.Use_SSA_InsteadOf_SEOAA_Options"
         importSectionAndCourseData:
           type: boolean
+        useStaffEdOrgContactAssociationForEmails:
+          type: boolean
       type: object
     EdGraph.HttpAggregators.Tenant.Api.Services.EdFiRosterSync.JobCreatedResult:
       additionalProperties: false
@@ -52721,20 +52578,24 @@ components:
             assignedPersonaIdentifiers:
             - assignedPersonaIdentifiers
             - assignedPersonaIdentifiers
+            ignoreOrganization: true
           - role: role
             assignedPersonaIdentifiers:
             - assignedPersonaIdentifiers
             - assignedPersonaIdentifiers
+            ignoreOrganization: true
         - namespace: namespace
           roles:
           - role: role
             assignedPersonaIdentifiers:
             - assignedPersonaIdentifiers
             - assignedPersonaIdentifiers
+            ignoreOrganization: true
           - role: role
             assignedPersonaIdentifiers:
             - assignedPersonaIdentifiers
             - assignedPersonaIdentifiers
+            ignoreOrganization: true
       properties:
         tenantId:
           nullable: true
@@ -53103,6 +52964,8 @@ components:
             type: string
           nullable: true
           type: array
+        ignoreOrganization:
+          type: boolean
       type: object
     EdGraph.HttpAggregators.Tenant.Api.Services.Observations.SetRoleConfigurationResponse:
       additionalProperties: false
@@ -53122,10 +52985,12 @@ components:
           assignedPersonaIdentifiers:
           - assignedPersonaIdentifiers
           - assignedPersonaIdentifiers
+          ignoreOrganization: true
         - role: role
           assignedPersonaIdentifiers:
           - assignedPersonaIdentifiers
           - assignedPersonaIdentifiers
+          ignoreOrganization: true
       properties:
         namespace:
           nullable: true
@@ -53143,6 +53008,7 @@ components:
         assignedPersonaIdentifiers:
         - assignedPersonaIdentifiers
         - assignedPersonaIdentifiers
+        ignoreOrganization: true
       properties:
         role:
           nullable: true
@@ -53152,6 +53018,8 @@ components:
             type: string
           nullable: true
           type: array
+        ignoreOrganization:
+          type: boolean
       type: object
     EdGraph.HttpAggregators.Tenant.Api.Services.Observations.UpdateObservationRequest:
       additionalProperties: false
@@ -54740,9 +54608,6 @@ components:
         source: source
         lastLoginDateTime: lastLoginDateTime
         mfaCompleted: true
-        isDeleted: true
-        deletedDateTime: deletedDateTime
-        deletedBy: deletedBy
       properties:
         userId:
           nullable: true
@@ -54797,14 +54662,6 @@ components:
           type: string
         mfaCompleted:
           type: boolean
-        isDeleted:
-          type: boolean
-        deletedDateTime:
-          nullable: true
-          type: string
-        deletedBy:
-          nullable: true
-          type: string
       type: object
     ? EdGraph.Platform.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.UserListResponseWithApplicationLicensePaginatedItemsViewModel
     : additionalProperties: false
@@ -54951,9 +54808,6 @@ components:
           source: source
           lastLoginDateTime: lastLoginDateTime
           mfaCompleted: true
-          isDeleted: true
-          deletedDateTime: deletedDateTime
-          deletedBy: deletedBy
         - userId: userId
           userName: userName
           email: email
@@ -55092,9 +54946,6 @@ components:
           source: source
           lastLoginDateTime: lastLoginDateTime
           mfaCompleted: true
-          isDeleted: true
-          deletedDateTime: deletedDateTime
-          deletedBy: deletedBy
       properties:
         pageIndex:
           format: int32
@@ -55285,9 +55136,6 @@ components:
         source: source
         lastLoginDateTime: lastLoginDateTime
         mfaCompleted: true
-        isDeleted: true
-        deletedDateTime: deletedDateTime
-        deletedBy: deletedBy
       properties:
         userId:
           nullable: true
@@ -55352,14 +55200,6 @@ components:
           type: string
         mfaCompleted:
           type: boolean
-        isDeleted:
-          type: boolean
-        deletedDateTime:
-          nullable: true
-          type: string
-        deletedBy:
-          nullable: true
-          type: string
       type: object
     EdGraph.Platform.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.UserTenant:
       additionalProperties: false
@@ -64330,10 +64170,12 @@ components:
           assignedPersonaIdentifiers:
           - assignedPersonaIdentifiers
           - assignedPersonaIdentifiers
+          ignoreOrganization: true
         - role: role
           assignedPersonaIdentifiers:
           - assignedPersonaIdentifiers
           - assignedPersonaIdentifiers
+          ignoreOrganization: true
       properties:
         id:
           nullable: true
@@ -64468,6 +64310,7 @@ components:
         assignedPersonaIdentifiers:
         - assignedPersonaIdentifiers
         - assignedPersonaIdentifiers
+        ignoreOrganization: true
       properties:
         role:
           nullable: true
@@ -64478,6 +64321,9 @@ components:
           nullable: true
           readOnly: true
           type: array
+        ignoreOrganization:
+          nullable: true
+          type: boolean
       type: object
     EvaluationApi.EvaluationSettings.V1.ScheduleType:
       enum:
@@ -65309,34 +65155,6 @@ components:
           nullable: true
           type: string
       type: object
-    FormApi.Forms.V1.FullFormSchemaResponse:
-      additionalProperties: false
-      example:
-        id: id
-        tenantId: tenantId
-        jsonSchema: jsonSchema
-        uiSchema: uiSchema
-        details: details
-        status: Unknown
-      properties:
-        id:
-          nullable: true
-          type: string
-        tenantId:
-          nullable: true
-          type: string
-        jsonSchema:
-          nullable: true
-          type: string
-        uiSchema:
-          nullable: true
-          type: string
-        details:
-          nullable: true
-          type: string
-        status:
-          $ref: "#/components/schemas/FormApi.Forms.V1.SchemaStatus"
-      type: object
     FormApi.Forms.V1.FullFormUpdatedResponse:
       additionalProperties: false
       example:
@@ -65353,14 +65171,6 @@ components:
     FormApi.Forms.V1.ImportFormRequest:
       additionalProperties: false
       type: object
-    FormApi.Forms.V1.SchemaStatus:
-      enum:
-      - Unknown
-      - CompleteSuccess
-      - OnlyJson
-      - OnlyUi
-      - CompleteFailure
-      type: string
     FormApi.Forms.V1.SetFormAccessRequest:
       additionalProperties: false
       properties:
@@ -70847,9 +70657,6 @@ components:
         platformRole: platformRole
         tenantStatus: tenantStatus
         tenantAdmin: true
-        isDeleted: true
-        deletedDateTime: deletedDateTime
-        deletedBy: deletedBy
       properties:
         userId:
           nullable: true
@@ -70910,14 +70717,6 @@ components:
         tenantAdmin:
           nullable: true
           type: boolean
-        isDeleted:
-          type: boolean
-        deletedDateTime:
-          nullable: true
-          type: string
-        deletedBy:
-          nullable: true
-          type: string
       type: object
     IdentityApi.User.V2.UserTenantProfileResponse:
       additionalProperties: false
@@ -70997,9 +70796,6 @@ components:
           platformRole: platformRole
           tenantStatus: tenantStatus
           tenantAdmin: true
-          isDeleted: true
-          deletedDateTime: deletedDateTime
-          deletedBy: deletedBy
         - userId: userId
           userName: userName
           email: email
@@ -71026,9 +70822,6 @@ components:
           platformRole: platformRole
           tenantStatus: tenantStatus
           tenantAdmin: true
-          isDeleted: true
-          deletedDateTime: deletedDateTime
-          deletedBy: deletedBy
       properties:
         pageSize:
           format: int32

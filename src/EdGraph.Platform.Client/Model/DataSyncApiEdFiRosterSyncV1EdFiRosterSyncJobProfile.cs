@@ -47,8 +47,9 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="edFiInstanceId">edFiInstanceId</param>
         /// <param name="useSSAInsteadOfSEOAA">useSSAInsteadOfSEOAA</param>
         /// <param name="importSectionAndCourseData">importSectionAndCourseData</param>
+        /// <param name="useStaffEdOrgContactAssociationForEmails">useStaffEdOrgContactAssociationForEmails</param>
         [JsonConstructor]
-        public DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfile(Option<string?> tenantId = default, Option<DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobMode?> mode = default, Option<DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProvider?> provider = default, Option<string?> connectionId = default, Option<string?> jobId = default, Option<string?> clientId = default, Option<string?> clientSecret = default, Option<string?> baseUrl = default, Option<string?> authenticationUrl = default, Option<string?> resourcesUrl = default, Option<bool?> enabled = default, Option<string?> edFiInstanceId = default, Option<DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions?> useSSAInsteadOfSEOAA = default, Option<bool?> importSectionAndCourseData = default)
+        public DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfile(Option<string?> tenantId = default, Option<DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobMode?> mode = default, Option<DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProvider?> provider = default, Option<string?> connectionId = default, Option<string?> jobId = default, Option<string?> clientId = default, Option<string?> clientSecret = default, Option<string?> baseUrl = default, Option<string?> authenticationUrl = default, Option<string?> resourcesUrl = default, Option<bool?> enabled = default, Option<string?> edFiInstanceId = default, Option<DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions?> useSSAInsteadOfSEOAA = default, Option<bool?> importSectionAndCourseData = default, Option<bool?> useStaffEdOrgContactAssociationForEmails = default)
         {
             TenantIdOption = tenantId;
             ModeOption = mode;
@@ -64,6 +65,7 @@ namespace EdGraph.Platform.Client.Model
             EdFiInstanceIdOption = edFiInstanceId;
             UseSSAInsteadOfSEOAAOption = useSSAInsteadOfSEOAA;
             ImportSectionAndCourseDataOption = importSectionAndCourseData;
+            UseStaffEdOrgContactAssociationForEmailsOption = useStaffEdOrgContactAssociationForEmails;
             OnCreated();
         }
 
@@ -252,6 +254,19 @@ namespace EdGraph.Platform.Client.Model
         public bool? ImportSectionAndCourseData { get { return this.ImportSectionAndCourseDataOption.Value; } set { this.ImportSectionAndCourseDataOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of UseStaffEdOrgContactAssociationForEmails
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<bool?> UseStaffEdOrgContactAssociationForEmailsOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets UseStaffEdOrgContactAssociationForEmails
+        /// </summary>
+        [JsonPropertyName("useStaffEdOrgContactAssociationForEmails")]
+        public bool? UseStaffEdOrgContactAssociationForEmails { get { return this.UseStaffEdOrgContactAssociationForEmailsOption.Value; } set { this.UseStaffEdOrgContactAssociationForEmailsOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -273,6 +288,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  EdFiInstanceId: ").Append(EdFiInstanceId).Append("\n");
             sb.Append("  UseSSAInsteadOfSEOAA: ").Append(UseSSAInsteadOfSEOAA).Append("\n");
             sb.Append("  ImportSectionAndCourseData: ").Append(ImportSectionAndCourseData).Append("\n");
+            sb.Append("  UseStaffEdOrgContactAssociationForEmails: ").Append(UseStaffEdOrgContactAssociationForEmails).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -324,6 +340,7 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> edFiInstanceId = default;
             Option<DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions?> useSSAInsteadOfSEOAA = default;
             Option<bool?> importSectionAndCourseData = default;
+            Option<bool?> useStaffEdOrgContactAssociationForEmails = default;
 
             while (utf8JsonReader.Read())
             {
@@ -386,6 +403,9 @@ namespace EdGraph.Platform.Client.Model
                         case "importSectionAndCourseData":
                             importSectionAndCourseData = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
+                        case "useStaffEdOrgContactAssociationForEmails":
+                            useStaffEdOrgContactAssociationForEmails = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
+                            break;
                         default:
                             break;
                     }
@@ -401,7 +421,7 @@ namespace EdGraph.Platform.Client.Model
             if (useSSAInsteadOfSEOAA.IsSet && useSSAInsteadOfSEOAA.Value == null)
                 throw new ArgumentNullException(nameof(useSSAInsteadOfSEOAA), "Property is not nullable for class DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfile.");
 
-            return new DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfile(tenantId, mode, provider, connectionId, jobId, clientId, clientSecret, baseUrl, authenticationUrl, resourcesUrl, enabled, edFiInstanceId, useSSAInsteadOfSEOAA, importSectionAndCourseData);
+            return new DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfile(tenantId, mode, provider, connectionId, jobId, clientId, clientSecret, baseUrl, authenticationUrl, resourcesUrl, enabled, edFiInstanceId, useSSAInsteadOfSEOAA, importSectionAndCourseData, useStaffEdOrgContactAssociationForEmails);
         }
 
         /// <summary>
@@ -511,6 +531,12 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteBoolean("importSectionAndCourseData", dataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfile.ImportSectionAndCourseDataOption.Value!.Value);
                 else
                     writer.WriteNull("importSectionAndCourseData");
+
+            if (dataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfile.UseStaffEdOrgContactAssociationForEmailsOption.IsSet)
+                if (dataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfile.UseStaffEdOrgContactAssociationForEmailsOption.Value != null)
+                    writer.WriteBoolean("useStaffEdOrgContactAssociationForEmails", dataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfile.UseStaffEdOrgContactAssociationForEmailsOption.Value!.Value);
+                else
+                    writer.WriteNull("useStaffEdOrgContactAssociationForEmails");
         }
     }
 }

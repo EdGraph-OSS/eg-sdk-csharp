@@ -36,12 +36,14 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="mode">mode</param>
         /// <param name="useSSAInsteadOfSEOAA">useSSAInsteadOfSEOAA</param>
         /// <param name="importSectionAndCourseData">importSectionAndCourseData</param>
+        /// <param name="useStaffEdOrgContactAssociationForEmails">useStaffEdOrgContactAssociationForEmails</param>
         [JsonConstructor]
-        public EdGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto(Option<string?> mode = default, Option<DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions?> useSSAInsteadOfSEOAA = default, Option<bool?> importSectionAndCourseData = default)
+        public EdGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto(Option<string?> mode = default, Option<DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions?> useSSAInsteadOfSEOAA = default, Option<bool?> importSectionAndCourseData = default, Option<bool?> useStaffEdOrgContactAssociationForEmails = default)
         {
             ModeOption = mode;
             UseSSAInsteadOfSEOAAOption = useSSAInsteadOfSEOAA;
             ImportSectionAndCourseDataOption = importSectionAndCourseData;
+            UseStaffEdOrgContactAssociationForEmailsOption = useStaffEdOrgContactAssociationForEmails;
             OnCreated();
         }
 
@@ -87,6 +89,19 @@ namespace EdGraph.Platform.Client.Model
         public bool? ImportSectionAndCourseData { get { return this.ImportSectionAndCourseDataOption.Value; } set { this.ImportSectionAndCourseDataOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of UseStaffEdOrgContactAssociationForEmails
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<bool?> UseStaffEdOrgContactAssociationForEmailsOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets UseStaffEdOrgContactAssociationForEmails
+        /// </summary>
+        [JsonPropertyName("useStaffEdOrgContactAssociationForEmails")]
+        public bool? UseStaffEdOrgContactAssociationForEmails { get { return this.UseStaffEdOrgContactAssociationForEmailsOption.Value; } set { this.UseStaffEdOrgContactAssociationForEmailsOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -97,6 +112,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  Mode: ").Append(Mode).Append("\n");
             sb.Append("  UseSSAInsteadOfSEOAA: ").Append(UseSSAInsteadOfSEOAA).Append("\n");
             sb.Append("  ImportSectionAndCourseData: ").Append(ImportSectionAndCourseData).Append("\n");
+            sb.Append("  UseStaffEdOrgContactAssociationForEmails: ").Append(UseStaffEdOrgContactAssociationForEmails).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -137,6 +153,7 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> mode = default;
             Option<DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions?> useSSAInsteadOfSEOAA = default;
             Option<bool?> importSectionAndCourseData = default;
+            Option<bool?> useStaffEdOrgContactAssociationForEmails = default;
 
             while (utf8JsonReader.Read())
             {
@@ -162,6 +179,9 @@ namespace EdGraph.Platform.Client.Model
                         case "importSectionAndCourseData":
                             importSectionAndCourseData = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
+                        case "useStaffEdOrgContactAssociationForEmails":
+                            useStaffEdOrgContactAssociationForEmails = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
+                            break;
                         default:
                             break;
                     }
@@ -174,7 +194,10 @@ namespace EdGraph.Platform.Client.Model
             if (importSectionAndCourseData.IsSet && importSectionAndCourseData.Value == null)
                 throw new ArgumentNullException(nameof(importSectionAndCourseData), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto.");
 
-            return new EdGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto(mode, useSSAInsteadOfSEOAA, importSectionAndCourseData);
+            if (useStaffEdOrgContactAssociationForEmails.IsSet && useStaffEdOrgContactAssociationForEmails.Value == null)
+                throw new ArgumentNullException(nameof(useStaffEdOrgContactAssociationForEmails), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto.");
+
+            return new EdGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto(mode, useSSAInsteadOfSEOAA, importSectionAndCourseData, useStaffEdOrgContactAssociationForEmails);
         }
 
         /// <summary>
@@ -217,6 +240,9 @@ namespace EdGraph.Platform.Client.Model
             }
             if (edGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto.ImportSectionAndCourseDataOption.IsSet)
                 writer.WriteBoolean("importSectionAndCourseData", edGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto.ImportSectionAndCourseDataOption.Value!.Value);
+
+            if (edGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto.UseStaffEdOrgContactAssociationForEmailsOption.IsSet)
+                writer.WriteBoolean("useStaffEdOrgContactAssociationForEmails", edGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto.UseStaffEdOrgContactAssociationForEmailsOption.Value!.Value);
         }
     }
 }

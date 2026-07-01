@@ -214,32 +214,5 @@ namespace EdGraph.Platform.Client.Test.Model
         {
             // TODO unit test for the property 'TenantAdmin'
         }
-
-        /// <summary>
-        /// Test the property 'IsDeleted'
-        /// </summary>
-        [Fact]
-        public void IsDeletedTest()
-        {
-            // TODO unit test for the property 'IsDeleted'
-        }
-
-        /// <summary>
-        /// Test the property 'DeletedDateTime'
-        /// </summary>
-        [Fact]
-        public void DeletedDateTimeTest()
-        {
-            // TODO unit test for the property 'DeletedDateTime'
-        }
-
-        /// <summary>
-        /// Test the property 'DeletedBy'
-        /// </summary>
-        [Fact]
-        public void DeletedByTest()
-        {
-            // TODO unit test for the property 'DeletedBy'
-        }
     }
 }
