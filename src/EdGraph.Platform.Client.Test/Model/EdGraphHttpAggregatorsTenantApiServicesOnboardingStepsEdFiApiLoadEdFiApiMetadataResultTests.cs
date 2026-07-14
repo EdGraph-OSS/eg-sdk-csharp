@@ -79,5 +79,14 @@ namespace EdGraph.Platform.Client.Test.Model
         {
             // TODO unit test for the property 'Error'
         }
+
+        /// <summary>
+        /// Test the property 'StatusCode'
+        /// </summary>
+        [Fact]
+        public void StatusCodeTest()
+        {
+            // TODO unit test for the property 'StatusCode'
+        }
     }
 }

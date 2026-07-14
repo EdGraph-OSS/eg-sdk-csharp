@@ -459,6 +459,35 @@ namespace EdGraph.Platform.Client.Api
         Task<IGetPaginatedCampusSectionsApiResponse?> GetPaginatedCampusSectionsOrDefaultAsync(Guid tenantId, string campusId, Option<int> pageIndex = default, Option<int> pageSize = default, Option<string> orderBy = default, Option<string> filter = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
+        /// Get a paginated list of the available campuses that have evaluees, each with its complete list of evaluees.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="pageSize"> (optional, default to 10)</param>
+        /// <param name="pageIndex"> (optional, default to 0)</param>
+        /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetPaginatedCampusesWithEvalueesApiResponse"/>&gt;</returns>
+        Task<IGetPaginatedCampusesWithEvalueesApiResponse> GetPaginatedCampusesWithEvalueesAsync(Guid tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Get a paginated list of the available campuses that have evaluees, each with its complete list of evaluees.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <param name="tenantId"></param>
+        /// <param name="pageSize"> (optional, default to 10)</param>
+        /// <param name="pageIndex"> (optional, default to 0)</param>
+        /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetPaginatedCampusesWithEvalueesApiResponse"/>?&gt;</returns>
+        Task<IGetPaginatedCampusesWithEvalueesApiResponse?> GetPaginatedCampusesWithEvalueesOrDefaultAsync(Guid tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
         /// Get paginated evaluees
         /// </summary>
         /// <remarks>
@@ -1254,6 +1283,42 @@ namespace EdGraph.Platform.Client.Api
     }
 
     /// <summary>
+    /// The <see cref="IGetPaginatedCampusesWithEvalueesApiResponse"/>
+    /// </summary>
+    public interface IGetPaginatedCampusesWithEvalueesApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiServicesObservationsGetCampusesWithEvalueesResponse?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>
+    {
+        /// <summary>
+        /// Returns true if the response is 401 Unauthorized
+        /// </summary>
+        /// <returns></returns>
+        bool IsUnauthorized { get; }
+
+        /// <summary>
+        /// Returns true if the response is 403 Forbidden
+        /// </summary>
+        /// <returns></returns>
+        bool IsForbidden { get; }
+
+        /// <summary>
+        /// Returns true if the response is 500 InternalServerError
+        /// </summary>
+        /// <returns></returns>
+        bool IsInternalServerError { get; }
+
+        /// <summary>
+        /// Returns true if the response is 200 Ok
+        /// </summary>
+        /// <returns></returns>
+        bool IsOk { get; }
+
+        /// <summary>
+        /// Returns true if the response is 400 BadRequest
+        /// </summary>
+        /// <returns></returns>
+        bool IsBadRequest { get; }
+    }
+
+    /// <summary>
     /// The <see cref="IGetPaginatedEvalueesApiResponse"/>
     /// </summary>
     public interface IGetPaginatedEvalueesApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiServicesObservationsEvalueeResponseGetPaginatedItemsResponse?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>
@@ -1844,6 +1909,26 @@ namespace EdGraph.Platform.Client.Api
         internal void ExecuteOnErrorGetPaginatedCampusSections(Exception exception)
         {
             OnErrorGetPaginatedCampusSections?.Invoke(this, new ExceptionEventArgs(exception));
+        }
+
+        /// <summary>
+        /// The event raised after the server response
+        /// </summary>
+        public event EventHandler<ApiResponseEventArgs>? OnGetPaginatedCampusesWithEvaluees;
+
+        /// <summary>
+        /// The event raised after an error querying the server
+        /// </summary>
+        public event EventHandler<ExceptionEventArgs>? OnErrorGetPaginatedCampusesWithEvaluees;
+
+        internal void ExecuteOnGetPaginatedCampusesWithEvaluees(ObservationsApi.GetPaginatedCampusesWithEvalueesApiResponse apiResponse)
+        {
+            OnGetPaginatedCampusesWithEvaluees?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+        }
+
+        internal void ExecuteOnErrorGetPaginatedCampusesWithEvaluees(Exception exception)
+        {
+            OnErrorGetPaginatedCampusesWithEvaluees?.Invoke(this, new ExceptionEventArgs(exception));
         }
 
         /// <summary>
@@ -8396,6 +8481,442 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="result"></param>
             /// <returns></returns>
             public bool TryOk([NotNullWhen(true)]out EdGraph.Platform.Client.Model.TenantApiSectionsV1SectionListResponseGetPaginatedItemsResponse? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Ok();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)200);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 400 BadRequest
+            /// </summary>
+            /// <returns></returns>
+            public bool IsBadRequest => 400 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 400 BadRequest
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails? BadRequest()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsBadRequest
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 400 BadRequest and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryBadRequest([NotNullWhen(true)]out EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = BadRequest();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)400);
+                }
+
+                return result != null;
+            }
+
+            private void OnDeserializationErrorDefaultImplementation(Exception exception, HttpStatusCode httpStatusCode)
+            {
+                bool suppressDefaultLog = false;
+                OnDeserializationError(ref suppressDefaultLog, exception, httpStatusCode);
+                if (!suppressDefaultLog)
+                    Logger.LogError(exception, "An error occurred while deserializing the {code} response.", httpStatusCode);
+            }
+
+            partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
+        }
+
+        partial void FormatGetPaginatedCampusesWithEvaluees(ref Guid tenantId, ref Option<int> pageSize, ref Option<int> pageIndex, ref Option<string> orderBy);
+
+        /// <summary>
+        /// Validates the request parameters
+        /// </summary>
+        /// <param name="orderBy"></param>
+        /// <returns></returns>
+        private void ValidateGetPaginatedCampusesWithEvaluees(Option<string> orderBy)
+        {
+            if (orderBy.IsSet && orderBy.Value == null)
+                throw new ArgumentNullException(nameof(orderBy));
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="orderBy"></param>
+        private void AfterGetPaginatedCampusesWithEvalueesDefaultImplementation(IGetPaginatedCampusesWithEvalueesApiResponse apiResponseLocalVar, Guid tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy)
+        {
+            bool suppressDefaultLog = false;
+            AfterGetPaginatedCampusesWithEvaluees(ref suppressDefaultLog, apiResponseLocalVar, tenantId, pageSize, pageIndex, orderBy);
+            if (!suppressDefaultLog)
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="suppressDefaultLog"></param>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="orderBy"></param>
+        partial void AfterGetPaginatedCampusesWithEvaluees(ref bool suppressDefaultLog, IGetPaginatedCampusesWithEvalueesApiResponse apiResponseLocalVar, Guid tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy);
+
+        /// <summary>
+        /// Logs exceptions that occur while retrieving the server response
+        /// </summary>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="orderBy"></param>
+        private void OnErrorGetPaginatedCampusesWithEvalueesDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy)
+        {
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorGetPaginatedCampusesWithEvaluees(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, pageSize, pageIndex, orderBy);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
+        }
+
+        /// <summary>
+        /// A partial method that gives developers a way to provide customized exception handling
+        /// </summary>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="orderBy"></param>
+        partial void OnErrorGetPaginatedCampusesWithEvaluees(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy);
+
+        /// <summary>
+        /// Get a paginated list of the available campuses that have evaluees, each with its complete list of evaluees. 
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="pageSize"> (optional, default to 10)</param>
+        /// <param name="pageIndex"> (optional, default to 0)</param>
+        /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetPaginatedCampusesWithEvalueesApiResponse"/>&gt;</returns>
+        public async Task<IGetPaginatedCampusesWithEvalueesApiResponse?> GetPaginatedCampusesWithEvalueesOrDefaultAsync(Guid tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, System.Threading.CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                return await GetPaginatedCampusesWithEvalueesAsync(tenantId, pageSize, pageIndex, orderBy, cancellationToken).ConfigureAwait(false);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Get a paginated list of the available campuses that have evaluees, each with its complete list of evaluees. 
+        /// </summary>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="pageSize"> (optional, default to 10)</param>
+        /// <param name="pageIndex"> (optional, default to 0)</param>
+        /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetPaginatedCampusesWithEvalueesApiResponse"/>&gt;</returns>
+        public async Task<IGetPaginatedCampusesWithEvalueesApiResponse> GetPaginatedCampusesWithEvalueesAsync(Guid tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, System.Threading.CancellationToken cancellationToken = default)
+        {
+            UriBuilder uriBuilderLocalVar = new UriBuilder();
+
+            try
+            {
+                ValidateGetPaginatedCampusesWithEvaluees(orderBy);
+
+                FormatGetPaginatedCampusesWithEvaluees(ref tenantId, ref pageSize, ref pageIndex, ref orderBy);
+
+                using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
+                {
+                    uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
+                    uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
+                    uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/observations/campuses-with-evaluees"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/observations/campuses-with-evaluees");
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
+
+                    System.Collections.Specialized.NameValueCollection parseQueryStringLocalVar = System.Web.HttpUtility.ParseQueryString(string.Empty);
+
+                    if (pageSize.IsSet)
+                        parseQueryStringLocalVar["pageSize"] = ClientUtils.ParameterToString(pageSize.Value);
+
+                    if (pageIndex.IsSet)
+                        parseQueryStringLocalVar["pageIndex"] = ClientUtils.ParameterToString(pageIndex.Value);
+
+                    if (orderBy.IsSet)
+                        parseQueryStringLocalVar["orderBy"] = ClientUtils.ParameterToString(orderBy.Value);
+
+                    uriBuilderLocalVar.Query = parseQueryStringLocalVar.ToString();
+
+                    List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
+                    httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
+
+                    OAuthToken oauthTokenLocalVar1 = (OAuthToken) await OauthTokenProvider.GetAsync(cancellation: cancellationToken).ConfigureAwait(false);
+
+                    tokenBaseLocalVars.Add(oauthTokenLocalVar1);
+
+                    oauthTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar, "");
+
+                    string[] acceptLocalVars = new string[] {
+                        "application/json"
+                    };
+
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
+
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
+
+                    httpRequestMessageLocalVar.Method = HttpMethod.Get;
+
+                    DateTime requestedAtLocalVar = DateTime.UtcNow;
+
+                    using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
+                    {
+                        ILogger<GetPaginatedCampusesWithEvalueesApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<GetPaginatedCampusesWithEvalueesApiResponse>();
+                        GetPaginatedCampusesWithEvalueesApiResponse apiResponseLocalVar;
+
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/observations/campuses-with-evaluees", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
+
+                        AfterGetPaginatedCampusesWithEvalueesDefaultImplementation(apiResponseLocalVar, tenantId, pageSize, pageIndex, orderBy);
+
+                        Events.ExecuteOnGetPaginatedCampusesWithEvaluees(apiResponseLocalVar);
+
+                        if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
+                            foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
+                                tokenBaseLocalVar.BeginRateLimit();
+
+                        return apiResponseLocalVar;
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                OnErrorGetPaginatedCampusesWithEvalueesDefaultImplementation(e, "/tenants/{tenantId}/observations/campuses-with-evaluees", uriBuilderLocalVar.Path, tenantId, pageSize, pageIndex, orderBy);
+                Events.ExecuteOnErrorGetPaginatedCampusesWithEvaluees(e);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// The <see cref="GetPaginatedCampusesWithEvalueesApiResponse"/>
+        /// </summary>
+        public partial class GetPaginatedCampusesWithEvalueesApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IGetPaginatedCampusesWithEvalueesApiResponse
+        {
+            /// <summary>
+            /// The logger
+            /// </summary>
+            public ILogger<GetPaginatedCampusesWithEvalueesApiResponse> Logger { get; }
+
+            /// <summary>
+            /// The <see cref="GetPaginatedCampusesWithEvalueesApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="rawContent"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public GetPaginatedCampusesWithEvalueesApiResponse(ILogger<GetPaginatedCampusesWithEvalueesApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="GetPaginatedCampusesWithEvalueesApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public GetPaginatedCampusesWithEvalueesApiResponse(ILogger<GetPaginatedCampusesWithEvalueesApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            partial void OnCreated(global::System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage);
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public bool IsUnauthorized => 401 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Unauthorized()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsUnauthorized
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryUnauthorized([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Unauthorized();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)401);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public bool IsForbidden => 403 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Forbidden()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsForbidden
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryForbidden([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Forbidden();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)403);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public bool IsInternalServerError => 500 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? InternalServerError()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsInternalServerError
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryInternalServerError([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = InternalServerError();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)500);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public bool IsOk => 200 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiServicesObservationsGetCampusesWithEvalueesResponse? Ok()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsOk
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiServicesObservationsGetCampusesWithEvalueesResponse>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryOk([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiServicesObservationsGetCampusesWithEvalueesResponse? result)
             {
                 result = null;
 

@@ -513,8 +513,8 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
                     uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
-                        ? "/students/{tenantId}/students/{id}"
-                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/students/{tenantId}/students/{id}");
+                        ? "/tenants/{tenantId}/students/{id}"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/students/{id}");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Bid%7D", Uri.EscapeDataString(id.ToString()));
 
@@ -548,7 +548,7 @@ namespace EdGraph.Platform.Client.Api
                         switch ((int)httpResponseMessageLocalVar.StatusCode) {
                             default: {
                                 string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/students/{tenantId}/students/{id}", requestedAtLocalVar, _jsonSerializerOptions);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/students/{id}", requestedAtLocalVar, _jsonSerializerOptions);
 
                                 break;
                             }
@@ -568,7 +568,7 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorGetStudentProfileDefaultImplementation(e, "/students/{tenantId}/students/{id}", uriBuilderLocalVar.Path, tenantId, id);
+                OnErrorGetStudentProfileDefaultImplementation(e, "/tenants/{tenantId}/students/{id}", uriBuilderLocalVar.Path, tenantId, id);
                 Events.ExecuteOnErrorGetStudentProfile(e);
                 throw;
             }
@@ -887,8 +887,8 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
                     uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
-                        ? "/students/{tenantId}"
-                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/students/{tenantId}");
+                        ? "/tenants/{tenantId}/students"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/students");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
 
                     System.Collections.Specialized.NameValueCollection parseQueryStringLocalVar = System.Web.HttpUtility.ParseQueryString(string.Empty);
@@ -940,7 +940,7 @@ namespace EdGraph.Platform.Client.Api
                         switch ((int)httpResponseMessageLocalVar.StatusCode) {
                             default: {
                                 string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/students/{tenantId}", requestedAtLocalVar, _jsonSerializerOptions);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/students", requestedAtLocalVar, _jsonSerializerOptions);
 
                                 break;
                             }
@@ -960,7 +960,7 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorGetStudentsDefaultImplementation(e, "/students/{tenantId}", uriBuilderLocalVar.Path, tenantId, campus, pathway, status, pageIndex, pageSize);
+                OnErrorGetStudentsDefaultImplementation(e, "/tenants/{tenantId}/students", uriBuilderLocalVar.Path, tenantId, campus, pathway, status, pageIndex, pageSize);
                 Events.ExecuteOnErrorGetStudents(e);
                 throw;
             }
@@ -1652,8 +1652,8 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
                     uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
-                        ? "/students/{tenantId}/{studentId}/contacts"
-                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/students/{tenantId}/{studentId}/contacts");
+                        ? "/tenants/{tenantId}/{studentId}/contacts"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/{studentId}/contacts");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BstudentId%7D", Uri.EscapeDataString(studentId.ToString()));
 
@@ -1706,7 +1706,7 @@ namespace EdGraph.Platform.Client.Api
                         switch ((int)httpResponseMessageLocalVar.StatusCode) {
                             default: {
                                 string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/students/{tenantId}/{studentId}/contacts", requestedAtLocalVar, _jsonSerializerOptions);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/{studentId}/contacts", requestedAtLocalVar, _jsonSerializerOptions);
 
                                 break;
                             }
@@ -1726,7 +1726,7 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorUpdateStudentContactsDefaultImplementation(e, "/students/{tenantId}/{studentId}/contacts", uriBuilderLocalVar.Path, tenantId, studentId, body);
+                OnErrorUpdateStudentContactsDefaultImplementation(e, "/tenants/{tenantId}/{studentId}/contacts", uriBuilderLocalVar.Path, tenantId, studentId, body);
                 Events.ExecuteOnErrorUpdateStudentContacts(e);
                 throw;
             }

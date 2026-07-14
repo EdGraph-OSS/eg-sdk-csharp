@@ -48,8 +48,9 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="useSSAInsteadOfSEOAA">useSSAInsteadOfSEOAA</param>
         /// <param name="importSectionAndCourseData">importSectionAndCourseData</param>
         /// <param name="useStaffEdOrgContactAssociationForEmails">useStaffEdOrgContactAssociationForEmails</param>
+        /// <param name="ignoreEndDates">ignoreEndDates</param>
         [JsonConstructor]
-        public DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfile(Option<string?> tenantId = default, Option<DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobMode?> mode = default, Option<DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProvider?> provider = default, Option<string?> connectionId = default, Option<string?> jobId = default, Option<string?> clientId = default, Option<string?> clientSecret = default, Option<string?> baseUrl = default, Option<string?> authenticationUrl = default, Option<string?> resourcesUrl = default, Option<bool?> enabled = default, Option<string?> edFiInstanceId = default, Option<DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions?> useSSAInsteadOfSEOAA = default, Option<bool?> importSectionAndCourseData = default, Option<bool?> useStaffEdOrgContactAssociationForEmails = default)
+        public DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfile(Option<string?> tenantId = default, Option<DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobMode?> mode = default, Option<DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProvider?> provider = default, Option<string?> connectionId = default, Option<string?> jobId = default, Option<string?> clientId = default, Option<string?> clientSecret = default, Option<string?> baseUrl = default, Option<string?> authenticationUrl = default, Option<string?> resourcesUrl = default, Option<bool?> enabled = default, Option<string?> edFiInstanceId = default, Option<DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions?> useSSAInsteadOfSEOAA = default, Option<bool?> importSectionAndCourseData = default, Option<bool?> useStaffEdOrgContactAssociationForEmails = default, Option<bool?> ignoreEndDates = default)
         {
             TenantIdOption = tenantId;
             ModeOption = mode;
@@ -66,6 +67,7 @@ namespace EdGraph.Platform.Client.Model
             UseSSAInsteadOfSEOAAOption = useSSAInsteadOfSEOAA;
             ImportSectionAndCourseDataOption = importSectionAndCourseData;
             UseStaffEdOrgContactAssociationForEmailsOption = useStaffEdOrgContactAssociationForEmails;
+            IgnoreEndDatesOption = ignoreEndDates;
             OnCreated();
         }
 
@@ -267,6 +269,19 @@ namespace EdGraph.Platform.Client.Model
         public bool? UseStaffEdOrgContactAssociationForEmails { get { return this.UseStaffEdOrgContactAssociationForEmailsOption.Value; } set { this.UseStaffEdOrgContactAssociationForEmailsOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of IgnoreEndDates
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<bool?> IgnoreEndDatesOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets IgnoreEndDates
+        /// </summary>
+        [JsonPropertyName("ignoreEndDates")]
+        public bool? IgnoreEndDates { get { return this.IgnoreEndDatesOption.Value; } set { this.IgnoreEndDatesOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -289,6 +304,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  UseSSAInsteadOfSEOAA: ").Append(UseSSAInsteadOfSEOAA).Append("\n");
             sb.Append("  ImportSectionAndCourseData: ").Append(ImportSectionAndCourseData).Append("\n");
             sb.Append("  UseStaffEdOrgContactAssociationForEmails: ").Append(UseStaffEdOrgContactAssociationForEmails).Append("\n");
+            sb.Append("  IgnoreEndDates: ").Append(IgnoreEndDates).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -341,6 +357,7 @@ namespace EdGraph.Platform.Client.Model
             Option<DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions?> useSSAInsteadOfSEOAA = default;
             Option<bool?> importSectionAndCourseData = default;
             Option<bool?> useStaffEdOrgContactAssociationForEmails = default;
+            Option<bool?> ignoreEndDates = default;
 
             while (utf8JsonReader.Read())
             {
@@ -406,6 +423,9 @@ namespace EdGraph.Platform.Client.Model
                         case "useStaffEdOrgContactAssociationForEmails":
                             useStaffEdOrgContactAssociationForEmails = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
+                        case "ignoreEndDates":
+                            ignoreEndDates = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
+                            break;
                         default:
                             break;
                     }
@@ -421,7 +441,7 @@ namespace EdGraph.Platform.Client.Model
             if (useSSAInsteadOfSEOAA.IsSet && useSSAInsteadOfSEOAA.Value == null)
                 throw new ArgumentNullException(nameof(useSSAInsteadOfSEOAA), "Property is not nullable for class DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfile.");
 
-            return new DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfile(tenantId, mode, provider, connectionId, jobId, clientId, clientSecret, baseUrl, authenticationUrl, resourcesUrl, enabled, edFiInstanceId, useSSAInsteadOfSEOAA, importSectionAndCourseData, useStaffEdOrgContactAssociationForEmails);
+            return new DataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfile(tenantId, mode, provider, connectionId, jobId, clientId, clientSecret, baseUrl, authenticationUrl, resourcesUrl, enabled, edFiInstanceId, useSSAInsteadOfSEOAA, importSectionAndCourseData, useStaffEdOrgContactAssociationForEmails, ignoreEndDates);
         }
 
         /// <summary>
@@ -537,6 +557,12 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteBoolean("useStaffEdOrgContactAssociationForEmails", dataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfile.UseStaffEdOrgContactAssociationForEmailsOption.Value!.Value);
                 else
                     writer.WriteNull("useStaffEdOrgContactAssociationForEmails");
+
+            if (dataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfile.IgnoreEndDatesOption.IsSet)
+                if (dataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfile.IgnoreEndDatesOption.Value != null)
+                    writer.WriteBoolean("ignoreEndDates", dataSyncApiEdFiRosterSyncV1EdFiRosterSyncJobProfile.IgnoreEndDatesOption.Value!.Value);
+                else
+                    writer.WriteNull("ignoreEndDates");
         }
     }
 }

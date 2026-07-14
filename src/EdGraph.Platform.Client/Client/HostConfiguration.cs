@@ -256,6 +256,7 @@ namespace EdGraph.Platform.Client.Client
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsAddAvailablePersonaResponseJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsCampusResponseJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsCampusResponseGetPaginatedItemsResponseJsonConverter());
+            _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsCampusWithEvalueesResponseJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationRequestJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationResponseJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsCreateObservationSubmissionRequestJsonConverter());
@@ -270,6 +271,7 @@ namespace EdGraph.Platform.Client.Client
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsFormVersionConfigurationResponseJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsGetApplicationSettingsResponseJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsGetAvailableCampusesTotalEvalueesResponseJsonConverter());
+            _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsGetCampusesWithEvalueesResponseJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsGetStaffClassificationSettingsResponseJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsGetSubmittedObservationsCountResponseJsonConverter());
             _jsonOptions.Converters.Add(new EdGraphHttpAggregatorsTenantApiServicesObservationsObservationDraftResponseJsonConverter());
@@ -815,6 +817,8 @@ namespace EdGraph.Platform.Client.Client
             _jsonOptions.Converters.Add(new RegistrationApiRegistrationV2SubmitTenantRegistrationRequestJsonConverter());
             _jsonOptions.Converters.Add(new RegistrationApiRegistrationV2TenantTypeJsonConverter());
             _jsonOptions.Converters.Add(new RegistrationApiRegistrationV2TenantTypeNullableJsonConverter());
+            _jsonOptions.Converters.Add(new SystemNetHttpStatusCodeJsonConverter());
+            _jsonOptions.Converters.Add(new SystemNetHttpStatusCodeNullableJsonConverter());
             _jsonOptions.Converters.Add(new TenantApiIntegrationsV1CreateIntegrationProductRequestJsonConverter());
             _jsonOptions.Converters.Add(new TenantApiIntegrationsV1CreateIntegrationProductResponseJsonConverter());
             _jsonOptions.Converters.Add(new TenantApiIntegrationsV1CreateIntegrationRequestJsonConverter());

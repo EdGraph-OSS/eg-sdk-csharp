@@ -88,5 +88,14 @@ namespace EdGraph.Platform.Client.Test.Model
         {
             // TODO unit test for the property 'UseStaffEdOrgContactAssociationForEmails'
         }
+
+        /// <summary>
+        /// Test the property 'IgnoreEndDates'
+        /// </summary>
+        [Fact]
+        public void IgnoreEndDatesTest()
+        {
+            // TODO unit test for the property 'IgnoreEndDates'
+        }
     }
 }

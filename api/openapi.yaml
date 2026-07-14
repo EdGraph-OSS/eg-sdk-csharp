@@ -29805,6 +29805,90 @@ paths:
       summary: Get Paginated Available Forms
       tags:
       - Observations
+  /tenants/{tenantId}/observations/campuses-with-evaluees:
+    get:
+      operationId: GetPaginatedCampusesWithEvaluees
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 10
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: orderBy
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.GetCampusesWithEvalueesResponse"
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails"
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: "Get a paginated list of the available campuses that have evaluees,\
+        \ each with its complete list of evaluees."
+      tags:
+      - Observations
   /tenants/{tenantId}/observations/campuses/{campusId}/sections:
     get:
       operationId: GetPaginatedCampusSections
@@ -43494,7 +43578,7 @@ paths:
       summary: Search Users
       tags:
       - Users
-  /students/{tenantId}/{studentId}/contacts:
+  /tenants/{tenantId}/{studentId}/contacts:
     put:
       operationId: UpdateStudentContacts
       parameters:
@@ -43552,7 +43636,7 @@ paths:
       summary: Updates the contact overrides for a student.
       tags:
       - v1
-  /students/{tenantId}/students/{id}:
+  /tenants/{tenantId}/students/{id}:
     get:
       operationId: GetStudentProfile
       parameters:
@@ -43600,7 +43684,7 @@ paths:
       summary: Returns the admin profile for a single student.
       tags:
       - v1
-  /students/{tenantId}:
+  /tenants/{tenantId}/students:
     get:
       operationId: GetStudents
       parameters:
@@ -47486,6 +47570,7 @@ components:
           assignedStaffClassificationDescriptor: assignedStaffClassificationDescriptor
         importSectionAndCourseData: true
         useStaffEdOrgContactAssociationForEmails: true
+        ignoreEndDates: true
       properties:
         tenantId:
           nullable: true
@@ -47527,6 +47612,9 @@ components:
           nullable: true
           type: boolean
         useStaffEdOrgContactAssociationForEmails:
+          nullable: true
+          type: boolean
+        ignoreEndDates:
           nullable: true
           type: boolean
       type: object
@@ -51893,6 +51981,8 @@ components:
           type: boolean
         useStaffEdOrgContactAssociationForEmails:
           type: boolean
+        ignoreEndDates:
+          type: boolean
       type: object
     EdGraph.HttpAggregators.Tenant.Api.Services.EdFiRosterSync.JobCreatedResult:
       additionalProperties: false
@@ -52279,6 +52369,31 @@ components:
           format: int64
           type: integer
       type: object
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CampusWithEvalueesResponse:
+      additionalProperties: false
+      example:
+        campus: campus
+        evaluees:
+        - userId: userId
+          firstName: firstName
+          lastName: lastName
+          email: email
+          campus: campus
+        - userId: userId
+          firstName: firstName
+          lastName: lastName
+          email: email
+          campus: campus
+      properties:
+        campus:
+          nullable: true
+          type: string
+        evaluees:
+          items:
+            $ref: "#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.EvalueeResponse"
+          nullable: true
+          type: array
+      type: object
     EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CreateObservationRequest:
       additionalProperties: false
       properties:
@@ -52566,6 +52681,57 @@ components:
         totalEvaluees:
           format: int64
           type: integer
+      type: object
+    EdGraph.HttpAggregators.Tenant.Api.Services.Observations.GetCampusesWithEvalueesResponse:
+      additionalProperties: false
+      example:
+        tenantId: tenantId
+        pageIndex: 0
+        pageSize: 6
+        count: 1
+        data:
+        - campus: campus
+          evaluees:
+          - userId: userId
+            firstName: firstName
+            lastName: lastName
+            email: email
+            campus: campus
+          - userId: userId
+            firstName: firstName
+            lastName: lastName
+            email: email
+            campus: campus
+        - campus: campus
+          evaluees:
+          - userId: userId
+            firstName: firstName
+            lastName: lastName
+            email: email
+            campus: campus
+          - userId: userId
+            firstName: firstName
+            lastName: lastName
+            email: email
+            campus: campus
+      properties:
+        tenantId:
+          nullable: true
+          type: string
+        pageIndex:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        count:
+          format: int64
+          type: integer
+        data:
+          items:
+            $ref: "#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Services.Observations.CampusWithEvalueesResponse"
+          nullable: true
+          type: array
       type: object
     EdGraph.HttpAggregators.Tenant.Api.Services.Observations.GetStaffClassificationSettingsResponse:
       additionalProperties: false
@@ -53263,6 +53429,7 @@ components:
             composites: composites
             identity: identity
         error: error
+        statusCode: Continue
       properties:
         isSuccess:
           type: boolean
@@ -53271,6 +53438,8 @@ components:
         error:
           nullable: true
           type: string
+        statusCode:
+          $ref: "#/components/schemas/System.Net.HttpStatusCode"
       type: object
     EdGraph.HttpAggregators.Tenant.Api.Services.OnboardingSteps.EdFiDataModel:
       additionalProperties: false
@@ -70979,6 +71148,70 @@ components:
       - StateEducationAgency
       - AssessmentProvider
       - ServiceProvider
+      type: string
+    System.Net.HttpStatusCode:
+      enum:
+      - Continue
+      - SwitchingProtocols
+      - Processing
+      - EarlyHints
+      - OK
+      - Created
+      - Accepted
+      - NonAuthoritativeInformation
+      - NoContent
+      - ResetContent
+      - PartialContent
+      - MultiStatus
+      - AlreadyReported
+      - IMUsed
+      - Ambiguous
+      - Moved
+      - Redirect
+      - RedirectMethod
+      - NotModified
+      - UseProxy
+      - Unused
+      - TemporaryRedirect
+      - PermanentRedirect
+      - BadRequest
+      - Unauthorized
+      - PaymentRequired
+      - Forbidden
+      - NotFound
+      - MethodNotAllowed
+      - NotAcceptable
+      - ProxyAuthenticationRequired
+      - RequestTimeout
+      - Conflict
+      - Gone
+      - LengthRequired
+      - PreconditionFailed
+      - RequestEntityTooLarge
+      - RequestUriTooLong
+      - UnsupportedMediaType
+      - RequestedRangeNotSatisfiable
+      - ExpectationFailed
+      - MisdirectedRequest
+      - UnprocessableEntity
+      - Locked
+      - FailedDependency
+      - UpgradeRequired
+      - PreconditionRequired
+      - TooManyRequests
+      - RequestHeaderFieldsTooLarge
+      - UnavailableForLegalReasons
+      - InternalServerError
+      - NotImplemented
+      - BadGateway
+      - ServiceUnavailable
+      - GatewayTimeout
+      - HttpVersionNotSupported
+      - VariantAlsoNegotiates
+      - InsufficientStorage
+      - LoopDetected
+      - NotExtended
+      - NetworkAuthenticationRequired
       type: string
     TenantApi.Integrations.V1.CreateIntegrationProductRequest:
       additionalProperties: false

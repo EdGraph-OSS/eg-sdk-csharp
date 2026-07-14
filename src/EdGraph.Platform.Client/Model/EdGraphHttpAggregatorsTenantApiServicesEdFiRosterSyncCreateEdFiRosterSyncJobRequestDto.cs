@@ -37,13 +37,15 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="useSSAInsteadOfSEOAA">useSSAInsteadOfSEOAA</param>
         /// <param name="importSectionAndCourseData">importSectionAndCourseData</param>
         /// <param name="useStaffEdOrgContactAssociationForEmails">useStaffEdOrgContactAssociationForEmails</param>
+        /// <param name="ignoreEndDates">ignoreEndDates</param>
         [JsonConstructor]
-        public EdGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto(Option<string?> mode = default, Option<DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions?> useSSAInsteadOfSEOAA = default, Option<bool?> importSectionAndCourseData = default, Option<bool?> useStaffEdOrgContactAssociationForEmails = default)
+        public EdGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto(Option<string?> mode = default, Option<DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions?> useSSAInsteadOfSEOAA = default, Option<bool?> importSectionAndCourseData = default, Option<bool?> useStaffEdOrgContactAssociationForEmails = default, Option<bool?> ignoreEndDates = default)
         {
             ModeOption = mode;
             UseSSAInsteadOfSEOAAOption = useSSAInsteadOfSEOAA;
             ImportSectionAndCourseDataOption = importSectionAndCourseData;
             UseStaffEdOrgContactAssociationForEmailsOption = useStaffEdOrgContactAssociationForEmails;
+            IgnoreEndDatesOption = ignoreEndDates;
             OnCreated();
         }
 
@@ -102,6 +104,19 @@ namespace EdGraph.Platform.Client.Model
         public bool? UseStaffEdOrgContactAssociationForEmails { get { return this.UseStaffEdOrgContactAssociationForEmailsOption.Value; } set { this.UseStaffEdOrgContactAssociationForEmailsOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of IgnoreEndDates
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<bool?> IgnoreEndDatesOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets IgnoreEndDates
+        /// </summary>
+        [JsonPropertyName("ignoreEndDates")]
+        public bool? IgnoreEndDates { get { return this.IgnoreEndDatesOption.Value; } set { this.IgnoreEndDatesOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -113,6 +128,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  UseSSAInsteadOfSEOAA: ").Append(UseSSAInsteadOfSEOAA).Append("\n");
             sb.Append("  ImportSectionAndCourseData: ").Append(ImportSectionAndCourseData).Append("\n");
             sb.Append("  UseStaffEdOrgContactAssociationForEmails: ").Append(UseStaffEdOrgContactAssociationForEmails).Append("\n");
+            sb.Append("  IgnoreEndDates: ").Append(IgnoreEndDates).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -154,6 +170,7 @@ namespace EdGraph.Platform.Client.Model
             Option<DataSyncApiEdFiRosterSyncV1UseSSAInsteadOfSEOAAOptions?> useSSAInsteadOfSEOAA = default;
             Option<bool?> importSectionAndCourseData = default;
             Option<bool?> useStaffEdOrgContactAssociationForEmails = default;
+            Option<bool?> ignoreEndDates = default;
 
             while (utf8JsonReader.Read())
             {
@@ -182,6 +199,9 @@ namespace EdGraph.Platform.Client.Model
                         case "useStaffEdOrgContactAssociationForEmails":
                             useStaffEdOrgContactAssociationForEmails = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
+                        case "ignoreEndDates":
+                            ignoreEndDates = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
+                            break;
                         default:
                             break;
                     }
@@ -197,7 +217,10 @@ namespace EdGraph.Platform.Client.Model
             if (useStaffEdOrgContactAssociationForEmails.IsSet && useStaffEdOrgContactAssociationForEmails.Value == null)
                 throw new ArgumentNullException(nameof(useStaffEdOrgContactAssociationForEmails), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto.");
 
-            return new EdGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto(mode, useSSAInsteadOfSEOAA, importSectionAndCourseData, useStaffEdOrgContactAssociationForEmails);
+            if (ignoreEndDates.IsSet && ignoreEndDates.Value == null)
+                throw new ArgumentNullException(nameof(ignoreEndDates), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto.");
+
+            return new EdGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto(mode, useSSAInsteadOfSEOAA, importSectionAndCourseData, useStaffEdOrgContactAssociationForEmails, ignoreEndDates);
         }
 
         /// <summary>
@@ -243,6 +266,9 @@ namespace EdGraph.Platform.Client.Model
 
             if (edGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto.UseStaffEdOrgContactAssociationForEmailsOption.IsSet)
                 writer.WriteBoolean("useStaffEdOrgContactAssociationForEmails", edGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto.UseStaffEdOrgContactAssociationForEmailsOption.Value!.Value);
+
+            if (edGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto.IgnoreEndDatesOption.IsSet)
+                writer.WriteBoolean("ignoreEndDates", edGraphHttpAggregatorsTenantApiServicesEdFiRosterSyncCreateEdFiRosterSyncJobRequestDto.IgnoreEndDatesOption.Value!.Value);
         }
     }
 }

@@ -36,16 +36,31 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="isSuccess">isSuccess</param>
         /// <param name="value">value</param>
         /// <param name="error">error</param>
+        /// <param name="statusCode">statusCode</param>
         [JsonConstructor]
-        public EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiLoadEdFiApiMetadataResult(Option<bool?> isSuccess = default, Option<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApi?> value = default, Option<string?> error = default)
+        public EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiLoadEdFiApiMetadataResult(Option<bool?> isSuccess = default, Option<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApi?> value = default, Option<string?> error = default, Option<SystemNetHttpStatusCode?> statusCode = default)
         {
             IsSuccessOption = isSuccess;
             ValueOption = value;
             ErrorOption = error;
+            StatusCodeOption = statusCode;
             OnCreated();
         }
 
         partial void OnCreated();
+
+        /// <summary>
+        /// Used to track the state of StatusCode
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<SystemNetHttpStatusCode?> StatusCodeOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets StatusCode
+        /// </summary>
+        [JsonPropertyName("statusCode")]
+        public SystemNetHttpStatusCode? StatusCode { get { return this.StatusCodeOption.Value; } set { this.StatusCodeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsSuccess
@@ -97,6 +112,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  IsSuccess: ").Append(IsSuccess).Append("\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
             sb.Append("  Error: ").Append(Error).Append("\n");
+            sb.Append("  StatusCode: ").Append(StatusCode).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -137,6 +153,7 @@ namespace EdGraph.Platform.Client.Model
             Option<bool?> isSuccess = default;
             Option<EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApi?> value = default;
             Option<string?> error = default;
+            Option<SystemNetHttpStatusCode?> statusCode = default;
 
             while (utf8JsonReader.Read())
             {
@@ -162,6 +179,11 @@ namespace EdGraph.Platform.Client.Model
                         case "error":
                             error = new Option<string?>(utf8JsonReader.GetString());
                             break;
+                        case "statusCode":
+                            string? statusCodeRawValue = utf8JsonReader.GetString();
+                            if (statusCodeRawValue != null)
+                                statusCode = new Option<SystemNetHttpStatusCode?>(SystemNetHttpStatusCodeValueConverter.FromStringOrDefault(statusCodeRawValue));
+                            break;
                         default:
                             break;
                     }
@@ -174,7 +196,10 @@ namespace EdGraph.Platform.Client.Model
             if (value.IsSet && value.Value == null)
                 throw new ArgumentNullException(nameof(value), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiLoadEdFiApiMetadataResult.");
 
-            return new EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiLoadEdFiApiMetadataResult(isSuccess, value, error);
+            if (statusCode.IsSet && statusCode.Value == null)
+                throw new ArgumentNullException(nameof(statusCode), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiLoadEdFiApiMetadataResult.");
+
+            return new EdGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiLoadEdFiApiMetadataResult(isSuccess, value, error, statusCode);
         }
 
         /// <summary>
@@ -217,6 +242,12 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteString("error", edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiLoadEdFiApiMetadataResult.Error);
                 else
                     writer.WriteNull("error");
+
+            if (edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiLoadEdFiApiMetadataResult.StatusCodeOption.IsSet)
+            {
+                var statusCodeRawValue = SystemNetHttpStatusCodeValueConverter.ToJsonValue(edGraphHttpAggregatorsTenantApiServicesOnboardingStepsEdFiApiLoadEdFiApiMetadataResult.StatusCode!.Value);
+                writer.WriteString("statusCode", statusCodeRawValue);
+            }
         }
     }
 }
