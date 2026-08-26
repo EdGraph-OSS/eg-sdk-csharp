@@ -1,7 +1,7 @@
 param(
     [Parameter()][Alias("g")][String]$GitHost = "github.com",
     [Parameter()][Alias("u")][String]$GitUserId = "EdGraph-OSS",
-    [Parameter()][Alias("r")][String]$GitRepoId = "csharp-sdk",
+    [Parameter()][Alias("r")][String]$GitRepoId = "eg-sdk-csharp",
     [Parameter()][Alias("m")][string]$Message = "Minor update",
     [Parameter()][Alias("h")][switch]$Help
 )

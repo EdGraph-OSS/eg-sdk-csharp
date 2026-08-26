@@ -49,9 +49,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="backgroundFile"> (optional)</param>
         /// <param name="brandName"> (optional)</param>
         /// <param name="enabled"> (optional)</param>
+        /// <param name="removeBackground"> (optional)</param>
+        /// <param name="removeLogo"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IUpdateTenantBrandingApiResponse"/>&gt;</returns>
-        Task<IUpdateTenantBrandingApiResponse> UpdateTenantBrandingAsync(Guid tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> logoFile = default, Option<EdGraph.Platform.Client.Client.FileParameter> backgroundFile = default, Option<string> brandName = default, Option<bool> enabled = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IUpdateTenantBrandingApiResponse> UpdateTenantBrandingAsync(Guid tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> logoFile = default, Option<EdGraph.Platform.Client.Client.FileParameter> backgroundFile = default, Option<string> brandName = default, Option<bool> enabled = default, Option<bool> removeBackground = default, Option<bool> removeLogo = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates the branding of tenant
@@ -64,9 +66,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="backgroundFile"> (optional)</param>
         /// <param name="brandName"> (optional)</param>
         /// <param name="enabled"> (optional)</param>
+        /// <param name="removeBackground"> (optional)</param>
+        /// <param name="removeLogo"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IUpdateTenantBrandingApiResponse"/>?&gt;</returns>
-        Task<IUpdateTenantBrandingApiResponse?> UpdateTenantBrandingOrDefaultAsync(Guid tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> logoFile = default, Option<EdGraph.Platform.Client.Client.FileParameter> backgroundFile = default, Option<string> brandName = default, Option<bool> enabled = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IUpdateTenantBrandingApiResponse?> UpdateTenantBrandingOrDefaultAsync(Guid tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> logoFile = default, Option<EdGraph.Platform.Client.Client.FileParameter> backgroundFile = default, Option<string> brandName = default, Option<bool> enabled = default, Option<bool> removeBackground = default, Option<bool> removeLogo = default, System.Threading.CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -178,7 +182,7 @@ namespace EdGraph.Platform.Client.Api
             OauthTokenProvider = oauthTokenProvider;
         }
 
-        partial void FormatUpdateTenantBranding(ref Guid tenantId, ref Option<EdGraph.Platform.Client.Client.FileParameter> logoFile, ref Option<EdGraph.Platform.Client.Client.FileParameter> backgroundFile, ref Option<string> brandName, ref Option<bool> enabled);
+        partial void FormatUpdateTenantBranding(ref Guid tenantId, ref Option<EdGraph.Platform.Client.Client.FileParameter> logoFile, ref Option<EdGraph.Platform.Client.Client.FileParameter> backgroundFile, ref Option<string> brandName, ref Option<bool> enabled, ref Option<bool> removeBackground, ref Option<bool> removeLogo);
 
         /// <summary>
         /// Validates the request parameters
@@ -208,10 +212,12 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="backgroundFile"></param>
         /// <param name="brandName"></param>
         /// <param name="enabled"></param>
-        private void AfterUpdateTenantBrandingDefaultImplementation(IUpdateTenantBrandingApiResponse apiResponseLocalVar, Guid tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> logoFile, Option<EdGraph.Platform.Client.Client.FileParameter> backgroundFile, Option<string> brandName, Option<bool> enabled)
+        /// <param name="removeBackground"></param>
+        /// <param name="removeLogo"></param>
+        private void AfterUpdateTenantBrandingDefaultImplementation(IUpdateTenantBrandingApiResponse apiResponseLocalVar, Guid tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> logoFile, Option<EdGraph.Platform.Client.Client.FileParameter> backgroundFile, Option<string> brandName, Option<bool> enabled, Option<bool> removeBackground, Option<bool> removeLogo)
         {
             bool suppressDefaultLog = false;
-            AfterUpdateTenantBranding(ref suppressDefaultLog, apiResponseLocalVar, tenantId, logoFile, backgroundFile, brandName, enabled);
+            AfterUpdateTenantBranding(ref suppressDefaultLog, apiResponseLocalVar, tenantId, logoFile, backgroundFile, brandName, enabled, removeBackground, removeLogo);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -226,7 +232,9 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="backgroundFile"></param>
         /// <param name="brandName"></param>
         /// <param name="enabled"></param>
-        partial void AfterUpdateTenantBranding(ref bool suppressDefaultLog, IUpdateTenantBrandingApiResponse apiResponseLocalVar, Guid tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> logoFile, Option<EdGraph.Platform.Client.Client.FileParameter> backgroundFile, Option<string> brandName, Option<bool> enabled);
+        /// <param name="removeBackground"></param>
+        /// <param name="removeLogo"></param>
+        partial void AfterUpdateTenantBranding(ref bool suppressDefaultLog, IUpdateTenantBrandingApiResponse apiResponseLocalVar, Guid tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> logoFile, Option<EdGraph.Platform.Client.Client.FileParameter> backgroundFile, Option<string> brandName, Option<bool> enabled, Option<bool> removeBackground, Option<bool> removeLogo);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -239,10 +247,12 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="backgroundFile"></param>
         /// <param name="brandName"></param>
         /// <param name="enabled"></param>
-        private void OnErrorUpdateTenantBrandingDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> logoFile, Option<EdGraph.Platform.Client.Client.FileParameter> backgroundFile, Option<string> brandName, Option<bool> enabled)
+        /// <param name="removeBackground"></param>
+        /// <param name="removeLogo"></param>
+        private void OnErrorUpdateTenantBrandingDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> logoFile, Option<EdGraph.Platform.Client.Client.FileParameter> backgroundFile, Option<string> brandName, Option<bool> enabled, Option<bool> removeBackground, Option<bool> removeLogo)
         {
             bool suppressDefaultLogLocalVar = false;
-            OnErrorUpdateTenantBranding(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, logoFile, backgroundFile, brandName, enabled);
+            OnErrorUpdateTenantBranding(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, logoFile, backgroundFile, brandName, enabled, removeBackground, removeLogo);
             if (!suppressDefaultLogLocalVar)
                 Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
@@ -259,7 +269,9 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="backgroundFile"></param>
         /// <param name="brandName"></param>
         /// <param name="enabled"></param>
-        partial void OnErrorUpdateTenantBranding(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> logoFile, Option<EdGraph.Platform.Client.Client.FileParameter> backgroundFile, Option<string> brandName, Option<bool> enabled);
+        /// <param name="removeBackground"></param>
+        /// <param name="removeLogo"></param>
+        partial void OnErrorUpdateTenantBranding(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> logoFile, Option<EdGraph.Platform.Client.Client.FileParameter> backgroundFile, Option<string> brandName, Option<bool> enabled, Option<bool> removeBackground, Option<bool> removeLogo);
 
         /// <summary>
         /// Updates the branding of tenant 
@@ -269,13 +281,15 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="backgroundFile"> (optional)</param>
         /// <param name="brandName"> (optional)</param>
         /// <param name="enabled"> (optional)</param>
+        /// <param name="removeBackground"> (optional)</param>
+        /// <param name="removeLogo"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IUpdateTenantBrandingApiResponse"/>&gt;</returns>
-        public async Task<IUpdateTenantBrandingApiResponse?> UpdateTenantBrandingOrDefaultAsync(Guid tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> logoFile = default, Option<EdGraph.Platform.Client.Client.FileParameter> backgroundFile = default, Option<string> brandName = default, Option<bool> enabled = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IUpdateTenantBrandingApiResponse?> UpdateTenantBrandingOrDefaultAsync(Guid tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> logoFile = default, Option<EdGraph.Platform.Client.Client.FileParameter> backgroundFile = default, Option<string> brandName = default, Option<bool> enabled = default, Option<bool> removeBackground = default, Option<bool> removeLogo = default, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await UpdateTenantBrandingAsync(tenantId, logoFile, backgroundFile, brandName, enabled, cancellationToken).ConfigureAwait(false);
+                return await UpdateTenantBrandingAsync(tenantId, logoFile, backgroundFile, brandName, enabled, removeBackground, removeLogo, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -292,9 +306,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="backgroundFile"> (optional)</param>
         /// <param name="brandName"> (optional)</param>
         /// <param name="enabled"> (optional)</param>
+        /// <param name="removeBackground"> (optional)</param>
+        /// <param name="removeLogo"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IUpdateTenantBrandingApiResponse"/>&gt;</returns>
-        public async Task<IUpdateTenantBrandingApiResponse> UpdateTenantBrandingAsync(Guid tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> logoFile = default, Option<EdGraph.Platform.Client.Client.FileParameter> backgroundFile = default, Option<string> brandName = default, Option<bool> enabled = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IUpdateTenantBrandingApiResponse> UpdateTenantBrandingAsync(Guid tenantId, Option<EdGraph.Platform.Client.Client.FileParameter> logoFile = default, Option<EdGraph.Platform.Client.Client.FileParameter> backgroundFile = default, Option<string> brandName = default, Option<bool> enabled = default, Option<bool> removeBackground = default, Option<bool> removeLogo = default, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
@@ -302,7 +318,7 @@ namespace EdGraph.Platform.Client.Api
             {
                 ValidateUpdateTenantBranding(logoFile, backgroundFile, brandName);
 
-                FormatUpdateTenantBranding(ref tenantId, ref logoFile, ref backgroundFile, ref brandName, ref enabled);
+                FormatUpdateTenantBranding(ref tenantId, ref logoFile, ref backgroundFile, ref brandName, ref enabled, ref removeBackground, ref removeLogo);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -339,6 +355,12 @@ namespace EdGraph.Platform.Client.Api
 
                     if (enabled.IsSet)
                         formParameterLocalVars.Add(new KeyValuePair<string, string?>("Enabled", ClientUtils.ParameterToString(enabled.Value)));
+
+                    if (removeBackground.IsSet)
+                        formParameterLocalVars.Add(new KeyValuePair<string, string?>("RemoveBackground", ClientUtils.ParameterToString(removeBackground.Value)));
+
+                    if (removeLogo.IsSet)
+                        formParameterLocalVars.Add(new KeyValuePair<string, string?>("RemoveLogo", ClientUtils.ParameterToString(removeLogo.Value)));
 
                     foreach (var formParamLocalVar in formParameterLocalVars)
                         multipartContentLocalVar.Add(new StringContent(formParamLocalVar.Value ?? string.Empty), formParamLocalVar.Key);
@@ -383,7 +405,7 @@ namespace EdGraph.Platform.Client.Api
                             }
                         }
 
-                        AfterUpdateTenantBrandingDefaultImplementation(apiResponseLocalVar, tenantId, logoFile, backgroundFile, brandName, enabled);
+                        AfterUpdateTenantBrandingDefaultImplementation(apiResponseLocalVar, tenantId, logoFile, backgroundFile, brandName, enabled, removeBackground, removeLogo);
 
                         Events.ExecuteOnUpdateTenantBranding(apiResponseLocalVar);
 
@@ -397,7 +419,7 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorUpdateTenantBrandingDefaultImplementation(e, "/tenants/{tenantId}/branding", uriBuilderLocalVar.Path, tenantId, logoFile, backgroundFile, brandName, enabled);
+                OnErrorUpdateTenantBrandingDefaultImplementation(e, "/tenants/{tenantId}/branding", uriBuilderLocalVar.Path, tenantId, logoFile, backgroundFile, brandName, enabled, removeBackground, removeLogo);
                 Events.ExecuteOnErrorUpdateTenantBranding(e);
                 throw;
             }

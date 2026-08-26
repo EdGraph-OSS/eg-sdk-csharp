@@ -4,7 +4,7 @@
 # Usage example: /bin/sh ./git_push.sh wing328 openapi-petstore-perl "minor update" "gitlab.com"
 
 git_user_id=${1:-EdGraph-OSS}
-git_repo_id=${2:-csharp-sdk}
+git_repo_id=${2:-eg-sdk-csharp}
 release_note=${3:-Minor update}
 git_host=${4:-github.com}
 

@@ -545,6 +545,31 @@ namespace EdGraph.Platform.Client.Api
         Task<IGetPagedInstancesApiResponse?> GetPagedInstancesOrDefaultAsync(string tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
+        /// Get Instance by Id
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="instanceId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetTenantInstanceByIdV2ApiResponse"/>&gt;</returns>
+        Task<IGetTenantInstanceByIdV2ApiResponse> GetTenantInstanceByIdV2Async(string tenantId, string instanceId, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Get Instance by Id
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <param name="tenantId"></param>
+        /// <param name="instanceId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetTenantInstanceByIdV2ApiResponse"/>?&gt;</returns>
+        Task<IGetTenantInstanceByIdV2ApiResponse?> GetTenantInstanceByIdV2OrDefaultAsync(string tenantId, string instanceId, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
         /// Get list of all instances for a tenant - V2
         /// </summary>
         /// <remarks>
@@ -1750,6 +1775,42 @@ namespace EdGraph.Platform.Client.Api
     }
 
     /// <summary>
+    /// The <see cref="IGetTenantInstanceByIdV2ApiResponse"/>
+    /// </summary>
+    public interface IGetTenantInstanceByIdV2ApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiServicesInstancesInstanceResponse?>, INotFound<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>
+    {
+        /// <summary>
+        /// Returns true if the response is 401 Unauthorized
+        /// </summary>
+        /// <returns></returns>
+        bool IsUnauthorized { get; }
+
+        /// <summary>
+        /// Returns true if the response is 403 Forbidden
+        /// </summary>
+        /// <returns></returns>
+        bool IsForbidden { get; }
+
+        /// <summary>
+        /// Returns true if the response is 500 InternalServerError
+        /// </summary>
+        /// <returns></returns>
+        bool IsInternalServerError { get; }
+
+        /// <summary>
+        /// Returns true if the response is 200 Ok
+        /// </summary>
+        /// <returns></returns>
+        bool IsOk { get; }
+
+        /// <summary>
+        /// Returns true if the response is 404 NotFound
+        /// </summary>
+        /// <returns></returns>
+        bool IsNotFound { get; }
+    }
+
+    /// <summary>
     /// The <see cref="IGetTenantInstancesV2ApiResponse"/>
     /// </summary>
     public interface IGetTenantInstancesV2ApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiServicesInstancesInstanceResponsePaginatedItemsViewModel?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>
@@ -2768,6 +2829,26 @@ namespace EdGraph.Platform.Client.Api
         internal void ExecuteOnErrorGetPagedInstances(Exception exception)
         {
             OnErrorGetPagedInstances?.Invoke(this, new ExceptionEventArgs(exception));
+        }
+
+        /// <summary>
+        /// The event raised after the server response
+        /// </summary>
+        public event EventHandler<ApiResponseEventArgs>? OnGetTenantInstanceByIdV2;
+
+        /// <summary>
+        /// The event raised after an error querying the server
+        /// </summary>
+        public event EventHandler<ExceptionEventArgs>? OnErrorGetTenantInstanceByIdV2;
+
+        internal void ExecuteOnGetTenantInstanceByIdV2(InstancesApi.GetTenantInstanceByIdV2ApiResponse apiResponse)
+        {
+            OnGetTenantInstanceByIdV2?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+        }
+
+        internal void ExecuteOnErrorGetTenantInstanceByIdV2(Exception exception)
+        {
+            OnErrorGetTenantInstanceByIdV2?.Invoke(this, new ExceptionEventArgs(exception));
         }
 
         /// <summary>
@@ -11612,6 +11693,422 @@ namespace EdGraph.Platform.Client.Api
                 } catch (Exception e)
                 {
                     OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)400);
+                }
+
+                return result != null;
+            }
+
+            private void OnDeserializationErrorDefaultImplementation(Exception exception, HttpStatusCode httpStatusCode)
+            {
+                bool suppressDefaultLog = false;
+                OnDeserializationError(ref suppressDefaultLog, exception, httpStatusCode);
+                if (!suppressDefaultLog)
+                    Logger.LogError(exception, "An error occurred while deserializing the {code} response.", httpStatusCode);
+            }
+
+            partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
+        }
+
+        partial void FormatGetTenantInstanceByIdV2(ref string tenantId, ref string instanceId);
+
+        /// <summary>
+        /// Validates the request parameters
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="instanceId"></param>
+        /// <returns></returns>
+        private void ValidateGetTenantInstanceByIdV2(string tenantId, string instanceId)
+        {
+            if (tenantId == null)
+                throw new ArgumentNullException(nameof(tenantId));
+
+            if (instanceId == null)
+                throw new ArgumentNullException(nameof(instanceId));
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="instanceId"></param>
+        private void AfterGetTenantInstanceByIdV2DefaultImplementation(IGetTenantInstanceByIdV2ApiResponse apiResponseLocalVar, string tenantId, string instanceId)
+        {
+            bool suppressDefaultLog = false;
+            AfterGetTenantInstanceByIdV2(ref suppressDefaultLog, apiResponseLocalVar, tenantId, instanceId);
+            if (!suppressDefaultLog)
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="suppressDefaultLog"></param>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="instanceId"></param>
+        partial void AfterGetTenantInstanceByIdV2(ref bool suppressDefaultLog, IGetTenantInstanceByIdV2ApiResponse apiResponseLocalVar, string tenantId, string instanceId);
+
+        /// <summary>
+        /// Logs exceptions that occur while retrieving the server response
+        /// </summary>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="instanceId"></param>
+        private void OnErrorGetTenantInstanceByIdV2DefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId)
+        {
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorGetTenantInstanceByIdV2(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, instanceId);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
+        }
+
+        /// <summary>
+        /// A partial method that gives developers a way to provide customized exception handling
+        /// </summary>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="instanceId"></param>
+        partial void OnErrorGetTenantInstanceByIdV2(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId);
+
+        /// <summary>
+        /// Get Instance by Id 
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="instanceId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetTenantInstanceByIdV2ApiResponse"/>&gt;</returns>
+        public async Task<IGetTenantInstanceByIdV2ApiResponse?> GetTenantInstanceByIdV2OrDefaultAsync(string tenantId, string instanceId, System.Threading.CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                return await GetTenantInstanceByIdV2Async(tenantId, instanceId, cancellationToken).ConfigureAwait(false);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Get Instance by Id 
+        /// </summary>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="instanceId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetTenantInstanceByIdV2ApiResponse"/>&gt;</returns>
+        public async Task<IGetTenantInstanceByIdV2ApiResponse> GetTenantInstanceByIdV2Async(string tenantId, string instanceId, System.Threading.CancellationToken cancellationToken = default)
+        {
+            UriBuilder uriBuilderLocalVar = new UriBuilder();
+
+            try
+            {
+                ValidateGetTenantInstanceByIdV2(tenantId, instanceId);
+
+                FormatGetTenantInstanceByIdV2(ref tenantId, ref instanceId);
+
+                using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
+                {
+                    uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
+                    uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
+                    uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/v2/tenants/{tenantId}/instances/{instanceId}"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/v2/tenants/{tenantId}/instances/{instanceId}");
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BinstanceId%7D", Uri.EscapeDataString(instanceId.ToString()));
+
+                    List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
+                    httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
+
+                    OAuthToken oauthTokenLocalVar1 = (OAuthToken) await OauthTokenProvider.GetAsync(cancellation: cancellationToken).ConfigureAwait(false);
+
+                    tokenBaseLocalVars.Add(oauthTokenLocalVar1);
+
+                    oauthTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar, "");
+
+                    string[] acceptLocalVars = new string[] {
+                        "application/json"
+                    };
+
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
+
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
+
+                    httpRequestMessageLocalVar.Method = HttpMethod.Get;
+
+                    DateTime requestedAtLocalVar = DateTime.UtcNow;
+
+                    using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
+                    {
+                        ILogger<GetTenantInstanceByIdV2ApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<GetTenantInstanceByIdV2ApiResponse>();
+                        GetTenantInstanceByIdV2ApiResponse apiResponseLocalVar;
+
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/v2/tenants/{tenantId}/instances/{instanceId}", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
+
+                        AfterGetTenantInstanceByIdV2DefaultImplementation(apiResponseLocalVar, tenantId, instanceId);
+
+                        Events.ExecuteOnGetTenantInstanceByIdV2(apiResponseLocalVar);
+
+                        if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
+                            foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
+                                tokenBaseLocalVar.BeginRateLimit();
+
+                        return apiResponseLocalVar;
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                OnErrorGetTenantInstanceByIdV2DefaultImplementation(e, "/v2/tenants/{tenantId}/instances/{instanceId}", uriBuilderLocalVar.Path, tenantId, instanceId);
+                Events.ExecuteOnErrorGetTenantInstanceByIdV2(e);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// The <see cref="GetTenantInstanceByIdV2ApiResponse"/>
+        /// </summary>
+        public partial class GetTenantInstanceByIdV2ApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IGetTenantInstanceByIdV2ApiResponse
+        {
+            /// <summary>
+            /// The logger
+            /// </summary>
+            public ILogger<GetTenantInstanceByIdV2ApiResponse> Logger { get; }
+
+            /// <summary>
+            /// The <see cref="GetTenantInstanceByIdV2ApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="rawContent"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public GetTenantInstanceByIdV2ApiResponse(ILogger<GetTenantInstanceByIdV2ApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="GetTenantInstanceByIdV2ApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public GetTenantInstanceByIdV2ApiResponse(ILogger<GetTenantInstanceByIdV2ApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            partial void OnCreated(global::System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage);
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public bool IsUnauthorized => 401 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Unauthorized()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsUnauthorized
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryUnauthorized([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Unauthorized();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)401);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public bool IsForbidden => 403 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Forbidden()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsForbidden
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryForbidden([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Forbidden();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)403);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public bool IsInternalServerError => 500 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? InternalServerError()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsInternalServerError
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryInternalServerError([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = InternalServerError();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)500);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public bool IsOk => 200 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiServicesInstancesInstanceResponse? Ok()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsOk
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiServicesInstancesInstanceResponse>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryOk([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiServicesInstancesInstanceResponse? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Ok();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)200);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 404 NotFound
+            /// </summary>
+            /// <returns></returns>
+            public bool IsNotFound => 404 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 404 NotFound
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? NotFound()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsNotFound
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 404 NotFound and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryNotFound([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = NotFound();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)404);
                 }
 
                 return result != null;

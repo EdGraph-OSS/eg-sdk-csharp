@@ -51,8 +51,9 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="platformRole">platformRole</param>
         /// <param name="tenantStatus">tenantStatus</param>
         /// <param name="tenantAdmin">tenantAdmin</param>
+        /// <param name="status">The user&#39;s status across all their tenants: Active if any membership is active, Inactive if every  membership is inactive, Unknown if they have no memberships. Unlike tenantStatus this does not  depend on a tenantId being supplied on the request.</param>
         [JsonConstructor]
-        public IdentityApiUserV2UserProfileResponse(Option<string?> userId = default, Option<string?> userName = default, Option<string?> email = default, Option<string?> firstName = default, Option<string?> lastName = default, Option<string?> phoneNumber = default, Option<bool?> lockoutEnabled = default, Option<int?> tenantCount = default, Option<string?> createdDateTime = default, Option<string?> lastModifiedDateTime = default, Option<List<IdentityApiUserV2UserExtension>?> extensions = default, Option<List<IdentityApiUserV2UserLogin>?> logins = default, Option<string?> source = default, Option<string?> lastLoginDateTime = default, Option<bool?> mfaCompleted = default, Option<string?> platformRole = default, Option<string?> tenantStatus = default, Option<bool?> tenantAdmin = default)
+        public IdentityApiUserV2UserProfileResponse(Option<string?> userId = default, Option<string?> userName = default, Option<string?> email = default, Option<string?> firstName = default, Option<string?> lastName = default, Option<string?> phoneNumber = default, Option<bool?> lockoutEnabled = default, Option<int?> tenantCount = default, Option<string?> createdDateTime = default, Option<string?> lastModifiedDateTime = default, Option<List<IdentityApiUserV2UserExtension>?> extensions = default, Option<List<IdentityApiUserV2UserLogin>?> logins = default, Option<string?> source = default, Option<string?> lastLoginDateTime = default, Option<bool?> mfaCompleted = default, Option<string?> platformRole = default, Option<string?> tenantStatus = default, Option<bool?> tenantAdmin = default, Option<string?> status = default)
         {
             UserIdOption = userId;
             UserNameOption = userName;
@@ -72,6 +73,7 @@ namespace EdGraph.Platform.Client.Model
             PlatformRoleOption = platformRole;
             TenantStatusOption = tenantStatus;
             TenantAdminOption = tenantAdmin;
+            StatusOption = status;
             OnCreated();
         }
 
@@ -312,6 +314,20 @@ namespace EdGraph.Platform.Client.Model
         public bool? TenantAdmin { get { return this.TenantAdminOption.Value; } set { this.TenantAdminOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of Status
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> StatusOption { get; private set; }
+
+        /// <summary>
+        /// The user&#39;s status across all their tenants: Active if any membership is active, Inactive if every  membership is inactive, Unknown if they have no memberships. Unlike tenantStatus this does not  depend on a tenantId being supplied on the request.
+        /// </summary>
+        /// <value>The user&#39;s status across all their tenants: Active if any membership is active, Inactive if every  membership is inactive, Unknown if they have no memberships. Unlike tenantStatus this does not  depend on a tenantId being supplied on the request.</value>
+        [JsonPropertyName("status")]
+        public string? Status { get { return this.StatusOption.Value; } set { this.StatusOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -337,6 +353,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  PlatformRole: ").Append(PlatformRole).Append("\n");
             sb.Append("  TenantStatus: ").Append(TenantStatus).Append("\n");
             sb.Append("  TenantAdmin: ").Append(TenantAdmin).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -392,6 +409,7 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> platformRole = default;
             Option<string?> tenantStatus = default;
             Option<bool?> tenantAdmin = default;
+            Option<string?> status = default;
 
             while (utf8JsonReader.Read())
             {
@@ -462,6 +480,9 @@ namespace EdGraph.Platform.Client.Model
                         case "tenantAdmin":
                             tenantAdmin = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
+                        case "status":
+                            status = new Option<string?>(utf8JsonReader.GetString());
+                            break;
                         default:
                             break;
                     }
@@ -474,7 +495,7 @@ namespace EdGraph.Platform.Client.Model
             if (mfaCompleted.IsSet && mfaCompleted.Value == null)
                 throw new ArgumentNullException(nameof(mfaCompleted), "Property is not nullable for class IdentityApiUserV2UserProfileResponse.");
 
-            return new IdentityApiUserV2UserProfileResponse(userId, userName, email, firstName, lastName, phoneNumber, lockoutEnabled, tenantCount, createdDateTime, lastModifiedDateTime, extensions, logins, source, lastLoginDateTime, mfaCompleted, platformRole, tenantStatus, tenantAdmin);
+            return new IdentityApiUserV2UserProfileResponse(userId, userName, email, firstName, lastName, phoneNumber, lockoutEnabled, tenantCount, createdDateTime, lastModifiedDateTime, extensions, logins, source, lastLoginDateTime, mfaCompleted, platformRole, tenantStatus, tenantAdmin, status);
         }
 
         /// <summary>
@@ -606,6 +627,12 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteBoolean("tenantAdmin", identityApiUserV2UserProfileResponse.TenantAdminOption.Value!.Value);
                 else
                     writer.WriteNull("tenantAdmin");
+
+            if (identityApiUserV2UserProfileResponse.StatusOption.IsSet)
+                if (identityApiUserV2UserProfileResponse.StatusOption.Value != null)
+                    writer.WriteString("status", identityApiUserV2UserProfileResponse.Status);
+                else
+                    writer.WriteNull("status");
         }
     }
 }

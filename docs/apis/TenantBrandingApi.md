@@ -8,7 +8,7 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 <a id="updatetenantbranding"></a>
 # **UpdateTenantBranding**
-> TenantApiTenantV1TenantUpdatedResponse UpdateTenantBranding (Guid tenantId, System.IO.Stream logoFile = null, System.IO.Stream backgroundFile = null, string brandName = null, bool enabled = null)
+> TenantApiTenantV1TenantUpdatedResponse UpdateTenantBranding (Guid tenantId, System.IO.Stream logoFile = null, System.IO.Stream backgroundFile = null, string brandName = null, bool enabled = null, bool removeBackground = null, bool removeLogo = null)
 
 Updates the branding of tenant
 
@@ -22,6 +22,8 @@ Updates the branding of tenant
 | **backgroundFile** | **System.IO.Stream****System.IO.Stream** |  | [optional]  |
 | **brandName** | **string** |  | [optional]  |
 | **enabled** | **bool** |  | [optional]  |
+| **removeBackground** | **bool** |  | [optional]  |
+| **removeLogo** | **bool** |  | [optional]  |
 
 ### Return type
 

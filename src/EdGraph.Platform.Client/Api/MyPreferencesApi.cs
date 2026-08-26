@@ -38,7 +38,7 @@ namespace EdGraph.Platform.Client.Api
         MyPreferencesApiEvents Events { get; }
 
         /// <summary>
-        /// Retrieves the user&#39;s preferences.
+        /// Retrieves the user&#39;s preferences.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/me/settings&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
         /// </summary>
         /// <remarks>
         /// 
@@ -50,10 +50,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="filter"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetUserPreferencesApiResponse"/>&gt;</returns>
+        [Obsolete]
         Task<IGetUserPreferencesApiResponse> GetUserPreferencesAsync(Option<int> pageIndex = default, Option<int> pageSize = default, Option<string> orderBy = default, Option<string> filter = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Retrieves the user&#39;s preferences.
+        /// Retrieves the user&#39;s preferences.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/me/settings&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
         /// </summary>
         /// <remarks>
         /// 
@@ -64,10 +65,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="filter"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetUserPreferencesApiResponse"/>?&gt;</returns>
+        [Obsolete]
         Task<IGetUserPreferencesApiResponse?> GetUserPreferencesOrDefaultAsync(Option<int> pageIndex = default, Option<int> pageSize = default, Option<string> orderBy = default, Option<string> filter = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Retrieves a user&#39;s preference by code.
+        /// Retrieves a user&#39;s preference by code.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/me/settings/{code}&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
         /// </summary>
         /// <remarks>
         /// 
@@ -76,10 +78,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="code"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IPreferenceApiResponse"/>&gt;</returns>
+        [Obsolete]
         Task<IPreferenceApiResponse> PreferenceAsync(string code, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Retrieves a user&#39;s preference by code.
+        /// Retrieves a user&#39;s preference by code.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/me/settings/{code}&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
         /// </summary>
         /// <remarks>
         /// 
@@ -87,10 +90,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="code"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IPreferenceApiResponse"/>?&gt;</returns>
+        [Obsolete]
         Task<IPreferenceApiResponse?> PreferenceOrDefaultAsync(string code, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Creates or update a user&#39;s preference.
+        /// Creates or update a user&#39;s preference.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/me/settings&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
         /// </summary>
         /// <remarks>
         /// 
@@ -99,10 +103,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IUpdateUserPreferenceAsyncApiResponse"/>&gt;</returns>
+        [Obsolete]
         Task<IUpdateUserPreferenceAsyncApiResponse> UpdateUserPreferenceAsyncAsync(Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Creates or update a user&#39;s preference.
+        /// Creates or update a user&#39;s preference.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/me/settings&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
         /// </summary>
         /// <remarks>
         /// 
@@ -110,6 +115,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IUpdateUserPreferenceAsyncApiResponse"/>?&gt;</returns>
+        [Obsolete]
         Task<IUpdateUserPreferenceAsyncApiResponse?> UpdateUserPreferenceAsyncOrDefaultAsync(Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest = default, System.Threading.CancellationToken cancellationToken = default);
     }
 
@@ -410,7 +416,7 @@ namespace EdGraph.Platform.Client.Api
         partial void OnErrorGetUserPreferences(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Option<int> pageIndex, Option<int> pageSize, Option<string> orderBy, Option<string> filter);
 
         /// <summary>
-        /// Retrieves the user&#39;s preferences. 
+        /// Retrieves the user&#39;s preferences.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/me/settings&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged. 
         /// </summary>
         /// <param name="pageIndex"> (optional, default to 0)</param>
         /// <param name="pageSize"> (optional, default to 10)</param>
@@ -431,7 +437,7 @@ namespace EdGraph.Platform.Client.Api
         }
 
         /// <summary>
-        /// Retrieves the user&#39;s preferences. 
+        /// Retrieves the user&#39;s preferences.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/me/settings&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged. 
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="pageIndex"> (optional, default to 0)</param>
@@ -836,7 +842,7 @@ namespace EdGraph.Platform.Client.Api
         partial void OnErrorPreference(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string code);
 
         /// <summary>
-        /// Retrieves a user&#39;s preference by code. 
+        /// Retrieves a user&#39;s preference by code.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/me/settings/{code}&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged. 
         /// </summary>
         /// <param name="code"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -854,7 +860,7 @@ namespace EdGraph.Platform.Client.Api
         }
 
         /// <summary>
-        /// Retrieves a user&#39;s preference by code. 
+        /// Retrieves a user&#39;s preference by code.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/me/settings/{code}&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged. 
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="code"></param>
@@ -1241,7 +1247,7 @@ namespace EdGraph.Platform.Client.Api
         partial void OnErrorUpdateUserPreferenceAsync(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest);
 
         /// <summary>
-        /// Creates or update a user&#39;s preference. 
+        /// Creates or update a user&#39;s preference.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/me/settings&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged. 
         /// </summary>
         /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -1259,7 +1265,7 @@ namespace EdGraph.Platform.Client.Api
         }
 
         /// <summary>
-        /// Creates or update a user&#39;s preference. 
+        /// Creates or update a user&#39;s preference.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/me/settings&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged. 
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest"> (optional)</param>

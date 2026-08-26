@@ -38,7 +38,7 @@ namespace EdGraph.Platform.Client.Api
         MyExtensionsApiEvents Events { get; }
 
         /// <summary>
-        /// Removes a user&#39;s profile extension.
+        /// Removes a user&#39;s profile extension.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/me/settings/{code}&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
         /// </summary>
         /// <remarks>
         /// 
@@ -47,10 +47,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="code"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IRemoveUserExtensionApiResponse"/>&gt;</returns>
+        [Obsolete]
         Task<IRemoveUserExtensionApiResponse> RemoveUserExtensionAsync(string code, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Removes a user&#39;s profile extension.
+        /// Removes a user&#39;s profile extension.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/me/settings/{code}&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
         /// </summary>
         /// <remarks>
         /// 
@@ -58,10 +59,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="code"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IRemoveUserExtensionApiResponse"/>?&gt;</returns>
+        [Obsolete]
         Task<IRemoveUserExtensionApiResponse?> RemoveUserExtensionOrDefaultAsync(string code, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Creates or update a user&#39;s profile extension.
+        /// Creates or update a user&#39;s profile extension.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/me/settings&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
         /// </summary>
         /// <remarks>
         /// 
@@ -70,10 +72,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="identityApiUserV1SetUserExtensionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ISetUserExtensionApiResponse"/>&gt;</returns>
+        [Obsolete]
         Task<ISetUserExtensionApiResponse> SetUserExtensionAsync(Option<IdentityApiUserV1SetUserExtensionRequest> identityApiUserV1SetUserExtensionRequest = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Creates or update a user&#39;s profile extension.
+        /// Creates or update a user&#39;s profile extension.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/me/settings&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
         /// </summary>
         /// <remarks>
         /// 
@@ -81,6 +84,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="identityApiUserV1SetUserExtensionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ISetUserExtensionApiResponse"/>?&gt;</returns>
+        [Obsolete]
         Task<ISetUserExtensionApiResponse?> SetUserExtensionOrDefaultAsync(Option<IdentityApiUserV1SetUserExtensionRequest> identityApiUserV1SetUserExtensionRequest = default, System.Threading.CancellationToken cancellationToken = default);
     }
 
@@ -309,7 +313,7 @@ namespace EdGraph.Platform.Client.Api
         partial void OnErrorRemoveUserExtension(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string code);
 
         /// <summary>
-        /// Removes a user&#39;s profile extension. 
+        /// Removes a user&#39;s profile extension.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/me/settings/{code}&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged. 
         /// </summary>
         /// <param name="code"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -327,7 +331,7 @@ namespace EdGraph.Platform.Client.Api
         }
 
         /// <summary>
-        /// Removes a user&#39;s profile extension. 
+        /// Removes a user&#39;s profile extension.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/me/settings/{code}&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged. 
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="code"></param>
@@ -714,7 +718,7 @@ namespace EdGraph.Platform.Client.Api
         partial void OnErrorSetUserExtension(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Option<IdentityApiUserV1SetUserExtensionRequest> identityApiUserV1SetUserExtensionRequest);
 
         /// <summary>
-        /// Creates or update a user&#39;s profile extension. 
+        /// Creates or update a user&#39;s profile extension.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/me/settings&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged. 
         /// </summary>
         /// <param name="identityApiUserV1SetUserExtensionRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -732,7 +736,7 @@ namespace EdGraph.Platform.Client.Api
         }
 
         /// <summary>
-        /// Creates or update a user&#39;s profile extension. 
+        /// Creates or update a user&#39;s profile extension.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/me/settings&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged. 
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="identityApiUserV1SetUserExtensionRequest"> (optional)</param>

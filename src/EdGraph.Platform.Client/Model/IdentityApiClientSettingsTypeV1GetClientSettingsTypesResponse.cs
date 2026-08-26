@@ -99,6 +99,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Data
         /// </summary>
         [JsonPropertyName("data")]
+        [Obsolete]
         public List<IdentityApiClientSettingsTypeV1ClientSettingsTypeResponse>? Data { get { return this.DataOption.Value; } }
 
         /// <summary>

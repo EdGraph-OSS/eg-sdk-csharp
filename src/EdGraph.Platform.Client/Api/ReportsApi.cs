@@ -106,10 +106,10 @@ namespace EdGraph.Platform.Client.Api
         Task<IDeleteReportAsyncApiResponse?> DeleteReportAsyncOrDefaultAsync(string tenantId, string reportId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Retrieves the PBIX for any report in the list in order to download
+        /// Retrieves the PBIX for any report in the list in order to download.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Admin-only. This resolves the PowerBI artifact straight from its report/group ids, so it  cannot apply the report&#39;s audience targeting the way the list and get-by-id paths do.  Restricting it to Analytics.Admin — the role that bypasses audience targeting anyway —  keeps a non-admin from downloading the source of a report they are not granted.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
@@ -120,10 +120,10 @@ namespace EdGraph.Platform.Client.Api
         Task<IDownloadReportAsyncApiResponse> DownloadReportAsyncAsync(string tenantId, string reportId, string groupId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Retrieves the PBIX for any report in the list in order to download
+        /// Retrieves the PBIX for any report in the list in order to download.
         /// </summary>
         /// <remarks>
-        /// 
+        /// Admin-only. This resolves the PowerBI artifact straight from its report/group ids, so it  cannot apply the report&#39;s audience targeting the way the list and get-by-id paths do.  Restricting it to Analytics.Admin — the role that bypasses audience targeting anyway —  keeps a non-admin from downloading the source of a report they are not granted.
         /// </remarks>
         /// <param name="tenantId"></param>
         /// <param name="reportId"></param>
@@ -162,6 +162,62 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetAllTenantAnalyticsWorkspaceReportsAsyncApiResponse"/>?&gt;</returns>
         Task<IGetAllTenantAnalyticsWorkspaceReportsAsyncApiResponse?> GetAllTenantAnalyticsWorkspaceReportsAsyncOrDefaultAsync(string tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Searchable, paginated list of tenant users for the Manage Access \&quot;specific users\&quot; picker.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="pageSize"> (optional, default to 20)</param>
+        /// <param name="pageIndex"> (optional, default to 0)</param>
+        /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
+        /// <param name="filter"> (optional, default to &quot;&quot;)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetAnalyticsTenantUsersAsyncApiResponse"/>&gt;</returns>
+        Task<IGetAnalyticsTenantUsersAsyncApiResponse> GetAnalyticsTenantUsersAsyncAsync(string tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Searchable, paginated list of tenant users for the Manage Access \&quot;specific users\&quot; picker.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <param name="tenantId"></param>
+        /// <param name="pageSize"> (optional, default to 20)</param>
+        /// <param name="pageIndex"> (optional, default to 0)</param>
+        /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
+        /// <param name="filter"> (optional, default to &quot;&quot;)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetAnalyticsTenantUsersAsyncApiResponse"/>?&gt;</returns>
+        Task<IGetAnalyticsTenantUsersAsyncApiResponse?> GetAnalyticsTenantUsersAsyncOrDefaultAsync(string tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Retrieves the audience-targeting (Manage Access) configuration for a report.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="reportId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetReportAccessAsyncApiResponse"/>&gt;</returns>
+        Task<IGetReportAccessAsyncApiResponse> GetReportAccessAsyncAsync(string tenantId, string reportId, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Retrieves the audience-targeting (Manage Access) configuration for a report.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <param name="tenantId"></param>
+        /// <param name="reportId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetReportAccessAsyncApiResponse"/>?&gt;</returns>
+        Task<IGetReportAccessAsyncApiResponse?> GetReportAccessAsyncOrDefaultAsync(string tenantId, string reportId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a Report by ID.
@@ -237,6 +293,33 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ISyncWorkspacesAsyncApiResponse"/>?&gt;</returns>
         Task<ISyncWorkspacesAsyncApiResponse?> SyncWorkspacesAsyncOrDefaultAsync(string tenantId, Option<AnalyticsApiReportsV1SyncWorkspacesRequest> analyticsApiReportsV1SyncWorkspacesRequest = default, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Updates the audience-targeting (Manage Access) configuration for a report.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="reportId"></param>
+        /// <param name="edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IUpdateReportAccessAsyncApiResponse"/>&gt;</returns>
+        Task<IUpdateReportAccessAsyncApiResponse> UpdateReportAccessAsyncAsync(string tenantId, string reportId, Option<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest> edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest = default, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Updates the audience-targeting (Manage Access) configuration for a report.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <param name="tenantId"></param>
+        /// <param name="reportId"></param>
+        /// <param name="edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IUpdateReportAccessAsyncApiResponse"/>?&gt;</returns>
+        Task<IUpdateReportAccessAsyncApiResponse?> UpdateReportAccessAsyncOrDefaultAsync(string tenantId, string reportId, Option<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest> edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Updates a report.
@@ -443,6 +526,84 @@ namespace EdGraph.Platform.Client.Api
     }
 
     /// <summary>
+    /// The <see cref="IGetAnalyticsTenantUsersAsyncApiResponse"/>
+    /// </summary>
+    public interface IGetAnalyticsTenantUsersAsyncApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails?>, IOk<EdGraph.Platform.Client.Model.IdentityApiUserV1UserListResponsePaginatedItemsViewModel?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails?>
+    {
+        /// <summary>
+        /// Returns true if the response is 401 Unauthorized
+        /// </summary>
+        /// <returns></returns>
+        bool IsUnauthorized { get; }
+
+        /// <summary>
+        /// Returns true if the response is 403 Forbidden
+        /// </summary>
+        /// <returns></returns>
+        bool IsForbidden { get; }
+
+        /// <summary>
+        /// Returns true if the response is 500 InternalServerError
+        /// </summary>
+        /// <returns></returns>
+        bool IsInternalServerError { get; }
+
+        /// <summary>
+        /// Returns true if the response is 200 Ok
+        /// </summary>
+        /// <returns></returns>
+        bool IsOk { get; }
+
+        /// <summary>
+        /// Returns true if the response is 400 BadRequest
+        /// </summary>
+        /// <returns></returns>
+        bool IsBadRequest { get; }
+    }
+
+    /// <summary>
+    /// The <see cref="IGetReportAccessAsyncApiResponse"/>
+    /// </summary>
+    public interface IGetReportAccessAsyncApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails?>, IOk<EdGraph.Platform.Client.Model.EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesReportAccessResponseDto?>, INotFound<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails?>
+    {
+        /// <summary>
+        /// Returns true if the response is 401 Unauthorized
+        /// </summary>
+        /// <returns></returns>
+        bool IsUnauthorized { get; }
+
+        /// <summary>
+        /// Returns true if the response is 403 Forbidden
+        /// </summary>
+        /// <returns></returns>
+        bool IsForbidden { get; }
+
+        /// <summary>
+        /// Returns true if the response is 500 InternalServerError
+        /// </summary>
+        /// <returns></returns>
+        bool IsInternalServerError { get; }
+
+        /// <summary>
+        /// Returns true if the response is 200 Ok
+        /// </summary>
+        /// <returns></returns>
+        bool IsOk { get; }
+
+        /// <summary>
+        /// Returns true if the response is 404 NotFound
+        /// </summary>
+        /// <returns></returns>
+        bool IsNotFound { get; }
+
+        /// <summary>
+        /// Returns true if the response is 400 BadRequest
+        /// </summary>
+        /// <returns></returns>
+        bool IsBadRequest { get; }
+    }
+
+    /// <summary>
     /// The <see cref="IGetReportByIdAsyncApiResponse"/>
     /// </summary>
     public interface IGetReportByIdAsyncApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails?>, IOk<EdGraph.Platform.Client.Model.AnalyticsApiReportsV1ReportResponse?>, INotFound<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails?>
@@ -530,6 +691,48 @@ namespace EdGraph.Platform.Client.Api
     /// The <see cref="ISyncWorkspacesAsyncApiResponse"/>
     /// </summary>
     public interface ISyncWorkspacesAsyncApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails?>, IOk<Object?>, INotFound<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails?>
+    {
+        /// <summary>
+        /// Returns true if the response is 401 Unauthorized
+        /// </summary>
+        /// <returns></returns>
+        bool IsUnauthorized { get; }
+
+        /// <summary>
+        /// Returns true if the response is 403 Forbidden
+        /// </summary>
+        /// <returns></returns>
+        bool IsForbidden { get; }
+
+        /// <summary>
+        /// Returns true if the response is 500 InternalServerError
+        /// </summary>
+        /// <returns></returns>
+        bool IsInternalServerError { get; }
+
+        /// <summary>
+        /// Returns true if the response is 200 Ok
+        /// </summary>
+        /// <returns></returns>
+        bool IsOk { get; }
+
+        /// <summary>
+        /// Returns true if the response is 404 NotFound
+        /// </summary>
+        /// <returns></returns>
+        bool IsNotFound { get; }
+
+        /// <summary>
+        /// Returns true if the response is 400 BadRequest
+        /// </summary>
+        /// <returns></returns>
+        bool IsBadRequest { get; }
+    }
+
+    /// <summary>
+    /// The <see cref="IUpdateReportAccessAsyncApiResponse"/>
+    /// </summary>
+    public interface IUpdateReportAccessAsyncApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails?>, IOk<EdGraph.Platform.Client.Model.AnalyticsApiReportsV1ReportIdResponse?>, INotFound<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails?>
     {
         /// <summary>
         /// Returns true if the response is 401 Unauthorized
@@ -698,6 +901,46 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// The event raised after the server response
         /// </summary>
+        public event EventHandler<ApiResponseEventArgs>? OnGetAnalyticsTenantUsersAsync;
+
+        /// <summary>
+        /// The event raised after an error querying the server
+        /// </summary>
+        public event EventHandler<ExceptionEventArgs>? OnErrorGetAnalyticsTenantUsersAsync;
+
+        internal void ExecuteOnGetAnalyticsTenantUsersAsync(ReportsApi.GetAnalyticsTenantUsersAsyncApiResponse apiResponse)
+        {
+            OnGetAnalyticsTenantUsersAsync?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+        }
+
+        internal void ExecuteOnErrorGetAnalyticsTenantUsersAsync(Exception exception)
+        {
+            OnErrorGetAnalyticsTenantUsersAsync?.Invoke(this, new ExceptionEventArgs(exception));
+        }
+
+        /// <summary>
+        /// The event raised after the server response
+        /// </summary>
+        public event EventHandler<ApiResponseEventArgs>? OnGetReportAccessAsync;
+
+        /// <summary>
+        /// The event raised after an error querying the server
+        /// </summary>
+        public event EventHandler<ExceptionEventArgs>? OnErrorGetReportAccessAsync;
+
+        internal void ExecuteOnGetReportAccessAsync(ReportsApi.GetReportAccessAsyncApiResponse apiResponse)
+        {
+            OnGetReportAccessAsync?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+        }
+
+        internal void ExecuteOnErrorGetReportAccessAsync(Exception exception)
+        {
+            OnErrorGetReportAccessAsync?.Invoke(this, new ExceptionEventArgs(exception));
+        }
+
+        /// <summary>
+        /// The event raised after the server response
+        /// </summary>
         public event EventHandler<ApiResponseEventArgs>? OnGetReportByIdAsync;
 
         /// <summary>
@@ -753,6 +996,26 @@ namespace EdGraph.Platform.Client.Api
         internal void ExecuteOnErrorSyncWorkspacesAsync(Exception exception)
         {
             OnErrorSyncWorkspacesAsync?.Invoke(this, new ExceptionEventArgs(exception));
+        }
+
+        /// <summary>
+        /// The event raised after the server response
+        /// </summary>
+        public event EventHandler<ApiResponseEventArgs>? OnUpdateReportAccessAsync;
+
+        /// <summary>
+        /// The event raised after an error querying the server
+        /// </summary>
+        public event EventHandler<ExceptionEventArgs>? OnErrorUpdateReportAccessAsync;
+
+        internal void ExecuteOnUpdateReportAccessAsync(ReportsApi.UpdateReportAccessAsyncApiResponse apiResponse)
+        {
+            OnUpdateReportAccessAsync?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+        }
+
+        internal void ExecuteOnErrorUpdateReportAccessAsync(Exception exception)
+        {
+            OnErrorUpdateReportAccessAsync?.Invoke(this, new ExceptionEventArgs(exception));
         }
 
         /// <summary>
@@ -1835,7 +2098,7 @@ namespace EdGraph.Platform.Client.Api
         partial void OnErrorDownloadReportAsync(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string reportId, string groupId);
 
         /// <summary>
-        /// Retrieves the PBIX for any report in the list in order to download 
+        /// Retrieves the PBIX for any report in the list in order to download. Admin-only. This resolves the PowerBI artifact straight from its report/group ids, so it  cannot apply the report&#39;s audience targeting the way the list and get-by-id paths do.  Restricting it to Analytics.Admin — the role that bypasses audience targeting anyway —  keeps a non-admin from downloading the source of a report they are not granted.
         /// </summary>
         /// <param name="tenantId"></param>
         /// <param name="reportId"></param>
@@ -1855,7 +2118,7 @@ namespace EdGraph.Platform.Client.Api
         }
 
         /// <summary>
-        /// Retrieves the PBIX for any report in the list in order to download 
+        /// Retrieves the PBIX for any report in the list in order to download. Admin-only. This resolves the PowerBI artifact straight from its report/group ids, so it  cannot apply the report&#39;s audience targeting the way the list and get-by-id paths do.  Restricting it to Analytics.Admin — the role that bypasses audience targeting anyway —  keeps a non-admin from downloading the source of a report they are not granted.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
@@ -2521,6 +2784,849 @@ namespace EdGraph.Platform.Client.Api
                 } catch (Exception e)
                 {
                     OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)200);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 400 BadRequest
+            /// </summary>
+            /// <returns></returns>
+            public bool IsBadRequest => 400 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 400 BadRequest
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails? BadRequest()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsBadRequest
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 400 BadRequest and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryBadRequest([NotNullWhen(true)]out EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = BadRequest();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)400);
+                }
+
+                return result != null;
+            }
+
+            private void OnDeserializationErrorDefaultImplementation(Exception exception, HttpStatusCode httpStatusCode)
+            {
+                bool suppressDefaultLog = false;
+                OnDeserializationError(ref suppressDefaultLog, exception, httpStatusCode);
+                if (!suppressDefaultLog)
+                    Logger.LogError(exception, "An error occurred while deserializing the {code} response.", httpStatusCode);
+            }
+
+            partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
+        }
+
+        partial void FormatGetAnalyticsTenantUsersAsync(ref string tenantId, ref Option<int> pageSize, ref Option<int> pageIndex, ref Option<string> orderBy, ref Option<string> filter);
+
+        /// <summary>
+        /// Validates the request parameters
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="orderBy"></param>
+        /// <param name="filter"></param>
+        /// <returns></returns>
+        private void ValidateGetAnalyticsTenantUsersAsync(string tenantId, Option<string> orderBy, Option<string> filter)
+        {
+            if (tenantId == null)
+                throw new ArgumentNullException(nameof(tenantId));
+
+            if (orderBy.IsSet && orderBy.Value == null)
+                throw new ArgumentNullException(nameof(orderBy));
+
+            if (filter.IsSet && filter.Value == null)
+                throw new ArgumentNullException(nameof(filter));
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="orderBy"></param>
+        /// <param name="filter"></param>
+        private void AfterGetAnalyticsTenantUsersAsyncDefaultImplementation(IGetAnalyticsTenantUsersAsyncApiResponse apiResponseLocalVar, string tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter)
+        {
+            bool suppressDefaultLog = false;
+            AfterGetAnalyticsTenantUsersAsync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, pageSize, pageIndex, orderBy, filter);
+            if (!suppressDefaultLog)
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="suppressDefaultLog"></param>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="orderBy"></param>
+        /// <param name="filter"></param>
+        partial void AfterGetAnalyticsTenantUsersAsync(ref bool suppressDefaultLog, IGetAnalyticsTenantUsersAsyncApiResponse apiResponseLocalVar, string tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter);
+
+        /// <summary>
+        /// Logs exceptions that occur while retrieving the server response
+        /// </summary>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="orderBy"></param>
+        /// <param name="filter"></param>
+        private void OnErrorGetAnalyticsTenantUsersAsyncDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter)
+        {
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorGetAnalyticsTenantUsersAsync(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, pageSize, pageIndex, orderBy, filter);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
+        }
+
+        /// <summary>
+        /// A partial method that gives developers a way to provide customized exception handling
+        /// </summary>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="orderBy"></param>
+        /// <param name="filter"></param>
+        partial void OnErrorGetAnalyticsTenantUsersAsync(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter);
+
+        /// <summary>
+        /// Searchable, paginated list of tenant users for the Manage Access \&quot;specific users\&quot; picker. 
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="pageSize"> (optional, default to 20)</param>
+        /// <param name="pageIndex"> (optional, default to 0)</param>
+        /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
+        /// <param name="filter"> (optional, default to &quot;&quot;)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetAnalyticsTenantUsersAsyncApiResponse"/>&gt;</returns>
+        public async Task<IGetAnalyticsTenantUsersAsyncApiResponse?> GetAnalyticsTenantUsersAsyncOrDefaultAsync(string tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, System.Threading.CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                return await GetAnalyticsTenantUsersAsyncAsync(tenantId, pageSize, pageIndex, orderBy, filter, cancellationToken).ConfigureAwait(false);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Searchable, paginated list of tenant users for the Manage Access \&quot;specific users\&quot; picker. 
+        /// </summary>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="pageSize"> (optional, default to 20)</param>
+        /// <param name="pageIndex"> (optional, default to 0)</param>
+        /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
+        /// <param name="filter"> (optional, default to &quot;&quot;)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetAnalyticsTenantUsersAsyncApiResponse"/>&gt;</returns>
+        public async Task<IGetAnalyticsTenantUsersAsyncApiResponse> GetAnalyticsTenantUsersAsyncAsync(string tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, System.Threading.CancellationToken cancellationToken = default)
+        {
+            UriBuilder uriBuilderLocalVar = new UriBuilder();
+
+            try
+            {
+                ValidateGetAnalyticsTenantUsersAsync(tenantId, orderBy, filter);
+
+                FormatGetAnalyticsTenantUsersAsync(ref tenantId, ref pageSize, ref pageIndex, ref orderBy, ref filter);
+
+                using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
+                {
+                    uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
+                    uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
+                    uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/analytics/users"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/analytics/users");
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
+
+                    System.Collections.Specialized.NameValueCollection parseQueryStringLocalVar = System.Web.HttpUtility.ParseQueryString(string.Empty);
+
+                    if (pageSize.IsSet)
+                        parseQueryStringLocalVar["pageSize"] = ClientUtils.ParameterToString(pageSize.Value);
+
+                    if (pageIndex.IsSet)
+                        parseQueryStringLocalVar["pageIndex"] = ClientUtils.ParameterToString(pageIndex.Value);
+
+                    if (orderBy.IsSet)
+                        parseQueryStringLocalVar["orderBy"] = ClientUtils.ParameterToString(orderBy.Value);
+
+                    if (filter.IsSet)
+                        parseQueryStringLocalVar["filter"] = ClientUtils.ParameterToString(filter.Value);
+
+                    uriBuilderLocalVar.Query = parseQueryStringLocalVar.ToString();
+
+                    List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
+                    httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
+
+                    OAuthToken oauthTokenLocalVar1 = (OAuthToken) await OauthTokenProvider.GetAsync(cancellation: cancellationToken).ConfigureAwait(false);
+
+                    tokenBaseLocalVars.Add(oauthTokenLocalVar1);
+
+                    oauthTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar, "");
+
+                    string[] acceptLocalVars = new string[] {
+                        "application/json"
+                    };
+
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
+
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
+
+                    httpRequestMessageLocalVar.Method = HttpMethod.Get;
+
+                    DateTime requestedAtLocalVar = DateTime.UtcNow;
+
+                    using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
+                    {
+                        ILogger<GetAnalyticsTenantUsersAsyncApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<GetAnalyticsTenantUsersAsyncApiResponse>();
+                        GetAnalyticsTenantUsersAsyncApiResponse apiResponseLocalVar;
+
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/analytics/users", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
+
+                        AfterGetAnalyticsTenantUsersAsyncDefaultImplementation(apiResponseLocalVar, tenantId, pageSize, pageIndex, orderBy, filter);
+
+                        Events.ExecuteOnGetAnalyticsTenantUsersAsync(apiResponseLocalVar);
+
+                        if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
+                            foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
+                                tokenBaseLocalVar.BeginRateLimit();
+
+                        return apiResponseLocalVar;
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                OnErrorGetAnalyticsTenantUsersAsyncDefaultImplementation(e, "/tenants/{tenantId}/analytics/users", uriBuilderLocalVar.Path, tenantId, pageSize, pageIndex, orderBy, filter);
+                Events.ExecuteOnErrorGetAnalyticsTenantUsersAsync(e);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// The <see cref="GetAnalyticsTenantUsersAsyncApiResponse"/>
+        /// </summary>
+        public partial class GetAnalyticsTenantUsersAsyncApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IGetAnalyticsTenantUsersAsyncApiResponse
+        {
+            /// <summary>
+            /// The logger
+            /// </summary>
+            public ILogger<GetAnalyticsTenantUsersAsyncApiResponse> Logger { get; }
+
+            /// <summary>
+            /// The <see cref="GetAnalyticsTenantUsersAsyncApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="rawContent"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public GetAnalyticsTenantUsersAsyncApiResponse(ILogger<GetAnalyticsTenantUsersAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="GetAnalyticsTenantUsersAsyncApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public GetAnalyticsTenantUsersAsyncApiResponse(ILogger<GetAnalyticsTenantUsersAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            partial void OnCreated(global::System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage);
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public bool IsUnauthorized => 401 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Unauthorized()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsUnauthorized
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryUnauthorized([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Unauthorized();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)401);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public bool IsForbidden => 403 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails? Forbidden()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsForbidden
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryForbidden([NotNullWhen(true)]out EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Forbidden();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)403);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public bool IsInternalServerError => 500 == (int)StatusCode;
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public bool IsOk => 200 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.IdentityApiUserV1UserListResponsePaginatedItemsViewModel? Ok()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsOk
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.IdentityApiUserV1UserListResponsePaginatedItemsViewModel>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryOk([NotNullWhen(true)]out EdGraph.Platform.Client.Model.IdentityApiUserV1UserListResponsePaginatedItemsViewModel? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Ok();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)200);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 400 BadRequest
+            /// </summary>
+            /// <returns></returns>
+            public bool IsBadRequest => 400 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 400 BadRequest
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails? BadRequest()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsBadRequest
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 400 BadRequest and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryBadRequest([NotNullWhen(true)]out EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = BadRequest();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)400);
+                }
+
+                return result != null;
+            }
+
+            private void OnDeserializationErrorDefaultImplementation(Exception exception, HttpStatusCode httpStatusCode)
+            {
+                bool suppressDefaultLog = false;
+                OnDeserializationError(ref suppressDefaultLog, exception, httpStatusCode);
+                if (!suppressDefaultLog)
+                    Logger.LogError(exception, "An error occurred while deserializing the {code} response.", httpStatusCode);
+            }
+
+            partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
+        }
+
+        partial void FormatGetReportAccessAsync(ref string tenantId, ref string reportId);
+
+        /// <summary>
+        /// Validates the request parameters
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="reportId"></param>
+        /// <returns></returns>
+        private void ValidateGetReportAccessAsync(string tenantId, string reportId)
+        {
+            if (tenantId == null)
+                throw new ArgumentNullException(nameof(tenantId));
+
+            if (reportId == null)
+                throw new ArgumentNullException(nameof(reportId));
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="reportId"></param>
+        private void AfterGetReportAccessAsyncDefaultImplementation(IGetReportAccessAsyncApiResponse apiResponseLocalVar, string tenantId, string reportId)
+        {
+            bool suppressDefaultLog = false;
+            AfterGetReportAccessAsync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, reportId);
+            if (!suppressDefaultLog)
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="suppressDefaultLog"></param>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="reportId"></param>
+        partial void AfterGetReportAccessAsync(ref bool suppressDefaultLog, IGetReportAccessAsyncApiResponse apiResponseLocalVar, string tenantId, string reportId);
+
+        /// <summary>
+        /// Logs exceptions that occur while retrieving the server response
+        /// </summary>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="reportId"></param>
+        private void OnErrorGetReportAccessAsyncDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string reportId)
+        {
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorGetReportAccessAsync(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, reportId);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
+        }
+
+        /// <summary>
+        /// A partial method that gives developers a way to provide customized exception handling
+        /// </summary>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="reportId"></param>
+        partial void OnErrorGetReportAccessAsync(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string reportId);
+
+        /// <summary>
+        /// Retrieves the audience-targeting (Manage Access) configuration for a report. 
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="reportId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetReportAccessAsyncApiResponse"/>&gt;</returns>
+        public async Task<IGetReportAccessAsyncApiResponse?> GetReportAccessAsyncOrDefaultAsync(string tenantId, string reportId, System.Threading.CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                return await GetReportAccessAsyncAsync(tenantId, reportId, cancellationToken).ConfigureAwait(false);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Retrieves the audience-targeting (Manage Access) configuration for a report. 
+        /// </summary>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="reportId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetReportAccessAsyncApiResponse"/>&gt;</returns>
+        public async Task<IGetReportAccessAsyncApiResponse> GetReportAccessAsyncAsync(string tenantId, string reportId, System.Threading.CancellationToken cancellationToken = default)
+        {
+            UriBuilder uriBuilderLocalVar = new UriBuilder();
+
+            try
+            {
+                ValidateGetReportAccessAsync(tenantId, reportId);
+
+                FormatGetReportAccessAsync(ref tenantId, ref reportId);
+
+                using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
+                {
+                    uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
+                    uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
+                    uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/analytics/reports/{reportId}/access"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/analytics/reports/{reportId}/access");
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BreportId%7D", Uri.EscapeDataString(reportId.ToString()));
+
+                    List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
+                    httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
+
+                    OAuthToken oauthTokenLocalVar1 = (OAuthToken) await OauthTokenProvider.GetAsync(cancellation: cancellationToken).ConfigureAwait(false);
+
+                    tokenBaseLocalVars.Add(oauthTokenLocalVar1);
+
+                    oauthTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar, "");
+
+                    string[] acceptLocalVars = new string[] {
+                        "application/json"
+                    };
+
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
+
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
+
+                    httpRequestMessageLocalVar.Method = HttpMethod.Get;
+
+                    DateTime requestedAtLocalVar = DateTime.UtcNow;
+
+                    using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
+                    {
+                        ILogger<GetReportAccessAsyncApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<GetReportAccessAsyncApiResponse>();
+                        GetReportAccessAsyncApiResponse apiResponseLocalVar;
+
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/analytics/reports/{reportId}/access", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
+
+                        AfterGetReportAccessAsyncDefaultImplementation(apiResponseLocalVar, tenantId, reportId);
+
+                        Events.ExecuteOnGetReportAccessAsync(apiResponseLocalVar);
+
+                        if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
+                            foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
+                                tokenBaseLocalVar.BeginRateLimit();
+
+                        return apiResponseLocalVar;
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                OnErrorGetReportAccessAsyncDefaultImplementation(e, "/tenants/{tenantId}/analytics/reports/{reportId}/access", uriBuilderLocalVar.Path, tenantId, reportId);
+                Events.ExecuteOnErrorGetReportAccessAsync(e);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// The <see cref="GetReportAccessAsyncApiResponse"/>
+        /// </summary>
+        public partial class GetReportAccessAsyncApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IGetReportAccessAsyncApiResponse
+        {
+            /// <summary>
+            /// The logger
+            /// </summary>
+            public ILogger<GetReportAccessAsyncApiResponse> Logger { get; }
+
+            /// <summary>
+            /// The <see cref="GetReportAccessAsyncApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="rawContent"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public GetReportAccessAsyncApiResponse(ILogger<GetReportAccessAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="GetReportAccessAsyncApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public GetReportAccessAsyncApiResponse(ILogger<GetReportAccessAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            partial void OnCreated(global::System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage);
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public bool IsUnauthorized => 401 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Unauthorized()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsUnauthorized
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryUnauthorized([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Unauthorized();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)401);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public bool IsForbidden => 403 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails? Forbidden()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsForbidden
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryForbidden([NotNullWhen(true)]out EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Forbidden();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)403);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public bool IsInternalServerError => 500 == (int)StatusCode;
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public bool IsOk => 200 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesReportAccessResponseDto? Ok()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsOk
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesReportAccessResponseDto>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryOk([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesReportAccessResponseDto? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Ok();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)200);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 404 NotFound
+            /// </summary>
+            /// <returns></returns>
+            public bool IsNotFound => 404 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 404 NotFound
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails? NotFound()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsNotFound
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 404 NotFound and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryNotFound([NotNullWhen(true)]out EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = NotFound();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)404);
                 }
 
                 return result != null;
@@ -3776,6 +4882,457 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="result"></param>
             /// <returns></returns>
             public bool TryOk([NotNullWhen(true)]out Object? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Ok();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)200);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 404 NotFound
+            /// </summary>
+            /// <returns></returns>
+            public bool IsNotFound => 404 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 404 NotFound
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails? NotFound()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsNotFound
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 404 NotFound and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryNotFound([NotNullWhen(true)]out EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = NotFound();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)404);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 400 BadRequest
+            /// </summary>
+            /// <returns></returns>
+            public bool IsBadRequest => 400 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 400 BadRequest
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails? BadRequest()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsBadRequest
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 400 BadRequest and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryBadRequest([NotNullWhen(true)]out EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = BadRequest();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)400);
+                }
+
+                return result != null;
+            }
+
+            private void OnDeserializationErrorDefaultImplementation(Exception exception, HttpStatusCode httpStatusCode)
+            {
+                bool suppressDefaultLog = false;
+                OnDeserializationError(ref suppressDefaultLog, exception, httpStatusCode);
+                if (!suppressDefaultLog)
+                    Logger.LogError(exception, "An error occurred while deserializing the {code} response.", httpStatusCode);
+            }
+
+            partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
+        }
+
+        partial void FormatUpdateReportAccessAsync(ref string tenantId, ref string reportId, Option<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest> edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest);
+
+        /// <summary>
+        /// Validates the request parameters
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="reportId"></param>
+        /// <param name="edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest"></param>
+        /// <returns></returns>
+        private void ValidateUpdateReportAccessAsync(string tenantId, string reportId, Option<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest> edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest)
+        {
+            if (tenantId == null)
+                throw new ArgumentNullException(nameof(tenantId));
+
+            if (reportId == null)
+                throw new ArgumentNullException(nameof(reportId));
+
+            if (edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest.IsSet && edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest.Value == null)
+                throw new ArgumentNullException(nameof(edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest));
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="reportId"></param>
+        /// <param name="edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest"></param>
+        private void AfterUpdateReportAccessAsyncDefaultImplementation(IUpdateReportAccessAsyncApiResponse apiResponseLocalVar, string tenantId, string reportId, Option<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest> edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest)
+        {
+            bool suppressDefaultLog = false;
+            AfterUpdateReportAccessAsync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, reportId, edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest);
+            if (!suppressDefaultLog)
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="suppressDefaultLog"></param>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="reportId"></param>
+        /// <param name="edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest"></param>
+        partial void AfterUpdateReportAccessAsync(ref bool suppressDefaultLog, IUpdateReportAccessAsyncApiResponse apiResponseLocalVar, string tenantId, string reportId, Option<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest> edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest);
+
+        /// <summary>
+        /// Logs exceptions that occur while retrieving the server response
+        /// </summary>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="reportId"></param>
+        /// <param name="edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest"></param>
+        private void OnErrorUpdateReportAccessAsyncDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string reportId, Option<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest> edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest)
+        {
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorUpdateReportAccessAsync(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, reportId, edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
+        }
+
+        /// <summary>
+        /// A partial method that gives developers a way to provide customized exception handling
+        /// </summary>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="reportId"></param>
+        /// <param name="edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest"></param>
+        partial void OnErrorUpdateReportAccessAsync(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string reportId, Option<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest> edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest);
+
+        /// <summary>
+        /// Updates the audience-targeting (Manage Access) configuration for a report. 
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="reportId"></param>
+        /// <param name="edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IUpdateReportAccessAsyncApiResponse"/>&gt;</returns>
+        public async Task<IUpdateReportAccessAsyncApiResponse?> UpdateReportAccessAsyncOrDefaultAsync(string tenantId, string reportId, Option<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest> edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest = default, System.Threading.CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                return await UpdateReportAccessAsyncAsync(tenantId, reportId, edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest, cancellationToken).ConfigureAwait(false);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Updates the audience-targeting (Manage Access) configuration for a report. 
+        /// </summary>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="reportId"></param>
+        /// <param name="edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IUpdateReportAccessAsyncApiResponse"/>&gt;</returns>
+        public async Task<IUpdateReportAccessAsyncApiResponse> UpdateReportAccessAsyncAsync(string tenantId, string reportId, Option<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest> edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest = default, System.Threading.CancellationToken cancellationToken = default)
+        {
+            UriBuilder uriBuilderLocalVar = new UriBuilder();
+
+            try
+            {
+                ValidateUpdateReportAccessAsync(tenantId, reportId, edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest);
+
+                FormatUpdateReportAccessAsync(ref tenantId, ref reportId, edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest);
+
+                using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
+                {
+                    uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
+                    uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
+                    uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/analytics/reports/{reportId}/access"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/analytics/reports/{reportId}/access");
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BreportId%7D", Uri.EscapeDataString(reportId.ToString()));
+
+                    if (edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest.IsSet)
+                    {
+                      httpRequestMessageLocalVar.Content = (edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest.Value as object) is EdGraph.Platform.Client.Client.FileParameter fileParameterLocalVar
+                        ? httpRequestMessageLocalVar.Content = new StreamContent(fileParameterLocalVar.Content)
+                        : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest.Value, _jsonSerializerOptions));
+                    }
+
+                    List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
+                    httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
+
+                    OAuthToken oauthTokenLocalVar1 = (OAuthToken) await OauthTokenProvider.GetAsync(cancellation: cancellationToken).ConfigureAwait(false);
+
+                    tokenBaseLocalVars.Add(oauthTokenLocalVar1);
+
+                    oauthTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar, "");
+
+                    string[] contentTypes = new string[] {
+                        "application/json-patch+json",
+                        "application/json",
+                        "text/json",
+                        "application/*+json"
+                    };
+
+                    string? contentTypeLocalVar = ClientUtils.SelectHeaderContentType(contentTypes);
+
+                    if (contentTypeLocalVar != null && httpRequestMessageLocalVar.Content != null)
+                        httpRequestMessageLocalVar.Content.Headers.ContentType = new MediaTypeHeaderValue(contentTypeLocalVar);
+
+                    string[] acceptLocalVars = new string[] {
+                        "application/json"
+                    };
+
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
+
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
+
+                    httpRequestMessageLocalVar.Method = HttpMethod.Put;
+
+                    DateTime requestedAtLocalVar = DateTime.UtcNow;
+
+                    using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
+                    {
+                        ILogger<UpdateReportAccessAsyncApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<UpdateReportAccessAsyncApiResponse>();
+                        UpdateReportAccessAsyncApiResponse apiResponseLocalVar;
+
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/analytics/reports/{reportId}/access", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
+
+                        AfterUpdateReportAccessAsyncDefaultImplementation(apiResponseLocalVar, tenantId, reportId, edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest);
+
+                        Events.ExecuteOnUpdateReportAccessAsync(apiResponseLocalVar);
+
+                        if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
+                            foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
+                                tokenBaseLocalVar.BeginRateLimit();
+
+                        return apiResponseLocalVar;
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                OnErrorUpdateReportAccessAsyncDefaultImplementation(e, "/tenants/{tenantId}/analytics/reports/{reportId}/access", uriBuilderLocalVar.Path, tenantId, reportId, edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest);
+                Events.ExecuteOnErrorUpdateReportAccessAsync(e);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// The <see cref="UpdateReportAccessAsyncApiResponse"/>
+        /// </summary>
+        public partial class UpdateReportAccessAsyncApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IUpdateReportAccessAsyncApiResponse
+        {
+            /// <summary>
+            /// The logger
+            /// </summary>
+            public ILogger<UpdateReportAccessAsyncApiResponse> Logger { get; }
+
+            /// <summary>
+            /// The <see cref="UpdateReportAccessAsyncApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="rawContent"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public UpdateReportAccessAsyncApiResponse(ILogger<UpdateReportAccessAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="UpdateReportAccessAsyncApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public UpdateReportAccessAsyncApiResponse(ILogger<UpdateReportAccessAsyncApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            partial void OnCreated(global::System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage);
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public bool IsUnauthorized => 401 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Unauthorized()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsUnauthorized
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryUnauthorized([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Unauthorized();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)401);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public bool IsForbidden => 403 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails? Forbidden()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsForbidden
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryForbidden([NotNullWhen(true)]out EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Forbidden();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)403);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public bool IsInternalServerError => 500 == (int)StatusCode;
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public bool IsOk => 200 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.AnalyticsApiReportsV1ReportIdResponse? Ok()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsOk
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.AnalyticsApiReportsV1ReportIdResponse>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryOk([NotNullWhen(true)]out EdGraph.Platform.Client.Model.AnalyticsApiReportsV1ReportIdResponse? result)
             {
                 result = null;
 

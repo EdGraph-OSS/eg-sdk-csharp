@@ -61,7 +61,9 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<EdGraph.Platform.Client.Client.FileParameter> backgroundFile = default!;
             Client.Option<string> brandName = default!;
             Client.Option<bool> enabled = default!;
-            var response = await _instance.UpdateTenantBrandingAsync(tenantId, logoFile, backgroundFile, brandName, enabled);
+            Client.Option<bool> removeBackground = default!;
+            Client.Option<bool> removeLogo = default!;
+            var response = await _instance.UpdateTenantBrandingAsync(tenantId, logoFile, backgroundFile, brandName, enabled, removeBackground, removeLogo);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }

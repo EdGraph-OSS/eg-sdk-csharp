@@ -200,8 +200,12 @@ namespace EdGraph.Platform.Client.Client
                 return IdentityApiApiClientV1TokenUsageValueConverter.ToJsonValue(identityApiApiClientV1TokenUsage);
             if (obj is IdentityApiInvitationV1InvitationStatus identityApiInvitationV1InvitationStatus)
                 return IdentityApiInvitationV1InvitationStatusValueConverter.ToJsonValue(identityApiInvitationV1InvitationStatus);
+            if (obj is IdentityApiUserV1LicenseStatus identityApiUserV1LicenseStatus)
+                return IdentityApiUserV1LicenseStatusValueConverter.ToJsonValue(identityApiUserV1LicenseStatus);
             if (obj is IdentityApiUserV1RevokeStrategy identityApiUserV1RevokeStrategy)
                 return IdentityApiUserV1RevokeStrategyValueConverter.ToJsonValue(identityApiUserV1RevokeStrategy);
+            if (obj is IdentityApiUserV1TenantSource identityApiUserV1TenantSource)
+                return IdentityApiUserV1TenantSourceValueConverter.ToJsonValue(identityApiUserV1TenantSource);
             if (obj is IdentityApiUserV1TenantStatus identityApiUserV1TenantStatus)
                 return IdentityApiUserV1TenantStatusValueConverter.ToJsonValue(identityApiUserV1TenantStatus);
             if (obj is IdentityApiUserV1TenantType identityApiUserV1TenantType)

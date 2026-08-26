@@ -103,6 +103,12 @@ namespace EdGraph.Platform.Client.Test.Api
             var changeLogsApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IChangeLogsApi>();
             Assert.True(changeLogsApi.HttpClient.BaseAddress != null);
 
+            var clientBrandingApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IClientBrandingApi>();
+            Assert.True(clientBrandingApi.HttpClient.BaseAddress != null);
+
+            var clientSettingsApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IClientSettingsApi>();
+            Assert.True(clientSettingsApi.HttpClient.BaseAddress != null);
+
             var clientsSecretsApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IClientsSecretsApi>();
             Assert.True(clientsSecretsApi.HttpClient.BaseAddress != null);
 
@@ -132,6 +138,18 @@ namespace EdGraph.Platform.Client.Test.Api
 
             var edFiSyncApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IEdFiSyncApi>();
             Assert.True(edFiSyncApi.HttpClient.BaseAddress != null);
+
+            var enrollmentAdminApplicationsApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IEnrollmentAdminApplicationsApi>();
+            Assert.True(enrollmentAdminApplicationsApi.HttpClient.BaseAddress != null);
+
+            var enrollmentAdminContactsApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IEnrollmentAdminContactsApi>();
+            Assert.True(enrollmentAdminContactsApi.HttpClient.BaseAddress != null);
+
+            var enrollmentAdminSchoolsApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IEnrollmentAdminSchoolsApi>();
+            Assert.True(enrollmentAdminSchoolsApi.HttpClient.BaseAddress != null);
+
+            var enrollmentAdminStudentsApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IEnrollmentAdminStudentsApi>();
+            Assert.True(enrollmentAdminStudentsApi.HttpClient.BaseAddress != null);
 
             var environmentsApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IEnvironmentsApi>();
             Assert.True(environmentsApi.HttpClient.BaseAddress != null);
@@ -259,6 +277,9 @@ namespace EdGraph.Platform.Client.Test.Api
             var myProfileApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IMyProfileApi>();
             Assert.True(myProfileApi.HttpClient.BaseAddress != null);
 
+            var mySettingsApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IMySettingsApi>();
+            Assert.True(mySettingsApi.HttpClient.BaseAddress != null);
+
             var myTenantsApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IMyTenantsApi>();
             Assert.True(myTenantsApi.HttpClient.BaseAddress != null);
 
@@ -343,6 +364,9 @@ namespace EdGraph.Platform.Client.Test.Api
             var tenantSettingTypesApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<ITenantSettingTypesApi>();
             Assert.True(tenantSettingTypesApi.HttpClient.BaseAddress != null);
 
+            var tenantSettingsApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<ITenantSettingsApi>();
+            Assert.True(tenantSettingsApi.HttpClient.BaseAddress != null);
+
             var tenantsApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<ITenantsApi>();
             Assert.True(tenantsApi.HttpClient.BaseAddress != null);
 
@@ -410,6 +434,12 @@ namespace EdGraph.Platform.Client.Test.Api
             var changeLogsApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IChangeLogsApi>();
             Assert.True(changeLogsApi.HttpClient.BaseAddress != null);
 
+            var clientBrandingApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IClientBrandingApi>();
+            Assert.True(clientBrandingApi.HttpClient.BaseAddress != null);
+
+            var clientSettingsApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IClientSettingsApi>();
+            Assert.True(clientSettingsApi.HttpClient.BaseAddress != null);
+
             var clientsSecretsApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IClientsSecretsApi>();
             Assert.True(clientsSecretsApi.HttpClient.BaseAddress != null);
 
@@ -439,6 +469,18 @@ namespace EdGraph.Platform.Client.Test.Api
 
             var edFiSyncApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IEdFiSyncApi>();
             Assert.True(edFiSyncApi.HttpClient.BaseAddress != null);
+
+            var enrollmentAdminApplicationsApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IEnrollmentAdminApplicationsApi>();
+            Assert.True(enrollmentAdminApplicationsApi.HttpClient.BaseAddress != null);
+
+            var enrollmentAdminContactsApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IEnrollmentAdminContactsApi>();
+            Assert.True(enrollmentAdminContactsApi.HttpClient.BaseAddress != null);
+
+            var enrollmentAdminSchoolsApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IEnrollmentAdminSchoolsApi>();
+            Assert.True(enrollmentAdminSchoolsApi.HttpClient.BaseAddress != null);
+
+            var enrollmentAdminStudentsApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IEnrollmentAdminStudentsApi>();
+            Assert.True(enrollmentAdminStudentsApi.HttpClient.BaseAddress != null);
 
             var environmentsApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IEnvironmentsApi>();
             Assert.True(environmentsApi.HttpClient.BaseAddress != null);
@@ -566,6 +608,9 @@ namespace EdGraph.Platform.Client.Test.Api
             var myProfileApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IMyProfileApi>();
             Assert.True(myProfileApi.HttpClient.BaseAddress != null);
 
+            var mySettingsApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IMySettingsApi>();
+            Assert.True(mySettingsApi.HttpClient.BaseAddress != null);
+
             var myTenantsApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IMyTenantsApi>();
             Assert.True(myTenantsApi.HttpClient.BaseAddress != null);
 
@@ -650,6 +695,9 @@ namespace EdGraph.Platform.Client.Test.Api
             var tenantSettingTypesApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<ITenantSettingTypesApi>();
             Assert.True(tenantSettingTypesApi.HttpClient.BaseAddress != null);
 
+            var tenantSettingsApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<ITenantSettingsApi>();
+            Assert.True(tenantSettingsApi.HttpClient.BaseAddress != null);
+
             var tenantsApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<ITenantsApi>();
             Assert.True(tenantsApi.HttpClient.BaseAddress != null);
 
@@ -717,6 +765,12 @@ namespace EdGraph.Platform.Client.Test.Api
             var changeLogsApi = _hostUsingAddWithAClient.Services.GetRequiredService<IChangeLogsApi>();
             Assert.True(changeLogsApi.HttpClient.BaseAddress != null);
             
+            var clientBrandingApi = _hostUsingAddWithAClient.Services.GetRequiredService<IClientBrandingApi>();
+            Assert.True(clientBrandingApi.HttpClient.BaseAddress != null);
+            
+            var clientSettingsApi = _hostUsingAddWithAClient.Services.GetRequiredService<IClientSettingsApi>();
+            Assert.True(clientSettingsApi.HttpClient.BaseAddress != null);
+            
             var clientsSecretsApi = _hostUsingAddWithAClient.Services.GetRequiredService<IClientsSecretsApi>();
             Assert.True(clientsSecretsApi.HttpClient.BaseAddress != null);
             
@@ -746,6 +800,18 @@ namespace EdGraph.Platform.Client.Test.Api
             
             var edFiSyncApi = _hostUsingAddWithAClient.Services.GetRequiredService<IEdFiSyncApi>();
             Assert.True(edFiSyncApi.HttpClient.BaseAddress != null);
+            
+            var enrollmentAdminApplicationsApi = _hostUsingAddWithAClient.Services.GetRequiredService<IEnrollmentAdminApplicationsApi>();
+            Assert.True(enrollmentAdminApplicationsApi.HttpClient.BaseAddress != null);
+            
+            var enrollmentAdminContactsApi = _hostUsingAddWithAClient.Services.GetRequiredService<IEnrollmentAdminContactsApi>();
+            Assert.True(enrollmentAdminContactsApi.HttpClient.BaseAddress != null);
+            
+            var enrollmentAdminSchoolsApi = _hostUsingAddWithAClient.Services.GetRequiredService<IEnrollmentAdminSchoolsApi>();
+            Assert.True(enrollmentAdminSchoolsApi.HttpClient.BaseAddress != null);
+            
+            var enrollmentAdminStudentsApi = _hostUsingAddWithAClient.Services.GetRequiredService<IEnrollmentAdminStudentsApi>();
+            Assert.True(enrollmentAdminStudentsApi.HttpClient.BaseAddress != null);
             
             var environmentsApi = _hostUsingAddWithAClient.Services.GetRequiredService<IEnvironmentsApi>();
             Assert.True(environmentsApi.HttpClient.BaseAddress != null);
@@ -873,6 +939,9 @@ namespace EdGraph.Platform.Client.Test.Api
             var myProfileApi = _hostUsingAddWithAClient.Services.GetRequiredService<IMyProfileApi>();
             Assert.True(myProfileApi.HttpClient.BaseAddress != null);
             
+            var mySettingsApi = _hostUsingAddWithAClient.Services.GetRequiredService<IMySettingsApi>();
+            Assert.True(mySettingsApi.HttpClient.BaseAddress != null);
+            
             var myTenantsApi = _hostUsingAddWithAClient.Services.GetRequiredService<IMyTenantsApi>();
             Assert.True(myTenantsApi.HttpClient.BaseAddress != null);
             
@@ -957,6 +1026,9 @@ namespace EdGraph.Platform.Client.Test.Api
             var tenantSettingTypesApi = _hostUsingAddWithAClient.Services.GetRequiredService<ITenantSettingTypesApi>();
             Assert.True(tenantSettingTypesApi.HttpClient.BaseAddress != null);
             
+            var tenantSettingsApi = _hostUsingAddWithAClient.Services.GetRequiredService<ITenantSettingsApi>();
+            Assert.True(tenantSettingsApi.HttpClient.BaseAddress != null);
+            
             var tenantsApi = _hostUsingAddWithAClient.Services.GetRequiredService<ITenantsApi>();
             Assert.True(tenantsApi.HttpClient.BaseAddress != null);
             
@@ -1024,6 +1096,12 @@ namespace EdGraph.Platform.Client.Test.Api
             var changeLogsApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IChangeLogsApi>();
             Assert.True(changeLogsApi.HttpClient.BaseAddress != null);
 
+            var clientBrandingApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IClientBrandingApi>();
+            Assert.True(clientBrandingApi.HttpClient.BaseAddress != null);
+
+            var clientSettingsApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IClientSettingsApi>();
+            Assert.True(clientSettingsApi.HttpClient.BaseAddress != null);
+
             var clientsSecretsApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IClientsSecretsApi>();
             Assert.True(clientsSecretsApi.HttpClient.BaseAddress != null);
 
@@ -1053,6 +1131,18 @@ namespace EdGraph.Platform.Client.Test.Api
 
             var edFiSyncApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IEdFiSyncApi>();
             Assert.True(edFiSyncApi.HttpClient.BaseAddress != null);
+
+            var enrollmentAdminApplicationsApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IEnrollmentAdminApplicationsApi>();
+            Assert.True(enrollmentAdminApplicationsApi.HttpClient.BaseAddress != null);
+
+            var enrollmentAdminContactsApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IEnrollmentAdminContactsApi>();
+            Assert.True(enrollmentAdminContactsApi.HttpClient.BaseAddress != null);
+
+            var enrollmentAdminSchoolsApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IEnrollmentAdminSchoolsApi>();
+            Assert.True(enrollmentAdminSchoolsApi.HttpClient.BaseAddress != null);
+
+            var enrollmentAdminStudentsApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IEnrollmentAdminStudentsApi>();
+            Assert.True(enrollmentAdminStudentsApi.HttpClient.BaseAddress != null);
 
             var environmentsApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IEnvironmentsApi>();
             Assert.True(environmentsApi.HttpClient.BaseAddress != null);
@@ -1180,6 +1270,9 @@ namespace EdGraph.Platform.Client.Test.Api
             var myProfileApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IMyProfileApi>();
             Assert.True(myProfileApi.HttpClient.BaseAddress != null);
 
+            var mySettingsApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IMySettingsApi>();
+            Assert.True(mySettingsApi.HttpClient.BaseAddress != null);
+
             var myTenantsApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IMyTenantsApi>();
             Assert.True(myTenantsApi.HttpClient.BaseAddress != null);
 
@@ -1263,6 +1356,9 @@ namespace EdGraph.Platform.Client.Test.Api
 
             var tenantSettingTypesApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<ITenantSettingTypesApi>();
             Assert.True(tenantSettingTypesApi.HttpClient.BaseAddress != null);
+
+            var tenantSettingsApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<ITenantSettingsApi>();
+            Assert.True(tenantSettingsApi.HttpClient.BaseAddress != null);
 
             var tenantsApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<ITenantsApi>();
             Assert.True(tenantsApi.HttpClient.BaseAddress != null);

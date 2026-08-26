@@ -116,6 +116,35 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
+        /// Test GetAnalyticsTenantUsersAsync
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetAnalyticsTenantUsersAsyncAsyncTest()
+        {
+            string tenantId = default!;
+            Client.Option<int> pageSize = default!;
+            Client.Option<int> pageIndex = default!;
+            Client.Option<string> orderBy = default!;
+            Client.Option<string> filter = default!;
+            var response = await _instance.GetAnalyticsTenantUsersAsyncAsync(tenantId, pageSize, pageIndex, orderBy, filter);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
+        /// Test GetReportAccessAsync
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetReportAccessAsyncAsyncTest()
+        {
+            string tenantId = default!;
+            string reportId = default!;
+            var response = await _instance.GetReportAccessAsyncAsync(tenantId, reportId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
         /// Test GetReportByIdAsync
         /// </summary>
         [Fact (Skip = "not implemented")]
@@ -150,6 +179,20 @@ namespace EdGraph.Platform.Client.Test.Api
             string tenantId = default!;
             Client.Option<AnalyticsApiReportsV1SyncWorkspacesRequest> analyticsApiReportsV1SyncWorkspacesRequest = default!;
             var response = await _instance.SyncWorkspacesAsyncAsync(tenantId, analyticsApiReportsV1SyncWorkspacesRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
+        /// Test UpdateReportAccessAsync
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task UpdateReportAccessAsyncAsyncTest()
+        {
+            string tenantId = default!;
+            string reportId = default!;
+            Client.Option<EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest> edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest = default!;
+            var response = await _instance.UpdateReportAccessAsyncAsync(tenantId, reportId, edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }

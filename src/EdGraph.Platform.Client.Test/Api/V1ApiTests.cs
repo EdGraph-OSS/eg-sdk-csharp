@@ -51,36 +51,6 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
-        /// Test GetStudentProfile
-        /// </summary>
-        [Fact (Skip = "not implemented")]
-        public async Task GetStudentProfileAsyncTest()
-        {
-            Guid tenantId = default!;
-            string id = default!;
-            var response = await _instance.GetStudentProfileAsync(tenantId, id);
-            var model = response.Unauthorized();
-            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
-        }
-
-        /// <summary>
-        /// Test GetStudents
-        /// </summary>
-        [Fact (Skip = "not implemented")]
-        public async Task GetStudentsAsyncTest()
-        {
-            Guid tenantId = default!;
-            Client.Option<string> campus = default!;
-            Client.Option<string> pathway = default!;
-            Client.Option<string> status = default!;
-            Client.Option<int> pageIndex = default!;
-            Client.Option<int> pageSize = default!;
-            var response = await _instance.GetStudentsAsync(tenantId, campus, pathway, status, pageIndex, pageSize);
-            var model = response.Unauthorized();
-            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
-        }
-
-        /// <summary>
         /// Test ReleaseUserLockout
         /// </summary>
         [Fact (Skip = "not implemented")]
@@ -89,20 +59,6 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid tenantId = default!;
             Guid userId = default!;
             var response = await _instance.ReleaseUserLockoutAsync(tenantId, userId);
-            var model = response.Unauthorized();
-            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
-        }
-
-        /// <summary>
-        /// Test UpdateStudentContacts
-        /// </summary>
-        [Fact (Skip = "not implemented")]
-        public async Task UpdateStudentContactsAsyncTest()
-        {
-            Guid tenantId = default!;
-            string studentId = default!;
-            Client.Option<Object?> body = default!;
-            var response = await _instance.UpdateStudentContactsAsync(tenantId, studentId, body);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }

@@ -84,6 +84,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Settings
         /// </summary>
         [JsonPropertyName("settings")]
+        [Obsolete]
         public List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsTenantsTenantSetting>? Settings { get { return this.SettingsOption.Value; } set { this.SettingsOption = new(value); } }
 
         /// <summary>

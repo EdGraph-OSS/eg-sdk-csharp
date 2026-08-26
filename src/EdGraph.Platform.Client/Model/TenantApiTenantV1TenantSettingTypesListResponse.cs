@@ -249,6 +249,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Attributes
         /// </summary>
         [JsonPropertyName("attributes")]
+        [Obsolete]
         public List<TenantApiTenantV1TenantSettingsTypeAttribute>? Attributes { get { return this.AttributesOption.Value; } }
 
         /// <summary>

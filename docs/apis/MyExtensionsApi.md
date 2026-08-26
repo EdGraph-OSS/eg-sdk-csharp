@@ -4,14 +4,14 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**RemoveUserExtension**](MyExtensionsApi.md#removeuserextension) | **DELETE** /me/extensions/{code} | Removes a user&#39;s profile extension. |
-| [**SetUserExtension**](MyExtensionsApi.md#setuserextension) | **POST** /me/extensions | Creates or update a user&#39;s profile extension. |
+| [**RemoveUserExtension**](MyExtensionsApi.md#removeuserextension) | **DELETE** /me/extensions/{code} | Removes a user&#39;s profile extension.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/me/settings/{code}&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged. |
+| [**SetUserExtension**](MyExtensionsApi.md#setuserextension) | **POST** /me/extensions | Creates or update a user&#39;s profile extension.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/me/settings&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged. |
 
 <a id="removeuserextension"></a>
 # **RemoveUserExtension**
 > IdentityApiUserV1UserExtensionRemovedResponse RemoveUserExtension (string code)
 
-Removes a user's profile extension.
+Removes a user's profile extension.  <br><b>Deprecated.</b> Use `/me/settings/{code}` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
 ### Parameters
@@ -49,7 +49,7 @@ Removes a user's profile extension.
 # **SetUserExtension**
 > IdentityApiUserV1UserExtensionSetResponse SetUserExtension (IdentityApiUserV1SetUserExtensionRequest identityApiUserV1SetUserExtensionRequest = null)
 
-Creates or update a user's profile extension.
+Creates or update a user's profile extension.  <br><b>Deprecated.</b> Use `/me/settings` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
 ### Parameters

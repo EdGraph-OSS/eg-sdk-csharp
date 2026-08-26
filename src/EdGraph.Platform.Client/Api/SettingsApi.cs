@@ -38,7 +38,7 @@ namespace EdGraph.Platform.Client.Api
         SettingsApiEvents Events { get; }
 
         /// <summary>
-        /// Retrieves a list of the Tenant&#39;s settings.
+        /// Retrieves a list of the Tenant&#39;s settings.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/v2/tenants/{tenantId}/settings&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
         /// </summary>
         /// <remarks>
         /// 
@@ -51,10 +51,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="filter"> (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetTenantSettingsApiResponse"/>&gt;</returns>
+        [Obsolete]
         Task<IGetTenantSettingsApiResponse> GetTenantSettingsAsync(Guid tenantId, Option<int> pageIndex = default, Option<int> pageSize = default, Option<string> orderBy = default, Option<string> filter = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Retrieves a list of the Tenant&#39;s settings.
+        /// Retrieves a list of the Tenant&#39;s settings.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/v2/tenants/{tenantId}/settings&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
         /// </summary>
         /// <remarks>
         /// 
@@ -66,10 +67,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="filter"> (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetTenantSettingsApiResponse"/>?&gt;</returns>
+        [Obsolete]
         Task<IGetTenantSettingsApiResponse?> GetTenantSettingsOrDefaultAsync(Guid tenantId, Option<int> pageIndex = default, Option<int> pageSize = default, Option<string> orderBy = default, Option<string> filter = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Retrieves a Tenant&#39;s settings by code.
+        /// Retrieves a Tenant&#39;s settings by code.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/v2/tenants/{tenantId}/settings/{code}&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
         /// </summary>
         /// <remarks>
         /// 
@@ -79,10 +81,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="code"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetTenantSettingsByCodeApiResponse"/>&gt;</returns>
+        [Obsolete]
         Task<IGetTenantSettingsByCodeApiResponse> GetTenantSettingsByCodeAsync(Guid tenantId, string code, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Retrieves a Tenant&#39;s settings by code.
+        /// Retrieves a Tenant&#39;s settings by code.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/v2/tenants/{tenantId}/settings/{code}&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
         /// </summary>
         /// <remarks>
         /// 
@@ -91,10 +94,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="code"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetTenantSettingsByCodeApiResponse"/>?&gt;</returns>
+        [Obsolete]
         Task<IGetTenantSettingsByCodeApiResponse?> GetTenantSettingsByCodeOrDefaultAsync(Guid tenantId, string code, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Creates/updates a Tenant&#39;s settings.
+        /// Creates/updates a Tenant&#39;s settings.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/v2/tenants/{tenantId}/settings&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
         /// </summary>
         /// <remarks>
         /// 
@@ -105,10 +109,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantApiTenantV1SetAppSettingsRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ISetTenantSettingsApiResponse"/>&gt;</returns>
+        [Obsolete]
         Task<ISetTenantSettingsApiResponse> SetTenantSettingsAsync(Guid tenantId, string code, Option<TenantApiTenantV1SetAppSettingsRequest> tenantApiTenantV1SetAppSettingsRequest = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Creates/updates a Tenant&#39;s settings.
+        /// Creates/updates a Tenant&#39;s settings.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/v2/tenants/{tenantId}/settings&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
         /// </summary>
         /// <remarks>
         /// 
@@ -118,6 +123,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantApiTenantV1SetAppSettingsRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="ISetTenantSettingsApiResponse"/>?&gt;</returns>
+        [Obsolete]
         Task<ISetTenantSettingsApiResponse?> SetTenantSettingsOrDefaultAsync(Guid tenantId, string code, Option<TenantApiTenantV1SetAppSettingsRequest> tenantApiTenantV1SetAppSettingsRequest = default, System.Threading.CancellationToken cancellationToken = default);
     }
 
@@ -428,7 +434,7 @@ namespace EdGraph.Platform.Client.Api
         partial void OnErrorGetTenantSettings(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid tenantId, Option<int> pageIndex, Option<int> pageSize, Option<string> orderBy, Option<string> filter);
 
         /// <summary>
-        /// Retrieves a list of the Tenant&#39;s settings. 
+        /// Retrieves a list of the Tenant&#39;s settings.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/v2/tenants/{tenantId}/settings&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged. 
         /// </summary>
         /// <param name="tenantId"></param>
         /// <param name="pageIndex"> (optional, default to 0)</param>
@@ -450,7 +456,7 @@ namespace EdGraph.Platform.Client.Api
         }
 
         /// <summary>
-        /// Retrieves a list of the Tenant&#39;s settings. 
+        /// Retrieves a list of the Tenant&#39;s settings.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/v2/tenants/{tenantId}/settings&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged. 
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
@@ -861,7 +867,7 @@ namespace EdGraph.Platform.Client.Api
         partial void OnErrorGetTenantSettingsByCode(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid tenantId, string code);
 
         /// <summary>
-        /// Retrieves a Tenant&#39;s settings by code. 
+        /// Retrieves a Tenant&#39;s settings by code.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/v2/tenants/{tenantId}/settings/{code}&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged. 
         /// </summary>
         /// <param name="tenantId"></param>
         /// <param name="code"></param>
@@ -880,7 +886,7 @@ namespace EdGraph.Platform.Client.Api
         }
 
         /// <summary>
-        /// Retrieves a Tenant&#39;s settings by code. 
+        /// Retrieves a Tenant&#39;s settings by code.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/v2/tenants/{tenantId}/settings/{code}&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged. 
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
@@ -1281,7 +1287,7 @@ namespace EdGraph.Platform.Client.Api
         partial void OnErrorSetTenantSettings(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid tenantId, string code, Option<TenantApiTenantV1SetAppSettingsRequest> tenantApiTenantV1SetAppSettingsRequest);
 
         /// <summary>
-        /// Creates/updates a Tenant&#39;s settings. 
+        /// Creates/updates a Tenant&#39;s settings.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/v2/tenants/{tenantId}/settings&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged. 
         /// </summary>
         /// <param name="tenantId"></param>
         /// <param name="code"></param>
@@ -1301,7 +1307,7 @@ namespace EdGraph.Platform.Client.Api
         }
 
         /// <summary>
-        /// Creates/updates a Tenant&#39;s settings. 
+        /// Creates/updates a Tenant&#39;s settings.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/v2/tenants/{tenantId}/settings&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged. 
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>

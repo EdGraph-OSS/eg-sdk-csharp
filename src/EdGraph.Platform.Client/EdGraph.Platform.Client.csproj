@@ -12,9 +12,9 @@
     <Description>EdGraph Platform Client SDK</Description>
     <Copyright>No Copyright</Copyright>
     <RootNamespace>EdGraph.Platform.Client</RootNamespace>
-    <Version>0.0.52</Version>
+    <Version>0.0.54</Version>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\EdGraph.Platform.Client.xml</DocumentationFile>
-    <RepositoryUrl>https://github.com/EdGraph-OSS/csharp-sdk.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/EdGraph-OSS/eg-sdk-csharp.git</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageReleaseNotes>Minor update</PackageReleaseNotes>
     <Nullable>enable</Nullable>

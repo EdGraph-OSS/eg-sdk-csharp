@@ -4,15 +4,15 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**GetUserPreferences**](MyPreferencesApi.md#getuserpreferences) | **GET** /me/preferences | Retrieves the user&#39;s preferences. |
-| [**Preference**](MyPreferencesApi.md#preference) | **GET** /me/preferences/{code} | Retrieves a user&#39;s preference by code. |
-| [**UpdateUserPreferenceAsync**](MyPreferencesApi.md#updateuserpreferenceasync) | **POST** /me/preferences | Creates or update a user&#39;s preference. |
+| [**GetUserPreferences**](MyPreferencesApi.md#getuserpreferences) | **GET** /me/preferences | Retrieves the user&#39;s preferences.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/me/settings&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged. |
+| [**Preference**](MyPreferencesApi.md#preference) | **GET** /me/preferences/{code} | Retrieves a user&#39;s preference by code.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/me/settings/{code}&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged. |
+| [**UpdateUserPreferenceAsync**](MyPreferencesApi.md#updateuserpreferenceasync) | **POST** /me/preferences | Creates or update a user&#39;s preference.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/me/settings&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged. |
 
 <a id="getuserpreferences"></a>
 # **GetUserPreferences**
 > IdentityApiUserV1GetUserPreferencesResponse GetUserPreferences (int pageIndex = null, int pageSize = null, string orderBy = null, string filter = null)
 
-Retrieves the user's preferences.
+Retrieves the user's preferences.  <br><b>Deprecated.</b> Use `/me/settings` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
 ### Parameters
@@ -53,7 +53,7 @@ Retrieves the user's preferences.
 # **Preference**
 > EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesUserCacheResponse Preference (string code)
 
-Retrieves a user's preference by code.
+Retrieves a user's preference by code.  <br><b>Deprecated.</b> Use `/me/settings/{code}` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
 ### Parameters
@@ -91,7 +91,7 @@ Retrieves a user's preference by code.
 # **UpdateUserPreferenceAsync**
 > IdentityApiUserV1UserPreferenceUpdatedResponse UpdateUserPreferenceAsync (EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsUpdateUserPreferenceRequest = null)
 
-Creates or update a user's preference.
+Creates or update a user's preference.  <br><b>Deprecated.</b> Use `/me/settings` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
 ### Parameters

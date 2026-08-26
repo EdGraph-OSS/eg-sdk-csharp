@@ -6,11 +6,14 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 |--------|--------------|-------------|
 | [**CreateReportAsync**](ReportsApi.md#createreportasync) | **POST** /tenants/{tenantId}/analytics/reports | Creates a new report (Does not upload pbix file). |
 | [**DeleteReportAsync**](ReportsApi.md#deletereportasync) | **DELETE** /tenants/{tenantId}/analytics/reports/{reportId} | Removes a report. |
-| [**DownloadReportAsync**](ReportsApi.md#downloadreportasync) | **GET** /tenants/{tenantId}/analytics/reports/download/{reportId}/{groupId} | Retrieves the PBIX for any report in the list in order to download |
+| [**DownloadReportAsync**](ReportsApi.md#downloadreportasync) | **GET** /tenants/{tenantId}/analytics/reports/download/{reportId}/{groupId} | Retrieves the PBIX for any report in the list in order to download. |
 | [**GetAllTenantAnalyticsWorkspaceReportsAsync**](ReportsApi.md#getalltenantanalyticsworkspacereportsasync) | **GET** /tenants/{tenantId}/analytics/reports | Retrieves all reports. |
+| [**GetAnalyticsTenantUsersAsync**](ReportsApi.md#getanalyticstenantusersasync) | **GET** /tenants/{tenantId}/analytics/users | Searchable, paginated list of tenant users for the Manage Access \&quot;specific users\&quot; picker. |
+| [**GetReportAccessAsync**](ReportsApi.md#getreportaccessasync) | **GET** /tenants/{tenantId}/analytics/reports/{reportId}/access | Retrieves the audience-targeting (Manage Access) configuration for a report. |
 | [**GetReportByIdAsync**](ReportsApi.md#getreportbyidasync) | **GET** /tenants/{tenantId}/analytics/reports/{reportId} | Retrieves a Report by ID. |
 | [**SyncLatestVersion**](ReportsApi.md#synclatestversion) | **POST** /tenants/{tenantId}/analytics/reports/synclatestversion | Sync latest version |
 | [**SyncWorkspacesAsync**](ReportsApi.md#syncworkspacesasync) | **POST** /tenants/{tenantId}/analytics/reports/sync | Triggers workspace, ODS and DW automation. |
+| [**UpdateReportAccessAsync**](ReportsApi.md#updatereportaccessasync) | **PUT** /tenants/{tenantId}/analytics/reports/{reportId}/access | Updates the audience-targeting (Manage Access) configuration for a report. |
 | [**UpdateReportAsync**](ReportsApi.md#updatereportasync) | **PUT** /tenants/{tenantId}/analytics/reports/{reportId} | Updates a report. |
 
 <a id="createreportasync"></a>
@@ -106,7 +109,9 @@ void (empty response body)
 # **DownloadReportAsync**
 > AnalyticsApiReportsV1DownloadReportResponse DownloadReportAsync (string tenantId, string reportId, string groupId)
 
-Retrieves the PBIX for any report in the list in order to download
+Retrieves the PBIX for any report in the list in order to download.
+
+Admin-only. This resolves the PowerBI artifact straight from its report/group ids, so it  cannot apply the report's audience targeting the way the list and get-by-id paths do.  Restricting it to Analytics.Admin — the role that bypasses audience targeting anyway —  keeps a non-admin from downloading the source of a report they are not granted.
 
 
 ### Parameters
@@ -181,6 +186,88 @@ Retrieves all reports.
 | **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
 | **200** | The requested resource was successfully retrieved. |  -  |
 | **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+<a id="getanalyticstenantusersasync"></a>
+# **GetAnalyticsTenantUsersAsync**
+> IdentityApiUserV1UserListResponsePaginatedItemsViewModel GetAnalyticsTenantUsersAsync (string tenantId, int pageSize = null, int pageIndex = null, string orderBy = null, string filter = null)
+
+Searchable, paginated list of tenant users for the Manage Access \"specific users\" picker.
+
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **string** |  |  |
+| **pageSize** | **int** |  | [optional] [default to 20] |
+| **pageIndex** | **int** |  | [optional] [default to 0] |
+| **orderBy** | **string** |  | [optional] [default to &quot;&quot;] |
+| **filter** | **string** |  | [optional] [default to &quot;&quot;] |
+
+### Return type
+
+[**IdentityApiUserV1UserListResponsePaginatedItemsViewModel**](IdentityApiUserV1UserListResponsePaginatedItemsViewModel.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | Success |  -  |
+| **400** | Bad Request |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+<a id="getreportaccessasync"></a>
+# **GetReportAccessAsync**
+> EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesReportAccessResponseDto GetReportAccessAsync (string tenantId, string reportId)
+
+Retrieves the audience-targeting (Manage Access) configuration for a report.
+
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **string** |  |  |
+| **reportId** | **string** |  |  |
+
+### Return type
+
+[**EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesReportAccessResponseDto**](EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsResponsesReportAccessResponseDto.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | The requested resource was successfully retrieved. |  -  |
+| **404** | Not Found |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -301,6 +388,47 @@ Triggers workspace, ODS and DW automation.
 | **200** | The requested resource was successfully retrieved. |  -  |
 | **404** | Not Found |  -  |
 | **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+<a id="updatereportaccessasync"></a>
+# **UpdateReportAccessAsync**
+> AnalyticsApiReportsV1ReportIdResponse UpdateReportAccessAsync (string tenantId, string reportId, EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest = null)
+
+Updates the audience-targeting (Manage Access) configuration for a report.
+
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **string** |  |  |
+| **reportId** | **string** |  |  |
+| **edGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest** | [**EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest**](EdGraphPlatformHttpAggregatorsTenantApiControllersV1ViewModelsRequestsReportAccessRequest.md) |  | [optional]  |
+
+### Return type
+
+[**AnalyticsApiReportsV1ReportIdResponse**](AnalyticsApiReportsV1ReportIdResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | The requested resource was successfully updated. |  -  |
+| **404** | Not Found |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

@@ -353,6 +353,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Settings
         /// </summary>
         [JsonPropertyName("settings")]
+        [Obsolete]
         public List<TenantApiTenantV1TenantSetting>? Settings { get { return this.SettingsOption.Value; } }
 
         /// <summary>

@@ -60,6 +60,7 @@ namespace EdGraph.Platform.Client.Model
         /// Gets or Sets Data
         /// </summary>
         [JsonPropertyName("data")]
+        [Obsolete]
         public List<TenantApiTenantV1TenantAppSettings>? Data { get { return this.DataOption.Value; } }
 
         /// <summary>

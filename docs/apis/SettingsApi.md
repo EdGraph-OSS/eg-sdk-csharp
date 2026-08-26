@@ -4,15 +4,15 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**GetTenantSettings**](SettingsApi.md#gettenantsettings) | **GET** /tenants/{tenantId}/settings | Retrieves a list of the Tenant&#39;s settings. |
-| [**GetTenantSettingsByCode**](SettingsApi.md#gettenantsettingsbycode) | **GET** /tenants/{tenantId}/settings/{code} | Retrieves a Tenant&#39;s settings by code. |
-| [**SetTenantSettings**](SettingsApi.md#settenantsettings) | **POST** /tenants/{tenantId}/settings/{code} | Creates/updates a Tenant&#39;s settings. |
+| [**GetTenantSettings**](SettingsApi.md#gettenantsettings) | **GET** /tenants/{tenantId}/settings | Retrieves a list of the Tenant&#39;s settings.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/v2/tenants/{tenantId}/settings&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged. |
+| [**GetTenantSettingsByCode**](SettingsApi.md#gettenantsettingsbycode) | **GET** /tenants/{tenantId}/settings/{code} | Retrieves a Tenant&#39;s settings by code.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/v2/tenants/{tenantId}/settings/{code}&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged. |
+| [**SetTenantSettings**](SettingsApi.md#settenantsettings) | **POST** /tenants/{tenantId}/settings/{code} | Creates/updates a Tenant&#39;s settings.  &lt;br&gt;&lt;b&gt;Deprecated.&lt;/b&gt; Use &#x60;/v2/tenants/{tenantId}/settings&#x60; instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged. |
 
 <a id="gettenantsettings"></a>
 # **GetTenantSettings**
 > TenantApiTenantV1GetAppSettingsResponse GetTenantSettings (Guid tenantId, int pageIndex = null, int pageSize = null, string orderBy = null, string filter = null)
 
-Retrieves a list of the Tenant's settings.
+Retrieves a list of the Tenant's settings.  <br><b>Deprecated.</b> Use `/v2/tenants/{tenantId}/settings` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
 ### Parameters
@@ -54,7 +54,7 @@ Retrieves a list of the Tenant's settings.
 # **GetTenantSettingsByCode**
 > TenantApiTenantV1TenantAppSettings GetTenantSettingsByCode (Guid tenantId, string code)
 
-Retrieves a Tenant's settings by code.
+Retrieves a Tenant's settings by code.  <br><b>Deprecated.</b> Use `/v2/tenants/{tenantId}/settings/{code}` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
 ### Parameters
@@ -93,7 +93,7 @@ Retrieves a Tenant's settings by code.
 # **SetTenantSettings**
 > TenantApiTenantV1SetAppSettingsResponse SetTenantSettings (Guid tenantId, string code, TenantApiTenantV1SetAppSettingsRequest tenantApiTenantV1SetAppSettingsRequest = null)
 
-Creates/updates a Tenant's settings.
+Creates/updates a Tenant's settings.  <br><b>Deprecated.</b> Use `/v2/tenants/{tenantId}/settings` instead. Superseded by  EdGraph.Services.Settings; see docs/settings-deprecation-map.md. This endpoint  still works and is unchanged.
 
 
 ### Parameters

@@ -314,6 +314,19 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
+        /// Test GetTenantInstanceByIdV2
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetTenantInstanceByIdV2AsyncTest()
+        {
+            string tenantId = default!;
+            string instanceId = default!;
+            var response = await _instance.GetTenantInstanceByIdV2Async(tenantId, instanceId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
         /// Test GetTenantInstancesV2
         /// </summary>
         [Fact (Skip = "not implemented")]
