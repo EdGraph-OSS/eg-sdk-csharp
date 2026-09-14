@@ -26,18 +26,18 @@ using EdGraph.Platform.Client.Client;
 namespace EdGraph.Platform.Client.Model
 {
     /// <summary>
-    /// EnrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage
+    /// EnrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage
     /// </summary>
-    public partial class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage : IValidatableObject
+    public partial class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EnrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage" /> class.
+        /// Initializes a new instance of the <see cref="EnrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage" /> class.
         /// </summary>
         /// <param name="id">id</param>
         /// <param name="type">type</param>
         /// <param name="varVersion">varVersion</param>
         [JsonConstructor]
-        public EnrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage(Option<string?> id = default, Option<string?> type = default, Option<double?> varVersion = default)
+        public EnrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage(Option<string?> id = default, Option<string?> type = default, Option<string?> varVersion = default)
         {
             IdOption = id;
             TypeOption = type;
@@ -78,13 +78,13 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<double?> VarVersionOption { get; private set; }
+        public Option<string?> VarVersionOption { get; private set; }
 
         /// <summary>
         /// Gets or Sets VarVersion
         /// </summary>
         [JsonPropertyName("version")]
-        public double? VarVersion { get { return this.VarVersionOption.Value; } set { this.VarVersionOption = new(value); } }
+        public string? VarVersion { get { return this.VarVersionOption.Value; } set { this.VarVersionOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -93,7 +93,7 @@ namespace EdGraph.Platform.Client.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage {\n");
+            sb.Append("class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  VarVersion: ").Append(VarVersion).Append("\n");
@@ -113,19 +113,19 @@ namespace EdGraph.Platform.Client.Model
     }
 
     /// <summary>
-    /// A Json converter for type <see cref="EnrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage" />
+    /// A Json converter for type <see cref="EnrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage" />
     /// </summary>
-    public class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessageJsonConverter : JsonConverter<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage>
+    public class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessageJsonConverter : JsonConverter<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage>
     {
         /// <summary>
-        /// Deserializes json to <see cref="EnrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage" />
+        /// Deserializes json to <see cref="EnrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage" />
         /// </summary>
         /// <param name="utf8JsonReader"></param>
         /// <param name="typeToConvert"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <returns></returns>
         /// <exception cref="JsonException"></exception>
-        public override EnrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
+        public override EnrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
         {
             int currentDepth = utf8JsonReader.CurrentDepth;
 
@@ -136,7 +136,7 @@ namespace EdGraph.Platform.Client.Model
 
             Option<string?> id = default;
             Option<string?> type = default;
-            Option<double?> varVersion = default;
+            Option<string?> varVersion = default;
 
             while (utf8JsonReader.Read())
             {
@@ -160,7 +160,7 @@ namespace EdGraph.Platform.Client.Model
                             type = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "version":
-                            varVersion = new Option<double?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (double?)null : utf8JsonReader.GetDouble());
+                            varVersion = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         default:
                             break;
@@ -168,50 +168,50 @@ namespace EdGraph.Platform.Client.Model
                 }
             }
 
-            if (varVersion.IsSet && varVersion.Value == null)
-                throw new ArgumentNullException(nameof(varVersion), "Property is not nullable for class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage.");
-
-            return new EnrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage(id, type, varVersion);
+            return new EnrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage(id, type, varVersion);
         }
 
         /// <summary>
-        /// Serializes a <see cref="EnrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage" />
+        /// Serializes a <see cref="EnrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="enrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage"></param>
+        /// <param name="enrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public override void Write(Utf8JsonWriter writer, EnrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage enrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage, JsonSerializerOptions jsonSerializerOptions)
+        public override void Write(Utf8JsonWriter writer, EnrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage enrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
 
-            WriteProperties(writer, enrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage, jsonSerializerOptions);
+            WriteProperties(writer, enrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage, jsonSerializerOptions);
             writer.WriteEndObject();
         }
 
         /// <summary>
-        /// Serializes the properties of <see cref="EnrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage" />
+        /// Serializes the properties of <see cref="EnrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="enrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage"></param>
+        /// <param name="enrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public void WriteProperties(Utf8JsonWriter writer, EnrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage enrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage, JsonSerializerOptions jsonSerializerOptions)
+        public void WriteProperties(Utf8JsonWriter writer, EnrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage enrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage.IdOption.IsSet)
-                if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage.IdOption.Value != null)
-                    writer.WriteString("id", enrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage.Id);
+            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage.IdOption.IsSet)
+                if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage.IdOption.Value != null)
+                    writer.WriteString("id", enrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage.Id);
                 else
                     writer.WriteNull("id");
 
-            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage.TypeOption.IsSet)
-                if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage.TypeOption.Value != null)
-                    writer.WriteString("type", enrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage.Type);
+            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage.TypeOption.IsSet)
+                if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage.TypeOption.Value != null)
+                    writer.WriteString("type", enrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage.Type);
                 else
                     writer.WriteNull("type");
 
-            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage.VarVersionOption.IsSet)
-                writer.WriteNumber("version", enrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage.VarVersionOption.Value!.Value);
+            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage.VarVersionOption.IsSet)
+                if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage.VarVersionOption.Value != null)
+                    writer.WriteString("version", enrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage.VarVersion);
+                else
+                    writer.WriteNull("version");
         }
     }
 }

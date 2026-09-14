@@ -281,6 +281,26 @@ namespace EdGraph.Platform.Client.Client
     /// An interface for responses of type 
     /// </summary>
     /// <typeparam name="TType"></typeparam>
+    public interface IPreconditionFailed<TType> : IApiResponse
+    {
+        /// <summary>
+        /// Deserializes the response if the response is PreconditionFailed
+        /// </summary>
+        /// <returns></returns>
+        TType PreconditionFailed();
+
+        /// <summary>
+        /// Returns true if the response is PreconditionFailed and the deserialized response is not null
+        /// </summary>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        bool TryPreconditionFailed([NotNullWhen(true)]out TType? result);
+    }
+
+    /// <summary>
+    /// An interface for responses of type 
+    /// </summary>
+    /// <typeparam name="TType"></typeparam>
     public interface IOk<TType> : IApiResponse
     {
         /// <summary>

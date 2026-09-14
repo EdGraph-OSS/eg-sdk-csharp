@@ -139,11 +139,17 @@ namespace EdGraph.Platform.Client.Test.Api
             var edFiSyncApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IEdFiSyncApi>();
             Assert.True(edFiSyncApi.HttpClient.BaseAddress != null);
 
-            var enrollmentAdminApplicationsApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IEnrollmentAdminApplicationsApi>();
-            Assert.True(enrollmentAdminApplicationsApi.HttpClient.BaseAddress != null);
+            var enrollmentAdminCapacityApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IEnrollmentAdminCapacityApi>();
+            Assert.True(enrollmentAdminCapacityApi.HttpClient.BaseAddress != null);
 
             var enrollmentAdminContactsApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IEnrollmentAdminContactsApi>();
             Assert.True(enrollmentAdminContactsApi.HttpClient.BaseAddress != null);
+
+            var enrollmentAdminProgramsApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IEnrollmentAdminProgramsApi>();
+            Assert.True(enrollmentAdminProgramsApi.HttpClient.BaseAddress != null);
+
+            var enrollmentAdminResponsesApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IEnrollmentAdminResponsesApi>();
+            Assert.True(enrollmentAdminResponsesApi.HttpClient.BaseAddress != null);
 
             var enrollmentAdminSchoolsApi = _hostUsingConfigureWithAClient.Services.GetRequiredService<IEnrollmentAdminSchoolsApi>();
             Assert.True(enrollmentAdminSchoolsApi.HttpClient.BaseAddress != null);
@@ -470,11 +476,17 @@ namespace EdGraph.Platform.Client.Test.Api
             var edFiSyncApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IEdFiSyncApi>();
             Assert.True(edFiSyncApi.HttpClient.BaseAddress != null);
 
-            var enrollmentAdminApplicationsApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IEnrollmentAdminApplicationsApi>();
-            Assert.True(enrollmentAdminApplicationsApi.HttpClient.BaseAddress != null);
+            var enrollmentAdminCapacityApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IEnrollmentAdminCapacityApi>();
+            Assert.True(enrollmentAdminCapacityApi.HttpClient.BaseAddress != null);
 
             var enrollmentAdminContactsApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IEnrollmentAdminContactsApi>();
             Assert.True(enrollmentAdminContactsApi.HttpClient.BaseAddress != null);
+
+            var enrollmentAdminProgramsApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IEnrollmentAdminProgramsApi>();
+            Assert.True(enrollmentAdminProgramsApi.HttpClient.BaseAddress != null);
+
+            var enrollmentAdminResponsesApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IEnrollmentAdminResponsesApi>();
+            Assert.True(enrollmentAdminResponsesApi.HttpClient.BaseAddress != null);
 
             var enrollmentAdminSchoolsApi = _hostUsingConfigureWithoutAClient.Services.GetRequiredService<IEnrollmentAdminSchoolsApi>();
             Assert.True(enrollmentAdminSchoolsApi.HttpClient.BaseAddress != null);
@@ -801,11 +813,17 @@ namespace EdGraph.Platform.Client.Test.Api
             var edFiSyncApi = _hostUsingAddWithAClient.Services.GetRequiredService<IEdFiSyncApi>();
             Assert.True(edFiSyncApi.HttpClient.BaseAddress != null);
             
-            var enrollmentAdminApplicationsApi = _hostUsingAddWithAClient.Services.GetRequiredService<IEnrollmentAdminApplicationsApi>();
-            Assert.True(enrollmentAdminApplicationsApi.HttpClient.BaseAddress != null);
+            var enrollmentAdminCapacityApi = _hostUsingAddWithAClient.Services.GetRequiredService<IEnrollmentAdminCapacityApi>();
+            Assert.True(enrollmentAdminCapacityApi.HttpClient.BaseAddress != null);
             
             var enrollmentAdminContactsApi = _hostUsingAddWithAClient.Services.GetRequiredService<IEnrollmentAdminContactsApi>();
             Assert.True(enrollmentAdminContactsApi.HttpClient.BaseAddress != null);
+            
+            var enrollmentAdminProgramsApi = _hostUsingAddWithAClient.Services.GetRequiredService<IEnrollmentAdminProgramsApi>();
+            Assert.True(enrollmentAdminProgramsApi.HttpClient.BaseAddress != null);
+            
+            var enrollmentAdminResponsesApi = _hostUsingAddWithAClient.Services.GetRequiredService<IEnrollmentAdminResponsesApi>();
+            Assert.True(enrollmentAdminResponsesApi.HttpClient.BaseAddress != null);
             
             var enrollmentAdminSchoolsApi = _hostUsingAddWithAClient.Services.GetRequiredService<IEnrollmentAdminSchoolsApi>();
             Assert.True(enrollmentAdminSchoolsApi.HttpClient.BaseAddress != null);
@@ -1132,11 +1150,17 @@ namespace EdGraph.Platform.Client.Test.Api
             var edFiSyncApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IEdFiSyncApi>();
             Assert.True(edFiSyncApi.HttpClient.BaseAddress != null);
 
-            var enrollmentAdminApplicationsApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IEnrollmentAdminApplicationsApi>();
-            Assert.True(enrollmentAdminApplicationsApi.HttpClient.BaseAddress != null);
+            var enrollmentAdminCapacityApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IEnrollmentAdminCapacityApi>();
+            Assert.True(enrollmentAdminCapacityApi.HttpClient.BaseAddress != null);
 
             var enrollmentAdminContactsApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IEnrollmentAdminContactsApi>();
             Assert.True(enrollmentAdminContactsApi.HttpClient.BaseAddress != null);
+
+            var enrollmentAdminProgramsApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IEnrollmentAdminProgramsApi>();
+            Assert.True(enrollmentAdminProgramsApi.HttpClient.BaseAddress != null);
+
+            var enrollmentAdminResponsesApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IEnrollmentAdminResponsesApi>();
+            Assert.True(enrollmentAdminResponsesApi.HttpClient.BaseAddress != null);
 
             var enrollmentAdminSchoolsApi = _hostUsingAddWithoutAClient.Services.GetRequiredService<IEnrollmentAdminSchoolsApi>();
             Assert.True(enrollmentAdminSchoolsApi.HttpClient.BaseAddress != null);

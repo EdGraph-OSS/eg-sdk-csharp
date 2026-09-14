@@ -11,8 +11,10 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 | [**CloneInstanceAsync**](InstancesApi.md#cloneinstanceasync) | **POST** /tenants/{tenantId}/edfiadmin/instances/{instanceId}/clone | Clones an instance. |
 | [**CreateInstance**](InstancesApi.md#createinstance) | **POST** /tenants/{tenantId}/oneroster/instances | Creates a new Instance. |
 | [**CreateInstanceAsync**](InstancesApi.md#createinstanceasync) | **POST** /tenants/{tenantId}/edfiadmin/instances | Creates a new Instance. |
+| [**CreateInstanceV2**](InstancesApi.md#createinstancev2) | **POST** /v2/tenants/{tenantId}/instances | Creates a new instance. |
 | [**DeleteInstance**](InstancesApi.md#deleteinstance) | **DELETE** /tenants/{tenantId}/oneroster/instances/{instanceId} | Deletes an Instance. |
 | [**DeleteInstanceAsync**](InstancesApi.md#deleteinstanceasync) | **DELETE** /tenants/{tenantId}/edfiadmin/instances/{instanceId} | Deletes an Instance. |
+| [**DeleteInstanceV2**](InstancesApi.md#deleteinstancev2) | **DELETE** /v2/tenants/{tenantId}/instances/{instanceId} | Deletes an instance. |
 | [**DeleteSchoolYearAsync**](InstancesApi.md#deleteschoolyearasync) | **DELETE** /tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year} | Removes an ODS database from an Instance. |
 | [**GetEdFiAdminInstanceEndpoints**](InstancesApi.md#getedfiadmininstanceendpoints) | **GET** /tenants/{tenantId}/edfiadmin/instances/{instanceId}/endpoints | Retrieves the Ed-Fi API endpoint URLs of an Instance. |
 | [**GetEdFiAdminInstanceYearEndpoints**](InstancesApi.md#getedfiadmininstanceyearendpoints) | **GET** /tenants/{tenantId}/edfiadmin/instances/{instanceId}/years/{year}/endpoints | Retrieves the Ed-Fi API endpoint URLs of an Instance. |
@@ -39,6 +41,7 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 | [**TruncateInstance**](InstancesApi.md#truncateinstance) | **POST** /tenants/{tenantId}/oneroster/instances/{instanceId}/truncate | Truncates the Instance&#39;s database |
 | [**UpdateInstance**](InstancesApi.md#updateinstance) | **PUT** /tenants/{tenantId}/oneroster/instances/{instanceId} | Updates an Instance. |
 | [**UpdateInstanceAsync**](InstancesApi.md#updateinstanceasync) | **PUT** /tenants/{tenantId}/edfiadmin/instances/{instanceId} | Updates an Instance. |
+| [**UpdateInstanceV2**](InstancesApi.md#updateinstancev2) | **PUT** /v2/tenants/{tenantId}/instances/{instanceId} | Updates an existing instance. |
 | [**ValidateCustomIdAvailable**](InstancesApi.md#validatecustomidavailable) | **GET** /tenants/{tenantId}/edfiadmin/instances/validatecustomidavailable/{customId} | Validate if instance is available |
 
 <a id="addrelatedinstances"></a>
@@ -326,6 +329,45 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+<a id="createinstancev2"></a>
+# **CreateInstanceV2**
+> EdGraphHttpAggregatorsTenantApiServicesInstancesInstanceCreatedResponse CreateInstanceV2 (string tenantId, Object body = null)
+
+Creates a new instance.
+
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **string** |  |  |
+| **body** | **Object** |  | [optional]  |
+
+### Return type
+
+[**EdGraphHttpAggregatorsTenantApiServicesInstancesInstanceCreatedResponse**](EdGraphHttpAggregatorsTenantApiServicesInstancesInstanceCreatedResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | The requested resource was successfully retrieved. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 <a id="deleteinstance"></a>
 # **DeleteInstance**
 > void DeleteInstance (string tenantId, string instanceId)
@@ -371,6 +413,46 @@ void (empty response body)
 > void DeleteInstanceAsync (string tenantId, string instanceId)
 
 Deletes an Instance.
+
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **string** |  |  |
+| **instanceId** | **string** |  |  |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **204** | The resource was successfully deleted. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+| **404** | The resource could not be found. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+<a id="deleteinstancev2"></a>
+# **DeleteInstanceV2**
+> void DeleteInstanceV2 (string tenantId, string instanceId)
+
+Deletes an instance.
 
 
 ### Parameters
@@ -1457,6 +1539,46 @@ void (empty response body)
 | **200** | The requested resource was successfully retrieved. |  -  |
 | **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
 | **404** | Not Found |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+<a id="updateinstancev2"></a>
+# **UpdateInstanceV2**
+> EdGraphHttpAggregatorsTenantApiServicesInstancesInstanceUpdatedResponse UpdateInstanceV2 (string tenantId, string instanceId, Object body = null)
+
+Updates an existing instance.
+
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **string** |  |  |
+| **instanceId** | **string** |  |  |
+| **body** | **Object** |  | [optional]  |
+
+### Return type
+
+[**EdGraphHttpAggregatorsTenantApiServicesInstancesInstanceUpdatedResponse**](EdGraphHttpAggregatorsTenantApiServicesInstancesInstanceUpdatedResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | The requested resource was successfully retrieved. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

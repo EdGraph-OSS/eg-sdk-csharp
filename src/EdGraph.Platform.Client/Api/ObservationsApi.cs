@@ -542,9 +542,10 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="status"> (optional, default to &quot;&quot;)</param>
         /// <param name="from"> (optional, default to &quot;&quot;)</param>
         /// <param name="to"> (optional, default to &quot;&quot;)</param>
+        /// <param name="observerId"> (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetPaginatedObservationsApiResponse"/>&gt;</returns>
-        Task<IGetPaginatedObservationsApiResponse> GetPaginatedObservationsAsync(Guid tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> campus = default, Option<string> evalueeName = default, Option<string> evalueeId = default, Option<string> formId = default, Option<string> status = default, Option<string> from = default, Option<string> to = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IGetPaginatedObservationsApiResponse> GetPaginatedObservationsAsync(Guid tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> campus = default, Option<string> evalueeName = default, Option<string> evalueeId = default, Option<string> formId = default, Option<string> status = default, Option<string> from = default, Option<string> to = default, Option<string> observerId = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get Paginated Observations for a given tenant
@@ -563,9 +564,10 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="status"> (optional, default to &quot;&quot;)</param>
         /// <param name="from"> (optional, default to &quot;&quot;)</param>
         /// <param name="to"> (optional, default to &quot;&quot;)</param>
+        /// <param name="observerId"> (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetPaginatedObservationsApiResponse"/>?&gt;</returns>
-        Task<IGetPaginatedObservationsApiResponse?> GetPaginatedObservationsOrDefaultAsync(Guid tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> campus = default, Option<string> evalueeName = default, Option<string> evalueeId = default, Option<string> formId = default, Option<string> status = default, Option<string> from = default, Option<string> to = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IGetPaginatedObservationsApiResponse?> GetPaginatedObservationsOrDefaultAsync(Guid tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> campus = default, Option<string> evalueeName = default, Option<string> evalueeId = default, Option<string> formId = default, Option<string> status = default, Option<string> from = default, Option<string> to = default, Option<string> observerId = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get submitted Observations count
@@ -9468,7 +9470,7 @@ namespace EdGraph.Platform.Client.Api
             partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
         }
 
-        partial void FormatGetPaginatedObservations(ref Guid tenantId, ref Option<int> pageSize, ref Option<int> pageIndex, ref Option<string> orderBy, ref Option<string> campus, ref Option<string> evalueeName, ref Option<string> evalueeId, ref Option<string> formId, ref Option<string> status, ref Option<string> from, ref Option<string> to);
+        partial void FormatGetPaginatedObservations(ref Guid tenantId, ref Option<int> pageSize, ref Option<int> pageIndex, ref Option<string> orderBy, ref Option<string> campus, ref Option<string> evalueeName, ref Option<string> evalueeId, ref Option<string> formId, ref Option<string> status, ref Option<string> from, ref Option<string> to, ref Option<string> observerId);
 
         /// <summary>
         /// Validates the request parameters
@@ -9481,8 +9483,9 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="status"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
+        /// <param name="observerId"></param>
         /// <returns></returns>
-        private void ValidateGetPaginatedObservations(Option<string> orderBy, Option<string> campus, Option<string> evalueeName, Option<string> evalueeId, Option<string> formId, Option<string> status, Option<string> from, Option<string> to)
+        private void ValidateGetPaginatedObservations(Option<string> orderBy, Option<string> campus, Option<string> evalueeName, Option<string> evalueeId, Option<string> formId, Option<string> status, Option<string> from, Option<string> to, Option<string> observerId)
         {
             if (orderBy.IsSet && orderBy.Value == null)
                 throw new ArgumentNullException(nameof(orderBy));
@@ -9507,6 +9510,9 @@ namespace EdGraph.Platform.Client.Api
 
             if (to.IsSet && to.Value == null)
                 throw new ArgumentNullException(nameof(to));
+
+            if (observerId.IsSet && observerId.Value == null)
+                throw new ArgumentNullException(nameof(observerId));
         }
 
         /// <summary>
@@ -9524,10 +9530,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="status"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
-        private void AfterGetPaginatedObservationsDefaultImplementation(IGetPaginatedObservationsApiResponse apiResponseLocalVar, Guid tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> campus, Option<string> evalueeName, Option<string> evalueeId, Option<string> formId, Option<string> status, Option<string> from, Option<string> to)
+        /// <param name="observerId"></param>
+        private void AfterGetPaginatedObservationsDefaultImplementation(IGetPaginatedObservationsApiResponse apiResponseLocalVar, Guid tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> campus, Option<string> evalueeName, Option<string> evalueeId, Option<string> formId, Option<string> status, Option<string> from, Option<string> to, Option<string> observerId)
         {
             bool suppressDefaultLog = false;
-            AfterGetPaginatedObservations(ref suppressDefaultLog, apiResponseLocalVar, tenantId, pageSize, pageIndex, orderBy, campus, evalueeName, evalueeId, formId, status, from, to);
+            AfterGetPaginatedObservations(ref suppressDefaultLog, apiResponseLocalVar, tenantId, pageSize, pageIndex, orderBy, campus, evalueeName, evalueeId, formId, status, from, to, observerId);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -9548,7 +9555,8 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="status"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
-        partial void AfterGetPaginatedObservations(ref bool suppressDefaultLog, IGetPaginatedObservationsApiResponse apiResponseLocalVar, Guid tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> campus, Option<string> evalueeName, Option<string> evalueeId, Option<string> formId, Option<string> status, Option<string> from, Option<string> to);
+        /// <param name="observerId"></param>
+        partial void AfterGetPaginatedObservations(ref bool suppressDefaultLog, IGetPaginatedObservationsApiResponse apiResponseLocalVar, Guid tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> campus, Option<string> evalueeName, Option<string> evalueeId, Option<string> formId, Option<string> status, Option<string> from, Option<string> to, Option<string> observerId);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -9567,10 +9575,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="status"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
-        private void OnErrorGetPaginatedObservationsDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> campus, Option<string> evalueeName, Option<string> evalueeId, Option<string> formId, Option<string> status, Option<string> from, Option<string> to)
+        /// <param name="observerId"></param>
+        private void OnErrorGetPaginatedObservationsDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> campus, Option<string> evalueeName, Option<string> evalueeId, Option<string> formId, Option<string> status, Option<string> from, Option<string> to, Option<string> observerId)
         {
             bool suppressDefaultLogLocalVar = false;
-            OnErrorGetPaginatedObservations(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, pageSize, pageIndex, orderBy, campus, evalueeName, evalueeId, formId, status, from, to);
+            OnErrorGetPaginatedObservations(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, pageSize, pageIndex, orderBy, campus, evalueeName, evalueeId, formId, status, from, to, observerId);
             if (!suppressDefaultLogLocalVar)
                 Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
@@ -9593,7 +9602,8 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="status"></param>
         /// <param name="from"></param>
         /// <param name="to"></param>
-        partial void OnErrorGetPaginatedObservations(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> campus, Option<string> evalueeName, Option<string> evalueeId, Option<string> formId, Option<string> status, Option<string> from, Option<string> to);
+        /// <param name="observerId"></param>
+        partial void OnErrorGetPaginatedObservations(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, Guid tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> campus, Option<string> evalueeName, Option<string> evalueeId, Option<string> formId, Option<string> status, Option<string> from, Option<string> to, Option<string> observerId);
 
         /// <summary>
         /// Get Paginated Observations for a given tenant 
@@ -9609,13 +9619,14 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="status"> (optional, default to &quot;&quot;)</param>
         /// <param name="from"> (optional, default to &quot;&quot;)</param>
         /// <param name="to"> (optional, default to &quot;&quot;)</param>
+        /// <param name="observerId"> (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetPaginatedObservationsApiResponse"/>&gt;</returns>
-        public async Task<IGetPaginatedObservationsApiResponse?> GetPaginatedObservationsOrDefaultAsync(Guid tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> campus = default, Option<string> evalueeName = default, Option<string> evalueeId = default, Option<string> formId = default, Option<string> status = default, Option<string> from = default, Option<string> to = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IGetPaginatedObservationsApiResponse?> GetPaginatedObservationsOrDefaultAsync(Guid tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> campus = default, Option<string> evalueeName = default, Option<string> evalueeId = default, Option<string> formId = default, Option<string> status = default, Option<string> from = default, Option<string> to = default, Option<string> observerId = default, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await GetPaginatedObservationsAsync(tenantId, pageSize, pageIndex, orderBy, campus, evalueeName, evalueeId, formId, status, from, to, cancellationToken).ConfigureAwait(false);
+                return await GetPaginatedObservationsAsync(tenantId, pageSize, pageIndex, orderBy, campus, evalueeName, evalueeId, formId, status, from, to, observerId, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -9638,17 +9649,18 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="status"> (optional, default to &quot;&quot;)</param>
         /// <param name="from"> (optional, default to &quot;&quot;)</param>
         /// <param name="to"> (optional, default to &quot;&quot;)</param>
+        /// <param name="observerId"> (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetPaginatedObservationsApiResponse"/>&gt;</returns>
-        public async Task<IGetPaginatedObservationsApiResponse> GetPaginatedObservationsAsync(Guid tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> campus = default, Option<string> evalueeName = default, Option<string> evalueeId = default, Option<string> formId = default, Option<string> status = default, Option<string> from = default, Option<string> to = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IGetPaginatedObservationsApiResponse> GetPaginatedObservationsAsync(Guid tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> campus = default, Option<string> evalueeName = default, Option<string> evalueeId = default, Option<string> formId = default, Option<string> status = default, Option<string> from = default, Option<string> to = default, Option<string> observerId = default, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
             try
             {
-                ValidateGetPaginatedObservations(orderBy, campus, evalueeName, evalueeId, formId, status, from, to);
+                ValidateGetPaginatedObservations(orderBy, campus, evalueeName, evalueeId, formId, status, from, to, observerId);
 
-                FormatGetPaginatedObservations(ref tenantId, ref pageSize, ref pageIndex, ref orderBy, ref campus, ref evalueeName, ref evalueeId, ref formId, ref status, ref from, ref to);
+                FormatGetPaginatedObservations(ref tenantId, ref pageSize, ref pageIndex, ref orderBy, ref campus, ref evalueeName, ref evalueeId, ref formId, ref status, ref from, ref to, ref observerId);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -9692,6 +9704,9 @@ namespace EdGraph.Platform.Client.Api
                     if (to.IsSet)
                         parseQueryStringLocalVar["to"] = ClientUtils.ParameterToString(to.Value);
 
+                    if (observerId.IsSet)
+                        parseQueryStringLocalVar["observerId"] = ClientUtils.ParameterToString(observerId.Value);
+
                     uriBuilderLocalVar.Query = parseQueryStringLocalVar.ToString();
 
                     List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
@@ -9730,7 +9745,7 @@ namespace EdGraph.Platform.Client.Api
                             }
                         }
 
-                        AfterGetPaginatedObservationsDefaultImplementation(apiResponseLocalVar, tenantId, pageSize, pageIndex, orderBy, campus, evalueeName, evalueeId, formId, status, from, to);
+                        AfterGetPaginatedObservationsDefaultImplementation(apiResponseLocalVar, tenantId, pageSize, pageIndex, orderBy, campus, evalueeName, evalueeId, formId, status, from, to, observerId);
 
                         Events.ExecuteOnGetPaginatedObservations(apiResponseLocalVar);
 
@@ -9744,7 +9759,7 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorGetPaginatedObservationsDefaultImplementation(e, "/tenants/{tenantId}/observations", uriBuilderLocalVar.Path, tenantId, pageSize, pageIndex, orderBy, campus, evalueeName, evalueeId, formId, status, from, to);
+                OnErrorGetPaginatedObservationsDefaultImplementation(e, "/tenants/{tenantId}/observations", uriBuilderLocalVar.Path, tenantId, pageSize, pageIndex, orderBy, campus, evalueeName, evalueeId, formId, status, from, to, observerId);
                 Events.ExecuteOnErrorGetPaginatedObservations(e);
                 throw;
             }

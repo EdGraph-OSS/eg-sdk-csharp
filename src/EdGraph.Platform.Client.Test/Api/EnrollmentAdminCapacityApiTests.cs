@@ -39,42 +39,32 @@ using EdGraph.Platform.Client.Model;
 namespace EdGraph.Platform.Client.Test.Api
 {
     /// <summary>
-    ///  Class for testing EnrollmentAdminApplicationsApi
+    ///  Class for testing EnrollmentAdminCapacityApi
     /// </summary>
-    public sealed class EnrollmentAdminApplicationsApiTests : ApiTestsBase
+    public sealed class EnrollmentAdminCapacityApiTests : ApiTestsBase
     {
-        private readonly IEnrollmentAdminApplicationsApi _instance;
+        private readonly IEnrollmentAdminCapacityApi _instance;
 
-        public EnrollmentAdminApplicationsApiTests(): base(Array.Empty<string>())
+        public EnrollmentAdminCapacityApiTests(): base(Array.Empty<string>())
         {
-            _instance = _host.Services.GetRequiredService<IEnrollmentAdminApplicationsApi>();
+            _instance = _host.Services.GetRequiredService<IEnrollmentAdminCapacityApi>();
         }
 
         /// <summary>
-        /// Test GetEnrollmentApplication
+        /// Test GetCapacity
         /// </summary>
         [Fact (Skip = "not implemented")]
-        public async Task GetEnrollmentApplicationAsyncTest()
+        public async Task GetCapacityAsyncTest()
         {
             string tenantId = default!;
-            string applicationId = default!;
-            var response = await _instance.GetEnrollmentApplicationAsync(tenantId, applicationId);
-            var model = response.Unauthorized();
-            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
-        }
-
-        /// <summary>
-        /// Test GetEnrollmentApplications
-        /// </summary>
-        [Fact (Skip = "not implemented")]
-        public async Task GetEnrollmentApplicationsAsyncTest()
-        {
-            string tenantId = default!;
-            Client.Option<int> pageIndex = default!;
+            string schoolCode = default!;
             Client.Option<int> pageSize = default!;
-            Client.Option<string> filter = default!;
+            Client.Option<int> pageIndex = default!;
             Client.Option<string> orderBy = default!;
-            var response = await _instance.GetEnrollmentApplicationsAsync(tenantId, pageIndex, pageSize, filter, orderBy);
+            Client.Option<string> filter = default!;
+            Client.Option<string> grade = default!;
+            Client.Option<string> search = default!;
+            var response = await _instance.GetCapacityAsync(tenantId, schoolCode, pageSize, pageIndex, orderBy, filter, grade, search);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }

@@ -33,13 +33,15 @@ namespace EdGraph.Platform.Client.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto" /> class.
         /// </summary>
+        /// <param name="id">id</param>
         /// <param name="studentId">studentId</param>
         /// <param name="firstName">firstName</param>
         /// <param name="middleName">middleName</param>
         /// <param name="lastName">lastName</param>
         [JsonConstructor]
-        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto(Option<string?> studentId = default, Option<string?> firstName = default, Option<string?> middleName = default, Option<string?> lastName = default)
+        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto(Option<Guid?> id = default, Option<string?> studentId = default, Option<string?> firstName = default, Option<string?> middleName = default, Option<string?> lastName = default)
         {
+            IdOption = id;
             StudentIdOption = studentId;
             FirstNameOption = firstName;
             MiddleNameOption = middleName;
@@ -48,6 +50,19 @@ namespace EdGraph.Platform.Client.Model
         }
 
         partial void OnCreated();
+
+        /// <summary>
+        /// Used to track the state of Id
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<Guid?> IdOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets Id
+        /// </summary>
+        [JsonPropertyName("id")]
+        public Guid? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of StudentId
@@ -109,6 +124,7 @@ namespace EdGraph.Platform.Client.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto {\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  StudentId: ").Append(StudentId).Append("\n");
             sb.Append("  FirstName: ").Append(FirstName).Append("\n");
             sb.Append("  MiddleName: ").Append(MiddleName).Append("\n");
@@ -150,6 +166,7 @@ namespace EdGraph.Platform.Client.Model
 
             JsonTokenType startingTokenType = utf8JsonReader.TokenType;
 
+            Option<Guid?> id = default;
             Option<string?> studentId = default;
             Option<string?> firstName = default;
             Option<string?> middleName = default;
@@ -170,6 +187,9 @@ namespace EdGraph.Platform.Client.Model
 
                     switch (localVarJsonPropertyName)
                     {
+                        case "id":
+                            id = new Option<Guid?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (Guid?)null : utf8JsonReader.GetGuid());
+                            break;
                         case "studentId":
                             studentId = new Option<string?>(utf8JsonReader.GetString());
                             break;
@@ -188,7 +208,7 @@ namespace EdGraph.Platform.Client.Model
                 }
             }
 
-            return new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto(studentId, firstName, middleName, lastName);
+            return new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto(id, studentId, firstName, middleName, lastName);
         }
 
         /// <summary>
@@ -215,6 +235,12 @@ namespace EdGraph.Platform.Client.Model
         /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.IdOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.IdOption.Value != null)
+                    writer.WriteString("id", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.IdOption.Value!.Value);
+                else
+                    writer.WriteNull("id");
+
             if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.StudentIdOption.IsSet)
                 if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.StudentIdOption.Value != null)
                     writer.WriteString("studentId", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.StudentId);

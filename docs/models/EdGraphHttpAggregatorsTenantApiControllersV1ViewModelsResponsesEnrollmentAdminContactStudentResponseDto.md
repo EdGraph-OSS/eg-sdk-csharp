@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Id** | **Guid** |  | [optional] 
 **StudentId** | **string** |  | [optional] 
 **FirstName** | **string** |  | [optional] 
 **MiddleName** | **string** |  | [optional] 

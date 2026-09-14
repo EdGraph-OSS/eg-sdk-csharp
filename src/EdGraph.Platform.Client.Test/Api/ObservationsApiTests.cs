@@ -319,7 +319,8 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> status = default!;
             Client.Option<string> from = default!;
             Client.Option<string> to = default!;
-            var response = await _instance.GetPaginatedObservationsAsync(tenantId, pageSize, pageIndex, orderBy, campus, evalueeName, evalueeId, formId, status, from, to);
+            Client.Option<string> observerId = default!;
+            var response = await _instance.GetPaginatedObservationsAsync(tenantId, pageSize, pageIndex, orderBy, campus, evalueeName, evalueeId, formId, status, from, to, observerId);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }

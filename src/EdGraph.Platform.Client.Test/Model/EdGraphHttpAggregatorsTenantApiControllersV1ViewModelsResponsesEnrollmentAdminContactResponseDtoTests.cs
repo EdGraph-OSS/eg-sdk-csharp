@@ -162,12 +162,75 @@ namespace EdGraph.Platform.Client.Test.Model
         }
 
         /// <summary>
+        /// Test the property 'SisEmail'
+        /// </summary>
+        [Fact]
+        public void SisEmailTest()
+        {
+            // TODO unit test for the property 'SisEmail'
+        }
+
+        /// <summary>
+        /// Test the property 'SisPhone'
+        /// </summary>
+        [Fact]
+        public void SisPhoneTest()
+        {
+            // TODO unit test for the property 'SisPhone'
+        }
+
+        /// <summary>
+        /// Test the property 'EmailOverriddenBy'
+        /// </summary>
+        [Fact]
+        public void EmailOverriddenByTest()
+        {
+            // TODO unit test for the property 'EmailOverriddenBy'
+        }
+
+        /// <summary>
+        /// Test the property 'EmailOverriddenAt'
+        /// </summary>
+        [Fact]
+        public void EmailOverriddenAtTest()
+        {
+            // TODO unit test for the property 'EmailOverriddenAt'
+        }
+
+        /// <summary>
+        /// Test the property 'PhoneOverriddenBy'
+        /// </summary>
+        [Fact]
+        public void PhoneOverriddenByTest()
+        {
+            // TODO unit test for the property 'PhoneOverriddenBy'
+        }
+
+        /// <summary>
+        /// Test the property 'PhoneOverriddenAt'
+        /// </summary>
+        [Fact]
+        public void PhoneOverriddenAtTest()
+        {
+            // TODO unit test for the property 'PhoneOverriddenAt'
+        }
+
+        /// <summary>
         /// Test the property 'SignInStatus'
         /// </summary>
         [Fact]
         public void SignInStatusTest()
         {
             // TODO unit test for the property 'SignInStatus'
+        }
+
+        /// <summary>
+        /// Test the property 'IsLocked'
+        /// </summary>
+        [Fact]
+        public void IsLockedTest()
+        {
+            // TODO unit test for the property 'IsLocked'
         }
 
         /// <summary>

@@ -30,40 +30,40 @@ namespace EdGraph.Platform.Client.Api
     /// Represents a collection of functions to interact with the API endpoints
     /// This class is registered as transient.
     /// </summary>
-    public interface IEnrollmentAdminApplicationsApi : IApi
+    public interface IEnrollmentAdminResponsesApi : IApi
     {
         /// <summary>
         /// The class containing the events
         /// </summary>
-        EnrollmentAdminApplicationsApiEvents Events { get; }
+        EnrollmentAdminResponsesApiEvents Events { get; }
 
         /// <summary>
-        /// Gets an Enrollment Application.
+        /// Gets an Enrollment Application Response.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
-        /// <param name="applicationId"></param>
+        /// <param name="responseId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentApplicationApiResponse"/>&gt;</returns>
-        Task<IGetEnrollmentApplicationApiResponse> GetEnrollmentApplicationAsync(string tenantId, string applicationId, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentApplicationResponseApiResponse"/>&gt;</returns>
+        Task<IGetEnrollmentApplicationResponseApiResponse> GetEnrollmentApplicationResponseAsync(string tenantId, string responseId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Gets an Enrollment Application.
+        /// Gets an Enrollment Application Response.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <param name="tenantId"></param>
-        /// <param name="applicationId"></param>
+        /// <param name="responseId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentApplicationApiResponse"/>?&gt;</returns>
-        Task<IGetEnrollmentApplicationApiResponse?> GetEnrollmentApplicationOrDefaultAsync(string tenantId, string applicationId, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentApplicationResponseApiResponse"/>?&gt;</returns>
+        Task<IGetEnrollmentApplicationResponseApiResponse?> GetEnrollmentApplicationResponseOrDefaultAsync(string tenantId, string responseId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Searches Enrollment Applications.
+        /// Searches Enrollment Application Responses.
         /// </summary>
         /// <remarks>
         /// 
@@ -75,11 +75,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="filter"> (optional)</param>
         /// <param name="orderBy"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentApplicationsApiResponse"/>&gt;</returns>
-        Task<IGetEnrollmentApplicationsApiResponse> GetEnrollmentApplicationsAsync(string tenantId, Option<int> pageIndex = default, Option<int> pageSize = default, Option<string> filter = default, Option<string> orderBy = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentApplicationResponsesApiResponse"/>&gt;</returns>
+        Task<IGetEnrollmentApplicationResponsesApiResponse> GetEnrollmentApplicationResponsesAsync(string tenantId, Option<int> pageIndex = default, Option<int> pageSize = default, Option<string> filter = default, Option<string> orderBy = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Searches Enrollment Applications.
+        /// Searches Enrollment Application Responses.
         /// </summary>
         /// <remarks>
         /// 
@@ -90,14 +90,14 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="filter"> (optional)</param>
         /// <param name="orderBy"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentApplicationsApiResponse"/>?&gt;</returns>
-        Task<IGetEnrollmentApplicationsApiResponse?> GetEnrollmentApplicationsOrDefaultAsync(string tenantId, Option<int> pageIndex = default, Option<int> pageSize = default, Option<string> filter = default, Option<string> orderBy = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentApplicationResponsesApiResponse"/>?&gt;</returns>
+        Task<IGetEnrollmentApplicationResponsesApiResponse?> GetEnrollmentApplicationResponsesOrDefaultAsync(string tenantId, Option<int> pageIndex = default, Option<int> pageSize = default, Option<string> filter = default, Option<string> orderBy = default, System.Threading.CancellationToken cancellationToken = default);
     }
 
     /// <summary>
-    /// The <see cref="IGetEnrollmentApplicationApiResponse"/>
+    /// The <see cref="IGetEnrollmentApplicationResponseApiResponse"/>
     /// </summary>
-    public interface IGetEnrollmentApplicationApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse?>, INotFound<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails?>
+    public interface IGetEnrollmentApplicationResponseApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse?>, INotFound<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcProblemDetails?>
     {
         /// <summary>
         /// Returns true if the response is 401 Unauthorized
@@ -131,9 +131,9 @@ namespace EdGraph.Platform.Client.Api
     }
 
     /// <summary>
-    /// The <see cref="IGetEnrollmentApplicationsApiResponse"/>
+    /// The <see cref="IGetEnrollmentApplicationResponsesApiResponse"/>
     /// </summary>
-    public interface IGetEnrollmentApplicationsApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponsesSearchResponse?>
+    public interface IGetEnrollmentApplicationResponsesApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponsesSearchResponse?>
     {
         /// <summary>
         /// Returns true if the response is 401 Unauthorized
@@ -163,53 +163,53 @@ namespace EdGraph.Platform.Client.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public class EnrollmentAdminApplicationsApiEvents
+    public class EnrollmentAdminResponsesApiEvents
     {
         /// <summary>
         /// The event raised after the server response
         /// </summary>
-        public event EventHandler<ApiResponseEventArgs>? OnGetEnrollmentApplication;
+        public event EventHandler<ApiResponseEventArgs>? OnGetEnrollmentApplicationResponse;
 
         /// <summary>
         /// The event raised after an error querying the server
         /// </summary>
-        public event EventHandler<ExceptionEventArgs>? OnErrorGetEnrollmentApplication;
+        public event EventHandler<ExceptionEventArgs>? OnErrorGetEnrollmentApplicationResponse;
 
-        internal void ExecuteOnGetEnrollmentApplication(EnrollmentAdminApplicationsApi.GetEnrollmentApplicationApiResponse apiResponse)
+        internal void ExecuteOnGetEnrollmentApplicationResponse(EnrollmentAdminResponsesApi.GetEnrollmentApplicationResponseApiResponse apiResponse)
         {
-            OnGetEnrollmentApplication?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+            OnGetEnrollmentApplicationResponse?.Invoke(this, new ApiResponseEventArgs(apiResponse));
         }
 
-        internal void ExecuteOnErrorGetEnrollmentApplication(Exception exception)
+        internal void ExecuteOnErrorGetEnrollmentApplicationResponse(Exception exception)
         {
-            OnErrorGetEnrollmentApplication?.Invoke(this, new ExceptionEventArgs(exception));
+            OnErrorGetEnrollmentApplicationResponse?.Invoke(this, new ExceptionEventArgs(exception));
         }
 
         /// <summary>
         /// The event raised after the server response
         /// </summary>
-        public event EventHandler<ApiResponseEventArgs>? OnGetEnrollmentApplications;
+        public event EventHandler<ApiResponseEventArgs>? OnGetEnrollmentApplicationResponses;
 
         /// <summary>
         /// The event raised after an error querying the server
         /// </summary>
-        public event EventHandler<ExceptionEventArgs>? OnErrorGetEnrollmentApplications;
+        public event EventHandler<ExceptionEventArgs>? OnErrorGetEnrollmentApplicationResponses;
 
-        internal void ExecuteOnGetEnrollmentApplications(EnrollmentAdminApplicationsApi.GetEnrollmentApplicationsApiResponse apiResponse)
+        internal void ExecuteOnGetEnrollmentApplicationResponses(EnrollmentAdminResponsesApi.GetEnrollmentApplicationResponsesApiResponse apiResponse)
         {
-            OnGetEnrollmentApplications?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+            OnGetEnrollmentApplicationResponses?.Invoke(this, new ApiResponseEventArgs(apiResponse));
         }
 
-        internal void ExecuteOnErrorGetEnrollmentApplications(Exception exception)
+        internal void ExecuteOnErrorGetEnrollmentApplicationResponses(Exception exception)
         {
-            OnErrorGetEnrollmentApplications?.Invoke(this, new ExceptionEventArgs(exception));
+            OnErrorGetEnrollmentApplicationResponses?.Invoke(this, new ExceptionEventArgs(exception));
         }
     }
 
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    public sealed partial class EnrollmentAdminApplicationsApi : IEnrollmentAdminApplicationsApi
+    public sealed partial class EnrollmentAdminResponsesApi : IEnrollmentAdminResponsesApi
     {
         private JsonSerializerOptions _jsonSerializerOptions;
 
@@ -221,7 +221,7 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// The logger
         /// </summary>
-        public ILogger<EnrollmentAdminApplicationsApi> Logger { get; }
+        public ILogger<EnrollmentAdminResponsesApi> Logger { get; }
 
         /// <summary>
         /// The HttpClient
@@ -231,7 +231,7 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// The class containing the events
         /// </summary>
-        public EnrollmentAdminApplicationsApiEvents Events { get; }
+        public EnrollmentAdminResponsesApiEvents Events { get; }
 
         /// <summary>
         /// A token provider of type <see cref="OauthTokenProvider"/>
@@ -239,35 +239,35 @@ namespace EdGraph.Platform.Client.Api
         public TokenProvider<OAuthToken> OauthTokenProvider { get; }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="EnrollmentAdminApplicationsApi"/> class.
+        /// Initializes a new instance of the <see cref="EnrollmentAdminResponsesApi"/> class.
         /// </summary>
         /// <returns></returns>
-        public EnrollmentAdminApplicationsApi(ILogger<EnrollmentAdminApplicationsApi> logger, ILoggerFactory loggerFactory, HttpClient httpClient, JsonSerializerOptionsProvider jsonSerializerOptionsProvider, EnrollmentAdminApplicationsApiEvents enrollmentAdminApplicationsApiEvents,
+        public EnrollmentAdminResponsesApi(ILogger<EnrollmentAdminResponsesApi> logger, ILoggerFactory loggerFactory, HttpClient httpClient, JsonSerializerOptionsProvider jsonSerializerOptionsProvider, EnrollmentAdminResponsesApiEvents enrollmentAdminResponsesApiEvents,
             TokenProvider<OAuthToken> oauthTokenProvider)
         {
             _jsonSerializerOptions = jsonSerializerOptionsProvider.Options;
             LoggerFactory = loggerFactory;
-            Logger = LoggerFactory.CreateLogger<EnrollmentAdminApplicationsApi>();
+            Logger = LoggerFactory.CreateLogger<EnrollmentAdminResponsesApi>();
             HttpClient = httpClient;
-            Events = enrollmentAdminApplicationsApiEvents;
+            Events = enrollmentAdminResponsesApiEvents;
             OauthTokenProvider = oauthTokenProvider;
         }
 
-        partial void FormatGetEnrollmentApplication(ref string tenantId, ref string applicationId);
+        partial void FormatGetEnrollmentApplicationResponse(ref string tenantId, ref string responseId);
 
         /// <summary>
         /// Validates the request parameters
         /// </summary>
         /// <param name="tenantId"></param>
-        /// <param name="applicationId"></param>
+        /// <param name="responseId"></param>
         /// <returns></returns>
-        private void ValidateGetEnrollmentApplication(string tenantId, string applicationId)
+        private void ValidateGetEnrollmentApplicationResponse(string tenantId, string responseId)
         {
             if (tenantId == null)
                 throw new ArgumentNullException(nameof(tenantId));
 
-            if (applicationId == null)
-                throw new ArgumentNullException(nameof(applicationId));
+            if (responseId == null)
+                throw new ArgumentNullException(nameof(responseId));
         }
 
         /// <summary>
@@ -275,11 +275,11 @@ namespace EdGraph.Platform.Client.Api
         /// </summary>
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
-        /// <param name="applicationId"></param>
-        private void AfterGetEnrollmentApplicationDefaultImplementation(IGetEnrollmentApplicationApiResponse apiResponseLocalVar, string tenantId, string applicationId)
+        /// <param name="responseId"></param>
+        private void AfterGetEnrollmentApplicationResponseDefaultImplementation(IGetEnrollmentApplicationResponseApiResponse apiResponseLocalVar, string tenantId, string responseId)
         {
             bool suppressDefaultLog = false;
-            AfterGetEnrollmentApplication(ref suppressDefaultLog, apiResponseLocalVar, tenantId, applicationId);
+            AfterGetEnrollmentApplicationResponse(ref suppressDefaultLog, apiResponseLocalVar, tenantId, responseId);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -290,8 +290,8 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="suppressDefaultLog"></param>
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
-        /// <param name="applicationId"></param>
-        partial void AfterGetEnrollmentApplication(ref bool suppressDefaultLog, IGetEnrollmentApplicationApiResponse apiResponseLocalVar, string tenantId, string applicationId);
+        /// <param name="responseId"></param>
+        partial void AfterGetEnrollmentApplicationResponse(ref bool suppressDefaultLog, IGetEnrollmentApplicationResponseApiResponse apiResponseLocalVar, string tenantId, string responseId);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -300,11 +300,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pathFormatLocalVar"></param>
         /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
-        /// <param name="applicationId"></param>
-        private void OnErrorGetEnrollmentApplicationDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string applicationId)
+        /// <param name="responseId"></param>
+        private void OnErrorGetEnrollmentApplicationResponseDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string responseId)
         {
             bool suppressDefaultLogLocalVar = false;
-            OnErrorGetEnrollmentApplication(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, applicationId);
+            OnErrorGetEnrollmentApplicationResponse(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, responseId);
             if (!suppressDefaultLogLocalVar)
                 Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
@@ -317,21 +317,21 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pathFormatLocalVar"></param>
         /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
-        /// <param name="applicationId"></param>
-        partial void OnErrorGetEnrollmentApplication(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string applicationId);
+        /// <param name="responseId"></param>
+        partial void OnErrorGetEnrollmentApplicationResponse(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string responseId);
 
         /// <summary>
-        /// Gets an Enrollment Application. 
+        /// Gets an Enrollment Application Response. 
         /// </summary>
         /// <param name="tenantId"></param>
-        /// <param name="applicationId"></param>
+        /// <param name="responseId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentApplicationApiResponse"/>&gt;</returns>
-        public async Task<IGetEnrollmentApplicationApiResponse?> GetEnrollmentApplicationOrDefaultAsync(string tenantId, string applicationId, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentApplicationResponseApiResponse"/>&gt;</returns>
+        public async Task<IGetEnrollmentApplicationResponseApiResponse?> GetEnrollmentApplicationResponseOrDefaultAsync(string tenantId, string responseId, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await GetEnrollmentApplicationAsync(tenantId, applicationId, cancellationToken).ConfigureAwait(false);
+                return await GetEnrollmentApplicationResponseAsync(tenantId, responseId, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -340,22 +340,22 @@ namespace EdGraph.Platform.Client.Api
         }
 
         /// <summary>
-        /// Gets an Enrollment Application. 
+        /// Gets an Enrollment Application Response. 
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
-        /// <param name="applicationId"></param>
+        /// <param name="responseId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentApplicationApiResponse"/>&gt;</returns>
-        public async Task<IGetEnrollmentApplicationApiResponse> GetEnrollmentApplicationAsync(string tenantId, string applicationId, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentApplicationResponseApiResponse"/>&gt;</returns>
+        public async Task<IGetEnrollmentApplicationResponseApiResponse> GetEnrollmentApplicationResponseAsync(string tenantId, string responseId, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
             try
             {
-                ValidateGetEnrollmentApplication(tenantId, applicationId);
+                ValidateGetEnrollmentApplicationResponse(tenantId, responseId);
 
-                FormatGetEnrollmentApplication(ref tenantId, ref applicationId);
+                FormatGetEnrollmentApplicationResponse(ref tenantId, ref responseId);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -363,10 +363,10 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
                     uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
-                        ? "/tenants/{tenantId}/enrollmentadmin/applications/{applicationId}"
-                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/applications/{applicationId}");
+                        ? "/tenants/{tenantId}/enrollmentadmin/responses/{responseId}"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/responses/{responseId}");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
-                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BapplicationId%7D", Uri.EscapeDataString(applicationId.ToString()));
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BresponseId%7D", Uri.EscapeDataString(responseId.ToString()));
 
                     List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
                     httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
@@ -392,21 +392,21 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        ILogger<GetEnrollmentApplicationApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<GetEnrollmentApplicationApiResponse>();
-                        GetEnrollmentApplicationApiResponse apiResponseLocalVar;
+                        ILogger<GetEnrollmentApplicationResponseApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<GetEnrollmentApplicationResponseApiResponse>();
+                        GetEnrollmentApplicationResponseApiResponse apiResponseLocalVar;
 
                         switch ((int)httpResponseMessageLocalVar.StatusCode) {
                             default: {
                                 string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/applications/{applicationId}", requestedAtLocalVar, _jsonSerializerOptions);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/responses/{responseId}", requestedAtLocalVar, _jsonSerializerOptions);
 
                                 break;
                             }
                         }
 
-                        AfterGetEnrollmentApplicationDefaultImplementation(apiResponseLocalVar, tenantId, applicationId);
+                        AfterGetEnrollmentApplicationResponseDefaultImplementation(apiResponseLocalVar, tenantId, responseId);
 
-                        Events.ExecuteOnGetEnrollmentApplication(apiResponseLocalVar);
+                        Events.ExecuteOnGetEnrollmentApplicationResponse(apiResponseLocalVar);
 
                         if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
                             foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
@@ -418,24 +418,24 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorGetEnrollmentApplicationDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/applications/{applicationId}", uriBuilderLocalVar.Path, tenantId, applicationId);
-                Events.ExecuteOnErrorGetEnrollmentApplication(e);
+                OnErrorGetEnrollmentApplicationResponseDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/responses/{responseId}", uriBuilderLocalVar.Path, tenantId, responseId);
+                Events.ExecuteOnErrorGetEnrollmentApplicationResponse(e);
                 throw;
             }
         }
 
         /// <summary>
-        /// The <see cref="GetEnrollmentApplicationApiResponse"/>
+        /// The <see cref="GetEnrollmentApplicationResponseApiResponse"/>
         /// </summary>
-        public partial class GetEnrollmentApplicationApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IGetEnrollmentApplicationApiResponse
+        public partial class GetEnrollmentApplicationResponseApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IGetEnrollmentApplicationResponseApiResponse
         {
             /// <summary>
             /// The logger
             /// </summary>
-            public ILogger<GetEnrollmentApplicationApiResponse> Logger { get; }
+            public ILogger<GetEnrollmentApplicationResponseApiResponse> Logger { get; }
 
             /// <summary>
-            /// The <see cref="GetEnrollmentApplicationApiResponse"/>
+            /// The <see cref="GetEnrollmentApplicationResponseApiResponse"/>
             /// </summary>
             /// <param name="logger"></param>
             /// <param name="httpRequestMessage"></param>
@@ -444,14 +444,14 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public GetEnrollmentApplicationApiResponse(ILogger<GetEnrollmentApplicationApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            public GetEnrollmentApplicationResponseApiResponse(ILogger<GetEnrollmentApplicationResponseApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
             }
 
             /// <summary>
-            /// The <see cref="GetEnrollmentApplicationApiResponse"/>
+            /// The <see cref="GetEnrollmentApplicationResponseApiResponse"/>
             /// </summary>
             /// <param name="logger"></param>
             /// <param name="httpRequestMessage"></param>
@@ -460,7 +460,7 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public GetEnrollmentApplicationApiResponse(ILogger<GetEnrollmentApplicationApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            public GetEnrollmentApplicationResponseApiResponse(ILogger<GetEnrollmentApplicationResponseApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -669,7 +669,7 @@ namespace EdGraph.Platform.Client.Api
             partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
         }
 
-        partial void FormatGetEnrollmentApplications(ref string tenantId, ref Option<int> pageIndex, ref Option<int> pageSize, ref Option<string> filter, ref Option<string> orderBy);
+        partial void FormatGetEnrollmentApplicationResponses(ref string tenantId, ref Option<int> pageIndex, ref Option<int> pageSize, ref Option<string> filter, ref Option<string> orderBy);
 
         /// <summary>
         /// Validates the request parameters
@@ -678,7 +678,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="filter"></param>
         /// <param name="orderBy"></param>
         /// <returns></returns>
-        private void ValidateGetEnrollmentApplications(string tenantId, Option<string> filter, Option<string> orderBy)
+        private void ValidateGetEnrollmentApplicationResponses(string tenantId, Option<string> filter, Option<string> orderBy)
         {
             if (tenantId == null)
                 throw new ArgumentNullException(nameof(tenantId));
@@ -699,10 +699,10 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pageSize"></param>
         /// <param name="filter"></param>
         /// <param name="orderBy"></param>
-        private void AfterGetEnrollmentApplicationsDefaultImplementation(IGetEnrollmentApplicationsApiResponse apiResponseLocalVar, string tenantId, Option<int> pageIndex, Option<int> pageSize, Option<string> filter, Option<string> orderBy)
+        private void AfterGetEnrollmentApplicationResponsesDefaultImplementation(IGetEnrollmentApplicationResponsesApiResponse apiResponseLocalVar, string tenantId, Option<int> pageIndex, Option<int> pageSize, Option<string> filter, Option<string> orderBy)
         {
             bool suppressDefaultLog = false;
-            AfterGetEnrollmentApplications(ref suppressDefaultLog, apiResponseLocalVar, tenantId, pageIndex, pageSize, filter, orderBy);
+            AfterGetEnrollmentApplicationResponses(ref suppressDefaultLog, apiResponseLocalVar, tenantId, pageIndex, pageSize, filter, orderBy);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -717,7 +717,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pageSize"></param>
         /// <param name="filter"></param>
         /// <param name="orderBy"></param>
-        partial void AfterGetEnrollmentApplications(ref bool suppressDefaultLog, IGetEnrollmentApplicationsApiResponse apiResponseLocalVar, string tenantId, Option<int> pageIndex, Option<int> pageSize, Option<string> filter, Option<string> orderBy);
+        partial void AfterGetEnrollmentApplicationResponses(ref bool suppressDefaultLog, IGetEnrollmentApplicationResponsesApiResponse apiResponseLocalVar, string tenantId, Option<int> pageIndex, Option<int> pageSize, Option<string> filter, Option<string> orderBy);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -730,10 +730,10 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pageSize"></param>
         /// <param name="filter"></param>
         /// <param name="orderBy"></param>
-        private void OnErrorGetEnrollmentApplicationsDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<int> pageIndex, Option<int> pageSize, Option<string> filter, Option<string> orderBy)
+        private void OnErrorGetEnrollmentApplicationResponsesDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<int> pageIndex, Option<int> pageSize, Option<string> filter, Option<string> orderBy)
         {
             bool suppressDefaultLogLocalVar = false;
-            OnErrorGetEnrollmentApplications(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, pageIndex, pageSize, filter, orderBy);
+            OnErrorGetEnrollmentApplicationResponses(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, pageIndex, pageSize, filter, orderBy);
             if (!suppressDefaultLogLocalVar)
                 Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
@@ -750,10 +750,10 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pageSize"></param>
         /// <param name="filter"></param>
         /// <param name="orderBy"></param>
-        partial void OnErrorGetEnrollmentApplications(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<int> pageIndex, Option<int> pageSize, Option<string> filter, Option<string> orderBy);
+        partial void OnErrorGetEnrollmentApplicationResponses(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<int> pageIndex, Option<int> pageSize, Option<string> filter, Option<string> orderBy);
 
         /// <summary>
-        /// Searches Enrollment Applications. 
+        /// Searches Enrollment Application Responses. 
         /// </summary>
         /// <param name="tenantId"></param>
         /// <param name="pageIndex"> (optional)</param>
@@ -761,12 +761,12 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="filter"> (optional)</param>
         /// <param name="orderBy"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentApplicationsApiResponse"/>&gt;</returns>
-        public async Task<IGetEnrollmentApplicationsApiResponse?> GetEnrollmentApplicationsOrDefaultAsync(string tenantId, Option<int> pageIndex = default, Option<int> pageSize = default, Option<string> filter = default, Option<string> orderBy = default, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentApplicationResponsesApiResponse"/>&gt;</returns>
+        public async Task<IGetEnrollmentApplicationResponsesApiResponse?> GetEnrollmentApplicationResponsesOrDefaultAsync(string tenantId, Option<int> pageIndex = default, Option<int> pageSize = default, Option<string> filter = default, Option<string> orderBy = default, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await GetEnrollmentApplicationsAsync(tenantId, pageIndex, pageSize, filter, orderBy, cancellationToken).ConfigureAwait(false);
+                return await GetEnrollmentApplicationResponsesAsync(tenantId, pageIndex, pageSize, filter, orderBy, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -775,7 +775,7 @@ namespace EdGraph.Platform.Client.Api
         }
 
         /// <summary>
-        /// Searches Enrollment Applications. 
+        /// Searches Enrollment Application Responses. 
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
@@ -784,16 +784,16 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="filter"> (optional)</param>
         /// <param name="orderBy"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentApplicationsApiResponse"/>&gt;</returns>
-        public async Task<IGetEnrollmentApplicationsApiResponse> GetEnrollmentApplicationsAsync(string tenantId, Option<int> pageIndex = default, Option<int> pageSize = default, Option<string> filter = default, Option<string> orderBy = default, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentApplicationResponsesApiResponse"/>&gt;</returns>
+        public async Task<IGetEnrollmentApplicationResponsesApiResponse> GetEnrollmentApplicationResponsesAsync(string tenantId, Option<int> pageIndex = default, Option<int> pageSize = default, Option<string> filter = default, Option<string> orderBy = default, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
             try
             {
-                ValidateGetEnrollmentApplications(tenantId, filter, orderBy);
+                ValidateGetEnrollmentApplicationResponses(tenantId, filter, orderBy);
 
-                FormatGetEnrollmentApplications(ref tenantId, ref pageIndex, ref pageSize, ref filter, ref orderBy);
+                FormatGetEnrollmentApplicationResponses(ref tenantId, ref pageIndex, ref pageSize, ref filter, ref orderBy);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -801,8 +801,8 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
                     uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
-                        ? "/tenants/{tenantId}/enrollmentadmin/applications"
-                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/applications");
+                        ? "/tenants/{tenantId}/enrollmentadmin/responses"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/responses");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
 
                     System.Collections.Specialized.NameValueCollection parseQueryStringLocalVar = System.Web.HttpUtility.ParseQueryString(string.Empty);
@@ -845,21 +845,21 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        ILogger<GetEnrollmentApplicationsApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<GetEnrollmentApplicationsApiResponse>();
-                        GetEnrollmentApplicationsApiResponse apiResponseLocalVar;
+                        ILogger<GetEnrollmentApplicationResponsesApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<GetEnrollmentApplicationResponsesApiResponse>();
+                        GetEnrollmentApplicationResponsesApiResponse apiResponseLocalVar;
 
                         switch ((int)httpResponseMessageLocalVar.StatusCode) {
                             default: {
                                 string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/applications", requestedAtLocalVar, _jsonSerializerOptions);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/responses", requestedAtLocalVar, _jsonSerializerOptions);
 
                                 break;
                             }
                         }
 
-                        AfterGetEnrollmentApplicationsDefaultImplementation(apiResponseLocalVar, tenantId, pageIndex, pageSize, filter, orderBy);
+                        AfterGetEnrollmentApplicationResponsesDefaultImplementation(apiResponseLocalVar, tenantId, pageIndex, pageSize, filter, orderBy);
 
-                        Events.ExecuteOnGetEnrollmentApplications(apiResponseLocalVar);
+                        Events.ExecuteOnGetEnrollmentApplicationResponses(apiResponseLocalVar);
 
                         if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
                             foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
@@ -871,24 +871,24 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorGetEnrollmentApplicationsDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/applications", uriBuilderLocalVar.Path, tenantId, pageIndex, pageSize, filter, orderBy);
-                Events.ExecuteOnErrorGetEnrollmentApplications(e);
+                OnErrorGetEnrollmentApplicationResponsesDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/responses", uriBuilderLocalVar.Path, tenantId, pageIndex, pageSize, filter, orderBy);
+                Events.ExecuteOnErrorGetEnrollmentApplicationResponses(e);
                 throw;
             }
         }
 
         /// <summary>
-        /// The <see cref="GetEnrollmentApplicationsApiResponse"/>
+        /// The <see cref="GetEnrollmentApplicationResponsesApiResponse"/>
         /// </summary>
-        public partial class GetEnrollmentApplicationsApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IGetEnrollmentApplicationsApiResponse
+        public partial class GetEnrollmentApplicationResponsesApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IGetEnrollmentApplicationResponsesApiResponse
         {
             /// <summary>
             /// The logger
             /// </summary>
-            public ILogger<GetEnrollmentApplicationsApiResponse> Logger { get; }
+            public ILogger<GetEnrollmentApplicationResponsesApiResponse> Logger { get; }
 
             /// <summary>
-            /// The <see cref="GetEnrollmentApplicationsApiResponse"/>
+            /// The <see cref="GetEnrollmentApplicationResponsesApiResponse"/>
             /// </summary>
             /// <param name="logger"></param>
             /// <param name="httpRequestMessage"></param>
@@ -897,14 +897,14 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public GetEnrollmentApplicationsApiResponse(ILogger<GetEnrollmentApplicationsApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            public GetEnrollmentApplicationResponsesApiResponse(ILogger<GetEnrollmentApplicationResponsesApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
             }
 
             /// <summary>
-            /// The <see cref="GetEnrollmentApplicationsApiResponse"/>
+            /// The <see cref="GetEnrollmentApplicationResponsesApiResponse"/>
             /// </summary>
             /// <param name="logger"></param>
             /// <param name="httpRequestMessage"></param>
@@ -913,7 +913,7 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public GetEnrollmentApplicationsApiResponse(ILogger<GetEnrollmentApplicationsApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            public GetEnrollmentApplicationResponsesApiResponse(ILogger<GetEnrollmentApplicationResponsesApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);

@@ -26,12 +26,12 @@ using EdGraph.Platform.Client.Client;
 namespace EdGraph.Platform.Client.Model
 {
     /// <summary>
-    /// EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage
+    /// EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage
     /// </summary>
-    public partial class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage : IValidatableObject
+    public partial class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage" /> class.
+        /// Initializes a new instance of the <see cref="EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage" /> class.
         /// </summary>
         /// <param name="index">index</param>
         /// <param name="code">code</param>
@@ -43,7 +43,7 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="updatedDateTime">updatedDateTime</param>
         /// <param name="data">data</param>
         [JsonConstructor]
-        public EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage(Option<int?> index = default, Option<string?> code = default, Option<string?> description = default, Option<string?> status = default, Option<string?> createdBy = default, Option<string?> createdDateTime = default, Option<string?> updatedBy = default, Option<string?> updatedDateTime = default, Option<GoogleProtobufWellKnownTypesStruct?> data = default)
+        public EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage(Option<int?> index = default, Option<string?> code = default, Option<string?> description = default, Option<string?> status = default, Option<string?> createdBy = default, Option<string?> createdDateTime = default, Option<string?> updatedBy = default, Option<string?> updatedDateTime = default, Option<GoogleProtobufWellKnownTypesStruct?> data = default)
         {
             IndexOption = index;
             CodeOption = code;
@@ -183,7 +183,7 @@ namespace EdGraph.Platform.Client.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage {\n");
+            sb.Append("class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage {\n");
             sb.Append("  Index: ").Append(Index).Append("\n");
             sb.Append("  Code: ").Append(Code).Append("\n");
             sb.Append("  Description: ").Append(Description).Append("\n");
@@ -209,19 +209,19 @@ namespace EdGraph.Platform.Client.Model
     }
 
     /// <summary>
-    /// A Json converter for type <see cref="EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage" />
+    /// A Json converter for type <see cref="EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage" />
     /// </summary>
-    public class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessageJsonConverter : JsonConverter<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage>
+    public class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessageJsonConverter : JsonConverter<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage>
     {
         /// <summary>
-        /// Deserializes json to <see cref="EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage" />
+        /// Deserializes json to <see cref="EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage" />
         /// </summary>
         /// <param name="utf8JsonReader"></param>
         /// <param name="typeToConvert"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <returns></returns>
         /// <exception cref="JsonException"></exception>
-        public override EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
+        public override EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage Read(ref Utf8JsonReader utf8JsonReader, Type typeToConvert, JsonSerializerOptions jsonSerializerOptions)
         {
             int currentDepth = utf8JsonReader.CurrentDepth;
 
@@ -289,90 +289,90 @@ namespace EdGraph.Platform.Client.Model
             }
 
             if (index.IsSet && index.Value == null)
-                throw new ArgumentNullException(nameof(index), "Property is not nullable for class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.");
+                throw new ArgumentNullException(nameof(index), "Property is not nullable for class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.");
 
             if (data.IsSet && data.Value == null)
-                throw new ArgumentNullException(nameof(data), "Property is not nullable for class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.");
+                throw new ArgumentNullException(nameof(data), "Property is not nullable for class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.");
 
-            return new EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage(index, code, description, status, createdBy, createdDateTime, updatedBy, updatedDateTime, data);
+            return new EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage(index, code, description, status, createdBy, createdDateTime, updatedBy, updatedDateTime, data);
         }
 
         /// <summary>
-        /// Serializes a <see cref="EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage" />
+        /// Serializes a <see cref="EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage"></param>
+        /// <param name="enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public override void Write(Utf8JsonWriter writer, EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage, JsonSerializerOptions jsonSerializerOptions)
+        public override void Write(Utf8JsonWriter writer, EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage, JsonSerializerOptions jsonSerializerOptions)
         {
             writer.WriteStartObject();
 
-            WriteProperties(writer, enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage, jsonSerializerOptions);
+            WriteProperties(writer, enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage, jsonSerializerOptions);
             writer.WriteEndObject();
         }
 
         /// <summary>
-        /// Serializes the properties of <see cref="EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage" />
+        /// Serializes the properties of <see cref="EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage" />
         /// </summary>
         /// <param name="writer"></param>
-        /// <param name="enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage"></param>
+        /// <param name="enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage"></param>
         /// <param name="jsonSerializerOptions"></param>
         /// <exception cref="NotImplementedException"></exception>
-        public void WriteProperties(Utf8JsonWriter writer, EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage, JsonSerializerOptions jsonSerializerOptions)
+        public void WriteProperties(Utf8JsonWriter writer, EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.DataOption.IsSet && enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.Data == null)
-                throw new ArgumentNullException(nameof(enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.Data), "Property is required for class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.");
+            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.DataOption.IsSet && enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.Data == null)
+                throw new ArgumentNullException(nameof(enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.Data), "Property is required for class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.");
 
-            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.IndexOption.IsSet)
-                writer.WriteNumber("index", enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.IndexOption.Value!.Value);
+            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.IndexOption.IsSet)
+                writer.WriteNumber("index", enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.IndexOption.Value!.Value);
 
-            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.CodeOption.IsSet)
-                if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.CodeOption.Value != null)
-                    writer.WriteString("code", enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.Code);
+            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.CodeOption.IsSet)
+                if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.CodeOption.Value != null)
+                    writer.WriteString("code", enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.Code);
                 else
                     writer.WriteNull("code");
 
-            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.DescriptionOption.IsSet)
-                if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.DescriptionOption.Value != null)
-                    writer.WriteString("description", enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.Description);
+            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.DescriptionOption.IsSet)
+                if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.DescriptionOption.Value != null)
+                    writer.WriteString("description", enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.Description);
                 else
                     writer.WriteNull("description");
 
-            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.StatusOption.IsSet)
-                if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.StatusOption.Value != null)
-                    writer.WriteString("status", enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.Status);
+            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.StatusOption.IsSet)
+                if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.StatusOption.Value != null)
+                    writer.WriteString("status", enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.Status);
                 else
                     writer.WriteNull("status");
 
-            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.CreatedByOption.IsSet)
-                if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.CreatedByOption.Value != null)
-                    writer.WriteString("createdBy", enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.CreatedBy);
+            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.CreatedByOption.IsSet)
+                if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.CreatedByOption.Value != null)
+                    writer.WriteString("createdBy", enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.CreatedBy);
                 else
                     writer.WriteNull("createdBy");
 
-            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.CreatedDateTimeOption.IsSet)
-                if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.CreatedDateTimeOption.Value != null)
-                    writer.WriteString("createdDateTime", enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.CreatedDateTime);
+            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.CreatedDateTimeOption.IsSet)
+                if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.CreatedDateTimeOption.Value != null)
+                    writer.WriteString("createdDateTime", enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.CreatedDateTime);
                 else
                     writer.WriteNull("createdDateTime");
 
-            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.UpdatedByOption.IsSet)
-                if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.UpdatedByOption.Value != null)
-                    writer.WriteString("updatedBy", enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.UpdatedBy);
+            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.UpdatedByOption.IsSet)
+                if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.UpdatedByOption.Value != null)
+                    writer.WriteString("updatedBy", enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.UpdatedBy);
                 else
                     writer.WriteNull("updatedBy");
 
-            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.UpdatedDateTimeOption.IsSet)
-                if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.UpdatedDateTimeOption.Value != null)
-                    writer.WriteString("updatedDateTime", enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.UpdatedDateTime);
+            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.UpdatedDateTimeOption.IsSet)
+                if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.UpdatedDateTimeOption.Value != null)
+                    writer.WriteString("updatedDateTime", enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.UpdatedDateTime);
                 else
                     writer.WriteNull("updatedDateTime");
 
-            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.DataOption.IsSet)
+            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.DataOption.IsSet)
             {
                 writer.WritePropertyName("data");
-                JsonSerializer.Serialize(writer, enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage.Data, jsonSerializerOptions);
+                JsonSerializer.Serialize(writer, enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage.Data, jsonSerializerOptions);
             }
         }
     }

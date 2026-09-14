@@ -72,30 +72,30 @@ namespace EdGraph.Platform.Client.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'ApplicationProfile'
+        /// Test the property 'ApplicationPathway'
         /// </summary>
         [Fact]
-        public void ApplicationProfileTest()
+        public void ApplicationPathwayTest()
         {
-            // TODO unit test for the property 'ApplicationProfile'
+            // TODO unit test for the property 'ApplicationPathway'
         }
 
         /// <summary>
-        /// Test the property 'CurrentStepCode'
+        /// Test the property 'CurrentScreenCode'
         /// </summary>
         [Fact]
-        public void CurrentStepCodeTest()
+        public void CurrentScreenCodeTest()
         {
-            // TODO unit test for the property 'CurrentStepCode'
+            // TODO unit test for the property 'CurrentScreenCode'
         }
 
         /// <summary>
-        /// Test the property 'CompletedProgress'
+        /// Test the property 'Progress'
         /// </summary>
         [Fact]
-        public void CompletedProgressTest()
+        public void ProgressTest()
         {
-            // TODO unit test for the property 'CompletedProgress'
+            // TODO unit test for the property 'Progress'
         }
 
         /// <summary>
@@ -126,12 +126,12 @@ namespace EdGraph.Platform.Client.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'Steps'
+        /// Test the property 'Screens'
         /// </summary>
         [Fact]
-        public void StepsTest()
+        public void ScreensTest()
         {
-            // TODO unit test for the property 'Steps'
+            // TODO unit test for the property 'Screens'
         }
 
         /// <summary>
@@ -195,6 +195,60 @@ namespace EdGraph.Platform.Client.Test.Model
         public void IsDeletedTest()
         {
             // TODO unit test for the property 'IsDeleted'
+        }
+
+        /// <summary>
+        /// Test the property 'Status'
+        /// </summary>
+        [Fact]
+        public void StatusTest()
+        {
+            // TODO unit test for the property 'Status'
+        }
+
+        /// <summary>
+        /// Test the property 'StudentFirstName'
+        /// </summary>
+        [Fact]
+        public void StudentFirstNameTest()
+        {
+            // TODO unit test for the property 'StudentFirstName'
+        }
+
+        /// <summary>
+        /// Test the property 'StudentLastName'
+        /// </summary>
+        [Fact]
+        public void StudentLastNameTest()
+        {
+            // TODO unit test for the property 'StudentLastName'
+        }
+
+        /// <summary>
+        /// Test the property 'StudentLocalId'
+        /// </summary>
+        [Fact]
+        public void StudentLocalIdTest()
+        {
+            // TODO unit test for the property 'StudentLocalId'
+        }
+
+        /// <summary>
+        /// Test the property 'NextSchoolCode'
+        /// </summary>
+        [Fact]
+        public void NextSchoolCodeTest()
+        {
+            // TODO unit test for the property 'NextSchoolCode'
+        }
+
+        /// <summary>
+        /// Test the property 'NextSchoolName'
+        /// </summary>
+        [Fact]
+        public void NextSchoolNameTest()
+        {
+            // TODO unit test for the property 'NextSchoolName'
         }
     }
 }

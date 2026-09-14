@@ -35,13 +35,13 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <param name="id">id</param>
         /// <param name="tenantId">tenantId</param>
-        /// <param name="applicationProfile">applicationProfile</param>
-        /// <param name="currentStepCode">currentStepCode</param>
-        /// <param name="completedProgress">completedProgress</param>
+        /// <param name="applicationPathway">applicationPathway</param>
+        /// <param name="currentScreenCode">currentScreenCode</param>
+        /// <param name="progress">Decimal progress (0-100, 2dp) carried as an invariant-culture string,  mirroring the legacy enrollmentresults.proto completedProgress convention.</param>
         /// <param name="studentId">studentId</param>
         /// <param name="languageCode">languageCode</param>
         /// <param name="contacts">contacts</param>
-        /// <param name="steps">steps</param>
+        /// <param name="screens">screens</param>
         /// <param name="createdBy">createdBy</param>
         /// <param name="createdDateTime">createdDateTime</param>
         /// <param name="lastModifiedBy">lastModifiedBy</param>
@@ -49,18 +49,24 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="deletedBy">deletedBy</param>
         /// <param name="deletedDateTime">deletedDateTime</param>
         /// <param name="isDeleted">isDeleted</param>
+        /// <param name="status">status</param>
+        /// <param name="studentFirstName">studentFirstName</param>
+        /// <param name="studentLastName">studentLastName</param>
+        /// <param name="studentLocalId">studentLocalId</param>
+        /// <param name="nextSchoolCode">nextSchoolCode</param>
+        /// <param name="nextSchoolName">nextSchoolName</param>
         [JsonConstructor]
-        public EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse(Option<string?> id = default, Option<string?> tenantId = default, Option<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage?> applicationProfile = default, Option<string?> currentStepCode = default, Option<double?> completedProgress = default, Option<string?> studentId = default, Option<string?> languageCode = default, Option<List<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseContactMessage>?> contacts = default, Option<List<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage>?> steps = default, Option<string?> createdBy = default, Option<string?> createdDateTime = default, Option<string?> lastModifiedBy = default, Option<string?> lastModifiedDateTime = default, Option<string?> deletedBy = default, Option<string?> deletedDateTime = default, Option<bool?> isDeleted = default)
+        public EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse(Option<string?> id = default, Option<string?> tenantId = default, Option<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage?> applicationPathway = default, Option<string?> currentScreenCode = default, Option<string?> progress = default, Option<string?> studentId = default, Option<string?> languageCode = default, Option<List<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseContactMessage>?> contacts = default, Option<List<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage>?> screens = default, Option<string?> createdBy = default, Option<string?> createdDateTime = default, Option<string?> lastModifiedBy = default, Option<string?> lastModifiedDateTime = default, Option<string?> deletedBy = default, Option<string?> deletedDateTime = default, Option<bool?> isDeleted = default, Option<string?> status = default, Option<string?> studentFirstName = default, Option<string?> studentLastName = default, Option<string?> studentLocalId = default, Option<string?> nextSchoolCode = default, Option<string?> nextSchoolName = default)
         {
             IdOption = id;
             TenantIdOption = tenantId;
-            ApplicationProfileOption = applicationProfile;
-            CurrentStepCodeOption = currentStepCode;
-            CompletedProgressOption = completedProgress;
+            ApplicationPathwayOption = applicationPathway;
+            CurrentScreenCodeOption = currentScreenCode;
+            ProgressOption = progress;
             StudentIdOption = studentId;
             LanguageCodeOption = languageCode;
             ContactsOption = contacts;
-            StepsOption = steps;
+            ScreensOption = screens;
             CreatedByOption = createdBy;
             CreatedDateTimeOption = createdDateTime;
             LastModifiedByOption = lastModifiedBy;
@@ -68,6 +74,12 @@ namespace EdGraph.Platform.Client.Model
             DeletedByOption = deletedBy;
             DeletedDateTimeOption = deletedDateTime;
             IsDeletedOption = isDeleted;
+            StatusOption = status;
+            StudentFirstNameOption = studentFirstName;
+            StudentLastNameOption = studentLastName;
+            StudentLocalIdOption = studentLocalId;
+            NextSchoolCodeOption = nextSchoolCode;
+            NextSchoolNameOption = nextSchoolName;
             OnCreated();
         }
 
@@ -100,43 +112,44 @@ namespace EdGraph.Platform.Client.Model
         public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
-        /// Used to track the state of ApplicationProfile
+        /// Used to track the state of ApplicationPathway
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage?> ApplicationProfileOption { get; private set; }
+        public Option<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage?> ApplicationPathwayOption { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ApplicationProfile
+        /// Gets or Sets ApplicationPathway
         /// </summary>
-        [JsonPropertyName("applicationProfile")]
-        public EnrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage? ApplicationProfile { get { return this.ApplicationProfileOption.Value; } set { this.ApplicationProfileOption = new(value); } }
+        [JsonPropertyName("applicationPathway")]
+        public EnrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage? ApplicationPathway { get { return this.ApplicationPathwayOption.Value; } set { this.ApplicationPathwayOption = new(value); } }
 
         /// <summary>
-        /// Used to track the state of CurrentStepCode
-        /// </summary>
-        [JsonIgnore]
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<string?> CurrentStepCodeOption { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets CurrentStepCode
-        /// </summary>
-        [JsonPropertyName("currentStepCode")]
-        public string? CurrentStepCode { get { return this.CurrentStepCodeOption.Value; } set { this.CurrentStepCodeOption = new(value); } }
-
-        /// <summary>
-        /// Used to track the state of CompletedProgress
+        /// Used to track the state of CurrentScreenCode
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<double?> CompletedProgressOption { get; private set; }
+        public Option<string?> CurrentScreenCodeOption { get; private set; }
 
         /// <summary>
-        /// Gets or Sets CompletedProgress
+        /// Gets or Sets CurrentScreenCode
         /// </summary>
-        [JsonPropertyName("completedProgress")]
-        public double? CompletedProgress { get { return this.CompletedProgressOption.Value; } set { this.CompletedProgressOption = new(value); } }
+        [JsonPropertyName("currentScreenCode")]
+        public string? CurrentScreenCode { get { return this.CurrentScreenCodeOption.Value; } set { this.CurrentScreenCodeOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of Progress
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> ProgressOption { get; private set; }
+
+        /// <summary>
+        /// Decimal progress (0-100, 2dp) carried as an invariant-culture string,  mirroring the legacy enrollmentresults.proto completedProgress convention.
+        /// </summary>
+        /// <value>Decimal progress (0-100, 2dp) carried as an invariant-culture string,  mirroring the legacy enrollmentresults.proto completedProgress convention.</value>
+        [JsonPropertyName("progress")]
+        public string? Progress { get { return this.ProgressOption.Value; } set { this.ProgressOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of StudentId
@@ -178,17 +191,17 @@ namespace EdGraph.Platform.Client.Model
         public List<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseContactMessage>? Contacts { get { return this.ContactsOption.Value; } }
 
         /// <summary>
-        /// Used to track the state of Steps
+        /// Used to track the state of Screens
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<List<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage>?> StepsOption { get; }
+        public Option<List<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage>?> ScreensOption { get; }
 
         /// <summary>
-        /// Gets or Sets Steps
+        /// Gets or Sets Screens
         /// </summary>
-        [JsonPropertyName("steps")]
-        public List<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage>? Steps { get { return this.StepsOption.Value; } }
+        [JsonPropertyName("screens")]
+        public List<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage>? Screens { get { return this.ScreensOption.Value; } }
 
         /// <summary>
         /// Used to track the state of CreatedBy
@@ -282,6 +295,84 @@ namespace EdGraph.Platform.Client.Model
         public bool? IsDeleted { get { return this.IsDeletedOption.Value; } set { this.IsDeletedOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of Status
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> StatusOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets Status
+        /// </summary>
+        [JsonPropertyName("status")]
+        public string? Status { get { return this.StatusOption.Value; } set { this.StatusOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of StudentFirstName
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> StudentFirstNameOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets StudentFirstName
+        /// </summary>
+        [JsonPropertyName("studentFirstName")]
+        public string? StudentFirstName { get { return this.StudentFirstNameOption.Value; } set { this.StudentFirstNameOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of StudentLastName
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> StudentLastNameOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets StudentLastName
+        /// </summary>
+        [JsonPropertyName("studentLastName")]
+        public string? StudentLastName { get { return this.StudentLastNameOption.Value; } set { this.StudentLastNameOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of StudentLocalId
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> StudentLocalIdOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets StudentLocalId
+        /// </summary>
+        [JsonPropertyName("studentLocalId")]
+        public string? StudentLocalId { get { return this.StudentLocalIdOption.Value; } set { this.StudentLocalIdOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of NextSchoolCode
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> NextSchoolCodeOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets NextSchoolCode
+        /// </summary>
+        [JsonPropertyName("nextSchoolCode")]
+        public string? NextSchoolCode { get { return this.NextSchoolCodeOption.Value; } set { this.NextSchoolCodeOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of NextSchoolName
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> NextSchoolNameOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets NextSchoolName
+        /// </summary>
+        [JsonPropertyName("nextSchoolName")]
+        public string? NextSchoolName { get { return this.NextSchoolNameOption.Value; } set { this.NextSchoolNameOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -291,13 +382,13 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  TenantId: ").Append(TenantId).Append("\n");
-            sb.Append("  ApplicationProfile: ").Append(ApplicationProfile).Append("\n");
-            sb.Append("  CurrentStepCode: ").Append(CurrentStepCode).Append("\n");
-            sb.Append("  CompletedProgress: ").Append(CompletedProgress).Append("\n");
+            sb.Append("  ApplicationPathway: ").Append(ApplicationPathway).Append("\n");
+            sb.Append("  CurrentScreenCode: ").Append(CurrentScreenCode).Append("\n");
+            sb.Append("  Progress: ").Append(Progress).Append("\n");
             sb.Append("  StudentId: ").Append(StudentId).Append("\n");
             sb.Append("  LanguageCode: ").Append(LanguageCode).Append("\n");
             sb.Append("  Contacts: ").Append(Contacts).Append("\n");
-            sb.Append("  Steps: ").Append(Steps).Append("\n");
+            sb.Append("  Screens: ").Append(Screens).Append("\n");
             sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
             sb.Append("  CreatedDateTime: ").Append(CreatedDateTime).Append("\n");
             sb.Append("  LastModifiedBy: ").Append(LastModifiedBy).Append("\n");
@@ -305,6 +396,12 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  DeletedBy: ").Append(DeletedBy).Append("\n");
             sb.Append("  DeletedDateTime: ").Append(DeletedDateTime).Append("\n");
             sb.Append("  IsDeleted: ").Append(IsDeleted).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  StudentFirstName: ").Append(StudentFirstName).Append("\n");
+            sb.Append("  StudentLastName: ").Append(StudentLastName).Append("\n");
+            sb.Append("  StudentLocalId: ").Append(StudentLocalId).Append("\n");
+            sb.Append("  NextSchoolCode: ").Append(NextSchoolCode).Append("\n");
+            sb.Append("  NextSchoolName: ").Append(NextSchoolName).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -344,13 +441,13 @@ namespace EdGraph.Platform.Client.Model
 
             Option<string?> id = default;
             Option<string?> tenantId = default;
-            Option<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage?> applicationProfile = default;
-            Option<string?> currentStepCode = default;
-            Option<double?> completedProgress = default;
+            Option<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage?> applicationPathway = default;
+            Option<string?> currentScreenCode = default;
+            Option<string?> progress = default;
             Option<string?> studentId = default;
             Option<string?> languageCode = default;
             Option<List<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseContactMessage>?> contacts = default;
-            Option<List<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage>?> steps = default;
+            Option<List<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage>?> screens = default;
             Option<string?> createdBy = default;
             Option<string?> createdDateTime = default;
             Option<string?> lastModifiedBy = default;
@@ -358,6 +455,12 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> deletedBy = default;
             Option<string?> deletedDateTime = default;
             Option<bool?> isDeleted = default;
+            Option<string?> status = default;
+            Option<string?> studentFirstName = default;
+            Option<string?> studentLastName = default;
+            Option<string?> studentLocalId = default;
+            Option<string?> nextSchoolCode = default;
+            Option<string?> nextSchoolName = default;
 
             while (utf8JsonReader.Read())
             {
@@ -380,14 +483,14 @@ namespace EdGraph.Platform.Client.Model
                         case "tenantId":
                             tenantId = new Option<string?>(utf8JsonReader.GetString());
                             break;
-                        case "applicationProfile":
-                            applicationProfile = new Option<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage?>(JsonSerializer.Deserialize<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationProfileMessage>(ref utf8JsonReader, jsonSerializerOptions)!);
+                        case "applicationPathway":
+                            applicationPathway = new Option<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage?>(JsonSerializer.Deserialize<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationPathwayMessage>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
-                        case "currentStepCode":
-                            currentStepCode = new Option<string?>(utf8JsonReader.GetString());
+                        case "currentScreenCode":
+                            currentScreenCode = new Option<string?>(utf8JsonReader.GetString());
                             break;
-                        case "completedProgress":
-                            completedProgress = new Option<double?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (double?)null : utf8JsonReader.GetDouble());
+                        case "progress":
+                            progress = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "studentId":
                             studentId = new Option<string?>(utf8JsonReader.GetString());
@@ -398,8 +501,8 @@ namespace EdGraph.Platform.Client.Model
                         case "contacts":
                             contacts = new Option<List<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseContactMessage>?>(JsonSerializer.Deserialize<List<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseContactMessage>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
-                        case "steps":
-                            steps = new Option<List<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage>?>(JsonSerializer.Deserialize<List<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseStepMessage>>(ref utf8JsonReader, jsonSerializerOptions));
+                        case "screens":
+                            screens = new Option<List<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage>?>(JsonSerializer.Deserialize<List<EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseScreenMessage>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "createdBy":
                             createdBy = new Option<string?>(utf8JsonReader.GetString());
@@ -422,19 +525,34 @@ namespace EdGraph.Platform.Client.Model
                         case "isDeleted":
                             isDeleted = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
+                        case "status":
+                            status = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "studentFirstName":
+                            studentFirstName = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "studentLastName":
+                            studentLastName = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "studentLocalId":
+                            studentLocalId = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "nextSchoolCode":
+                            nextSchoolCode = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "nextSchoolName":
+                            nextSchoolName = new Option<string?>(utf8JsonReader.GetString());
+                            break;
                         default:
                             break;
                     }
                 }
             }
 
-            if (applicationProfile.IsSet && applicationProfile.Value == null)
-                throw new ArgumentNullException(nameof(applicationProfile), "Property is not nullable for class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.");
+            if (applicationPathway.IsSet && applicationPathway.Value == null)
+                throw new ArgumentNullException(nameof(applicationPathway), "Property is not nullable for class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.");
 
-            if (completedProgress.IsSet && completedProgress.Value == null)
-                throw new ArgumentNullException(nameof(completedProgress), "Property is not nullable for class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.");
-
-            return new EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse(id, tenantId, applicationProfile, currentStepCode, completedProgress, studentId, languageCode, contacts, steps, createdBy, createdDateTime, lastModifiedBy, lastModifiedDateTime, deletedBy, deletedDateTime, isDeleted);
+            return new EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse(id, tenantId, applicationPathway, currentScreenCode, progress, studentId, languageCode, contacts, screens, createdBy, createdDateTime, lastModifiedBy, lastModifiedDateTime, deletedBy, deletedDateTime, isDeleted, status, studentFirstName, studentLastName, studentLocalId, nextSchoolCode, nextSchoolName);
         }
 
         /// <summary>
@@ -461,8 +579,8 @@ namespace EdGraph.Platform.Client.Model
         /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse, JsonSerializerOptions jsonSerializerOptions)
         {
-            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.ApplicationProfileOption.IsSet && enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.ApplicationProfile == null)
-                throw new ArgumentNullException(nameof(enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.ApplicationProfile), "Property is required for class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.");
+            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.ApplicationPathwayOption.IsSet && enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.ApplicationPathway == null)
+                throw new ArgumentNullException(nameof(enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.ApplicationPathway), "Property is required for class EnrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.");
 
             if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.IdOption.IsSet)
                 if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.IdOption.Value != null)
@@ -476,19 +594,22 @@ namespace EdGraph.Platform.Client.Model
                 else
                     writer.WriteNull("tenantId");
 
-            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.ApplicationProfileOption.IsSet)
+            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.ApplicationPathwayOption.IsSet)
             {
-                writer.WritePropertyName("applicationProfile");
-                JsonSerializer.Serialize(writer, enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.ApplicationProfile, jsonSerializerOptions);
+                writer.WritePropertyName("applicationPathway");
+                JsonSerializer.Serialize(writer, enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.ApplicationPathway, jsonSerializerOptions);
             }
-            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.CurrentStepCodeOption.IsSet)
-                if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.CurrentStepCodeOption.Value != null)
-                    writer.WriteString("currentStepCode", enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.CurrentStepCode);
+            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.CurrentScreenCodeOption.IsSet)
+                if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.CurrentScreenCodeOption.Value != null)
+                    writer.WriteString("currentScreenCode", enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.CurrentScreenCode);
                 else
-                    writer.WriteNull("currentStepCode");
+                    writer.WriteNull("currentScreenCode");
 
-            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.CompletedProgressOption.IsSet)
-                writer.WriteNumber("completedProgress", enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.CompletedProgressOption.Value!.Value);
+            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.ProgressOption.IsSet)
+                if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.ProgressOption.Value != null)
+                    writer.WriteString("progress", enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.Progress);
+                else
+                    writer.WriteNull("progress");
 
             if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.StudentIdOption.IsSet)
                 if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.StudentIdOption.Value != null)
@@ -510,14 +631,14 @@ namespace EdGraph.Platform.Client.Model
                 }
                 else
                     writer.WriteNull("contacts");
-            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.StepsOption.IsSet)
-                if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.StepsOption.Value != null)
+            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.ScreensOption.IsSet)
+                if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.ScreensOption.Value != null)
                 {
-                    writer.WritePropertyName("steps");
-                    JsonSerializer.Serialize(writer, enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.Steps, jsonSerializerOptions);
+                    writer.WritePropertyName("screens");
+                    JsonSerializer.Serialize(writer, enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.Screens, jsonSerializerOptions);
                 }
                 else
-                    writer.WriteNull("steps");
+                    writer.WriteNull("screens");
             if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.CreatedByOption.IsSet)
                 if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.CreatedByOption.Value != null)
                     writer.WriteString("createdBy", enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.CreatedBy);
@@ -559,6 +680,42 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteBoolean("isDeleted", enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.IsDeletedOption.Value!.Value);
                 else
                     writer.WriteNull("isDeleted");
+
+            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.StatusOption.IsSet)
+                if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.StatusOption.Value != null)
+                    writer.WriteString("status", enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.Status);
+                else
+                    writer.WriteNull("status");
+
+            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.StudentFirstNameOption.IsSet)
+                if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.StudentFirstNameOption.Value != null)
+                    writer.WriteString("studentFirstName", enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.StudentFirstName);
+                else
+                    writer.WriteNull("studentFirstName");
+
+            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.StudentLastNameOption.IsSet)
+                if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.StudentLastNameOption.Value != null)
+                    writer.WriteString("studentLastName", enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.StudentLastName);
+                else
+                    writer.WriteNull("studentLastName");
+
+            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.StudentLocalIdOption.IsSet)
+                if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.StudentLocalIdOption.Value != null)
+                    writer.WriteString("studentLocalId", enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.StudentLocalId);
+                else
+                    writer.WriteNull("studentLocalId");
+
+            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.NextSchoolCodeOption.IsSet)
+                if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.NextSchoolCodeOption.Value != null)
+                    writer.WriteString("nextSchoolCode", enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.NextSchoolCode);
+                else
+                    writer.WriteNull("nextSchoolCode");
+
+            if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.NextSchoolNameOption.IsSet)
+                if (enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.NextSchoolNameOption.Value != null)
+                    writer.WriteString("nextSchoolName", enrollmentApiEnrollmentApplicationResponsesV1ApplicationResponseResponse.NextSchoolName);
+                else
+                    writer.WriteNull("nextSchoolName");
         }
     }
 }

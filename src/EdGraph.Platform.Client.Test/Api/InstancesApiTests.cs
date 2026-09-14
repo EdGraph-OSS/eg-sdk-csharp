@@ -148,6 +148,19 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
+        /// Test CreateInstanceV2
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task CreateInstanceV2AsyncTest()
+        {
+            string tenantId = default!;
+            Client.Option<Object?> body = default!;
+            var response = await _instance.CreateInstanceV2Async(tenantId, body);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
         /// Test DeleteInstance
         /// </summary>
         [Fact (Skip = "not implemented")]
@@ -169,6 +182,19 @@ namespace EdGraph.Platform.Client.Test.Api
             string tenantId = default!;
             string instanceId = default!;
             var response = await _instance.DeleteInstanceAsyncAsync(tenantId, instanceId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
+        /// Test DeleteInstanceV2
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task DeleteInstanceV2AsyncTest()
+        {
+            string tenantId = default!;
+            string instanceId = default!;
+            var response = await _instance.DeleteInstanceV2Async(tenantId, instanceId);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
@@ -529,6 +555,20 @@ namespace EdGraph.Platform.Client.Test.Api
             string instanceId = default!;
             Client.Option<EdfiAdminApiEdfiAdminV1UpdateInstanceRequest> edfiAdminApiEdfiAdminV1UpdateInstanceRequest = default!;
             var response = await _instance.UpdateInstanceAsyncAsync(tenantId, instanceId, edfiAdminApiEdfiAdminV1UpdateInstanceRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
+        /// Test UpdateInstanceV2
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task UpdateInstanceV2AsyncTest()
+        {
+            string tenantId = default!;
+            string instanceId = default!;
+            Client.Option<Object?> body = default!;
+            var response = await _instance.UpdateInstanceV2Async(tenantId, instanceId, body);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }

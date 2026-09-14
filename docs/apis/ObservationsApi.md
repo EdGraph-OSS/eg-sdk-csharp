@@ -726,7 +726,7 @@ Get paginated evaluees
 
 <a id="getpaginatedobservations"></a>
 # **GetPaginatedObservations**
-> EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponsePaginatedItemsViewModel GetPaginatedObservations (Guid tenantId, int pageSize = null, int pageIndex = null, string orderBy = null, string campus = null, string evalueeName = null, string evalueeId = null, string formId = null, string status = null, string from = null, string to = null)
+> EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponsePaginatedItemsViewModel GetPaginatedObservations (Guid tenantId, int pageSize = null, int pageIndex = null, string orderBy = null, string campus = null, string evalueeName = null, string evalueeId = null, string formId = null, string status = null, string from = null, string to = null, string observerId = null)
 
 Get Paginated Observations for a given tenant
 
@@ -746,6 +746,7 @@ Get Paginated Observations for a given tenant
 | **status** | **string** |  | [optional] [default to &quot;&quot;] |
 | **from** | **string** |  | [optional] [default to &quot;&quot;] |
 | **to** | **string** |  | [optional] [default to &quot;&quot;] |
+| **observerId** | **string** |  | [optional] [default to &quot;&quot;] |
 
 ### Return type
 
