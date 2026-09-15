@@ -33867,6 +33867,98 @@ paths:
       summary: Get paginated evaluees
       tags:
       - Observations
+  /tenants/{tenantId}/observations/observers:
+    get:
+      operationId: GetPaginatedObservers
+      parameters:
+      - description: ""
+        explode: false
+        in: path
+        name: tenantId
+        required: true
+        schema:
+          format: uuid
+          type: string
+        style: simple
+      - description: ""
+        explode: true
+        in: query
+        name: pageSize
+        required: false
+        schema:
+          default: 10
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: pageIndex
+        required: false
+        schema:
+          default: 0
+          format: int32
+          type: integer
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: orderBy
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      - description: ""
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          default: ""
+          type: string
+        style: form
+      responses:
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
+          description: Unauthorized. The request requires authentication. The OAuth
+            bearer token was either not provided or is invalid. The operation may
+            succeed once authentication has been successfully completed.
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
+          description: Forbidden. The request cannot be completed in the current authorization
+            context. Contact your administrator if you believe this operation should
+            be allowed.
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdGraph.Common.Errors.Core.ProblemDetails"
+          description: An unhandled error occurred on the server.See the response
+            body for details.
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Evaluations.AppraiserResponseGetPaginatedItemsResponse"
+          description: The requested resource was successfully retrieved.
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Microsoft.AspNetCore.Mvc.ValidationProblemDetails"
+          description: Bad Request. The request was invalid and cannot be completed.
+            See the response body for specific validation errors. This will typically
+            be an issue with the query parameters or the request body values.
+      summary: Get paginated observers
+      tags:
+      - Observations
   /tenants/{tenantId}/observations/search/evaluees:
     get:
       operationId: SearchPaginatedEvaluees
@@ -55919,6 +56011,41 @@ components:
         campus:
           nullable: true
           type: string
+      type: object
+    EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Evaluations.AppraiserResponseGetPaginatedItemsResponse:
+      additionalProperties: false
+      example:
+        pageIndex: 0
+        pageSize: 6
+        data:
+        - userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          firstName: firstName
+          lastName: lastName
+          email: email
+          numberOfEvaluations: 5
+          campus: campus
+        - userId: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+          firstName: firstName
+          lastName: lastName
+          email: email
+          numberOfEvaluations: 5
+          campus: campus
+        count: 1
+      properties:
+        pageIndex:
+          format: int32
+          type: integer
+        pageSize:
+          format: int32
+          type: integer
+        data:
+          items:
+            $ref: "#/components/schemas/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Evaluations.AppraiserResponse"
+          nullable: true
+          type: array
+        count:
+          format: int64
+          type: integer
       type: object
     EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.Evaluations.AppraiserSearchStatus:
       enum:

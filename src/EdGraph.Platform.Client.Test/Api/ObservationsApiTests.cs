@@ -326,6 +326,22 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
+        /// Test GetPaginatedObservers
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetPaginatedObserversAsyncTest()
+        {
+            Guid tenantId = default!;
+            Client.Option<int> pageSize = default!;
+            Client.Option<int> pageIndex = default!;
+            Client.Option<string> orderBy = default!;
+            Client.Option<string> filter = default!;
+            var response = await _instance.GetPaginatedObserversAsync(tenantId, pageSize, pageIndex, orderBy, filter);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
         /// Test GetSubmittedObservationsCount
         /// </summary>
         [Fact (Skip = "not implemented")]
