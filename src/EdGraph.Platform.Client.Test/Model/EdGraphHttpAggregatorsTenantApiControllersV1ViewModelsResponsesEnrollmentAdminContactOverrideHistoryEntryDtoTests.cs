@@ -142,5 +142,14 @@ namespace EdGraph.Platform.Client.Test.Model
         {
             // TODO unit test for the property 'StudentIds'
         }
+
+        /// <summary>
+        /// Test the property 'EventType'
+        /// </summary>
+        [Fact]
+        public void EventTypeTest()
+        {
+            // TODO unit test for the property 'EventType'
+        }
     }
 }

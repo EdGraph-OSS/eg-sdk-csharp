@@ -79,5 +79,32 @@ namespace EdGraph.Platform.Client.Test.Model
         {
             // TODO unit test for the property 'Enrolled'
         }
+
+        /// <summary>
+        /// Test the property 'SeatsAvailable'
+        /// </summary>
+        [Fact]
+        public void SeatsAvailableTest()
+        {
+            // TODO unit test for the property 'SeatsAvailable'
+        }
+
+        /// <summary>
+        /// Test the property 'LotteryEligible'
+        /// </summary>
+        [Fact]
+        public void LotteryEligibleTest()
+        {
+            // TODO unit test for the property 'LotteryEligible'
+        }
+
+        /// <summary>
+        /// Test the property 'SchoolYear'
+        /// </summary>
+        [Fact]
+        public void SchoolYearTest()
+        {
+            // TODO unit test for the property 'SchoolYear'
+        }
     }
 }

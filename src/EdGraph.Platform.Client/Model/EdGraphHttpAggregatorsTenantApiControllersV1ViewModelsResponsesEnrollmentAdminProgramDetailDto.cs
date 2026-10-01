@@ -35,36 +35,40 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <param name="id">id</param>
         /// <param name="tenantId">tenantId</param>
-        /// <param name="code">code</param>
-        /// <param name="name">name</param>
-        /// <param name="scope">scope</param>
-        /// <param name="offeredAtSchoolCount">offeredAtSchoolCount</param>
-        /// <param name="programType">programType</param>
+        /// <param name="programCode">programCode</param>
+        /// <param name="programName">programName</param>
         /// <param name="eligibilityCriteria">eligibilityCriteria</param>
-        /// <param name="internalDisplayName">internalDisplayName</param>
-        /// <param name="grades">grades</param>
-        /// <param name="schools">schools</param>
+        /// <param name="programType">programType</param>
         /// <param name="requirements">requirements</param>
+        /// <param name="school">school</param>
+        /// <param name="grades">grades</param>
+        /// <param name="capacityByGrade">capacityByGrade</param>
+        /// <param name="seatStatus">seatStatus</param>
+        /// <param name="zone">zone</param>
+        /// <param name="latitude">latitude</param>
+        /// <param name="longitude">longitude</param>
         /// <param name="createdBy">createdBy</param>
         /// <param name="createdDateTime">createdDateTime</param>
         /// <param name="lastModifiedBy">lastModifiedBy</param>
         /// <param name="lastModifiedDateTime">lastModifiedDateTime</param>
         /// <param name="isDeleted">isDeleted</param>
         [JsonConstructor]
-        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto(Option<Guid?> id = default, Option<Guid?> tenantId = default, Option<string?> code = default, Option<string?> name = default, Option<string?> scope = default, Option<int?> offeredAtSchoolCount = default, Option<string?> programType = default, Option<string?> eligibilityCriteria = default, Option<string?> internalDisplayName = default, Option<List<string>?> grades = default, Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolAssociationDto>?> schools = default, Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminRequirementDto>?> requirements = default, Option<string?> createdBy = default, Option<DateTime?> createdDateTime = default, Option<string?> lastModifiedBy = default, Option<DateTime?> lastModifiedDateTime = default, Option<bool?> isDeleted = default)
+        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto(Option<Guid?> id = default, Option<Guid?> tenantId = default, Option<string?> programCode = default, Option<string?> programName = default, Option<string?> eligibilityCriteria = default, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramTypeRefDto?> programType = default, Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminRequirementRefDto>?> requirements = default, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolRefDto?> school = default, Option<List<string>?> grades = default, Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminGradeCapacityDto>?> capacityByGrade = default, Option<string?> seatStatus = default, Option<string?> zone = default, Option<double?> latitude = default, Option<double?> longitude = default, Option<string?> createdBy = default, Option<DateTime?> createdDateTime = default, Option<string?> lastModifiedBy = default, Option<DateTime?> lastModifiedDateTime = default, Option<bool?> isDeleted = default)
         {
             IdOption = id;
             TenantIdOption = tenantId;
-            CodeOption = code;
-            NameOption = name;
-            ScopeOption = scope;
-            OfferedAtSchoolCountOption = offeredAtSchoolCount;
-            ProgramTypeOption = programType;
+            ProgramCodeOption = programCode;
+            ProgramNameOption = programName;
             EligibilityCriteriaOption = eligibilityCriteria;
-            InternalDisplayNameOption = internalDisplayName;
-            GradesOption = grades;
-            SchoolsOption = schools;
+            ProgramTypeOption = programType;
             RequirementsOption = requirements;
+            SchoolOption = school;
+            GradesOption = grades;
+            CapacityByGradeOption = capacityByGrade;
+            SeatStatusOption = seatStatus;
+            ZoneOption = zone;
+            LatitudeOption = latitude;
+            LongitudeOption = longitude;
             CreatedByOption = createdBy;
             CreatedDateTimeOption = createdDateTime;
             LastModifiedByOption = lastModifiedBy;
@@ -102,69 +106,30 @@ namespace EdGraph.Platform.Client.Model
         public Guid? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
-        /// Used to track the state of Code
+        /// Used to track the state of ProgramCode
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<string?> CodeOption { get; private set; }
+        public Option<string?> ProgramCodeOption { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Code
+        /// Gets or Sets ProgramCode
         /// </summary>
-        [JsonPropertyName("code")]
-        public string? Code { get { return this.CodeOption.Value; } set { this.CodeOption = new(value); } }
+        [JsonPropertyName("programCode")]
+        public string? ProgramCode { get { return this.ProgramCodeOption.Value; } set { this.ProgramCodeOption = new(value); } }
 
         /// <summary>
-        /// Used to track the state of Name
-        /// </summary>
-        [JsonIgnore]
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<string?> NameOption { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
-
-        /// <summary>
-        /// Used to track the state of Scope
+        /// Used to track the state of ProgramName
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<string?> ScopeOption { get; private set; }
+        public Option<string?> ProgramNameOption { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Scope
+        /// Gets or Sets ProgramName
         /// </summary>
-        [JsonPropertyName("scope")]
-        public string? Scope { get { return this.ScopeOption.Value; } set { this.ScopeOption = new(value); } }
-
-        /// <summary>
-        /// Used to track the state of OfferedAtSchoolCount
-        /// </summary>
-        [JsonIgnore]
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<int?> OfferedAtSchoolCountOption { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets OfferedAtSchoolCount
-        /// </summary>
-        [JsonPropertyName("offeredAtSchoolCount")]
-        public int? OfferedAtSchoolCount { get { return this.OfferedAtSchoolCountOption.Value; } set { this.OfferedAtSchoolCountOption = new(value); } }
-
-        /// <summary>
-        /// Used to track the state of ProgramType
-        /// </summary>
-        [JsonIgnore]
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<string?> ProgramTypeOption { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets ProgramType
-        /// </summary>
-        [JsonPropertyName("programType")]
-        public string? ProgramType { get { return this.ProgramTypeOption.Value; } set { this.ProgramTypeOption = new(value); } }
+        [JsonPropertyName("programName")]
+        public string? ProgramName { get { return this.ProgramNameOption.Value; } set { this.ProgramNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of EligibilityCriteria
@@ -180,17 +145,43 @@ namespace EdGraph.Platform.Client.Model
         public string? EligibilityCriteria { get { return this.EligibilityCriteriaOption.Value; } set { this.EligibilityCriteriaOption = new(value); } }
 
         /// <summary>
-        /// Used to track the state of InternalDisplayName
+        /// Used to track the state of ProgramType
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<string?> InternalDisplayNameOption { get; private set; }
+        public Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramTypeRefDto?> ProgramTypeOption { get; private set; }
 
         /// <summary>
-        /// Gets or Sets InternalDisplayName
+        /// Gets or Sets ProgramType
         /// </summary>
-        [JsonPropertyName("internalDisplayName")]
-        public string? InternalDisplayName { get { return this.InternalDisplayNameOption.Value; } set { this.InternalDisplayNameOption = new(value); } }
+        [JsonPropertyName("programType")]
+        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramTypeRefDto? ProgramType { get { return this.ProgramTypeOption.Value; } set { this.ProgramTypeOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of Requirements
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminRequirementRefDto>?> RequirementsOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets Requirements
+        /// </summary>
+        [JsonPropertyName("requirements")]
+        public List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminRequirementRefDto>? Requirements { get { return this.RequirementsOption.Value; } set { this.RequirementsOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of School
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolRefDto?> SchoolOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets School
+        /// </summary>
+        [JsonPropertyName("school")]
+        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolRefDto? School { get { return this.SchoolOption.Value; } set { this.SchoolOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Grades
@@ -206,30 +197,69 @@ namespace EdGraph.Platform.Client.Model
         public List<string>? Grades { get { return this.GradesOption.Value; } set { this.GradesOption = new(value); } }
 
         /// <summary>
-        /// Used to track the state of Schools
+        /// Used to track the state of CapacityByGrade
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolAssociationDto>?> SchoolsOption { get; private set; }
+        public Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminGradeCapacityDto>?> CapacityByGradeOption { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Schools
+        /// Gets or Sets CapacityByGrade
         /// </summary>
-        [JsonPropertyName("schools")]
-        public List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolAssociationDto>? Schools { get { return this.SchoolsOption.Value; } set { this.SchoolsOption = new(value); } }
+        [JsonPropertyName("capacityByGrade")]
+        public List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminGradeCapacityDto>? CapacityByGrade { get { return this.CapacityByGradeOption.Value; } set { this.CapacityByGradeOption = new(value); } }
 
         /// <summary>
-        /// Used to track the state of Requirements
+        /// Used to track the state of SeatStatus
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminRequirementDto>?> RequirementsOption { get; private set; }
+        public Option<string?> SeatStatusOption { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Requirements
+        /// Gets or Sets SeatStatus
         /// </summary>
-        [JsonPropertyName("requirements")]
-        public List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminRequirementDto>? Requirements { get { return this.RequirementsOption.Value; } set { this.RequirementsOption = new(value); } }
+        [JsonPropertyName("seatStatus")]
+        public string? SeatStatus { get { return this.SeatStatusOption.Value; } set { this.SeatStatusOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of Zone
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> ZoneOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets Zone
+        /// </summary>
+        [JsonPropertyName("zone")]
+        public string? Zone { get { return this.ZoneOption.Value; } set { this.ZoneOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of Latitude
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<double?> LatitudeOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets Latitude
+        /// </summary>
+        [JsonPropertyName("latitude")]
+        public double? Latitude { get { return this.LatitudeOption.Value; } set { this.LatitudeOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of Longitude
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<double?> LongitudeOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets Longitude
+        /// </summary>
+        [JsonPropertyName("longitude")]
+        public double? Longitude { get { return this.LongitudeOption.Value; } set { this.LongitudeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of CreatedBy
@@ -306,16 +336,18 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  TenantId: ").Append(TenantId).Append("\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Scope: ").Append(Scope).Append("\n");
-            sb.Append("  OfferedAtSchoolCount: ").Append(OfferedAtSchoolCount).Append("\n");
-            sb.Append("  ProgramType: ").Append(ProgramType).Append("\n");
+            sb.Append("  ProgramCode: ").Append(ProgramCode).Append("\n");
+            sb.Append("  ProgramName: ").Append(ProgramName).Append("\n");
             sb.Append("  EligibilityCriteria: ").Append(EligibilityCriteria).Append("\n");
-            sb.Append("  InternalDisplayName: ").Append(InternalDisplayName).Append("\n");
-            sb.Append("  Grades: ").Append(Grades).Append("\n");
-            sb.Append("  Schools: ").Append(Schools).Append("\n");
+            sb.Append("  ProgramType: ").Append(ProgramType).Append("\n");
             sb.Append("  Requirements: ").Append(Requirements).Append("\n");
+            sb.Append("  School: ").Append(School).Append("\n");
+            sb.Append("  Grades: ").Append(Grades).Append("\n");
+            sb.Append("  CapacityByGrade: ").Append(CapacityByGrade).Append("\n");
+            sb.Append("  SeatStatus: ").Append(SeatStatus).Append("\n");
+            sb.Append("  Zone: ").Append(Zone).Append("\n");
+            sb.Append("  Latitude: ").Append(Latitude).Append("\n");
+            sb.Append("  Longitude: ").Append(Longitude).Append("\n");
             sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
             sb.Append("  CreatedDateTime: ").Append(CreatedDateTime).Append("\n");
             sb.Append("  LastModifiedBy: ").Append(LastModifiedBy).Append("\n");
@@ -370,16 +402,18 @@ namespace EdGraph.Platform.Client.Model
 
             Option<Guid?> id = default;
             Option<Guid?> tenantId = default;
-            Option<string?> code = default;
-            Option<string?> name = default;
-            Option<string?> scope = default;
-            Option<int?> offeredAtSchoolCount = default;
-            Option<string?> programType = default;
+            Option<string?> programCode = default;
+            Option<string?> programName = default;
             Option<string?> eligibilityCriteria = default;
-            Option<string?> internalDisplayName = default;
+            Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramTypeRefDto?> programType = default;
+            Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminRequirementRefDto>?> requirements = default;
+            Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolRefDto?> school = default;
             Option<List<string>?> grades = default;
-            Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolAssociationDto>?> schools = default;
-            Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminRequirementDto>?> requirements = default;
+            Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminGradeCapacityDto>?> capacityByGrade = default;
+            Option<string?> seatStatus = default;
+            Option<string?> zone = default;
+            Option<double?> latitude = default;
+            Option<double?> longitude = default;
             Option<string?> createdBy = default;
             Option<DateTime?> createdDateTime = default;
             Option<string?> lastModifiedBy = default;
@@ -407,35 +441,41 @@ namespace EdGraph.Platform.Client.Model
                         case "tenantId":
                             tenantId = new Option<Guid?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (Guid?)null : utf8JsonReader.GetGuid());
                             break;
-                        case "code":
-                            code = new Option<string?>(utf8JsonReader.GetString());
+                        case "programCode":
+                            programCode = new Option<string?>(utf8JsonReader.GetString());
                             break;
-                        case "name":
-                            name = new Option<string?>(utf8JsonReader.GetString());
-                            break;
-                        case "scope":
-                            scope = new Option<string?>(utf8JsonReader.GetString());
-                            break;
-                        case "offeredAtSchoolCount":
-                            offeredAtSchoolCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
-                            break;
-                        case "programType":
-                            programType = new Option<string?>(utf8JsonReader.GetString());
+                        case "programName":
+                            programName = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "eligibilityCriteria":
                             eligibilityCriteria = new Option<string?>(utf8JsonReader.GetString());
                             break;
-                        case "internalDisplayName":
-                            internalDisplayName = new Option<string?>(utf8JsonReader.GetString());
+                        case "programType":
+                            programType = new Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramTypeRefDto?>(JsonSerializer.Deserialize<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramTypeRefDto>(ref utf8JsonReader, jsonSerializerOptions)!);
+                            break;
+                        case "requirements":
+                            requirements = new Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminRequirementRefDto>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminRequirementRefDto>>(ref utf8JsonReader, jsonSerializerOptions));
+                            break;
+                        case "school":
+                            school = new Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolRefDto?>(JsonSerializer.Deserialize<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolRefDto>(ref utf8JsonReader, jsonSerializerOptions)!);
                             break;
                         case "grades":
                             grades = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
-                        case "schools":
-                            schools = new Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolAssociationDto>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolAssociationDto>>(ref utf8JsonReader, jsonSerializerOptions));
+                        case "capacityByGrade":
+                            capacityByGrade = new Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminGradeCapacityDto>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminGradeCapacityDto>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
-                        case "requirements":
-                            requirements = new Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminRequirementDto>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminRequirementDto>>(ref utf8JsonReader, jsonSerializerOptions));
+                        case "seatStatus":
+                            seatStatus = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "zone":
+                            zone = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "latitude":
+                            latitude = new Option<double?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (double?)null : utf8JsonReader.GetDouble());
+                            break;
+                        case "longitude":
+                            longitude = new Option<double?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (double?)null : utf8JsonReader.GetDouble());
                             break;
                         case "createdBy":
                             createdBy = new Option<string?>(utf8JsonReader.GetString());
@@ -458,13 +498,16 @@ namespace EdGraph.Platform.Client.Model
                 }
             }
 
-            if (offeredAtSchoolCount.IsSet && offeredAtSchoolCount.Value == null)
-                throw new ArgumentNullException(nameof(offeredAtSchoolCount), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.");
+            if (programType.IsSet && programType.Value == null)
+                throw new ArgumentNullException(nameof(programType), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.");
+
+            if (school.IsSet && school.Value == null)
+                throw new ArgumentNullException(nameof(school), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.");
 
             if (isDeleted.IsSet && isDeleted.Value == null)
                 throw new ArgumentNullException(nameof(isDeleted), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.");
 
-            return new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto(id, tenantId, code, name, scope, offeredAtSchoolCount, programType, eligibilityCriteria, internalDisplayName, grades, schools, requirements, createdBy, createdDateTime, lastModifiedBy, lastModifiedDateTime, isDeleted);
+            return new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto(id, tenantId, programCode, programName, eligibilityCriteria, programType, requirements, school, grades, capacityByGrade, seatStatus, zone, latitude, longitude, createdBy, createdDateTime, lastModifiedBy, lastModifiedDateTime, isDeleted);
         }
 
         /// <summary>
@@ -491,6 +534,12 @@ namespace EdGraph.Platform.Client.Model
         /// <exception cref="NotImplementedException"></exception>
         public void WriteProperties(Utf8JsonWriter writer, EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto, JsonSerializerOptions jsonSerializerOptions)
         {
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.ProgramTypeOption.IsSet && edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.ProgramType == null)
+                throw new ArgumentNullException(nameof(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.ProgramType), "Property is required for class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.");
+
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.SchoolOption.IsSet && edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.School == null)
+                throw new ArgumentNullException(nameof(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.School), "Property is required for class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.");
+
             if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.IdOption.IsSet)
                 if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.IdOption.Value != null)
                     writer.WriteString("id", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.IdOption.Value!.Value);
@@ -503,32 +552,17 @@ namespace EdGraph.Platform.Client.Model
                 else
                     writer.WriteNull("tenantId");
 
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.CodeOption.IsSet)
-                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.CodeOption.Value != null)
-                    writer.WriteString("code", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.Code);
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.ProgramCodeOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.ProgramCodeOption.Value != null)
+                    writer.WriteString("programCode", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.ProgramCode);
                 else
-                    writer.WriteNull("code");
+                    writer.WriteNull("programCode");
 
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.NameOption.IsSet)
-                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.NameOption.Value != null)
-                    writer.WriteString("name", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.Name);
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.ProgramNameOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.ProgramNameOption.Value != null)
+                    writer.WriteString("programName", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.ProgramName);
                 else
-                    writer.WriteNull("name");
-
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.ScopeOption.IsSet)
-                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.ScopeOption.Value != null)
-                    writer.WriteString("scope", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.Scope);
-                else
-                    writer.WriteNull("scope");
-
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.OfferedAtSchoolCountOption.IsSet)
-                writer.WriteNumber("offeredAtSchoolCount", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.OfferedAtSchoolCountOption.Value!.Value);
-
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.ProgramTypeOption.IsSet)
-                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.ProgramTypeOption.Value != null)
-                    writer.WriteString("programType", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.ProgramType);
-                else
-                    writer.WriteNull("programType");
+                    writer.WriteNull("programName");
 
             if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.EligibilityCriteriaOption.IsSet)
                 if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.EligibilityCriteriaOption.Value != null)
@@ -536,28 +570,11 @@ namespace EdGraph.Platform.Client.Model
                 else
                     writer.WriteNull("eligibilityCriteria");
 
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.InternalDisplayNameOption.IsSet)
-                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.InternalDisplayNameOption.Value != null)
-                    writer.WriteString("internalDisplayName", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.InternalDisplayName);
-                else
-                    writer.WriteNull("internalDisplayName");
-
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.GradesOption.IsSet)
-                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.GradesOption.Value != null)
-                {
-                    writer.WritePropertyName("grades");
-                    JsonSerializer.Serialize(writer, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.Grades, jsonSerializerOptions);
-                }
-                else
-                    writer.WriteNull("grades");
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.SchoolsOption.IsSet)
-                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.SchoolsOption.Value != null)
-                {
-                    writer.WritePropertyName("schools");
-                    JsonSerializer.Serialize(writer, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.Schools, jsonSerializerOptions);
-                }
-                else
-                    writer.WriteNull("schools");
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.ProgramTypeOption.IsSet)
+            {
+                writer.WritePropertyName("programType");
+                JsonSerializer.Serialize(writer, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.ProgramType, jsonSerializerOptions);
+            }
             if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.RequirementsOption.IsSet)
                 if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.RequirementsOption.Value != null)
                 {
@@ -566,6 +583,51 @@ namespace EdGraph.Platform.Client.Model
                 }
                 else
                     writer.WriteNull("requirements");
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.SchoolOption.IsSet)
+            {
+                writer.WritePropertyName("school");
+                JsonSerializer.Serialize(writer, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.School, jsonSerializerOptions);
+            }
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.GradesOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.GradesOption.Value != null)
+                {
+                    writer.WritePropertyName("grades");
+                    JsonSerializer.Serialize(writer, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.Grades, jsonSerializerOptions);
+                }
+                else
+                    writer.WriteNull("grades");
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.CapacityByGradeOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.CapacityByGradeOption.Value != null)
+                {
+                    writer.WritePropertyName("capacityByGrade");
+                    JsonSerializer.Serialize(writer, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.CapacityByGrade, jsonSerializerOptions);
+                }
+                else
+                    writer.WriteNull("capacityByGrade");
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.SeatStatusOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.SeatStatusOption.Value != null)
+                    writer.WriteString("seatStatus", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.SeatStatus);
+                else
+                    writer.WriteNull("seatStatus");
+
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.ZoneOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.ZoneOption.Value != null)
+                    writer.WriteString("zone", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.Zone);
+                else
+                    writer.WriteNull("zone");
+
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.LatitudeOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.LatitudeOption.Value != null)
+                    writer.WriteNumber("latitude", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.LatitudeOption.Value!.Value);
+                else
+                    writer.WriteNull("latitude");
+
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.LongitudeOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.LongitudeOption.Value != null)
+                    writer.WriteNumber("longitude", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.LongitudeOption.Value!.Value);
+                else
+                    writer.WriteNull("longitude");
+
             if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.CreatedByOption.IsSet)
                 if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.CreatedByOption.Value != null)
                     writer.WriteString("createdBy", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramDetailDto.CreatedBy);

@@ -92,6 +92,30 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
+        /// Test ExecuteUserSyncJob
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task ExecuteUserSyncJobAsyncTest()
+        {
+            Guid tenantId = default!;
+            var response = await _instance.ExecuteUserSyncJobAsync(tenantId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
+        /// Test GetAcademicSubjectsCount
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetAcademicSubjectsCountAsyncTest()
+        {
+            Guid tenantId = default!;
+            var response = await _instance.GetAcademicSubjectsCountAsync(tenantId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
         /// Test GetAvailableCampusesTotalEvaluees
         /// </summary>
         [Fact (Skip = "not implemented")]
@@ -99,6 +123,18 @@ namespace EdGraph.Platform.Client.Test.Api
         {
             Guid tenantId = default!;
             var response = await _instance.GetAvailableCampusesTotalEvalueesAsync(tenantId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
+        /// Test GetCoursesCount
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetCoursesCountAsyncTest()
+        {
+            Guid tenantId = default!;
+            var response = await _instance.GetCoursesCountAsync(tenantId);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
@@ -126,6 +162,31 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid tenantId = default!;
             Guid dashboardId = default!;
             var response = await _instance.GetDashboardPreferencesAsync(tenantId, dashboardId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
+        /// Test GetDefaultEdFiInstance
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetDefaultEdFiInstanceAsyncTest()
+        {
+            Guid tenantId = default!;
+            var response = await _instance.GetDefaultEdFiInstanceAsync(tenantId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
+        /// Test GetEducationOrganizationsCount
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetEducationOrganizationsCountAsyncTest()
+        {
+            Guid tenantId = default!;
+            Client.Option<string> discriminator = default!;
+            var response = await _instance.GetEducationOrganizationsCountAsync(tenantId, discriminator);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
@@ -179,6 +240,18 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
+        /// Test GetGradeLevelsCount
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetGradeLevelsCountAsyncTest()
+        {
+            Guid tenantId = default!;
+            var response = await _instance.GetGradeLevelsCountAsync(tenantId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
         /// Test GetObservationById
         /// </summary>
         [Fact (Skip = "not implemented")]
@@ -215,6 +288,18 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid observationId = default!;
             Guid formId = default!;
             var response = await _instance.GetObservationSubmissionAsync(tenantId, observationId, formId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
+        /// Test GetOnboarding
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetOnboardingAsyncTest()
+        {
+            Guid tenantId = default!;
+            var response = await _instance.GetOnboardingAsync(tenantId);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
@@ -303,6 +388,22 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
+        /// Test GetPaginatedObservationUsers
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetPaginatedObservationUsersAsyncTest()
+        {
+            Guid tenantId = default!;
+            Client.Option<int> pageIndex = default!;
+            Client.Option<int> pageSize = default!;
+            Client.Option<string> orderBy = default!;
+            Client.Option<string> filter = default!;
+            var response = await _instance.GetPaginatedObservationUsersAsync(tenantId, pageIndex, pageSize, orderBy, filter);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
         /// Test GetPaginatedObservations
         /// </summary>
         [Fact (Skip = "not implemented")]
@@ -342,6 +443,54 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
+        /// Test GetSectionsCount
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetSectionsCountAsyncTest()
+        {
+            Guid tenantId = default!;
+            var response = await _instance.GetSectionsCountAsync(tenantId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
+        /// Test GetSeoaasTotal
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetSeoaasTotalAsyncTest()
+        {
+            Guid tenantId = default!;
+            var response = await _instance.GetSeoaasTotalAsync(tenantId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
+        /// Test GetSessionsCount
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetSessionsCountAsyncTest()
+        {
+            Guid tenantId = default!;
+            var response = await _instance.GetSessionsCountAsync(tenantId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
+        /// Test GetStaffSectionAssociationsCount
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetStaffSectionAssociationsCountAsyncTest()
+        {
+            Guid tenantId = default!;
+            var response = await _instance.GetStaffSectionAssociationsCountAsync(tenantId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
         /// Test GetSubmittedObservationsCount
         /// </summary>
         [Fact (Skip = "not implemented")]
@@ -351,6 +500,30 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> evalueeId = default!;
             Client.Option<string> campus = default!;
             var response = await _instance.GetSubmittedObservationsCountAsync(tenantId, evalueeId, campus);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
+        /// Test GetTermsCount
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetTermsCountAsyncTest()
+        {
+            Guid tenantId = default!;
+            var response = await _instance.GetTermsCountAsync(tenantId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
+        /// Test GetUserSyncJob
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetUserSyncJobAsyncTest()
+        {
+            Guid tenantId = default!;
+            var response = await _instance.GetUserSyncJobAsync(tenantId);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
@@ -396,6 +569,33 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid observationId = default!;
             Client.Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest = default!;
             var response = await _instance.UpdateObservationAsync(tenantId, observationId, edGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
+        /// Test UpdateObservationsOnboardingStep
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task UpdateObservationsOnboardingStepAsyncTest()
+        {
+            Guid tenantId = default!;
+            int stepNumber = default!;
+            Client.Option<EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationsOnboardingStepRequest> edGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationsOnboardingStepRequest = default!;
+            var response = await _instance.UpdateObservationsOnboardingStepAsync(tenantId, stepNumber, edGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationsOnboardingStepRequest);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
+        /// Test UpdateUserSyncJob
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task UpdateUserSyncJobAsyncTest()
+        {
+            Guid tenantId = default!;
+            Client.Option<Object?> body = default!;
+            var response = await _instance.UpdateUserSyncJobAsync(tenantId, body);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }

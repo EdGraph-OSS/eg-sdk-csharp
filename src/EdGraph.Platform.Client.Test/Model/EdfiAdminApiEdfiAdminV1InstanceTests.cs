@@ -322,5 +322,14 @@ namespace EdGraph.Platform.Client.Test.Model
         {
             // TODO unit test for the property 'State'
         }
+
+        /// <summary>
+        /// Test the property 'RequiresSchoolYearSelection'
+        /// </summary>
+        [Fact]
+        public void RequiresSchoolYearSelectionTest()
+        {
+            // TODO unit test for the property 'RequiresSchoolYearSelection'
+        }
     }
 }

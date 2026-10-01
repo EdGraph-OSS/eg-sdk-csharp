@@ -37,17 +37,15 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="tenantId">tenantId</param>
         /// <param name="firstName">firstName</param>
         /// <param name="lastName">lastName</param>
-        /// <param name="students">students</param>
         /// <param name="email">email</param>
         /// <param name="phone">phone</param>
         [JsonConstructor]
-        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactRequestDto(Option<Guid?> id = default, Option<Guid?> tenantId = default, Option<string?> firstName = default, Option<string?> lastName = default, Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminContactStudentRequestDto>?> students = default, Option<string?> email = default, Option<string?> phone = default)
+        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactRequestDto(Option<Guid?> id = default, Option<Guid?> tenantId = default, Option<string?> firstName = default, Option<string?> lastName = default, Option<string?> email = default, Option<string?> phone = default)
         {
             IdOption = id;
             TenantIdOption = tenantId;
             FirstNameOption = firstName;
             LastNameOption = lastName;
-            StudentsOption = students;
             EmailOption = email;
             PhoneOption = phone;
             OnCreated();
@@ -108,19 +106,6 @@ namespace EdGraph.Platform.Client.Model
         public string? LastName { get { return this.LastNameOption.Value; } set { this.LastNameOption = new(value); } }
 
         /// <summary>
-        /// Used to track the state of Students
-        /// </summary>
-        [JsonIgnore]
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminContactStudentRequestDto>?> StudentsOption { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets Students
-        /// </summary>
-        [JsonPropertyName("students")]
-        public List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminContactStudentRequestDto>? Students { get { return this.StudentsOption.Value; } set { this.StudentsOption = new(value); } }
-
-        /// <summary>
         /// Used to track the state of Email
         /// </summary>
         [JsonIgnore]
@@ -158,7 +143,6 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  TenantId: ").Append(TenantId).Append("\n");
             sb.Append("  FirstName: ").Append(FirstName).Append("\n");
             sb.Append("  LastName: ").Append(LastName).Append("\n");
-            sb.Append("  Students: ").Append(Students).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
             sb.Append("  Phone: ").Append(Phone).Append("\n");
             sb.Append("}\n");
@@ -202,7 +186,6 @@ namespace EdGraph.Platform.Client.Model
             Option<Guid?> tenantId = default;
             Option<string?> firstName = default;
             Option<string?> lastName = default;
-            Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminContactStudentRequestDto>?> students = default;
             Option<string?> email = default;
             Option<string?> phone = default;
 
@@ -233,9 +216,6 @@ namespace EdGraph.Platform.Client.Model
                         case "lastName":
                             lastName = new Option<string?>(utf8JsonReader.GetString());
                             break;
-                        case "students":
-                            students = new Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminContactStudentRequestDto>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminContactStudentRequestDto>>(ref utf8JsonReader, jsonSerializerOptions));
-                            break;
                         case "email":
                             email = new Option<string?>(utf8JsonReader.GetString());
                             break;
@@ -254,7 +234,7 @@ namespace EdGraph.Platform.Client.Model
             if (tenantId.IsSet && tenantId.Value == null)
                 throw new ArgumentNullException(nameof(tenantId), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactRequestDto.");
 
-            return new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactRequestDto(id, tenantId, firstName, lastName, students, email, phone);
+            return new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactRequestDto(id, tenantId, firstName, lastName, email, phone);
         }
 
         /// <summary>
@@ -299,14 +279,6 @@ namespace EdGraph.Platform.Client.Model
                 else
                     writer.WriteNull("lastName");
 
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactRequestDto.StudentsOption.IsSet)
-                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactRequestDto.StudentsOption.Value != null)
-                {
-                    writer.WritePropertyName("students");
-                    JsonSerializer.Serialize(writer, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactRequestDto.Students, jsonSerializerOptions);
-                }
-                else
-                    writer.WriteNull("students");
             if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactRequestDto.EmailOption.IsSet)
                 if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactRequestDto.EmailOption.Value != null)
                     writer.WriteString("email", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactRequestDto.Email);

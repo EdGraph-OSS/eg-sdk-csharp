@@ -81,48 +81,84 @@ namespace EdGraph.Platform.Client.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'Code'
+        /// Test the property 'ExternalDataSourceSchoolId'
         /// </summary>
         [Fact]
-        public void CodeTest()
+        public void ExternalDataSourceSchoolIdTest()
         {
-            // TODO unit test for the property 'Code'
+            // TODO unit test for the property 'ExternalDataSourceSchoolId'
         }
 
         /// <summary>
-        /// Test the property 'Name'
+        /// Test the property 'SchoolStateShortCode'
         /// </summary>
         [Fact]
-        public void NameTest()
+        public void SchoolStateShortCodeTest()
         {
-            // TODO unit test for the property 'Name'
+            // TODO unit test for the property 'SchoolStateShortCode'
         }
 
         /// <summary>
-        /// Test the property 'District'
+        /// Test the property 'SchoolName'
         /// </summary>
         [Fact]
-        public void DistrictTest()
+        public void SchoolNameTest()
         {
-            // TODO unit test for the property 'District'
+            // TODO unit test for the property 'SchoolName'
         }
 
         /// <summary>
-        /// Test the property 'CampusId'
+        /// Test the property 'DistrictStateShortCode'
         /// </summary>
         [Fact]
-        public void CampusIdTest()
+        public void DistrictStateShortCodeTest()
         {
-            // TODO unit test for the property 'CampusId'
+            // TODO unit test for the property 'DistrictStateShortCode'
         }
 
         /// <summary>
-        /// Test the property 'TeaIdNumber'
+        /// Test the property 'SchoolStateLongCode'
         /// </summary>
         [Fact]
-        public void TeaIdNumberTest()
+        public void SchoolStateLongCodeTest()
         {
-            // TODO unit test for the property 'TeaIdNumber'
+            // TODO unit test for the property 'SchoolStateLongCode'
+        }
+
+        /// <summary>
+        /// Test the property 'SchoolLocalCode'
+        /// </summary>
+        [Fact]
+        public void SchoolLocalCodeTest()
+        {
+            // TODO unit test for the property 'SchoolLocalCode'
+        }
+
+        /// <summary>
+        /// Test the property 'DistrictLocalCode'
+        /// </summary>
+        [Fact]
+        public void DistrictLocalCodeTest()
+        {
+            // TODO unit test for the property 'DistrictLocalCode'
+        }
+
+        /// <summary>
+        /// Test the property 'DistrictStateCode'
+        /// </summary>
+        [Fact]
+        public void DistrictStateCodeTest()
+        {
+            // TODO unit test for the property 'DistrictStateCode'
+        }
+
+        /// <summary>
+        /// Test the property 'DistrictName'
+        /// </summary>
+        [Fact]
+        public void DistrictNameTest()
+        {
+            // TODO unit test for the property 'DistrictName'
         }
 
         /// <summary>
@@ -222,15 +258,6 @@ namespace EdGraph.Platform.Client.Test.Model
         public void LastModifiedDateTimeTest()
         {
             // TODO unit test for the property 'LastModifiedDateTime'
-        }
-
-        /// <summary>
-        /// Test the property 'LastUpdatedDateTime'
-        /// </summary>
-        [Fact]
-        public void LastUpdatedDateTimeTest()
-        {
-            // TODO unit test for the property 'LastUpdatedDateTime'
         }
     }
 }

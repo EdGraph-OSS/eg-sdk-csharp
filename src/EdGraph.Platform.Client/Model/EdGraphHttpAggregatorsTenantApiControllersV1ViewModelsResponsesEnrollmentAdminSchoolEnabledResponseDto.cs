@@ -34,13 +34,13 @@ namespace EdGraph.Platform.Client.Model
         /// Initializes a new instance of the <see cref="EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolEnabledResponseDto" /> class.
         /// </summary>
         /// <param name="tenantId">tenantId</param>
-        /// <param name="code">code</param>
+        /// <param name="id">id</param>
         /// <param name="isEnabled">isEnabled</param>
         [JsonConstructor]
-        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolEnabledResponseDto(Option<Guid?> tenantId = default, Option<string?> code = default, Option<bool?> isEnabled = default)
+        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolEnabledResponseDto(Option<Guid?> tenantId = default, Option<Guid?> id = default, Option<bool?> isEnabled = default)
         {
             TenantIdOption = tenantId;
-            CodeOption = code;
+            IdOption = id;
             IsEnabledOption = isEnabled;
             OnCreated();
         }
@@ -61,17 +61,17 @@ namespace EdGraph.Platform.Client.Model
         public Guid? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
-        /// Used to track the state of Code
+        /// Used to track the state of Id
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<string?> CodeOption { get; private set; }
+        public Option<Guid?> IdOption { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Code
+        /// Gets or Sets Id
         /// </summary>
-        [JsonPropertyName("code")]
-        public string? Code { get { return this.CodeOption.Value; } set { this.CodeOption = new(value); } }
+        [JsonPropertyName("id")]
+        public Guid? Id { get { return this.IdOption.Value; } set { this.IdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of IsEnabled
@@ -95,7 +95,7 @@ namespace EdGraph.Platform.Client.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolEnabledResponseDto {\n");
             sb.Append("  TenantId: ").Append(TenantId).Append("\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  IsEnabled: ").Append(IsEnabled).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -135,7 +135,7 @@ namespace EdGraph.Platform.Client.Model
             JsonTokenType startingTokenType = utf8JsonReader.TokenType;
 
             Option<Guid?> tenantId = default;
-            Option<string?> code = default;
+            Option<Guid?> id = default;
             Option<bool?> isEnabled = default;
 
             while (utf8JsonReader.Read())
@@ -156,8 +156,8 @@ namespace EdGraph.Platform.Client.Model
                         case "tenantId":
                             tenantId = new Option<Guid?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (Guid?)null : utf8JsonReader.GetGuid());
                             break;
-                        case "code":
-                            code = new Option<string?>(utf8JsonReader.GetString());
+                        case "id":
+                            id = new Option<Guid?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (Guid?)null : utf8JsonReader.GetGuid());
                             break;
                         case "isEnabled":
                             isEnabled = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
@@ -171,7 +171,7 @@ namespace EdGraph.Platform.Client.Model
             if (isEnabled.IsSet && isEnabled.Value == null)
                 throw new ArgumentNullException(nameof(isEnabled), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolEnabledResponseDto.");
 
-            return new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolEnabledResponseDto(tenantId, code, isEnabled);
+            return new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolEnabledResponseDto(tenantId, id, isEnabled);
         }
 
         /// <summary>
@@ -204,11 +204,11 @@ namespace EdGraph.Platform.Client.Model
                 else
                     writer.WriteNull("tenantId");
 
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolEnabledResponseDto.CodeOption.IsSet)
-                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolEnabledResponseDto.CodeOption.Value != null)
-                    writer.WriteString("code", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolEnabledResponseDto.Code);
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolEnabledResponseDto.IdOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolEnabledResponseDto.IdOption.Value != null)
+                    writer.WriteString("id", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolEnabledResponseDto.IdOption.Value!.Value);
                 else
-                    writer.WriteNull("code");
+                    writer.WriteNull("id");
 
             if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolEnabledResponseDto.IsEnabledOption.IsSet)
                 writer.WriteBoolean("isEnabled", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolEnabledResponseDto.IsEnabledOption.Value!.Value);

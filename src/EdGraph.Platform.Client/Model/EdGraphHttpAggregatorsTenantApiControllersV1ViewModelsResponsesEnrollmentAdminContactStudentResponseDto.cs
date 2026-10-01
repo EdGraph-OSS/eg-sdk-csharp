@@ -26,7 +26,7 @@ using EdGraph.Platform.Client.Client;
 namespace EdGraph.Platform.Client.Model
 {
     /// <summary>
-    /// EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto
+    /// One student linked to a contact. &#x60;_id&#x60; is the link entry&#39;s own id, NOT the student: read  &#x60;studentId&#x60; for the student record id and &#x60;studentLocalCode&#x60; for the SIS code.
     /// </summary>
     public partial class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto : IValidatableObject
     {
@@ -35,17 +35,21 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <param name="id">id</param>
         /// <param name="studentId">studentId</param>
-        /// <param name="firstName">firstName</param>
-        /// <param name="middleName">middleName</param>
-        /// <param name="lastName">lastName</param>
+        /// <param name="studentLocalCode">studentLocalCode</param>
+        /// <param name="studentStateCode">studentStateCode</param>
+        /// <param name="studentFirstName">studentFirstName</param>
+        /// <param name="studentMiddleName">studentMiddleName</param>
+        /// <param name="studentLastName">studentLastName</param>
         [JsonConstructor]
-        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto(Option<Guid?> id = default, Option<string?> studentId = default, Option<string?> firstName = default, Option<string?> middleName = default, Option<string?> lastName = default)
+        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto(Option<Guid?> id = default, Option<Guid?> studentId = default, Option<string?> studentLocalCode = default, Option<string?> studentStateCode = default, Option<string?> studentFirstName = default, Option<string?> studentMiddleName = default, Option<string?> studentLastName = default)
         {
             IdOption = id;
             StudentIdOption = studentId;
-            FirstNameOption = firstName;
-            MiddleNameOption = middleName;
-            LastNameOption = lastName;
+            StudentLocalCodeOption = studentLocalCode;
+            StudentStateCodeOption = studentStateCode;
+            StudentFirstNameOption = studentFirstName;
+            StudentMiddleNameOption = studentMiddleName;
+            StudentLastNameOption = studentLastName;
             OnCreated();
         }
 
@@ -69,52 +73,78 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<string?> StudentIdOption { get; private set; }
+        public Option<Guid?> StudentIdOption { get; private set; }
 
         /// <summary>
         /// Gets or Sets StudentId
         /// </summary>
         [JsonPropertyName("studentId")]
-        public string? StudentId { get { return this.StudentIdOption.Value; } set { this.StudentIdOption = new(value); } }
+        public Guid? StudentId { get { return this.StudentIdOption.Value; } set { this.StudentIdOption = new(value); } }
 
         /// <summary>
-        /// Used to track the state of FirstName
+        /// Used to track the state of StudentLocalCode
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<string?> FirstNameOption { get; private set; }
+        public Option<string?> StudentLocalCodeOption { get; private set; }
 
         /// <summary>
-        /// Gets or Sets FirstName
+        /// Gets or Sets StudentLocalCode
         /// </summary>
-        [JsonPropertyName("firstName")]
-        public string? FirstName { get { return this.FirstNameOption.Value; } set { this.FirstNameOption = new(value); } }
+        [JsonPropertyName("studentLocalCode")]
+        public string? StudentLocalCode { get { return this.StudentLocalCodeOption.Value; } set { this.StudentLocalCodeOption = new(value); } }
 
         /// <summary>
-        /// Used to track the state of MiddleName
-        /// </summary>
-        [JsonIgnore]
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<string?> MiddleNameOption { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets MiddleName
-        /// </summary>
-        [JsonPropertyName("middleName")]
-        public string? MiddleName { get { return this.MiddleNameOption.Value; } set { this.MiddleNameOption = new(value); } }
-
-        /// <summary>
-        /// Used to track the state of LastName
+        /// Used to track the state of StudentStateCode
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<string?> LastNameOption { get; private set; }
+        public Option<string?> StudentStateCodeOption { get; private set; }
 
         /// <summary>
-        /// Gets or Sets LastName
+        /// Gets or Sets StudentStateCode
         /// </summary>
-        [JsonPropertyName("lastName")]
-        public string? LastName { get { return this.LastNameOption.Value; } set { this.LastNameOption = new(value); } }
+        [JsonPropertyName("studentStateCode")]
+        public string? StudentStateCode { get { return this.StudentStateCodeOption.Value; } set { this.StudentStateCodeOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of StudentFirstName
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> StudentFirstNameOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets StudentFirstName
+        /// </summary>
+        [JsonPropertyName("studentFirstName")]
+        public string? StudentFirstName { get { return this.StudentFirstNameOption.Value; } set { this.StudentFirstNameOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of StudentMiddleName
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> StudentMiddleNameOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets StudentMiddleName
+        /// </summary>
+        [JsonPropertyName("studentMiddleName")]
+        public string? StudentMiddleName { get { return this.StudentMiddleNameOption.Value; } set { this.StudentMiddleNameOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of StudentLastName
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> StudentLastNameOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets StudentLastName
+        /// </summary>
+        [JsonPropertyName("studentLastName")]
+        public string? StudentLastName { get { return this.StudentLastNameOption.Value; } set { this.StudentLastNameOption = new(value); } }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -126,9 +156,11 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  StudentId: ").Append(StudentId).Append("\n");
-            sb.Append("  FirstName: ").Append(FirstName).Append("\n");
-            sb.Append("  MiddleName: ").Append(MiddleName).Append("\n");
-            sb.Append("  LastName: ").Append(LastName).Append("\n");
+            sb.Append("  StudentLocalCode: ").Append(StudentLocalCode).Append("\n");
+            sb.Append("  StudentStateCode: ").Append(StudentStateCode).Append("\n");
+            sb.Append("  StudentFirstName: ").Append(StudentFirstName).Append("\n");
+            sb.Append("  StudentMiddleName: ").Append(StudentMiddleName).Append("\n");
+            sb.Append("  StudentLastName: ").Append(StudentLastName).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -167,10 +199,12 @@ namespace EdGraph.Platform.Client.Model
             JsonTokenType startingTokenType = utf8JsonReader.TokenType;
 
             Option<Guid?> id = default;
-            Option<string?> studentId = default;
-            Option<string?> firstName = default;
-            Option<string?> middleName = default;
-            Option<string?> lastName = default;
+            Option<Guid?> studentId = default;
+            Option<string?> studentLocalCode = default;
+            Option<string?> studentStateCode = default;
+            Option<string?> studentFirstName = default;
+            Option<string?> studentMiddleName = default;
+            Option<string?> studentLastName = default;
 
             while (utf8JsonReader.Read())
             {
@@ -191,16 +225,22 @@ namespace EdGraph.Platform.Client.Model
                             id = new Option<Guid?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (Guid?)null : utf8JsonReader.GetGuid());
                             break;
                         case "studentId":
-                            studentId = new Option<string?>(utf8JsonReader.GetString());
+                            studentId = new Option<Guid?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (Guid?)null : utf8JsonReader.GetGuid());
                             break;
-                        case "firstName":
-                            firstName = new Option<string?>(utf8JsonReader.GetString());
+                        case "studentLocalCode":
+                            studentLocalCode = new Option<string?>(utf8JsonReader.GetString());
                             break;
-                        case "middleName":
-                            middleName = new Option<string?>(utf8JsonReader.GetString());
+                        case "studentStateCode":
+                            studentStateCode = new Option<string?>(utf8JsonReader.GetString());
                             break;
-                        case "lastName":
-                            lastName = new Option<string?>(utf8JsonReader.GetString());
+                        case "studentFirstName":
+                            studentFirstName = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "studentMiddleName":
+                            studentMiddleName = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "studentLastName":
+                            studentLastName = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         default:
                             break;
@@ -208,7 +248,7 @@ namespace EdGraph.Platform.Client.Model
                 }
             }
 
-            return new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto(id, studentId, firstName, middleName, lastName);
+            return new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto(id, studentId, studentLocalCode, studentStateCode, studentFirstName, studentMiddleName, studentLastName);
         }
 
         /// <summary>
@@ -243,27 +283,39 @@ namespace EdGraph.Platform.Client.Model
 
             if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.StudentIdOption.IsSet)
                 if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.StudentIdOption.Value != null)
-                    writer.WriteString("studentId", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.StudentId);
+                    writer.WriteString("studentId", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.StudentIdOption.Value!.Value);
                 else
                     writer.WriteNull("studentId");
 
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.FirstNameOption.IsSet)
-                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.FirstNameOption.Value != null)
-                    writer.WriteString("firstName", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.FirstName);
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.StudentLocalCodeOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.StudentLocalCodeOption.Value != null)
+                    writer.WriteString("studentLocalCode", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.StudentLocalCode);
                 else
-                    writer.WriteNull("firstName");
+                    writer.WriteNull("studentLocalCode");
 
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.MiddleNameOption.IsSet)
-                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.MiddleNameOption.Value != null)
-                    writer.WriteString("middleName", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.MiddleName);
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.StudentStateCodeOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.StudentStateCodeOption.Value != null)
+                    writer.WriteString("studentStateCode", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.StudentStateCode);
                 else
-                    writer.WriteNull("middleName");
+                    writer.WriteNull("studentStateCode");
 
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.LastNameOption.IsSet)
-                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.LastNameOption.Value != null)
-                    writer.WriteString("lastName", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.LastName);
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.StudentFirstNameOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.StudentFirstNameOption.Value != null)
+                    writer.WriteString("studentFirstName", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.StudentFirstName);
                 else
-                    writer.WriteNull("lastName");
+                    writer.WriteNull("studentFirstName");
+
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.StudentMiddleNameOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.StudentMiddleNameOption.Value != null)
+                    writer.WriteString("studentMiddleName", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.StudentMiddleName);
+                else
+                    writer.WriteNull("studentMiddleName");
+
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.StudentLastNameOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.StudentLastNameOption.Value != null)
+                    writer.WriteString("studentLastName", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto.StudentLastName);
+                else
+                    writer.WriteNull("studentLastName");
         }
     }
 }

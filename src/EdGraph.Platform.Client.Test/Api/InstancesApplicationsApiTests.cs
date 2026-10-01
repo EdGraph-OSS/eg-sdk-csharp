@@ -183,9 +183,8 @@ namespace EdGraph.Platform.Client.Test.Api
             string tenantId = default!;
             string instanceId = default!;
             int applicationId = default!;
-            Client.Option<int> year = default!;
             Client.Option<bool> loadEducationOrganizations = default!;
-            var response = await _instance.GetApplicationByIdAsyncAsync(tenantId, instanceId, applicationId, year, loadEducationOrganizations);
+            var response = await _instance.GetApplicationByIdAsyncAsync(tenantId, instanceId, applicationId, loadEducationOrganizations);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }

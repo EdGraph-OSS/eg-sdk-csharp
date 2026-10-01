@@ -45,7 +45,7 @@ namespace EdGraph.Platform.Client.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
-        /// <param name="schoolCode">Required - a seat count is meaningless without a school.</param>
+        /// <param name="schoolLocalCode">Required - a seat count is meaningless without a school.</param>
         /// <param name="pageSize"> (optional, default to 50)</param>
         /// <param name="pageIndex"> (optional, default to 0)</param>
         /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
@@ -54,7 +54,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="search">Free-text match on program name/code. (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetCapacityApiResponse"/>&gt;</returns>
-        Task<IGetCapacityApiResponse> GetCapacityAsync(string tenantId, string schoolCode, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, Option<string> grade = default, Option<string> search = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IGetCapacityApiResponse> GetCapacityAsync(string tenantId, string schoolLocalCode, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, Option<string> grade = default, Option<string> search = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Searches Capacity for one school - one row per program x grade x school year.
@@ -63,7 +63,7 @@ namespace EdGraph.Platform.Client.Api
         /// 
         /// </remarks>
         /// <param name="tenantId"></param>
-        /// <param name="schoolCode">Required - a seat count is meaningless without a school.</param>
+        /// <param name="schoolLocalCode">Required - a seat count is meaningless without a school.</param>
         /// <param name="pageSize"> (optional, default to 50)</param>
         /// <param name="pageIndex"> (optional, default to 0)</param>
         /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
@@ -72,7 +72,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="search">Free-text match on program name/code. (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetCapacityApiResponse"/>?&gt;</returns>
-        Task<IGetCapacityApiResponse?> GetCapacityOrDefaultAsync(string tenantId, string schoolCode, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, Option<string> grade = default, Option<string> search = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IGetCapacityApiResponse?> GetCapacityOrDefaultAsync(string tenantId, string schoolLocalCode, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, Option<string> grade = default, Option<string> search = default, System.Threading.CancellationToken cancellationToken = default);
     }
 
     /// <summary>
@@ -184,25 +184,25 @@ namespace EdGraph.Platform.Client.Api
             OauthTokenProvider = oauthTokenProvider;
         }
 
-        partial void FormatGetCapacity(ref string tenantId, ref string schoolCode, ref Option<int> pageSize, ref Option<int> pageIndex, ref Option<string> orderBy, ref Option<string> filter, ref Option<string> grade, ref Option<string> search);
+        partial void FormatGetCapacity(ref string tenantId, ref string schoolLocalCode, ref Option<int> pageSize, ref Option<int> pageIndex, ref Option<string> orderBy, ref Option<string> filter, ref Option<string> grade, ref Option<string> search);
 
         /// <summary>
         /// Validates the request parameters
         /// </summary>
         /// <param name="tenantId"></param>
-        /// <param name="schoolCode"></param>
+        /// <param name="schoolLocalCode"></param>
         /// <param name="orderBy"></param>
         /// <param name="filter"></param>
         /// <param name="grade"></param>
         /// <param name="search"></param>
         /// <returns></returns>
-        private void ValidateGetCapacity(string tenantId, string schoolCode, Option<string> orderBy, Option<string> filter, Option<string> grade, Option<string> search)
+        private void ValidateGetCapacity(string tenantId, string schoolLocalCode, Option<string> orderBy, Option<string> filter, Option<string> grade, Option<string> search)
         {
             if (tenantId == null)
                 throw new ArgumentNullException(nameof(tenantId));
 
-            if (schoolCode == null)
-                throw new ArgumentNullException(nameof(schoolCode));
+            if (schoolLocalCode == null)
+                throw new ArgumentNullException(nameof(schoolLocalCode));
 
             if (orderBy.IsSet && orderBy.Value == null)
                 throw new ArgumentNullException(nameof(orderBy));
@@ -222,17 +222,17 @@ namespace EdGraph.Platform.Client.Api
         /// </summary>
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
-        /// <param name="schoolCode"></param>
+        /// <param name="schoolLocalCode"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageIndex"></param>
         /// <param name="orderBy"></param>
         /// <param name="filter"></param>
         /// <param name="grade"></param>
         /// <param name="search"></param>
-        private void AfterGetCapacityDefaultImplementation(IGetCapacityApiResponse apiResponseLocalVar, string tenantId, string schoolCode, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter, Option<string> grade, Option<string> search)
+        private void AfterGetCapacityDefaultImplementation(IGetCapacityApiResponse apiResponseLocalVar, string tenantId, string schoolLocalCode, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter, Option<string> grade, Option<string> search)
         {
             bool suppressDefaultLog = false;
-            AfterGetCapacity(ref suppressDefaultLog, apiResponseLocalVar, tenantId, schoolCode, pageSize, pageIndex, orderBy, filter, grade, search);
+            AfterGetCapacity(ref suppressDefaultLog, apiResponseLocalVar, tenantId, schoolLocalCode, pageSize, pageIndex, orderBy, filter, grade, search);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -243,14 +243,14 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="suppressDefaultLog"></param>
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
-        /// <param name="schoolCode"></param>
+        /// <param name="schoolLocalCode"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageIndex"></param>
         /// <param name="orderBy"></param>
         /// <param name="filter"></param>
         /// <param name="grade"></param>
         /// <param name="search"></param>
-        partial void AfterGetCapacity(ref bool suppressDefaultLog, IGetCapacityApiResponse apiResponseLocalVar, string tenantId, string schoolCode, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter, Option<string> grade, Option<string> search);
+        partial void AfterGetCapacity(ref bool suppressDefaultLog, IGetCapacityApiResponse apiResponseLocalVar, string tenantId, string schoolLocalCode, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter, Option<string> grade, Option<string> search);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -259,17 +259,17 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pathFormatLocalVar"></param>
         /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
-        /// <param name="schoolCode"></param>
+        /// <param name="schoolLocalCode"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageIndex"></param>
         /// <param name="orderBy"></param>
         /// <param name="filter"></param>
         /// <param name="grade"></param>
         /// <param name="search"></param>
-        private void OnErrorGetCapacityDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string schoolCode, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter, Option<string> grade, Option<string> search)
+        private void OnErrorGetCapacityDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string schoolLocalCode, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter, Option<string> grade, Option<string> search)
         {
             bool suppressDefaultLogLocalVar = false;
-            OnErrorGetCapacity(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, schoolCode, pageSize, pageIndex, orderBy, filter, grade, search);
+            OnErrorGetCapacity(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, schoolLocalCode, pageSize, pageIndex, orderBy, filter, grade, search);
             if (!suppressDefaultLogLocalVar)
                 Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
@@ -282,20 +282,20 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pathFormatLocalVar"></param>
         /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
-        /// <param name="schoolCode"></param>
+        /// <param name="schoolLocalCode"></param>
         /// <param name="pageSize"></param>
         /// <param name="pageIndex"></param>
         /// <param name="orderBy"></param>
         /// <param name="filter"></param>
         /// <param name="grade"></param>
         /// <param name="search"></param>
-        partial void OnErrorGetCapacity(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string schoolCode, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter, Option<string> grade, Option<string> search);
+        partial void OnErrorGetCapacity(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string schoolLocalCode, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter, Option<string> grade, Option<string> search);
 
         /// <summary>
         /// Searches Capacity for one school - one row per program x grade x school year. 
         /// </summary>
         /// <param name="tenantId"></param>
-        /// <param name="schoolCode">Required - a seat count is meaningless without a school.</param>
+        /// <param name="schoolLocalCode">Required - a seat count is meaningless without a school.</param>
         /// <param name="pageSize"> (optional, default to 50)</param>
         /// <param name="pageIndex"> (optional, default to 0)</param>
         /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
@@ -304,11 +304,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="search">Free-text match on program name/code. (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetCapacityApiResponse"/>&gt;</returns>
-        public async Task<IGetCapacityApiResponse?> GetCapacityOrDefaultAsync(string tenantId, string schoolCode, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, Option<string> grade = default, Option<string> search = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IGetCapacityApiResponse?> GetCapacityOrDefaultAsync(string tenantId, string schoolLocalCode, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, Option<string> grade = default, Option<string> search = default, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await GetCapacityAsync(tenantId, schoolCode, pageSize, pageIndex, orderBy, filter, grade, search, cancellationToken).ConfigureAwait(false);
+                return await GetCapacityAsync(tenantId, schoolLocalCode, pageSize, pageIndex, orderBy, filter, grade, search, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -321,7 +321,7 @@ namespace EdGraph.Platform.Client.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
-        /// <param name="schoolCode">Required - a seat count is meaningless without a school.</param>
+        /// <param name="schoolLocalCode">Required - a seat count is meaningless without a school.</param>
         /// <param name="pageSize"> (optional, default to 50)</param>
         /// <param name="pageIndex"> (optional, default to 0)</param>
         /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
@@ -330,15 +330,15 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="search">Free-text match on program name/code. (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetCapacityApiResponse"/>&gt;</returns>
-        public async Task<IGetCapacityApiResponse> GetCapacityAsync(string tenantId, string schoolCode, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, Option<string> grade = default, Option<string> search = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IGetCapacityApiResponse> GetCapacityAsync(string tenantId, string schoolLocalCode, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, Option<string> grade = default, Option<string> search = default, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
             try
             {
-                ValidateGetCapacity(tenantId, schoolCode, orderBy, filter, grade, search);
+                ValidateGetCapacity(tenantId, schoolLocalCode, orderBy, filter, grade, search);
 
-                FormatGetCapacity(ref tenantId, ref schoolCode, ref pageSize, ref pageIndex, ref orderBy, ref filter, ref grade, ref search);
+                FormatGetCapacity(ref tenantId, ref schoolLocalCode, ref pageSize, ref pageIndex, ref orderBy, ref filter, ref grade, ref search);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -346,10 +346,10 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
                     uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
-                        ? "/tenants/{tenantId}/enrollmentadmin/schools/{schoolCode}/capacity"
-                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/schools/{schoolCode}/capacity");
+                        ? "/tenants/{tenantId}/enrollmentadmin/schools/{schoolLocalCode}/capacity"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/schools/{schoolLocalCode}/capacity");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
-                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BschoolCode%7D", Uri.EscapeDataString(schoolCode.ToString()));
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BschoolLocalCode%7D", Uri.EscapeDataString(schoolLocalCode.ToString()));
 
                     System.Collections.Specialized.NameValueCollection parseQueryStringLocalVar = System.Web.HttpUtility.ParseQueryString(string.Empty);
 
@@ -403,13 +403,13 @@ namespace EdGraph.Platform.Client.Api
                         switch ((int)httpResponseMessageLocalVar.StatusCode) {
                             default: {
                                 string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/schools/{schoolCode}/capacity", requestedAtLocalVar, _jsonSerializerOptions);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/schools/{schoolLocalCode}/capacity", requestedAtLocalVar, _jsonSerializerOptions);
 
                                 break;
                             }
                         }
 
-                        AfterGetCapacityDefaultImplementation(apiResponseLocalVar, tenantId, schoolCode, pageSize, pageIndex, orderBy, filter, grade, search);
+                        AfterGetCapacityDefaultImplementation(apiResponseLocalVar, tenantId, schoolLocalCode, pageSize, pageIndex, orderBy, filter, grade, search);
 
                         Events.ExecuteOnGetCapacity(apiResponseLocalVar);
 
@@ -423,7 +423,7 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorGetCapacityDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/schools/{schoolCode}/capacity", uriBuilderLocalVar.Path, tenantId, schoolCode, pageSize, pageIndex, orderBy, filter, grade, search);
+                OnErrorGetCapacityDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/schools/{schoolLocalCode}/capacity", uriBuilderLocalVar.Path, tenantId, schoolLocalCode, pageSize, pageIndex, orderBy, filter, grade, search);
                 Events.ExecuteOnErrorGetCapacity(e);
                 throw;
             }

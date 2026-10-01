@@ -72,30 +72,48 @@ namespace EdGraph.Platform.Client.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'FirstName'
+        /// Test the property 'StudentLocalCode'
         /// </summary>
         [Fact]
-        public void FirstNameTest()
+        public void StudentLocalCodeTest()
         {
-            // TODO unit test for the property 'FirstName'
+            // TODO unit test for the property 'StudentLocalCode'
         }
 
         /// <summary>
-        /// Test the property 'MiddleName'
+        /// Test the property 'StudentStateCode'
         /// </summary>
         [Fact]
-        public void MiddleNameTest()
+        public void StudentStateCodeTest()
         {
-            // TODO unit test for the property 'MiddleName'
+            // TODO unit test for the property 'StudentStateCode'
         }
 
         /// <summary>
-        /// Test the property 'LastName'
+        /// Test the property 'StudentFirstName'
         /// </summary>
         [Fact]
-        public void LastNameTest()
+        public void StudentFirstNameTest()
         {
-            // TODO unit test for the property 'LastName'
+            // TODO unit test for the property 'StudentFirstName'
+        }
+
+        /// <summary>
+        /// Test the property 'StudentMiddleName'
+        /// </summary>
+        [Fact]
+        public void StudentMiddleNameTest()
+        {
+            // TODO unit test for the property 'StudentMiddleName'
+        }
+
+        /// <summary>
+        /// Test the property 'StudentLastName'
+        /// </summary>
+        [Fact]
+        public void StudentLastNameTest()
+        {
+            // TODO unit test for the property 'StudentLastName'
         }
     }
 }

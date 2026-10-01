@@ -216,6 +216,8 @@ namespace EdGraph.Platform.Client.Client
                 return RegistrationApiRegistrationV2TenantTypeValueConverter.ToJsonValue(registrationApiRegistrationV2TenantType);
             if (obj is SystemNetHttpStatusCode systemNetHttpStatusCode)
                 return SystemNetHttpStatusCodeValueConverter.ToJsonValue(systemNetHttpStatusCode);
+            if (obj is TenantApiPartnershipV1PartnershipScope tenantApiPartnershipV1PartnershipScope)
+                return TenantApiPartnershipV1PartnershipScopeValueConverter.ToJsonValue(tenantApiPartnershipV1PartnershipScope);
             if (obj is TenantApiPartnershipV1PartnershipSyncDirection tenantApiPartnershipV1PartnershipSyncDirection)
                 return TenantApiPartnershipV1PartnershipSyncDirectionValueConverter.ToJsonValue(tenantApiPartnershipV1PartnershipSyncDirection);
             if (obj is TenantApiPartnershipV1PartnershipSyncType tenantApiPartnershipV1PartnershipSyncType)

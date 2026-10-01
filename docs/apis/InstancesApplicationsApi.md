@@ -361,7 +361,7 @@ Retrieves the API Clients of an Application.
 
 <a id="getapplicationbyidasync"></a>
 # **GetApplicationByIdAsync**
-> EdfiAdminApiEdfiAdminV1EdFiApplicationProfileResponse GetApplicationByIdAsync (string tenantId, string instanceId, int applicationId, int year = null, bool loadEducationOrganizations = null)
+> EdfiAdminApiEdfiAdminV1EdFiApplicationProfileResponse GetApplicationByIdAsync (string tenantId, string instanceId, int applicationId, bool loadEducationOrganizations = null)
 
 Retrieves an Application by ID.
 
@@ -373,7 +373,6 @@ Retrieves an Application by ID.
 | **tenantId** | **string** |  |  |
 | **instanceId** | **string** |  |  |
 | **applicationId** | **int** |  |  |
-| **year** | **int** |  | [optional]  |
 | **loadEducationOrganizations** | **bool** |  | [optional]  |
 
 ### Return type

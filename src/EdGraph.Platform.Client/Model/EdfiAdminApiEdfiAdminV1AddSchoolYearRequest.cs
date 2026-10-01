@@ -38,14 +38,16 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="year">year</param>
         /// <param name="selectedTierId">selectedTierId</param>
         /// <param name="odsBackupCode">odsBackupCode</param>
+        /// <param name="applicationIds">applicationIds</param>
         [JsonConstructor]
-        public EdfiAdminApiEdfiAdminV1AddSchoolYearRequest(Option<string?> tenantId = default, Option<string?> instanceId = default, Option<int?> year = default, Option<string?> selectedTierId = default, Option<string?> odsBackupCode = default)
+        public EdfiAdminApiEdfiAdminV1AddSchoolYearRequest(Option<string?> tenantId = default, Option<string?> instanceId = default, Option<int?> year = default, Option<string?> selectedTierId = default, Option<string?> odsBackupCode = default, Option<List<int>?> applicationIds = default)
         {
             TenantIdOption = tenantId;
             InstanceIdOption = instanceId;
             YearOption = year;
             SelectedTierIdOption = selectedTierId;
             OdsBackupCodeOption = odsBackupCode;
+            ApplicationIdsOption = applicationIds;
             OnCreated();
         }
 
@@ -117,6 +119,19 @@ namespace EdGraph.Platform.Client.Model
         public string? OdsBackupCode { get { return this.OdsBackupCodeOption.Value; } set { this.OdsBackupCodeOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of ApplicationIds
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<List<int>?> ApplicationIdsOption { get; }
+
+        /// <summary>
+        /// Gets or Sets ApplicationIds
+        /// </summary>
+        [JsonPropertyName("applicationIds")]
+        public List<int>? ApplicationIds { get { return this.ApplicationIdsOption.Value; } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -129,6 +144,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  Year: ").Append(Year).Append("\n");
             sb.Append("  SelectedTierId: ").Append(SelectedTierId).Append("\n");
             sb.Append("  OdsBackupCode: ").Append(OdsBackupCode).Append("\n");
+            sb.Append("  ApplicationIds: ").Append(ApplicationIds).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -171,6 +187,7 @@ namespace EdGraph.Platform.Client.Model
             Option<int?> year = default;
             Option<string?> selectedTierId = default;
             Option<string?> odsBackupCode = default;
+            Option<List<int>?> applicationIds = default;
 
             while (utf8JsonReader.Read())
             {
@@ -202,6 +219,9 @@ namespace EdGraph.Platform.Client.Model
                         case "odsBackupCode":
                             odsBackupCode = new Option<string?>(utf8JsonReader.GetString());
                             break;
+                        case "applicationIds":
+                            applicationIds = new Option<List<int>?>(JsonSerializer.Deserialize<List<int>>(ref utf8JsonReader, jsonSerializerOptions));
+                            break;
                         default:
                             break;
                     }
@@ -211,7 +231,7 @@ namespace EdGraph.Platform.Client.Model
             if (year.IsSet && year.Value == null)
                 throw new ArgumentNullException(nameof(year), "Property is not nullable for class EdfiAdminApiEdfiAdminV1AddSchoolYearRequest.");
 
-            return new EdfiAdminApiEdfiAdminV1AddSchoolYearRequest(tenantId, instanceId, year, selectedTierId, odsBackupCode);
+            return new EdfiAdminApiEdfiAdminV1AddSchoolYearRequest(tenantId, instanceId, year, selectedTierId, odsBackupCode, applicationIds);
         }
 
         /// <summary>
@@ -264,6 +284,15 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteString("odsBackupCode", edfiAdminApiEdfiAdminV1AddSchoolYearRequest.OdsBackupCode);
                 else
                     writer.WriteNull("odsBackupCode");
+
+            if (edfiAdminApiEdfiAdminV1AddSchoolYearRequest.ApplicationIdsOption.IsSet)
+                if (edfiAdminApiEdfiAdminV1AddSchoolYearRequest.ApplicationIdsOption.Value != null)
+                {
+                    writer.WritePropertyName("applicationIds");
+                    JsonSerializer.Serialize(writer, edfiAdminApiEdfiAdminV1AddSchoolYearRequest.ApplicationIds, jsonSerializerOptions);
+                }
+                else
+                    writer.WriteNull("applicationIds");
         }
     }
 }

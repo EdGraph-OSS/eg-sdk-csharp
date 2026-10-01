@@ -97,5 +97,14 @@ namespace EdGraph.Platform.Client.Test.Model
         {
             // TODO unit test for the property 'EducationOrganizationCategoryDescriptors'
         }
+
+        /// <summary>
+        /// Test the property 'Year'
+        /// </summary>
+        [Fact]
+        public void YearTest()
+        {
+            // TODO unit test for the property 'Year'
+        }
     }
 }

@@ -115,5 +115,14 @@ namespace EdGraph.Platform.Client.Test.Model
         {
             // TODO unit test for the property 'OdsBackupDescription'
         }
+
+        /// <summary>
+        /// Test the property 'PendingApplicationAccessIds'
+        /// </summary>
+        [Fact]
+        public void PendingApplicationAccessIdsTest()
+        {
+            // TODO unit test for the property 'PendingApplicationAccessIds'
+        }
     }
 }

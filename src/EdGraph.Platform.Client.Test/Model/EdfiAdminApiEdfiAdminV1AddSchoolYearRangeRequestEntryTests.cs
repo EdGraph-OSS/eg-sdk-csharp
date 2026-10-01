@@ -79,5 +79,14 @@ namespace EdGraph.Platform.Client.Test.Model
         {
             // TODO unit test for the property 'OdsBackupCode'
         }
+
+        /// <summary>
+        /// Test the property 'ApplicationIds'
+        /// </summary>
+        [Fact]
+        public void ApplicationIdsTest()
+        {
+            // TODO unit test for the property 'ApplicationIds'
+        }
     }
 }

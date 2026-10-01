@@ -38,10 +38,37 @@ namespace EdGraph.Platform.Client.Api
         EnrollmentAdminContactsApiEvents Events { get; }
 
         /// <summary>
-        /// Creates an Enrollment Contact.
+        /// Links a student to a contact.
         /// </summary>
         /// <remarks>
-        /// &#x60;email&#x60; and &#x60;phone&#x60; here are the SIS-sourced values, which is what a contact starts              with. Changing either afterwards is an override rather than an update - see the              &#x60;email-override&#x60; and &#x60;phone-override&#x60; routes.
+        /// Send &#x60;studentId&#x60; (the SIS code) to resolve or create the linked EnrollmentStudent  document server-side, or &#x60;id&#x60; (an existing student&#39;s own internal id, as returned by  this same route&#39;s GET) to link that exact student directly - &#x60;id&#x60; wins if both are  given, and never creates anything, 404ing instead if it does not exist. Set the association  attributes (priority, relationship, etc.) with a follow-up PUT to  &#x60;.../students/{studentId}&#x60;.
+        /// </remarks>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IAddEnrollmentContactStudentApiResponse"/>&gt;</returns>
+        Task<IAddEnrollmentContactStudentApiResponse> AddEnrollmentContactStudentAsync(string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto = default, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Links a student to a contact.
+        /// </summary>
+        /// <remarks>
+        /// Send &#x60;studentId&#x60; (the SIS code) to resolve or create the linked EnrollmentStudent  document server-side, or &#x60;id&#x60; (an existing student&#39;s own internal id, as returned by  this same route&#39;s GET) to link that exact student directly - &#x60;id&#x60; wins if both are  given, and never creates anything, 404ing instead if it does not exist. Set the association  attributes (priority, relationship, etc.) with a follow-up PUT to  &#x60;.../students/{studentId}&#x60;.
+        /// </remarks>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IAddEnrollmentContactStudentApiResponse"/>?&gt;</returns>
+        Task<IAddEnrollmentContactStudentApiResponse?> AddEnrollmentContactStudentOrDefaultAsync(string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto = default, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Creates or updates an Enrollment Contact by its source-system &#x60;contactId&#x60;.
+        /// </summary>
+        /// <remarks>
+        /// &lt;br&gt;              Upsert semantics: unique per &#x60;contactId&#x60;. A first call creates the contact; a later call              for the same &#x60;contactId&#x60; overwrites the SIS-sourced fields where they differ, and no-ops              when they are identical. An existing email/phone override is never touched by this call - see              the &#x60;overrides/emails&#x60; and &#x60;overrides/phones&#x60; routes for that.                &lt;br&gt;    &#x60;email&#x60; and &#x60;phone&#x60; here are the SIS-sourced values, which is what a contact starts              with. Changing either afterwards is an override rather than an update - see the              &#x60;overrides/emails&#x60; and &#x60;overrides/phones&#x60; routes.              
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
@@ -51,10 +78,10 @@ namespace EdGraph.Platform.Client.Api
         Task<ICreateEnrollmentContactApiResponse> CreateEnrollmentContactAsync(string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateContactRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateContactRequestDto = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Creates an Enrollment Contact.
+        /// Creates or updates an Enrollment Contact by its source-system &#x60;contactId&#x60;.
         /// </summary>
         /// <remarks>
-        /// &#x60;email&#x60; and &#x60;phone&#x60; here are the SIS-sourced values, which is what a contact starts              with. Changing either afterwards is an override rather than an update - see the              &#x60;email-override&#x60; and &#x60;phone-override&#x60; routes.
+        /// &lt;br&gt;              Upsert semantics: unique per &#x60;contactId&#x60;. A first call creates the contact; a later call              for the same &#x60;contactId&#x60; overwrites the SIS-sourced fields where they differ, and no-ops              when they are identical. An existing email/phone override is never touched by this call - see              the &#x60;overrides/emails&#x60; and &#x60;overrides/phones&#x60; routes for that.                &lt;br&gt;    &#x60;email&#x60; and &#x60;phone&#x60; here are the SIS-sourced values, which is what a contact starts              with. Changing either afterwards is an override rather than an update - see the              &#x60;overrides/emails&#x60; and &#x60;overrides/phones&#x60; routes.              
         /// </remarks>
         /// <param name="tenantId"></param>
         /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateContactRequestDto"> (optional)</param>
@@ -88,6 +115,37 @@ namespace EdGraph.Platform.Client.Api
         Task<IGetEnrollmentContactByIdApiResponse?> GetEnrollmentContactByIdOrDefaultAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
+        /// Reads every lifecycle event for a contact - create, update, delete, overrides and sign-in  unlocks - newest first.
+        /// </summary>
+        /// <remarks>
+        /// &lt;br&gt;              Eventually consistent, on the same terms as M:EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.EnrollmentAdminController.GetEnrollmentContactOverrides(System.String,System.Guid,System.Int32,System.Int32,System.String,System.Threading.CancellationToken).                &lt;br&gt;    &#x60;EventType&#x60; on &#x60;GetAllChangesRequest&#x60; is a single optional string, so it cannot              express \&quot;any of these event types\&quot; on its own. The filter is built through &#x60;Filter&#x60;              instead - a raw Elasticsearch &#x60;query_string&#x60; - while &#x60;EntityType&#x60; and              &#x60;EntityId&#x60; stay the typed fields M:EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.EnrollmentAdminController.GetEnrollmentContactOverrides(System.String,System.Guid,System.Int32,System.Int32,System.String,System.Threading.CancellationToken) already uses.              The change log applies the typed fields as &#x60;filter&#x60; clauses and &#x60;Filter&#x60; as a              &#x60;must&#x60; clause on the same bool query, so the two combine as an AND: this call still never              leaves this contact&#39;s own entity scope.                &lt;br&gt;              The event types covered are EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.EnrollmentAdmin.ContactOverrideHistoryExtensions.ContactEventTypes,              which tracks what the Enrollment outbox publishes against a contact.              
+        /// </remarks>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="pageSize"> (optional, default to 20)</param>
+        /// <param name="pageIndex"> (optional, default to 0)</param>
+        /// <param name="studentId">Narrows to changes affecting one linked student. (optional, default to &quot;&quot;)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentContactChangelogsApiResponse"/>&gt;</returns>
+        Task<IGetEnrollmentContactChangelogsApiResponse> GetEnrollmentContactChangelogsAsync(string tenantId, Guid id, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> studentId = default, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Reads every lifecycle event for a contact - create, update, delete, overrides and sign-in  unlocks - newest first.
+        /// </summary>
+        /// <remarks>
+        /// &lt;br&gt;              Eventually consistent, on the same terms as M:EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.EnrollmentAdminController.GetEnrollmentContactOverrides(System.String,System.Guid,System.Int32,System.Int32,System.String,System.Threading.CancellationToken).                &lt;br&gt;    &#x60;EventType&#x60; on &#x60;GetAllChangesRequest&#x60; is a single optional string, so it cannot              express \&quot;any of these event types\&quot; on its own. The filter is built through &#x60;Filter&#x60;              instead - a raw Elasticsearch &#x60;query_string&#x60; - while &#x60;EntityType&#x60; and              &#x60;EntityId&#x60; stay the typed fields M:EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.EnrollmentAdminController.GetEnrollmentContactOverrides(System.String,System.Guid,System.Int32,System.Int32,System.String,System.Threading.CancellationToken) already uses.              The change log applies the typed fields as &#x60;filter&#x60; clauses and &#x60;Filter&#x60; as a              &#x60;must&#x60; clause on the same bool query, so the two combine as an AND: this call still never              leaves this contact&#39;s own entity scope.                &lt;br&gt;              The event types covered are EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.EnrollmentAdmin.ContactOverrideHistoryExtensions.ContactEventTypes,              which tracks what the Enrollment outbox publishes against a contact.              
+        /// </remarks>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="pageSize"> (optional, default to 20)</param>
+        /// <param name="pageIndex"> (optional, default to 0)</param>
+        /// <param name="studentId">Narrows to changes affecting one linked student. (optional, default to &quot;&quot;)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentContactChangelogsApiResponse"/>?&gt;</returns>
+        Task<IGetEnrollmentContactChangelogsApiResponse?> GetEnrollmentContactChangelogsOrDefaultAsync(string tenantId, Guid id, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> studentId = default, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
         /// Reads a contact&#39;s override history, newest first.
         /// </summary>
         /// <remarks>
@@ -119,6 +177,56 @@ namespace EdGraph.Platform.Client.Api
         Task<IGetEnrollmentContactOverridesApiResponse?> GetEnrollmentContactOverridesOrDefaultAsync(string tenantId, Guid id, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> studentId = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
+        /// Gets a contact&#39;s Registrations.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentContactRegistrationsApiResponse"/>&gt;</returns>
+        Task<IGetEnrollmentContactRegistrationsApiResponse> GetEnrollmentContactRegistrationsAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Gets a contact&#39;s Registrations.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentContactRegistrationsApiResponse"/>?&gt;</returns>
+        Task<IGetEnrollmentContactRegistrationsApiResponse?> GetEnrollmentContactRegistrationsOrDefaultAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Gets a contact&#39;s linked students, with each link&#39;s association attributes.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentContactStudentsApiResponse"/>&gt;</returns>
+        Task<IGetEnrollmentContactStudentsApiResponse> GetEnrollmentContactStudentsAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Gets a contact&#39;s linked students, with each link&#39;s association attributes.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentContactStudentsApiResponse"/>?&gt;</returns>
+        Task<IGetEnrollmentContactStudentsApiResponse?> GetEnrollmentContactStudentsOrDefaultAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
         /// Searches Enrollment Contacts.
         /// </summary>
         /// <remarks>
@@ -131,11 +239,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
         /// <param name="filter"> (optional, default to &quot;&quot;)</param>
         /// <param name="search">Free-text match on contact name, email, or phone. (optional, default to &quot;&quot;)</param>
-        /// <param name="schoolCode">Narrows to contacts with at least one linked student at this school. (optional, default to &quot;&quot;)</param>
+        /// <param name="nextSchoolStateShortCode">Narrows to contacts with at least one linked student whose next school has this state short code. (optional, default to &quot;&quot;)</param>
         /// <param name="locked">Narrows to contacts by sign-in lock status. Unset returns every contact. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentContactsApiResponse"/>&gt;</returns>
-        Task<IGetEnrollmentContactsApiResponse> GetEnrollmentContactsAsync(string tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, Option<string> search = default, Option<string> schoolCode = default, Option<bool> locked = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IGetEnrollmentContactsApiResponse> GetEnrollmentContactsAsync(string tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, Option<string> search = default, Option<string> nextSchoolStateShortCode = default, Option<bool> locked = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Searches Enrollment Contacts.
@@ -149,11 +257,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
         /// <param name="filter"> (optional, default to &quot;&quot;)</param>
         /// <param name="search">Free-text match on contact name, email, or phone. (optional, default to &quot;&quot;)</param>
-        /// <param name="schoolCode">Narrows to contacts with at least one linked student at this school. (optional, default to &quot;&quot;)</param>
+        /// <param name="nextSchoolStateShortCode">Narrows to contacts with at least one linked student whose next school has this state short code. (optional, default to &quot;&quot;)</param>
         /// <param name="locked">Narrows to contacts by sign-in lock status. Unset returns every contact. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentContactsApiResponse"/>?&gt;</returns>
-        Task<IGetEnrollmentContactsApiResponse?> GetEnrollmentContactsOrDefaultAsync(string tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, Option<string> search = default, Option<string> schoolCode = default, Option<bool> locked = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IGetEnrollmentContactsApiResponse?> GetEnrollmentContactsOrDefaultAsync(string tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, Option<string> search = default, Option<string> nextSchoolStateShortCode = default, Option<bool> locked = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Overrides a contact&#39;s email address.
@@ -218,11 +326,11 @@ namespace EdGraph.Platform.Client.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        /// <param name="studentId">The student whose screen the removal was made from. (optional, default to &quot;&quot;)</param>
+        /// <param name="studentLocalCode">The local code of the student whose screen the removal was made from. (optional, default to &quot;&quot;)</param>
         /// <param name="expectedVersion">The &#x60;lastUpdatedDateTime&#x60; this edit started from. (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IRemoveEnrollmentContactEmailOverrideApiResponse"/>&gt;</returns>
-        Task<IRemoveEnrollmentContactEmailOverrideApiResponse> RemoveEnrollmentContactEmailOverrideAsync(string tenantId, Guid id, Option<string> studentId = default, Option<string> expectedVersion = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IRemoveEnrollmentContactEmailOverrideApiResponse> RemoveEnrollmentContactEmailOverrideAsync(string tenantId, Guid id, Option<string> studentLocalCode = default, Option<string> expectedVersion = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Removes a contact&#39;s email override, letting the SIS value show through again.
@@ -232,11 +340,11 @@ namespace EdGraph.Platform.Client.Api
         /// </remarks>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        /// <param name="studentId">The student whose screen the removal was made from. (optional, default to &quot;&quot;)</param>
+        /// <param name="studentLocalCode">The local code of the student whose screen the removal was made from. (optional, default to &quot;&quot;)</param>
         /// <param name="expectedVersion">The &#x60;lastUpdatedDateTime&#x60; this edit started from. (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IRemoveEnrollmentContactEmailOverrideApiResponse"/>?&gt;</returns>
-        Task<IRemoveEnrollmentContactEmailOverrideApiResponse?> RemoveEnrollmentContactEmailOverrideOrDefaultAsync(string tenantId, Guid id, Option<string> studentId = default, Option<string> expectedVersion = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IRemoveEnrollmentContactEmailOverrideApiResponse?> RemoveEnrollmentContactEmailOverrideOrDefaultAsync(string tenantId, Guid id, Option<string> studentLocalCode = default, Option<string> expectedVersion = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Removes a contact&#39;s phone override, letting the SIS value show through again.
@@ -247,11 +355,11 @@ namespace EdGraph.Platform.Client.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        /// <param name="studentId">The student whose screen the removal was made from. (optional, default to &quot;&quot;)</param>
+        /// <param name="studentLocalCode">The local code of the student whose screen the removal was made from. (optional, default to &quot;&quot;)</param>
         /// <param name="expectedVersion">The &#x60;lastUpdatedDateTime&#x60; this edit started from. (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IRemoveEnrollmentContactPhoneOverrideApiResponse"/>&gt;</returns>
-        Task<IRemoveEnrollmentContactPhoneOverrideApiResponse> RemoveEnrollmentContactPhoneOverrideAsync(string tenantId, Guid id, Option<string> studentId = default, Option<string> expectedVersion = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IRemoveEnrollmentContactPhoneOverrideApiResponse> RemoveEnrollmentContactPhoneOverrideAsync(string tenantId, Guid id, Option<string> studentLocalCode = default, Option<string> expectedVersion = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Removes a contact&#39;s phone override, letting the SIS value show through again.
@@ -261,11 +369,38 @@ namespace EdGraph.Platform.Client.Api
         /// </remarks>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        /// <param name="studentId">The student whose screen the removal was made from. (optional, default to &quot;&quot;)</param>
+        /// <param name="studentLocalCode">The local code of the student whose screen the removal was made from. (optional, default to &quot;&quot;)</param>
         /// <param name="expectedVersion">The &#x60;lastUpdatedDateTime&#x60; this edit started from. (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IRemoveEnrollmentContactPhoneOverrideApiResponse"/>?&gt;</returns>
-        Task<IRemoveEnrollmentContactPhoneOverrideApiResponse?> RemoveEnrollmentContactPhoneOverrideOrDefaultAsync(string tenantId, Guid id, Option<string> studentId = default, Option<string> expectedVersion = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IRemoveEnrollmentContactPhoneOverrideApiResponse?> RemoveEnrollmentContactPhoneOverrideOrDefaultAsync(string tenantId, Guid id, Option<string> studentLocalCode = default, Option<string> expectedVersion = default, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Removes a student&#39;s link to a contact.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="studentId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IRemoveEnrollmentContactStudentApiResponse"/>&gt;</returns>
+        Task<IRemoveEnrollmentContactStudentApiResponse> RemoveEnrollmentContactStudentAsync(string tenantId, Guid id, string studentId, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Removes a student&#39;s link to a contact.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="studentId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IRemoveEnrollmentContactStudentApiResponse"/>?&gt;</returns>
+        Task<IRemoveEnrollmentContactStudentApiResponse?> RemoveEnrollmentContactStudentOrDefaultAsync(string tenantId, Guid id, string studentId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Unlocks a contact&#39;s sign-in, resetting exhausted parent-verification tries.
@@ -293,10 +428,10 @@ namespace EdGraph.Platform.Client.Api
         Task<IUnlockEnrollmentContactSignInApiResponse?> UnlockEnrollmentContactSignInOrDefaultAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Updates an Enrollment Contact name and its linked students.
+        /// Updates an Enrollment Contact&#39;s name.
         /// </summary>
         /// <remarks>
-        /// &lt;br&gt;              The student list is REPLACED, not merged: a student omitted from the body is unlinked from the              contact.                &lt;br&gt;              Email and phone cannot be changed here. Correcting either is an override, which records who              changed it and keeps the SIS value beside the correction; a body carrying &#x60;email&#x60; or              &#x60;phone&#x60; is rejected with a 400 naming the route to use instead. Note that a contact whose              email is overridden keeps that override across this call - an update to the name leaves a              standing correction alone.              
+        /// Email and phone cannot be changed here. Correcting either is an override, which records who  changed it and keeps the SIS value beside the correction; a body carrying &#x60;email&#x60; or  &#x60;phone&#x60; is rejected with a 400 naming the route to use instead. Note that a contact whose  email is overridden keeps that override across this call - an update to the name leaves a  standing correction alone. Student association is managed exclusively through the  &#x60;/contacts/{id}/students&#x60; sub-resource, not through this call.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
@@ -307,10 +442,10 @@ namespace EdGraph.Platform.Client.Api
         Task<IUpdateEnrollmentContactApiResponse> UpdateEnrollmentContactAsync(string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactRequestDto = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Updates an Enrollment Contact name and its linked students.
+        /// Updates an Enrollment Contact&#39;s name.
         /// </summary>
         /// <remarks>
-        /// &lt;br&gt;              The student list is REPLACED, not merged: a student omitted from the body is unlinked from the              contact.                &lt;br&gt;              Email and phone cannot be changed here. Correcting either is an override, which records who              changed it and keeps the SIS value beside the correction; a body carrying &#x60;email&#x60; or              &#x60;phone&#x60; is rejected with a 400 naming the route to use instead. Note that a contact whose              email is overridden keeps that override across this call - an update to the name leaves a              standing correction alone.              
+        /// Email and phone cannot be changed here. Correcting either is an override, which records who  changed it and keeps the SIS value beside the correction; a body carrying &#x60;email&#x60; or  &#x60;phone&#x60; is rejected with a 400 naming the route to use instead. Note that a contact whose  email is overridden keeps that override across this call - an update to the name leaves a  standing correction alone. Student association is managed exclusively through the  &#x60;/contacts/{id}/students&#x60; sub-resource, not through this call.
         /// </remarks>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
@@ -318,6 +453,102 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IUpdateEnrollmentContactApiResponse"/>?&gt;</returns>
         Task<IUpdateEnrollmentContactApiResponse?> UpdateEnrollmentContactOrDefaultAsync(string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactRequestDto = default, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Updates a contact-student association&#39;s attributes.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="studentId"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IUpdateEnrollmentContactStudentApiResponse"/>&gt;</returns>
+        Task<IUpdateEnrollmentContactStudentApiResponse> UpdateEnrollmentContactStudentAsync(string tenantId, Guid id, string studentId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto = default, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Updates a contact-student association&#39;s attributes.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="studentId"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IUpdateEnrollmentContactStudentApiResponse"/>?&gt;</returns>
+        Task<IUpdateEnrollmentContactStudentApiResponse?> UpdateEnrollmentContactStudentOrDefaultAsync(string tenantId, Guid id, string studentId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto = default, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Verifies a contact.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IVerifyEnrollmentContactApiResponse"/>&gt;</returns>
+        Task<IVerifyEnrollmentContactApiResponse> VerifyEnrollmentContactAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Verifies a contact.
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IVerifyEnrollmentContactApiResponse"/>?&gt;</returns>
+        Task<IVerifyEnrollmentContactApiResponse?> VerifyEnrollmentContactOrDefaultAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default);
+    }
+
+    /// <summary>
+    /// The <see cref="IAddEnrollmentContactStudentApiResponse"/>
+    /// </summary>
+    public interface IAddEnrollmentContactStudentApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, ICreated<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentAssociatedResultDto?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>, INotFound<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>
+    {
+        /// <summary>
+        /// Returns true if the response is 401 Unauthorized
+        /// </summary>
+        /// <returns></returns>
+        bool IsUnauthorized { get; }
+
+        /// <summary>
+        /// Returns true if the response is 403 Forbidden
+        /// </summary>
+        /// <returns></returns>
+        bool IsForbidden { get; }
+
+        /// <summary>
+        /// Returns true if the response is 500 InternalServerError
+        /// </summary>
+        /// <returns></returns>
+        bool IsInternalServerError { get; }
+
+        /// <summary>
+        /// Returns true if the response is 201 Created
+        /// </summary>
+        /// <returns></returns>
+        bool IsCreated { get; }
+
+        /// <summary>
+        /// Returns true if the response is 400 BadRequest
+        /// </summary>
+        /// <returns></returns>
+        bool IsBadRequest { get; }
+
+        /// <summary>
+        /// Returns true if the response is 404 NotFound
+        /// </summary>
+        /// <returns></returns>
+        bool IsNotFound { get; }
     }
 
     /// <summary>
@@ -393,6 +624,42 @@ namespace EdGraph.Platform.Client.Api
     }
 
     /// <summary>
+    /// The <see cref="IGetEnrollmentContactChangelogsApiResponse"/>
+    /// </summary>
+    public interface IGetEnrollmentContactChangelogsApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactOverrideHistoryEntryDtoPaginatedItemsViewModel?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>
+    {
+        /// <summary>
+        /// Returns true if the response is 401 Unauthorized
+        /// </summary>
+        /// <returns></returns>
+        bool IsUnauthorized { get; }
+
+        /// <summary>
+        /// Returns true if the response is 403 Forbidden
+        /// </summary>
+        /// <returns></returns>
+        bool IsForbidden { get; }
+
+        /// <summary>
+        /// Returns true if the response is 500 InternalServerError
+        /// </summary>
+        /// <returns></returns>
+        bool IsInternalServerError { get; }
+
+        /// <summary>
+        /// Returns true if the response is 200 Ok
+        /// </summary>
+        /// <returns></returns>
+        bool IsOk { get; }
+
+        /// <summary>
+        /// Returns true if the response is 400 BadRequest
+        /// </summary>
+        /// <returns></returns>
+        bool IsBadRequest { get; }
+    }
+
+    /// <summary>
     /// The <see cref="IGetEnrollmentContactOverridesApiResponse"/>
     /// </summary>
     public interface IGetEnrollmentContactOverridesApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactOverrideHistoryEntryDtoPaginatedItemsViewModel?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>
@@ -426,6 +693,72 @@ namespace EdGraph.Platform.Client.Api
         /// </summary>
         /// <returns></returns>
         bool IsBadRequest { get; }
+    }
+
+    /// <summary>
+    /// The <see cref="IGetEnrollmentContactRegistrationsApiResponse"/>
+    /// </summary>
+    public interface IGetEnrollmentContactRegistrationsApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<List<EnrollmentApiEnrollmentRegistrationsV1RegistrationResponse>?>
+    {
+        /// <summary>
+        /// Returns true if the response is 401 Unauthorized
+        /// </summary>
+        /// <returns></returns>
+        bool IsUnauthorized { get; }
+
+        /// <summary>
+        /// Returns true if the response is 403 Forbidden
+        /// </summary>
+        /// <returns></returns>
+        bool IsForbidden { get; }
+
+        /// <summary>
+        /// Returns true if the response is 500 InternalServerError
+        /// </summary>
+        /// <returns></returns>
+        bool IsInternalServerError { get; }
+
+        /// <summary>
+        /// Returns true if the response is 200 Ok
+        /// </summary>
+        /// <returns></returns>
+        bool IsOk { get; }
+    }
+
+    /// <summary>
+    /// The <see cref="IGetEnrollmentContactStudentsApiResponse"/>
+    /// </summary>
+    public interface IGetEnrollmentContactStudentsApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentDetailDto>?>, INotFound<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>
+    {
+        /// <summary>
+        /// Returns true if the response is 401 Unauthorized
+        /// </summary>
+        /// <returns></returns>
+        bool IsUnauthorized { get; }
+
+        /// <summary>
+        /// Returns true if the response is 403 Forbidden
+        /// </summary>
+        /// <returns></returns>
+        bool IsForbidden { get; }
+
+        /// <summary>
+        /// Returns true if the response is 500 InternalServerError
+        /// </summary>
+        /// <returns></returns>
+        bool IsInternalServerError { get; }
+
+        /// <summary>
+        /// Returns true if the response is 200 Ok
+        /// </summary>
+        /// <returns></returns>
+        bool IsOk { get; }
+
+        /// <summary>
+        /// Returns true if the response is 404 NotFound
+        /// </summary>
+        /// <returns></returns>
+        bool IsNotFound { get; }
     }
 
     /// <summary>
@@ -645,6 +978,42 @@ namespace EdGraph.Platform.Client.Api
     }
 
     /// <summary>
+    /// The <see cref="IRemoveEnrollmentContactStudentApiResponse"/>
+    /// </summary>
+    public interface IRemoveEnrollmentContactStudentApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentRemovedResultDto?>, INotFound<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>
+    {
+        /// <summary>
+        /// Returns true if the response is 401 Unauthorized
+        /// </summary>
+        /// <returns></returns>
+        bool IsUnauthorized { get; }
+
+        /// <summary>
+        /// Returns true if the response is 403 Forbidden
+        /// </summary>
+        /// <returns></returns>
+        bool IsForbidden { get; }
+
+        /// <summary>
+        /// Returns true if the response is 500 InternalServerError
+        /// </summary>
+        /// <returns></returns>
+        bool IsInternalServerError { get; }
+
+        /// <summary>
+        /// Returns true if the response is 200 Ok
+        /// </summary>
+        /// <returns></returns>
+        bool IsOk { get; }
+
+        /// <summary>
+        /// Returns true if the response is 404 NotFound
+        /// </summary>
+        /// <returns></returns>
+        bool IsNotFound { get; }
+    }
+
+    /// <summary>
     /// The <see cref="IUnlockEnrollmentContactSignInApiResponse"/>
     /// </summary>
     public interface IUnlockEnrollmentContactSignInApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactSignInUnlockedResultDto?>, INotFound<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>
@@ -723,10 +1092,108 @@ namespace EdGraph.Platform.Client.Api
     }
 
     /// <summary>
+    /// The <see cref="IUpdateEnrollmentContactStudentApiResponse"/>
+    /// </summary>
+    public interface IUpdateEnrollmentContactStudentApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentAssociatedResultDto?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>, INotFound<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>
+    {
+        /// <summary>
+        /// Returns true if the response is 401 Unauthorized
+        /// </summary>
+        /// <returns></returns>
+        bool IsUnauthorized { get; }
+
+        /// <summary>
+        /// Returns true if the response is 403 Forbidden
+        /// </summary>
+        /// <returns></returns>
+        bool IsForbidden { get; }
+
+        /// <summary>
+        /// Returns true if the response is 500 InternalServerError
+        /// </summary>
+        /// <returns></returns>
+        bool IsInternalServerError { get; }
+
+        /// <summary>
+        /// Returns true if the response is 200 Ok
+        /// </summary>
+        /// <returns></returns>
+        bool IsOk { get; }
+
+        /// <summary>
+        /// Returns true if the response is 400 BadRequest
+        /// </summary>
+        /// <returns></returns>
+        bool IsBadRequest { get; }
+
+        /// <summary>
+        /// Returns true if the response is 404 NotFound
+        /// </summary>
+        /// <returns></returns>
+        bool IsNotFound { get; }
+    }
+
+    /// <summary>
+    /// The <see cref="IVerifyEnrollmentContactApiResponse"/>
+    /// </summary>
+    public interface IVerifyEnrollmentContactApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactVerifiedResultDto?>, INotFound<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>
+    {
+        /// <summary>
+        /// Returns true if the response is 401 Unauthorized
+        /// </summary>
+        /// <returns></returns>
+        bool IsUnauthorized { get; }
+
+        /// <summary>
+        /// Returns true if the response is 403 Forbidden
+        /// </summary>
+        /// <returns></returns>
+        bool IsForbidden { get; }
+
+        /// <summary>
+        /// Returns true if the response is 500 InternalServerError
+        /// </summary>
+        /// <returns></returns>
+        bool IsInternalServerError { get; }
+
+        /// <summary>
+        /// Returns true if the response is 200 Ok
+        /// </summary>
+        /// <returns></returns>
+        bool IsOk { get; }
+
+        /// <summary>
+        /// Returns true if the response is 404 NotFound
+        /// </summary>
+        /// <returns></returns>
+        bool IsNotFound { get; }
+    }
+
+    /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
     public class EnrollmentAdminContactsApiEvents
     {
+        /// <summary>
+        /// The event raised after the server response
+        /// </summary>
+        public event EventHandler<ApiResponseEventArgs>? OnAddEnrollmentContactStudent;
+
+        /// <summary>
+        /// The event raised after an error querying the server
+        /// </summary>
+        public event EventHandler<ExceptionEventArgs>? OnErrorAddEnrollmentContactStudent;
+
+        internal void ExecuteOnAddEnrollmentContactStudent(EnrollmentAdminContactsApi.AddEnrollmentContactStudentApiResponse apiResponse)
+        {
+            OnAddEnrollmentContactStudent?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+        }
+
+        internal void ExecuteOnErrorAddEnrollmentContactStudent(Exception exception)
+        {
+            OnErrorAddEnrollmentContactStudent?.Invoke(this, new ExceptionEventArgs(exception));
+        }
+
         /// <summary>
         /// The event raised after the server response
         /// </summary>
@@ -770,6 +1237,26 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// The event raised after the server response
         /// </summary>
+        public event EventHandler<ApiResponseEventArgs>? OnGetEnrollmentContactChangelogs;
+
+        /// <summary>
+        /// The event raised after an error querying the server
+        /// </summary>
+        public event EventHandler<ExceptionEventArgs>? OnErrorGetEnrollmentContactChangelogs;
+
+        internal void ExecuteOnGetEnrollmentContactChangelogs(EnrollmentAdminContactsApi.GetEnrollmentContactChangelogsApiResponse apiResponse)
+        {
+            OnGetEnrollmentContactChangelogs?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+        }
+
+        internal void ExecuteOnErrorGetEnrollmentContactChangelogs(Exception exception)
+        {
+            OnErrorGetEnrollmentContactChangelogs?.Invoke(this, new ExceptionEventArgs(exception));
+        }
+
+        /// <summary>
+        /// The event raised after the server response
+        /// </summary>
         public event EventHandler<ApiResponseEventArgs>? OnGetEnrollmentContactOverrides;
 
         /// <summary>
@@ -785,6 +1272,46 @@ namespace EdGraph.Platform.Client.Api
         internal void ExecuteOnErrorGetEnrollmentContactOverrides(Exception exception)
         {
             OnErrorGetEnrollmentContactOverrides?.Invoke(this, new ExceptionEventArgs(exception));
+        }
+
+        /// <summary>
+        /// The event raised after the server response
+        /// </summary>
+        public event EventHandler<ApiResponseEventArgs>? OnGetEnrollmentContactRegistrations;
+
+        /// <summary>
+        /// The event raised after an error querying the server
+        /// </summary>
+        public event EventHandler<ExceptionEventArgs>? OnErrorGetEnrollmentContactRegistrations;
+
+        internal void ExecuteOnGetEnrollmentContactRegistrations(EnrollmentAdminContactsApi.GetEnrollmentContactRegistrationsApiResponse apiResponse)
+        {
+            OnGetEnrollmentContactRegistrations?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+        }
+
+        internal void ExecuteOnErrorGetEnrollmentContactRegistrations(Exception exception)
+        {
+            OnErrorGetEnrollmentContactRegistrations?.Invoke(this, new ExceptionEventArgs(exception));
+        }
+
+        /// <summary>
+        /// The event raised after the server response
+        /// </summary>
+        public event EventHandler<ApiResponseEventArgs>? OnGetEnrollmentContactStudents;
+
+        /// <summary>
+        /// The event raised after an error querying the server
+        /// </summary>
+        public event EventHandler<ExceptionEventArgs>? OnErrorGetEnrollmentContactStudents;
+
+        internal void ExecuteOnGetEnrollmentContactStudents(EnrollmentAdminContactsApi.GetEnrollmentContactStudentsApiResponse apiResponse)
+        {
+            OnGetEnrollmentContactStudents?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+        }
+
+        internal void ExecuteOnErrorGetEnrollmentContactStudents(Exception exception)
+        {
+            OnErrorGetEnrollmentContactStudents?.Invoke(this, new ExceptionEventArgs(exception));
         }
 
         /// <summary>
@@ -890,6 +1417,26 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// The event raised after the server response
         /// </summary>
+        public event EventHandler<ApiResponseEventArgs>? OnRemoveEnrollmentContactStudent;
+
+        /// <summary>
+        /// The event raised after an error querying the server
+        /// </summary>
+        public event EventHandler<ExceptionEventArgs>? OnErrorRemoveEnrollmentContactStudent;
+
+        internal void ExecuteOnRemoveEnrollmentContactStudent(EnrollmentAdminContactsApi.RemoveEnrollmentContactStudentApiResponse apiResponse)
+        {
+            OnRemoveEnrollmentContactStudent?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+        }
+
+        internal void ExecuteOnErrorRemoveEnrollmentContactStudent(Exception exception)
+        {
+            OnErrorRemoveEnrollmentContactStudent?.Invoke(this, new ExceptionEventArgs(exception));
+        }
+
+        /// <summary>
+        /// The event raised after the server response
+        /// </summary>
         public event EventHandler<ApiResponseEventArgs>? OnUnlockEnrollmentContactSignIn;
 
         /// <summary>
@@ -925,6 +1472,46 @@ namespace EdGraph.Platform.Client.Api
         internal void ExecuteOnErrorUpdateEnrollmentContact(Exception exception)
         {
             OnErrorUpdateEnrollmentContact?.Invoke(this, new ExceptionEventArgs(exception));
+        }
+
+        /// <summary>
+        /// The event raised after the server response
+        /// </summary>
+        public event EventHandler<ApiResponseEventArgs>? OnUpdateEnrollmentContactStudent;
+
+        /// <summary>
+        /// The event raised after an error querying the server
+        /// </summary>
+        public event EventHandler<ExceptionEventArgs>? OnErrorUpdateEnrollmentContactStudent;
+
+        internal void ExecuteOnUpdateEnrollmentContactStudent(EnrollmentAdminContactsApi.UpdateEnrollmentContactStudentApiResponse apiResponse)
+        {
+            OnUpdateEnrollmentContactStudent?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+        }
+
+        internal void ExecuteOnErrorUpdateEnrollmentContactStudent(Exception exception)
+        {
+            OnErrorUpdateEnrollmentContactStudent?.Invoke(this, new ExceptionEventArgs(exception));
+        }
+
+        /// <summary>
+        /// The event raised after the server response
+        /// </summary>
+        public event EventHandler<ApiResponseEventArgs>? OnVerifyEnrollmentContact;
+
+        /// <summary>
+        /// The event raised after an error querying the server
+        /// </summary>
+        public event EventHandler<ExceptionEventArgs>? OnErrorVerifyEnrollmentContact;
+
+        internal void ExecuteOnVerifyEnrollmentContact(EnrollmentAdminContactsApi.VerifyEnrollmentContactApiResponse apiResponse)
+        {
+            OnVerifyEnrollmentContact?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+        }
+
+        internal void ExecuteOnErrorVerifyEnrollmentContact(Exception exception)
+        {
+            OnErrorVerifyEnrollmentContact?.Invoke(this, new ExceptionEventArgs(exception));
         }
     }
 
@@ -973,6 +1560,485 @@ namespace EdGraph.Platform.Client.Api
             HttpClient = httpClient;
             Events = enrollmentAdminContactsApiEvents;
             OauthTokenProvider = oauthTokenProvider;
+        }
+
+        partial void FormatAddEnrollmentContactStudent(ref string tenantId, ref Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto);
+
+        /// <summary>
+        /// Validates the request parameters
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto"></param>
+        /// <returns></returns>
+        private void ValidateAddEnrollmentContactStudent(string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto)
+        {
+            if (tenantId == null)
+                throw new ArgumentNullException(nameof(tenantId));
+
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto.IsSet && edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto.Value == null)
+                throw new ArgumentNullException(nameof(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto));
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto"></param>
+        private void AfterAddEnrollmentContactStudentDefaultImplementation(IAddEnrollmentContactStudentApiResponse apiResponseLocalVar, string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto)
+        {
+            bool suppressDefaultLog = false;
+            AfterAddEnrollmentContactStudent(ref suppressDefaultLog, apiResponseLocalVar, tenantId, id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto);
+            if (!suppressDefaultLog)
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="suppressDefaultLog"></param>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto"></param>
+        partial void AfterAddEnrollmentContactStudent(ref bool suppressDefaultLog, IAddEnrollmentContactStudentApiResponse apiResponseLocalVar, string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto);
+
+        /// <summary>
+        /// Logs exceptions that occur while retrieving the server response
+        /// </summary>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto"></param>
+        private void OnErrorAddEnrollmentContactStudentDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto)
+        {
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorAddEnrollmentContactStudent(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
+        }
+
+        /// <summary>
+        /// A partial method that gives developers a way to provide customized exception handling
+        /// </summary>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto"></param>
+        partial void OnErrorAddEnrollmentContactStudent(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto);
+
+        /// <summary>
+        /// Links a student to a contact. Send &#x60;studentId&#x60; (the SIS code) to resolve or create the linked EnrollmentStudent  document server-side, or &#x60;id&#x60; (an existing student&#39;s own internal id, as returned by  this same route&#39;s GET) to link that exact student directly - &#x60;id&#x60; wins if both are  given, and never creates anything, 404ing instead if it does not exist. Set the association  attributes (priority, relationship, etc.) with a follow-up PUT to  &#x60;.../students/{studentId}&#x60;.
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IAddEnrollmentContactStudentApiResponse"/>&gt;</returns>
+        public async Task<IAddEnrollmentContactStudentApiResponse?> AddEnrollmentContactStudentOrDefaultAsync(string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto = default, System.Threading.CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                return await AddEnrollmentContactStudentAsync(tenantId, id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto, cancellationToken).ConfigureAwait(false);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Links a student to a contact. Send &#x60;studentId&#x60; (the SIS code) to resolve or create the linked EnrollmentStudent  document server-side, or &#x60;id&#x60; (an existing student&#39;s own internal id, as returned by  this same route&#39;s GET) to link that exact student directly - &#x60;id&#x60; wins if both are  given, and never creates anything, 404ing instead if it does not exist. Set the association  attributes (priority, relationship, etc.) with a follow-up PUT to  &#x60;.../students/{studentId}&#x60;.
+        /// </summary>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IAddEnrollmentContactStudentApiResponse"/>&gt;</returns>
+        public async Task<IAddEnrollmentContactStudentApiResponse> AddEnrollmentContactStudentAsync(string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto = default, System.Threading.CancellationToken cancellationToken = default)
+        {
+            UriBuilder uriBuilderLocalVar = new UriBuilder();
+
+            try
+            {
+                ValidateAddEnrollmentContactStudent(tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto);
+
+                FormatAddEnrollmentContactStudent(ref tenantId, ref id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto);
+
+                using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
+                {
+                    uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
+                    uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
+                    uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/students"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/students");
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Bid%7D", Uri.EscapeDataString(id.ToString()));
+
+                    if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto.IsSet)
+                    {
+                      httpRequestMessageLocalVar.Content = (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto.Value as object) is EdGraph.Platform.Client.Client.FileParameter fileParameterLocalVar
+                        ? httpRequestMessageLocalVar.Content = new StreamContent(fileParameterLocalVar.Content)
+                        : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto.Value, _jsonSerializerOptions));
+                    }
+
+                    List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
+                    httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
+
+                    OAuthToken oauthTokenLocalVar1 = (OAuthToken) await OauthTokenProvider.GetAsync(cancellation: cancellationToken).ConfigureAwait(false);
+
+                    tokenBaseLocalVars.Add(oauthTokenLocalVar1);
+
+                    oauthTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar, "");
+
+                    string[] contentTypes = new string[] {
+                        "application/json-patch+json",
+                        "application/json",
+                        "text/json",
+                        "application/*+json"
+                    };
+
+                    string? contentTypeLocalVar = ClientUtils.SelectHeaderContentType(contentTypes);
+
+                    if (contentTypeLocalVar != null && httpRequestMessageLocalVar.Content != null)
+                        httpRequestMessageLocalVar.Content.Headers.ContentType = new MediaTypeHeaderValue(contentTypeLocalVar);
+
+                    string[] acceptLocalVars = new string[] {
+                        "application/json"
+                    };
+
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
+
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
+
+                    httpRequestMessageLocalVar.Method = HttpMethod.Post;
+
+                    DateTime requestedAtLocalVar = DateTime.UtcNow;
+
+                    using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
+                    {
+                        ILogger<AddEnrollmentContactStudentApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<AddEnrollmentContactStudentApiResponse>();
+                        AddEnrollmentContactStudentApiResponse apiResponseLocalVar;
+
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/students", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
+
+                        AfterAddEnrollmentContactStudentDefaultImplementation(apiResponseLocalVar, tenantId, id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto);
+
+                        Events.ExecuteOnAddEnrollmentContactStudent(apiResponseLocalVar);
+
+                        if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
+                            foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
+                                tokenBaseLocalVar.BeginRateLimit();
+
+                        return apiResponseLocalVar;
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                OnErrorAddEnrollmentContactStudentDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/students", uriBuilderLocalVar.Path, tenantId, id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto);
+                Events.ExecuteOnErrorAddEnrollmentContactStudent(e);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// The <see cref="AddEnrollmentContactStudentApiResponse"/>
+        /// </summary>
+        public partial class AddEnrollmentContactStudentApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IAddEnrollmentContactStudentApiResponse
+        {
+            /// <summary>
+            /// The logger
+            /// </summary>
+            public ILogger<AddEnrollmentContactStudentApiResponse> Logger { get; }
+
+            /// <summary>
+            /// The <see cref="AddEnrollmentContactStudentApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="rawContent"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public AddEnrollmentContactStudentApiResponse(ILogger<AddEnrollmentContactStudentApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="AddEnrollmentContactStudentApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public AddEnrollmentContactStudentApiResponse(ILogger<AddEnrollmentContactStudentApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            partial void OnCreated(global::System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage);
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public bool IsUnauthorized => 401 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Unauthorized()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsUnauthorized
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryUnauthorized([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Unauthorized();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)401);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public bool IsForbidden => 403 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Forbidden()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsForbidden
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryForbidden([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Forbidden();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)403);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public bool IsInternalServerError => 500 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? InternalServerError()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsInternalServerError
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryInternalServerError([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = InternalServerError();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)500);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 201 Created
+            /// </summary>
+            /// <returns></returns>
+            public bool IsCreated => 201 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 201 Created
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentAssociatedResultDto? Created()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsCreated
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentAssociatedResultDto>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 201 Created and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryCreated([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentAssociatedResultDto? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Created();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)201);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 400 BadRequest
+            /// </summary>
+            /// <returns></returns>
+            public bool IsBadRequest => 400 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 400 BadRequest
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails? BadRequest()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsBadRequest
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 400 BadRequest and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryBadRequest([NotNullWhen(true)]out EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = BadRequest();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)400);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 404 NotFound
+            /// </summary>
+            /// <returns></returns>
+            public bool IsNotFound => 404 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 404 NotFound
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? NotFound()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsNotFound
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 404 NotFound and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryNotFound([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = NotFound();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)404);
+                }
+
+                return result != null;
+            }
+
+            private void OnDeserializationErrorDefaultImplementation(Exception exception, HttpStatusCode httpStatusCode)
+            {
+                bool suppressDefaultLog = false;
+                OnDeserializationError(ref suppressDefaultLog, exception, httpStatusCode);
+                if (!suppressDefaultLog)
+                    Logger.LogError(exception, "An error occurred while deserializing the {code} response.", httpStatusCode);
+            }
+
+            partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
         }
 
         partial void FormatCreateEnrollmentContact(ref string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateContactRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateContactRequestDto);
@@ -1043,7 +2109,7 @@ namespace EdGraph.Platform.Client.Api
         partial void OnErrorCreateEnrollmentContact(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateContactRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateContactRequestDto);
 
         /// <summary>
-        /// Creates an Enrollment Contact. &#x60;email&#x60; and &#x60;phone&#x60; here are the SIS-sourced values, which is what a contact starts              with. Changing either afterwards is an override rather than an update - see the              &#x60;email-override&#x60; and &#x60;phone-override&#x60; routes.
+        /// Creates or updates an Enrollment Contact by its source-system &#x60;contactId&#x60;. &lt;br&gt;              Upsert semantics: unique per &#x60;contactId&#x60;. A first call creates the contact; a later call              for the same &#x60;contactId&#x60; overwrites the SIS-sourced fields where they differ, and no-ops              when they are identical. An existing email/phone override is never touched by this call - see              the &#x60;overrides/emails&#x60; and &#x60;overrides/phones&#x60; routes for that.                &lt;br&gt;    &#x60;email&#x60; and &#x60;phone&#x60; here are the SIS-sourced values, which is what a contact starts              with. Changing either afterwards is an override rather than an update - see the              &#x60;overrides/emails&#x60; and &#x60;overrides/phones&#x60; routes.              
         /// </summary>
         /// <param name="tenantId"></param>
         /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateContactRequestDto"> (optional)</param>
@@ -1062,7 +2128,7 @@ namespace EdGraph.Platform.Client.Api
         }
 
         /// <summary>
-        /// Creates an Enrollment Contact. &#x60;email&#x60; and &#x60;phone&#x60; here are the SIS-sourced values, which is what a contact starts              with. Changing either afterwards is an override rather than an update - see the              &#x60;email-override&#x60; and &#x60;phone-override&#x60; routes.
+        /// Creates or updates an Enrollment Contact by its source-system &#x60;contactId&#x60;. &lt;br&gt;              Upsert semantics: unique per &#x60;contactId&#x60;. A first call creates the contact; a later call              for the same &#x60;contactId&#x60; overwrites the SIS-sourced fields where they differ, and no-ops              when they are identical. An existing email/phone override is never touched by this call - see              the &#x60;overrides/emails&#x60; and &#x60;overrides/phones&#x60; routes for that.                &lt;br&gt;    &#x60;email&#x60; and &#x60;phone&#x60; here are the SIS-sourced values, which is what a contact starts              with. Changing either afterwards is an override rather than an update - see the              &#x60;overrides/emails&#x60; and &#x60;overrides/phones&#x60; routes.              
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
@@ -1821,6 +2887,453 @@ namespace EdGraph.Platform.Client.Api
             partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
         }
 
+        partial void FormatGetEnrollmentContactChangelogs(ref string tenantId, ref Guid id, ref Option<int> pageSize, ref Option<int> pageIndex, ref Option<string> studentId);
+
+        /// <summary>
+        /// Validates the request parameters
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        private void ValidateGetEnrollmentContactChangelogs(string tenantId, Option<string> studentId)
+        {
+            if (tenantId == null)
+                throw new ArgumentNullException(nameof(tenantId));
+
+            if (studentId.IsSet && studentId.Value == null)
+                throw new ArgumentNullException(nameof(studentId));
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="studentId"></param>
+        private void AfterGetEnrollmentContactChangelogsDefaultImplementation(IGetEnrollmentContactChangelogsApiResponse apiResponseLocalVar, string tenantId, Guid id, Option<int> pageSize, Option<int> pageIndex, Option<string> studentId)
+        {
+            bool suppressDefaultLog = false;
+            AfterGetEnrollmentContactChangelogs(ref suppressDefaultLog, apiResponseLocalVar, tenantId, id, pageSize, pageIndex, studentId);
+            if (!suppressDefaultLog)
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="suppressDefaultLog"></param>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="studentId"></param>
+        partial void AfterGetEnrollmentContactChangelogs(ref bool suppressDefaultLog, IGetEnrollmentContactChangelogsApiResponse apiResponseLocalVar, string tenantId, Guid id, Option<int> pageSize, Option<int> pageIndex, Option<string> studentId);
+
+        /// <summary>
+        /// Logs exceptions that occur while retrieving the server response
+        /// </summary>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="studentId"></param>
+        private void OnErrorGetEnrollmentContactChangelogsDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id, Option<int> pageSize, Option<int> pageIndex, Option<string> studentId)
+        {
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorGetEnrollmentContactChangelogs(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, id, pageSize, pageIndex, studentId);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
+        }
+
+        /// <summary>
+        /// A partial method that gives developers a way to provide customized exception handling
+        /// </summary>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="pageSize"></param>
+        /// <param name="pageIndex"></param>
+        /// <param name="studentId"></param>
+        partial void OnErrorGetEnrollmentContactChangelogs(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id, Option<int> pageSize, Option<int> pageIndex, Option<string> studentId);
+
+        /// <summary>
+        /// Reads every lifecycle event for a contact - create, update, delete, overrides and sign-in  unlocks - newest first. &lt;br&gt;              Eventually consistent, on the same terms as M:EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.EnrollmentAdminController.GetEnrollmentContactOverrides(System.String,System.Guid,System.Int32,System.Int32,System.String,System.Threading.CancellationToken).                &lt;br&gt;    &#x60;EventType&#x60; on &#x60;GetAllChangesRequest&#x60; is a single optional string, so it cannot              express \&quot;any of these event types\&quot; on its own. The filter is built through &#x60;Filter&#x60;              instead - a raw Elasticsearch &#x60;query_string&#x60; - while &#x60;EntityType&#x60; and              &#x60;EntityId&#x60; stay the typed fields M:EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.EnrollmentAdminController.GetEnrollmentContactOverrides(System.String,System.Guid,System.Int32,System.Int32,System.String,System.Threading.CancellationToken) already uses.              The change log applies the typed fields as &#x60;filter&#x60; clauses and &#x60;Filter&#x60; as a              &#x60;must&#x60; clause on the same bool query, so the two combine as an AND: this call still never              leaves this contact&#39;s own entity scope.                &lt;br&gt;              The event types covered are EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.EnrollmentAdmin.ContactOverrideHistoryExtensions.ContactEventTypes,              which tracks what the Enrollment outbox publishes against a contact.              
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="pageSize"> (optional, default to 20)</param>
+        /// <param name="pageIndex"> (optional, default to 0)</param>
+        /// <param name="studentId">Narrows to changes affecting one linked student. (optional, default to &quot;&quot;)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentContactChangelogsApiResponse"/>&gt;</returns>
+        public async Task<IGetEnrollmentContactChangelogsApiResponse?> GetEnrollmentContactChangelogsOrDefaultAsync(string tenantId, Guid id, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> studentId = default, System.Threading.CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                return await GetEnrollmentContactChangelogsAsync(tenantId, id, pageSize, pageIndex, studentId, cancellationToken).ConfigureAwait(false);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Reads every lifecycle event for a contact - create, update, delete, overrides and sign-in  unlocks - newest first. &lt;br&gt;              Eventually consistent, on the same terms as M:EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.EnrollmentAdminController.GetEnrollmentContactOverrides(System.String,System.Guid,System.Int32,System.Int32,System.String,System.Threading.CancellationToken).                &lt;br&gt;    &#x60;EventType&#x60; on &#x60;GetAllChangesRequest&#x60; is a single optional string, so it cannot              express \&quot;any of these event types\&quot; on its own. The filter is built through &#x60;Filter&#x60;              instead - a raw Elasticsearch &#x60;query_string&#x60; - while &#x60;EntityType&#x60; and              &#x60;EntityId&#x60; stay the typed fields M:EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.EnrollmentAdminController.GetEnrollmentContactOverrides(System.String,System.Guid,System.Int32,System.Int32,System.String,System.Threading.CancellationToken) already uses.              The change log applies the typed fields as &#x60;filter&#x60; clauses and &#x60;Filter&#x60; as a              &#x60;must&#x60; clause on the same bool query, so the two combine as an AND: this call still never              leaves this contact&#39;s own entity scope.                &lt;br&gt;              The event types covered are EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.EnrollmentAdmin.ContactOverrideHistoryExtensions.ContactEventTypes,              which tracks what the Enrollment outbox publishes against a contact.              
+        /// </summary>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="pageSize"> (optional, default to 20)</param>
+        /// <param name="pageIndex"> (optional, default to 0)</param>
+        /// <param name="studentId">Narrows to changes affecting one linked student. (optional, default to &quot;&quot;)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentContactChangelogsApiResponse"/>&gt;</returns>
+        public async Task<IGetEnrollmentContactChangelogsApiResponse> GetEnrollmentContactChangelogsAsync(string tenantId, Guid id, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> studentId = default, System.Threading.CancellationToken cancellationToken = default)
+        {
+            UriBuilder uriBuilderLocalVar = new UriBuilder();
+
+            try
+            {
+                ValidateGetEnrollmentContactChangelogs(tenantId, studentId);
+
+                FormatGetEnrollmentContactChangelogs(ref tenantId, ref id, ref pageSize, ref pageIndex, ref studentId);
+
+                using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
+                {
+                    uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
+                    uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
+                    uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/changelogs"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/changelogs");
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Bid%7D", Uri.EscapeDataString(id.ToString()));
+
+                    System.Collections.Specialized.NameValueCollection parseQueryStringLocalVar = System.Web.HttpUtility.ParseQueryString(string.Empty);
+
+                    if (pageSize.IsSet)
+                        parseQueryStringLocalVar["pageSize"] = ClientUtils.ParameterToString(pageSize.Value);
+
+                    if (pageIndex.IsSet)
+                        parseQueryStringLocalVar["pageIndex"] = ClientUtils.ParameterToString(pageIndex.Value);
+
+                    if (studentId.IsSet)
+                        parseQueryStringLocalVar["studentId"] = ClientUtils.ParameterToString(studentId.Value);
+
+                    uriBuilderLocalVar.Query = parseQueryStringLocalVar.ToString();
+
+                    List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
+                    httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
+
+                    OAuthToken oauthTokenLocalVar1 = (OAuthToken) await OauthTokenProvider.GetAsync(cancellation: cancellationToken).ConfigureAwait(false);
+
+                    tokenBaseLocalVars.Add(oauthTokenLocalVar1);
+
+                    oauthTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar, "");
+
+                    string[] acceptLocalVars = new string[] {
+                        "application/json"
+                    };
+
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
+
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
+
+                    httpRequestMessageLocalVar.Method = HttpMethod.Get;
+
+                    DateTime requestedAtLocalVar = DateTime.UtcNow;
+
+                    using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
+                    {
+                        ILogger<GetEnrollmentContactChangelogsApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<GetEnrollmentContactChangelogsApiResponse>();
+                        GetEnrollmentContactChangelogsApiResponse apiResponseLocalVar;
+
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/changelogs", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
+
+                        AfterGetEnrollmentContactChangelogsDefaultImplementation(apiResponseLocalVar, tenantId, id, pageSize, pageIndex, studentId);
+
+                        Events.ExecuteOnGetEnrollmentContactChangelogs(apiResponseLocalVar);
+
+                        if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
+                            foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
+                                tokenBaseLocalVar.BeginRateLimit();
+
+                        return apiResponseLocalVar;
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                OnErrorGetEnrollmentContactChangelogsDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/changelogs", uriBuilderLocalVar.Path, tenantId, id, pageSize, pageIndex, studentId);
+                Events.ExecuteOnErrorGetEnrollmentContactChangelogs(e);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// The <see cref="GetEnrollmentContactChangelogsApiResponse"/>
+        /// </summary>
+        public partial class GetEnrollmentContactChangelogsApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IGetEnrollmentContactChangelogsApiResponse
+        {
+            /// <summary>
+            /// The logger
+            /// </summary>
+            public ILogger<GetEnrollmentContactChangelogsApiResponse> Logger { get; }
+
+            /// <summary>
+            /// The <see cref="GetEnrollmentContactChangelogsApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="rawContent"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public GetEnrollmentContactChangelogsApiResponse(ILogger<GetEnrollmentContactChangelogsApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="GetEnrollmentContactChangelogsApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public GetEnrollmentContactChangelogsApiResponse(ILogger<GetEnrollmentContactChangelogsApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            partial void OnCreated(global::System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage);
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public bool IsUnauthorized => 401 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Unauthorized()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsUnauthorized
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryUnauthorized([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Unauthorized();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)401);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public bool IsForbidden => 403 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Forbidden()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsForbidden
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryForbidden([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Forbidden();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)403);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public bool IsInternalServerError => 500 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? InternalServerError()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsInternalServerError
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryInternalServerError([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = InternalServerError();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)500);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public bool IsOk => 200 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactOverrideHistoryEntryDtoPaginatedItemsViewModel? Ok()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsOk
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactOverrideHistoryEntryDtoPaginatedItemsViewModel>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryOk([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactOverrideHistoryEntryDtoPaginatedItemsViewModel? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Ok();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)200);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 400 BadRequest
+            /// </summary>
+            /// <returns></returns>
+            public bool IsBadRequest => 400 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 400 BadRequest
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails? BadRequest()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsBadRequest
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 400 BadRequest and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryBadRequest([NotNullWhen(true)]out EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = BadRequest();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)400);
+                }
+
+                return result != null;
+            }
+
+            private void OnDeserializationErrorDefaultImplementation(Exception exception, HttpStatusCode httpStatusCode)
+            {
+                bool suppressDefaultLog = false;
+                OnDeserializationError(ref suppressDefaultLog, exception, httpStatusCode);
+                if (!suppressDefaultLog)
+                    Logger.LogError(exception, "An error occurred while deserializing the {code} response.", httpStatusCode);
+            }
+
+            partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
+        }
+
         partial void FormatGetEnrollmentContactOverrides(ref string tenantId, ref Guid id, ref Option<int> pageSize, ref Option<int> pageIndex, ref Option<string> studentId);
 
         /// <summary>
@@ -2268,7 +3781,793 @@ namespace EdGraph.Platform.Client.Api
             partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
         }
 
-        partial void FormatGetEnrollmentContacts(ref string tenantId, ref Option<int> pageSize, ref Option<int> pageIndex, ref Option<string> orderBy, ref Option<string> filter, ref Option<string> search, ref Option<string> schoolCode, ref Option<bool> locked);
+        partial void FormatGetEnrollmentContactRegistrations(ref string tenantId, ref Guid id);
+
+        /// <summary>
+        /// Validates the request parameters
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <returns></returns>
+        private void ValidateGetEnrollmentContactRegistrations(string tenantId)
+        {
+            if (tenantId == null)
+                throw new ArgumentNullException(nameof(tenantId));
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        private void AfterGetEnrollmentContactRegistrationsDefaultImplementation(IGetEnrollmentContactRegistrationsApiResponse apiResponseLocalVar, string tenantId, Guid id)
+        {
+            bool suppressDefaultLog = false;
+            AfterGetEnrollmentContactRegistrations(ref suppressDefaultLog, apiResponseLocalVar, tenantId, id);
+            if (!suppressDefaultLog)
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="suppressDefaultLog"></param>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        partial void AfterGetEnrollmentContactRegistrations(ref bool suppressDefaultLog, IGetEnrollmentContactRegistrationsApiResponse apiResponseLocalVar, string tenantId, Guid id);
+
+        /// <summary>
+        /// Logs exceptions that occur while retrieving the server response
+        /// </summary>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        private void OnErrorGetEnrollmentContactRegistrationsDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id)
+        {
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorGetEnrollmentContactRegistrations(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, id);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
+        }
+
+        /// <summary>
+        /// A partial method that gives developers a way to provide customized exception handling
+        /// </summary>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        partial void OnErrorGetEnrollmentContactRegistrations(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id);
+
+        /// <summary>
+        /// Gets a contact&#39;s Registrations. 
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentContactRegistrationsApiResponse"/>&gt;</returns>
+        public async Task<IGetEnrollmentContactRegistrationsApiResponse?> GetEnrollmentContactRegistrationsOrDefaultAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                return await GetEnrollmentContactRegistrationsAsync(tenantId, id, cancellationToken).ConfigureAwait(false);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Gets a contact&#39;s Registrations. 
+        /// </summary>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentContactRegistrationsApiResponse"/>&gt;</returns>
+        public async Task<IGetEnrollmentContactRegistrationsApiResponse> GetEnrollmentContactRegistrationsAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default)
+        {
+            UriBuilder uriBuilderLocalVar = new UriBuilder();
+
+            try
+            {
+                ValidateGetEnrollmentContactRegistrations(tenantId);
+
+                FormatGetEnrollmentContactRegistrations(ref tenantId, ref id);
+
+                using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
+                {
+                    uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
+                    uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
+                    uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/registrations"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/registrations");
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Bid%7D", Uri.EscapeDataString(id.ToString()));
+
+                    List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
+                    httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
+
+                    OAuthToken oauthTokenLocalVar1 = (OAuthToken) await OauthTokenProvider.GetAsync(cancellation: cancellationToken).ConfigureAwait(false);
+
+                    tokenBaseLocalVars.Add(oauthTokenLocalVar1);
+
+                    oauthTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar, "");
+
+                    string[] acceptLocalVars = new string[] {
+                        "application/json"
+                    };
+
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
+
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
+
+                    httpRequestMessageLocalVar.Method = HttpMethod.Get;
+
+                    DateTime requestedAtLocalVar = DateTime.UtcNow;
+
+                    using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
+                    {
+                        ILogger<GetEnrollmentContactRegistrationsApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<GetEnrollmentContactRegistrationsApiResponse>();
+                        GetEnrollmentContactRegistrationsApiResponse apiResponseLocalVar;
+
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/registrations", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
+
+                        AfterGetEnrollmentContactRegistrationsDefaultImplementation(apiResponseLocalVar, tenantId, id);
+
+                        Events.ExecuteOnGetEnrollmentContactRegistrations(apiResponseLocalVar);
+
+                        if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
+                            foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
+                                tokenBaseLocalVar.BeginRateLimit();
+
+                        return apiResponseLocalVar;
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                OnErrorGetEnrollmentContactRegistrationsDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/registrations", uriBuilderLocalVar.Path, tenantId, id);
+                Events.ExecuteOnErrorGetEnrollmentContactRegistrations(e);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// The <see cref="GetEnrollmentContactRegistrationsApiResponse"/>
+        /// </summary>
+        public partial class GetEnrollmentContactRegistrationsApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IGetEnrollmentContactRegistrationsApiResponse
+        {
+            /// <summary>
+            /// The logger
+            /// </summary>
+            public ILogger<GetEnrollmentContactRegistrationsApiResponse> Logger { get; }
+
+            /// <summary>
+            /// The <see cref="GetEnrollmentContactRegistrationsApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="rawContent"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public GetEnrollmentContactRegistrationsApiResponse(ILogger<GetEnrollmentContactRegistrationsApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="GetEnrollmentContactRegistrationsApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public GetEnrollmentContactRegistrationsApiResponse(ILogger<GetEnrollmentContactRegistrationsApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            partial void OnCreated(global::System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage);
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public bool IsUnauthorized => 401 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Unauthorized()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsUnauthorized
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryUnauthorized([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Unauthorized();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)401);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public bool IsForbidden => 403 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Forbidden()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsForbidden
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryForbidden([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Forbidden();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)403);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public bool IsInternalServerError => 500 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? InternalServerError()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsInternalServerError
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryInternalServerError([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = InternalServerError();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)500);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public bool IsOk => 200 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public List<EnrollmentApiEnrollmentRegistrationsV1RegistrationResponse>? Ok()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsOk
+                    ? System.Text.Json.JsonSerializer.Deserialize<List<EnrollmentApiEnrollmentRegistrationsV1RegistrationResponse>>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryOk([NotNullWhen(true)]out List<EnrollmentApiEnrollmentRegistrationsV1RegistrationResponse>? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Ok();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)200);
+                }
+
+                return result != null;
+            }
+
+            private void OnDeserializationErrorDefaultImplementation(Exception exception, HttpStatusCode httpStatusCode)
+            {
+                bool suppressDefaultLog = false;
+                OnDeserializationError(ref suppressDefaultLog, exception, httpStatusCode);
+                if (!suppressDefaultLog)
+                    Logger.LogError(exception, "An error occurred while deserializing the {code} response.", httpStatusCode);
+            }
+
+            partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
+        }
+
+        partial void FormatGetEnrollmentContactStudents(ref string tenantId, ref Guid id);
+
+        /// <summary>
+        /// Validates the request parameters
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <returns></returns>
+        private void ValidateGetEnrollmentContactStudents(string tenantId)
+        {
+            if (tenantId == null)
+                throw new ArgumentNullException(nameof(tenantId));
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        private void AfterGetEnrollmentContactStudentsDefaultImplementation(IGetEnrollmentContactStudentsApiResponse apiResponseLocalVar, string tenantId, Guid id)
+        {
+            bool suppressDefaultLog = false;
+            AfterGetEnrollmentContactStudents(ref suppressDefaultLog, apiResponseLocalVar, tenantId, id);
+            if (!suppressDefaultLog)
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="suppressDefaultLog"></param>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        partial void AfterGetEnrollmentContactStudents(ref bool suppressDefaultLog, IGetEnrollmentContactStudentsApiResponse apiResponseLocalVar, string tenantId, Guid id);
+
+        /// <summary>
+        /// Logs exceptions that occur while retrieving the server response
+        /// </summary>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        private void OnErrorGetEnrollmentContactStudentsDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id)
+        {
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorGetEnrollmentContactStudents(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, id);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
+        }
+
+        /// <summary>
+        /// A partial method that gives developers a way to provide customized exception handling
+        /// </summary>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        partial void OnErrorGetEnrollmentContactStudents(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id);
+
+        /// <summary>
+        /// Gets a contact&#39;s linked students, with each link&#39;s association attributes. 
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentContactStudentsApiResponse"/>&gt;</returns>
+        public async Task<IGetEnrollmentContactStudentsApiResponse?> GetEnrollmentContactStudentsOrDefaultAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                return await GetEnrollmentContactStudentsAsync(tenantId, id, cancellationToken).ConfigureAwait(false);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Gets a contact&#39;s linked students, with each link&#39;s association attributes. 
+        /// </summary>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentContactStudentsApiResponse"/>&gt;</returns>
+        public async Task<IGetEnrollmentContactStudentsApiResponse> GetEnrollmentContactStudentsAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default)
+        {
+            UriBuilder uriBuilderLocalVar = new UriBuilder();
+
+            try
+            {
+                ValidateGetEnrollmentContactStudents(tenantId);
+
+                FormatGetEnrollmentContactStudents(ref tenantId, ref id);
+
+                using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
+                {
+                    uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
+                    uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
+                    uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/students"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/students");
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Bid%7D", Uri.EscapeDataString(id.ToString()));
+
+                    List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
+                    httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
+
+                    OAuthToken oauthTokenLocalVar1 = (OAuthToken) await OauthTokenProvider.GetAsync(cancellation: cancellationToken).ConfigureAwait(false);
+
+                    tokenBaseLocalVars.Add(oauthTokenLocalVar1);
+
+                    oauthTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar, "");
+
+                    string[] acceptLocalVars = new string[] {
+                        "application/json"
+                    };
+
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
+
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
+
+                    httpRequestMessageLocalVar.Method = HttpMethod.Get;
+
+                    DateTime requestedAtLocalVar = DateTime.UtcNow;
+
+                    using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
+                    {
+                        ILogger<GetEnrollmentContactStudentsApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<GetEnrollmentContactStudentsApiResponse>();
+                        GetEnrollmentContactStudentsApiResponse apiResponseLocalVar;
+
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/students", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
+
+                        AfterGetEnrollmentContactStudentsDefaultImplementation(apiResponseLocalVar, tenantId, id);
+
+                        Events.ExecuteOnGetEnrollmentContactStudents(apiResponseLocalVar);
+
+                        if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
+                            foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
+                                tokenBaseLocalVar.BeginRateLimit();
+
+                        return apiResponseLocalVar;
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                OnErrorGetEnrollmentContactStudentsDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/students", uriBuilderLocalVar.Path, tenantId, id);
+                Events.ExecuteOnErrorGetEnrollmentContactStudents(e);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// The <see cref="GetEnrollmentContactStudentsApiResponse"/>
+        /// </summary>
+        public partial class GetEnrollmentContactStudentsApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IGetEnrollmentContactStudentsApiResponse
+        {
+            /// <summary>
+            /// The logger
+            /// </summary>
+            public ILogger<GetEnrollmentContactStudentsApiResponse> Logger { get; }
+
+            /// <summary>
+            /// The <see cref="GetEnrollmentContactStudentsApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="rawContent"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public GetEnrollmentContactStudentsApiResponse(ILogger<GetEnrollmentContactStudentsApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="GetEnrollmentContactStudentsApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public GetEnrollmentContactStudentsApiResponse(ILogger<GetEnrollmentContactStudentsApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            partial void OnCreated(global::System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage);
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public bool IsUnauthorized => 401 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Unauthorized()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsUnauthorized
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryUnauthorized([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Unauthorized();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)401);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public bool IsForbidden => 403 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Forbidden()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsForbidden
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryForbidden([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Forbidden();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)403);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public bool IsInternalServerError => 500 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? InternalServerError()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsInternalServerError
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryInternalServerError([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = InternalServerError();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)500);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public bool IsOk => 200 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentDetailDto>? Ok()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsOk
+                    ? System.Text.Json.JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentDetailDto>>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryOk([NotNullWhen(true)]out List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentDetailDto>? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Ok();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)200);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 404 NotFound
+            /// </summary>
+            /// <returns></returns>
+            public bool IsNotFound => 404 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 404 NotFound
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? NotFound()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsNotFound
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 404 NotFound and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryNotFound([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = NotFound();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)404);
+                }
+
+                return result != null;
+            }
+
+            private void OnDeserializationErrorDefaultImplementation(Exception exception, HttpStatusCode httpStatusCode)
+            {
+                bool suppressDefaultLog = false;
+                OnDeserializationError(ref suppressDefaultLog, exception, httpStatusCode);
+                if (!suppressDefaultLog)
+                    Logger.LogError(exception, "An error occurred while deserializing the {code} response.", httpStatusCode);
+            }
+
+            partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
+        }
+
+        partial void FormatGetEnrollmentContacts(ref string tenantId, ref Option<int> pageSize, ref Option<int> pageIndex, ref Option<string> orderBy, ref Option<string> filter, ref Option<string> search, ref Option<string> nextSchoolStateShortCode, ref Option<bool> locked);
 
         /// <summary>
         /// Validates the request parameters
@@ -2277,9 +4576,9 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="orderBy"></param>
         /// <param name="filter"></param>
         /// <param name="search"></param>
-        /// <param name="schoolCode"></param>
+        /// <param name="nextSchoolStateShortCode"></param>
         /// <returns></returns>
-        private void ValidateGetEnrollmentContacts(string tenantId, Option<string> orderBy, Option<string> filter, Option<string> search, Option<string> schoolCode)
+        private void ValidateGetEnrollmentContacts(string tenantId, Option<string> orderBy, Option<string> filter, Option<string> search, Option<string> nextSchoolStateShortCode)
         {
             if (tenantId == null)
                 throw new ArgumentNullException(nameof(tenantId));
@@ -2293,8 +4592,8 @@ namespace EdGraph.Platform.Client.Api
             if (search.IsSet && search.Value == null)
                 throw new ArgumentNullException(nameof(search));
 
-            if (schoolCode.IsSet && schoolCode.Value == null)
-                throw new ArgumentNullException(nameof(schoolCode));
+            if (nextSchoolStateShortCode.IsSet && nextSchoolStateShortCode.Value == null)
+                throw new ArgumentNullException(nameof(nextSchoolStateShortCode));
         }
 
         /// <summary>
@@ -2307,12 +4606,12 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="orderBy"></param>
         /// <param name="filter"></param>
         /// <param name="search"></param>
-        /// <param name="schoolCode"></param>
+        /// <param name="nextSchoolStateShortCode"></param>
         /// <param name="locked"></param>
-        private void AfterGetEnrollmentContactsDefaultImplementation(IGetEnrollmentContactsApiResponse apiResponseLocalVar, string tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter, Option<string> search, Option<string> schoolCode, Option<bool> locked)
+        private void AfterGetEnrollmentContactsDefaultImplementation(IGetEnrollmentContactsApiResponse apiResponseLocalVar, string tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter, Option<string> search, Option<string> nextSchoolStateShortCode, Option<bool> locked)
         {
             bool suppressDefaultLog = false;
-            AfterGetEnrollmentContacts(ref suppressDefaultLog, apiResponseLocalVar, tenantId, pageSize, pageIndex, orderBy, filter, search, schoolCode, locked);
+            AfterGetEnrollmentContacts(ref suppressDefaultLog, apiResponseLocalVar, tenantId, pageSize, pageIndex, orderBy, filter, search, nextSchoolStateShortCode, locked);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -2328,9 +4627,9 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="orderBy"></param>
         /// <param name="filter"></param>
         /// <param name="search"></param>
-        /// <param name="schoolCode"></param>
+        /// <param name="nextSchoolStateShortCode"></param>
         /// <param name="locked"></param>
-        partial void AfterGetEnrollmentContacts(ref bool suppressDefaultLog, IGetEnrollmentContactsApiResponse apiResponseLocalVar, string tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter, Option<string> search, Option<string> schoolCode, Option<bool> locked);
+        partial void AfterGetEnrollmentContacts(ref bool suppressDefaultLog, IGetEnrollmentContactsApiResponse apiResponseLocalVar, string tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter, Option<string> search, Option<string> nextSchoolStateShortCode, Option<bool> locked);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -2344,12 +4643,12 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="orderBy"></param>
         /// <param name="filter"></param>
         /// <param name="search"></param>
-        /// <param name="schoolCode"></param>
+        /// <param name="nextSchoolStateShortCode"></param>
         /// <param name="locked"></param>
-        private void OnErrorGetEnrollmentContactsDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter, Option<string> search, Option<string> schoolCode, Option<bool> locked)
+        private void OnErrorGetEnrollmentContactsDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter, Option<string> search, Option<string> nextSchoolStateShortCode, Option<bool> locked)
         {
             bool suppressDefaultLogLocalVar = false;
-            OnErrorGetEnrollmentContacts(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, pageSize, pageIndex, orderBy, filter, search, schoolCode, locked);
+            OnErrorGetEnrollmentContacts(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, pageSize, pageIndex, orderBy, filter, search, nextSchoolStateShortCode, locked);
             if (!suppressDefaultLogLocalVar)
                 Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
@@ -2367,9 +4666,9 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="orderBy"></param>
         /// <param name="filter"></param>
         /// <param name="search"></param>
-        /// <param name="schoolCode"></param>
+        /// <param name="nextSchoolStateShortCode"></param>
         /// <param name="locked"></param>
-        partial void OnErrorGetEnrollmentContacts(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter, Option<string> search, Option<string> schoolCode, Option<bool> locked);
+        partial void OnErrorGetEnrollmentContacts(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter, Option<string> search, Option<string> nextSchoolStateShortCode, Option<bool> locked);
 
         /// <summary>
         /// Searches Enrollment Contacts. 
@@ -2380,15 +4679,15 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
         /// <param name="filter"> (optional, default to &quot;&quot;)</param>
         /// <param name="search">Free-text match on contact name, email, or phone. (optional, default to &quot;&quot;)</param>
-        /// <param name="schoolCode">Narrows to contacts with at least one linked student at this school. (optional, default to &quot;&quot;)</param>
+        /// <param name="nextSchoolStateShortCode">Narrows to contacts with at least one linked student whose next school has this state short code. (optional, default to &quot;&quot;)</param>
         /// <param name="locked">Narrows to contacts by sign-in lock status. Unset returns every contact. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentContactsApiResponse"/>&gt;</returns>
-        public async Task<IGetEnrollmentContactsApiResponse?> GetEnrollmentContactsOrDefaultAsync(string tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, Option<string> search = default, Option<string> schoolCode = default, Option<bool> locked = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IGetEnrollmentContactsApiResponse?> GetEnrollmentContactsOrDefaultAsync(string tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, Option<string> search = default, Option<string> nextSchoolStateShortCode = default, Option<bool> locked = default, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await GetEnrollmentContactsAsync(tenantId, pageSize, pageIndex, orderBy, filter, search, schoolCode, locked, cancellationToken).ConfigureAwait(false);
+                return await GetEnrollmentContactsAsync(tenantId, pageSize, pageIndex, orderBy, filter, search, nextSchoolStateShortCode, locked, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -2406,19 +4705,19 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
         /// <param name="filter"> (optional, default to &quot;&quot;)</param>
         /// <param name="search">Free-text match on contact name, email, or phone. (optional, default to &quot;&quot;)</param>
-        /// <param name="schoolCode">Narrows to contacts with at least one linked student at this school. (optional, default to &quot;&quot;)</param>
+        /// <param name="nextSchoolStateShortCode">Narrows to contacts with at least one linked student whose next school has this state short code. (optional, default to &quot;&quot;)</param>
         /// <param name="locked">Narrows to contacts by sign-in lock status. Unset returns every contact. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetEnrollmentContactsApiResponse"/>&gt;</returns>
-        public async Task<IGetEnrollmentContactsApiResponse> GetEnrollmentContactsAsync(string tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, Option<string> search = default, Option<string> schoolCode = default, Option<bool> locked = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IGetEnrollmentContactsApiResponse> GetEnrollmentContactsAsync(string tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, Option<string> search = default, Option<string> nextSchoolStateShortCode = default, Option<bool> locked = default, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
             try
             {
-                ValidateGetEnrollmentContacts(tenantId, orderBy, filter, search, schoolCode);
+                ValidateGetEnrollmentContacts(tenantId, orderBy, filter, search, nextSchoolStateShortCode);
 
-                FormatGetEnrollmentContacts(ref tenantId, ref pageSize, ref pageIndex, ref orderBy, ref filter, ref search, ref schoolCode, ref locked);
+                FormatGetEnrollmentContacts(ref tenantId, ref pageSize, ref pageIndex, ref orderBy, ref filter, ref search, ref nextSchoolStateShortCode, ref locked);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -2447,8 +4746,8 @@ namespace EdGraph.Platform.Client.Api
                     if (search.IsSet)
                         parseQueryStringLocalVar["search"] = ClientUtils.ParameterToString(search.Value);
 
-                    if (schoolCode.IsSet)
-                        parseQueryStringLocalVar["schoolCode"] = ClientUtils.ParameterToString(schoolCode.Value);
+                    if (nextSchoolStateShortCode.IsSet)
+                        parseQueryStringLocalVar["nextSchoolStateShortCode"] = ClientUtils.ParameterToString(nextSchoolStateShortCode.Value);
 
                     if (locked.IsSet)
                         parseQueryStringLocalVar["locked"] = ClientUtils.ParameterToString(locked.Value);
@@ -2491,7 +4790,7 @@ namespace EdGraph.Platform.Client.Api
                             }
                         }
 
-                        AfterGetEnrollmentContactsDefaultImplementation(apiResponseLocalVar, tenantId, pageSize, pageIndex, orderBy, filter, search, schoolCode, locked);
+                        AfterGetEnrollmentContactsDefaultImplementation(apiResponseLocalVar, tenantId, pageSize, pageIndex, orderBy, filter, search, nextSchoolStateShortCode, locked);
 
                         Events.ExecuteOnGetEnrollmentContacts(apiResponseLocalVar);
 
@@ -2505,7 +4804,7 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorGetEnrollmentContactsDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/contacts", uriBuilderLocalVar.Path, tenantId, pageSize, pageIndex, orderBy, filter, search, schoolCode, locked);
+                OnErrorGetEnrollmentContactsDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/contacts", uriBuilderLocalVar.Path, tenantId, pageSize, pageIndex, orderBy, filter, search, nextSchoolStateShortCode, locked);
                 Events.ExecuteOnErrorGetEnrollmentContacts(e);
                 throw;
             }
@@ -2872,8 +5171,8 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
                     uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
-                        ? "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/email-override"
-                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/email-override");
+                        ? "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/overrides/emails"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/overrides/emails");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Bid%7D", Uri.EscapeDataString(id.ToString()));
 
@@ -2926,7 +5225,7 @@ namespace EdGraph.Platform.Client.Api
                         switch ((int)httpResponseMessageLocalVar.StatusCode) {
                             default: {
                                 string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/email-override", requestedAtLocalVar, _jsonSerializerOptions);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/overrides/emails", requestedAtLocalVar, _jsonSerializerOptions);
 
                                 break;
                             }
@@ -2946,7 +5245,7 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorOverrideEnrollmentContactEmailDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/email-override", uriBuilderLocalVar.Path, tenantId, id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactEmailOverrideRequestDto);
+                OnErrorOverrideEnrollmentContactEmailDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/overrides/emails", uriBuilderLocalVar.Path, tenantId, id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactEmailOverrideRequestDto);
                 Events.ExecuteOnErrorOverrideEnrollmentContactEmail(e);
                 throw;
             }
@@ -3389,8 +5688,8 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
                     uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
-                        ? "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/phone-override"
-                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/phone-override");
+                        ? "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/overrides/phones"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/overrides/phones");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Bid%7D", Uri.EscapeDataString(id.ToString()));
 
@@ -3443,7 +5742,7 @@ namespace EdGraph.Platform.Client.Api
                         switch ((int)httpResponseMessageLocalVar.StatusCode) {
                             default: {
                                 string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/phone-override", requestedAtLocalVar, _jsonSerializerOptions);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/overrides/phones", requestedAtLocalVar, _jsonSerializerOptions);
 
                                 break;
                             }
@@ -3463,7 +5762,7 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorOverrideEnrollmentContactPhoneDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/phone-override", uriBuilderLocalVar.Path, tenantId, id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactPhoneOverrideRequestDto);
+                OnErrorOverrideEnrollmentContactPhoneDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/overrides/phones", uriBuilderLocalVar.Path, tenantId, id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactPhoneOverrideRequestDto);
                 Events.ExecuteOnErrorOverrideEnrollmentContactPhone(e);
                 throw;
             }
@@ -3790,22 +6089,22 @@ namespace EdGraph.Platform.Client.Api
             partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
         }
 
-        partial void FormatRemoveEnrollmentContactEmailOverride(ref string tenantId, ref Guid id, ref Option<string> studentId, ref Option<string> expectedVersion);
+        partial void FormatRemoveEnrollmentContactEmailOverride(ref string tenantId, ref Guid id, ref Option<string> studentLocalCode, ref Option<string> expectedVersion);
 
         /// <summary>
         /// Validates the request parameters
         /// </summary>
         /// <param name="tenantId"></param>
-        /// <param name="studentId"></param>
+        /// <param name="studentLocalCode"></param>
         /// <param name="expectedVersion"></param>
         /// <returns></returns>
-        private void ValidateRemoveEnrollmentContactEmailOverride(string tenantId, Option<string> studentId, Option<string> expectedVersion)
+        private void ValidateRemoveEnrollmentContactEmailOverride(string tenantId, Option<string> studentLocalCode, Option<string> expectedVersion)
         {
             if (tenantId == null)
                 throw new ArgumentNullException(nameof(tenantId));
 
-            if (studentId.IsSet && studentId.Value == null)
-                throw new ArgumentNullException(nameof(studentId));
+            if (studentLocalCode.IsSet && studentLocalCode.Value == null)
+                throw new ArgumentNullException(nameof(studentLocalCode));
 
             if (expectedVersion.IsSet && expectedVersion.Value == null)
                 throw new ArgumentNullException(nameof(expectedVersion));
@@ -3817,12 +6116,12 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        /// <param name="studentId"></param>
+        /// <param name="studentLocalCode"></param>
         /// <param name="expectedVersion"></param>
-        private void AfterRemoveEnrollmentContactEmailOverrideDefaultImplementation(IRemoveEnrollmentContactEmailOverrideApiResponse apiResponseLocalVar, string tenantId, Guid id, Option<string> studentId, Option<string> expectedVersion)
+        private void AfterRemoveEnrollmentContactEmailOverrideDefaultImplementation(IRemoveEnrollmentContactEmailOverrideApiResponse apiResponseLocalVar, string tenantId, Guid id, Option<string> studentLocalCode, Option<string> expectedVersion)
         {
             bool suppressDefaultLog = false;
-            AfterRemoveEnrollmentContactEmailOverride(ref suppressDefaultLog, apiResponseLocalVar, tenantId, id, studentId, expectedVersion);
+            AfterRemoveEnrollmentContactEmailOverride(ref suppressDefaultLog, apiResponseLocalVar, tenantId, id, studentLocalCode, expectedVersion);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -3834,9 +6133,9 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        /// <param name="studentId"></param>
+        /// <param name="studentLocalCode"></param>
         /// <param name="expectedVersion"></param>
-        partial void AfterRemoveEnrollmentContactEmailOverride(ref bool suppressDefaultLog, IRemoveEnrollmentContactEmailOverrideApiResponse apiResponseLocalVar, string tenantId, Guid id, Option<string> studentId, Option<string> expectedVersion);
+        partial void AfterRemoveEnrollmentContactEmailOverride(ref bool suppressDefaultLog, IRemoveEnrollmentContactEmailOverrideApiResponse apiResponseLocalVar, string tenantId, Guid id, Option<string> studentLocalCode, Option<string> expectedVersion);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -3846,12 +6145,12 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        /// <param name="studentId"></param>
+        /// <param name="studentLocalCode"></param>
         /// <param name="expectedVersion"></param>
-        private void OnErrorRemoveEnrollmentContactEmailOverrideDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id, Option<string> studentId, Option<string> expectedVersion)
+        private void OnErrorRemoveEnrollmentContactEmailOverrideDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id, Option<string> studentLocalCode, Option<string> expectedVersion)
         {
             bool suppressDefaultLogLocalVar = false;
-            OnErrorRemoveEnrollmentContactEmailOverride(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, id, studentId, expectedVersion);
+            OnErrorRemoveEnrollmentContactEmailOverride(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, id, studentLocalCode, expectedVersion);
             if (!suppressDefaultLogLocalVar)
                 Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
@@ -3865,24 +6164,24 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        /// <param name="studentId"></param>
+        /// <param name="studentLocalCode"></param>
         /// <param name="expectedVersion"></param>
-        partial void OnErrorRemoveEnrollmentContactEmailOverride(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id, Option<string> studentId, Option<string> expectedVersion);
+        partial void OnErrorRemoveEnrollmentContactEmailOverride(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id, Option<string> studentLocalCode, Option<string> expectedVersion);
 
         /// <summary>
         /// Removes a contact&#39;s email override, letting the SIS value show through again. The removal is itself recorded in the history - the superseded value stays recoverable.
         /// </summary>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        /// <param name="studentId">The student whose screen the removal was made from. (optional, default to &quot;&quot;)</param>
+        /// <param name="studentLocalCode">The local code of the student whose screen the removal was made from. (optional, default to &quot;&quot;)</param>
         /// <param name="expectedVersion">The &#x60;lastUpdatedDateTime&#x60; this edit started from. (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IRemoveEnrollmentContactEmailOverrideApiResponse"/>&gt;</returns>
-        public async Task<IRemoveEnrollmentContactEmailOverrideApiResponse?> RemoveEnrollmentContactEmailOverrideOrDefaultAsync(string tenantId, Guid id, Option<string> studentId = default, Option<string> expectedVersion = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IRemoveEnrollmentContactEmailOverrideApiResponse?> RemoveEnrollmentContactEmailOverrideOrDefaultAsync(string tenantId, Guid id, Option<string> studentLocalCode = default, Option<string> expectedVersion = default, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await RemoveEnrollmentContactEmailOverrideAsync(tenantId, id, studentId, expectedVersion, cancellationToken).ConfigureAwait(false);
+                return await RemoveEnrollmentContactEmailOverrideAsync(tenantId, id, studentLocalCode, expectedVersion, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -3896,19 +6195,19 @@ namespace EdGraph.Platform.Client.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        /// <param name="studentId">The student whose screen the removal was made from. (optional, default to &quot;&quot;)</param>
+        /// <param name="studentLocalCode">The local code of the student whose screen the removal was made from. (optional, default to &quot;&quot;)</param>
         /// <param name="expectedVersion">The &#x60;lastUpdatedDateTime&#x60; this edit started from. (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IRemoveEnrollmentContactEmailOverrideApiResponse"/>&gt;</returns>
-        public async Task<IRemoveEnrollmentContactEmailOverrideApiResponse> RemoveEnrollmentContactEmailOverrideAsync(string tenantId, Guid id, Option<string> studentId = default, Option<string> expectedVersion = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IRemoveEnrollmentContactEmailOverrideApiResponse> RemoveEnrollmentContactEmailOverrideAsync(string tenantId, Guid id, Option<string> studentLocalCode = default, Option<string> expectedVersion = default, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
             try
             {
-                ValidateRemoveEnrollmentContactEmailOverride(tenantId, studentId, expectedVersion);
+                ValidateRemoveEnrollmentContactEmailOverride(tenantId, studentLocalCode, expectedVersion);
 
-                FormatRemoveEnrollmentContactEmailOverride(ref tenantId, ref id, ref studentId, ref expectedVersion);
+                FormatRemoveEnrollmentContactEmailOverride(ref tenantId, ref id, ref studentLocalCode, ref expectedVersion);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -3916,15 +6215,15 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
                     uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
-                        ? "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/email-override"
-                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/email-override");
+                        ? "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/overrides/emails"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/overrides/emails");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Bid%7D", Uri.EscapeDataString(id.ToString()));
 
                     System.Collections.Specialized.NameValueCollection parseQueryStringLocalVar = System.Web.HttpUtility.ParseQueryString(string.Empty);
 
-                    if (studentId.IsSet)
-                        parseQueryStringLocalVar["studentId"] = ClientUtils.ParameterToString(studentId.Value);
+                    if (studentLocalCode.IsSet)
+                        parseQueryStringLocalVar["studentLocalCode"] = ClientUtils.ParameterToString(studentLocalCode.Value);
 
                     if (expectedVersion.IsSet)
                         parseQueryStringLocalVar["expectedVersion"] = ClientUtils.ParameterToString(expectedVersion.Value);
@@ -3961,13 +6260,13 @@ namespace EdGraph.Platform.Client.Api
                         switch ((int)httpResponseMessageLocalVar.StatusCode) {
                             default: {
                                 string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/email-override", requestedAtLocalVar, _jsonSerializerOptions);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/overrides/emails", requestedAtLocalVar, _jsonSerializerOptions);
 
                                 break;
                             }
                         }
 
-                        AfterRemoveEnrollmentContactEmailOverrideDefaultImplementation(apiResponseLocalVar, tenantId, id, studentId, expectedVersion);
+                        AfterRemoveEnrollmentContactEmailOverrideDefaultImplementation(apiResponseLocalVar, tenantId, id, studentLocalCode, expectedVersion);
 
                         Events.ExecuteOnRemoveEnrollmentContactEmailOverride(apiResponseLocalVar);
 
@@ -3981,7 +6280,7 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorRemoveEnrollmentContactEmailOverrideDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/email-override", uriBuilderLocalVar.Path, tenantId, id, studentId, expectedVersion);
+                OnErrorRemoveEnrollmentContactEmailOverrideDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/overrides/emails", uriBuilderLocalVar.Path, tenantId, id, studentLocalCode, expectedVersion);
                 Events.ExecuteOnErrorRemoveEnrollmentContactEmailOverride(e);
                 throw;
             }
@@ -4270,22 +6569,22 @@ namespace EdGraph.Platform.Client.Api
             partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
         }
 
-        partial void FormatRemoveEnrollmentContactPhoneOverride(ref string tenantId, ref Guid id, ref Option<string> studentId, ref Option<string> expectedVersion);
+        partial void FormatRemoveEnrollmentContactPhoneOverride(ref string tenantId, ref Guid id, ref Option<string> studentLocalCode, ref Option<string> expectedVersion);
 
         /// <summary>
         /// Validates the request parameters
         /// </summary>
         /// <param name="tenantId"></param>
-        /// <param name="studentId"></param>
+        /// <param name="studentLocalCode"></param>
         /// <param name="expectedVersion"></param>
         /// <returns></returns>
-        private void ValidateRemoveEnrollmentContactPhoneOverride(string tenantId, Option<string> studentId, Option<string> expectedVersion)
+        private void ValidateRemoveEnrollmentContactPhoneOverride(string tenantId, Option<string> studentLocalCode, Option<string> expectedVersion)
         {
             if (tenantId == null)
                 throw new ArgumentNullException(nameof(tenantId));
 
-            if (studentId.IsSet && studentId.Value == null)
-                throw new ArgumentNullException(nameof(studentId));
+            if (studentLocalCode.IsSet && studentLocalCode.Value == null)
+                throw new ArgumentNullException(nameof(studentLocalCode));
 
             if (expectedVersion.IsSet && expectedVersion.Value == null)
                 throw new ArgumentNullException(nameof(expectedVersion));
@@ -4297,12 +6596,12 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        /// <param name="studentId"></param>
+        /// <param name="studentLocalCode"></param>
         /// <param name="expectedVersion"></param>
-        private void AfterRemoveEnrollmentContactPhoneOverrideDefaultImplementation(IRemoveEnrollmentContactPhoneOverrideApiResponse apiResponseLocalVar, string tenantId, Guid id, Option<string> studentId, Option<string> expectedVersion)
+        private void AfterRemoveEnrollmentContactPhoneOverrideDefaultImplementation(IRemoveEnrollmentContactPhoneOverrideApiResponse apiResponseLocalVar, string tenantId, Guid id, Option<string> studentLocalCode, Option<string> expectedVersion)
         {
             bool suppressDefaultLog = false;
-            AfterRemoveEnrollmentContactPhoneOverride(ref suppressDefaultLog, apiResponseLocalVar, tenantId, id, studentId, expectedVersion);
+            AfterRemoveEnrollmentContactPhoneOverride(ref suppressDefaultLog, apiResponseLocalVar, tenantId, id, studentLocalCode, expectedVersion);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -4314,9 +6613,9 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        /// <param name="studentId"></param>
+        /// <param name="studentLocalCode"></param>
         /// <param name="expectedVersion"></param>
-        partial void AfterRemoveEnrollmentContactPhoneOverride(ref bool suppressDefaultLog, IRemoveEnrollmentContactPhoneOverrideApiResponse apiResponseLocalVar, string tenantId, Guid id, Option<string> studentId, Option<string> expectedVersion);
+        partial void AfterRemoveEnrollmentContactPhoneOverride(ref bool suppressDefaultLog, IRemoveEnrollmentContactPhoneOverrideApiResponse apiResponseLocalVar, string tenantId, Guid id, Option<string> studentLocalCode, Option<string> expectedVersion);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -4326,12 +6625,12 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        /// <param name="studentId"></param>
+        /// <param name="studentLocalCode"></param>
         /// <param name="expectedVersion"></param>
-        private void OnErrorRemoveEnrollmentContactPhoneOverrideDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id, Option<string> studentId, Option<string> expectedVersion)
+        private void OnErrorRemoveEnrollmentContactPhoneOverrideDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id, Option<string> studentLocalCode, Option<string> expectedVersion)
         {
             bool suppressDefaultLogLocalVar = false;
-            OnErrorRemoveEnrollmentContactPhoneOverride(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, id, studentId, expectedVersion);
+            OnErrorRemoveEnrollmentContactPhoneOverride(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, id, studentLocalCode, expectedVersion);
             if (!suppressDefaultLogLocalVar)
                 Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
@@ -4345,24 +6644,24 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        /// <param name="studentId"></param>
+        /// <param name="studentLocalCode"></param>
         /// <param name="expectedVersion"></param>
-        partial void OnErrorRemoveEnrollmentContactPhoneOverride(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id, Option<string> studentId, Option<string> expectedVersion);
+        partial void OnErrorRemoveEnrollmentContactPhoneOverride(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id, Option<string> studentLocalCode, Option<string> expectedVersion);
 
         /// <summary>
         /// Removes a contact&#39;s phone override, letting the SIS value show through again. The removal is itself recorded in the history - the superseded value stays recoverable.
         /// </summary>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        /// <param name="studentId">The student whose screen the removal was made from. (optional, default to &quot;&quot;)</param>
+        /// <param name="studentLocalCode">The local code of the student whose screen the removal was made from. (optional, default to &quot;&quot;)</param>
         /// <param name="expectedVersion">The &#x60;lastUpdatedDateTime&#x60; this edit started from. (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IRemoveEnrollmentContactPhoneOverrideApiResponse"/>&gt;</returns>
-        public async Task<IRemoveEnrollmentContactPhoneOverrideApiResponse?> RemoveEnrollmentContactPhoneOverrideOrDefaultAsync(string tenantId, Guid id, Option<string> studentId = default, Option<string> expectedVersion = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IRemoveEnrollmentContactPhoneOverrideApiResponse?> RemoveEnrollmentContactPhoneOverrideOrDefaultAsync(string tenantId, Guid id, Option<string> studentLocalCode = default, Option<string> expectedVersion = default, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await RemoveEnrollmentContactPhoneOverrideAsync(tenantId, id, studentId, expectedVersion, cancellationToken).ConfigureAwait(false);
+                return await RemoveEnrollmentContactPhoneOverrideAsync(tenantId, id, studentLocalCode, expectedVersion, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -4376,19 +6675,19 @@ namespace EdGraph.Platform.Client.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        /// <param name="studentId">The student whose screen the removal was made from. (optional, default to &quot;&quot;)</param>
+        /// <param name="studentLocalCode">The local code of the student whose screen the removal was made from. (optional, default to &quot;&quot;)</param>
         /// <param name="expectedVersion">The &#x60;lastUpdatedDateTime&#x60; this edit started from. (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IRemoveEnrollmentContactPhoneOverrideApiResponse"/>&gt;</returns>
-        public async Task<IRemoveEnrollmentContactPhoneOverrideApiResponse> RemoveEnrollmentContactPhoneOverrideAsync(string tenantId, Guid id, Option<string> studentId = default, Option<string> expectedVersion = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IRemoveEnrollmentContactPhoneOverrideApiResponse> RemoveEnrollmentContactPhoneOverrideAsync(string tenantId, Guid id, Option<string> studentLocalCode = default, Option<string> expectedVersion = default, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
             try
             {
-                ValidateRemoveEnrollmentContactPhoneOverride(tenantId, studentId, expectedVersion);
+                ValidateRemoveEnrollmentContactPhoneOverride(tenantId, studentLocalCode, expectedVersion);
 
-                FormatRemoveEnrollmentContactPhoneOverride(ref tenantId, ref id, ref studentId, ref expectedVersion);
+                FormatRemoveEnrollmentContactPhoneOverride(ref tenantId, ref id, ref studentLocalCode, ref expectedVersion);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -4396,15 +6695,15 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
                     uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
-                        ? "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/phone-override"
-                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/phone-override");
+                        ? "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/overrides/phones"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/overrides/phones");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Bid%7D", Uri.EscapeDataString(id.ToString()));
 
                     System.Collections.Specialized.NameValueCollection parseQueryStringLocalVar = System.Web.HttpUtility.ParseQueryString(string.Empty);
 
-                    if (studentId.IsSet)
-                        parseQueryStringLocalVar["studentId"] = ClientUtils.ParameterToString(studentId.Value);
+                    if (studentLocalCode.IsSet)
+                        parseQueryStringLocalVar["studentLocalCode"] = ClientUtils.ParameterToString(studentLocalCode.Value);
 
                     if (expectedVersion.IsSet)
                         parseQueryStringLocalVar["expectedVersion"] = ClientUtils.ParameterToString(expectedVersion.Value);
@@ -4441,13 +6740,13 @@ namespace EdGraph.Platform.Client.Api
                         switch ((int)httpResponseMessageLocalVar.StatusCode) {
                             default: {
                                 string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/phone-override", requestedAtLocalVar, _jsonSerializerOptions);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/overrides/phones", requestedAtLocalVar, _jsonSerializerOptions);
 
                                 break;
                             }
                         }
 
-                        AfterRemoveEnrollmentContactPhoneOverrideDefaultImplementation(apiResponseLocalVar, tenantId, id, studentId, expectedVersion);
+                        AfterRemoveEnrollmentContactPhoneOverrideDefaultImplementation(apiResponseLocalVar, tenantId, id, studentLocalCode, expectedVersion);
 
                         Events.ExecuteOnRemoveEnrollmentContactPhoneOverride(apiResponseLocalVar);
 
@@ -4461,7 +6760,7 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorRemoveEnrollmentContactPhoneOverrideDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/phone-override", uriBuilderLocalVar.Path, tenantId, id, studentId, expectedVersion);
+                OnErrorRemoveEnrollmentContactPhoneOverrideDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/overrides/phones", uriBuilderLocalVar.Path, tenantId, id, studentLocalCode, expectedVersion);
                 Events.ExecuteOnErrorRemoveEnrollmentContactPhoneOverride(e);
                 throw;
             }
@@ -4734,6 +7033,429 @@ namespace EdGraph.Platform.Client.Api
                 } catch (Exception e)
                 {
                     OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)412);
+                }
+
+                return result != null;
+            }
+
+            private void OnDeserializationErrorDefaultImplementation(Exception exception, HttpStatusCode httpStatusCode)
+            {
+                bool suppressDefaultLog = false;
+                OnDeserializationError(ref suppressDefaultLog, exception, httpStatusCode);
+                if (!suppressDefaultLog)
+                    Logger.LogError(exception, "An error occurred while deserializing the {code} response.", httpStatusCode);
+            }
+
+            partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
+        }
+
+        partial void FormatRemoveEnrollmentContactStudent(ref string tenantId, ref Guid id, ref string studentId);
+
+        /// <summary>
+        /// Validates the request parameters
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="studentId"></param>
+        /// <returns></returns>
+        private void ValidateRemoveEnrollmentContactStudent(string tenantId, string studentId)
+        {
+            if (tenantId == null)
+                throw new ArgumentNullException(nameof(tenantId));
+
+            if (studentId == null)
+                throw new ArgumentNullException(nameof(studentId));
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="studentId"></param>
+        private void AfterRemoveEnrollmentContactStudentDefaultImplementation(IRemoveEnrollmentContactStudentApiResponse apiResponseLocalVar, string tenantId, Guid id, string studentId)
+        {
+            bool suppressDefaultLog = false;
+            AfterRemoveEnrollmentContactStudent(ref suppressDefaultLog, apiResponseLocalVar, tenantId, id, studentId);
+            if (!suppressDefaultLog)
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="suppressDefaultLog"></param>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="studentId"></param>
+        partial void AfterRemoveEnrollmentContactStudent(ref bool suppressDefaultLog, IRemoveEnrollmentContactStudentApiResponse apiResponseLocalVar, string tenantId, Guid id, string studentId);
+
+        /// <summary>
+        /// Logs exceptions that occur while retrieving the server response
+        /// </summary>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="studentId"></param>
+        private void OnErrorRemoveEnrollmentContactStudentDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id, string studentId)
+        {
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorRemoveEnrollmentContactStudent(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, id, studentId);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
+        }
+
+        /// <summary>
+        /// A partial method that gives developers a way to provide customized exception handling
+        /// </summary>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="studentId"></param>
+        partial void OnErrorRemoveEnrollmentContactStudent(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id, string studentId);
+
+        /// <summary>
+        /// Removes a student&#39;s link to a contact. 
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="studentId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IRemoveEnrollmentContactStudentApiResponse"/>&gt;</returns>
+        public async Task<IRemoveEnrollmentContactStudentApiResponse?> RemoveEnrollmentContactStudentOrDefaultAsync(string tenantId, Guid id, string studentId, System.Threading.CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                return await RemoveEnrollmentContactStudentAsync(tenantId, id, studentId, cancellationToken).ConfigureAwait(false);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Removes a student&#39;s link to a contact. 
+        /// </summary>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="studentId"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IRemoveEnrollmentContactStudentApiResponse"/>&gt;</returns>
+        public async Task<IRemoveEnrollmentContactStudentApiResponse> RemoveEnrollmentContactStudentAsync(string tenantId, Guid id, string studentId, System.Threading.CancellationToken cancellationToken = default)
+        {
+            UriBuilder uriBuilderLocalVar = new UriBuilder();
+
+            try
+            {
+                ValidateRemoveEnrollmentContactStudent(tenantId, studentId);
+
+                FormatRemoveEnrollmentContactStudent(ref tenantId, ref id, ref studentId);
+
+                using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
+                {
+                    uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
+                    uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
+                    uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/students/{studentId}"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/students/{studentId}");
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Bid%7D", Uri.EscapeDataString(id.ToString()));
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BstudentId%7D", Uri.EscapeDataString(studentId.ToString()));
+
+                    List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
+                    httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
+
+                    OAuthToken oauthTokenLocalVar1 = (OAuthToken) await OauthTokenProvider.GetAsync(cancellation: cancellationToken).ConfigureAwait(false);
+
+                    tokenBaseLocalVars.Add(oauthTokenLocalVar1);
+
+                    oauthTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar, "");
+
+                    string[] acceptLocalVars = new string[] {
+                        "application/json"
+                    };
+
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
+
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
+
+                    httpRequestMessageLocalVar.Method = HttpMethod.Delete;
+
+                    DateTime requestedAtLocalVar = DateTime.UtcNow;
+
+                    using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
+                    {
+                        ILogger<RemoveEnrollmentContactStudentApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<RemoveEnrollmentContactStudentApiResponse>();
+                        RemoveEnrollmentContactStudentApiResponse apiResponseLocalVar;
+
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/students/{studentId}", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
+
+                        AfterRemoveEnrollmentContactStudentDefaultImplementation(apiResponseLocalVar, tenantId, id, studentId);
+
+                        Events.ExecuteOnRemoveEnrollmentContactStudent(apiResponseLocalVar);
+
+                        if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
+                            foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
+                                tokenBaseLocalVar.BeginRateLimit();
+
+                        return apiResponseLocalVar;
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                OnErrorRemoveEnrollmentContactStudentDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/students/{studentId}", uriBuilderLocalVar.Path, tenantId, id, studentId);
+                Events.ExecuteOnErrorRemoveEnrollmentContactStudent(e);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// The <see cref="RemoveEnrollmentContactStudentApiResponse"/>
+        /// </summary>
+        public partial class RemoveEnrollmentContactStudentApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IRemoveEnrollmentContactStudentApiResponse
+        {
+            /// <summary>
+            /// The logger
+            /// </summary>
+            public ILogger<RemoveEnrollmentContactStudentApiResponse> Logger { get; }
+
+            /// <summary>
+            /// The <see cref="RemoveEnrollmentContactStudentApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="rawContent"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public RemoveEnrollmentContactStudentApiResponse(ILogger<RemoveEnrollmentContactStudentApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="RemoveEnrollmentContactStudentApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public RemoveEnrollmentContactStudentApiResponse(ILogger<RemoveEnrollmentContactStudentApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            partial void OnCreated(global::System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage);
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public bool IsUnauthorized => 401 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Unauthorized()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsUnauthorized
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryUnauthorized([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Unauthorized();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)401);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public bool IsForbidden => 403 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Forbidden()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsForbidden
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryForbidden([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Forbidden();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)403);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public bool IsInternalServerError => 500 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? InternalServerError()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsInternalServerError
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryInternalServerError([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = InternalServerError();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)500);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public bool IsOk => 200 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentRemovedResultDto? Ok()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsOk
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentRemovedResultDto>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryOk([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentRemovedResultDto? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Ok();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)200);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 404 NotFound
+            /// </summary>
+            /// <returns></returns>
+            public bool IsNotFound => 404 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 404 NotFound
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? NotFound()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsNotFound
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 404 NotFound and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryNotFound([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = NotFound();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)404);
                 }
 
                 return result != null;
@@ -5234,7 +7956,7 @@ namespace EdGraph.Platform.Client.Api
         partial void OnErrorUpdateEnrollmentContact(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactRequestDto);
 
         /// <summary>
-        /// Updates an Enrollment Contact name and its linked students. &lt;br&gt;              The student list is REPLACED, not merged: a student omitted from the body is unlinked from the              contact.                &lt;br&gt;              Email and phone cannot be changed here. Correcting either is an override, which records who              changed it and keeps the SIS value beside the correction; a body carrying &#x60;email&#x60; or              &#x60;phone&#x60; is rejected with a 400 naming the route to use instead. Note that a contact whose              email is overridden keeps that override across this call - an update to the name leaves a              standing correction alone.              
+        /// Updates an Enrollment Contact&#39;s name. Email and phone cannot be changed here. Correcting either is an override, which records who  changed it and keeps the SIS value beside the correction; a body carrying &#x60;email&#x60; or  &#x60;phone&#x60; is rejected with a 400 naming the route to use instead. Note that a contact whose  email is overridden keeps that override across this call - an update to the name leaves a  standing correction alone. Student association is managed exclusively through the  &#x60;/contacts/{id}/students&#x60; sub-resource, not through this call.
         /// </summary>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
@@ -5254,7 +7976,7 @@ namespace EdGraph.Platform.Client.Api
         }
 
         /// <summary>
-        /// Updates an Enrollment Contact name and its linked students. &lt;br&gt;              The student list is REPLACED, not merged: a student omitted from the body is unlinked from the              contact.                &lt;br&gt;              Email and phone cannot be changed here. Correcting either is an override, which records who              changed it and keeps the SIS value beside the correction; a body carrying &#x60;email&#x60; or              &#x60;phone&#x60; is rejected with a 400 naming the route to use instead. Note that a contact whose              email is overridden keeps that override across this call - an update to the name leaves a              standing correction alone.              
+        /// Updates an Enrollment Contact&#39;s name. Email and phone cannot be changed here. Correcting either is an override, which records who  changed it and keeps the SIS value beside the correction; a body carrying &#x60;email&#x60; or  &#x60;phone&#x60; is rejected with a 400 naming the route to use instead. Note that a contact whose  email is overridden keeps that override across this call - an update to the name leaves a  standing correction alone. Student association is managed exclusively through the  &#x60;/contacts/{id}/students&#x60; sub-resource, not through this call.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
@@ -5587,6 +8309,908 @@ namespace EdGraph.Platform.Client.Api
                 } catch (Exception e)
                 {
                     OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)400);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 404 NotFound
+            /// </summary>
+            /// <returns></returns>
+            public bool IsNotFound => 404 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 404 NotFound
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? NotFound()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsNotFound
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 404 NotFound and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryNotFound([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = NotFound();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)404);
+                }
+
+                return result != null;
+            }
+
+            private void OnDeserializationErrorDefaultImplementation(Exception exception, HttpStatusCode httpStatusCode)
+            {
+                bool suppressDefaultLog = false;
+                OnDeserializationError(ref suppressDefaultLog, exception, httpStatusCode);
+                if (!suppressDefaultLog)
+                    Logger.LogError(exception, "An error occurred while deserializing the {code} response.", httpStatusCode);
+            }
+
+            partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
+        }
+
+        partial void FormatUpdateEnrollmentContactStudent(ref string tenantId, ref Guid id, ref string studentId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto);
+
+        /// <summary>
+        /// Validates the request parameters
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="studentId"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto"></param>
+        /// <returns></returns>
+        private void ValidateUpdateEnrollmentContactStudent(string tenantId, string studentId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto)
+        {
+            if (tenantId == null)
+                throw new ArgumentNullException(nameof(tenantId));
+
+            if (studentId == null)
+                throw new ArgumentNullException(nameof(studentId));
+
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto.IsSet && edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto.Value == null)
+                throw new ArgumentNullException(nameof(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto));
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="studentId"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto"></param>
+        private void AfterUpdateEnrollmentContactStudentDefaultImplementation(IUpdateEnrollmentContactStudentApiResponse apiResponseLocalVar, string tenantId, Guid id, string studentId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto)
+        {
+            bool suppressDefaultLog = false;
+            AfterUpdateEnrollmentContactStudent(ref suppressDefaultLog, apiResponseLocalVar, tenantId, id, studentId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto);
+            if (!suppressDefaultLog)
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="suppressDefaultLog"></param>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="studentId"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto"></param>
+        partial void AfterUpdateEnrollmentContactStudent(ref bool suppressDefaultLog, IUpdateEnrollmentContactStudentApiResponse apiResponseLocalVar, string tenantId, Guid id, string studentId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto);
+
+        /// <summary>
+        /// Logs exceptions that occur while retrieving the server response
+        /// </summary>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="studentId"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto"></param>
+        private void OnErrorUpdateEnrollmentContactStudentDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id, string studentId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto)
+        {
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorUpdateEnrollmentContactStudent(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, id, studentId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
+        }
+
+        /// <summary>
+        /// A partial method that gives developers a way to provide customized exception handling
+        /// </summary>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="studentId"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto"></param>
+        partial void OnErrorUpdateEnrollmentContactStudent(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id, string studentId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto);
+
+        /// <summary>
+        /// Updates a contact-student association&#39;s attributes. 
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="studentId"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IUpdateEnrollmentContactStudentApiResponse"/>&gt;</returns>
+        public async Task<IUpdateEnrollmentContactStudentApiResponse?> UpdateEnrollmentContactStudentOrDefaultAsync(string tenantId, Guid id, string studentId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto = default, System.Threading.CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                return await UpdateEnrollmentContactStudentAsync(tenantId, id, studentId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto, cancellationToken).ConfigureAwait(false);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Updates a contact-student association&#39;s attributes. 
+        /// </summary>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="studentId"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto"> (optional)</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IUpdateEnrollmentContactStudentApiResponse"/>&gt;</returns>
+        public async Task<IUpdateEnrollmentContactStudentApiResponse> UpdateEnrollmentContactStudentAsync(string tenantId, Guid id, string studentId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto = default, System.Threading.CancellationToken cancellationToken = default)
+        {
+            UriBuilder uriBuilderLocalVar = new UriBuilder();
+
+            try
+            {
+                ValidateUpdateEnrollmentContactStudent(tenantId, studentId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto);
+
+                FormatUpdateEnrollmentContactStudent(ref tenantId, ref id, ref studentId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto);
+
+                using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
+                {
+                    uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
+                    uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
+                    uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/students/{studentId}"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/students/{studentId}");
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Bid%7D", Uri.EscapeDataString(id.ToString()));
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BstudentId%7D", Uri.EscapeDataString(studentId.ToString()));
+
+                    if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto.IsSet)
+                    {
+                      httpRequestMessageLocalVar.Content = (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto.Value as object) is EdGraph.Platform.Client.Client.FileParameter fileParameterLocalVar
+                        ? httpRequestMessageLocalVar.Content = new StreamContent(fileParameterLocalVar.Content)
+                        : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto.Value, _jsonSerializerOptions));
+                    }
+
+                    List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
+                    httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
+
+                    OAuthToken oauthTokenLocalVar1 = (OAuthToken) await OauthTokenProvider.GetAsync(cancellation: cancellationToken).ConfigureAwait(false);
+
+                    tokenBaseLocalVars.Add(oauthTokenLocalVar1);
+
+                    oauthTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar, "");
+
+                    string[] contentTypes = new string[] {
+                        "application/json-patch+json",
+                        "application/json",
+                        "text/json",
+                        "application/*+json"
+                    };
+
+                    string? contentTypeLocalVar = ClientUtils.SelectHeaderContentType(contentTypes);
+
+                    if (contentTypeLocalVar != null && httpRequestMessageLocalVar.Content != null)
+                        httpRequestMessageLocalVar.Content.Headers.ContentType = new MediaTypeHeaderValue(contentTypeLocalVar);
+
+                    string[] acceptLocalVars = new string[] {
+                        "application/json"
+                    };
+
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
+
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
+
+                    httpRequestMessageLocalVar.Method = HttpMethod.Put;
+
+                    DateTime requestedAtLocalVar = DateTime.UtcNow;
+
+                    using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
+                    {
+                        ILogger<UpdateEnrollmentContactStudentApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<UpdateEnrollmentContactStudentApiResponse>();
+                        UpdateEnrollmentContactStudentApiResponse apiResponseLocalVar;
+
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/students/{studentId}", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
+
+                        AfterUpdateEnrollmentContactStudentDefaultImplementation(apiResponseLocalVar, tenantId, id, studentId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto);
+
+                        Events.ExecuteOnUpdateEnrollmentContactStudent(apiResponseLocalVar);
+
+                        if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
+                            foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
+                                tokenBaseLocalVar.BeginRateLimit();
+
+                        return apiResponseLocalVar;
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                OnErrorUpdateEnrollmentContactStudentDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/students/{studentId}", uriBuilderLocalVar.Path, tenantId, id, studentId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto);
+                Events.ExecuteOnErrorUpdateEnrollmentContactStudent(e);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// The <see cref="UpdateEnrollmentContactStudentApiResponse"/>
+        /// </summary>
+        public partial class UpdateEnrollmentContactStudentApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IUpdateEnrollmentContactStudentApiResponse
+        {
+            /// <summary>
+            /// The logger
+            /// </summary>
+            public ILogger<UpdateEnrollmentContactStudentApiResponse> Logger { get; }
+
+            /// <summary>
+            /// The <see cref="UpdateEnrollmentContactStudentApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="rawContent"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public UpdateEnrollmentContactStudentApiResponse(ILogger<UpdateEnrollmentContactStudentApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="UpdateEnrollmentContactStudentApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public UpdateEnrollmentContactStudentApiResponse(ILogger<UpdateEnrollmentContactStudentApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            partial void OnCreated(global::System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage);
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public bool IsUnauthorized => 401 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Unauthorized()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsUnauthorized
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryUnauthorized([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Unauthorized();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)401);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public bool IsForbidden => 403 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Forbidden()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsForbidden
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryForbidden([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Forbidden();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)403);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public bool IsInternalServerError => 500 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? InternalServerError()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsInternalServerError
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryInternalServerError([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = InternalServerError();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)500);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public bool IsOk => 200 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentAssociatedResultDto? Ok()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsOk
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentAssociatedResultDto>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryOk([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentAssociatedResultDto? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Ok();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)200);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 400 BadRequest
+            /// </summary>
+            /// <returns></returns>
+            public bool IsBadRequest => 400 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 400 BadRequest
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails? BadRequest()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsBadRequest
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 400 BadRequest and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryBadRequest([NotNullWhen(true)]out EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = BadRequest();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)400);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 404 NotFound
+            /// </summary>
+            /// <returns></returns>
+            public bool IsNotFound => 404 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 404 NotFound
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? NotFound()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsNotFound
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 404 NotFound and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryNotFound([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = NotFound();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)404);
+                }
+
+                return result != null;
+            }
+
+            private void OnDeserializationErrorDefaultImplementation(Exception exception, HttpStatusCode httpStatusCode)
+            {
+                bool suppressDefaultLog = false;
+                OnDeserializationError(ref suppressDefaultLog, exception, httpStatusCode);
+                if (!suppressDefaultLog)
+                    Logger.LogError(exception, "An error occurred while deserializing the {code} response.", httpStatusCode);
+            }
+
+            partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
+        }
+
+        partial void FormatVerifyEnrollmentContact(ref string tenantId, ref Guid id);
+
+        /// <summary>
+        /// Validates the request parameters
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <returns></returns>
+        private void ValidateVerifyEnrollmentContact(string tenantId)
+        {
+            if (tenantId == null)
+                throw new ArgumentNullException(nameof(tenantId));
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        private void AfterVerifyEnrollmentContactDefaultImplementation(IVerifyEnrollmentContactApiResponse apiResponseLocalVar, string tenantId, Guid id)
+        {
+            bool suppressDefaultLog = false;
+            AfterVerifyEnrollmentContact(ref suppressDefaultLog, apiResponseLocalVar, tenantId, id);
+            if (!suppressDefaultLog)
+                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
+        }
+
+        /// <summary>
+        /// Processes the server response
+        /// </summary>
+        /// <param name="suppressDefaultLog"></param>
+        /// <param name="apiResponseLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        partial void AfterVerifyEnrollmentContact(ref bool suppressDefaultLog, IVerifyEnrollmentContactApiResponse apiResponseLocalVar, string tenantId, Guid id);
+
+        /// <summary>
+        /// Logs exceptions that occur while retrieving the server response
+        /// </summary>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        private void OnErrorVerifyEnrollmentContactDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id)
+        {
+            bool suppressDefaultLogLocalVar = false;
+            OnErrorVerifyEnrollmentContact(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, id);
+            if (!suppressDefaultLogLocalVar)
+                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
+        }
+
+        /// <summary>
+        /// A partial method that gives developers a way to provide customized exception handling
+        /// </summary>
+        /// <param name="suppressDefaultLogLocalVar"></param>
+        /// <param name="exceptionLocalVar"></param>
+        /// <param name="pathFormatLocalVar"></param>
+        /// <param name="pathLocalVar"></param>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        partial void OnErrorVerifyEnrollmentContact(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id);
+
+        /// <summary>
+        /// Verifies a contact. 
+        /// </summary>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IVerifyEnrollmentContactApiResponse"/>&gt;</returns>
+        public async Task<IVerifyEnrollmentContactApiResponse?> VerifyEnrollmentContactOrDefaultAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                return await VerifyEnrollmentContactAsync(tenantId, id, cancellationToken).ConfigureAwait(false);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Verifies a contact. 
+        /// </summary>
+        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
+        /// <param name="tenantId"></param>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns><see cref="Task"/>&lt;<see cref="IVerifyEnrollmentContactApiResponse"/>&gt;</returns>
+        public async Task<IVerifyEnrollmentContactApiResponse> VerifyEnrollmentContactAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default)
+        {
+            UriBuilder uriBuilderLocalVar = new UriBuilder();
+
+            try
+            {
+                ValidateVerifyEnrollmentContact(tenantId);
+
+                FormatVerifyEnrollmentContact(ref tenantId, ref id);
+
+                using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
+                {
+                    uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
+                    uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
+                    uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
+                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
+                        ? "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/verify"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/verify");
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
+                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Bid%7D", Uri.EscapeDataString(id.ToString()));
+
+                    List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
+                    httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
+
+                    OAuthToken oauthTokenLocalVar1 = (OAuthToken) await OauthTokenProvider.GetAsync(cancellation: cancellationToken).ConfigureAwait(false);
+
+                    tokenBaseLocalVars.Add(oauthTokenLocalVar1);
+
+                    oauthTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar, "");
+
+                    string[] acceptLocalVars = new string[] {
+                        "application/json"
+                    };
+
+                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
+
+                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
+                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
+
+                    httpRequestMessageLocalVar.Method = HttpMethod.Put;
+
+                    DateTime requestedAtLocalVar = DateTime.UtcNow;
+
+                    using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
+                    {
+                        ILogger<VerifyEnrollmentContactApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<VerifyEnrollmentContactApiResponse>();
+                        VerifyEnrollmentContactApiResponse apiResponseLocalVar;
+
+                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
+                            default: {
+                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/verify", requestedAtLocalVar, _jsonSerializerOptions);
+
+                                break;
+                            }
+                        }
+
+                        AfterVerifyEnrollmentContactDefaultImplementation(apiResponseLocalVar, tenantId, id);
+
+                        Events.ExecuteOnVerifyEnrollmentContact(apiResponseLocalVar);
+
+                        if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
+                            foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
+                                tokenBaseLocalVar.BeginRateLimit();
+
+                        return apiResponseLocalVar;
+                    }
+                }
+            }
+            catch(Exception e)
+            {
+                OnErrorVerifyEnrollmentContactDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/contacts/{id}/verify", uriBuilderLocalVar.Path, tenantId, id);
+                Events.ExecuteOnErrorVerifyEnrollmentContact(e);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// The <see cref="VerifyEnrollmentContactApiResponse"/>
+        /// </summary>
+        public partial class VerifyEnrollmentContactApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IVerifyEnrollmentContactApiResponse
+        {
+            /// <summary>
+            /// The logger
+            /// </summary>
+            public ILogger<VerifyEnrollmentContactApiResponse> Logger { get; }
+
+            /// <summary>
+            /// The <see cref="VerifyEnrollmentContactApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="rawContent"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public VerifyEnrollmentContactApiResponse(ILogger<VerifyEnrollmentContactApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            /// <summary>
+            /// The <see cref="VerifyEnrollmentContactApiResponse"/>
+            /// </summary>
+            /// <param name="logger"></param>
+            /// <param name="httpRequestMessage"></param>
+            /// <param name="httpResponseMessage"></param>
+            /// <param name="contentStream"></param>
+            /// <param name="path"></param>
+            /// <param name="requestedAt"></param>
+            /// <param name="jsonSerializerOptions"></param>
+            public VerifyEnrollmentContactApiResponse(ILogger<VerifyEnrollmentContactApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            {
+                Logger = logger;
+                OnCreated(httpRequestMessage, httpResponseMessage);
+            }
+
+            partial void OnCreated(global::System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage);
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public bool IsUnauthorized => 401 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 401 Unauthorized
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Unauthorized()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsUnauthorized
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 401 Unauthorized and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryUnauthorized([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Unauthorized();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)401);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public bool IsForbidden => 403 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 403 Forbidden
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Forbidden()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsForbidden
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 403 Forbidden and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryForbidden([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Forbidden();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)403);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public bool IsInternalServerError => 500 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 500 InternalServerError
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? InternalServerError()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsInternalServerError
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 500 InternalServerError and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryInternalServerError([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = InternalServerError();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)500);
+                }
+
+                return result != null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public bool IsOk => 200 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactVerifiedResultDto? Ok()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsOk
+                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactVerifiedResultDto>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryOk([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactVerifiedResultDto? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Ok();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)200);
                 }
 
                 return result != null;

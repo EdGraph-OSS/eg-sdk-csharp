@@ -7,26 +7,42 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 | [**CreateObservation**](ObservationsApi.md#createobservation) | **POST** /tenants/{tenantId}/observations | Creates a new Observation for a given tenant |
 | [**CreateObservationSubmission**](ObservationsApi.md#createobservationsubmission) | **POST** /tenants/{tenantId}/observations/{observationId}/available-forms/{formId}/submit | Creates a submission for an available form referencing an existing observation |
 | [**DeleteObservation**](ObservationsApi.md#deleteobservation) | **DELETE** /tenants/{tenantId}/observations/{observationId} | Deletes an Observation for a given tenant |
+| [**ExecuteUserSyncJob**](ObservationsApi.md#executeusersyncjob) | **POST** /tenants/{tenantId}/observations/usersync/execute | Executes the User Sync job for a given tenant |
+| [**GetAcademicSubjectsCount**](ObservationsApi.md#getacademicsubjectscount) | **GET** /tenants/{tenantId}/observations/academicsubjectscount | Gets the total count of academic subjects for a given tenant |
 | [**GetAvailableCampusesTotalEvaluees**](ObservationsApi.md#getavailablecampusestotalevaluees) | **GET** /tenants/{tenantId}/observations/total-evaluees | Get the total number of evaluees across all available campuses |
+| [**GetCoursesCount**](ObservationsApi.md#getcoursescount) | **GET** /tenants/{tenantId}/observations/coursescount | Gets the total count of courses for a given tenant |
 | [**GetDashboard**](ObservationsApi.md#getdashboard) | **GET** /tenants/{tenantId}/observations/dashboards/{dashboardId} | Get Observation Dashboard |
 | [**GetDashboardPreferences**](ObservationsApi.md#getdashboardpreferences) | **GET** /tenants/{tenantId}/observations/dashboards/{dashboardId}/preferences | Save user preferences for a given Dashboard |
+| [**GetDefaultEdFiInstance**](ObservationsApi.md#getdefaultedfiinstance) | **GET** /tenants/{tenantId}/observations/defaultinstance | Gets the default Ed-Fi instance for a given tenant |
+| [**GetEducationOrganizationsCount**](ObservationsApi.md#geteducationorganizationscount) | **GET** /tenants/{tenantId}/observations/educationorganizationscount | Gets the total count of education organizations for a given tenant, filtered by discriminator |
 | [**GetEvalueeSections**](ObservationsApi.md#getevalueesections) | **GET** /tenants/{tenantId}/observations/evaluees/{evalueeId}/sections | Gets the Sections of an evaluee. |
 | [**GetFormQuestions**](ObservationsApi.md#getformquestions) | **GET** /tenants/{tenantId}/observations/available-forms/{formId}/sections/{sectionId}/questions | Search Questions |
 | [**GetFormSections**](ObservationsApi.md#getformsections) | **GET** /tenants/{tenantId}/observations/available-forms/{formId}/sections | Search Observation Form Sections |
+| [**GetGradeLevelsCount**](ObservationsApi.md#getgradelevelscount) | **GET** /tenants/{tenantId}/observations/gradelevelscount | Gets the total count of grade levels for a given tenant |
 | [**GetObservationById**](ObservationsApi.md#getobservationbyid) | **GET** /tenants/{tenantId}/observations/{observationId} | Get an Observation for a given tenant |
 | [**GetObservationDraft**](ObservationsApi.md#getobservationdraft) | **GET** /tenants/{tenantId}/observations/{observationId}/available-forms/{formId}/draft | Get an observation form&#39;s draft |
 | [**GetObservationSubmission**](ObservationsApi.md#getobservationsubmission) | **GET** /tenants/{tenantId}/observations/{observationId}/available-forms/{formId}/submission | Gets a submission for a specific observation |
+| [**GetOnboarding**](ObservationsApi.md#getonboarding) | **GET** /tenants/{tenantId}/observations/onboarding | Gets the Instructional Insights onboarding progress for a given tenant |
 | [**GetPaginatedAvailableCampuses**](ObservationsApi.md#getpaginatedavailablecampuses) | **GET** /tenants/{tenantId}/observations/campuses | Get Available Campuses |
 | [**GetPaginatedAvailableForms**](ObservationsApi.md#getpaginatedavailableforms) | **GET** /tenants/{tenantId}/observations/available-forms | Get Paginated Available Forms |
 | [**GetPaginatedCampusSections**](ObservationsApi.md#getpaginatedcampussections) | **GET** /tenants/{tenantId}/observations/campuses/{campusId}/sections | Retrieves a list of Sections for a given available campus. |
 | [**GetPaginatedCampusesWithEvaluees**](ObservationsApi.md#getpaginatedcampuseswithevaluees) | **GET** /tenants/{tenantId}/observations/campuses-with-evaluees | Get a paginated list of the available campuses that have evaluees, each with its complete list of evaluees. |
 | [**GetPaginatedEvaluees**](ObservationsApi.md#getpaginatedevaluees) | **GET** /tenants/{tenantId}/observations/evaluees | Get paginated evaluees |
+| [**GetPaginatedObservationUsers**](ObservationsApi.md#getpaginatedobservationusers) | **GET** /tenants/{tenantId}/observations/users | Get paginated users for a given tenant, including their SEOAAs and Observation Access. |
 | [**GetPaginatedObservations**](ObservationsApi.md#getpaginatedobservations) | **GET** /tenants/{tenantId}/observations | Get Paginated Observations for a given tenant |
 | [**GetPaginatedObservers**](ObservationsApi.md#getpaginatedobservers) | **GET** /tenants/{tenantId}/observations/observers | Get paginated observers |
+| [**GetSectionsCount**](ObservationsApi.md#getsectionscount) | **GET** /tenants/{tenantId}/observations/sectionscount | Gets the total count of sections for a given tenant |
+| [**GetSeoaasTotal**](ObservationsApi.md#getseoaastotal) | **GET** /tenants/{tenantId}/observations/seoaastotals | Get the total number of SEOAAs across all users for a given tenant |
+| [**GetSessionsCount**](ObservationsApi.md#getsessionscount) | **GET** /tenants/{tenantId}/observations/sessionscount | Gets the total count of sessions for a given tenant |
+| [**GetStaffSectionAssociationsCount**](ObservationsApi.md#getstaffsectionassociationscount) | **GET** /tenants/{tenantId}/observations/staffsectionassociationscount | Gets the total count of staff-section associations across all users for a given tenant |
 | [**GetSubmittedObservationsCount**](ObservationsApi.md#getsubmittedobservationscount) | **GET** /tenants/{tenantId}/submittedobservations | Get submitted Observations count |
+| [**GetTermsCount**](ObservationsApi.md#gettermscount) | **GET** /tenants/{tenantId}/observations/termscount | Gets the total count of terms for a given tenant |
+| [**GetUserSyncJob**](ObservationsApi.md#getusersyncjob) | **GET** /tenants/{tenantId}/observations/usersync | Gets the User Sync job for a given tenant, including its job executions |
 | [**SaveDashboardPreferences**](ObservationsApi.md#savedashboardpreferences) | **POST** /tenants/{tenantId}/observations/dashboards/{dashboardId}/preferences | Save user preferences for a given Dashboard |
 | [**SearchPaginatedEvaluees**](ObservationsApi.md#searchpaginatedevaluees) | **GET** /tenants/{tenantId}/observations/search/evaluees | Search paginated evaluees |
 | [**UpdateObservation**](ObservationsApi.md#updateobservation) | **PUT** /tenants/{tenantId}/observations/{observationId} | Update an Observation for a given tenant |
+| [**UpdateObservationsOnboardingStep**](ObservationsApi.md#updateobservationsonboardingstep) | **PUT** /tenants/{tenantId}/observations/onboarding/{stepNumber} | Updates a step of the Instructional Insights onboarding for a given tenant |
+| [**UpdateUserSyncJob**](ObservationsApi.md#updateusersyncjob) | **PUT** /tenants/{tenantId}/observations/usersync | Updates the User Sync job for a given tenant |
 | [**UpsertObservationDraft**](ObservationsApi.md#upsertobservationdraft) | **POST** /tenants/{tenantId}/observations/{observationId}/available-forms/{formId}/draft | Creates a draft for an observation forms |
 | [**VerifyDashboardAccess**](ObservationsApi.md#verifydashboardaccess) | **POST** /tenants/{tenantId}/observations/dashboards/access | Verify user access to dashboards |
 
@@ -149,6 +165,83 @@ Deletes an Observation for a given tenant
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+<a id="executeusersyncjob"></a>
+# **ExecuteUserSyncJob**
+> DataSyncApiJobV1JobExecutionRequestedResponse ExecuteUserSyncJob (Guid tenantId)
+
+Executes the User Sync job for a given tenant
+
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **Guid** |  |  |
+
+### Return type
+
+[**DataSyncApiJobV1JobExecutionRequestedResponse**](DataSyncApiJobV1JobExecutionRequestedResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **202** | The request has been accepted for processing, but the processing is not yet complete. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+| **404** | The resource could not be found. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+<a id="getacademicsubjectscount"></a>
+# **GetAcademicSubjectsCount**
+> EdGraphHttpAggregatorsTenantApiServicesObservationsGetAcademicSubjectsCountResponse GetAcademicSubjectsCount (Guid tenantId)
+
+Gets the total count of academic subjects for a given tenant
+
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **Guid** |  |  |
+
+### Return type
+
+[**EdGraphHttpAggregatorsTenantApiServicesObservationsGetAcademicSubjectsCountResponse**](EdGraphHttpAggregatorsTenantApiServicesObservationsGetAcademicSubjectsCountResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | The requested resource was successfully retrieved. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 <a id="getavailablecampusestotalevaluees"></a>
 # **GetAvailableCampusesTotalEvaluees**
 > EdGraphHttpAggregatorsTenantApiServicesObservationsGetAvailableCampusesTotalEvalueesResponse GetAvailableCampusesTotalEvaluees (Guid tenantId)
@@ -165,6 +258,44 @@ Get the total number of evaluees across all available campuses
 ### Return type
 
 [**EdGraphHttpAggregatorsTenantApiServicesObservationsGetAvailableCampusesTotalEvalueesResponse**](EdGraphHttpAggregatorsTenantApiServicesObservationsGetAvailableCampusesTotalEvalueesResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | The requested resource was successfully retrieved. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+<a id="getcoursescount"></a>
+# **GetCoursesCount**
+> EdGraphHttpAggregatorsTenantApiServicesObservationsGetCoursesCountResponse GetCoursesCount (Guid tenantId)
+
+Gets the total count of courses for a given tenant
+
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **Guid** |  |  |
+
+### Return type
+
+[**EdGraphHttpAggregatorsTenantApiServicesObservationsGetCoursesCountResponse**](EdGraphHttpAggregatorsTenantApiServicesObservationsGetCoursesCountResponse.md)
 
 ### Authorization
 
@@ -244,6 +375,84 @@ Save user preferences for a given Dashboard
 ### Return type
 
 [**AnalyticsApiReportsV1ReportPreferencesResponse**](AnalyticsApiReportsV1ReportPreferencesResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | The requested resource was successfully retrieved. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+<a id="getdefaultedfiinstance"></a>
+# **GetDefaultEdFiInstance**
+> EdfiAdminApiEdfiAdminV1Instance GetDefaultEdFiInstance (Guid tenantId)
+
+Gets the default Ed-Fi instance for a given tenant
+
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **Guid** |  |  |
+
+### Return type
+
+[**EdfiAdminApiEdfiAdminV1Instance**](EdfiAdminApiEdfiAdminV1Instance.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | The requested resource was successfully retrieved. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+| **404** | The resource could not be found. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+<a id="geteducationorganizationscount"></a>
+# **GetEducationOrganizationsCount**
+> EdGraphHttpAggregatorsTenantApiServicesObservationsGetEducationOrganizationsCountResponse GetEducationOrganizationsCount (Guid tenantId, string discriminator = null)
+
+Gets the total count of education organizations for a given tenant, filtered by discriminator
+
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **Guid** |  |  |
+| **discriminator** | **string** | Either \&quot;LocalEducationAgency\&quot; or \&quot;School\&quot; | [optional]  |
+
+### Return type
+
+[**EdGraphHttpAggregatorsTenantApiServicesObservationsGetEducationOrganizationsCountResponse**](EdGraphHttpAggregatorsTenantApiServicesObservationsGetEducationOrganizationsCountResponse.md)
 
 ### Authorization
 
@@ -393,6 +602,44 @@ Search Observation Form Sections
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+<a id="getgradelevelscount"></a>
+# **GetGradeLevelsCount**
+> EdGraphHttpAggregatorsTenantApiServicesObservationsGetGradeLevelsCountResponse GetGradeLevelsCount (Guid tenantId)
+
+Gets the total count of grade levels for a given tenant
+
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **Guid** |  |  |
+
+### Return type
+
+[**EdGraphHttpAggregatorsTenantApiServicesObservationsGetGradeLevelsCountResponse**](EdGraphHttpAggregatorsTenantApiServicesObservationsGetGradeLevelsCountResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | The requested resource was successfully retrieved. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 <a id="getobservationbyid"></a>
 # **GetObservationById**
 > EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponse GetObservationById (Guid tenantId, Guid observationId)
@@ -509,6 +756,45 @@ Gets a submission for a specific observation
 | **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
 | **200** | The requested resource was successfully retrieved. |  -  |
 | **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+<a id="getonboarding"></a>
+# **GetOnboarding**
+> EdGraphHttpAggregatorsTenantApiServicesObservationsObservationsOnboardingResponse GetOnboarding (Guid tenantId)
+
+Gets the Instructional Insights onboarding progress for a given tenant
+
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **Guid** |  |  |
+
+### Return type
+
+[**EdGraphHttpAggregatorsTenantApiServicesObservationsObservationsOnboardingResponse**](EdGraphHttpAggregatorsTenantApiServicesObservationsObservationsOnboardingResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | The requested resource was successfully retrieved. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+| **404** | The resource could not be found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -725,6 +1011,48 @@ Get paginated evaluees
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+<a id="getpaginatedobservationusers"></a>
+# **GetPaginatedObservationUsers**
+> EdGraphHttpAggregatorsTenantApiServicesObservationsObservationUserResponseGetPaginatedItemsResponse GetPaginatedObservationUsers (Guid tenantId, int pageIndex = null, int pageSize = null, string orderBy = null, string filter = null)
+
+Get paginated users for a given tenant, including their SEOAAs and Observation Access.
+
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **Guid** |  |  |
+| **pageIndex** | **int** |  | [optional] [default to 0] |
+| **pageSize** | **int** |  | [optional] [default to 10] |
+| **orderBy** | **string** |  | [optional] [default to &quot;&quot;] |
+| **filter** | **string** |  | [optional] [default to &quot;&quot;] |
+
+### Return type
+
+[**EdGraphHttpAggregatorsTenantApiServicesObservationsObservationUserResponseGetPaginatedItemsResponse**](EdGraphHttpAggregatorsTenantApiServicesObservationsObservationUserResponseGetPaginatedItemsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | The requested resource was successfully retrieved. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 <a id="getpaginatedobservations"></a>
 # **GetPaginatedObservations**
 > EdGraphHttpAggregatorsTenantApiServicesObservationsObservationProfileResponsePaginatedItemsViewModel GetPaginatedObservations (Guid tenantId, int pageSize = null, int pageIndex = null, string orderBy = null, string campus = null, string evalueeName = null, string evalueeId = null, string formId = null, string status = null, string from = null, string to = null, string observerId = null)
@@ -816,6 +1144,158 @@ Get paginated observers
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+<a id="getsectionscount"></a>
+# **GetSectionsCount**
+> EdGraphHttpAggregatorsTenantApiServicesObservationsGetSectionsCountResponse GetSectionsCount (Guid tenantId)
+
+Gets the total count of sections for a given tenant
+
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **Guid** |  |  |
+
+### Return type
+
+[**EdGraphHttpAggregatorsTenantApiServicesObservationsGetSectionsCountResponse**](EdGraphHttpAggregatorsTenantApiServicesObservationsGetSectionsCountResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | The requested resource was successfully retrieved. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+<a id="getseoaastotal"></a>
+# **GetSeoaasTotal**
+> EdGraphHttpAggregatorsTenantApiServicesObservationsGetSeoaasTotalResponse GetSeoaasTotal (Guid tenantId)
+
+Get the total number of SEOAAs across all users for a given tenant
+
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **Guid** |  |  |
+
+### Return type
+
+[**EdGraphHttpAggregatorsTenantApiServicesObservationsGetSeoaasTotalResponse**](EdGraphHttpAggregatorsTenantApiServicesObservationsGetSeoaasTotalResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | The requested resource was successfully retrieved. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+<a id="getsessionscount"></a>
+# **GetSessionsCount**
+> EdGraphHttpAggregatorsTenantApiServicesObservationsGetSessionsCountResponse GetSessionsCount (Guid tenantId)
+
+Gets the total count of sessions for a given tenant
+
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **Guid** |  |  |
+
+### Return type
+
+[**EdGraphHttpAggregatorsTenantApiServicesObservationsGetSessionsCountResponse**](EdGraphHttpAggregatorsTenantApiServicesObservationsGetSessionsCountResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | The requested resource was successfully retrieved. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+<a id="getstaffsectionassociationscount"></a>
+# **GetStaffSectionAssociationsCount**
+> EdGraphHttpAggregatorsTenantApiServicesObservationsGetStaffSectionAssociationsCountResponse GetStaffSectionAssociationsCount (Guid tenantId)
+
+Gets the total count of staff-section associations across all users for a given tenant
+
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **Guid** |  |  |
+
+### Return type
+
+[**EdGraphHttpAggregatorsTenantApiServicesObservationsGetStaffSectionAssociationsCountResponse**](EdGraphHttpAggregatorsTenantApiServicesObservationsGetStaffSectionAssociationsCountResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | The requested resource was successfully retrieved. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 <a id="getsubmittedobservationscount"></a>
 # **GetSubmittedObservationsCount**
 > EdGraphHttpAggregatorsTenantApiServicesObservationsGetSubmittedObservationsCountResponse GetSubmittedObservationsCount (Guid tenantId, string evalueeId = null, string campus = null)
@@ -853,6 +1333,83 @@ Get submitted Observations count
 | **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
 | **200** | The requested resource was successfully retrieved. |  -  |
 | **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+<a id="gettermscount"></a>
+# **GetTermsCount**
+> EdGraphHttpAggregatorsTenantApiServicesObservationsGetTermsCountResponse GetTermsCount (Guid tenantId)
+
+Gets the total count of terms for a given tenant
+
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **Guid** |  |  |
+
+### Return type
+
+[**EdGraphHttpAggregatorsTenantApiServicesObservationsGetTermsCountResponse**](EdGraphHttpAggregatorsTenantApiServicesObservationsGetTermsCountResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | The requested resource was successfully retrieved. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+<a id="getusersyncjob"></a>
+# **GetUserSyncJob**
+> EdGraphHttpAggregatorsTenantApiServicesObservationsUserSyncJobResponse GetUserSyncJob (Guid tenantId)
+
+Gets the User Sync job for a given tenant, including its job executions
+
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **Guid** |  |  |
+
+### Return type
+
+[**EdGraphHttpAggregatorsTenantApiServicesObservationsUserSyncJobResponse**](EdGraphHttpAggregatorsTenantApiServicesObservationsUserSyncJobResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | The requested resource was successfully retrieved. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+| **404** | The resource could not be found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -976,6 +1533,87 @@ Update an Observation for a given tenant
 | **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
 | **200** | The requested resource was successfully retrieved. |  -  |
 | **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+<a id="updateobservationsonboardingstep"></a>
+# **UpdateObservationsOnboardingStep**
+> EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationsOnboardingStepResponse UpdateObservationsOnboardingStep (Guid tenantId, int stepNumber, EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationsOnboardingStepRequest edGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationsOnboardingStepRequest = null)
+
+Updates a step of the Instructional Insights onboarding for a given tenant
+
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **Guid** |  |  |
+| **stepNumber** | **int** |  |  |
+| **edGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationsOnboardingStepRequest** | [**EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationsOnboardingStepRequest**](EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationsOnboardingStepRequest.md) |  | [optional]  |
+
+### Return type
+
+[**EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationsOnboardingStepResponse**](EdGraphHttpAggregatorsTenantApiServicesObservationsUpdateObservationsOnboardingStepResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **200** | The requested resource was successfully retrieved. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+| **404** | The resource could not be found. |  -  |
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+<a id="updateusersyncjob"></a>
+# **UpdateUserSyncJob**
+> MicrosoftAspNetCoreMvcNoContentResult UpdateUserSyncJob (Guid tenantId, Object body = null)
+
+Updates the User Sync job for a given tenant
+
+
+### Parameters
+
+| Name | Type | Description | Notes |
+|------|------|-------------|-------|
+| **tenantId** | **Guid** |  |  |
+| **body** | **Object** |  | [optional]  |
+
+### Return type
+
+[**MicrosoftAspNetCoreMvcNoContentResult**](MicrosoftAspNetCoreMvcNoContentResult.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **401** | Unauthorized. The request requires authentication. The OAuth bearer token was either not provided or is invalid. The operation may succeed once authentication has been successfully completed. |  -  |
+| **403** | Forbidden. The request cannot be completed in the current authorization context. Contact your administrator if you believe this operation should be allowed. |  -  |
+| **500** | An unhandled error occurred on the server.See the response body for details. |  -  |
+| **204** | The resource was successfully updated. |  -  |
+| **400** | Bad Request. The request was invalid and cannot be completed. See the response body for specific validation errors. This will typically be an issue with the query parameters or the request body values. |  -  |
+| **404** | The resource could not be found. |  -  |
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

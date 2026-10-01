@@ -51,53 +51,40 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
-        /// Test CreateProgramCatalogEntry
+        /// Test CreateProgram
         /// </summary>
         [Fact (Skip = "not implemented")]
-        public async Task CreateProgramCatalogEntryAsyncTest()
+        public async Task CreateProgramAsyncTest()
         {
             string tenantId = default!;
-            Client.Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto = default!;
-            var response = await _instance.CreateProgramCatalogEntryAsync(tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto);
+            Client.Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto = default!;
+            var response = await _instance.CreateProgramAsync(tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
-        /// Test CreateSchoolProgram
+        /// Test DeleteProgram
         /// </summary>
         [Fact (Skip = "not implemented")]
-        public async Task CreateSchoolProgramAsyncTest()
-        {
-            string tenantId = default!;
-            Client.Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto = default!;
-            var response = await _instance.CreateSchoolProgramAsync(tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto);
-            var model = response.Unauthorized();
-            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
-        }
-
-        /// <summary>
-        /// Test DeleteProgramCatalogEntry
-        /// </summary>
-        [Fact (Skip = "not implemented")]
-        public async Task DeleteProgramCatalogEntryAsyncTest()
+        public async Task DeleteProgramAsyncTest()
         {
             string tenantId = default!;
             Guid id = default!;
-            var response = await _instance.DeleteProgramCatalogEntryAsync(tenantId, id);
+            var response = await _instance.DeleteProgramAsync(tenantId, id);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
-        /// Test DeleteSchoolProgram
+        /// Test GetProgramApplications
         /// </summary>
         [Fact (Skip = "not implemented")]
-        public async Task DeleteSchoolProgramAsyncTest()
+        public async Task GetProgramApplicationsAsyncTest()
         {
             string tenantId = default!;
             Guid id = default!;
-            var response = await _instance.DeleteSchoolProgramAsync(tenantId, id);
+            var response = await _instance.GetProgramApplicationsAsync(tenantId, id);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
@@ -127,38 +114,23 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> orderBy = default!;
             Client.Option<string> filter = default!;
             Client.Option<string> search = default!;
-            Client.Option<string> scope = default!;
-            Client.Option<string> schoolCode = default!;
-            Client.Option<string> programType = default!;
-            var response = await _instance.GetProgramsAsync(tenantId, pageSize, pageIndex, orderBy, filter, search, scope, schoolCode, programType);
+            Client.Option<string> schoolLocalCode = default!;
+            Client.Option<string> programTypeId = default!;
+            var response = await _instance.GetProgramsAsync(tenantId, pageSize, pageIndex, orderBy, filter, search, schoolLocalCode, programTypeId);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
 
         /// <summary>
-        /// Test UpdateProgramCatalogEntry
+        /// Test UpdateProgram
         /// </summary>
         [Fact (Skip = "not implemented")]
-        public async Task UpdateProgramCatalogEntryAsyncTest()
+        public async Task UpdateProgramAsyncTest()
         {
             string tenantId = default!;
             Guid id = default!;
-            Client.Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto = default!;
-            var response = await _instance.UpdateProgramCatalogEntryAsync(tenantId, id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto);
-            var model = response.Unauthorized();
-            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
-        }
-
-        /// <summary>
-        /// Test UpdateSchoolProgram
-        /// </summary>
-        [Fact (Skip = "not implemented")]
-        public async Task UpdateSchoolProgramAsyncTest()
-        {
-            string tenantId = default!;
-            Guid id = default!;
-            Client.Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto = default!;
-            var response = await _instance.UpdateSchoolProgramAsync(tenantId, id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto);
+            Client.Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto = default!;
+            var response = await _instance.UpdateProgramAsync(tenantId, id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }

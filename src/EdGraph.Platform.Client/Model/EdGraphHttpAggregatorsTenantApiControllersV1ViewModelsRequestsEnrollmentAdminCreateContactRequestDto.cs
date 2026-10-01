@@ -34,22 +34,20 @@ namespace EdGraph.Platform.Client.Model
         /// Initializes a new instance of the <see cref="EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateContactRequestDto" /> class.
         /// </summary>
         /// <param name="tenantId">Must match the tenant in the route.</param>
-        /// <param name="contactId">The contact&#39;s identifier in the source system. Distinct from the record id, which the service  assigns and returns in the response.</param>
+        /// <param name="externalDataSourceContactId">The contact&#39;s identifier in the source system (SIS). Distinct from the record id, which the  service assigns and returns in the response.</param>
         /// <param name="firstName">Required. Never overridable - only email and phone are.</param>
         /// <param name="lastName">Required. Never overridable - only email and phone are.</param>
-        /// <param name="email">The SIS-sourced email. Correcting it later is an override and goes through the  &#x60;email-override&#x60; route instead - see EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Requests.EnrollmentAdmin.UpdateContactRequestDto.</param>
+        /// <param name="email">The SIS-sourced email. Correcting it later is an override and goes through the  &#x60;overrides/emails&#x60; route instead - see EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Requests.EnrollmentAdmin.UpdateContactRequestDto.</param>
         /// <param name="phone">The SIS-sourced phone, on the same terms as Email.</param>
-        /// <param name="students">The students to link the contact to. Optional; omit or send an empty list for a contact with no  links yet.</param>
         [JsonConstructor]
-        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateContactRequestDto(Option<Guid?> tenantId = default, Option<string?> contactId = default, Option<string?> firstName = default, Option<string?> lastName = default, Option<string?> email = default, Option<string?> phone = default, Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminContactStudentRequestDto>?> students = default)
+        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateContactRequestDto(Option<Guid?> tenantId = default, Option<string?> externalDataSourceContactId = default, Option<string?> firstName = default, Option<string?> lastName = default, Option<string?> email = default, Option<string?> phone = default)
         {
             TenantIdOption = tenantId;
-            ContactIdOption = contactId;
+            ExternalDataSourceContactIdOption = externalDataSourceContactId;
             FirstNameOption = firstName;
             LastNameOption = lastName;
             EmailOption = email;
             PhoneOption = phone;
-            StudentsOption = students;
             OnCreated();
         }
 
@@ -70,18 +68,18 @@ namespace EdGraph.Platform.Client.Model
         public Guid? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
-        /// Used to track the state of ContactId
+        /// Used to track the state of ExternalDataSourceContactId
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<string?> ContactIdOption { get; private set; }
+        public Option<string?> ExternalDataSourceContactIdOption { get; private set; }
 
         /// <summary>
-        /// The contact&#39;s identifier in the source system. Distinct from the record id, which the service  assigns and returns in the response.
+        /// The contact&#39;s identifier in the source system (SIS). Distinct from the record id, which the  service assigns and returns in the response.
         /// </summary>
-        /// <value>The contact&#39;s identifier in the source system. Distinct from the record id, which the service  assigns and returns in the response.</value>
-        [JsonPropertyName("contactId")]
-        public string? ContactId { get { return this.ContactIdOption.Value; } set { this.ContactIdOption = new(value); } }
+        /// <value>The contact&#39;s identifier in the source system (SIS). Distinct from the record id, which the  service assigns and returns in the response.</value>
+        [JsonPropertyName("externalDataSourceContactId")]
+        public string? ExternalDataSourceContactId { get { return this.ExternalDataSourceContactIdOption.Value; } set { this.ExternalDataSourceContactIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of FirstName
@@ -119,9 +117,9 @@ namespace EdGraph.Platform.Client.Model
         public Option<string?> EmailOption { get; private set; }
 
         /// <summary>
-        /// The SIS-sourced email. Correcting it later is an override and goes through the  &#x60;email-override&#x60; route instead - see EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Requests.EnrollmentAdmin.UpdateContactRequestDto.
+        /// The SIS-sourced email. Correcting it later is an override and goes through the  &#x60;overrides/emails&#x60; route instead - see EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Requests.EnrollmentAdmin.UpdateContactRequestDto.
         /// </summary>
-        /// <value>The SIS-sourced email. Correcting it later is an override and goes through the  &#x60;email-override&#x60; route instead - see EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Requests.EnrollmentAdmin.UpdateContactRequestDto.</value>
+        /// <value>The SIS-sourced email. Correcting it later is an override and goes through the  &#x60;overrides/emails&#x60; route instead - see EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Requests.EnrollmentAdmin.UpdateContactRequestDto.</value>
         [JsonPropertyName("email")]
         public string? Email { get { return this.EmailOption.Value; } set { this.EmailOption = new(value); } }
 
@@ -140,20 +138,6 @@ namespace EdGraph.Platform.Client.Model
         public string? Phone { get { return this.PhoneOption.Value; } set { this.PhoneOption = new(value); } }
 
         /// <summary>
-        /// Used to track the state of Students
-        /// </summary>
-        [JsonIgnore]
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminContactStudentRequestDto>?> StudentsOption { get; private set; }
-
-        /// <summary>
-        /// The students to link the contact to. Optional; omit or send an empty list for a contact with no  links yet.
-        /// </summary>
-        /// <value>The students to link the contact to. Optional; omit or send an empty list for a contact with no  links yet.</value>
-        [JsonPropertyName("students")]
-        public List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminContactStudentRequestDto>? Students { get { return this.StudentsOption.Value; } set { this.StudentsOption = new(value); } }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -162,12 +146,11 @@ namespace EdGraph.Platform.Client.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateContactRequestDto {\n");
             sb.Append("  TenantId: ").Append(TenantId).Append("\n");
-            sb.Append("  ContactId: ").Append(ContactId).Append("\n");
+            sb.Append("  ExternalDataSourceContactId: ").Append(ExternalDataSourceContactId).Append("\n");
             sb.Append("  FirstName: ").Append(FirstName).Append("\n");
             sb.Append("  LastName: ").Append(LastName).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
             sb.Append("  Phone: ").Append(Phone).Append("\n");
-            sb.Append("  Students: ").Append(Students).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -206,12 +189,11 @@ namespace EdGraph.Platform.Client.Model
             JsonTokenType startingTokenType = utf8JsonReader.TokenType;
 
             Option<Guid?> tenantId = default;
-            Option<string?> contactId = default;
+            Option<string?> externalDataSourceContactId = default;
             Option<string?> firstName = default;
             Option<string?> lastName = default;
             Option<string?> email = default;
             Option<string?> phone = default;
-            Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminContactStudentRequestDto>?> students = default;
 
             while (utf8JsonReader.Read())
             {
@@ -231,8 +213,8 @@ namespace EdGraph.Platform.Client.Model
                         case "tenantId":
                             tenantId = new Option<Guid?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (Guid?)null : utf8JsonReader.GetGuid());
                             break;
-                        case "contactId":
-                            contactId = new Option<string?>(utf8JsonReader.GetString());
+                        case "externalDataSourceContactId":
+                            externalDataSourceContactId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "firstName":
                             firstName = new Option<string?>(utf8JsonReader.GetString());
@@ -246,9 +228,6 @@ namespace EdGraph.Platform.Client.Model
                         case "phone":
                             phone = new Option<string?>(utf8JsonReader.GetString());
                             break;
-                        case "students":
-                            students = new Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminContactStudentRequestDto>?>(JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminContactStudentRequestDto>>(ref utf8JsonReader, jsonSerializerOptions));
-                            break;
                         default:
                             break;
                     }
@@ -258,7 +237,7 @@ namespace EdGraph.Platform.Client.Model
             if (tenantId.IsSet && tenantId.Value == null)
                 throw new ArgumentNullException(nameof(tenantId), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateContactRequestDto.");
 
-            return new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateContactRequestDto(tenantId, contactId, firstName, lastName, email, phone, students);
+            return new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateContactRequestDto(tenantId, externalDataSourceContactId, firstName, lastName, email, phone);
         }
 
         /// <summary>
@@ -288,11 +267,11 @@ namespace EdGraph.Platform.Client.Model
             if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateContactRequestDto.TenantIdOption.IsSet)
                 writer.WriteString("tenantId", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateContactRequestDto.TenantIdOption.Value!.Value);
 
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateContactRequestDto.ContactIdOption.IsSet)
-                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateContactRequestDto.ContactIdOption.Value != null)
-                    writer.WriteString("contactId", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateContactRequestDto.ContactId);
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateContactRequestDto.ExternalDataSourceContactIdOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateContactRequestDto.ExternalDataSourceContactIdOption.Value != null)
+                    writer.WriteString("externalDataSourceContactId", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateContactRequestDto.ExternalDataSourceContactId);
                 else
-                    writer.WriteNull("contactId");
+                    writer.WriteNull("externalDataSourceContactId");
 
             if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateContactRequestDto.FirstNameOption.IsSet)
                 if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateContactRequestDto.FirstNameOption.Value != null)
@@ -317,15 +296,6 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteString("phone", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateContactRequestDto.Phone);
                 else
                     writer.WriteNull("phone");
-
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateContactRequestDto.StudentsOption.IsSet)
-                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateContactRequestDto.StudentsOption.Value != null)
-                {
-                    writer.WritePropertyName("students");
-                    JsonSerializer.Serialize(writer, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateContactRequestDto.Students, jsonSerializerOptions);
-                }
-                else
-                    writer.WriteNull("students");
         }
     }
 }

@@ -51,6 +51,20 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
+        /// Test AddEnrollmentContactStudent
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task AddEnrollmentContactStudentAsyncTest()
+        {
+            string tenantId = default!;
+            Guid id = default!;
+            Client.Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto = default!;
+            var response = await _instance.AddEnrollmentContactStudentAsync(tenantId, id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminAddContactStudentRequestDto);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
         /// Test CreateEnrollmentContact
         /// </summary>
         [Fact (Skip = "not implemented")]
@@ -77,6 +91,22 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
+        /// Test GetEnrollmentContactChangelogs
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetEnrollmentContactChangelogsAsyncTest()
+        {
+            string tenantId = default!;
+            Guid id = default!;
+            Client.Option<int> pageSize = default!;
+            Client.Option<int> pageIndex = default!;
+            Client.Option<string> studentId = default!;
+            var response = await _instance.GetEnrollmentContactChangelogsAsync(tenantId, id, pageSize, pageIndex, studentId);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
         /// Test GetEnrollmentContactOverrides
         /// </summary>
         [Fact (Skip = "not implemented")]
@@ -93,6 +123,32 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
+        /// Test GetEnrollmentContactRegistrations
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetEnrollmentContactRegistrationsAsyncTest()
+        {
+            string tenantId = default!;
+            Guid id = default!;
+            var response = await _instance.GetEnrollmentContactRegistrationsAsync(tenantId, id);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
+        /// Test GetEnrollmentContactStudents
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task GetEnrollmentContactStudentsAsyncTest()
+        {
+            string tenantId = default!;
+            Guid id = default!;
+            var response = await _instance.GetEnrollmentContactStudentsAsync(tenantId, id);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
         /// Test GetEnrollmentContacts
         /// </summary>
         [Fact (Skip = "not implemented")]
@@ -104,9 +160,9 @@ namespace EdGraph.Platform.Client.Test.Api
             Client.Option<string> orderBy = default!;
             Client.Option<string> filter = default!;
             Client.Option<string> search = default!;
-            Client.Option<string> schoolCode = default!;
+            Client.Option<string> nextSchoolStateShortCode = default!;
             Client.Option<bool> locked = default!;
-            var response = await _instance.GetEnrollmentContactsAsync(tenantId, pageSize, pageIndex, orderBy, filter, search, schoolCode, locked);
+            var response = await _instance.GetEnrollmentContactsAsync(tenantId, pageSize, pageIndex, orderBy, filter, search, nextSchoolStateShortCode, locked);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
@@ -147,9 +203,9 @@ namespace EdGraph.Platform.Client.Test.Api
         {
             string tenantId = default!;
             Guid id = default!;
-            Client.Option<string> studentId = default!;
+            Client.Option<string> studentLocalCode = default!;
             Client.Option<string> expectedVersion = default!;
-            var response = await _instance.RemoveEnrollmentContactEmailOverrideAsync(tenantId, id, studentId, expectedVersion);
+            var response = await _instance.RemoveEnrollmentContactEmailOverrideAsync(tenantId, id, studentLocalCode, expectedVersion);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
@@ -162,9 +218,23 @@ namespace EdGraph.Platform.Client.Test.Api
         {
             string tenantId = default!;
             Guid id = default!;
-            Client.Option<string> studentId = default!;
+            Client.Option<string> studentLocalCode = default!;
             Client.Option<string> expectedVersion = default!;
-            var response = await _instance.RemoveEnrollmentContactPhoneOverrideAsync(tenantId, id, studentId, expectedVersion);
+            var response = await _instance.RemoveEnrollmentContactPhoneOverrideAsync(tenantId, id, studentLocalCode, expectedVersion);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
+        /// Test RemoveEnrollmentContactStudent
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task RemoveEnrollmentContactStudentAsyncTest()
+        {
+            string tenantId = default!;
+            Guid id = default!;
+            string studentId = default!;
+            var response = await _instance.RemoveEnrollmentContactStudentAsync(tenantId, id, studentId);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
@@ -192,6 +262,34 @@ namespace EdGraph.Platform.Client.Test.Api
             Guid id = default!;
             Client.Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactRequestDto = default!;
             var response = await _instance.UpdateEnrollmentContactAsync(tenantId, id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactRequestDto);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
+        /// Test UpdateEnrollmentContactStudent
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task UpdateEnrollmentContactStudentAsyncTest()
+        {
+            string tenantId = default!;
+            Guid id = default!;
+            string studentId = default!;
+            Client.Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto = default!;
+            var response = await _instance.UpdateEnrollmentContactStudentAsync(tenantId, id, studentId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateContactStudentRequestDto);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
+        /// Test VerifyEnrollmentContact
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task VerifyEnrollmentContactAsyncTest()
+        {
+            string tenantId = default!;
+            Guid id = default!;
+            var response = await _instance.VerifyEnrollmentContactAsync(tenantId, id);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }

@@ -7,11 +7,15 @@ Name | Type | Description | Notes
 **Programs** | [**List&lt;EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolProgramResponseDto&gt;**](EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolProgramResponseDto.md) |  | [optional] 
 **Id** | **Guid** |  | [optional] 
 **TenantId** | **Guid** |  | [optional] 
-**Code** | **string** |  | [optional] 
-**Name** | **string** |  | [optional] 
-**District** | **string** |  | [optional] 
-**CampusId** | **string** |  | [optional] 
-**TeaIdNumber** | **string** |  | [optional] 
+**ExternalDataSourceSchoolId** | **string** |  | [optional] 
+**SchoolStateShortCode** | **string** |  | [optional] 
+**SchoolName** | **string** |  | [optional] 
+**DistrictStateShortCode** | **string** |  | [optional] 
+**SchoolStateLongCode** | **string** |  | [optional] 
+**SchoolLocalCode** | **string** |  | [optional] 
+**DistrictLocalCode** | **string** |  | [optional] 
+**DistrictStateCode** | **string** |  | [optional] 
+**DistrictName** | **string** |  | [optional] 
 **GradesServed** | **List&lt;string&gt;** |  | [optional] 
 **Address** | **string** |  | [optional] 
 **Lat** | **double** |  | [optional] 
@@ -23,7 +27,6 @@ Name | Type | Description | Notes
 **CreatedDateTime** | **DateTime** |  | [optional] 
 **LastModifiedBy** | **string** |  | [optional] 
 **LastModifiedDateTime** | **DateTime** |  | [optional] 
-**LastUpdatedDateTime** | **DateTime** |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

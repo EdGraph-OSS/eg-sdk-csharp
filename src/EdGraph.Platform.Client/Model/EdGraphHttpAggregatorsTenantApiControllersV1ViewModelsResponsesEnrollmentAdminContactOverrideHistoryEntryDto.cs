@@ -43,8 +43,9 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="overriddenAt">overriddenAt</param>
         /// <param name="actingStudentId">The student whose screen the change was made from, when one was recorded.</param>
         /// <param name="studentIds">studentIds</param>
+        /// <param name="eventType">The change log&#39;s event type, e.g. EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.EnrollmentAdmin.ContactOverrideHistoryExtensions.OverrideEventType  or one of the created/updated/deleted event types. Lets a client distinguish entries in a combined  changelog feed - only override entries carry EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.EnrollmentAdmin.ContactOverrideHistoryEntryDto.Detail/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.EnrollmentAdmin.ContactOverrideHistoryEntryDto.Action and the  value fields; the others read null there.</param>
         [JsonConstructor]
-        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactOverrideHistoryEntryDto(Option<string?> eventId = default, Option<string?> detail = default, Option<string?> action = default, Option<string?> previousValue = default, Option<string?> newValue = default, Option<string?> sisValue = default, Option<string?> overriddenBy = default, Option<DateTime?> overriddenAt = default, Option<string?> actingStudentId = default, Option<List<string>?> studentIds = default)
+        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactOverrideHistoryEntryDto(Option<string?> eventId = default, Option<string?> detail = default, Option<string?> action = default, Option<string?> previousValue = default, Option<string?> newValue = default, Option<string?> sisValue = default, Option<string?> overriddenBy = default, Option<DateTime?> overriddenAt = default, Option<string?> actingStudentId = default, Option<List<string>?> studentIds = default, Option<string?> eventType = default)
         {
             EventIdOption = eventId;
             DetailOption = detail;
@@ -56,6 +57,7 @@ namespace EdGraph.Platform.Client.Model
             OverriddenAtOption = overriddenAt;
             ActingStudentIdOption = actingStudentId;
             StudentIdsOption = studentIds;
+            EventTypeOption = eventType;
             OnCreated();
         }
 
@@ -196,6 +198,20 @@ namespace EdGraph.Platform.Client.Model
         public List<string>? StudentIds { get { return this.StudentIdsOption.Value; } set { this.StudentIdsOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of EventType
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> EventTypeOption { get; private set; }
+
+        /// <summary>
+        /// The change log&#39;s event type, e.g. EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.EnrollmentAdmin.ContactOverrideHistoryExtensions.OverrideEventType  or one of the created/updated/deleted event types. Lets a client distinguish entries in a combined  changelog feed - only override entries carry EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.EnrollmentAdmin.ContactOverrideHistoryEntryDto.Detail/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.EnrollmentAdmin.ContactOverrideHistoryEntryDto.Action and the  value fields; the others read null there.
+        /// </summary>
+        /// <value>The change log&#39;s event type, e.g. EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.EnrollmentAdmin.ContactOverrideHistoryExtensions.OverrideEventType  or one of the created/updated/deleted event types. Lets a client distinguish entries in a combined  changelog feed - only override entries carry EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.EnrollmentAdmin.ContactOverrideHistoryEntryDto.Detail/EdGraph.HttpAggregators.Tenant.Api.Controllers.v1.ViewModels.Responses.EnrollmentAdmin.ContactOverrideHistoryEntryDto.Action and the  value fields; the others read null there.</value>
+        [JsonPropertyName("eventType")]
+        public string? EventType { get { return this.EventTypeOption.Value; } set { this.EventTypeOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -213,6 +229,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  OverriddenAt: ").Append(OverriddenAt).Append("\n");
             sb.Append("  ActingStudentId: ").Append(ActingStudentId).Append("\n");
             sb.Append("  StudentIds: ").Append(StudentIds).Append("\n");
+            sb.Append("  EventType: ").Append(EventType).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -265,6 +282,7 @@ namespace EdGraph.Platform.Client.Model
             Option<DateTime?> overriddenAt = default;
             Option<string?> actingStudentId = default;
             Option<List<string>?> studentIds = default;
+            Option<string?> eventType = default;
 
             while (utf8JsonReader.Read())
             {
@@ -311,13 +329,16 @@ namespace EdGraph.Platform.Client.Model
                         case "studentIds":
                             studentIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
+                        case "eventType":
+                            eventType = new Option<string?>(utf8JsonReader.GetString());
+                            break;
                         default:
                             break;
                     }
                 }
             }
 
-            return new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactOverrideHistoryEntryDto(eventId, detail, action, previousValue, newValue, sisValue, overriddenBy, overriddenAt, actingStudentId, studentIds);
+            return new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactOverrideHistoryEntryDto(eventId, detail, action, previousValue, newValue, sisValue, overriddenBy, overriddenAt, actingStudentId, studentIds, eventType);
         }
 
         /// <summary>
@@ -406,6 +427,11 @@ namespace EdGraph.Platform.Client.Model
                 }
                 else
                     writer.WriteNull("studentIds");
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactOverrideHistoryEntryDto.EventTypeOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactOverrideHistoryEntryDto.EventTypeOption.Value != null)
+                    writer.WriteString("eventType", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactOverrideHistoryEntryDto.EventType);
+                else
+                    writer.WriteNull("eventType");
         }
     }
 }

@@ -51,14 +51,40 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
-        /// Test GetEnrollmentSchool
+        /// Test DeleteEnrollmentSchool
         /// </summary>
         [Fact (Skip = "not implemented")]
-        public async Task GetEnrollmentSchoolAsyncTest()
+        public async Task DeleteEnrollmentSchoolAsyncTest()
         {
             string tenantId = default!;
-            string code = default!;
-            var response = await _instance.GetEnrollmentSchoolAsync(tenantId, code);
+            Guid id = default!;
+            var response = await _instance.DeleteEnrollmentSchoolAsync(tenantId, id);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
+        /// Test DisableEnrollmentSchool
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task DisableEnrollmentSchoolAsyncTest()
+        {
+            string tenantId = default!;
+            Guid id = default!;
+            var response = await _instance.DisableEnrollmentSchoolAsync(tenantId, id);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
+        /// Test EnableEnrollmentSchool
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task EnableEnrollmentSchoolAsyncTest()
+        {
+            string tenantId = default!;
+            Guid id = default!;
+            var response = await _instance.EnableEnrollmentSchoolAsync(tenantId, id);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }
@@ -94,15 +120,28 @@ namespace EdGraph.Platform.Client.Test.Api
         }
 
         /// <summary>
-        /// Test SetEnrollmentSchoolEnabled
+        /// Test UpdateEnrollmentSchool
         /// </summary>
         [Fact (Skip = "not implemented")]
-        public async Task SetEnrollmentSchoolEnabledAsyncTest()
+        public async Task UpdateEnrollmentSchoolAsyncTest()
         {
             string tenantId = default!;
-            string code = default!;
-            Client.Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminSetSchoolEnabledRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminSetSchoolEnabledRequestDto = default!;
-            var response = await _instance.SetEnrollmentSchoolEnabledAsync(tenantId, code, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminSetSchoolEnabledRequestDto);
+            Guid id = default!;
+            Client.Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolRequestDto = default!;
+            var response = await _instance.UpdateEnrollmentSchoolAsync(tenantId, id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolRequestDto);
+            var model = response.Unauthorized();
+            Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
+        }
+
+        /// <summary>
+        /// Test UpsertEnrollmentSchool
+        /// </summary>
+        [Fact (Skip = "not implemented")]
+        public async Task UpsertEnrollmentSchoolAsyncTest()
+        {
+            string tenantId = default!;
+            Client.Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpsertSchoolRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpsertSchoolRequestDto = default!;
+            var response = await _instance.UpsertEnrollmentSchoolAsync(tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpsertSchoolRequestDto);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }

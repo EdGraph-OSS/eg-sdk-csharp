@@ -63,12 +63,12 @@ namespace EdGraph.Platform.Client.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'Code'
+        /// Test the property 'Id'
         /// </summary>
         [Fact]
-        public void CodeTest()
+        public void IdTest()
         {
-            // TODO unit test for the property 'Code'
+            // TODO unit test for the property 'Id'
         }
 
         /// <summary>

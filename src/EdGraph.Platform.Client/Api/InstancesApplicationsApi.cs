@@ -287,11 +287,10 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="applicationId"></param>
-        /// <param name="year"> (optional)</param>
         /// <param name="loadEducationOrganizations"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetApplicationByIdAsyncApiResponse"/>&gt;</returns>
-        Task<IGetApplicationByIdAsyncApiResponse> GetApplicationByIdAsyncAsync(string tenantId, string instanceId, int applicationId, Option<int> year = default, Option<bool> loadEducationOrganizations = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IGetApplicationByIdAsyncApiResponse> GetApplicationByIdAsyncAsync(string tenantId, string instanceId, int applicationId, Option<bool> loadEducationOrganizations = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves an Application by ID.
@@ -302,11 +301,10 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="applicationId"></param>
-        /// <param name="year"> (optional)</param>
         /// <param name="loadEducationOrganizations"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetApplicationByIdAsyncApiResponse"/>?&gt;</returns>
-        Task<IGetApplicationByIdAsyncApiResponse?> GetApplicationByIdAsyncOrDefaultAsync(string tenantId, string instanceId, int applicationId, Option<int> year = default, Option<bool> loadEducationOrganizations = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IGetApplicationByIdAsyncApiResponse?> GetApplicationByIdAsyncOrDefaultAsync(string tenantId, string instanceId, int applicationId, Option<bool> loadEducationOrganizations = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Retrieves a list of Applications.
@@ -5176,7 +5174,7 @@ namespace EdGraph.Platform.Client.Api
             partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
         }
 
-        partial void FormatGetApplicationByIdAsync(ref string tenantId, ref string instanceId, ref int applicationId, ref Option<int> year, ref Option<bool> loadEducationOrganizations);
+        partial void FormatGetApplicationByIdAsync(ref string tenantId, ref string instanceId, ref int applicationId, ref Option<bool> loadEducationOrganizations);
 
         /// <summary>
         /// Validates the request parameters
@@ -5200,12 +5198,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="applicationId"></param>
-        /// <param name="year"></param>
         /// <param name="loadEducationOrganizations"></param>
-        private void AfterGetApplicationByIdAsyncDefaultImplementation(IGetApplicationByIdAsyncApiResponse apiResponseLocalVar, string tenantId, string instanceId, int applicationId, Option<int> year, Option<bool> loadEducationOrganizations)
+        private void AfterGetApplicationByIdAsyncDefaultImplementation(IGetApplicationByIdAsyncApiResponse apiResponseLocalVar, string tenantId, string instanceId, int applicationId, Option<bool> loadEducationOrganizations)
         {
             bool suppressDefaultLog = false;
-            AfterGetApplicationByIdAsync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, instanceId, applicationId, year, loadEducationOrganizations);
+            AfterGetApplicationByIdAsync(ref suppressDefaultLog, apiResponseLocalVar, tenantId, instanceId, applicationId, loadEducationOrganizations);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -5218,9 +5215,8 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="applicationId"></param>
-        /// <param name="year"></param>
         /// <param name="loadEducationOrganizations"></param>
-        partial void AfterGetApplicationByIdAsync(ref bool suppressDefaultLog, IGetApplicationByIdAsyncApiResponse apiResponseLocalVar, string tenantId, string instanceId, int applicationId, Option<int> year, Option<bool> loadEducationOrganizations);
+        partial void AfterGetApplicationByIdAsync(ref bool suppressDefaultLog, IGetApplicationByIdAsyncApiResponse apiResponseLocalVar, string tenantId, string instanceId, int applicationId, Option<bool> loadEducationOrganizations);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -5231,12 +5227,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="applicationId"></param>
-        /// <param name="year"></param>
         /// <param name="loadEducationOrganizations"></param>
-        private void OnErrorGetApplicationByIdAsyncDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, int applicationId, Option<int> year, Option<bool> loadEducationOrganizations)
+        private void OnErrorGetApplicationByIdAsyncDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, int applicationId, Option<bool> loadEducationOrganizations)
         {
             bool suppressDefaultLogLocalVar = false;
-            OnErrorGetApplicationByIdAsync(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, instanceId, applicationId, year, loadEducationOrganizations);
+            OnErrorGetApplicationByIdAsync(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, instanceId, applicationId, loadEducationOrganizations);
             if (!suppressDefaultLogLocalVar)
                 Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
@@ -5251,9 +5246,8 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="applicationId"></param>
-        /// <param name="year"></param>
         /// <param name="loadEducationOrganizations"></param>
-        partial void OnErrorGetApplicationByIdAsync(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, int applicationId, Option<int> year, Option<bool> loadEducationOrganizations);
+        partial void OnErrorGetApplicationByIdAsync(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, string instanceId, int applicationId, Option<bool> loadEducationOrganizations);
 
         /// <summary>
         /// Retrieves an Application by ID. 
@@ -5261,15 +5255,14 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="applicationId"></param>
-        /// <param name="year"> (optional)</param>
         /// <param name="loadEducationOrganizations"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetApplicationByIdAsyncApiResponse"/>&gt;</returns>
-        public async Task<IGetApplicationByIdAsyncApiResponse?> GetApplicationByIdAsyncOrDefaultAsync(string tenantId, string instanceId, int applicationId, Option<int> year = default, Option<bool> loadEducationOrganizations = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IGetApplicationByIdAsyncApiResponse?> GetApplicationByIdAsyncOrDefaultAsync(string tenantId, string instanceId, int applicationId, Option<bool> loadEducationOrganizations = default, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await GetApplicationByIdAsyncAsync(tenantId, instanceId, applicationId, year, loadEducationOrganizations, cancellationToken).ConfigureAwait(false);
+                return await GetApplicationByIdAsyncAsync(tenantId, instanceId, applicationId, loadEducationOrganizations, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -5284,11 +5277,10 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="instanceId"></param>
         /// <param name="applicationId"></param>
-        /// <param name="year"> (optional)</param>
         /// <param name="loadEducationOrganizations"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetApplicationByIdAsyncApiResponse"/>&gt;</returns>
-        public async Task<IGetApplicationByIdAsyncApiResponse> GetApplicationByIdAsyncAsync(string tenantId, string instanceId, int applicationId, Option<int> year = default, Option<bool> loadEducationOrganizations = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IGetApplicationByIdAsyncApiResponse> GetApplicationByIdAsyncAsync(string tenantId, string instanceId, int applicationId, Option<bool> loadEducationOrganizations = default, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
@@ -5296,7 +5288,7 @@ namespace EdGraph.Platform.Client.Api
             {
                 ValidateGetApplicationByIdAsync(tenantId, instanceId);
 
-                FormatGetApplicationByIdAsync(ref tenantId, ref instanceId, ref applicationId, ref year, ref loadEducationOrganizations);
+                FormatGetApplicationByIdAsync(ref tenantId, ref instanceId, ref applicationId, ref loadEducationOrganizations);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -5311,9 +5303,6 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BapplicationId%7D", Uri.EscapeDataString(applicationId.ToString()));
 
                     System.Collections.Specialized.NameValueCollection parseQueryStringLocalVar = System.Web.HttpUtility.ParseQueryString(string.Empty);
-
-                    if (year.IsSet)
-                        parseQueryStringLocalVar["year"] = ClientUtils.ParameterToString(year.Value);
 
                     if (loadEducationOrganizations.IsSet)
                         parseQueryStringLocalVar["loadEducationOrganizations"] = ClientUtils.ParameterToString(loadEducationOrganizations.Value);
@@ -5356,7 +5345,7 @@ namespace EdGraph.Platform.Client.Api
                             }
                         }
 
-                        AfterGetApplicationByIdAsyncDefaultImplementation(apiResponseLocalVar, tenantId, instanceId, applicationId, year, loadEducationOrganizations);
+                        AfterGetApplicationByIdAsyncDefaultImplementation(apiResponseLocalVar, tenantId, instanceId, applicationId, loadEducationOrganizations);
 
                         Events.ExecuteOnGetApplicationByIdAsync(apiResponseLocalVar);
 
@@ -5370,7 +5359,7 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorGetApplicationByIdAsyncDefaultImplementation(e, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/applications/{applicationId}", uriBuilderLocalVar.Path, tenantId, instanceId, applicationId, year, loadEducationOrganizations);
+                OnErrorGetApplicationByIdAsyncDefaultImplementation(e, "/tenants/{tenantId}/edfiadmin/instances/{instanceId}/applications/{applicationId}", uriBuilderLocalVar.Path, tenantId, instanceId, applicationId, loadEducationOrganizations);
                 Events.ExecuteOnErrorGetApplicationByIdAsync(e);
                 throw;
             }

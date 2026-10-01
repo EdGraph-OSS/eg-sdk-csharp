@@ -38,57 +38,32 @@ namespace EdGraph.Platform.Client.Api
         EnrollmentAdminProgramsApiEvents Events { get; }
 
         /// <summary>
-        /// Creates a district catalog entry - a program the district defines once, which schools may  then be offered at. No school-identifying field; use POST .../programs/school-programs to  offer it at a school.
+        /// Creates a Program at a school. The body names the school, the program type and the  requirements by id; the service copies their display fields onto the row.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto"> (optional)</param>
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="ICreateProgramCatalogEntryApiResponse"/>&gt;</returns>
-        Task<ICreateProgramCatalogEntryApiResponse> CreateProgramCatalogEntryAsync(string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns><see cref="Task"/>&lt;<see cref="ICreateProgramApiResponse"/>&gt;</returns>
+        Task<ICreateProgramApiResponse> CreateProgramAsync(string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Creates a district catalog entry - a program the district defines once, which schools may  then be offered at. No school-identifying field; use POST .../programs/school-programs to  offer it at a school.
+        /// Creates a Program at a school. The body names the school, the program type and the  requirements by id; the service copies their display fields onto the row.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <param name="tenantId"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto"> (optional)</param>
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="ICreateProgramCatalogEntryApiResponse"/>?&gt;</returns>
-        Task<ICreateProgramCatalogEntryApiResponse?> CreateProgramCatalogEntryOrDefaultAsync(string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns><see cref="Task"/>&lt;<see cref="ICreateProgramApiResponse"/>?&gt;</returns>
+        Task<ICreateProgramApiResponse?> CreateProgramOrDefaultAsync(string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Creates a school program - either adding an existing district catalog entry to a school  (a \&quot;school association\&quot;, when &#x60;programCatalogEntryId&#x60; is set) or creating a brand new  school-specific program (when it is not).
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tenantId"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="ICreateSchoolProgramApiResponse"/>&gt;</returns>
-        Task<ICreateSchoolProgramApiResponse> CreateSchoolProgramAsync(string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto = default, System.Threading.CancellationToken cancellationToken = default);
-
-        /// <summary>
-        /// Creates a school program - either adding an existing district catalog entry to a school  (a \&quot;school association\&quot;, when &#x60;programCatalogEntryId&#x60; is set) or creating a brand new  school-specific program (when it is not).
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <param name="tenantId"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="ICreateSchoolProgramApiResponse"/>?&gt;</returns>
-        Task<ICreateSchoolProgramApiResponse?> CreateSchoolProgramOrDefaultAsync(string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto = default, System.Threading.CancellationToken cancellationToken = default);
-
-        /// <summary>
-        /// Removes a district catalog entry.
+        /// Removes a Program (soft delete).
         /// </summary>
         /// <remarks>
         /// 
@@ -97,11 +72,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IDeleteProgramCatalogEntryApiResponse"/>&gt;</returns>
-        Task<IDeleteProgramCatalogEntryApiResponse> DeleteProgramCatalogEntryAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns><see cref="Task"/>&lt;<see cref="IDeleteProgramApiResponse"/>&gt;</returns>
+        Task<IDeleteProgramApiResponse> DeleteProgramAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Removes a district catalog entry.
+        /// Removes a Program (soft delete).
         /// </summary>
         /// <remarks>
         /// 
@@ -109,11 +84,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IDeleteProgramCatalogEntryApiResponse"/>?&gt;</returns>
-        Task<IDeleteProgramCatalogEntryApiResponse?> DeleteProgramCatalogEntryOrDefaultAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns><see cref="Task"/>&lt;<see cref="IDeleteProgramApiResponse"/>?&gt;</returns>
+        Task<IDeleteProgramApiResponse?> DeleteProgramOrDefaultAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Removes a school program - the API equivalent of \&quot;remove a school association\&quot; when the  row is linked to a catalog entry, or a straightforward delete when it is school-specific.
+        /// Gets the Registration Applications referencing a Program.
         /// </summary>
         /// <remarks>
         /// 
@@ -122,11 +97,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IDeleteSchoolProgramApiResponse"/>&gt;</returns>
-        Task<IDeleteSchoolProgramApiResponse> DeleteSchoolProgramAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetProgramApplicationsApiResponse"/>&gt;</returns>
+        Task<IGetProgramApplicationsApiResponse> GetProgramApplicationsAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Removes a school program - the API equivalent of \&quot;remove a school association\&quot; when the  row is linked to a catalog entry, or a straightforward delete when it is school-specific.
+        /// Gets the Registration Applications referencing a Program.
         /// </summary>
         /// <remarks>
         /// 
@@ -134,11 +109,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IDeleteSchoolProgramApiResponse"/>?&gt;</returns>
-        Task<IDeleteSchoolProgramApiResponse?> DeleteSchoolProgramOrDefaultAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetProgramApplicationsApiResponse"/>?&gt;</returns>
+        Task<IGetProgramApplicationsApiResponse?> GetProgramApplicationsOrDefaultAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Gets a Program by its record id - a district catalog entry or a school-specific program.
+        /// Gets a Program by its record id.
         /// </summary>
         /// <remarks>
         /// 
@@ -151,7 +126,7 @@ namespace EdGraph.Platform.Client.Api
         Task<IGetProgramByIdApiResponse> GetProgramByIdAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Gets a Program by its record id - a district catalog entry or a school-specific program.
+        /// Gets a Program by its record id.
         /// </summary>
         /// <remarks>
         /// 
@@ -163,7 +138,7 @@ namespace EdGraph.Platform.Client.Api
         Task<IGetProgramByIdApiResponse?> GetProgramByIdOrDefaultAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Searches Programs - the union of district catalog entries and school-specific programs, in  one list distinguished by each row&#39;s Scope.
+        /// Searches Programs. Every row is one school&#39;s offering of a program: the school, the program  type and the requirements are embedded on it, each with its own &#x60;_id&#x60; beside the id of  the row it was copied from.
         /// </summary>
         /// <remarks>
         /// 
@@ -175,15 +150,14 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
         /// <param name="filter"> (optional, default to &quot;&quot;)</param>
         /// <param name="search">Free-text match on program name/code. (optional, default to &quot;&quot;)</param>
-        /// <param name="scope">\&quot;DistrictCatalog\&quot;, \&quot;SchoolSpecific\&quot;, or omitted for all. (optional, default to &quot;&quot;)</param>
-        /// <param name="schoolCode">Narrows to programs offered at this school. Not a security boundary. (optional, default to &quot;&quot;)</param>
-        /// <param name="programType"> (optional, default to &quot;&quot;)</param>
+        /// <param name="schoolLocalCode">Narrows to programs offered at this school. Not a security boundary. (optional, default to &quot;&quot;)</param>
+        /// <param name="programTypeId">Narrows to programs of this program type (its record id). (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetProgramsApiResponse"/>&gt;</returns>
-        Task<IGetProgramsApiResponse> GetProgramsAsync(string tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, Option<string> search = default, Option<string> scope = default, Option<string> schoolCode = default, Option<string> programType = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IGetProgramsApiResponse> GetProgramsAsync(string tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, Option<string> search = default, Option<string> schoolLocalCode = default, Option<string> programTypeId = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Searches Programs - the union of district catalog entries and school-specific programs, in  one list distinguished by each row&#39;s Scope.
+        /// Searches Programs. Every row is one school&#39;s offering of a program: the school, the program  type and the requirements are embedded on it, each with its own &#x60;_id&#x60; beside the id of  the row it was copied from.
         /// </summary>
         /// <remarks>
         /// 
@@ -194,15 +168,14 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
         /// <param name="filter"> (optional, default to &quot;&quot;)</param>
         /// <param name="search">Free-text match on program name/code. (optional, default to &quot;&quot;)</param>
-        /// <param name="scope">\&quot;DistrictCatalog\&quot;, \&quot;SchoolSpecific\&quot;, or omitted for all. (optional, default to &quot;&quot;)</param>
-        /// <param name="schoolCode">Narrows to programs offered at this school. Not a security boundary. (optional, default to &quot;&quot;)</param>
-        /// <param name="programType"> (optional, default to &quot;&quot;)</param>
+        /// <param name="schoolLocalCode">Narrows to programs offered at this school. Not a security boundary. (optional, default to &quot;&quot;)</param>
+        /// <param name="programTypeId">Narrows to programs of this program type (its record id). (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetProgramsApiResponse"/>?&gt;</returns>
-        Task<IGetProgramsApiResponse?> GetProgramsOrDefaultAsync(string tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, Option<string> search = default, Option<string> scope = default, Option<string> schoolCode = default, Option<string> programType = default, System.Threading.CancellationToken cancellationToken = default);
+        Task<IGetProgramsApiResponse?> GetProgramsOrDefaultAsync(string tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, Option<string> search = default, Option<string> schoolLocalCode = default, Option<string> programTypeId = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Updates a district catalog entry&#39;s own fields.
+        /// Updates a Program. The school a program runs at never changes; everything else, including  the program type and the requirement set, is replaced from the body.
         /// </summary>
         /// <remarks>
         /// 
@@ -210,56 +183,29 @@ namespace EdGraph.Platform.Client.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto"> (optional)</param>
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IUpdateProgramCatalogEntryApiResponse"/>&gt;</returns>
-        Task<IUpdateProgramCatalogEntryApiResponse> UpdateProgramCatalogEntryAsync(string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns><see cref="Task"/>&lt;<see cref="IUpdateProgramApiResponse"/>&gt;</returns>
+        Task<IUpdateProgramApiResponse> UpdateProgramAsync(string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Updates a district catalog entry&#39;s own fields.
+        /// Updates a Program. The school a program runs at never changes; everything else, including  the program type and the requirement set, is replaced from the body.
         /// </summary>
         /// <remarks>
         /// 
         /// </remarks>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto"> (optional)</param>
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IUpdateProgramCatalogEntryApiResponse"/>?&gt;</returns>
-        Task<IUpdateProgramCatalogEntryApiResponse?> UpdateProgramCatalogEntryOrDefaultAsync(string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto = default, System.Threading.CancellationToken cancellationToken = default);
-
-        /// <summary>
-        /// Updates a school program&#39;s grades/capacity/zone/coordinates, and - only when it is  school-specific - its own Code/Name/ProgramType/EligibilityCriteria/RequiredDocuments.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tenantId"></param>
-        /// <param name="id"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IUpdateSchoolProgramApiResponse"/>&gt;</returns>
-        Task<IUpdateSchoolProgramApiResponse> UpdateSchoolProgramAsync(string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto = default, System.Threading.CancellationToken cancellationToken = default);
-
-        /// <summary>
-        /// Updates a school program&#39;s grades/capacity/zone/coordinates, and - only when it is  school-specific - its own Code/Name/ProgramType/EligibilityCriteria/RequiredDocuments.
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <param name="tenantId"></param>
-        /// <param name="id"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IUpdateSchoolProgramApiResponse"/>?&gt;</returns>
-        Task<IUpdateSchoolProgramApiResponse?> UpdateSchoolProgramOrDefaultAsync(string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns><see cref="Task"/>&lt;<see cref="IUpdateProgramApiResponse"/>?&gt;</returns>
+        Task<IUpdateProgramApiResponse?> UpdateProgramOrDefaultAsync(string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto = default, System.Threading.CancellationToken cancellationToken = default);
     }
 
     /// <summary>
-    /// The <see cref="ICreateProgramCatalogEntryApiResponse"/>
+    /// The <see cref="ICreateProgramApiResponse"/>
     /// </summary>
-    public interface ICreateProgramCatalogEntryApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, ICreated<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramMutationResultDto?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>
+    public interface ICreateProgramApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, ICreated<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramMutationResultDto?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>
     {
         /// <summary>
         /// Returns true if the response is 401 Unauthorized
@@ -293,45 +239,9 @@ namespace EdGraph.Platform.Client.Api
     }
 
     /// <summary>
-    /// The <see cref="ICreateSchoolProgramApiResponse"/>
+    /// The <see cref="IDeleteProgramApiResponse"/>
     /// </summary>
-    public interface ICreateSchoolProgramApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, ICreated<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramMutationResultDto?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>
-    {
-        /// <summary>
-        /// Returns true if the response is 401 Unauthorized
-        /// </summary>
-        /// <returns></returns>
-        bool IsUnauthorized { get; }
-
-        /// <summary>
-        /// Returns true if the response is 403 Forbidden
-        /// </summary>
-        /// <returns></returns>
-        bool IsForbidden { get; }
-
-        /// <summary>
-        /// Returns true if the response is 500 InternalServerError
-        /// </summary>
-        /// <returns></returns>
-        bool IsInternalServerError { get; }
-
-        /// <summary>
-        /// Returns true if the response is 201 Created
-        /// </summary>
-        /// <returns></returns>
-        bool IsCreated { get; }
-
-        /// <summary>
-        /// Returns true if the response is 400 BadRequest
-        /// </summary>
-        /// <returns></returns>
-        bool IsBadRequest { get; }
-    }
-
-    /// <summary>
-    /// The <see cref="IDeleteProgramCatalogEntryApiResponse"/>
-    /// </summary>
-    public interface IDeleteProgramCatalogEntryApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, INotFound<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>
+    public interface IDeleteProgramApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, INotFound<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>
     {
         /// <summary>
         /// Returns true if the response is 401 Unauthorized
@@ -365,9 +275,9 @@ namespace EdGraph.Platform.Client.Api
     }
 
     /// <summary>
-    /// The <see cref="IDeleteSchoolProgramApiResponse"/>
+    /// The <see cref="IGetProgramApplicationsApiResponse"/>
     /// </summary>
-    public interface IDeleteSchoolProgramApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, INotFound<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>
+    public interface IGetProgramApplicationsApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramApplicationDto>?>, INotFound<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>
     {
         /// <summary>
         /// Returns true if the response is 401 Unauthorized
@@ -388,10 +298,10 @@ namespace EdGraph.Platform.Client.Api
         bool IsInternalServerError { get; }
 
         /// <summary>
-        /// Returns true if the response is 204 NoContent
+        /// Returns true if the response is 200 Ok
         /// </summary>
         /// <returns></returns>
-        bool IsNoContent { get; }
+        bool IsOk { get; }
 
         /// <summary>
         /// Returns true if the response is 404 NotFound
@@ -473,51 +383,9 @@ namespace EdGraph.Platform.Client.Api
     }
 
     /// <summary>
-    /// The <see cref="IUpdateProgramCatalogEntryApiResponse"/>
+    /// The <see cref="IUpdateProgramApiResponse"/>
     /// </summary>
-    public interface IUpdateProgramCatalogEntryApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramMutationResultDto?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>, INotFound<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>
-    {
-        /// <summary>
-        /// Returns true if the response is 401 Unauthorized
-        /// </summary>
-        /// <returns></returns>
-        bool IsUnauthorized { get; }
-
-        /// <summary>
-        /// Returns true if the response is 403 Forbidden
-        /// </summary>
-        /// <returns></returns>
-        bool IsForbidden { get; }
-
-        /// <summary>
-        /// Returns true if the response is 500 InternalServerError
-        /// </summary>
-        /// <returns></returns>
-        bool IsInternalServerError { get; }
-
-        /// <summary>
-        /// Returns true if the response is 200 Ok
-        /// </summary>
-        /// <returns></returns>
-        bool IsOk { get; }
-
-        /// <summary>
-        /// Returns true if the response is 400 BadRequest
-        /// </summary>
-        /// <returns></returns>
-        bool IsBadRequest { get; }
-
-        /// <summary>
-        /// Returns true if the response is 404 NotFound
-        /// </summary>
-        /// <returns></returns>
-        bool IsNotFound { get; }
-    }
-
-    /// <summary>
-    /// The <see cref="IUpdateSchoolProgramApiResponse"/>
-    /// </summary>
-    public interface IUpdateSchoolProgramApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramMutationResultDto?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>, INotFound<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>
+    public interface IUpdateProgramApiResponse : EdGraph.Platform.Client.Client.IApiResponse, IUnauthorized<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IForbidden<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IInternalServerError<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>, IOk<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramMutationResultDto?>, IBadRequest<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails?>, INotFound<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails?>
     {
         /// <summary>
         /// Returns true if the response is 401 Unauthorized
@@ -564,81 +432,61 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// The event raised after the server response
         /// </summary>
-        public event EventHandler<ApiResponseEventArgs>? OnCreateProgramCatalogEntry;
+        public event EventHandler<ApiResponseEventArgs>? OnCreateProgram;
 
         /// <summary>
         /// The event raised after an error querying the server
         /// </summary>
-        public event EventHandler<ExceptionEventArgs>? OnErrorCreateProgramCatalogEntry;
+        public event EventHandler<ExceptionEventArgs>? OnErrorCreateProgram;
 
-        internal void ExecuteOnCreateProgramCatalogEntry(EnrollmentAdminProgramsApi.CreateProgramCatalogEntryApiResponse apiResponse)
+        internal void ExecuteOnCreateProgram(EnrollmentAdminProgramsApi.CreateProgramApiResponse apiResponse)
         {
-            OnCreateProgramCatalogEntry?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+            OnCreateProgram?.Invoke(this, new ApiResponseEventArgs(apiResponse));
         }
 
-        internal void ExecuteOnErrorCreateProgramCatalogEntry(Exception exception)
+        internal void ExecuteOnErrorCreateProgram(Exception exception)
         {
-            OnErrorCreateProgramCatalogEntry?.Invoke(this, new ExceptionEventArgs(exception));
+            OnErrorCreateProgram?.Invoke(this, new ExceptionEventArgs(exception));
         }
 
         /// <summary>
         /// The event raised after the server response
         /// </summary>
-        public event EventHandler<ApiResponseEventArgs>? OnCreateSchoolProgram;
+        public event EventHandler<ApiResponseEventArgs>? OnDeleteProgram;
 
         /// <summary>
         /// The event raised after an error querying the server
         /// </summary>
-        public event EventHandler<ExceptionEventArgs>? OnErrorCreateSchoolProgram;
+        public event EventHandler<ExceptionEventArgs>? OnErrorDeleteProgram;
 
-        internal void ExecuteOnCreateSchoolProgram(EnrollmentAdminProgramsApi.CreateSchoolProgramApiResponse apiResponse)
+        internal void ExecuteOnDeleteProgram(EnrollmentAdminProgramsApi.DeleteProgramApiResponse apiResponse)
         {
-            OnCreateSchoolProgram?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+            OnDeleteProgram?.Invoke(this, new ApiResponseEventArgs(apiResponse));
         }
 
-        internal void ExecuteOnErrorCreateSchoolProgram(Exception exception)
+        internal void ExecuteOnErrorDeleteProgram(Exception exception)
         {
-            OnErrorCreateSchoolProgram?.Invoke(this, new ExceptionEventArgs(exception));
+            OnErrorDeleteProgram?.Invoke(this, new ExceptionEventArgs(exception));
         }
 
         /// <summary>
         /// The event raised after the server response
         /// </summary>
-        public event EventHandler<ApiResponseEventArgs>? OnDeleteProgramCatalogEntry;
+        public event EventHandler<ApiResponseEventArgs>? OnGetProgramApplications;
 
         /// <summary>
         /// The event raised after an error querying the server
         /// </summary>
-        public event EventHandler<ExceptionEventArgs>? OnErrorDeleteProgramCatalogEntry;
+        public event EventHandler<ExceptionEventArgs>? OnErrorGetProgramApplications;
 
-        internal void ExecuteOnDeleteProgramCatalogEntry(EnrollmentAdminProgramsApi.DeleteProgramCatalogEntryApiResponse apiResponse)
+        internal void ExecuteOnGetProgramApplications(EnrollmentAdminProgramsApi.GetProgramApplicationsApiResponse apiResponse)
         {
-            OnDeleteProgramCatalogEntry?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+            OnGetProgramApplications?.Invoke(this, new ApiResponseEventArgs(apiResponse));
         }
 
-        internal void ExecuteOnErrorDeleteProgramCatalogEntry(Exception exception)
+        internal void ExecuteOnErrorGetProgramApplications(Exception exception)
         {
-            OnErrorDeleteProgramCatalogEntry?.Invoke(this, new ExceptionEventArgs(exception));
-        }
-
-        /// <summary>
-        /// The event raised after the server response
-        /// </summary>
-        public event EventHandler<ApiResponseEventArgs>? OnDeleteSchoolProgram;
-
-        /// <summary>
-        /// The event raised after an error querying the server
-        /// </summary>
-        public event EventHandler<ExceptionEventArgs>? OnErrorDeleteSchoolProgram;
-
-        internal void ExecuteOnDeleteSchoolProgram(EnrollmentAdminProgramsApi.DeleteSchoolProgramApiResponse apiResponse)
-        {
-            OnDeleteSchoolProgram?.Invoke(this, new ApiResponseEventArgs(apiResponse));
-        }
-
-        internal void ExecuteOnErrorDeleteSchoolProgram(Exception exception)
-        {
-            OnErrorDeleteSchoolProgram?.Invoke(this, new ExceptionEventArgs(exception));
+            OnErrorGetProgramApplications?.Invoke(this, new ExceptionEventArgs(exception));
         }
 
         /// <summary>
@@ -684,41 +532,21 @@ namespace EdGraph.Platform.Client.Api
         /// <summary>
         /// The event raised after the server response
         /// </summary>
-        public event EventHandler<ApiResponseEventArgs>? OnUpdateProgramCatalogEntry;
+        public event EventHandler<ApiResponseEventArgs>? OnUpdateProgram;
 
         /// <summary>
         /// The event raised after an error querying the server
         /// </summary>
-        public event EventHandler<ExceptionEventArgs>? OnErrorUpdateProgramCatalogEntry;
+        public event EventHandler<ExceptionEventArgs>? OnErrorUpdateProgram;
 
-        internal void ExecuteOnUpdateProgramCatalogEntry(EnrollmentAdminProgramsApi.UpdateProgramCatalogEntryApiResponse apiResponse)
+        internal void ExecuteOnUpdateProgram(EnrollmentAdminProgramsApi.UpdateProgramApiResponse apiResponse)
         {
-            OnUpdateProgramCatalogEntry?.Invoke(this, new ApiResponseEventArgs(apiResponse));
+            OnUpdateProgram?.Invoke(this, new ApiResponseEventArgs(apiResponse));
         }
 
-        internal void ExecuteOnErrorUpdateProgramCatalogEntry(Exception exception)
+        internal void ExecuteOnErrorUpdateProgram(Exception exception)
         {
-            OnErrorUpdateProgramCatalogEntry?.Invoke(this, new ExceptionEventArgs(exception));
-        }
-
-        /// <summary>
-        /// The event raised after the server response
-        /// </summary>
-        public event EventHandler<ApiResponseEventArgs>? OnUpdateSchoolProgram;
-
-        /// <summary>
-        /// The event raised after an error querying the server
-        /// </summary>
-        public event EventHandler<ExceptionEventArgs>? OnErrorUpdateSchoolProgram;
-
-        internal void ExecuteOnUpdateSchoolProgram(EnrollmentAdminProgramsApi.UpdateSchoolProgramApiResponse apiResponse)
-        {
-            OnUpdateSchoolProgram?.Invoke(this, new ApiResponseEventArgs(apiResponse));
-        }
-
-        internal void ExecuteOnErrorUpdateSchoolProgram(Exception exception)
-        {
-            OnErrorUpdateSchoolProgram?.Invoke(this, new ExceptionEventArgs(exception));
+            OnErrorUpdateProgram?.Invoke(this, new ExceptionEventArgs(exception));
         }
     }
 
@@ -769,21 +597,21 @@ namespace EdGraph.Platform.Client.Api
             OauthTokenProvider = oauthTokenProvider;
         }
 
-        partial void FormatCreateProgramCatalogEntry(ref string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto);
+        partial void FormatCreateProgram(ref string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto);
 
         /// <summary>
         /// Validates the request parameters
         /// </summary>
         /// <param name="tenantId"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto"></param>
         /// <returns></returns>
-        private void ValidateCreateProgramCatalogEntry(string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto)
+        private void ValidateCreateProgram(string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto)
         {
             if (tenantId == null)
                 throw new ArgumentNullException(nameof(tenantId));
 
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto.IsSet && edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto.Value == null)
-                throw new ArgumentNullException(nameof(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto));
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto.IsSet && edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto.Value == null)
+                throw new ArgumentNullException(nameof(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto));
         }
 
         /// <summary>
@@ -791,11 +619,11 @@ namespace EdGraph.Platform.Client.Api
         /// </summary>
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto"></param>
-        private void AfterCreateProgramCatalogEntryDefaultImplementation(ICreateProgramCatalogEntryApiResponse apiResponseLocalVar, string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto)
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto"></param>
+        private void AfterCreateProgramDefaultImplementation(ICreateProgramApiResponse apiResponseLocalVar, string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto)
         {
             bool suppressDefaultLog = false;
-            AfterCreateProgramCatalogEntry(ref suppressDefaultLog, apiResponseLocalVar, tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto);
+            AfterCreateProgram(ref suppressDefaultLog, apiResponseLocalVar, tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -806,8 +634,8 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="suppressDefaultLog"></param>
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto"></param>
-        partial void AfterCreateProgramCatalogEntry(ref bool suppressDefaultLog, ICreateProgramCatalogEntryApiResponse apiResponseLocalVar, string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto);
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto"></param>
+        partial void AfterCreateProgram(ref bool suppressDefaultLog, ICreateProgramApiResponse apiResponseLocalVar, string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -816,11 +644,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pathFormatLocalVar"></param>
         /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto"></param>
-        private void OnErrorCreateProgramCatalogEntryDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto)
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto"></param>
+        private void OnErrorCreateProgramDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto)
         {
             bool suppressDefaultLogLocalVar = false;
-            OnErrorCreateProgramCatalogEntry(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto);
+            OnErrorCreateProgram(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto);
             if (!suppressDefaultLogLocalVar)
                 Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
@@ -833,21 +661,21 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pathFormatLocalVar"></param>
         /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto"></param>
-        partial void OnErrorCreateProgramCatalogEntry(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto);
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto"></param>
+        partial void OnErrorCreateProgram(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto);
 
         /// <summary>
-        /// Creates a district catalog entry - a program the district defines once, which schools may  then be offered at. No school-identifying field; use POST .../programs/school-programs to  offer it at a school. 
+        /// Creates a Program at a school. The body names the school, the program type and the  requirements by id; the service copies their display fields onto the row. 
         /// </summary>
         /// <param name="tenantId"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto"> (optional)</param>
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="ICreateProgramCatalogEntryApiResponse"/>&gt;</returns>
-        public async Task<ICreateProgramCatalogEntryApiResponse?> CreateProgramCatalogEntryOrDefaultAsync(string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto = default, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns><see cref="Task"/>&lt;<see cref="ICreateProgramApiResponse"/>&gt;</returns>
+        public async Task<ICreateProgramApiResponse?> CreateProgramOrDefaultAsync(string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto = default, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await CreateProgramCatalogEntryAsync(tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto, cancellationToken).ConfigureAwait(false);
+                return await CreateProgramAsync(tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -856,22 +684,22 @@ namespace EdGraph.Platform.Client.Api
         }
 
         /// <summary>
-        /// Creates a district catalog entry - a program the district defines once, which schools may  then be offered at. No school-identifying field; use POST .../programs/school-programs to  offer it at a school. 
+        /// Creates a Program at a school. The body names the school, the program type and the  requirements by id; the service copies their display fields onto the row. 
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto"> (optional)</param>
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="ICreateProgramCatalogEntryApiResponse"/>&gt;</returns>
-        public async Task<ICreateProgramCatalogEntryApiResponse> CreateProgramCatalogEntryAsync(string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto = default, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns><see cref="Task"/>&lt;<see cref="ICreateProgramApiResponse"/>&gt;</returns>
+        public async Task<ICreateProgramApiResponse> CreateProgramAsync(string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto = default, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
             try
             {
-                ValidateCreateProgramCatalogEntry(tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto);
+                ValidateCreateProgram(tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto);
 
-                FormatCreateProgramCatalogEntry(ref tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto);
+                FormatCreateProgram(ref tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -879,15 +707,15 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
                     uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
-                        ? "/tenants/{tenantId}/enrollmentadmin/programs/catalog-entries"
-                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/programs/catalog-entries");
+                        ? "/tenants/{tenantId}/enrollmentadmin/programs"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/programs");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
 
-                    if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto.IsSet)
+                    if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto.IsSet)
                     {
-                      httpRequestMessageLocalVar.Content = (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto.Value as object) is EdGraph.Platform.Client.Client.FileParameter fileParameterLocalVar
+                      httpRequestMessageLocalVar.Content = (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto.Value as object) is EdGraph.Platform.Client.Client.FileParameter fileParameterLocalVar
                         ? httpRequestMessageLocalVar.Content = new StreamContent(fileParameterLocalVar.Content)
-                        : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto.Value, _jsonSerializerOptions));
+                        : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto.Value, _jsonSerializerOptions));
                     }
 
                     List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
@@ -926,21 +754,21 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        ILogger<CreateProgramCatalogEntryApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<CreateProgramCatalogEntryApiResponse>();
-                        CreateProgramCatalogEntryApiResponse apiResponseLocalVar;
+                        ILogger<CreateProgramApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<CreateProgramApiResponse>();
+                        CreateProgramApiResponse apiResponseLocalVar;
 
                         switch ((int)httpResponseMessageLocalVar.StatusCode) {
                             default: {
                                 string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/programs/catalog-entries", requestedAtLocalVar, _jsonSerializerOptions);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/programs", requestedAtLocalVar, _jsonSerializerOptions);
 
                                 break;
                             }
                         }
 
-                        AfterCreateProgramCatalogEntryDefaultImplementation(apiResponseLocalVar, tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto);
+                        AfterCreateProgramDefaultImplementation(apiResponseLocalVar, tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto);
 
-                        Events.ExecuteOnCreateProgramCatalogEntry(apiResponseLocalVar);
+                        Events.ExecuteOnCreateProgram(apiResponseLocalVar);
 
                         if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
                             foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
@@ -952,24 +780,24 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorCreateProgramCatalogEntryDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/programs/catalog-entries", uriBuilderLocalVar.Path, tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramCatalogEntryRequestDto);
-                Events.ExecuteOnErrorCreateProgramCatalogEntry(e);
+                OnErrorCreateProgramDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/programs", uriBuilderLocalVar.Path, tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateProgramRequestDto);
+                Events.ExecuteOnErrorCreateProgram(e);
                 throw;
             }
         }
 
         /// <summary>
-        /// The <see cref="CreateProgramCatalogEntryApiResponse"/>
+        /// The <see cref="CreateProgramApiResponse"/>
         /// </summary>
-        public partial class CreateProgramCatalogEntryApiResponse : EdGraph.Platform.Client.Client.ApiResponse, ICreateProgramCatalogEntryApiResponse
+        public partial class CreateProgramApiResponse : EdGraph.Platform.Client.Client.ApiResponse, ICreateProgramApiResponse
         {
             /// <summary>
             /// The logger
             /// </summary>
-            public ILogger<CreateProgramCatalogEntryApiResponse> Logger { get; }
+            public ILogger<CreateProgramApiResponse> Logger { get; }
 
             /// <summary>
-            /// The <see cref="CreateProgramCatalogEntryApiResponse"/>
+            /// The <see cref="CreateProgramApiResponse"/>
             /// </summary>
             /// <param name="logger"></param>
             /// <param name="httpRequestMessage"></param>
@@ -978,14 +806,14 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public CreateProgramCatalogEntryApiResponse(ILogger<CreateProgramCatalogEntryApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            public CreateProgramApiResponse(ILogger<CreateProgramApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
             }
 
             /// <summary>
-            /// The <see cref="CreateProgramCatalogEntryApiResponse"/>
+            /// The <see cref="CreateProgramApiResponse"/>
             /// </summary>
             /// <param name="logger"></param>
             /// <param name="httpRequestMessage"></param>
@@ -994,7 +822,7 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public CreateProgramCatalogEntryApiResponse(ILogger<CreateProgramCatalogEntryApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            public CreateProgramApiResponse(ILogger<CreateProgramApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -1203,448 +1031,14 @@ namespace EdGraph.Platform.Client.Api
             partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
         }
 
-        partial void FormatCreateSchoolProgram(ref string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto);
-
-        /// <summary>
-        /// Validates the request parameters
-        /// </summary>
-        /// <param name="tenantId"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto"></param>
-        /// <returns></returns>
-        private void ValidateCreateSchoolProgram(string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto)
-        {
-            if (tenantId == null)
-                throw new ArgumentNullException(nameof(tenantId));
-
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto.IsSet && edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto.Value == null)
-                throw new ArgumentNullException(nameof(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto));
-        }
-
-        /// <summary>
-        /// Processes the server response
-        /// </summary>
-        /// <param name="apiResponseLocalVar"></param>
-        /// <param name="tenantId"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto"></param>
-        private void AfterCreateSchoolProgramDefaultImplementation(ICreateSchoolProgramApiResponse apiResponseLocalVar, string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto)
-        {
-            bool suppressDefaultLog = false;
-            AfterCreateSchoolProgram(ref suppressDefaultLog, apiResponseLocalVar, tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto);
-            if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
-        }
-
-        /// <summary>
-        /// Processes the server response
-        /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="apiResponseLocalVar"></param>
-        /// <param name="tenantId"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto"></param>
-        partial void AfterCreateSchoolProgram(ref bool suppressDefaultLog, ICreateSchoolProgramApiResponse apiResponseLocalVar, string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto);
-
-        /// <summary>
-        /// Logs exceptions that occur while retrieving the server response
-        /// </summary>
-        /// <param name="exceptionLocalVar"></param>
-        /// <param name="pathFormatLocalVar"></param>
-        /// <param name="pathLocalVar"></param>
-        /// <param name="tenantId"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto"></param>
-        private void OnErrorCreateSchoolProgramDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto)
-        {
-            bool suppressDefaultLogLocalVar = false;
-            OnErrorCreateSchoolProgram(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto);
-            if (!suppressDefaultLogLocalVar)
-                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
-        }
-
-        /// <summary>
-        /// A partial method that gives developers a way to provide customized exception handling
-        /// </summary>
-        /// <param name="suppressDefaultLogLocalVar"></param>
-        /// <param name="exceptionLocalVar"></param>
-        /// <param name="pathFormatLocalVar"></param>
-        /// <param name="pathLocalVar"></param>
-        /// <param name="tenantId"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto"></param>
-        partial void OnErrorCreateSchoolProgram(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto);
-
-        /// <summary>
-        /// Creates a school program - either adding an existing district catalog entry to a school  (a \&quot;school association\&quot;, when &#x60;programCatalogEntryId&#x60; is set) or creating a brand new  school-specific program (when it is not). 
-        /// </summary>
-        /// <param name="tenantId"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="ICreateSchoolProgramApiResponse"/>&gt;</returns>
-        public async Task<ICreateSchoolProgramApiResponse?> CreateSchoolProgramOrDefaultAsync(string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto = default, System.Threading.CancellationToken cancellationToken = default)
-        {
-            try
-            {
-                return await CreateSchoolProgramAsync(tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto, cancellationToken).ConfigureAwait(false);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Creates a school program - either adding an existing district catalog entry to a school  (a \&quot;school association\&quot;, when &#x60;programCatalogEntryId&#x60; is set) or creating a brand new  school-specific program (when it is not). 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tenantId"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="ICreateSchoolProgramApiResponse"/>&gt;</returns>
-        public async Task<ICreateSchoolProgramApiResponse> CreateSchoolProgramAsync(string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto = default, System.Threading.CancellationToken cancellationToken = default)
-        {
-            UriBuilder uriBuilderLocalVar = new UriBuilder();
-
-            try
-            {
-                ValidateCreateSchoolProgram(tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto);
-
-                FormatCreateSchoolProgram(ref tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto);
-
-                using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
-                {
-                    uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
-                    uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
-                    uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
-                        ? "/tenants/{tenantId}/enrollmentadmin/programs/school-programs"
-                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/programs/school-programs");
-                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
-
-                    if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto.IsSet)
-                    {
-                      httpRequestMessageLocalVar.Content = (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto.Value as object) is EdGraph.Platform.Client.Client.FileParameter fileParameterLocalVar
-                        ? httpRequestMessageLocalVar.Content = new StreamContent(fileParameterLocalVar.Content)
-                        : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto.Value, _jsonSerializerOptions));
-                    }
-
-                    List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
-                    httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
-
-                    OAuthToken oauthTokenLocalVar1 = (OAuthToken) await OauthTokenProvider.GetAsync(cancellation: cancellationToken).ConfigureAwait(false);
-
-                    tokenBaseLocalVars.Add(oauthTokenLocalVar1);
-
-                    oauthTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar, "");
-
-                    string[] contentTypes = new string[] {
-                        "application/json-patch+json",
-                        "application/json",
-                        "text/json",
-                        "application/*+json"
-                    };
-
-                    string? contentTypeLocalVar = ClientUtils.SelectHeaderContentType(contentTypes);
-
-                    if (contentTypeLocalVar != null && httpRequestMessageLocalVar.Content != null)
-                        httpRequestMessageLocalVar.Content.Headers.ContentType = new MediaTypeHeaderValue(contentTypeLocalVar);
-
-                    string[] acceptLocalVars = new string[] {
-                        "application/json"
-                    };
-
-                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
-
-                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
-
-                    httpRequestMessageLocalVar.Method = HttpMethod.Post;
-
-                    DateTime requestedAtLocalVar = DateTime.UtcNow;
-
-                    using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
-                    {
-                        ILogger<CreateSchoolProgramApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<CreateSchoolProgramApiResponse>();
-                        CreateSchoolProgramApiResponse apiResponseLocalVar;
-
-                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
-                            default: {
-                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/programs/school-programs", requestedAtLocalVar, _jsonSerializerOptions);
-
-                                break;
-                            }
-                        }
-
-                        AfterCreateSchoolProgramDefaultImplementation(apiResponseLocalVar, tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto);
-
-                        Events.ExecuteOnCreateSchoolProgram(apiResponseLocalVar);
-
-                        if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
-                            foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
-                                tokenBaseLocalVar.BeginRateLimit();
-
-                        return apiResponseLocalVar;
-                    }
-                }
-            }
-            catch(Exception e)
-            {
-                OnErrorCreateSchoolProgramDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/programs/school-programs", uriBuilderLocalVar.Path, tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminCreateSchoolProgramRequestDto);
-                Events.ExecuteOnErrorCreateSchoolProgram(e);
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// The <see cref="CreateSchoolProgramApiResponse"/>
-        /// </summary>
-        public partial class CreateSchoolProgramApiResponse : EdGraph.Platform.Client.Client.ApiResponse, ICreateSchoolProgramApiResponse
-        {
-            /// <summary>
-            /// The logger
-            /// </summary>
-            public ILogger<CreateSchoolProgramApiResponse> Logger { get; }
-
-            /// <summary>
-            /// The <see cref="CreateSchoolProgramApiResponse"/>
-            /// </summary>
-            /// <param name="logger"></param>
-            /// <param name="httpRequestMessage"></param>
-            /// <param name="httpResponseMessage"></param>
-            /// <param name="rawContent"></param>
-            /// <param name="path"></param>
-            /// <param name="requestedAt"></param>
-            /// <param name="jsonSerializerOptions"></param>
-            public CreateSchoolProgramApiResponse(ILogger<CreateSchoolProgramApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
-            {
-                Logger = logger;
-                OnCreated(httpRequestMessage, httpResponseMessage);
-            }
-
-            /// <summary>
-            /// The <see cref="CreateSchoolProgramApiResponse"/>
-            /// </summary>
-            /// <param name="logger"></param>
-            /// <param name="httpRequestMessage"></param>
-            /// <param name="httpResponseMessage"></param>
-            /// <param name="contentStream"></param>
-            /// <param name="path"></param>
-            /// <param name="requestedAt"></param>
-            /// <param name="jsonSerializerOptions"></param>
-            public CreateSchoolProgramApiResponse(ILogger<CreateSchoolProgramApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
-            {
-                Logger = logger;
-                OnCreated(httpRequestMessage, httpResponseMessage);
-            }
-
-            partial void OnCreated(global::System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage);
-
-            /// <summary>
-            /// Returns true if the response is 401 Unauthorized
-            /// </summary>
-            /// <returns></returns>
-            public bool IsUnauthorized => 401 == (int)StatusCode;
-
-            /// <summary>
-            /// Deserializes the response if the response is 401 Unauthorized
-            /// </summary>
-            /// <returns></returns>
-            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Unauthorized()
-            {
-                // This logic may be modified with the AsModel.mustache template
-                return IsUnauthorized
-                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
-                    : null;
-            }
-
-            /// <summary>
-            /// Returns true if the response is 401 Unauthorized and the deserialized response is not null
-            /// </summary>
-            /// <param name="result"></param>
-            /// <returns></returns>
-            public bool TryUnauthorized([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
-            {
-                result = null;
-
-                try
-                {
-                    result = Unauthorized();
-                } catch (Exception e)
-                {
-                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)401);
-                }
-
-                return result != null;
-            }
-
-            /// <summary>
-            /// Returns true if the response is 403 Forbidden
-            /// </summary>
-            /// <returns></returns>
-            public bool IsForbidden => 403 == (int)StatusCode;
-
-            /// <summary>
-            /// Deserializes the response if the response is 403 Forbidden
-            /// </summary>
-            /// <returns></returns>
-            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Forbidden()
-            {
-                // This logic may be modified with the AsModel.mustache template
-                return IsForbidden
-                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
-                    : null;
-            }
-
-            /// <summary>
-            /// Returns true if the response is 403 Forbidden and the deserialized response is not null
-            /// </summary>
-            /// <param name="result"></param>
-            /// <returns></returns>
-            public bool TryForbidden([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
-            {
-                result = null;
-
-                try
-                {
-                    result = Forbidden();
-                } catch (Exception e)
-                {
-                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)403);
-                }
-
-                return result != null;
-            }
-
-            /// <summary>
-            /// Returns true if the response is 500 InternalServerError
-            /// </summary>
-            /// <returns></returns>
-            public bool IsInternalServerError => 500 == (int)StatusCode;
-
-            /// <summary>
-            /// Deserializes the response if the response is 500 InternalServerError
-            /// </summary>
-            /// <returns></returns>
-            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? InternalServerError()
-            {
-                // This logic may be modified with the AsModel.mustache template
-                return IsInternalServerError
-                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
-                    : null;
-            }
-
-            /// <summary>
-            /// Returns true if the response is 500 InternalServerError and the deserialized response is not null
-            /// </summary>
-            /// <param name="result"></param>
-            /// <returns></returns>
-            public bool TryInternalServerError([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
-            {
-                result = null;
-
-                try
-                {
-                    result = InternalServerError();
-                } catch (Exception e)
-                {
-                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)500);
-                }
-
-                return result != null;
-            }
-
-            /// <summary>
-            /// Returns true if the response is 201 Created
-            /// </summary>
-            /// <returns></returns>
-            public bool IsCreated => 201 == (int)StatusCode;
-
-            /// <summary>
-            /// Deserializes the response if the response is 201 Created
-            /// </summary>
-            /// <returns></returns>
-            public EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramMutationResultDto? Created()
-            {
-                // This logic may be modified with the AsModel.mustache template
-                return IsCreated
-                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramMutationResultDto>(RawContent, _jsonSerializerOptions)
-                    : null;
-            }
-
-            /// <summary>
-            /// Returns true if the response is 201 Created and the deserialized response is not null
-            /// </summary>
-            /// <param name="result"></param>
-            /// <returns></returns>
-            public bool TryCreated([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramMutationResultDto? result)
-            {
-                result = null;
-
-                try
-                {
-                    result = Created();
-                } catch (Exception e)
-                {
-                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)201);
-                }
-
-                return result != null;
-            }
-
-            /// <summary>
-            /// Returns true if the response is 400 BadRequest
-            /// </summary>
-            /// <returns></returns>
-            public bool IsBadRequest => 400 == (int)StatusCode;
-
-            /// <summary>
-            /// Deserializes the response if the response is 400 BadRequest
-            /// </summary>
-            /// <returns></returns>
-            public EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails? BadRequest()
-            {
-                // This logic may be modified with the AsModel.mustache template
-                return IsBadRequest
-                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails>(RawContent, _jsonSerializerOptions)
-                    : null;
-            }
-
-            /// <summary>
-            /// Returns true if the response is 400 BadRequest and the deserialized response is not null
-            /// </summary>
-            /// <param name="result"></param>
-            /// <returns></returns>
-            public bool TryBadRequest([NotNullWhen(true)]out EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails? result)
-            {
-                result = null;
-
-                try
-                {
-                    result = BadRequest();
-                } catch (Exception e)
-                {
-                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)400);
-                }
-
-                return result != null;
-            }
-
-            private void OnDeserializationErrorDefaultImplementation(Exception exception, HttpStatusCode httpStatusCode)
-            {
-                bool suppressDefaultLog = false;
-                OnDeserializationError(ref suppressDefaultLog, exception, httpStatusCode);
-                if (!suppressDefaultLog)
-                    Logger.LogError(exception, "An error occurred while deserializing the {code} response.", httpStatusCode);
-            }
-
-            partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
-        }
-
-        partial void FormatDeleteProgramCatalogEntry(ref string tenantId, ref Guid id);
+        partial void FormatDeleteProgram(ref string tenantId, ref Guid id);
 
         /// <summary>
         /// Validates the request parameters
         /// </summary>
         /// <param name="tenantId"></param>
         /// <returns></returns>
-        private void ValidateDeleteProgramCatalogEntry(string tenantId)
+        private void ValidateDeleteProgram(string tenantId)
         {
             if (tenantId == null)
                 throw new ArgumentNullException(nameof(tenantId));
@@ -1656,10 +1050,10 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        private void AfterDeleteProgramCatalogEntryDefaultImplementation(IDeleteProgramCatalogEntryApiResponse apiResponseLocalVar, string tenantId, Guid id)
+        private void AfterDeleteProgramDefaultImplementation(IDeleteProgramApiResponse apiResponseLocalVar, string tenantId, Guid id)
         {
             bool suppressDefaultLog = false;
-            AfterDeleteProgramCatalogEntry(ref suppressDefaultLog, apiResponseLocalVar, tenantId, id);
+            AfterDeleteProgram(ref suppressDefaultLog, apiResponseLocalVar, tenantId, id);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -1671,7 +1065,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        partial void AfterDeleteProgramCatalogEntry(ref bool suppressDefaultLog, IDeleteProgramCatalogEntryApiResponse apiResponseLocalVar, string tenantId, Guid id);
+        partial void AfterDeleteProgram(ref bool suppressDefaultLog, IDeleteProgramApiResponse apiResponseLocalVar, string tenantId, Guid id);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -1681,10 +1075,10 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        private void OnErrorDeleteProgramCatalogEntryDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id)
+        private void OnErrorDeleteProgramDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id)
         {
             bool suppressDefaultLogLocalVar = false;
-            OnErrorDeleteProgramCatalogEntry(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, id);
+            OnErrorDeleteProgram(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, id);
             if (!suppressDefaultLogLocalVar)
                 Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
@@ -1698,20 +1092,20 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        partial void OnErrorDeleteProgramCatalogEntry(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id);
+        partial void OnErrorDeleteProgram(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id);
 
         /// <summary>
-        /// Removes a district catalog entry. 
+        /// Removes a Program (soft delete). 
         /// </summary>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IDeleteProgramCatalogEntryApiResponse"/>&gt;</returns>
-        public async Task<IDeleteProgramCatalogEntryApiResponse?> DeleteProgramCatalogEntryOrDefaultAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns><see cref="Task"/>&lt;<see cref="IDeleteProgramApiResponse"/>&gt;</returns>
+        public async Task<IDeleteProgramApiResponse?> DeleteProgramOrDefaultAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await DeleteProgramCatalogEntryAsync(tenantId, id, cancellationToken).ConfigureAwait(false);
+                return await DeleteProgramAsync(tenantId, id, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -1720,22 +1114,22 @@ namespace EdGraph.Platform.Client.Api
         }
 
         /// <summary>
-        /// Removes a district catalog entry. 
+        /// Removes a Program (soft delete). 
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IDeleteProgramCatalogEntryApiResponse"/>&gt;</returns>
-        public async Task<IDeleteProgramCatalogEntryApiResponse> DeleteProgramCatalogEntryAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns><see cref="Task"/>&lt;<see cref="IDeleteProgramApiResponse"/>&gt;</returns>
+        public async Task<IDeleteProgramApiResponse> DeleteProgramAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
             try
             {
-                ValidateDeleteProgramCatalogEntry(tenantId);
+                ValidateDeleteProgram(tenantId);
 
-                FormatDeleteProgramCatalogEntry(ref tenantId, ref id);
+                FormatDeleteProgram(ref tenantId, ref id);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -1743,8 +1137,8 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
                     uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
-                        ? "/tenants/{tenantId}/enrollmentadmin/programs/catalog-entries/{id}"
-                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/programs/catalog-entries/{id}");
+                        ? "/tenants/{tenantId}/enrollmentadmin/programs/{id}"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/programs/{id}");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Bid%7D", Uri.EscapeDataString(id.ToString()));
 
@@ -1772,21 +1166,21 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        ILogger<DeleteProgramCatalogEntryApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<DeleteProgramCatalogEntryApiResponse>();
-                        DeleteProgramCatalogEntryApiResponse apiResponseLocalVar;
+                        ILogger<DeleteProgramApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<DeleteProgramApiResponse>();
+                        DeleteProgramApiResponse apiResponseLocalVar;
 
                         switch ((int)httpResponseMessageLocalVar.StatusCode) {
                             default: {
                                 string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/programs/catalog-entries/{id}", requestedAtLocalVar, _jsonSerializerOptions);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/programs/{id}", requestedAtLocalVar, _jsonSerializerOptions);
 
                                 break;
                             }
                         }
 
-                        AfterDeleteProgramCatalogEntryDefaultImplementation(apiResponseLocalVar, tenantId, id);
+                        AfterDeleteProgramDefaultImplementation(apiResponseLocalVar, tenantId, id);
 
-                        Events.ExecuteOnDeleteProgramCatalogEntry(apiResponseLocalVar);
+                        Events.ExecuteOnDeleteProgram(apiResponseLocalVar);
 
                         if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
                             foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
@@ -1798,24 +1192,24 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorDeleteProgramCatalogEntryDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/programs/catalog-entries/{id}", uriBuilderLocalVar.Path, tenantId, id);
-                Events.ExecuteOnErrorDeleteProgramCatalogEntry(e);
+                OnErrorDeleteProgramDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/programs/{id}", uriBuilderLocalVar.Path, tenantId, id);
+                Events.ExecuteOnErrorDeleteProgram(e);
                 throw;
             }
         }
 
         /// <summary>
-        /// The <see cref="DeleteProgramCatalogEntryApiResponse"/>
+        /// The <see cref="DeleteProgramApiResponse"/>
         /// </summary>
-        public partial class DeleteProgramCatalogEntryApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IDeleteProgramCatalogEntryApiResponse
+        public partial class DeleteProgramApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IDeleteProgramApiResponse
         {
             /// <summary>
             /// The logger
             /// </summary>
-            public ILogger<DeleteProgramCatalogEntryApiResponse> Logger { get; }
+            public ILogger<DeleteProgramApiResponse> Logger { get; }
 
             /// <summary>
-            /// The <see cref="DeleteProgramCatalogEntryApiResponse"/>
+            /// The <see cref="DeleteProgramApiResponse"/>
             /// </summary>
             /// <param name="logger"></param>
             /// <param name="httpRequestMessage"></param>
@@ -1824,14 +1218,14 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public DeleteProgramCatalogEntryApiResponse(ILogger<DeleteProgramCatalogEntryApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            public DeleteProgramApiResponse(ILogger<DeleteProgramApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
             }
 
             /// <summary>
-            /// The <see cref="DeleteProgramCatalogEntryApiResponse"/>
+            /// The <see cref="DeleteProgramApiResponse"/>
             /// </summary>
             /// <param name="logger"></param>
             /// <param name="httpRequestMessage"></param>
@@ -1840,7 +1234,7 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public DeleteProgramCatalogEntryApiResponse(ILogger<DeleteProgramCatalogEntryApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            public DeleteProgramApiResponse(ILogger<DeleteProgramApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -2017,14 +1411,14 @@ namespace EdGraph.Platform.Client.Api
             partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
         }
 
-        partial void FormatDeleteSchoolProgram(ref string tenantId, ref Guid id);
+        partial void FormatGetProgramApplications(ref string tenantId, ref Guid id);
 
         /// <summary>
         /// Validates the request parameters
         /// </summary>
         /// <param name="tenantId"></param>
         /// <returns></returns>
-        private void ValidateDeleteSchoolProgram(string tenantId)
+        private void ValidateGetProgramApplications(string tenantId)
         {
             if (tenantId == null)
                 throw new ArgumentNullException(nameof(tenantId));
@@ -2036,10 +1430,10 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        private void AfterDeleteSchoolProgramDefaultImplementation(IDeleteSchoolProgramApiResponse apiResponseLocalVar, string tenantId, Guid id)
+        private void AfterGetProgramApplicationsDefaultImplementation(IGetProgramApplicationsApiResponse apiResponseLocalVar, string tenantId, Guid id)
         {
             bool suppressDefaultLog = false;
-            AfterDeleteSchoolProgram(ref suppressDefaultLog, apiResponseLocalVar, tenantId, id);
+            AfterGetProgramApplications(ref suppressDefaultLog, apiResponseLocalVar, tenantId, id);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -2051,7 +1445,7 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        partial void AfterDeleteSchoolProgram(ref bool suppressDefaultLog, IDeleteSchoolProgramApiResponse apiResponseLocalVar, string tenantId, Guid id);
+        partial void AfterGetProgramApplications(ref bool suppressDefaultLog, IGetProgramApplicationsApiResponse apiResponseLocalVar, string tenantId, Guid id);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -2061,10 +1455,10 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        private void OnErrorDeleteSchoolProgramDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id)
+        private void OnErrorGetProgramApplicationsDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id)
         {
             bool suppressDefaultLogLocalVar = false;
-            OnErrorDeleteSchoolProgram(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, id);
+            OnErrorGetProgramApplications(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, id);
             if (!suppressDefaultLogLocalVar)
                 Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
@@ -2078,20 +1472,20 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        partial void OnErrorDeleteSchoolProgram(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id);
+        partial void OnErrorGetProgramApplications(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id);
 
         /// <summary>
-        /// Removes a school program - the API equivalent of \&quot;remove a school association\&quot; when the  row is linked to a catalog entry, or a straightforward delete when it is school-specific. 
+        /// Gets the Registration Applications referencing a Program. 
         /// </summary>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IDeleteSchoolProgramApiResponse"/>&gt;</returns>
-        public async Task<IDeleteSchoolProgramApiResponse?> DeleteSchoolProgramOrDefaultAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetProgramApplicationsApiResponse"/>&gt;</returns>
+        public async Task<IGetProgramApplicationsApiResponse?> GetProgramApplicationsOrDefaultAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await DeleteSchoolProgramAsync(tenantId, id, cancellationToken).ConfigureAwait(false);
+                return await GetProgramApplicationsAsync(tenantId, id, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -2100,22 +1494,22 @@ namespace EdGraph.Platform.Client.Api
         }
 
         /// <summary>
-        /// Removes a school program - the API equivalent of \&quot;remove a school association\&quot; when the  row is linked to a catalog entry, or a straightforward delete when it is school-specific. 
+        /// Gets the Registration Applications referencing a Program. 
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IDeleteSchoolProgramApiResponse"/>&gt;</returns>
-        public async Task<IDeleteSchoolProgramApiResponse> DeleteSchoolProgramAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns><see cref="Task"/>&lt;<see cref="IGetProgramApplicationsApiResponse"/>&gt;</returns>
+        public async Task<IGetProgramApplicationsApiResponse> GetProgramApplicationsAsync(string tenantId, Guid id, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
             try
             {
-                ValidateDeleteSchoolProgram(tenantId);
+                ValidateGetProgramApplications(tenantId);
 
-                FormatDeleteSchoolProgram(ref tenantId, ref id);
+                FormatGetProgramApplications(ref tenantId, ref id);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -2123,8 +1517,8 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
                     uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
-                        ? "/tenants/{tenantId}/enrollmentadmin/programs/school-programs/{id}"
-                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/programs/school-programs/{id}");
+                        ? "/tenants/{tenantId}/enrollmentadmin/programs/{id}/applications"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/programs/{id}/applications");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Bid%7D", Uri.EscapeDataString(id.ToString()));
 
@@ -2146,27 +1540,27 @@ namespace EdGraph.Platform.Client.Api
                     foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
                         httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
 
-                    httpRequestMessageLocalVar.Method = HttpMethod.Delete;
+                    httpRequestMessageLocalVar.Method = HttpMethod.Get;
 
                     DateTime requestedAtLocalVar = DateTime.UtcNow;
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        ILogger<DeleteSchoolProgramApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<DeleteSchoolProgramApiResponse>();
-                        DeleteSchoolProgramApiResponse apiResponseLocalVar;
+                        ILogger<GetProgramApplicationsApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<GetProgramApplicationsApiResponse>();
+                        GetProgramApplicationsApiResponse apiResponseLocalVar;
 
                         switch ((int)httpResponseMessageLocalVar.StatusCode) {
                             default: {
                                 string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/programs/school-programs/{id}", requestedAtLocalVar, _jsonSerializerOptions);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/programs/{id}/applications", requestedAtLocalVar, _jsonSerializerOptions);
 
                                 break;
                             }
                         }
 
-                        AfterDeleteSchoolProgramDefaultImplementation(apiResponseLocalVar, tenantId, id);
+                        AfterGetProgramApplicationsDefaultImplementation(apiResponseLocalVar, tenantId, id);
 
-                        Events.ExecuteOnDeleteSchoolProgram(apiResponseLocalVar);
+                        Events.ExecuteOnGetProgramApplications(apiResponseLocalVar);
 
                         if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
                             foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
@@ -2178,24 +1572,24 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorDeleteSchoolProgramDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/programs/school-programs/{id}", uriBuilderLocalVar.Path, tenantId, id);
-                Events.ExecuteOnErrorDeleteSchoolProgram(e);
+                OnErrorGetProgramApplicationsDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/programs/{id}/applications", uriBuilderLocalVar.Path, tenantId, id);
+                Events.ExecuteOnErrorGetProgramApplications(e);
                 throw;
             }
         }
 
         /// <summary>
-        /// The <see cref="DeleteSchoolProgramApiResponse"/>
+        /// The <see cref="GetProgramApplicationsApiResponse"/>
         /// </summary>
-        public partial class DeleteSchoolProgramApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IDeleteSchoolProgramApiResponse
+        public partial class GetProgramApplicationsApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IGetProgramApplicationsApiResponse
         {
             /// <summary>
             /// The logger
             /// </summary>
-            public ILogger<DeleteSchoolProgramApiResponse> Logger { get; }
+            public ILogger<GetProgramApplicationsApiResponse> Logger { get; }
 
             /// <summary>
-            /// The <see cref="DeleteSchoolProgramApiResponse"/>
+            /// The <see cref="GetProgramApplicationsApiResponse"/>
             /// </summary>
             /// <param name="logger"></param>
             /// <param name="httpRequestMessage"></param>
@@ -2204,14 +1598,14 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public DeleteSchoolProgramApiResponse(ILogger<DeleteSchoolProgramApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            public GetProgramApplicationsApiResponse(ILogger<GetProgramApplicationsApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
             }
 
             /// <summary>
-            /// The <see cref="DeleteSchoolProgramApiResponse"/>
+            /// The <see cref="GetProgramApplicationsApiResponse"/>
             /// </summary>
             /// <param name="logger"></param>
             /// <param name="httpRequestMessage"></param>
@@ -2220,7 +1614,7 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public DeleteSchoolProgramApiResponse(ILogger<DeleteSchoolProgramApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            public GetProgramApplicationsApiResponse(ILogger<GetProgramApplicationsApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
@@ -2343,10 +1737,42 @@ namespace EdGraph.Platform.Client.Api
             }
 
             /// <summary>
-            /// Returns true if the response is 204 NoContent
+            /// Returns true if the response is 200 Ok
             /// </summary>
             /// <returns></returns>
-            public bool IsNoContent => 204 == (int)StatusCode;
+            public bool IsOk => 200 == (int)StatusCode;
+
+            /// <summary>
+            /// Deserializes the response if the response is 200 Ok
+            /// </summary>
+            /// <returns></returns>
+            public List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramApplicationDto>? Ok()
+            {
+                // This logic may be modified with the AsModel.mustache template
+                return IsOk
+                    ? System.Text.Json.JsonSerializer.Deserialize<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramApplicationDto>>(RawContent, _jsonSerializerOptions)
+                    : null;
+            }
+
+            /// <summary>
+            /// Returns true if the response is 200 Ok and the deserialized response is not null
+            /// </summary>
+            /// <param name="result"></param>
+            /// <returns></returns>
+            public bool TryOk([NotNullWhen(true)]out List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramApplicationDto>? result)
+            {
+                result = null;
+
+                try
+                {
+                    result = Ok();
+                } catch (Exception e)
+                {
+                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)200);
+                }
+
+                return result != null;
+            }
 
             /// <summary>
             /// Returns true if the response is 404 NotFound
@@ -2461,7 +1887,7 @@ namespace EdGraph.Platform.Client.Api
         partial void OnErrorGetProgramById(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id);
 
         /// <summary>
-        /// Gets a Program by its record id - a district catalog entry or a school-specific program. 
+        /// Gets a Program by its record id. 
         /// </summary>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
@@ -2480,7 +1906,7 @@ namespace EdGraph.Platform.Client.Api
         }
 
         /// <summary>
-        /// Gets a Program by its record id - a district catalog entry or a school-specific program. 
+        /// Gets a Program by its record id. 
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
@@ -2809,7 +2235,7 @@ namespace EdGraph.Platform.Client.Api
             partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
         }
 
-        partial void FormatGetPrograms(ref string tenantId, ref Option<int> pageSize, ref Option<int> pageIndex, ref Option<string> orderBy, ref Option<string> filter, ref Option<string> search, ref Option<string> scope, ref Option<string> schoolCode, ref Option<string> programType);
+        partial void FormatGetPrograms(ref string tenantId, ref Option<int> pageSize, ref Option<int> pageIndex, ref Option<string> orderBy, ref Option<string> filter, ref Option<string> search, ref Option<string> schoolLocalCode, ref Option<string> programTypeId);
 
         /// <summary>
         /// Validates the request parameters
@@ -2818,11 +2244,10 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="orderBy"></param>
         /// <param name="filter"></param>
         /// <param name="search"></param>
-        /// <param name="scope"></param>
-        /// <param name="schoolCode"></param>
-        /// <param name="programType"></param>
+        /// <param name="schoolLocalCode"></param>
+        /// <param name="programTypeId"></param>
         /// <returns></returns>
-        private void ValidateGetPrograms(string tenantId, Option<string> orderBy, Option<string> filter, Option<string> search, Option<string> scope, Option<string> schoolCode, Option<string> programType)
+        private void ValidateGetPrograms(string tenantId, Option<string> orderBy, Option<string> filter, Option<string> search, Option<string> schoolLocalCode, Option<string> programTypeId)
         {
             if (tenantId == null)
                 throw new ArgumentNullException(nameof(tenantId));
@@ -2836,14 +2261,11 @@ namespace EdGraph.Platform.Client.Api
             if (search.IsSet && search.Value == null)
                 throw new ArgumentNullException(nameof(search));
 
-            if (scope.IsSet && scope.Value == null)
-                throw new ArgumentNullException(nameof(scope));
+            if (schoolLocalCode.IsSet && schoolLocalCode.Value == null)
+                throw new ArgumentNullException(nameof(schoolLocalCode));
 
-            if (schoolCode.IsSet && schoolCode.Value == null)
-                throw new ArgumentNullException(nameof(schoolCode));
-
-            if (programType.IsSet && programType.Value == null)
-                throw new ArgumentNullException(nameof(programType));
+            if (programTypeId.IsSet && programTypeId.Value == null)
+                throw new ArgumentNullException(nameof(programTypeId));
         }
 
         /// <summary>
@@ -2856,13 +2278,12 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="orderBy"></param>
         /// <param name="filter"></param>
         /// <param name="search"></param>
-        /// <param name="scope"></param>
-        /// <param name="schoolCode"></param>
-        /// <param name="programType"></param>
-        private void AfterGetProgramsDefaultImplementation(IGetProgramsApiResponse apiResponseLocalVar, string tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter, Option<string> search, Option<string> scope, Option<string> schoolCode, Option<string> programType)
+        /// <param name="schoolLocalCode"></param>
+        /// <param name="programTypeId"></param>
+        private void AfterGetProgramsDefaultImplementation(IGetProgramsApiResponse apiResponseLocalVar, string tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter, Option<string> search, Option<string> schoolLocalCode, Option<string> programTypeId)
         {
             bool suppressDefaultLog = false;
-            AfterGetPrograms(ref suppressDefaultLog, apiResponseLocalVar, tenantId, pageSize, pageIndex, orderBy, filter, search, scope, schoolCode, programType);
+            AfterGetPrograms(ref suppressDefaultLog, apiResponseLocalVar, tenantId, pageSize, pageIndex, orderBy, filter, search, schoolLocalCode, programTypeId);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -2878,10 +2299,9 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="orderBy"></param>
         /// <param name="filter"></param>
         /// <param name="search"></param>
-        /// <param name="scope"></param>
-        /// <param name="schoolCode"></param>
-        /// <param name="programType"></param>
-        partial void AfterGetPrograms(ref bool suppressDefaultLog, IGetProgramsApiResponse apiResponseLocalVar, string tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter, Option<string> search, Option<string> scope, Option<string> schoolCode, Option<string> programType);
+        /// <param name="schoolLocalCode"></param>
+        /// <param name="programTypeId"></param>
+        partial void AfterGetPrograms(ref bool suppressDefaultLog, IGetProgramsApiResponse apiResponseLocalVar, string tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter, Option<string> search, Option<string> schoolLocalCode, Option<string> programTypeId);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -2895,13 +2315,12 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="orderBy"></param>
         /// <param name="filter"></param>
         /// <param name="search"></param>
-        /// <param name="scope"></param>
-        /// <param name="schoolCode"></param>
-        /// <param name="programType"></param>
-        private void OnErrorGetProgramsDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter, Option<string> search, Option<string> scope, Option<string> schoolCode, Option<string> programType)
+        /// <param name="schoolLocalCode"></param>
+        /// <param name="programTypeId"></param>
+        private void OnErrorGetProgramsDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter, Option<string> search, Option<string> schoolLocalCode, Option<string> programTypeId)
         {
             bool suppressDefaultLogLocalVar = false;
-            OnErrorGetPrograms(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, pageSize, pageIndex, orderBy, filter, search, scope, schoolCode, programType);
+            OnErrorGetPrograms(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, pageSize, pageIndex, orderBy, filter, search, schoolLocalCode, programTypeId);
             if (!suppressDefaultLogLocalVar)
                 Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
@@ -2919,13 +2338,12 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="orderBy"></param>
         /// <param name="filter"></param>
         /// <param name="search"></param>
-        /// <param name="scope"></param>
-        /// <param name="schoolCode"></param>
-        /// <param name="programType"></param>
-        partial void OnErrorGetPrograms(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter, Option<string> search, Option<string> scope, Option<string> schoolCode, Option<string> programType);
+        /// <param name="schoolLocalCode"></param>
+        /// <param name="programTypeId"></param>
+        partial void OnErrorGetPrograms(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Option<int> pageSize, Option<int> pageIndex, Option<string> orderBy, Option<string> filter, Option<string> search, Option<string> schoolLocalCode, Option<string> programTypeId);
 
         /// <summary>
-        /// Searches Programs - the union of district catalog entries and school-specific programs, in  one list distinguished by each row&#39;s Scope. 
+        /// Searches Programs. Every row is one school&#39;s offering of a program: the school, the program  type and the requirements are embedded on it, each with its own &#x60;_id&#x60; beside the id of  the row it was copied from. 
         /// </summary>
         /// <param name="tenantId"></param>
         /// <param name="pageSize"> (optional, default to 50)</param>
@@ -2933,16 +2351,15 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
         /// <param name="filter"> (optional, default to &quot;&quot;)</param>
         /// <param name="search">Free-text match on program name/code. (optional, default to &quot;&quot;)</param>
-        /// <param name="scope">\&quot;DistrictCatalog\&quot;, \&quot;SchoolSpecific\&quot;, or omitted for all. (optional, default to &quot;&quot;)</param>
-        /// <param name="schoolCode">Narrows to programs offered at this school. Not a security boundary. (optional, default to &quot;&quot;)</param>
-        /// <param name="programType"> (optional, default to &quot;&quot;)</param>
+        /// <param name="schoolLocalCode">Narrows to programs offered at this school. Not a security boundary. (optional, default to &quot;&quot;)</param>
+        /// <param name="programTypeId">Narrows to programs of this program type (its record id). (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetProgramsApiResponse"/>&gt;</returns>
-        public async Task<IGetProgramsApiResponse?> GetProgramsOrDefaultAsync(string tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, Option<string> search = default, Option<string> scope = default, Option<string> schoolCode = default, Option<string> programType = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IGetProgramsApiResponse?> GetProgramsOrDefaultAsync(string tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, Option<string> search = default, Option<string> schoolLocalCode = default, Option<string> programTypeId = default, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await GetProgramsAsync(tenantId, pageSize, pageIndex, orderBy, filter, search, scope, schoolCode, programType, cancellationToken).ConfigureAwait(false);
+                return await GetProgramsAsync(tenantId, pageSize, pageIndex, orderBy, filter, search, schoolLocalCode, programTypeId, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -2951,7 +2368,7 @@ namespace EdGraph.Platform.Client.Api
         }
 
         /// <summary>
-        /// Searches Programs - the union of district catalog entries and school-specific programs, in  one list distinguished by each row&#39;s Scope. 
+        /// Searches Programs. Every row is one school&#39;s offering of a program: the school, the program  type and the requirements are embedded on it, each with its own &#x60;_id&#x60; beside the id of  the row it was copied from. 
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
@@ -2960,20 +2377,19 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="orderBy"> (optional, default to &quot;&quot;)</param>
         /// <param name="filter"> (optional, default to &quot;&quot;)</param>
         /// <param name="search">Free-text match on program name/code. (optional, default to &quot;&quot;)</param>
-        /// <param name="scope">\&quot;DistrictCatalog\&quot;, \&quot;SchoolSpecific\&quot;, or omitted for all. (optional, default to &quot;&quot;)</param>
-        /// <param name="schoolCode">Narrows to programs offered at this school. Not a security boundary. (optional, default to &quot;&quot;)</param>
-        /// <param name="programType"> (optional, default to &quot;&quot;)</param>
+        /// <param name="schoolLocalCode">Narrows to programs offered at this school. Not a security boundary. (optional, default to &quot;&quot;)</param>
+        /// <param name="programTypeId">Narrows to programs of this program type (its record id). (optional, default to &quot;&quot;)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns><see cref="Task"/>&lt;<see cref="IGetProgramsApiResponse"/>&gt;</returns>
-        public async Task<IGetProgramsApiResponse> GetProgramsAsync(string tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, Option<string> search = default, Option<string> scope = default, Option<string> schoolCode = default, Option<string> programType = default, System.Threading.CancellationToken cancellationToken = default)
+        public async Task<IGetProgramsApiResponse> GetProgramsAsync(string tenantId, Option<int> pageSize = default, Option<int> pageIndex = default, Option<string> orderBy = default, Option<string> filter = default, Option<string> search = default, Option<string> schoolLocalCode = default, Option<string> programTypeId = default, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
             try
             {
-                ValidateGetPrograms(tenantId, orderBy, filter, search, scope, schoolCode, programType);
+                ValidateGetPrograms(tenantId, orderBy, filter, search, schoolLocalCode, programTypeId);
 
-                FormatGetPrograms(ref tenantId, ref pageSize, ref pageIndex, ref orderBy, ref filter, ref search, ref scope, ref schoolCode, ref programType);
+                FormatGetPrograms(ref tenantId, ref pageSize, ref pageIndex, ref orderBy, ref filter, ref search, ref schoolLocalCode, ref programTypeId);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -3002,14 +2418,11 @@ namespace EdGraph.Platform.Client.Api
                     if (search.IsSet)
                         parseQueryStringLocalVar["search"] = ClientUtils.ParameterToString(search.Value);
 
-                    if (scope.IsSet)
-                        parseQueryStringLocalVar["scope"] = ClientUtils.ParameterToString(scope.Value);
+                    if (schoolLocalCode.IsSet)
+                        parseQueryStringLocalVar["schoolLocalCode"] = ClientUtils.ParameterToString(schoolLocalCode.Value);
 
-                    if (schoolCode.IsSet)
-                        parseQueryStringLocalVar["schoolCode"] = ClientUtils.ParameterToString(schoolCode.Value);
-
-                    if (programType.IsSet)
-                        parseQueryStringLocalVar["programType"] = ClientUtils.ParameterToString(programType.Value);
+                    if (programTypeId.IsSet)
+                        parseQueryStringLocalVar["programTypeId"] = ClientUtils.ParameterToString(programTypeId.Value);
 
                     uriBuilderLocalVar.Query = parseQueryStringLocalVar.ToString();
 
@@ -3049,7 +2462,7 @@ namespace EdGraph.Platform.Client.Api
                             }
                         }
 
-                        AfterGetProgramsDefaultImplementation(apiResponseLocalVar, tenantId, pageSize, pageIndex, orderBy, filter, search, scope, schoolCode, programType);
+                        AfterGetProgramsDefaultImplementation(apiResponseLocalVar, tenantId, pageSize, pageIndex, orderBy, filter, search, schoolLocalCode, programTypeId);
 
                         Events.ExecuteOnGetPrograms(apiResponseLocalVar);
 
@@ -3063,7 +2476,7 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorGetProgramsDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/programs", uriBuilderLocalVar.Path, tenantId, pageSize, pageIndex, orderBy, filter, search, scope, schoolCode, programType);
+                OnErrorGetProgramsDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/programs", uriBuilderLocalVar.Path, tenantId, pageSize, pageIndex, orderBy, filter, search, schoolLocalCode, programTypeId);
                 Events.ExecuteOnErrorGetPrograms(e);
                 throw;
             }
@@ -3314,21 +2727,21 @@ namespace EdGraph.Platform.Client.Api
             partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
         }
 
-        partial void FormatUpdateProgramCatalogEntry(ref string tenantId, ref Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto);
+        partial void FormatUpdateProgram(ref string tenantId, ref Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto);
 
         /// <summary>
         /// Validates the request parameters
         /// </summary>
         /// <param name="tenantId"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto"></param>
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto"></param>
         /// <returns></returns>
-        private void ValidateUpdateProgramCatalogEntry(string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto)
+        private void ValidateUpdateProgram(string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto)
         {
             if (tenantId == null)
                 throw new ArgumentNullException(nameof(tenantId));
 
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto.IsSet && edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto.Value == null)
-                throw new ArgumentNullException(nameof(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto));
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto.IsSet && edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto.Value == null)
+                throw new ArgumentNullException(nameof(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto));
         }
 
         /// <summary>
@@ -3337,11 +2750,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto"></param>
-        private void AfterUpdateProgramCatalogEntryDefaultImplementation(IUpdateProgramCatalogEntryApiResponse apiResponseLocalVar, string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto)
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto"></param>
+        private void AfterUpdateProgramDefaultImplementation(IUpdateProgramApiResponse apiResponseLocalVar, string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto)
         {
             bool suppressDefaultLog = false;
-            AfterUpdateProgramCatalogEntry(ref suppressDefaultLog, apiResponseLocalVar, tenantId, id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto);
+            AfterUpdateProgram(ref suppressDefaultLog, apiResponseLocalVar, tenantId, id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto);
             if (!suppressDefaultLog)
                 Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
         }
@@ -3353,8 +2766,8 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="apiResponseLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto"></param>
-        partial void AfterUpdateProgramCatalogEntry(ref bool suppressDefaultLog, IUpdateProgramCatalogEntryApiResponse apiResponseLocalVar, string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto);
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto"></param>
+        partial void AfterUpdateProgram(ref bool suppressDefaultLog, IUpdateProgramApiResponse apiResponseLocalVar, string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto);
 
         /// <summary>
         /// Logs exceptions that occur while retrieving the server response
@@ -3364,11 +2777,11 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto"></param>
-        private void OnErrorUpdateProgramCatalogEntryDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto)
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto"></param>
+        private void OnErrorUpdateProgramDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto)
         {
             bool suppressDefaultLogLocalVar = false;
-            OnErrorUpdateProgramCatalogEntry(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto);
+            OnErrorUpdateProgram(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto);
             if (!suppressDefaultLogLocalVar)
                 Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
         }
@@ -3382,22 +2795,22 @@ namespace EdGraph.Platform.Client.Api
         /// <param name="pathLocalVar"></param>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto"></param>
-        partial void OnErrorUpdateProgramCatalogEntry(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto);
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto"></param>
+        partial void OnErrorUpdateProgram(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto);
 
         /// <summary>
-        /// Updates a district catalog entry&#39;s own fields. 
+        /// Updates a Program. The school a program runs at never changes; everything else, including  the program type and the requirement set, is replaced from the body. 
         /// </summary>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto"> (optional)</param>
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IUpdateProgramCatalogEntryApiResponse"/>&gt;</returns>
-        public async Task<IUpdateProgramCatalogEntryApiResponse?> UpdateProgramCatalogEntryOrDefaultAsync(string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto = default, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns><see cref="Task"/>&lt;<see cref="IUpdateProgramApiResponse"/>&gt;</returns>
+        public async Task<IUpdateProgramApiResponse?> UpdateProgramOrDefaultAsync(string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto = default, System.Threading.CancellationToken cancellationToken = default)
         {
             try
             {
-                return await UpdateProgramCatalogEntryAsync(tenantId, id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto, cancellationToken).ConfigureAwait(false);
+                return await UpdateProgramAsync(tenantId, id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto, cancellationToken).ConfigureAwait(false);
             }
             catch (Exception)
             {
@@ -3406,23 +2819,23 @@ namespace EdGraph.Platform.Client.Api
         }
 
         /// <summary>
-        /// Updates a district catalog entry&#39;s own fields. 
+        /// Updates a Program. The school a program runs at never changes; everything else, including  the program type and the requirement set, is replaced from the body. 
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="tenantId"></param>
         /// <param name="id"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto"> (optional)</param>
+        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IUpdateProgramCatalogEntryApiResponse"/>&gt;</returns>
-        public async Task<IUpdateProgramCatalogEntryApiResponse> UpdateProgramCatalogEntryAsync(string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto = default, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns><see cref="Task"/>&lt;<see cref="IUpdateProgramApiResponse"/>&gt;</returns>
+        public async Task<IUpdateProgramApiResponse> UpdateProgramAsync(string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto = default, System.Threading.CancellationToken cancellationToken = default)
         {
             UriBuilder uriBuilderLocalVar = new UriBuilder();
 
             try
             {
-                ValidateUpdateProgramCatalogEntry(tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto);
+                ValidateUpdateProgram(tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto);
 
-                FormatUpdateProgramCatalogEntry(ref tenantId, ref id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto);
+                FormatUpdateProgram(ref tenantId, ref id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto);
 
                 using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
                 {
@@ -3430,16 +2843,16 @@ namespace EdGraph.Platform.Client.Api
                     uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
                     uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
                     uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
-                        ? "/tenants/{tenantId}/enrollmentadmin/programs/catalog-entries/{id}"
-                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/programs/catalog-entries/{id}");
+                        ? "/tenants/{tenantId}/enrollmentadmin/programs/{id}"
+                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/programs/{id}");
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
                     uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Bid%7D", Uri.EscapeDataString(id.ToString()));
 
-                    if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto.IsSet)
+                    if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto.IsSet)
                     {
-                      httpRequestMessageLocalVar.Content = (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto.Value as object) is EdGraph.Platform.Client.Client.FileParameter fileParameterLocalVar
+                      httpRequestMessageLocalVar.Content = (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto.Value as object) is EdGraph.Platform.Client.Client.FileParameter fileParameterLocalVar
                         ? httpRequestMessageLocalVar.Content = new StreamContent(fileParameterLocalVar.Content)
-                        : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto.Value, _jsonSerializerOptions));
+                        : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto.Value, _jsonSerializerOptions));
                     }
 
                     List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
@@ -3478,21 +2891,21 @@ namespace EdGraph.Platform.Client.Api
 
                     using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
                     {
-                        ILogger<UpdateProgramCatalogEntryApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<UpdateProgramCatalogEntryApiResponse>();
-                        UpdateProgramCatalogEntryApiResponse apiResponseLocalVar;
+                        ILogger<UpdateProgramApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<UpdateProgramApiResponse>();
+                        UpdateProgramApiResponse apiResponseLocalVar;
 
                         switch ((int)httpResponseMessageLocalVar.StatusCode) {
                             default: {
                                 string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/programs/catalog-entries/{id}", requestedAtLocalVar, _jsonSerializerOptions);
+                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/programs/{id}", requestedAtLocalVar, _jsonSerializerOptions);
 
                                 break;
                             }
                         }
 
-                        AfterUpdateProgramCatalogEntryDefaultImplementation(apiResponseLocalVar, tenantId, id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto);
+                        AfterUpdateProgramDefaultImplementation(apiResponseLocalVar, tenantId, id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto);
 
-                        Events.ExecuteOnUpdateProgramCatalogEntry(apiResponseLocalVar);
+                        Events.ExecuteOnUpdateProgram(apiResponseLocalVar);
 
                         if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
                             foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
@@ -3504,24 +2917,24 @@ namespace EdGraph.Platform.Client.Api
             }
             catch(Exception e)
             {
-                OnErrorUpdateProgramCatalogEntryDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/programs/catalog-entries/{id}", uriBuilderLocalVar.Path, tenantId, id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramCatalogEntryRequestDto);
-                Events.ExecuteOnErrorUpdateProgramCatalogEntry(e);
+                OnErrorUpdateProgramDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/programs/{id}", uriBuilderLocalVar.Path, tenantId, id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateProgramRequestDto);
+                Events.ExecuteOnErrorUpdateProgram(e);
                 throw;
             }
         }
 
         /// <summary>
-        /// The <see cref="UpdateProgramCatalogEntryApiResponse"/>
+        /// The <see cref="UpdateProgramApiResponse"/>
         /// </summary>
-        public partial class UpdateProgramCatalogEntryApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IUpdateProgramCatalogEntryApiResponse
+        public partial class UpdateProgramApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IUpdateProgramApiResponse
         {
             /// <summary>
             /// The logger
             /// </summary>
-            public ILogger<UpdateProgramCatalogEntryApiResponse> Logger { get; }
+            public ILogger<UpdateProgramApiResponse> Logger { get; }
 
             /// <summary>
-            /// The <see cref="UpdateProgramCatalogEntryApiResponse"/>
+            /// The <see cref="UpdateProgramApiResponse"/>
             /// </summary>
             /// <param name="logger"></param>
             /// <param name="httpRequestMessage"></param>
@@ -3530,14 +2943,14 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public UpdateProgramCatalogEntryApiResponse(ILogger<UpdateProgramCatalogEntryApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
+            public UpdateProgramApiResponse(ILogger<UpdateProgramApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);
             }
 
             /// <summary>
-            /// The <see cref="UpdateProgramCatalogEntryApiResponse"/>
+            /// The <see cref="UpdateProgramApiResponse"/>
             /// </summary>
             /// <param name="logger"></param>
             /// <param name="httpRequestMessage"></param>
@@ -3546,486 +2959,7 @@ namespace EdGraph.Platform.Client.Api
             /// <param name="path"></param>
             /// <param name="requestedAt"></param>
             /// <param name="jsonSerializerOptions"></param>
-            public UpdateProgramCatalogEntryApiResponse(ILogger<UpdateProgramCatalogEntryApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
-            {
-                Logger = logger;
-                OnCreated(httpRequestMessage, httpResponseMessage);
-            }
-
-            partial void OnCreated(global::System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage);
-
-            /// <summary>
-            /// Returns true if the response is 401 Unauthorized
-            /// </summary>
-            /// <returns></returns>
-            public bool IsUnauthorized => 401 == (int)StatusCode;
-
-            /// <summary>
-            /// Deserializes the response if the response is 401 Unauthorized
-            /// </summary>
-            /// <returns></returns>
-            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Unauthorized()
-            {
-                // This logic may be modified with the AsModel.mustache template
-                return IsUnauthorized
-                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
-                    : null;
-            }
-
-            /// <summary>
-            /// Returns true if the response is 401 Unauthorized and the deserialized response is not null
-            /// </summary>
-            /// <param name="result"></param>
-            /// <returns></returns>
-            public bool TryUnauthorized([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
-            {
-                result = null;
-
-                try
-                {
-                    result = Unauthorized();
-                } catch (Exception e)
-                {
-                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)401);
-                }
-
-                return result != null;
-            }
-
-            /// <summary>
-            /// Returns true if the response is 403 Forbidden
-            /// </summary>
-            /// <returns></returns>
-            public bool IsForbidden => 403 == (int)StatusCode;
-
-            /// <summary>
-            /// Deserializes the response if the response is 403 Forbidden
-            /// </summary>
-            /// <returns></returns>
-            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? Forbidden()
-            {
-                // This logic may be modified with the AsModel.mustache template
-                return IsForbidden
-                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
-                    : null;
-            }
-
-            /// <summary>
-            /// Returns true if the response is 403 Forbidden and the deserialized response is not null
-            /// </summary>
-            /// <param name="result"></param>
-            /// <returns></returns>
-            public bool TryForbidden([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
-            {
-                result = null;
-
-                try
-                {
-                    result = Forbidden();
-                } catch (Exception e)
-                {
-                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)403);
-                }
-
-                return result != null;
-            }
-
-            /// <summary>
-            /// Returns true if the response is 500 InternalServerError
-            /// </summary>
-            /// <returns></returns>
-            public bool IsInternalServerError => 500 == (int)StatusCode;
-
-            /// <summary>
-            /// Deserializes the response if the response is 500 InternalServerError
-            /// </summary>
-            /// <returns></returns>
-            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? InternalServerError()
-            {
-                // This logic may be modified with the AsModel.mustache template
-                return IsInternalServerError
-                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
-                    : null;
-            }
-
-            /// <summary>
-            /// Returns true if the response is 500 InternalServerError and the deserialized response is not null
-            /// </summary>
-            /// <param name="result"></param>
-            /// <returns></returns>
-            public bool TryInternalServerError([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
-            {
-                result = null;
-
-                try
-                {
-                    result = InternalServerError();
-                } catch (Exception e)
-                {
-                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)500);
-                }
-
-                return result != null;
-            }
-
-            /// <summary>
-            /// Returns true if the response is 200 Ok
-            /// </summary>
-            /// <returns></returns>
-            public bool IsOk => 200 == (int)StatusCode;
-
-            /// <summary>
-            /// Deserializes the response if the response is 200 Ok
-            /// </summary>
-            /// <returns></returns>
-            public EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramMutationResultDto? Ok()
-            {
-                // This logic may be modified with the AsModel.mustache template
-                return IsOk
-                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramMutationResultDto>(RawContent, _jsonSerializerOptions)
-                    : null;
-            }
-
-            /// <summary>
-            /// Returns true if the response is 200 Ok and the deserialized response is not null
-            /// </summary>
-            /// <param name="result"></param>
-            /// <returns></returns>
-            public bool TryOk([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramMutationResultDto? result)
-            {
-                result = null;
-
-                try
-                {
-                    result = Ok();
-                } catch (Exception e)
-                {
-                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)200);
-                }
-
-                return result != null;
-            }
-
-            /// <summary>
-            /// Returns true if the response is 400 BadRequest
-            /// </summary>
-            /// <returns></returns>
-            public bool IsBadRequest => 400 == (int)StatusCode;
-
-            /// <summary>
-            /// Deserializes the response if the response is 400 BadRequest
-            /// </summary>
-            /// <returns></returns>
-            public EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails? BadRequest()
-            {
-                // This logic may be modified with the AsModel.mustache template
-                return IsBadRequest
-                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails>(RawContent, _jsonSerializerOptions)
-                    : null;
-            }
-
-            /// <summary>
-            /// Returns true if the response is 400 BadRequest and the deserialized response is not null
-            /// </summary>
-            /// <param name="result"></param>
-            /// <returns></returns>
-            public bool TryBadRequest([NotNullWhen(true)]out EdGraph.Platform.Client.Model.MicrosoftAspNetCoreMvcValidationProblemDetails? result)
-            {
-                result = null;
-
-                try
-                {
-                    result = BadRequest();
-                } catch (Exception e)
-                {
-                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)400);
-                }
-
-                return result != null;
-            }
-
-            /// <summary>
-            /// Returns true if the response is 404 NotFound
-            /// </summary>
-            /// <returns></returns>
-            public bool IsNotFound => 404 == (int)StatusCode;
-
-            /// <summary>
-            /// Deserializes the response if the response is 404 NotFound
-            /// </summary>
-            /// <returns></returns>
-            public EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? NotFound()
-            {
-                // This logic may be modified with the AsModel.mustache template
-                return IsNotFound
-                    ? System.Text.Json.JsonSerializer.Deserialize<EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails>(RawContent, _jsonSerializerOptions)
-                    : null;
-            }
-
-            /// <summary>
-            /// Returns true if the response is 404 NotFound and the deserialized response is not null
-            /// </summary>
-            /// <param name="result"></param>
-            /// <returns></returns>
-            public bool TryNotFound([NotNullWhen(true)]out EdGraph.Platform.Client.Model.EdGraphCommonErrorsCoreProblemDetails? result)
-            {
-                result = null;
-
-                try
-                {
-                    result = NotFound();
-                } catch (Exception e)
-                {
-                    OnDeserializationErrorDefaultImplementation(e, (HttpStatusCode)404);
-                }
-
-                return result != null;
-            }
-
-            private void OnDeserializationErrorDefaultImplementation(Exception exception, HttpStatusCode httpStatusCode)
-            {
-                bool suppressDefaultLog = false;
-                OnDeserializationError(ref suppressDefaultLog, exception, httpStatusCode);
-                if (!suppressDefaultLog)
-                    Logger.LogError(exception, "An error occurred while deserializing the {code} response.", httpStatusCode);
-            }
-
-            partial void OnDeserializationError(ref bool suppressDefaultLog, Exception exception, HttpStatusCode httpStatusCode);
-        }
-
-        partial void FormatUpdateSchoolProgram(ref string tenantId, ref Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto);
-
-        /// <summary>
-        /// Validates the request parameters
-        /// </summary>
-        /// <param name="tenantId"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto"></param>
-        /// <returns></returns>
-        private void ValidateUpdateSchoolProgram(string tenantId, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto)
-        {
-            if (tenantId == null)
-                throw new ArgumentNullException(nameof(tenantId));
-
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto.IsSet && edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto.Value == null)
-                throw new ArgumentNullException(nameof(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto));
-        }
-
-        /// <summary>
-        /// Processes the server response
-        /// </summary>
-        /// <param name="apiResponseLocalVar"></param>
-        /// <param name="tenantId"></param>
-        /// <param name="id"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto"></param>
-        private void AfterUpdateSchoolProgramDefaultImplementation(IUpdateSchoolProgramApiResponse apiResponseLocalVar, string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto)
-        {
-            bool suppressDefaultLog = false;
-            AfterUpdateSchoolProgram(ref suppressDefaultLog, apiResponseLocalVar, tenantId, id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto);
-            if (!suppressDefaultLog)
-                Logger.LogInformation("{0,-9} | {1} | {2}", (apiResponseLocalVar.DownloadedAt - apiResponseLocalVar.RequestedAt).TotalSeconds, apiResponseLocalVar.StatusCode, apiResponseLocalVar.Path);
-        }
-
-        /// <summary>
-        /// Processes the server response
-        /// </summary>
-        /// <param name="suppressDefaultLog"></param>
-        /// <param name="apiResponseLocalVar"></param>
-        /// <param name="tenantId"></param>
-        /// <param name="id"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto"></param>
-        partial void AfterUpdateSchoolProgram(ref bool suppressDefaultLog, IUpdateSchoolProgramApiResponse apiResponseLocalVar, string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto);
-
-        /// <summary>
-        /// Logs exceptions that occur while retrieving the server response
-        /// </summary>
-        /// <param name="exceptionLocalVar"></param>
-        /// <param name="pathFormatLocalVar"></param>
-        /// <param name="pathLocalVar"></param>
-        /// <param name="tenantId"></param>
-        /// <param name="id"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto"></param>
-        private void OnErrorUpdateSchoolProgramDefaultImplementation(Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto)
-        {
-            bool suppressDefaultLogLocalVar = false;
-            OnErrorUpdateSchoolProgram(ref suppressDefaultLogLocalVar, exceptionLocalVar, pathFormatLocalVar, pathLocalVar, tenantId, id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto);
-            if (!suppressDefaultLogLocalVar)
-                Logger.LogError(exceptionLocalVar, "An error occurred while sending the request to the server.");
-        }
-
-        /// <summary>
-        /// A partial method that gives developers a way to provide customized exception handling
-        /// </summary>
-        /// <param name="suppressDefaultLogLocalVar"></param>
-        /// <param name="exceptionLocalVar"></param>
-        /// <param name="pathFormatLocalVar"></param>
-        /// <param name="pathLocalVar"></param>
-        /// <param name="tenantId"></param>
-        /// <param name="id"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto"></param>
-        partial void OnErrorUpdateSchoolProgram(ref bool suppressDefaultLogLocalVar, Exception exceptionLocalVar, string pathFormatLocalVar, string pathLocalVar, string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto);
-
-        /// <summary>
-        /// Updates a school program&#39;s grades/capacity/zone/coordinates, and - only when it is  school-specific - its own Code/Name/ProgramType/EligibilityCriteria/RequiredDocuments. 
-        /// </summary>
-        /// <param name="tenantId"></param>
-        /// <param name="id"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IUpdateSchoolProgramApiResponse"/>&gt;</returns>
-        public async Task<IUpdateSchoolProgramApiResponse?> UpdateSchoolProgramOrDefaultAsync(string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto = default, System.Threading.CancellationToken cancellationToken = default)
-        {
-            try
-            {
-                return await UpdateSchoolProgramAsync(tenantId, id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto, cancellationToken).ConfigureAwait(false);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Updates a school program&#39;s grades/capacity/zone/coordinates, and - only when it is  school-specific - its own Code/Name/ProgramType/EligibilityCriteria/RequiredDocuments. 
-        /// </summary>
-        /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="tenantId"></param>
-        /// <param name="id"></param>
-        /// <param name="edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto"> (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns><see cref="Task"/>&lt;<see cref="IUpdateSchoolProgramApiResponse"/>&gt;</returns>
-        public async Task<IUpdateSchoolProgramApiResponse> UpdateSchoolProgramAsync(string tenantId, Guid id, Option<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto> edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto = default, System.Threading.CancellationToken cancellationToken = default)
-        {
-            UriBuilder uriBuilderLocalVar = new UriBuilder();
-
-            try
-            {
-                ValidateUpdateSchoolProgram(tenantId, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto);
-
-                FormatUpdateSchoolProgram(ref tenantId, ref id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto);
-
-                using (HttpRequestMessage httpRequestMessageLocalVar = new HttpRequestMessage())
-                {
-                    uriBuilderLocalVar.Host = HttpClient.BaseAddress!.Host;
-                    uriBuilderLocalVar.Port = HttpClient.BaseAddress.Port;
-                    uriBuilderLocalVar.Scheme = HttpClient.BaseAddress.Scheme;
-                    uriBuilderLocalVar.Path = HttpClient.BaseAddress.AbsolutePath == "/"
-                        ? "/tenants/{tenantId}/enrollmentadmin/programs/school-programs/{id}"
-                        : string.Concat(HttpClient.BaseAddress.AbsolutePath.TrimEnd('/'), "/tenants/{tenantId}/enrollmentadmin/programs/school-programs/{id}");
-                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7BtenantId%7D", Uri.EscapeDataString(tenantId.ToString()));
-                    uriBuilderLocalVar.Path = uriBuilderLocalVar.Path.Replace("%7Bid%7D", Uri.EscapeDataString(id.ToString()));
-
-                    if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto.IsSet)
-                    {
-                      httpRequestMessageLocalVar.Content = (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto.Value as object) is EdGraph.Platform.Client.Client.FileParameter fileParameterLocalVar
-                        ? httpRequestMessageLocalVar.Content = new StreamContent(fileParameterLocalVar.Content)
-                        : httpRequestMessageLocalVar.Content = new StringContent(JsonSerializer.Serialize(edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto.Value, _jsonSerializerOptions));
-                    }
-
-                    List<TokenBase> tokenBaseLocalVars = new List<TokenBase>();
-                    httpRequestMessageLocalVar.RequestUri = uriBuilderLocalVar.Uri;
-
-                    OAuthToken oauthTokenLocalVar1 = (OAuthToken) await OauthTokenProvider.GetAsync(cancellation: cancellationToken).ConfigureAwait(false);
-
-                    tokenBaseLocalVars.Add(oauthTokenLocalVar1);
-
-                    oauthTokenLocalVar1.UseInHeader(httpRequestMessageLocalVar, "");
-
-                    string[] contentTypes = new string[] {
-                        "application/json-patch+json",
-                        "application/json",
-                        "text/json",
-                        "application/*+json"
-                    };
-
-                    string? contentTypeLocalVar = ClientUtils.SelectHeaderContentType(contentTypes);
-
-                    if (contentTypeLocalVar != null && httpRequestMessageLocalVar.Content != null)
-                        httpRequestMessageLocalVar.Content.Headers.ContentType = new MediaTypeHeaderValue(contentTypeLocalVar);
-
-                    string[] acceptLocalVars = new string[] {
-                        "application/json"
-                    };
-
-                    IEnumerable<MediaTypeWithQualityHeaderValue> acceptHeaderValuesLocalVar = ClientUtils.SelectHeaderAcceptArray(acceptLocalVars);
-
-                    foreach (var acceptLocalVar in acceptHeaderValuesLocalVar)
-                        httpRequestMessageLocalVar.Headers.Accept.Add(acceptLocalVar);
-
-                    httpRequestMessageLocalVar.Method = HttpMethod.Put;
-
-                    DateTime requestedAtLocalVar = DateTime.UtcNow;
-
-                    using (HttpResponseMessage httpResponseMessageLocalVar = await HttpClient.SendAsync(httpRequestMessageLocalVar, cancellationToken).ConfigureAwait(false))
-                    {
-                        ILogger<UpdateSchoolProgramApiResponse> apiResponseLoggerLocalVar = LoggerFactory.CreateLogger<UpdateSchoolProgramApiResponse>();
-                        UpdateSchoolProgramApiResponse apiResponseLocalVar;
-
-                        switch ((int)httpResponseMessageLocalVar.StatusCode) {
-                            default: {
-                                string responseContentLocalVar = await httpResponseMessageLocalVar.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
-                                apiResponseLocalVar = new(apiResponseLoggerLocalVar, httpRequestMessageLocalVar, httpResponseMessageLocalVar, responseContentLocalVar, "/tenants/{tenantId}/enrollmentadmin/programs/school-programs/{id}", requestedAtLocalVar, _jsonSerializerOptions);
-
-                                break;
-                            }
-                        }
-
-                        AfterUpdateSchoolProgramDefaultImplementation(apiResponseLocalVar, tenantId, id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto);
-
-                        Events.ExecuteOnUpdateSchoolProgram(apiResponseLocalVar);
-
-                        if (apiResponseLocalVar.StatusCode == (HttpStatusCode) 429)
-                            foreach(TokenBase tokenBaseLocalVar in tokenBaseLocalVars)
-                                tokenBaseLocalVar.BeginRateLimit();
-
-                        return apiResponseLocalVar;
-                    }
-                }
-            }
-            catch(Exception e)
-            {
-                OnErrorUpdateSchoolProgramDefaultImplementation(e, "/tenants/{tenantId}/enrollmentadmin/programs/school-programs/{id}", uriBuilderLocalVar.Path, tenantId, id, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsRequestsEnrollmentAdminUpdateSchoolProgramRequestDto);
-                Events.ExecuteOnErrorUpdateSchoolProgram(e);
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// The <see cref="UpdateSchoolProgramApiResponse"/>
-        /// </summary>
-        public partial class UpdateSchoolProgramApiResponse : EdGraph.Platform.Client.Client.ApiResponse, IUpdateSchoolProgramApiResponse
-        {
-            /// <summary>
-            /// The logger
-            /// </summary>
-            public ILogger<UpdateSchoolProgramApiResponse> Logger { get; }
-
-            /// <summary>
-            /// The <see cref="UpdateSchoolProgramApiResponse"/>
-            /// </summary>
-            /// <param name="logger"></param>
-            /// <param name="httpRequestMessage"></param>
-            /// <param name="httpResponseMessage"></param>
-            /// <param name="rawContent"></param>
-            /// <param name="path"></param>
-            /// <param name="requestedAt"></param>
-            /// <param name="jsonSerializerOptions"></param>
-            public UpdateSchoolProgramApiResponse(ILogger<UpdateSchoolProgramApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, string rawContent, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, rawContent, path, requestedAt, jsonSerializerOptions)
-            {
-                Logger = logger;
-                OnCreated(httpRequestMessage, httpResponseMessage);
-            }
-
-            /// <summary>
-            /// The <see cref="UpdateSchoolProgramApiResponse"/>
-            /// </summary>
-            /// <param name="logger"></param>
-            /// <param name="httpRequestMessage"></param>
-            /// <param name="httpResponseMessage"></param>
-            /// <param name="contentStream"></param>
-            /// <param name="path"></param>
-            /// <param name="requestedAt"></param>
-            /// <param name="jsonSerializerOptions"></param>
-            public UpdateSchoolProgramApiResponse(ILogger<UpdateSchoolProgramApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
+            public UpdateProgramApiResponse(ILogger<UpdateProgramApiResponse> logger, System.Net.Http.HttpRequestMessage httpRequestMessage, System.Net.Http.HttpResponseMessage httpResponseMessage, System.IO.Stream contentStream, string path, DateTime requestedAt, System.Text.Json.JsonSerializerOptions jsonSerializerOptions) : base(httpRequestMessage, httpResponseMessage, contentStream, path, requestedAt, jsonSerializerOptions)
             {
                 Logger = logger;
                 OnCreated(httpRequestMessage, httpResponseMessage);

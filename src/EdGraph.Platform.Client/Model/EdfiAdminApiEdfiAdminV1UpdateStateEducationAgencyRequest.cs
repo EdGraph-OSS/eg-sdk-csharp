@@ -39,8 +39,9 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="stateEducationAgencyId">stateEducationAgencyId</param>
         /// <param name="nameOfInstitution">nameOfInstitution</param>
         /// <param name="educationOrganizationCategoryDescriptors">educationOrganizationCategoryDescriptors</param>
+        /// <param name="year">year</param>
         [JsonConstructor]
-        public EdfiAdminApiEdfiAdminV1UpdateStateEducationAgencyRequest(Option<string?> tenantId = default, Option<string?> instanceId = default, Option<string?> id = default, Option<int?> stateEducationAgencyId = default, Option<string?> nameOfInstitution = default, Option<List<string>?> educationOrganizationCategoryDescriptors = default)
+        public EdfiAdminApiEdfiAdminV1UpdateStateEducationAgencyRequest(Option<string?> tenantId = default, Option<string?> instanceId = default, Option<string?> id = default, Option<int?> stateEducationAgencyId = default, Option<string?> nameOfInstitution = default, Option<List<string>?> educationOrganizationCategoryDescriptors = default, Option<int?> year = default)
         {
             TenantIdOption = tenantId;
             InstanceIdOption = instanceId;
@@ -48,6 +49,7 @@ namespace EdGraph.Platform.Client.Model
             StateEducationAgencyIdOption = stateEducationAgencyId;
             NameOfInstitutionOption = nameOfInstitution;
             EducationOrganizationCategoryDescriptorsOption = educationOrganizationCategoryDescriptors;
+            YearOption = year;
             OnCreated();
         }
 
@@ -132,6 +134,19 @@ namespace EdGraph.Platform.Client.Model
         public List<string>? EducationOrganizationCategoryDescriptors { get { return this.EducationOrganizationCategoryDescriptorsOption.Value; } }
 
         /// <summary>
+        /// Used to track the state of Year
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<int?> YearOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets Year
+        /// </summary>
+        [JsonPropertyName("year")]
+        public int? Year { get { return this.YearOption.Value; } set { this.YearOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -145,6 +160,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  StateEducationAgencyId: ").Append(StateEducationAgencyId).Append("\n");
             sb.Append("  NameOfInstitution: ").Append(NameOfInstitution).Append("\n");
             sb.Append("  EducationOrganizationCategoryDescriptors: ").Append(EducationOrganizationCategoryDescriptors).Append("\n");
+            sb.Append("  Year: ").Append(Year).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -188,6 +204,7 @@ namespace EdGraph.Platform.Client.Model
             Option<int?> stateEducationAgencyId = default;
             Option<string?> nameOfInstitution = default;
             Option<List<string>?> educationOrganizationCategoryDescriptors = default;
+            Option<int?> year = default;
 
             while (utf8JsonReader.Read())
             {
@@ -222,6 +239,9 @@ namespace EdGraph.Platform.Client.Model
                         case "educationOrganizationCategoryDescriptors":
                             educationOrganizationCategoryDescriptors = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
+                        case "year":
+                            year = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
+                            break;
                         default:
                             break;
                     }
@@ -231,7 +251,10 @@ namespace EdGraph.Platform.Client.Model
             if (stateEducationAgencyId.IsSet && stateEducationAgencyId.Value == null)
                 throw new ArgumentNullException(nameof(stateEducationAgencyId), "Property is not nullable for class EdfiAdminApiEdfiAdminV1UpdateStateEducationAgencyRequest.");
 
-            return new EdfiAdminApiEdfiAdminV1UpdateStateEducationAgencyRequest(tenantId, instanceId, id, stateEducationAgencyId, nameOfInstitution, educationOrganizationCategoryDescriptors);
+            if (year.IsSet && year.Value == null)
+                throw new ArgumentNullException(nameof(year), "Property is not nullable for class EdfiAdminApiEdfiAdminV1UpdateStateEducationAgencyRequest.");
+
+            return new EdfiAdminApiEdfiAdminV1UpdateStateEducationAgencyRequest(tenantId, instanceId, id, stateEducationAgencyId, nameOfInstitution, educationOrganizationCategoryDescriptors, year);
         }
 
         /// <summary>
@@ -293,6 +316,8 @@ namespace EdGraph.Platform.Client.Model
                 }
                 else
                     writer.WriteNull("educationOrganizationCategoryDescriptors");
+            if (edfiAdminApiEdfiAdminV1UpdateStateEducationAgencyRequest.YearOption.IsSet)
+                writer.WriteNumber("year", edfiAdminApiEdfiAdminV1UpdateStateEducationAgencyRequest.YearOption.Value!.Value);
         }
     }
 }

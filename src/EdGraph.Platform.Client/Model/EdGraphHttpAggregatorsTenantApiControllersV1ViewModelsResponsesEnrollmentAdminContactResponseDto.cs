@@ -35,7 +35,7 @@ namespace EdGraph.Platform.Client.Model
         /// </summary>
         /// <param name="id">id</param>
         /// <param name="tenantId">tenantId</param>
-        /// <param name="contactId">contactId</param>
+        /// <param name="externalDataSourceContactId">externalDataSourceContactId</param>
         /// <param name="firstName">firstName</param>
         /// <param name="lastName">lastName</param>
         /// <param name="email">email</param>
@@ -43,14 +43,15 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="students">students</param>
         /// <param name="relationship">relationship</param>
         /// <param name="studentCount">studentCount</param>
+        /// <param name="studentLocalCodes">studentLocalCodes</param>
         /// <param name="isPhoneOverride">isPhoneOverride</param>
         /// <param name="isEmailOverride">isEmailOverride</param>
         /// <param name="sisEmail">sisEmail</param>
         /// <param name="sisPhone">sisPhone</param>
-        /// <param name="emailOverriddenBy">emailOverriddenBy</param>
-        /// <param name="emailOverriddenAt">emailOverriddenAt</param>
-        /// <param name="phoneOverriddenBy">phoneOverriddenBy</param>
-        /// <param name="phoneOverriddenAt">phoneOverriddenAt</param>
+        /// <param name="emailLastOverriddenBy">emailLastOverriddenBy</param>
+        /// <param name="emailLastOverriddenDateTime">emailLastOverriddenDateTime</param>
+        /// <param name="phoneLastOverriddenBy">phoneLastOverriddenBy</param>
+        /// <param name="phoneLastOverriddenDateTime">phoneLastOverriddenDateTime</param>
         /// <param name="signInStatus">signInStatus</param>
         /// <param name="isLocked">isLocked</param>
         /// <param name="createdBy">createdBy</param>
@@ -58,13 +59,16 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="lastModifiedBy">lastModifiedBy</param>
         /// <param name="lastModifiedDateTime">lastModifiedDateTime</param>
         /// <param name="lastUpdatedDateTime">lastUpdatedDateTime</param>
+        /// <param name="deletedBy">deletedBy</param>
+        /// <param name="deletedDateTime">deletedDateTime</param>
         /// <param name="isDeleted">isDeleted</param>
+        /// <param name="verificationStatus">verificationStatus</param>
         [JsonConstructor]
-        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto(Option<Guid?> id = default, Option<Guid?> tenantId = default, Option<string?> contactId = default, Option<string?> firstName = default, Option<string?> lastName = default, Option<string?> email = default, Option<string?> phone = default, Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto>?> students = default, Option<string?> relationship = default, Option<int?> studentCount = default, Option<bool?> isPhoneOverride = default, Option<bool?> isEmailOverride = default, Option<string?> sisEmail = default, Option<string?> sisPhone = default, Option<string?> emailOverriddenBy = default, Option<DateTime?> emailOverriddenAt = default, Option<string?> phoneOverriddenBy = default, Option<DateTime?> phoneOverriddenAt = default, Option<string?> signInStatus = default, Option<bool?> isLocked = default, Option<string?> createdBy = default, Option<DateTime?> createdDateTime = default, Option<string?> lastModifiedBy = default, Option<DateTime?> lastModifiedDateTime = default, Option<DateTime?> lastUpdatedDateTime = default, Option<bool?> isDeleted = default)
+        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto(Option<Guid?> id = default, Option<Guid?> tenantId = default, Option<string?> externalDataSourceContactId = default, Option<string?> firstName = default, Option<string?> lastName = default, Option<string?> email = default, Option<string?> phone = default, Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto>?> students = default, Option<string?> relationship = default, Option<int?> studentCount = default, Option<List<string>?> studentLocalCodes = default, Option<bool?> isPhoneOverride = default, Option<bool?> isEmailOverride = default, Option<string?> sisEmail = default, Option<string?> sisPhone = default, Option<string?> emailLastOverriddenBy = default, Option<DateTime?> emailLastOverriddenDateTime = default, Option<string?> phoneLastOverriddenBy = default, Option<DateTime?> phoneLastOverriddenDateTime = default, Option<string?> signInStatus = default, Option<bool?> isLocked = default, Option<string?> createdBy = default, Option<DateTime?> createdDateTime = default, Option<string?> lastModifiedBy = default, Option<DateTime?> lastModifiedDateTime = default, Option<DateTime?> lastUpdatedDateTime = default, Option<string?> deletedBy = default, Option<DateTime?> deletedDateTime = default, Option<bool?> isDeleted = default, Option<string?> verificationStatus = default)
         {
             IdOption = id;
             TenantIdOption = tenantId;
-            ContactIdOption = contactId;
+            ExternalDataSourceContactIdOption = externalDataSourceContactId;
             FirstNameOption = firstName;
             LastNameOption = lastName;
             EmailOption = email;
@@ -72,14 +76,15 @@ namespace EdGraph.Platform.Client.Model
             StudentsOption = students;
             RelationshipOption = relationship;
             StudentCountOption = studentCount;
+            StudentLocalCodesOption = studentLocalCodes;
             IsPhoneOverrideOption = isPhoneOverride;
             IsEmailOverrideOption = isEmailOverride;
             SisEmailOption = sisEmail;
             SisPhoneOption = sisPhone;
-            EmailOverriddenByOption = emailOverriddenBy;
-            EmailOverriddenAtOption = emailOverriddenAt;
-            PhoneOverriddenByOption = phoneOverriddenBy;
-            PhoneOverriddenAtOption = phoneOverriddenAt;
+            EmailLastOverriddenByOption = emailLastOverriddenBy;
+            EmailLastOverriddenDateTimeOption = emailLastOverriddenDateTime;
+            PhoneLastOverriddenByOption = phoneLastOverriddenBy;
+            PhoneLastOverriddenDateTimeOption = phoneLastOverriddenDateTime;
             SignInStatusOption = signInStatus;
             IsLockedOption = isLocked;
             CreatedByOption = createdBy;
@@ -87,7 +92,10 @@ namespace EdGraph.Platform.Client.Model
             LastModifiedByOption = lastModifiedBy;
             LastModifiedDateTimeOption = lastModifiedDateTime;
             LastUpdatedDateTimeOption = lastUpdatedDateTime;
+            DeletedByOption = deletedBy;
+            DeletedDateTimeOption = deletedDateTime;
             IsDeletedOption = isDeleted;
+            VerificationStatusOption = verificationStatus;
             OnCreated();
         }
 
@@ -120,17 +128,17 @@ namespace EdGraph.Platform.Client.Model
         public Guid? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
-        /// Used to track the state of ContactId
+        /// Used to track the state of ExternalDataSourceContactId
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<string?> ContactIdOption { get; private set; }
+        public Option<string?> ExternalDataSourceContactIdOption { get; private set; }
 
         /// <summary>
-        /// Gets or Sets ContactId
+        /// Gets or Sets ExternalDataSourceContactId
         /// </summary>
-        [JsonPropertyName("contactId")]
-        public string? ContactId { get { return this.ContactIdOption.Value; } set { this.ContactIdOption = new(value); } }
+        [JsonPropertyName("externalDataSourceContactId")]
+        public string? ExternalDataSourceContactId { get { return this.ExternalDataSourceContactIdOption.Value; } set { this.ExternalDataSourceContactIdOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of FirstName
@@ -224,6 +232,19 @@ namespace EdGraph.Platform.Client.Model
         public int? StudentCount { get { return this.StudentCountOption.Value; } set { this.StudentCountOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of StudentLocalCodes
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<List<string>?> StudentLocalCodesOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets StudentLocalCodes
+        /// </summary>
+        [JsonPropertyName("studentLocalCodes")]
+        public List<string>? StudentLocalCodes { get { return this.StudentLocalCodesOption.Value; } set { this.StudentLocalCodesOption = new(value); } }
+
+        /// <summary>
         /// Used to track the state of IsPhoneOverride
         /// </summary>
         [JsonIgnore]
@@ -276,56 +297,56 @@ namespace EdGraph.Platform.Client.Model
         public string? SisPhone { get { return this.SisPhoneOption.Value; } set { this.SisPhoneOption = new(value); } }
 
         /// <summary>
-        /// Used to track the state of EmailOverriddenBy
+        /// Used to track the state of EmailLastOverriddenBy
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<string?> EmailOverriddenByOption { get; private set; }
+        public Option<string?> EmailLastOverriddenByOption { get; private set; }
 
         /// <summary>
-        /// Gets or Sets EmailOverriddenBy
+        /// Gets or Sets EmailLastOverriddenBy
         /// </summary>
-        [JsonPropertyName("emailOverriddenBy")]
-        public string? EmailOverriddenBy { get { return this.EmailOverriddenByOption.Value; } set { this.EmailOverriddenByOption = new(value); } }
+        [JsonPropertyName("emailLastOverriddenBy")]
+        public string? EmailLastOverriddenBy { get { return this.EmailLastOverriddenByOption.Value; } set { this.EmailLastOverriddenByOption = new(value); } }
 
         /// <summary>
-        /// Used to track the state of EmailOverriddenAt
-        /// </summary>
-        [JsonIgnore]
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<DateTime?> EmailOverriddenAtOption { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets EmailOverriddenAt
-        /// </summary>
-        [JsonPropertyName("emailOverriddenAt")]
-        public DateTime? EmailOverriddenAt { get { return this.EmailOverriddenAtOption.Value; } set { this.EmailOverriddenAtOption = new(value); } }
-
-        /// <summary>
-        /// Used to track the state of PhoneOverriddenBy
+        /// Used to track the state of EmailLastOverriddenDateTime
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<string?> PhoneOverriddenByOption { get; private set; }
+        public Option<DateTime?> EmailLastOverriddenDateTimeOption { get; private set; }
 
         /// <summary>
-        /// Gets or Sets PhoneOverriddenBy
+        /// Gets or Sets EmailLastOverriddenDateTime
         /// </summary>
-        [JsonPropertyName("phoneOverriddenBy")]
-        public string? PhoneOverriddenBy { get { return this.PhoneOverriddenByOption.Value; } set { this.PhoneOverriddenByOption = new(value); } }
+        [JsonPropertyName("emailLastOverriddenDateTime")]
+        public DateTime? EmailLastOverriddenDateTime { get { return this.EmailLastOverriddenDateTimeOption.Value; } set { this.EmailLastOverriddenDateTimeOption = new(value); } }
 
         /// <summary>
-        /// Used to track the state of PhoneOverriddenAt
+        /// Used to track the state of PhoneLastOverriddenBy
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<DateTime?> PhoneOverriddenAtOption { get; private set; }
+        public Option<string?> PhoneLastOverriddenByOption { get; private set; }
 
         /// <summary>
-        /// Gets or Sets PhoneOverriddenAt
+        /// Gets or Sets PhoneLastOverriddenBy
         /// </summary>
-        [JsonPropertyName("phoneOverriddenAt")]
-        public DateTime? PhoneOverriddenAt { get { return this.PhoneOverriddenAtOption.Value; } set { this.PhoneOverriddenAtOption = new(value); } }
+        [JsonPropertyName("phoneLastOverriddenBy")]
+        public string? PhoneLastOverriddenBy { get { return this.PhoneLastOverriddenByOption.Value; } set { this.PhoneLastOverriddenByOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of PhoneLastOverriddenDateTime
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<DateTime?> PhoneLastOverriddenDateTimeOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets PhoneLastOverriddenDateTime
+        /// </summary>
+        [JsonPropertyName("phoneLastOverriddenDateTime")]
+        public DateTime? PhoneLastOverriddenDateTime { get { return this.PhoneLastOverriddenDateTimeOption.Value; } set { this.PhoneLastOverriddenDateTimeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of SignInStatus
@@ -419,6 +440,32 @@ namespace EdGraph.Platform.Client.Model
         public DateTime? LastUpdatedDateTime { get { return this.LastUpdatedDateTimeOption.Value; } set { this.LastUpdatedDateTimeOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of DeletedBy
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> DeletedByOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets DeletedBy
+        /// </summary>
+        [JsonPropertyName("deletedBy")]
+        public string? DeletedBy { get { return this.DeletedByOption.Value; } set { this.DeletedByOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of DeletedDateTime
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<DateTime?> DeletedDateTimeOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets DeletedDateTime
+        /// </summary>
+        [JsonPropertyName("deletedDateTime")]
+        public DateTime? DeletedDateTime { get { return this.DeletedDateTimeOption.Value; } set { this.DeletedDateTimeOption = new(value); } }
+
+        /// <summary>
         /// Used to track the state of IsDeleted
         /// </summary>
         [JsonIgnore]
@@ -432,6 +479,19 @@ namespace EdGraph.Platform.Client.Model
         public bool? IsDeleted { get { return this.IsDeletedOption.Value; } set { this.IsDeletedOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of VerificationStatus
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> VerificationStatusOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets VerificationStatus
+        /// </summary>
+        [JsonPropertyName("verificationStatus")]
+        public string? VerificationStatus { get { return this.VerificationStatusOption.Value; } set { this.VerificationStatusOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -441,7 +501,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  TenantId: ").Append(TenantId).Append("\n");
-            sb.Append("  ContactId: ").Append(ContactId).Append("\n");
+            sb.Append("  ExternalDataSourceContactId: ").Append(ExternalDataSourceContactId).Append("\n");
             sb.Append("  FirstName: ").Append(FirstName).Append("\n");
             sb.Append("  LastName: ").Append(LastName).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
@@ -449,14 +509,15 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  Students: ").Append(Students).Append("\n");
             sb.Append("  Relationship: ").Append(Relationship).Append("\n");
             sb.Append("  StudentCount: ").Append(StudentCount).Append("\n");
+            sb.Append("  StudentLocalCodes: ").Append(StudentLocalCodes).Append("\n");
             sb.Append("  IsPhoneOverride: ").Append(IsPhoneOverride).Append("\n");
             sb.Append("  IsEmailOverride: ").Append(IsEmailOverride).Append("\n");
             sb.Append("  SisEmail: ").Append(SisEmail).Append("\n");
             sb.Append("  SisPhone: ").Append(SisPhone).Append("\n");
-            sb.Append("  EmailOverriddenBy: ").Append(EmailOverriddenBy).Append("\n");
-            sb.Append("  EmailOverriddenAt: ").Append(EmailOverriddenAt).Append("\n");
-            sb.Append("  PhoneOverriddenBy: ").Append(PhoneOverriddenBy).Append("\n");
-            sb.Append("  PhoneOverriddenAt: ").Append(PhoneOverriddenAt).Append("\n");
+            sb.Append("  EmailLastOverriddenBy: ").Append(EmailLastOverriddenBy).Append("\n");
+            sb.Append("  EmailLastOverriddenDateTime: ").Append(EmailLastOverriddenDateTime).Append("\n");
+            sb.Append("  PhoneLastOverriddenBy: ").Append(PhoneLastOverriddenBy).Append("\n");
+            sb.Append("  PhoneLastOverriddenDateTime: ").Append(PhoneLastOverriddenDateTime).Append("\n");
             sb.Append("  SignInStatus: ").Append(SignInStatus).Append("\n");
             sb.Append("  IsLocked: ").Append(IsLocked).Append("\n");
             sb.Append("  CreatedBy: ").Append(CreatedBy).Append("\n");
@@ -464,7 +525,10 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  LastModifiedBy: ").Append(LastModifiedBy).Append("\n");
             sb.Append("  LastModifiedDateTime: ").Append(LastModifiedDateTime).Append("\n");
             sb.Append("  LastUpdatedDateTime: ").Append(LastUpdatedDateTime).Append("\n");
+            sb.Append("  DeletedBy: ").Append(DeletedBy).Append("\n");
+            sb.Append("  DeletedDateTime: ").Append(DeletedDateTime).Append("\n");
             sb.Append("  IsDeleted: ").Append(IsDeleted).Append("\n");
+            sb.Append("  VerificationStatus: ").Append(VerificationStatus).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -486,14 +550,14 @@ namespace EdGraph.Platform.Client.Model
     public class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDtoJsonConverter : JsonConverter<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto>
     {
         /// <summary>
-        /// The format to use to serialize EmailOverriddenAt
+        /// The format to use to serialize EmailLastOverriddenDateTime
         /// </summary>
-        public static string EmailOverriddenAtFormat { get; set; } = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fffffffK";
+        public static string EmailLastOverriddenDateTimeFormat { get; set; } = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fffffffK";
 
         /// <summary>
-        /// The format to use to serialize PhoneOverriddenAt
+        /// The format to use to serialize PhoneLastOverriddenDateTime
         /// </summary>
-        public static string PhoneOverriddenAtFormat { get; set; } = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fffffffK";
+        public static string PhoneLastOverriddenDateTimeFormat { get; set; } = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fffffffK";
 
         /// <summary>
         /// The format to use to serialize CreatedDateTime
@@ -509,6 +573,11 @@ namespace EdGraph.Platform.Client.Model
         /// The format to use to serialize LastUpdatedDateTime
         /// </summary>
         public static string LastUpdatedDateTimeFormat { get; set; } = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fffffffK";
+
+        /// <summary>
+        /// The format to use to serialize DeletedDateTime
+        /// </summary>
+        public static string DeletedDateTimeFormat { get; set; } = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fffffffK";
 
         /// <summary>
         /// Deserializes json to <see cref="EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto" />
@@ -529,7 +598,7 @@ namespace EdGraph.Platform.Client.Model
 
             Option<Guid?> id = default;
             Option<Guid?> tenantId = default;
-            Option<string?> contactId = default;
+            Option<string?> externalDataSourceContactId = default;
             Option<string?> firstName = default;
             Option<string?> lastName = default;
             Option<string?> email = default;
@@ -537,14 +606,15 @@ namespace EdGraph.Platform.Client.Model
             Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactStudentResponseDto>?> students = default;
             Option<string?> relationship = default;
             Option<int?> studentCount = default;
+            Option<List<string>?> studentLocalCodes = default;
             Option<bool?> isPhoneOverride = default;
             Option<bool?> isEmailOverride = default;
             Option<string?> sisEmail = default;
             Option<string?> sisPhone = default;
-            Option<string?> emailOverriddenBy = default;
-            Option<DateTime?> emailOverriddenAt = default;
-            Option<string?> phoneOverriddenBy = default;
-            Option<DateTime?> phoneOverriddenAt = default;
+            Option<string?> emailLastOverriddenBy = default;
+            Option<DateTime?> emailLastOverriddenDateTime = default;
+            Option<string?> phoneLastOverriddenBy = default;
+            Option<DateTime?> phoneLastOverriddenDateTime = default;
             Option<string?> signInStatus = default;
             Option<bool?> isLocked = default;
             Option<string?> createdBy = default;
@@ -552,7 +622,10 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> lastModifiedBy = default;
             Option<DateTime?> lastModifiedDateTime = default;
             Option<DateTime?> lastUpdatedDateTime = default;
+            Option<string?> deletedBy = default;
+            Option<DateTime?> deletedDateTime = default;
             Option<bool?> isDeleted = default;
+            Option<string?> verificationStatus = default;
 
             while (utf8JsonReader.Read())
             {
@@ -575,8 +648,8 @@ namespace EdGraph.Platform.Client.Model
                         case "tenantId":
                             tenantId = new Option<Guid?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (Guid?)null : utf8JsonReader.GetGuid());
                             break;
-                        case "contactId":
-                            contactId = new Option<string?>(utf8JsonReader.GetString());
+                        case "externalDataSourceContactId":
+                            externalDataSourceContactId = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "firstName":
                             firstName = new Option<string?>(utf8JsonReader.GetString());
@@ -599,6 +672,9 @@ namespace EdGraph.Platform.Client.Model
                         case "studentCount":
                             studentCount = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
+                        case "studentLocalCodes":
+                            studentLocalCodes = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            break;
                         case "isPhoneOverride":
                             isPhoneOverride = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
@@ -611,17 +687,17 @@ namespace EdGraph.Platform.Client.Model
                         case "sisPhone":
                             sisPhone = new Option<string?>(utf8JsonReader.GetString());
                             break;
-                        case "emailOverriddenBy":
-                            emailOverriddenBy = new Option<string?>(utf8JsonReader.GetString());
+                        case "emailLastOverriddenBy":
+                            emailLastOverriddenBy = new Option<string?>(utf8JsonReader.GetString());
                             break;
-                        case "emailOverriddenAt":
-                            emailOverriddenAt = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime?>(ref utf8JsonReader, jsonSerializerOptions));
+                        case "emailLastOverriddenDateTime":
+                            emailLastOverriddenDateTime = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime?>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
-                        case "phoneOverriddenBy":
-                            phoneOverriddenBy = new Option<string?>(utf8JsonReader.GetString());
+                        case "phoneLastOverriddenBy":
+                            phoneLastOverriddenBy = new Option<string?>(utf8JsonReader.GetString());
                             break;
-                        case "phoneOverriddenAt":
-                            phoneOverriddenAt = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime?>(ref utf8JsonReader, jsonSerializerOptions));
+                        case "phoneLastOverriddenDateTime":
+                            phoneLastOverriddenDateTime = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime?>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
                         case "signInStatus":
                             signInStatus = new Option<string?>(utf8JsonReader.GetString());
@@ -644,8 +720,17 @@ namespace EdGraph.Platform.Client.Model
                         case "lastUpdatedDateTime":
                             lastUpdatedDateTime = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime?>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
+                        case "deletedBy":
+                            deletedBy = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "deletedDateTime":
+                            deletedDateTime = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime?>(ref utf8JsonReader, jsonSerializerOptions));
+                            break;
                         case "isDeleted":
                             isDeleted = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
+                            break;
+                        case "verificationStatus":
+                            verificationStatus = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         default:
                             break;
@@ -662,7 +747,7 @@ namespace EdGraph.Platform.Client.Model
             if (isDeleted.IsSet && isDeleted.Value == null)
                 throw new ArgumentNullException(nameof(isDeleted), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.");
 
-            return new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto(id, tenantId, contactId, firstName, lastName, email, phone, students, relationship, studentCount, isPhoneOverride, isEmailOverride, sisEmail, sisPhone, emailOverriddenBy, emailOverriddenAt, phoneOverriddenBy, phoneOverriddenAt, signInStatus, isLocked, createdBy, createdDateTime, lastModifiedBy, lastModifiedDateTime, lastUpdatedDateTime, isDeleted);
+            return new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto(id, tenantId, externalDataSourceContactId, firstName, lastName, email, phone, students, relationship, studentCount, studentLocalCodes, isPhoneOverride, isEmailOverride, sisEmail, sisPhone, emailLastOverriddenBy, emailLastOverriddenDateTime, phoneLastOverriddenBy, phoneLastOverriddenDateTime, signInStatus, isLocked, createdBy, createdDateTime, lastModifiedBy, lastModifiedDateTime, lastUpdatedDateTime, deletedBy, deletedDateTime, isDeleted, verificationStatus);
         }
 
         /// <summary>
@@ -701,11 +786,11 @@ namespace EdGraph.Platform.Client.Model
                 else
                     writer.WriteNull("tenantId");
 
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.ContactIdOption.IsSet)
-                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.ContactIdOption.Value != null)
-                    writer.WriteString("contactId", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.ContactId);
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.ExternalDataSourceContactIdOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.ExternalDataSourceContactIdOption.Value != null)
+                    writer.WriteString("externalDataSourceContactId", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.ExternalDataSourceContactId);
                 else
-                    writer.WriteNull("contactId");
+                    writer.WriteNull("externalDataSourceContactId");
 
             if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.FirstNameOption.IsSet)
                 if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.FirstNameOption.Value != null)
@@ -748,6 +833,14 @@ namespace EdGraph.Platform.Client.Model
             if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.StudentCountOption.IsSet)
                 writer.WriteNumber("studentCount", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.StudentCountOption.Value!.Value);
 
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.StudentLocalCodesOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.StudentLocalCodesOption.Value != null)
+                {
+                    writer.WritePropertyName("studentLocalCodes");
+                    JsonSerializer.Serialize(writer, edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.StudentLocalCodes, jsonSerializerOptions);
+                }
+                else
+                    writer.WriteNull("studentLocalCodes");
             if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.IsPhoneOverrideOption.IsSet)
                 if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.IsPhoneOverrideOption.Value != null)
                     writer.WriteBoolean("isPhoneOverride", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.IsPhoneOverrideOption.Value!.Value);
@@ -772,29 +865,29 @@ namespace EdGraph.Platform.Client.Model
                 else
                     writer.WriteNull("sisPhone");
 
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.EmailOverriddenByOption.IsSet)
-                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.EmailOverriddenByOption.Value != null)
-                    writer.WriteString("emailOverriddenBy", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.EmailOverriddenBy);
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.EmailLastOverriddenByOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.EmailLastOverriddenByOption.Value != null)
+                    writer.WriteString("emailLastOverriddenBy", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.EmailLastOverriddenBy);
                 else
-                    writer.WriteNull("emailOverriddenBy");
+                    writer.WriteNull("emailLastOverriddenBy");
 
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.EmailOverriddenAtOption.IsSet)
-                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.EmailOverriddenAtOption.Value != null)
-                    writer.WriteString("emailOverriddenAt", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.EmailOverriddenAtOption.Value!.Value.ToString(EmailOverriddenAtFormat));
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.EmailLastOverriddenDateTimeOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.EmailLastOverriddenDateTimeOption.Value != null)
+                    writer.WriteString("emailLastOverriddenDateTime", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.EmailLastOverriddenDateTimeOption.Value!.Value.ToString(EmailLastOverriddenDateTimeFormat));
                 else
-                    writer.WriteNull("emailOverriddenAt");
+                    writer.WriteNull("emailLastOverriddenDateTime");
 
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.PhoneOverriddenByOption.IsSet)
-                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.PhoneOverriddenByOption.Value != null)
-                    writer.WriteString("phoneOverriddenBy", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.PhoneOverriddenBy);
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.PhoneLastOverriddenByOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.PhoneLastOverriddenByOption.Value != null)
+                    writer.WriteString("phoneLastOverriddenBy", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.PhoneLastOverriddenBy);
                 else
-                    writer.WriteNull("phoneOverriddenBy");
+                    writer.WriteNull("phoneLastOverriddenBy");
 
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.PhoneOverriddenAtOption.IsSet)
-                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.PhoneOverriddenAtOption.Value != null)
-                    writer.WriteString("phoneOverriddenAt", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.PhoneOverriddenAtOption.Value!.Value.ToString(PhoneOverriddenAtFormat));
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.PhoneLastOverriddenDateTimeOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.PhoneLastOverriddenDateTimeOption.Value != null)
+                    writer.WriteString("phoneLastOverriddenDateTime", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.PhoneLastOverriddenDateTimeOption.Value!.Value.ToString(PhoneLastOverriddenDateTimeFormat));
                 else
-                    writer.WriteNull("phoneOverriddenAt");
+                    writer.WriteNull("phoneLastOverriddenDateTime");
 
             if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.SignInStatusOption.IsSet)
                 if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.SignInStatusOption.Value != null)
@@ -835,8 +928,26 @@ namespace EdGraph.Platform.Client.Model
                 else
                     writer.WriteNull("lastUpdatedDateTime");
 
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.DeletedByOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.DeletedByOption.Value != null)
+                    writer.WriteString("deletedBy", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.DeletedBy);
+                else
+                    writer.WriteNull("deletedBy");
+
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.DeletedDateTimeOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.DeletedDateTimeOption.Value != null)
+                    writer.WriteString("deletedDateTime", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.DeletedDateTimeOption.Value!.Value.ToString(DeletedDateTimeFormat));
+                else
+                    writer.WriteNull("deletedDateTime");
+
             if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.IsDeletedOption.IsSet)
                 writer.WriteBoolean("isDeleted", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.IsDeletedOption.Value!.Value);
+
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.VerificationStatusOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.VerificationStatusOption.Value != null)
+                    writer.WriteString("verificationStatus", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactResponseDto.VerificationStatus);
+                else
+                    writer.WriteNull("verificationStatus");
         }
     }
 }

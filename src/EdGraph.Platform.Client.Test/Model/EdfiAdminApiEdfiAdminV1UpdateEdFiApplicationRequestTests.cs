@@ -124,5 +124,14 @@ namespace EdGraph.Platform.Client.Test.Model
         {
             // TODO unit test for the property 'OperationalContextUri'
         }
+
+        /// <summary>
+        /// Test the property 'Years'
+        /// </summary>
+        [Fact]
+        public void YearsTest()
+        {
+            // TODO unit test for the property 'Years'
+        }
     }
 }

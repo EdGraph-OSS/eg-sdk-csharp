@@ -34,13 +34,13 @@ namespace EdGraph.Platform.Client.Model
         /// Initializes a new instance of the <see cref="EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactEmailOverrideRequestDto" /> class.
         /// </summary>
         /// <param name="value">The corrected detail. The DELETE route removes an override instead; this is never blank.</param>
-        /// <param name="studentId">The student whose screen the edit was made from. Recorded on the history entry so it can be  filtered per student. It does NOT scope the override — every student linked to the contact shares  one corrected value.</param>
+        /// <param name="studentLocalCode">studentLocalCode</param>
         /// <param name="expectedVersion">The &#x60;lastUpdatedDateTime&#x60; the client read, round-tripped back. When it no longer matches the  write is refused with 412 rather than winning because it arrived second. Omit to skip the check.</param>
         [JsonConstructor]
-        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactEmailOverrideRequestDto(Option<string?> value = default, Option<string?> studentId = default, Option<string?> expectedVersion = default)
+        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactEmailOverrideRequestDto(Option<string?> value = default, Option<string?> studentLocalCode = default, Option<string?> expectedVersion = default)
         {
             ValueOption = value;
-            StudentIdOption = studentId;
+            StudentLocalCodeOption = studentLocalCode;
             ExpectedVersionOption = expectedVersion;
             OnCreated();
         }
@@ -62,18 +62,17 @@ namespace EdGraph.Platform.Client.Model
         public string? Value { get { return this.ValueOption.Value; } set { this.ValueOption = new(value); } }
 
         /// <summary>
-        /// Used to track the state of StudentId
+        /// Used to track the state of StudentLocalCode
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<string?> StudentIdOption { get; private set; }
+        public Option<string?> StudentLocalCodeOption { get; private set; }
 
         /// <summary>
-        /// The student whose screen the edit was made from. Recorded on the history entry so it can be  filtered per student. It does NOT scope the override — every student linked to the contact shares  one corrected value.
+        /// Gets or Sets StudentLocalCode
         /// </summary>
-        /// <value>The student whose screen the edit was made from. Recorded on the history entry so it can be  filtered per student. It does NOT scope the override — every student linked to the contact shares  one corrected value.</value>
-        [JsonPropertyName("studentId")]
-        public string? StudentId { get { return this.StudentIdOption.Value; } set { this.StudentIdOption = new(value); } }
+        [JsonPropertyName("studentLocalCode")]
+        public string? StudentLocalCode { get { return this.StudentLocalCodeOption.Value; } set { this.StudentLocalCodeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of ExpectedVersion
@@ -98,7 +97,7 @@ namespace EdGraph.Platform.Client.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactEmailOverrideRequestDto {\n");
             sb.Append("  Value: ").Append(Value).Append("\n");
-            sb.Append("  StudentId: ").Append(StudentId).Append("\n");
+            sb.Append("  StudentLocalCode: ").Append(StudentLocalCode).Append("\n");
             sb.Append("  ExpectedVersion: ").Append(ExpectedVersion).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -138,7 +137,7 @@ namespace EdGraph.Platform.Client.Model
             JsonTokenType startingTokenType = utf8JsonReader.TokenType;
 
             Option<string?> value = default;
-            Option<string?> studentId = default;
+            Option<string?> studentLocalCode = default;
             Option<string?> expectedVersion = default;
 
             while (utf8JsonReader.Read())
@@ -159,8 +158,8 @@ namespace EdGraph.Platform.Client.Model
                         case "value":
                             value = new Option<string?>(utf8JsonReader.GetString());
                             break;
-                        case "studentId":
-                            studentId = new Option<string?>(utf8JsonReader.GetString());
+                        case "studentLocalCode":
+                            studentLocalCode = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "expectedVersion":
                             expectedVersion = new Option<string?>(utf8JsonReader.GetString());
@@ -171,7 +170,7 @@ namespace EdGraph.Platform.Client.Model
                 }
             }
 
-            return new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactEmailOverrideRequestDto(value, studentId, expectedVersion);
+            return new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactEmailOverrideRequestDto(value, studentLocalCode, expectedVersion);
         }
 
         /// <summary>
@@ -204,11 +203,11 @@ namespace EdGraph.Platform.Client.Model
                 else
                     writer.WriteNull("value");
 
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactEmailOverrideRequestDto.StudentIdOption.IsSet)
-                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactEmailOverrideRequestDto.StudentIdOption.Value != null)
-                    writer.WriteString("studentId", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactEmailOverrideRequestDto.StudentId);
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactEmailOverrideRequestDto.StudentLocalCodeOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactEmailOverrideRequestDto.StudentLocalCodeOption.Value != null)
+                    writer.WriteString("studentLocalCode", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactEmailOverrideRequestDto.StudentLocalCode);
                 else
-                    writer.WriteNull("studentId");
+                    writer.WriteNull("studentLocalCode");
 
             if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactEmailOverrideRequestDto.ExpectedVersionOption.IsSet)
                 if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminContactEmailOverrideRequestDto.ExpectedVersionOption.Value != null)

@@ -4,11 +4,11 @@ All URIs are relative to *https://api.dev.edgraph.com/tenant*
 
 | Method | HTTP request | Description |
 |--------|--------------|-------------|
-| [**GetCapacity**](EnrollmentAdminCapacityApi.md#getcapacity) | **GET** /tenants/{tenantId}/enrollmentadmin/schools/{schoolCode}/capacity | Searches Capacity for one school - one row per program x grade x school year. |
+| [**GetCapacity**](EnrollmentAdminCapacityApi.md#getcapacity) | **GET** /tenants/{tenantId}/enrollmentadmin/schools/{schoolLocalCode}/capacity | Searches Capacity for one school - one row per program x grade x school year. |
 
 <a id="getcapacity"></a>
 # **GetCapacity**
-> EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminCapacityListItemDtoPaginatedItemsViewModel GetCapacity (string tenantId, string schoolCode, int pageSize = null, int pageIndex = null, string orderBy = null, string filter = null, string grade = null, string search = null)
+> EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminCapacityListItemDtoPaginatedItemsViewModel GetCapacity (string tenantId, string schoolLocalCode, int pageSize = null, int pageIndex = null, string orderBy = null, string filter = null, string grade = null, string search = null)
 
 Searches Capacity for one school - one row per program x grade x school year.
 
@@ -18,7 +18,7 @@ Searches Capacity for one school - one row per program x grade x school year.
 | Name | Type | Description | Notes |
 |------|------|-------------|-------|
 | **tenantId** | **string** |  |  |
-| **schoolCode** | **string** | Required - a seat count is meaningless without a school. |  |
+| **schoolLocalCode** | **string** | Required - a seat count is meaningless without a school. |  |
 | **pageSize** | **int** |  | [optional] [default to 50] |
 | **pageIndex** | **int** |  | [optional] [default to 0] |
 | **orderBy** | **string** |  | [optional] [default to &quot;&quot;] |

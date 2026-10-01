@@ -41,8 +41,9 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="vendorId">vendorId</param>
         /// <param name="educationOrganizations">educationOrganizations</param>
         /// <param name="operationalContextUri">operationalContextUri</param>
+        /// <param name="years">years</param>
         [JsonConstructor]
-        public EdfiAdminApiEdfiAdminV1UpdateEdFiApplicationRequest(Option<string?> tenantId = default, Option<string?> instanceId = default, Option<int?> applicationId = default, Option<string?> applicationName = default, Option<string?> claimSetName = default, Option<int?> vendorId = default, Option<List<EdfiAdminApiEdfiAdminV1EducationOrganization>?> educationOrganizations = default, Option<string?> operationalContextUri = default)
+        public EdfiAdminApiEdfiAdminV1UpdateEdFiApplicationRequest(Option<string?> tenantId = default, Option<string?> instanceId = default, Option<int?> applicationId = default, Option<string?> applicationName = default, Option<string?> claimSetName = default, Option<int?> vendorId = default, Option<List<EdfiAdminApiEdfiAdminV1EducationOrganization>?> educationOrganizations = default, Option<string?> operationalContextUri = default, Option<List<int>?> years = default)
         {
             TenantIdOption = tenantId;
             InstanceIdOption = instanceId;
@@ -52,6 +53,7 @@ namespace EdGraph.Platform.Client.Model
             VendorIdOption = vendorId;
             EducationOrganizationsOption = educationOrganizations;
             OperationalContextUriOption = operationalContextUri;
+            YearsOption = years;
             OnCreated();
         }
 
@@ -162,6 +164,19 @@ namespace EdGraph.Platform.Client.Model
         public string? OperationalContextUri { get { return this.OperationalContextUriOption.Value; } set { this.OperationalContextUriOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of Years
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<List<int>?> YearsOption { get; }
+
+        /// <summary>
+        /// Gets or Sets Years
+        /// </summary>
+        [JsonPropertyName("years")]
+        public List<int>? Years { get { return this.YearsOption.Value; } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -177,6 +192,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  VendorId: ").Append(VendorId).Append("\n");
             sb.Append("  EducationOrganizations: ").Append(EducationOrganizations).Append("\n");
             sb.Append("  OperationalContextUri: ").Append(OperationalContextUri).Append("\n");
+            sb.Append("  Years: ").Append(Years).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -222,6 +238,7 @@ namespace EdGraph.Platform.Client.Model
             Option<int?> vendorId = default;
             Option<List<EdfiAdminApiEdfiAdminV1EducationOrganization>?> educationOrganizations = default;
             Option<string?> operationalContextUri = default;
+            Option<List<int>?> years = default;
 
             while (utf8JsonReader.Read())
             {
@@ -262,6 +279,9 @@ namespace EdGraph.Platform.Client.Model
                         case "operationalContextUri":
                             operationalContextUri = new Option<string?>(utf8JsonReader.GetString());
                             break;
+                        case "years":
+                            years = new Option<List<int>?>(JsonSerializer.Deserialize<List<int>>(ref utf8JsonReader, jsonSerializerOptions));
+                            break;
                         default:
                             break;
                     }
@@ -274,7 +294,7 @@ namespace EdGraph.Platform.Client.Model
             if (vendorId.IsSet && vendorId.Value == null)
                 throw new ArgumentNullException(nameof(vendorId), "Property is not nullable for class EdfiAdminApiEdfiAdminV1UpdateEdFiApplicationRequest.");
 
-            return new EdfiAdminApiEdfiAdminV1UpdateEdFiApplicationRequest(tenantId, instanceId, applicationId, applicationName, claimSetName, vendorId, educationOrganizations, operationalContextUri);
+            return new EdfiAdminApiEdfiAdminV1UpdateEdFiApplicationRequest(tenantId, instanceId, applicationId, applicationName, claimSetName, vendorId, educationOrganizations, operationalContextUri, years);
         }
 
         /// <summary>
@@ -344,6 +364,15 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteString("operationalContextUri", edfiAdminApiEdfiAdminV1UpdateEdFiApplicationRequest.OperationalContextUri);
                 else
                     writer.WriteNull("operationalContextUri");
+
+            if (edfiAdminApiEdfiAdminV1UpdateEdFiApplicationRequest.YearsOption.IsSet)
+                if (edfiAdminApiEdfiAdminV1UpdateEdFiApplicationRequest.YearsOption.Value != null)
+                {
+                    writer.WritePropertyName("years");
+                    JsonSerializer.Serialize(writer, edfiAdminApiEdfiAdminV1UpdateEdFiApplicationRequest.Years, jsonSerializerOptions);
+                }
+                else
+                    writer.WriteNull("years");
         }
     }
 }

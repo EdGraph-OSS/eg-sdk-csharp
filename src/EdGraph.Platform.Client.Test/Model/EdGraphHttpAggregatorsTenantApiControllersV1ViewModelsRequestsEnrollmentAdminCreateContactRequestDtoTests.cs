@@ -63,12 +63,12 @@ namespace EdGraph.Platform.Client.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'ContactId'
+        /// Test the property 'ExternalDataSourceContactId'
         /// </summary>
         [Fact]
-        public void ContactIdTest()
+        public void ExternalDataSourceContactIdTest()
         {
-            // TODO unit test for the property 'ContactId'
+            // TODO unit test for the property 'ExternalDataSourceContactId'
         }
 
         /// <summary>
@@ -105,15 +105,6 @@ namespace EdGraph.Platform.Client.Test.Model
         public void PhoneTest()
         {
             // TODO unit test for the property 'Phone'
-        }
-
-        /// <summary>
-        /// Test the property 'Students'
-        /// </summary>
-        [Fact]
-        public void StudentsTest()
-        {
-            // TODO unit test for the property 'Students'
         }
     }
 }

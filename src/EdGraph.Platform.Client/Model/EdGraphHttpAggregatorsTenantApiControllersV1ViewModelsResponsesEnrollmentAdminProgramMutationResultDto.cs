@@ -26,7 +26,7 @@ using EdGraph.Platform.Client.Client;
 namespace EdGraph.Platform.Client.Model
 {
     /// <summary>
-    /// What a program catalog entry or school program create/update/delete reports back - just the  identity, not the row. Compare ContactMutationResultDto: a client that needs the saved state  re-reads the program.
+    /// What a program create/update/delete reports back - just the identity, not the row. Compare  ContactMutationResultDto: a client that needs the saved state re-reads the program.
     /// </summary>
     public partial class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminProgramMutationResultDto : IValidatableObject
     {

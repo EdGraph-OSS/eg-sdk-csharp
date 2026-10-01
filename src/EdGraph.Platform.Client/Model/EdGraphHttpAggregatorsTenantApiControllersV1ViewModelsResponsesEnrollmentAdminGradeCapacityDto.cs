@@ -37,13 +37,19 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="capacity">capacity</param>
         /// <param name="enrolled">enrolled</param>
         /// <param name="seatStatus">seatStatus</param>
+        /// <param name="seatsAvailable">seatsAvailable</param>
+        /// <param name="lotteryEligible">lotteryEligible</param>
+        /// <param name="schoolYear">schoolYear</param>
         [JsonConstructor]
-        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminGradeCapacityDto(Option<string?> grade = default, Option<int?> capacity = default, Option<int?> enrolled = default, Option<string?> seatStatus = default)
+        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminGradeCapacityDto(Option<string?> grade = default, Option<int?> capacity = default, Option<int?> enrolled = default, Option<string?> seatStatus = default, Option<int?> seatsAvailable = default, Option<bool?> lotteryEligible = default, Option<string?> schoolYear = default)
         {
             GradeOption = grade;
             CapacityOption = capacity;
             EnrolledOption = enrolled;
             SeatStatusOption = seatStatus;
+            SeatsAvailableOption = seatsAvailable;
+            LotteryEligibleOption = lotteryEligible;
+            SchoolYearOption = schoolYear;
             OnCreated();
         }
 
@@ -102,6 +108,45 @@ namespace EdGraph.Platform.Client.Model
         public string? SeatStatus { get { return this.SeatStatusOption.Value; } set { this.SeatStatusOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of SeatsAvailable
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<int?> SeatsAvailableOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets SeatsAvailable
+        /// </summary>
+        [JsonPropertyName("seatsAvailable")]
+        public int? SeatsAvailable { get { return this.SeatsAvailableOption.Value; } set { this.SeatsAvailableOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of LotteryEligible
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<bool?> LotteryEligibleOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets LotteryEligible
+        /// </summary>
+        [JsonPropertyName("lotteryEligible")]
+        public bool? LotteryEligible { get { return this.LotteryEligibleOption.Value; } set { this.LotteryEligibleOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of SchoolYear
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> SchoolYearOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets SchoolYear
+        /// </summary>
+        [JsonPropertyName("schoolYear")]
+        public string? SchoolYear { get { return this.SchoolYearOption.Value; } set { this.SchoolYearOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -113,6 +158,9 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  Capacity: ").Append(Capacity).Append("\n");
             sb.Append("  Enrolled: ").Append(Enrolled).Append("\n");
             sb.Append("  SeatStatus: ").Append(SeatStatus).Append("\n");
+            sb.Append("  SeatsAvailable: ").Append(SeatsAvailable).Append("\n");
+            sb.Append("  LotteryEligible: ").Append(LotteryEligible).Append("\n");
+            sb.Append("  SchoolYear: ").Append(SchoolYear).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -154,6 +202,9 @@ namespace EdGraph.Platform.Client.Model
             Option<int?> capacity = default;
             Option<int?> enrolled = default;
             Option<string?> seatStatus = default;
+            Option<int?> seatsAvailable = default;
+            Option<bool?> lotteryEligible = default;
+            Option<string?> schoolYear = default;
 
             while (utf8JsonReader.Read())
             {
@@ -182,13 +233,22 @@ namespace EdGraph.Platform.Client.Model
                         case "seatStatus":
                             seatStatus = new Option<string?>(utf8JsonReader.GetString());
                             break;
+                        case "seatsAvailable":
+                            seatsAvailable = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
+                            break;
+                        case "lotteryEligible":
+                            lotteryEligible = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
+                            break;
+                        case "schoolYear":
+                            schoolYear = new Option<string?>(utf8JsonReader.GetString());
+                            break;
                         default:
                             break;
                     }
                 }
             }
 
-            return new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminGradeCapacityDto(grade, capacity, enrolled, seatStatus);
+            return new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminGradeCapacityDto(grade, capacity, enrolled, seatStatus, seatsAvailable, lotteryEligible, schoolYear);
         }
 
         /// <summary>
@@ -238,6 +298,24 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteString("seatStatus", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminGradeCapacityDto.SeatStatus);
                 else
                     writer.WriteNull("seatStatus");
+
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminGradeCapacityDto.SeatsAvailableOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminGradeCapacityDto.SeatsAvailableOption.Value != null)
+                    writer.WriteNumber("seatsAvailable", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminGradeCapacityDto.SeatsAvailableOption.Value!.Value);
+                else
+                    writer.WriteNull("seatsAvailable");
+
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminGradeCapacityDto.LotteryEligibleOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminGradeCapacityDto.LotteryEligibleOption.Value != null)
+                    writer.WriteBoolean("lotteryEligible", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminGradeCapacityDto.LotteryEligibleOption.Value!.Value);
+                else
+                    writer.WriteNull("lotteryEligible");
+
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminGradeCapacityDto.SchoolYearOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminGradeCapacityDto.SchoolYearOption.Value != null)
+                    writer.WriteString("schoolYear", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminGradeCapacityDto.SchoolYear);
+                else
+                    writer.WriteNull("schoolYear");
         }
     }
 }

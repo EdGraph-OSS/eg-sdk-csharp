@@ -42,8 +42,9 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="etag">etag</param>
         /// <param name="instanceId">instanceId</param>
         /// <param name="year">year</param>
+        /// <param name="tenantId">tenantId</param>
         [JsonConstructor]
-        public EdfiAdminApiEdfiAdminV1UpdateDescriptorMappingRequest(Option<string?> id = default, Option<string?> mappedNamespace = default, Option<string?> mappedValue = default, Option<string?> @namespace = default, Option<string?> value = default, Option<List<EdfiAdminApiEdfiAdminV1DescriptorMappingModelEntity>?> modelEntities = default, Option<string?> etag = default, Option<string?> instanceId = default, Option<int?> year = default)
+        public EdfiAdminApiEdfiAdminV1UpdateDescriptorMappingRequest(Option<string?> id = default, Option<string?> mappedNamespace = default, Option<string?> mappedValue = default, Option<string?> @namespace = default, Option<string?> value = default, Option<List<EdfiAdminApiEdfiAdminV1DescriptorMappingModelEntity>?> modelEntities = default, Option<string?> etag = default, Option<string?> instanceId = default, Option<int?> year = default, Option<string?> tenantId = default)
         {
             IdOption = id;
             MappedNamespaceOption = mappedNamespace;
@@ -54,6 +55,7 @@ namespace EdGraph.Platform.Client.Model
             EtagOption = etag;
             InstanceIdOption = instanceId;
             YearOption = year;
+            TenantIdOption = tenantId;
             OnCreated();
         }
 
@@ -177,6 +179,19 @@ namespace EdGraph.Platform.Client.Model
         public int? Year { get { return this.YearOption.Value; } set { this.YearOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of TenantId
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> TenantIdOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets TenantId
+        /// </summary>
+        [JsonPropertyName("tenantId")]
+        public string? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -193,6 +208,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  Etag: ").Append(Etag).Append("\n");
             sb.Append("  InstanceId: ").Append(InstanceId).Append("\n");
             sb.Append("  Year: ").Append(Year).Append("\n");
+            sb.Append("  TenantId: ").Append(TenantId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -239,6 +255,7 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> etag = default;
             Option<string?> instanceId = default;
             Option<int?> year = default;
+            Option<string?> tenantId = default;
 
             while (utf8JsonReader.Read())
             {
@@ -282,6 +299,9 @@ namespace EdGraph.Platform.Client.Model
                         case "year":
                             year = new Option<int?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (int?)null : utf8JsonReader.GetInt32());
                             break;
+                        case "tenantId":
+                            tenantId = new Option<string?>(utf8JsonReader.GetString());
+                            break;
                         default:
                             break;
                     }
@@ -291,7 +311,7 @@ namespace EdGraph.Platform.Client.Model
             if (year.IsSet && year.Value == null)
                 throw new ArgumentNullException(nameof(year), "Property is not nullable for class EdfiAdminApiEdfiAdminV1UpdateDescriptorMappingRequest.");
 
-            return new EdfiAdminApiEdfiAdminV1UpdateDescriptorMappingRequest(id, mappedNamespace, mappedValue, varNamespace, value, modelEntities, etag, instanceId, year);
+            return new EdfiAdminApiEdfiAdminV1UpdateDescriptorMappingRequest(id, mappedNamespace, mappedValue, varNamespace, value, modelEntities, etag, instanceId, year, tenantId);
         }
 
         /// <summary>
@@ -370,6 +390,12 @@ namespace EdGraph.Platform.Client.Model
 
             if (edfiAdminApiEdfiAdminV1UpdateDescriptorMappingRequest.YearOption.IsSet)
                 writer.WriteNumber("year", edfiAdminApiEdfiAdminV1UpdateDescriptorMappingRequest.YearOption.Value!.Value);
+
+            if (edfiAdminApiEdfiAdminV1UpdateDescriptorMappingRequest.TenantIdOption.IsSet)
+                if (edfiAdminApiEdfiAdminV1UpdateDescriptorMappingRequest.TenantIdOption.Value != null)
+                    writer.WriteString("tenantId", edfiAdminApiEdfiAdminV1UpdateDescriptorMappingRequest.TenantId);
+                else
+                    writer.WriteNull("tenantId");
         }
     }
 }

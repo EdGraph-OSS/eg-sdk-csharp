@@ -90,15 +90,6 @@ namespace EdGraph.Platform.Client.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'Students'
-        /// </summary>
-        [Fact]
-        public void StudentsTest()
-        {
-            // TODO unit test for the property 'Students'
-        }
-
-        /// <summary>
         /// Test the property 'Email'
         /// </summary>
         [Fact]

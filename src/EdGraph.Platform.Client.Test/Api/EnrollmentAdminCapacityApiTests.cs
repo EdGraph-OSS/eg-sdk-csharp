@@ -57,14 +57,14 @@ namespace EdGraph.Platform.Client.Test.Api
         public async Task GetCapacityAsyncTest()
         {
             string tenantId = default!;
-            string schoolCode = default!;
+            string schoolLocalCode = default!;
             Client.Option<int> pageSize = default!;
             Client.Option<int> pageIndex = default!;
             Client.Option<string> orderBy = default!;
             Client.Option<string> filter = default!;
             Client.Option<string> grade = default!;
             Client.Option<string> search = default!;
-            var response = await _instance.GetCapacityAsync(tenantId, schoolCode, pageSize, pageIndex, orderBy, filter, grade, search);
+            var response = await _instance.GetCapacityAsync(tenantId, schoolLocalCode, pageSize, pageIndex, orderBy, filter, grade, search);
             var model = response.Unauthorized();
             Assert.IsType<EdGraphCommonErrorsCoreProblemDetails>(model);
         }

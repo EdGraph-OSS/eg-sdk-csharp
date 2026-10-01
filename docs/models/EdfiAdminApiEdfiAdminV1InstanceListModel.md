@@ -30,6 +30,7 @@ Name | Type | Description | Notes
 **RelatedInstances** | [**List&lt;EdfiAdminApiEdfiAdminV1RelatedInstance&gt;**](EdfiAdminApiEdfiAdminV1RelatedInstance.md) |  | [optional] [readonly] 
 **EnableAdminApi** | **bool** | Enable Admin API | [optional] 
 **State** | **string** |  | [optional] 
+**RequiresSchoolYearSelection** | **bool** |  | [optional] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

@@ -59,8 +59,9 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="relatedInstances">relatedInstances</param>
         /// <param name="enableAdminApi">Enable Admin API</param>
         /// <param name="state">state</param>
+        /// <param name="requiresSchoolYearSelection">requiresSchoolYearSelection</param>
         [JsonConstructor]
-        public EdfiAdminApiEdfiAdminV1InstanceListModel(Option<string?> id = default, Option<string?> instanceName = default, Option<bool?> useCustomId = default, Option<string?> customId = default, Option<string?> description = default, Option<string?> connectionName = default, Option<string?> selectedConnectionId = default, Option<EdfiAdminApiEdfiAdminV1EdFiConnectionListModel?> selectedConnection = default, Option<EdfiAdminApiEdfiAdminV1InstanceDatabases?> databases = default, Option<string?> tenantId = default, Option<string?> createdBy = default, Option<string?> createdDateTime = default, Option<bool?> isDeleted = default, Option<string?> lastModifiedBy = default, Option<string?> lastModifiedDateTime = default, Option<string?> apiAuthUrl = default, Option<List<string>?> apiResourcesUrls = default, Option<List<string>?> apiCompositesUrls = default, Option<string?> selectedConnectionType = default, Option<bool?> isDefault = default, Option<string?> provider = default, Option<EdfiAdminApiEdfiAdminV1Onboarding?> onboarding = default, Option<List<EdfiAdminApiEdfiAdminV1InstanceApplicationsListResponse>?> applications = default, Option<List<EdfiAdminApiEdfiAdminV1RelatedInstance>?> relatedInstances = default, Option<bool?> enableAdminApi = default, Option<string?> state = default)
+        public EdfiAdminApiEdfiAdminV1InstanceListModel(Option<string?> id = default, Option<string?> instanceName = default, Option<bool?> useCustomId = default, Option<string?> customId = default, Option<string?> description = default, Option<string?> connectionName = default, Option<string?> selectedConnectionId = default, Option<EdfiAdminApiEdfiAdminV1EdFiConnectionListModel?> selectedConnection = default, Option<EdfiAdminApiEdfiAdminV1InstanceDatabases?> databases = default, Option<string?> tenantId = default, Option<string?> createdBy = default, Option<string?> createdDateTime = default, Option<bool?> isDeleted = default, Option<string?> lastModifiedBy = default, Option<string?> lastModifiedDateTime = default, Option<string?> apiAuthUrl = default, Option<List<string>?> apiResourcesUrls = default, Option<List<string>?> apiCompositesUrls = default, Option<string?> selectedConnectionType = default, Option<bool?> isDefault = default, Option<string?> provider = default, Option<EdfiAdminApiEdfiAdminV1Onboarding?> onboarding = default, Option<List<EdfiAdminApiEdfiAdminV1InstanceApplicationsListResponse>?> applications = default, Option<List<EdfiAdminApiEdfiAdminV1RelatedInstance>?> relatedInstances = default, Option<bool?> enableAdminApi = default, Option<string?> state = default, Option<bool?> requiresSchoolYearSelection = default)
         {
             IdOption = id;
             InstanceNameOption = instanceName;
@@ -88,6 +89,7 @@ namespace EdGraph.Platform.Client.Model
             RelatedInstancesOption = relatedInstances;
             EnableAdminApiOption = enableAdminApi;
             StateOption = state;
+            RequiresSchoolYearSelectionOption = requiresSchoolYearSelection;
             OnCreated();
         }
 
@@ -441,6 +443,19 @@ namespace EdGraph.Platform.Client.Model
         public string? State { get { return this.StateOption.Value; } set { this.StateOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of RequiresSchoolYearSelection
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<bool?> RequiresSchoolYearSelectionOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets RequiresSchoolYearSelection
+        /// </summary>
+        [JsonPropertyName("requiresSchoolYearSelection")]
+        public bool? RequiresSchoolYearSelection { get { return this.RequiresSchoolYearSelectionOption.Value; } set { this.RequiresSchoolYearSelectionOption = new(value); } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -474,6 +489,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  RelatedInstances: ").Append(RelatedInstances).Append("\n");
             sb.Append("  EnableAdminApi: ").Append(EnableAdminApi).Append("\n");
             sb.Append("  State: ").Append(State).Append("\n");
+            sb.Append("  RequiresSchoolYearSelection: ").Append(RequiresSchoolYearSelection).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -537,6 +553,7 @@ namespace EdGraph.Platform.Client.Model
             Option<List<EdfiAdminApiEdfiAdminV1RelatedInstance>?> relatedInstances = default;
             Option<bool?> enableAdminApi = default;
             Option<string?> state = default;
+            Option<bool?> requiresSchoolYearSelection = default;
 
             while (utf8JsonReader.Read())
             {
@@ -631,6 +648,9 @@ namespace EdGraph.Platform.Client.Model
                         case "state":
                             state = new Option<string?>(utf8JsonReader.GetString());
                             break;
+                        case "requiresSchoolYearSelection":
+                            requiresSchoolYearSelection = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
+                            break;
                         default:
                             break;
                     }
@@ -652,7 +672,7 @@ namespace EdGraph.Platform.Client.Model
             if (onboarding.IsSet && onboarding.Value == null)
                 throw new ArgumentNullException(nameof(onboarding), "Property is not nullable for class EdfiAdminApiEdfiAdminV1InstanceListModel.");
 
-            return new EdfiAdminApiEdfiAdminV1InstanceListModel(id, instanceName, useCustomId, customId, description, connectionName, selectedConnectionId, selectedConnection, databases, tenantId, createdBy, createdDateTime, isDeleted, lastModifiedBy, lastModifiedDateTime, apiAuthUrl, apiResourcesUrls, apiCompositesUrls, selectedConnectionType, isDefault, provider, onboarding, applications, relatedInstances, enableAdminApi, state);
+            return new EdfiAdminApiEdfiAdminV1InstanceListModel(id, instanceName, useCustomId, customId, description, connectionName, selectedConnectionId, selectedConnection, databases, tenantId, createdBy, createdDateTime, isDeleted, lastModifiedBy, lastModifiedDateTime, apiAuthUrl, apiResourcesUrls, apiCompositesUrls, selectedConnectionType, isDefault, provider, onboarding, applications, relatedInstances, enableAdminApi, state, requiresSchoolYearSelection);
         }
 
         /// <summary>
@@ -842,6 +862,12 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteString("state", edfiAdminApiEdfiAdminV1InstanceListModel.State);
                 else
                     writer.WriteNull("state");
+
+            if (edfiAdminApiEdfiAdminV1InstanceListModel.RequiresSchoolYearSelectionOption.IsSet)
+                if (edfiAdminApiEdfiAdminV1InstanceListModel.RequiresSchoolYearSelectionOption.Value != null)
+                    writer.WriteBoolean("requiresSchoolYearSelection", edfiAdminApiEdfiAdminV1InstanceListModel.RequiresSchoolYearSelectionOption.Value!.Value);
+                else
+                    writer.WriteNull("requiresSchoolYearSelection");
         }
     }
 }

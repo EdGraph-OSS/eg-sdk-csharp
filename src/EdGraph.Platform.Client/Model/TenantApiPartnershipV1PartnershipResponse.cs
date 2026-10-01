@@ -45,8 +45,11 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="deletedBy">deletedBy</param>
         /// <param name="deletedDateTime">deletedDateTime</param>
         /// <param name="isDeleted">isDeleted</param>
+        /// <param name="roleMappings">roleMappings</param>
+        /// <param name="scope">scope</param>
+        /// <param name="optedOutTenantIds">optedOutTenantIds</param>
         [JsonConstructor]
-        public TenantApiPartnershipV1PartnershipResponse(Option<string?> id = default, Option<TenantApiPartnershipV1ParternshipTenantResponse?> partnerTenant = default, Option<string?> partnershipType = default, Option<List<TenantApiPartnershipV1ParternshipTenantResponse>?> relatedTenants = default, Option<TenantApiPartnershipV1PartnershipSyncDTO?> partnershipSync = default, Option<string?> createdDateTime = default, Option<string?> createdBy = default, Option<string?> lastModifiedDateTime = default, Option<string?> lastModifiedBy = default, Option<string?> deletedBy = default, Option<string?> deletedDateTime = default, Option<bool?> isDeleted = default)
+        public TenantApiPartnershipV1PartnershipResponse(Option<string?> id = default, Option<TenantApiPartnershipV1ParternshipTenantResponse?> partnerTenant = default, Option<string?> partnershipType = default, Option<List<TenantApiPartnershipV1ParternshipTenantResponse>?> relatedTenants = default, Option<TenantApiPartnershipV1PartnershipSyncDTO?> partnershipSync = default, Option<string?> createdDateTime = default, Option<string?> createdBy = default, Option<string?> lastModifiedDateTime = default, Option<string?> lastModifiedBy = default, Option<string?> deletedBy = default, Option<string?> deletedDateTime = default, Option<bool?> isDeleted = default, Option<List<TenantApiPartnershipV1RoleMappingDTO>?> roleMappings = default, Option<TenantApiPartnershipV1PartnershipScope?> scope = default, Option<List<string>?> optedOutTenantIds = default)
         {
             IdOption = id;
             PartnerTenantOption = partnerTenant;
@@ -60,10 +63,26 @@ namespace EdGraph.Platform.Client.Model
             DeletedByOption = deletedBy;
             DeletedDateTimeOption = deletedDateTime;
             IsDeletedOption = isDeleted;
+            RoleMappingsOption = roleMappings;
+            ScopeOption = scope;
+            OptedOutTenantIdsOption = optedOutTenantIds;
             OnCreated();
         }
 
         partial void OnCreated();
+
+        /// <summary>
+        /// Used to track the state of Scope
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<TenantApiPartnershipV1PartnershipScope?> ScopeOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets Scope
+        /// </summary>
+        [JsonPropertyName("scope")]
+        public TenantApiPartnershipV1PartnershipScope? Scope { get { return this.ScopeOption.Value; } set { this.ScopeOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of Id
@@ -222,6 +241,32 @@ namespace EdGraph.Platform.Client.Model
         public bool? IsDeleted { get { return this.IsDeletedOption.Value; } set { this.IsDeletedOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of RoleMappings
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<List<TenantApiPartnershipV1RoleMappingDTO>?> RoleMappingsOption { get; }
+
+        /// <summary>
+        /// Gets or Sets RoleMappings
+        /// </summary>
+        [JsonPropertyName("roleMappings")]
+        public List<TenantApiPartnershipV1RoleMappingDTO>? RoleMappings { get { return this.RoleMappingsOption.Value; } }
+
+        /// <summary>
+        /// Used to track the state of OptedOutTenantIds
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<List<string>?> OptedOutTenantIdsOption { get; }
+
+        /// <summary>
+        /// Gets or Sets OptedOutTenantIds
+        /// </summary>
+        [JsonPropertyName("optedOutTenantIds")]
+        public List<string>? OptedOutTenantIds { get { return this.OptedOutTenantIdsOption.Value; } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -241,6 +286,9 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  DeletedBy: ").Append(DeletedBy).Append("\n");
             sb.Append("  DeletedDateTime: ").Append(DeletedDateTime).Append("\n");
             sb.Append("  IsDeleted: ").Append(IsDeleted).Append("\n");
+            sb.Append("  RoleMappings: ").Append(RoleMappings).Append("\n");
+            sb.Append("  Scope: ").Append(Scope).Append("\n");
+            sb.Append("  OptedOutTenantIds: ").Append(OptedOutTenantIds).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -290,6 +338,9 @@ namespace EdGraph.Platform.Client.Model
             Option<string?> deletedBy = default;
             Option<string?> deletedDateTime = default;
             Option<bool?> isDeleted = default;
+            Option<List<TenantApiPartnershipV1RoleMappingDTO>?> roleMappings = default;
+            Option<TenantApiPartnershipV1PartnershipScope?> scope = default;
+            Option<List<string>?> optedOutTenantIds = default;
 
             while (utf8JsonReader.Read())
             {
@@ -342,6 +393,17 @@ namespace EdGraph.Platform.Client.Model
                         case "isDeleted":
                             isDeleted = new Option<bool?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (bool?)null : utf8JsonReader.GetBoolean());
                             break;
+                        case "roleMappings":
+                            roleMappings = new Option<List<TenantApiPartnershipV1RoleMappingDTO>?>(JsonSerializer.Deserialize<List<TenantApiPartnershipV1RoleMappingDTO>>(ref utf8JsonReader, jsonSerializerOptions));
+                            break;
+                        case "scope":
+                            string? scopeRawValue = utf8JsonReader.GetString();
+                            if (scopeRawValue != null)
+                                scope = new Option<TenantApiPartnershipV1PartnershipScope?>(TenantApiPartnershipV1PartnershipScopeValueConverter.FromStringOrDefault(scopeRawValue));
+                            break;
+                        case "optedOutTenantIds":
+                            optedOutTenantIds = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
+                            break;
                         default:
                             break;
                     }
@@ -354,7 +416,10 @@ namespace EdGraph.Platform.Client.Model
             if (partnershipSync.IsSet && partnershipSync.Value == null)
                 throw new ArgumentNullException(nameof(partnershipSync), "Property is not nullable for class TenantApiPartnershipV1PartnershipResponse.");
 
-            return new TenantApiPartnershipV1PartnershipResponse(id, partnerTenant, partnershipType, relatedTenants, partnershipSync, createdDateTime, createdBy, lastModifiedDateTime, lastModifiedBy, deletedBy, deletedDateTime, isDeleted);
+            if (scope.IsSet && scope.Value == null)
+                throw new ArgumentNullException(nameof(scope), "Property is not nullable for class TenantApiPartnershipV1PartnershipResponse.");
+
+            return new TenantApiPartnershipV1PartnershipResponse(id, partnerTenant, partnershipType, relatedTenants, partnershipSync, createdDateTime, createdBy, lastModifiedDateTime, lastModifiedBy, deletedBy, deletedDateTime, isDeleted, roleMappings, scope, optedOutTenantIds);
         }
 
         /// <summary>
@@ -458,6 +523,28 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteBoolean("isDeleted", tenantApiPartnershipV1PartnershipResponse.IsDeletedOption.Value!.Value);
                 else
                     writer.WriteNull("isDeleted");
+
+            if (tenantApiPartnershipV1PartnershipResponse.RoleMappingsOption.IsSet)
+                if (tenantApiPartnershipV1PartnershipResponse.RoleMappingsOption.Value != null)
+                {
+                    writer.WritePropertyName("roleMappings");
+                    JsonSerializer.Serialize(writer, tenantApiPartnershipV1PartnershipResponse.RoleMappings, jsonSerializerOptions);
+                }
+                else
+                    writer.WriteNull("roleMappings");
+            if (tenantApiPartnershipV1PartnershipResponse.ScopeOption.IsSet)
+            {
+                var scopeRawValue = TenantApiPartnershipV1PartnershipScopeValueConverter.ToJsonValue(tenantApiPartnershipV1PartnershipResponse.Scope!.Value);
+                writer.WriteString("scope", scopeRawValue);
+            }
+            if (tenantApiPartnershipV1PartnershipResponse.OptedOutTenantIdsOption.IsSet)
+                if (tenantApiPartnershipV1PartnershipResponse.OptedOutTenantIdsOption.Value != null)
+                {
+                    writer.WritePropertyName("optedOutTenantIds");
+                    JsonSerializer.Serialize(writer, tenantApiPartnershipV1PartnershipResponse.OptedOutTenantIds, jsonSerializerOptions);
+                }
+                else
+                    writer.WriteNull("optedOutTenantIds");
         }
     }
 }

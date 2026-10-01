@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **VendorId** | **int** |  | [optional] 
 **EducationOrganizations** | [**List&lt;EdfiAdminApiEdfiAdminV1EducationOrganization&gt;**](EdfiAdminApiEdfiAdminV1EducationOrganization.md) |  | [optional] [readonly] 
 **OperationalContextUri** | **string** |  | [optional] 
+**Years** | **List&lt;int&gt;** |  | [optional] [readonly] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 

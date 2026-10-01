@@ -36,11 +36,15 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="programs">programs</param>
         /// <param name="id">id</param>
         /// <param name="tenantId">tenantId</param>
-        /// <param name="code">code</param>
-        /// <param name="name">name</param>
-        /// <param name="district">district</param>
-        /// <param name="campusId">campusId</param>
-        /// <param name="teaIdNumber">teaIdNumber</param>
+        /// <param name="externalDataSourceSchoolId">externalDataSourceSchoolId</param>
+        /// <param name="schoolStateShortCode">schoolStateShortCode</param>
+        /// <param name="schoolName">schoolName</param>
+        /// <param name="districtStateShortCode">districtStateShortCode</param>
+        /// <param name="schoolStateLongCode">schoolStateLongCode</param>
+        /// <param name="schoolLocalCode">schoolLocalCode</param>
+        /// <param name="districtLocalCode">districtLocalCode</param>
+        /// <param name="districtStateCode">districtStateCode</param>
+        /// <param name="districtName">districtName</param>
         /// <param name="gradesServed">gradesServed</param>
         /// <param name="address">address</param>
         /// <param name="lat">lat</param>
@@ -52,18 +56,21 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="createdDateTime">createdDateTime</param>
         /// <param name="lastModifiedBy">lastModifiedBy</param>
         /// <param name="lastModifiedDateTime">lastModifiedDateTime</param>
-        /// <param name="lastUpdatedDateTime">lastUpdatedDateTime</param>
         [JsonConstructor]
-        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto(Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolProgramResponseDto>?> programs = default, Option<Guid?> id = default, Option<Guid?> tenantId = default, Option<string?> code = default, Option<string?> name = default, Option<string?> district = default, Option<string?> campusId = default, Option<string?> teaIdNumber = default, Option<List<string>?> gradesServed = default, Option<string?> address = default, Option<double?> lat = default, Option<double?> lon = default, Option<string?> phone = default, Option<bool?> isEnabled = default, Option<int?> programCount = default, Option<string?> createdBy = default, Option<DateTime?> createdDateTime = default, Option<string?> lastModifiedBy = default, Option<DateTime?> lastModifiedDateTime = default, Option<DateTime?> lastUpdatedDateTime = default)
+        public EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto(Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolProgramResponseDto>?> programs = default, Option<Guid?> id = default, Option<Guid?> tenantId = default, Option<string?> externalDataSourceSchoolId = default, Option<string?> schoolStateShortCode = default, Option<string?> schoolName = default, Option<string?> districtStateShortCode = default, Option<string?> schoolStateLongCode = default, Option<string?> schoolLocalCode = default, Option<string?> districtLocalCode = default, Option<string?> districtStateCode = default, Option<string?> districtName = default, Option<List<string>?> gradesServed = default, Option<string?> address = default, Option<double?> lat = default, Option<double?> lon = default, Option<string?> phone = default, Option<bool?> isEnabled = default, Option<int?> programCount = default, Option<string?> createdBy = default, Option<DateTime?> createdDateTime = default, Option<string?> lastModifiedBy = default, Option<DateTime?> lastModifiedDateTime = default)
         {
             ProgramsOption = programs;
             IdOption = id;
             TenantIdOption = tenantId;
-            CodeOption = code;
-            NameOption = name;
-            DistrictOption = district;
-            CampusIdOption = campusId;
-            TeaIdNumberOption = teaIdNumber;
+            ExternalDataSourceSchoolIdOption = externalDataSourceSchoolId;
+            SchoolStateShortCodeOption = schoolStateShortCode;
+            SchoolNameOption = schoolName;
+            DistrictStateShortCodeOption = districtStateShortCode;
+            SchoolStateLongCodeOption = schoolStateLongCode;
+            SchoolLocalCodeOption = schoolLocalCode;
+            DistrictLocalCodeOption = districtLocalCode;
+            DistrictStateCodeOption = districtStateCode;
+            DistrictNameOption = districtName;
             GradesServedOption = gradesServed;
             AddressOption = address;
             LatOption = lat;
@@ -75,7 +82,6 @@ namespace EdGraph.Platform.Client.Model
             CreatedDateTimeOption = createdDateTime;
             LastModifiedByOption = lastModifiedBy;
             LastModifiedDateTimeOption = lastModifiedDateTime;
-            LastUpdatedDateTimeOption = lastUpdatedDateTime;
             OnCreated();
         }
 
@@ -121,69 +127,121 @@ namespace EdGraph.Platform.Client.Model
         public Guid? TenantId { get { return this.TenantIdOption.Value; } set { this.TenantIdOption = new(value); } }
 
         /// <summary>
-        /// Used to track the state of Code
+        /// Used to track the state of ExternalDataSourceSchoolId
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<string?> CodeOption { get; private set; }
+        public Option<string?> ExternalDataSourceSchoolIdOption { get; private set; }
 
         /// <summary>
-        /// Gets or Sets Code
+        /// Gets or Sets ExternalDataSourceSchoolId
         /// </summary>
-        [JsonPropertyName("code")]
-        public string? Code { get { return this.CodeOption.Value; } set { this.CodeOption = new(value); } }
+        [JsonPropertyName("externalDataSourceSchoolId")]
+        public string? ExternalDataSourceSchoolId { get { return this.ExternalDataSourceSchoolIdOption.Value; } set { this.ExternalDataSourceSchoolIdOption = new(value); } }
 
         /// <summary>
-        /// Used to track the state of Name
-        /// </summary>
-        [JsonIgnore]
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<string?> NameOption { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets Name
-        /// </summary>
-        [JsonPropertyName("name")]
-        public string? Name { get { return this.NameOption.Value; } set { this.NameOption = new(value); } }
-
-        /// <summary>
-        /// Used to track the state of District
+        /// Used to track the state of SchoolStateShortCode
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<string?> DistrictOption { get; private set; }
+        public Option<string?> SchoolStateShortCodeOption { get; private set; }
 
         /// <summary>
-        /// Gets or Sets District
+        /// Gets or Sets SchoolStateShortCode
         /// </summary>
-        [JsonPropertyName("district")]
-        public string? District { get { return this.DistrictOption.Value; } set { this.DistrictOption = new(value); } }
+        [JsonPropertyName("schoolStateShortCode")]
+        public string? SchoolStateShortCode { get { return this.SchoolStateShortCodeOption.Value; } set { this.SchoolStateShortCodeOption = new(value); } }
 
         /// <summary>
-        /// Used to track the state of CampusId
-        /// </summary>
-        [JsonIgnore]
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<string?> CampusIdOption { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets CampusId
-        /// </summary>
-        [JsonPropertyName("campusId")]
-        public string? CampusId { get { return this.CampusIdOption.Value; } set { this.CampusIdOption = new(value); } }
-
-        /// <summary>
-        /// Used to track the state of TeaIdNumber
+        /// Used to track the state of SchoolName
         /// </summary>
         [JsonIgnore]
         [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<string?> TeaIdNumberOption { get; private set; }
+        public Option<string?> SchoolNameOption { get; private set; }
 
         /// <summary>
-        /// Gets or Sets TeaIdNumber
+        /// Gets or Sets SchoolName
         /// </summary>
-        [JsonPropertyName("teaIdNumber")]
-        public string? TeaIdNumber { get { return this.TeaIdNumberOption.Value; } set { this.TeaIdNumberOption = new(value); } }
+        [JsonPropertyName("schoolName")]
+        public string? SchoolName { get { return this.SchoolNameOption.Value; } set { this.SchoolNameOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of DistrictStateShortCode
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> DistrictStateShortCodeOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets DistrictStateShortCode
+        /// </summary>
+        [JsonPropertyName("districtStateShortCode")]
+        public string? DistrictStateShortCode { get { return this.DistrictStateShortCodeOption.Value; } set { this.DistrictStateShortCodeOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of SchoolStateLongCode
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> SchoolStateLongCodeOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets SchoolStateLongCode
+        /// </summary>
+        [JsonPropertyName("schoolStateLongCode")]
+        public string? SchoolStateLongCode { get { return this.SchoolStateLongCodeOption.Value; } set { this.SchoolStateLongCodeOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of SchoolLocalCode
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> SchoolLocalCodeOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets SchoolLocalCode
+        /// </summary>
+        [JsonPropertyName("schoolLocalCode")]
+        public string? SchoolLocalCode { get { return this.SchoolLocalCodeOption.Value; } set { this.SchoolLocalCodeOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of DistrictLocalCode
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> DistrictLocalCodeOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets DistrictLocalCode
+        /// </summary>
+        [JsonPropertyName("districtLocalCode")]
+        public string? DistrictLocalCode { get { return this.DistrictLocalCodeOption.Value; } set { this.DistrictLocalCodeOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of DistrictStateCode
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> DistrictStateCodeOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets DistrictStateCode
+        /// </summary>
+        [JsonPropertyName("districtStateCode")]
+        public string? DistrictStateCode { get { return this.DistrictStateCodeOption.Value; } set { this.DistrictStateCodeOption = new(value); } }
+
+        /// <summary>
+        /// Used to track the state of DistrictName
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<string?> DistrictNameOption { get; private set; }
+
+        /// <summary>
+        /// Gets or Sets DistrictName
+        /// </summary>
+        [JsonPropertyName("districtName")]
+        public string? DistrictName { get { return this.DistrictNameOption.Value; } set { this.DistrictNameOption = new(value); } }
 
         /// <summary>
         /// Used to track the state of GradesServed
@@ -329,19 +387,6 @@ namespace EdGraph.Platform.Client.Model
         public DateTime? LastModifiedDateTime { get { return this.LastModifiedDateTimeOption.Value; } set { this.LastModifiedDateTimeOption = new(value); } }
 
         /// <summary>
-        /// Used to track the state of LastUpdatedDateTime
-        /// </summary>
-        [JsonIgnore]
-        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-        public Option<DateTime?> LastUpdatedDateTimeOption { get; private set; }
-
-        /// <summary>
-        /// Gets or Sets LastUpdatedDateTime
-        /// </summary>
-        [JsonPropertyName("lastUpdatedDateTime")]
-        public DateTime? LastUpdatedDateTime { get { return this.LastUpdatedDateTimeOption.Value; } set { this.LastUpdatedDateTimeOption = new(value); } }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -352,11 +397,15 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  Programs: ").Append(Programs).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  TenantId: ").Append(TenantId).Append("\n");
-            sb.Append("  Code: ").Append(Code).Append("\n");
-            sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  District: ").Append(District).Append("\n");
-            sb.Append("  CampusId: ").Append(CampusId).Append("\n");
-            sb.Append("  TeaIdNumber: ").Append(TeaIdNumber).Append("\n");
+            sb.Append("  ExternalDataSourceSchoolId: ").Append(ExternalDataSourceSchoolId).Append("\n");
+            sb.Append("  SchoolStateShortCode: ").Append(SchoolStateShortCode).Append("\n");
+            sb.Append("  SchoolName: ").Append(SchoolName).Append("\n");
+            sb.Append("  DistrictStateShortCode: ").Append(DistrictStateShortCode).Append("\n");
+            sb.Append("  SchoolStateLongCode: ").Append(SchoolStateLongCode).Append("\n");
+            sb.Append("  SchoolLocalCode: ").Append(SchoolLocalCode).Append("\n");
+            sb.Append("  DistrictLocalCode: ").Append(DistrictLocalCode).Append("\n");
+            sb.Append("  DistrictStateCode: ").Append(DistrictStateCode).Append("\n");
+            sb.Append("  DistrictName: ").Append(DistrictName).Append("\n");
             sb.Append("  GradesServed: ").Append(GradesServed).Append("\n");
             sb.Append("  Address: ").Append(Address).Append("\n");
             sb.Append("  Lat: ").Append(Lat).Append("\n");
@@ -368,7 +417,6 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  CreatedDateTime: ").Append(CreatedDateTime).Append("\n");
             sb.Append("  LastModifiedBy: ").Append(LastModifiedBy).Append("\n");
             sb.Append("  LastModifiedDateTime: ").Append(LastModifiedDateTime).Append("\n");
-            sb.Append("  LastUpdatedDateTime: ").Append(LastUpdatedDateTime).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -400,11 +448,6 @@ namespace EdGraph.Platform.Client.Model
         public static string LastModifiedDateTimeFormat { get; set; } = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fffffffK";
 
         /// <summary>
-        /// The format to use to serialize LastUpdatedDateTime
-        /// </summary>
-        public static string LastUpdatedDateTimeFormat { get; set; } = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fffffffK";
-
-        /// <summary>
         /// Deserializes json to <see cref="EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto" />
         /// </summary>
         /// <param name="utf8JsonReader"></param>
@@ -424,11 +467,15 @@ namespace EdGraph.Platform.Client.Model
             Option<List<EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolProgramResponseDto>?> programs = default;
             Option<Guid?> id = default;
             Option<Guid?> tenantId = default;
-            Option<string?> code = default;
-            Option<string?> name = default;
-            Option<string?> district = default;
-            Option<string?> campusId = default;
-            Option<string?> teaIdNumber = default;
+            Option<string?> externalDataSourceSchoolId = default;
+            Option<string?> schoolStateShortCode = default;
+            Option<string?> schoolName = default;
+            Option<string?> districtStateShortCode = default;
+            Option<string?> schoolStateLongCode = default;
+            Option<string?> schoolLocalCode = default;
+            Option<string?> districtLocalCode = default;
+            Option<string?> districtStateCode = default;
+            Option<string?> districtName = default;
             Option<List<string>?> gradesServed = default;
             Option<string?> address = default;
             Option<double?> lat = default;
@@ -440,7 +487,6 @@ namespace EdGraph.Platform.Client.Model
             Option<DateTime?> createdDateTime = default;
             Option<string?> lastModifiedBy = default;
             Option<DateTime?> lastModifiedDateTime = default;
-            Option<DateTime?> lastUpdatedDateTime = default;
 
             while (utf8JsonReader.Read())
             {
@@ -466,20 +512,32 @@ namespace EdGraph.Platform.Client.Model
                         case "tenantId":
                             tenantId = new Option<Guid?>(utf8JsonReader.TokenType == JsonTokenType.Null ? (Guid?)null : utf8JsonReader.GetGuid());
                             break;
-                        case "code":
-                            code = new Option<string?>(utf8JsonReader.GetString());
+                        case "externalDataSourceSchoolId":
+                            externalDataSourceSchoolId = new Option<string?>(utf8JsonReader.GetString());
                             break;
-                        case "name":
-                            name = new Option<string?>(utf8JsonReader.GetString());
+                        case "schoolStateShortCode":
+                            schoolStateShortCode = new Option<string?>(utf8JsonReader.GetString());
                             break;
-                        case "district":
-                            district = new Option<string?>(utf8JsonReader.GetString());
+                        case "schoolName":
+                            schoolName = new Option<string?>(utf8JsonReader.GetString());
                             break;
-                        case "campusId":
-                            campusId = new Option<string?>(utf8JsonReader.GetString());
+                        case "districtStateShortCode":
+                            districtStateShortCode = new Option<string?>(utf8JsonReader.GetString());
                             break;
-                        case "teaIdNumber":
-                            teaIdNumber = new Option<string?>(utf8JsonReader.GetString());
+                        case "schoolStateLongCode":
+                            schoolStateLongCode = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "schoolLocalCode":
+                            schoolLocalCode = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "districtLocalCode":
+                            districtLocalCode = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "districtStateCode":
+                            districtStateCode = new Option<string?>(utf8JsonReader.GetString());
+                            break;
+                        case "districtName":
+                            districtName = new Option<string?>(utf8JsonReader.GetString());
                             break;
                         case "gradesServed":
                             gradesServed = new Option<List<string>?>(JsonSerializer.Deserialize<List<string>>(ref utf8JsonReader, jsonSerializerOptions));
@@ -514,9 +572,6 @@ namespace EdGraph.Platform.Client.Model
                         case "lastModifiedDateTime":
                             lastModifiedDateTime = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime?>(ref utf8JsonReader, jsonSerializerOptions));
                             break;
-                        case "lastUpdatedDateTime":
-                            lastUpdatedDateTime = new Option<DateTime?>(JsonSerializer.Deserialize<DateTime?>(ref utf8JsonReader, jsonSerializerOptions));
-                            break;
                         default:
                             break;
                     }
@@ -529,7 +584,7 @@ namespace EdGraph.Platform.Client.Model
             if (programCount.IsSet && programCount.Value == null)
                 throw new ArgumentNullException(nameof(programCount), "Property is not nullable for class EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.");
 
-            return new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto(programs, id, tenantId, code, name, district, campusId, teaIdNumber, gradesServed, address, lat, lon, phone, isEnabled, programCount, createdBy, createdDateTime, lastModifiedBy, lastModifiedDateTime, lastUpdatedDateTime);
+            return new EdGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto(programs, id, tenantId, externalDataSourceSchoolId, schoolStateShortCode, schoolName, districtStateShortCode, schoolStateLongCode, schoolLocalCode, districtLocalCode, districtStateCode, districtName, gradesServed, address, lat, lon, phone, isEnabled, programCount, createdBy, createdDateTime, lastModifiedBy, lastModifiedDateTime);
         }
 
         /// <summary>
@@ -576,35 +631,59 @@ namespace EdGraph.Platform.Client.Model
                 else
                     writer.WriteNull("tenantId");
 
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.CodeOption.IsSet)
-                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.CodeOption.Value != null)
-                    writer.WriteString("code", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.Code);
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.ExternalDataSourceSchoolIdOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.ExternalDataSourceSchoolIdOption.Value != null)
+                    writer.WriteString("externalDataSourceSchoolId", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.ExternalDataSourceSchoolId);
                 else
-                    writer.WriteNull("code");
+                    writer.WriteNull("externalDataSourceSchoolId");
 
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.NameOption.IsSet)
-                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.NameOption.Value != null)
-                    writer.WriteString("name", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.Name);
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.SchoolStateShortCodeOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.SchoolStateShortCodeOption.Value != null)
+                    writer.WriteString("schoolStateShortCode", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.SchoolStateShortCode);
                 else
-                    writer.WriteNull("name");
+                    writer.WriteNull("schoolStateShortCode");
 
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.DistrictOption.IsSet)
-                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.DistrictOption.Value != null)
-                    writer.WriteString("district", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.District);
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.SchoolNameOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.SchoolNameOption.Value != null)
+                    writer.WriteString("schoolName", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.SchoolName);
                 else
-                    writer.WriteNull("district");
+                    writer.WriteNull("schoolName");
 
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.CampusIdOption.IsSet)
-                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.CampusIdOption.Value != null)
-                    writer.WriteString("campusId", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.CampusId);
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.DistrictStateShortCodeOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.DistrictStateShortCodeOption.Value != null)
+                    writer.WriteString("districtStateShortCode", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.DistrictStateShortCode);
                 else
-                    writer.WriteNull("campusId");
+                    writer.WriteNull("districtStateShortCode");
 
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.TeaIdNumberOption.IsSet)
-                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.TeaIdNumberOption.Value != null)
-                    writer.WriteString("teaIdNumber", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.TeaIdNumber);
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.SchoolStateLongCodeOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.SchoolStateLongCodeOption.Value != null)
+                    writer.WriteString("schoolStateLongCode", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.SchoolStateLongCode);
                 else
-                    writer.WriteNull("teaIdNumber");
+                    writer.WriteNull("schoolStateLongCode");
+
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.SchoolLocalCodeOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.SchoolLocalCodeOption.Value != null)
+                    writer.WriteString("schoolLocalCode", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.SchoolLocalCode);
+                else
+                    writer.WriteNull("schoolLocalCode");
+
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.DistrictLocalCodeOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.DistrictLocalCodeOption.Value != null)
+                    writer.WriteString("districtLocalCode", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.DistrictLocalCode);
+                else
+                    writer.WriteNull("districtLocalCode");
+
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.DistrictStateCodeOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.DistrictStateCodeOption.Value != null)
+                    writer.WriteString("districtStateCode", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.DistrictStateCode);
+                else
+                    writer.WriteNull("districtStateCode");
+
+            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.DistrictNameOption.IsSet)
+                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.DistrictNameOption.Value != null)
+                    writer.WriteString("districtName", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.DistrictName);
+                else
+                    writer.WriteNull("districtName");
 
             if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.GradesServedOption.IsSet)
                 if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.GradesServedOption.Value != null)
@@ -667,12 +746,6 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteString("lastModifiedDateTime", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.LastModifiedDateTimeOption.Value!.Value.ToString(LastModifiedDateTimeFormat));
                 else
                     writer.WriteNull("lastModifiedDateTime");
-
-            if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.LastUpdatedDateTimeOption.IsSet)
-                if (edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.LastUpdatedDateTimeOption.Value != null)
-                    writer.WriteString("lastUpdatedDateTime", edGraphHttpAggregatorsTenantApiControllersV1ViewModelsResponsesEnrollmentAdminSchoolResponseDto.LastUpdatedDateTimeOption.Value!.Value.ToString(LastUpdatedDateTimeFormat));
-                else
-                    writer.WriteNull("lastUpdatedDateTime");
         }
     }
 }

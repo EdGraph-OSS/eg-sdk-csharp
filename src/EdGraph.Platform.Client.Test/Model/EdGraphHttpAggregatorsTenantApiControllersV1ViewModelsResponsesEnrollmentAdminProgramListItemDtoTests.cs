@@ -63,48 +63,21 @@ namespace EdGraph.Platform.Client.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'Code'
+        /// Test the property 'ProgramCode'
         /// </summary>
         [Fact]
-        public void CodeTest()
+        public void ProgramCodeTest()
         {
-            // TODO unit test for the property 'Code'
+            // TODO unit test for the property 'ProgramCode'
         }
 
         /// <summary>
-        /// Test the property 'Name'
+        /// Test the property 'ProgramName'
         /// </summary>
         [Fact]
-        public void NameTest()
+        public void ProgramNameTest()
         {
-            // TODO unit test for the property 'Name'
-        }
-
-        /// <summary>
-        /// Test the property 'Scope'
-        /// </summary>
-        [Fact]
-        public void ScopeTest()
-        {
-            // TODO unit test for the property 'Scope'
-        }
-
-        /// <summary>
-        /// Test the property 'SchoolCount'
-        /// </summary>
-        [Fact]
-        public void SchoolCountTest()
-        {
-            // TODO unit test for the property 'SchoolCount'
-        }
-
-        /// <summary>
-        /// Test the property 'SchoolName'
-        /// </summary>
-        [Fact]
-        public void SchoolNameTest()
-        {
-            // TODO unit test for the property 'SchoolName'
+            // TODO unit test for the property 'ProgramName'
         }
 
         /// <summary>
@@ -117,21 +90,21 @@ namespace EdGraph.Platform.Client.Test.Model
         }
 
         /// <summary>
+        /// Test the property 'School'
+        /// </summary>
+        [Fact]
+        public void SchoolTest()
+        {
+            // TODO unit test for the property 'School'
+        }
+
+        /// <summary>
         /// Test the property 'Grades'
         /// </summary>
         [Fact]
         public void GradesTest()
         {
             // TODO unit test for the property 'Grades'
-        }
-
-        /// <summary>
-        /// Test the property 'GradesVaryBySchool'
-        /// </summary>
-        [Fact]
-        public void GradesVaryBySchoolTest()
-        {
-            // TODO unit test for the property 'GradesVaryBySchool'
         }
 
         /// <summary>
@@ -144,12 +117,39 @@ namespace EdGraph.Platform.Client.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'SeatStatusVariesBySchool'
+        /// Test the property 'EligibilityCriteria'
         /// </summary>
         [Fact]
-        public void SeatStatusVariesBySchoolTest()
+        public void EligibilityCriteriaTest()
         {
-            // TODO unit test for the property 'SeatStatusVariesBySchool'
+            // TODO unit test for the property 'EligibilityCriteria'
+        }
+
+        /// <summary>
+        /// Test the property 'Latitude'
+        /// </summary>
+        [Fact]
+        public void LatitudeTest()
+        {
+            // TODO unit test for the property 'Latitude'
+        }
+
+        /// <summary>
+        /// Test the property 'Longitude'
+        /// </summary>
+        [Fact]
+        public void LongitudeTest()
+        {
+            // TODO unit test for the property 'Longitude'
+        }
+
+        /// <summary>
+        /// Test the property 'Requirements'
+        /// </summary>
+        [Fact]
+        public void RequirementsTest()
+        {
+            // TODO unit test for the property 'Requirements'
         }
     }
 }

@@ -72,12 +72,12 @@ namespace EdGraph.Platform.Client.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'ContactId'
+        /// Test the property 'ExternalDataSourceContactId'
         /// </summary>
         [Fact]
-        public void ContactIdTest()
+        public void ExternalDataSourceContactIdTest()
         {
-            // TODO unit test for the property 'ContactId'
+            // TODO unit test for the property 'ExternalDataSourceContactId'
         }
 
         /// <summary>
@@ -144,6 +144,15 @@ namespace EdGraph.Platform.Client.Test.Model
         }
 
         /// <summary>
+        /// Test the property 'StudentLocalCodes'
+        /// </summary>
+        [Fact]
+        public void StudentLocalCodesTest()
+        {
+            // TODO unit test for the property 'StudentLocalCodes'
+        }
+
+        /// <summary>
         /// Test the property 'IsPhoneOverride'
         /// </summary>
         [Fact]
@@ -180,39 +189,39 @@ namespace EdGraph.Platform.Client.Test.Model
         }
 
         /// <summary>
-        /// Test the property 'EmailOverriddenBy'
+        /// Test the property 'EmailLastOverriddenBy'
         /// </summary>
         [Fact]
-        public void EmailOverriddenByTest()
+        public void EmailLastOverriddenByTest()
         {
-            // TODO unit test for the property 'EmailOverriddenBy'
+            // TODO unit test for the property 'EmailLastOverriddenBy'
         }
 
         /// <summary>
-        /// Test the property 'EmailOverriddenAt'
+        /// Test the property 'EmailLastOverriddenDateTime'
         /// </summary>
         [Fact]
-        public void EmailOverriddenAtTest()
+        public void EmailLastOverriddenDateTimeTest()
         {
-            // TODO unit test for the property 'EmailOverriddenAt'
+            // TODO unit test for the property 'EmailLastOverriddenDateTime'
         }
 
         /// <summary>
-        /// Test the property 'PhoneOverriddenBy'
+        /// Test the property 'PhoneLastOverriddenBy'
         /// </summary>
         [Fact]
-        public void PhoneOverriddenByTest()
+        public void PhoneLastOverriddenByTest()
         {
-            // TODO unit test for the property 'PhoneOverriddenBy'
+            // TODO unit test for the property 'PhoneLastOverriddenBy'
         }
 
         /// <summary>
-        /// Test the property 'PhoneOverriddenAt'
+        /// Test the property 'PhoneLastOverriddenDateTime'
         /// </summary>
         [Fact]
-        public void PhoneOverriddenAtTest()
+        public void PhoneLastOverriddenDateTimeTest()
         {
-            // TODO unit test for the property 'PhoneOverriddenAt'
+            // TODO unit test for the property 'PhoneLastOverriddenDateTime'
         }
 
         /// <summary>
@@ -279,12 +288,39 @@ namespace EdGraph.Platform.Client.Test.Model
         }
 
         /// <summary>
+        /// Test the property 'DeletedBy'
+        /// </summary>
+        [Fact]
+        public void DeletedByTest()
+        {
+            // TODO unit test for the property 'DeletedBy'
+        }
+
+        /// <summary>
+        /// Test the property 'DeletedDateTime'
+        /// </summary>
+        [Fact]
+        public void DeletedDateTimeTest()
+        {
+            // TODO unit test for the property 'DeletedDateTime'
+        }
+
+        /// <summary>
         /// Test the property 'IsDeleted'
         /// </summary>
         [Fact]
         public void IsDeletedTest()
         {
             // TODO unit test for the property 'IsDeleted'
+        }
+
+        /// <summary>
+        /// Test the property 'VerificationStatus'
+        /// </summary>
+        [Fact]
+        public void VerificationStatusTest()
+        {
+            // TODO unit test for the property 'VerificationStatus'
         }
     }
 }

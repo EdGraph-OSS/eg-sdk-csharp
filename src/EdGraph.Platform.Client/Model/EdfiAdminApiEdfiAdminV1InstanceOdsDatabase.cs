@@ -40,8 +40,9 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="year">year</param>
         /// <param name="odsBackupCode">odsBackupCode</param>
         /// <param name="odsBackupDescription">odsBackupDescription</param>
+        /// <param name="pendingApplicationAccessIds">pendingApplicationAccessIds</param>
         [JsonConstructor]
-        public EdfiAdminApiEdfiAdminV1InstanceOdsDatabase(Option<string?> selectedTierId = default, Option<string?> selectedTierName = default, Option<string?> status = default, Option<EdfiAdminApiEdfiAdminV1InstanceDatabaseJobs?> jobs = default, Option<int?> year = default, Option<string?> odsBackupCode = default, Option<string?> odsBackupDescription = default)
+        public EdfiAdminApiEdfiAdminV1InstanceOdsDatabase(Option<string?> selectedTierId = default, Option<string?> selectedTierName = default, Option<string?> status = default, Option<EdfiAdminApiEdfiAdminV1InstanceDatabaseJobs?> jobs = default, Option<int?> year = default, Option<string?> odsBackupCode = default, Option<string?> odsBackupDescription = default, Option<List<int>?> pendingApplicationAccessIds = default)
         {
             SelectedTierIdOption = selectedTierId;
             SelectedTierNameOption = selectedTierName;
@@ -50,6 +51,7 @@ namespace EdGraph.Platform.Client.Model
             YearOption = year;
             OdsBackupCodeOption = odsBackupCode;
             OdsBackupDescriptionOption = odsBackupDescription;
+            PendingApplicationAccessIdsOption = pendingApplicationAccessIds;
             OnCreated();
         }
 
@@ -147,6 +149,19 @@ namespace EdGraph.Platform.Client.Model
         public string? OdsBackupDescription { get { return this.OdsBackupDescriptionOption.Value; } set { this.OdsBackupDescriptionOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of PendingApplicationAccessIds
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<List<int>?> PendingApplicationAccessIdsOption { get; }
+
+        /// <summary>
+        /// Gets or Sets PendingApplicationAccessIds
+        /// </summary>
+        [JsonPropertyName("pendingApplicationAccessIds")]
+        public List<int>? PendingApplicationAccessIds { get { return this.PendingApplicationAccessIdsOption.Value; } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -161,6 +176,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  Year: ").Append(Year).Append("\n");
             sb.Append("  OdsBackupCode: ").Append(OdsBackupCode).Append("\n");
             sb.Append("  OdsBackupDescription: ").Append(OdsBackupDescription).Append("\n");
+            sb.Append("  PendingApplicationAccessIds: ").Append(PendingApplicationAccessIds).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -205,6 +221,7 @@ namespace EdGraph.Platform.Client.Model
             Option<int?> year = default;
             Option<string?> odsBackupCode = default;
             Option<string?> odsBackupDescription = default;
+            Option<List<int>?> pendingApplicationAccessIds = default;
 
             while (utf8JsonReader.Read())
             {
@@ -242,6 +259,9 @@ namespace EdGraph.Platform.Client.Model
                         case "odsBackupDescription":
                             odsBackupDescription = new Option<string?>(utf8JsonReader.GetString());
                             break;
+                        case "pendingApplicationAccessIds":
+                            pendingApplicationAccessIds = new Option<List<int>?>(JsonSerializer.Deserialize<List<int>>(ref utf8JsonReader, jsonSerializerOptions));
+                            break;
                         default:
                             break;
                     }
@@ -254,7 +274,7 @@ namespace EdGraph.Platform.Client.Model
             if (year.IsSet && year.Value == null)
                 throw new ArgumentNullException(nameof(year), "Property is not nullable for class EdfiAdminApiEdfiAdminV1InstanceOdsDatabase.");
 
-            return new EdfiAdminApiEdfiAdminV1InstanceOdsDatabase(selectedTierId, selectedTierName, status, jobs, year, odsBackupCode, odsBackupDescription);
+            return new EdfiAdminApiEdfiAdminV1InstanceOdsDatabase(selectedTierId, selectedTierName, status, jobs, year, odsBackupCode, odsBackupDescription, pendingApplicationAccessIds);
         }
 
         /// <summary>
@@ -321,6 +341,15 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteString("odsBackupDescription", edfiAdminApiEdfiAdminV1InstanceOdsDatabase.OdsBackupDescription);
                 else
                     writer.WriteNull("odsBackupDescription");
+
+            if (edfiAdminApiEdfiAdminV1InstanceOdsDatabase.PendingApplicationAccessIdsOption.IsSet)
+                if (edfiAdminApiEdfiAdminV1InstanceOdsDatabase.PendingApplicationAccessIdsOption.Value != null)
+                {
+                    writer.WritePropertyName("pendingApplicationAccessIds");
+                    JsonSerializer.Serialize(writer, edfiAdminApiEdfiAdminV1InstanceOdsDatabase.PendingApplicationAccessIds, jsonSerializerOptions);
+                }
+                else
+                    writer.WriteNull("pendingApplicationAccessIds");
         }
     }
 }

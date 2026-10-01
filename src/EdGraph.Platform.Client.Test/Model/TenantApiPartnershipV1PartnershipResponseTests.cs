@@ -160,5 +160,32 @@ namespace EdGraph.Platform.Client.Test.Model
         {
             // TODO unit test for the property 'IsDeleted'
         }
+
+        /// <summary>
+        /// Test the property 'RoleMappings'
+        /// </summary>
+        [Fact]
+        public void RoleMappingsTest()
+        {
+            // TODO unit test for the property 'RoleMappings'
+        }
+
+        /// <summary>
+        /// Test the property 'Scope'
+        /// </summary>
+        [Fact]
+        public void ScopeTest()
+        {
+            // TODO unit test for the property 'Scope'
+        }
+
+        /// <summary>
+        /// Test the property 'OptedOutTenantIds'
+        /// </summary>
+        [Fact]
+        public void OptedOutTenantIdsTest()
+        {
+            // TODO unit test for the property 'OptedOutTenantIds'
+        }
     }
 }

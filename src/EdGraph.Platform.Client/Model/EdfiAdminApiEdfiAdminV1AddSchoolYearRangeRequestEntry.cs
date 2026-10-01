@@ -36,12 +36,14 @@ namespace EdGraph.Platform.Client.Model
         /// <param name="year">year</param>
         /// <param name="selectedTierId">selectedTierId</param>
         /// <param name="odsBackupCode">odsBackupCode</param>
+        /// <param name="applicationIds">Per-year pending grants are applied only after this ODS finishes provisioning.  Keep field 4 aligned in every source and consumer copy to preserve the wire contract.</param>
         [JsonConstructor]
-        public EdfiAdminApiEdfiAdminV1AddSchoolYearRangeRequestEntry(Option<int?> year = default, Option<string?> selectedTierId = default, Option<string?> odsBackupCode = default)
+        public EdfiAdminApiEdfiAdminV1AddSchoolYearRangeRequestEntry(Option<int?> year = default, Option<string?> selectedTierId = default, Option<string?> odsBackupCode = default, Option<List<int>?> applicationIds = default)
         {
             YearOption = year;
             SelectedTierIdOption = selectedTierId;
             OdsBackupCodeOption = odsBackupCode;
+            ApplicationIdsOption = applicationIds;
             OnCreated();
         }
 
@@ -87,6 +89,20 @@ namespace EdGraph.Platform.Client.Model
         public string? OdsBackupCode { get { return this.OdsBackupCodeOption.Value; } set { this.OdsBackupCodeOption = new(value); } }
 
         /// <summary>
+        /// Used to track the state of ApplicationIds
+        /// </summary>
+        [JsonIgnore]
+        [global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
+        public Option<List<int>?> ApplicationIdsOption { get; }
+
+        /// <summary>
+        /// Per-year pending grants are applied only after this ODS finishes provisioning.  Keep field 4 aligned in every source and consumer copy to preserve the wire contract.
+        /// </summary>
+        /// <value>Per-year pending grants are applied only after this ODS finishes provisioning.  Keep field 4 aligned in every source and consumer copy to preserve the wire contract.</value>
+        [JsonPropertyName("applicationIds")]
+        public List<int>? ApplicationIds { get { return this.ApplicationIdsOption.Value; } }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -97,6 +113,7 @@ namespace EdGraph.Platform.Client.Model
             sb.Append("  Year: ").Append(Year).Append("\n");
             sb.Append("  SelectedTierId: ").Append(SelectedTierId).Append("\n");
             sb.Append("  OdsBackupCode: ").Append(OdsBackupCode).Append("\n");
+            sb.Append("  ApplicationIds: ").Append(ApplicationIds).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -137,6 +154,7 @@ namespace EdGraph.Platform.Client.Model
             Option<int?> year = default;
             Option<string?> selectedTierId = default;
             Option<string?> odsBackupCode = default;
+            Option<List<int>?> applicationIds = default;
 
             while (utf8JsonReader.Read())
             {
@@ -162,6 +180,9 @@ namespace EdGraph.Platform.Client.Model
                         case "odsBackupCode":
                             odsBackupCode = new Option<string?>(utf8JsonReader.GetString());
                             break;
+                        case "applicationIds":
+                            applicationIds = new Option<List<int>?>(JsonSerializer.Deserialize<List<int>>(ref utf8JsonReader, jsonSerializerOptions));
+                            break;
                         default:
                             break;
                     }
@@ -171,7 +192,7 @@ namespace EdGraph.Platform.Client.Model
             if (year.IsSet && year.Value == null)
                 throw new ArgumentNullException(nameof(year), "Property is not nullable for class EdfiAdminApiEdfiAdminV1AddSchoolYearRangeRequestEntry.");
 
-            return new EdfiAdminApiEdfiAdminV1AddSchoolYearRangeRequestEntry(year, selectedTierId, odsBackupCode);
+            return new EdfiAdminApiEdfiAdminV1AddSchoolYearRangeRequestEntry(year, selectedTierId, odsBackupCode, applicationIds);
         }
 
         /// <summary>
@@ -212,6 +233,15 @@ namespace EdGraph.Platform.Client.Model
                     writer.WriteString("odsBackupCode", edfiAdminApiEdfiAdminV1AddSchoolYearRangeRequestEntry.OdsBackupCode);
                 else
                     writer.WriteNull("odsBackupCode");
+
+            if (edfiAdminApiEdfiAdminV1AddSchoolYearRangeRequestEntry.ApplicationIdsOption.IsSet)
+                if (edfiAdminApiEdfiAdminV1AddSchoolYearRangeRequestEntry.ApplicationIdsOption.Value != null)
+                {
+                    writer.WritePropertyName("applicationIds");
+                    JsonSerializer.Serialize(writer, edfiAdminApiEdfiAdminV1AddSchoolYearRangeRequestEntry.ApplicationIds, jsonSerializerOptions);
+                }
+                else
+                    writer.WriteNull("applicationIds");
         }
     }
 }

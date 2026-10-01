@@ -16,6 +16,9 @@ Name | Type | Description | Notes
 **DeletedBy** | **string** |  | [optional] 
 **DeletedDateTime** | **string** |  | [optional] 
 **IsDeleted** | **bool** |  | [optional] 
+**RoleMappings** | [**List&lt;TenantApiPartnershipV1RoleMappingDTO&gt;**](TenantApiPartnershipV1RoleMappingDTO.md) |  | [optional] [readonly] 
+**Scope** | **TenantApiPartnershipV1PartnershipScope** |  | [optional] 
+**OptedOutTenantIds** | **List&lt;string&gt;** |  | [optional] [readonly] 
 
 [[Back to Model list]](../../README.md#documentation-for-models) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to README]](../../README.md)
 
